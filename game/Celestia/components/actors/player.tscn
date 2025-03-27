@@ -118,7 +118,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 4.0
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mjae0"]
@@ -130,8 +130,9 @@ script = ExtResource("1_k0a6i")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2nove")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
+frame_progress = 0.68073
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

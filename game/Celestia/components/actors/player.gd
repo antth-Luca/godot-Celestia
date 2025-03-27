@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 200.0
+const SPEED = 100.0
 const AIR_FRICTION = 0.5
 
 @export var jump_height := 68  # dobro da altura do personagem + 4
