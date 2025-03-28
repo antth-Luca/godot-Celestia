@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED = 60.0
 const AIR_FRICTION = 0.5
 
 @export var jump_height := 68  # dobro da altura do personagem + 4
@@ -9,7 +9,7 @@ const AIR_FRICTION = 0.5
 var jump_velocity
 var gravity
 var fall_gravity
-var direction
+var direction := Vector2.ZERO
 var is_jumping := false
 var is_hurted := false
 
@@ -30,15 +30,13 @@ func _physics_process(_delta):
 	# TODO
 
 	# Get the input direction and handle the movement/deceleration.
-	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	# Normaliza a direção para evitar velocidade maior em diagonais
+	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
+
 	if direction != Vector2.ZERO:
-		direction = direction.normalized()
-
-	if direction.x != 0:
-		animation.scale.x = sign(direction.x)
-
-	velocity = direction * SPEED
+		velocity = direction * SPEED
+		if direction.x != 0: animation.scale.x = sign(direction.x)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
 
 	_set_state()
 	move_and_slide()
