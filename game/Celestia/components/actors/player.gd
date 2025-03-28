@@ -13,7 +13,7 @@ var direction := Vector2.ZERO
 var is_jumping := false
 var is_hurted := false
 
-@onready var animation = $Sprite as AnimatedSprite2D
+@onready var animation = $AnimationPlayer as AnimationPlayer
 
 
 func _ready():
@@ -34,7 +34,7 @@ func _physics_process(_delta):
 
 	if direction != Vector2.ZERO:
 		velocity = direction * SPEED
-		if direction.x != 0: animation.scale.x = sign(direction.x)
+		if direction.x != 0: $Texture.scale.x = sign(direction.x)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
 
