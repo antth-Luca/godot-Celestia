@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 80.0
+const AIR_FRICTION = 0.5
 
 var jump_velocity
 var gravity
@@ -18,7 +19,7 @@ func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 	if direction != Vector2.ZERO:
-		velocity = direction * SPEED
+		velocity = velocity.lerp(direction * SPEED, AIR_FRICTION)
 		if direction.x != 0: $Texture.scale.x = sign(direction.x)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
@@ -31,8 +32,8 @@ func _physics_process(_delta):
 		jump_tween.tween_property(
 			self,
 			"position",
-			global_position + (velocity * 0.8),
-			0.8
+			global_position + (velocity * 0.6),
+			0.5
 		)
 		await jump_tween.finished
 		is_jumping = false
