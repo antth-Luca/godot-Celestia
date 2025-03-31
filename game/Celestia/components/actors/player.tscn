@@ -3,10 +3,6 @@
 [ext_resource type="Script" uid="uid://c6ieybpej14dv" path="res://components/actors/player.gd" id="1_k0a6i"]
 [ext_resource type="Texture2D" uid="uid://bfcepksumhoew" path="res://assets/animations/player/all_player.png" id="6_h1r8s"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mjae0"]
-radius = 6.0
-height = 18.0
-
 [sub_resource type="Animation" id="Animation_m8e5s"]
 length = 0.001
 tracks/0/type = "value"
@@ -121,12 +117,12 @@ _data = {
 &"walk": SubResource("Animation_c62u7")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mjae0"]
+radius = 5.0
+height = 16.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_k0a6i")
-
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
-shape = SubResource("CapsuleShape2D_mjae0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -138,3 +134,7 @@ autoplay = "idle"
 texture = ExtResource("6_h1r8s")
 hframes = 6
 vframes = 5
+
+[node name="WallCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_mjae0")
