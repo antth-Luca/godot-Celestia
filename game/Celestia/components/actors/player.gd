@@ -9,7 +9,6 @@ extends CharacterBody2D
 @onready var TEXTURE = $Texture as Sprite2D
 @onready var ANIMATION = $AnimationPlayer as AnimationPlayer
 @onready var WALL_COLLISIONS = $WallCollision as CollisionShape2D
-@onready var RECT_TARGET_CELL = $TargetCell as ColorRect
 
 const SPEED = 80.0
 const AIR_FRICTION = 0.5
@@ -54,7 +53,7 @@ func _physics_process(_delta) -> void:
 
 func set_target_cell() -> void:
 	target_cell = global_position + (velocity * 0.6)
-	RECT_TARGET_CELL.position = velocity * 0.6 + Vector2(-8, 8)
+	# RECT_TARGET_CELL.position = velocity * 0.6 + Vector2(-8, 8)
 
 
 func is_valid_cell() -> bool:
@@ -68,12 +67,9 @@ func is_valid_cell() -> bool:
 
 func set_state() -> void:
 	var state = "idle"
-	
 	if direction != Vector2.ZERO:
 		state = "walk"
-
 	if is_hurted:
 		state = "hurt"
-
 	if ANIMATION.current_animation != state:
 		ANIMATION.play(state)

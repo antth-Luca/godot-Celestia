@@ -140,9 +140,7 @@ position = Vector2(0, 10)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mjae0")
 
-[node name="TargetCell" type="ColorRect" parent="."]
-offset_left = -8.0
-offset_top = 10.0
-offset_right = 8.0
-offset_bottom = 18.0
-color = Color(1, 0.809945, 0.777408, 0.321569)
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+process_callback = 0
+limit_smoothed = true

@@ -21,6 +21,3 @@ tile_set = ExtResource("2_7obii")
 [node name="Player" parent="." instance=ExtResource("1_i5x7m")]
 WATER_LAYER_PATH = NodePath("../Water")
 LAND_LAYER_PATH = NodePath("../Land1")
-
-[node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
