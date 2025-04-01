@@ -65,7 +65,7 @@ func is_valid_cell() -> bool:
 	var land_tile_id = LAND_TILE_LAYER.get_cell_source_id(world_cell)
 	var water_tile_id = WATER_TILE_LAYER.get_cell_source_id(world_cell)
 
-	if land_tile_id != 2 and water_tile_id == -1:
+	if water_tile_id == -1 and land_tile_id != 2:
 		return true
 
 	return false
