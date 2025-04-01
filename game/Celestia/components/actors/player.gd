@@ -10,7 +10,6 @@ extends CharacterBody2D
 @onready var ANIMATION = $AnimationPlayer as AnimationPlayer
 @onready var WALL_COLLISIONS = $WallCollision as CollisionShape2D
 
-const SPEED = 80.0
 const AIR_FRICTION = 0.5
 
 var direction = Vector2.ZERO
@@ -18,16 +17,28 @@ var target_cell = Vector2.ZERO
 var is_jumping = false
 var is_hurted = false
 
+# Stats
+var level: int
+var exp: int
+var health: int
+var max_health: int
+var damage: int
+var move_speed: float
+
+
+func _ready():
+	pass
+
 
 func _physics_process(_delta) -> void:
 	if is_jumping: return
 	# Get the input direction and handle the movement/deceleration.
 	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 	if direction != Vector2.ZERO:
-		velocity = velocity.lerp(direction * SPEED, AIR_FRICTION)
+		velocity = velocity.lerp(direction * move_speed, AIR_FRICTION)
 		if direction.x != 0: TEXTURE.scale.x = sign(direction.x)
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
+		velocity = velocity.move_toward(Vector2.ZERO, move_speed)
 	# Setando a posição do alvo do pulo e a posição do retângulo que prevê o pulo
 	set_target_cell()
 	# Handle jump.
