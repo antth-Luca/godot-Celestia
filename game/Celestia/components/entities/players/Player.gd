@@ -22,7 +22,6 @@ var stats: PlayerStats
 func _ready() -> void:
 	if stats == null:
 		stats = PlayerStats.new()
-	print(stats.get_move_speed())
 
 
 func _physics_process(_delta) -> void:

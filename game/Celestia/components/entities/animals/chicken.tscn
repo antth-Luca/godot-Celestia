@@ -89,6 +89,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(-3, 0)
 texture = ExtResource("1_nfqdh")
 hframes = 7
 vframes = 3

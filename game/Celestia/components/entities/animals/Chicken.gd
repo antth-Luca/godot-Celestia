@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 const AIR_FRICTION: float = 0.5
 var direction: Vector2 = Vector2.ZERO
+var last_direction: Vector2 = Vector2.ZERO
 var is_fooding: bool = false
 
 var stats: ChickenStats
@@ -15,6 +16,8 @@ var stats: ChickenStats
 func _ready() -> void:
 	if stats == null:
 		stats = ChickenStats.new()
+
+	_on_change_state_timer_timeout()
 
 
 func _physics_process(_delta) -> void:
@@ -52,12 +55,27 @@ func _on_change_state_timer_timeout():
 		timer_duration = 2.2
 	elif next_action > 0.34:  # Walking state => 57%
 		is_fooding = false
-		direction = Vector2(randf_range(0, 1), randf_range(0, 1))
-		timer_duration = randf_range(1.0, 5.0)
+		direction = pick_valid_direction()
+		timer_duration = randf_range(1, 5)
 	else:  # Idle state => 33%
 		is_fooding = false
 		direction = Vector2.ZERO
-		timer_duration = randf_range(1.0, 5.0)
+		timer_duration = randf_range(1, 5)
 
 	CHANGE_STATE_TIMER.wait_time = timer_duration
 	CHANGE_STATE_TIMER.start()
+
+
+# Escolhe uma direção que evita andar para trás e impede ficar preso
+func pick_valid_direction() -> Vector2:
+	var new_direction = last_direction
+	var attempts = 5  # Tentativas para encontrar uma direção válida
+	
+	while attempts > 0:
+		new_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+		if new_direction.distance_to(last_direction) > 0.5:  # Evita voltar para trás imediatamente
+			break
+		attempts -= 1
+	
+	last_direction = new_direction
+	return new_direction
