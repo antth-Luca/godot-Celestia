@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @onready var CHANGE_STATE_TIMER = $TimerChangeState as Timer
-
 @onready var TEXTURE = $Texture as Sprite2D
 @onready var ANIMATION = $Animation as AnimationPlayer
 
