@@ -10,18 +10,19 @@ extends CharacterBody2D
 @onready var ANIMATION = $AnimationPlayer as AnimationPlayer
 @onready var WALL_COLLISIONS = $WallCollision as CollisionShape2D
 
-const AIR_FRICTION = 0.5
-var direction = Vector2.ZERO
-var target_cell = Vector2.ZERO
-var is_jumping = false
-var is_hurted = false
+const AIR_FRICTION: float = 0.5
+var direction: Vector2 = Vector2.ZERO
+var target_cell: Vector2 = Vector2.ZERO
+var is_jumping: bool = false
+var is_hurted:bool = false
 
 var stats: PlayerStats
 
 
-func _ready():
+func _ready() -> void:
 	if stats == null:
 		stats = PlayerStats.new()
+	print(stats.get_move_speed())
 
 
 func _physics_process(_delta) -> void:

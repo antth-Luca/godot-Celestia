@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1lu1250qk75w"]
+
+[ext_resource type="Script" uid="uid://bog8y30h7rxd8" path="res://components/entities/animals/Chicken.gd" id="1_7dxpf"]
+[ext_resource type="Texture2D" uid="uid://lq28m01bpl41" path="res://assets/animations/animals/all_chicken.png" id="1_nfqdh"]
+
+[sub_resource type="Animation" id="Animation_64v36"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1wgvl"]
+resource_name = "food"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1, 1.3, 1.6, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_7dxpf"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nfqdh"]
+resource_name = "walk"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1wgvl"]
+_data = {
+&"RESET": SubResource("Animation_64v36"),
+&"food": SubResource("Animation_1wgvl"),
+&"idle": SubResource("Animation_7dxpf"),
+&"walk": SubResource("Animation_nfqdh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nfqdh"]
+radius = 7.0
+
+[node name="Chicken" type="CharacterBody2D"]
+script = ExtResource("1_7dxpf")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1wgvl")
+}
+autoplay = "idle"
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_nfqdh")
+hframes = 7
+vframes = 3
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_nfqdh")
+
+[node name="TimerChangeState" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerChangeState" to="." method="_on_change_state_timer_timeout"]

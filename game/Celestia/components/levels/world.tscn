@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://dnha7l542riug"]
+[gd_scene load_steps=5 format=4 uid="uid://dnha7l542riug"]
 
-[ext_resource type="PackedScene" uid="uid://5u1bok7ay85u" path="res://components/actors/player.tscn" id="1_i5x7m"]
+[ext_resource type="PackedScene" uid="uid://5u1bok7ay85u" path="res://components/entities/players/player.tscn" id="1_i5x7m"]
 [ext_resource type="TileSet" uid="uid://c8kmts0lbhm6c" path="res://components/levels/water_tile_layer.tres" id="1_irhby"]
 [ext_resource type="TileSet" uid="uid://dgvgpoe2lbrqa" path="res://components/levels/land_tile_layer.tres" id="2_7obii"]
+[ext_resource type="PackedScene" uid="uid://b1lu1250qk75w" path="res://components/entities/animals/chicken.tscn" id="4_7obii"]
 
 [node name="World" type="Node2D"]
 
@@ -17,6 +18,9 @@ tile_set = ExtResource("2_7obii")
 [node name="Land2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD7/wAAAQAAAAAAAAD7/wEAAQAAAAIAAAD8/wIAAQAAAAIAAAD9/wIAAQACAAIAAAD+/wEAAQACAAIAAAD+/wAAAQACAAAAAAD8////AQAAAAAAAAD9////AQACAAAAAAD8/wAAAQABAAEAAAD8/wEAAQABAAEAAAD9/wEAAQABAAEAAAD9/wAAAQABAAEAAAA=")
 tile_set = ExtResource("2_7obii")
+
+[node name="Chicken" parent="." instance=ExtResource("4_7obii")]
+position = Vector2(60, -26)
 
 [node name="Player" parent="." instance=ExtResource("1_i5x7m")]
 WATER_LAYER_PATH = NodePath("../Water")
