@@ -23,9 +23,10 @@ tile_map_data = PackedByteArray("AAD7/wAAAQAAAAAAAAD7/wEAAQAAAAIAAAD8/wIAAQAAAAI
 tile_set = ExtResource("2_7obii")
 
 [node name="Chicken" parent="." instance=ExtResource("4_7obii")]
-position = Vector2(60, -26)
+position = Vector2(99, 65)
 
 [node name="Player" parent="." instance=ExtResource("1_i5x7m")]
+position = Vector2(-73, -42)
 WATER_LAYER_PATH = NodePath("../Water")
 LAND_LAYER_PATH = NodePath("../Land1")
 
@@ -59,5 +60,11 @@ layout_mode = 0
 offset_left = 48.0
 offset_right = 64.0
 
-[node name="AbstractItem" parent="." instance=ExtResource("7_xmg66")]
-position = Vector2(-49, -17)
+[node name="AbstractItem1" parent="." instance=ExtResource("7_xmg66")]
+position = Vector2(-112, 66)
+
+[node name="AbstractItem2" parent="." instance=ExtResource("7_xmg66")]
+position = Vector2(-67, 68)
+
+[node name="AbstractItem3" parent="." instance=ExtResource("7_xmg66")]
+position = Vector2(-20, 70)

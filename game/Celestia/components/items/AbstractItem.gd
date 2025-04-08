@@ -26,11 +26,12 @@ func set_property():
 
 
 func _on_body_entered(body):
+	if body.name != 'Player': return
 	var follow_tween = create_tween()
 	follow_tween.tween_property(
 		self,
 		"position",
-		body.global_position,
+		body.global_position + Vector2(-8, 8),
 		0.1
 	)
 	await follow_tween.finished
