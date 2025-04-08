@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b1lu1250qk75w"]
 
-[ext_resource type="Script" uid="uid://bog8y30h7rxd8" path="res://components/entities/animals/Chicken.gd" id="1_7dxpf"]
+[ext_resource type="Script" uid="uid://bog8y30h7rxd8" path="res://components/entities/animals/chicken.gd" id="1_7dxpf"]
 [ext_resource type="Texture2D" uid="uid://lq28m01bpl41" path="res://assets/animations/animals/all_chicken.png" id="1_nfqdh"]
 
 [sub_resource type="Animation" id="Animation_64v36"]

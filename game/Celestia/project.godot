@@ -15,6 +15,14 @@ run/main_scene="uid://dnha7l542riug"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+DataRegister="*res://components/autoload/DataRegister.gd"
+
+[global_group]
+
+player=""
+
 [input]
 
 ui_accept={

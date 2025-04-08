@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://dnha7l542riug"]
+[gd_scene load_steps=7 format=4 uid="uid://dnha7l542riug"]
 
 [ext_resource type="PackedScene" uid="uid://5u1bok7ay85u" path="res://components/entities/players/player.tscn" id="1_i5x7m"]
 [ext_resource type="TileSet" uid="uid://c8kmts0lbhm6c" path="res://components/levels/water_tile_layer.tres" id="1_irhby"]
 [ext_resource type="TileSet" uid="uid://dgvgpoe2lbrqa" path="res://components/levels/land_tile_layer.tres" id="2_7obii"]
 [ext_resource type="PackedScene" uid="uid://b1lu1250qk75w" path="res://components/entities/animals/chicken.tscn" id="4_7obii"]
-[ext_resource type="Script" uid="uid://duag1ks07egki" path="res://components/levels/inventory.gd" id="5_cvk7v"]
-[ext_resource type="PackedScene" uid="uid://h11osunbmsip" path="res://components/levels/slot.tscn" id="6_ifgvi"]
-[ext_resource type="PackedScene" uid="uid://ek4px0gc3xn3" path="res://components/items/AbstractItem.tscn" id="7_xmg66"]
+[ext_resource type="PackedScene" uid="uid://bg80xl40o12ml" path="res://components/entities/players/inventory/inventory.tscn" id="5_ifgvi"]
+[ext_resource type="PackedScene" uid="uid://ek4px0gc3xn3" path="res://components/items/abstract_item.tscn" id="7_xmg66"]
 
 [node name="World" type="Node2D"]
 
@@ -32,39 +31,16 @@ LAND_LAYER_PATH = NodePath("../Land1")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Inventory" type="ItemList" parent="HUD"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2.5, 2.5)
-script = ExtResource("5_cvk7v")
-
-[node name="Slot1" parent="HUD/Inventory" instance=ExtResource("6_ifgvi")]
-layout_mode = 0
-
-[node name="Slot2" parent="HUD/Inventory" instance=ExtResource("6_ifgvi")]
-layout_mode = 0
-offset_left = 16.0
-offset_right = 32.0
-
-[node name="Slot3" parent="HUD/Inventory" instance=ExtResource("6_ifgvi")]
-layout_mode = 0
-offset_left = 32.0
-offset_right = 48.0
-
-[node name="Slot4" parent="HUD/Inventory" instance=ExtResource("6_ifgvi")]
-layout_mode = 0
-offset_left = 48.0
-offset_right = 64.0
+[node name="Inventory" parent="HUD" instance=ExtResource("5_ifgvi")]
 
 [node name="AbstractItem1" parent="." instance=ExtResource("7_xmg66")]
 position = Vector2(-112, 66)
+amount_item = 1
 
 [node name="AbstractItem2" parent="." instance=ExtResource("7_xmg66")]
 position = Vector2(-67, 68)
+amount_item = 1
 
 [node name="AbstractItem3" parent="." instance=ExtResource("7_xmg66")]
 position = Vector2(-20, 70)
+amount_item = 1
