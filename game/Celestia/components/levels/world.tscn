@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://dnha7l542riug"]
+[gd_scene load_steps=8 format=4 uid="uid://dnha7l542riug"]
 
 [ext_resource type="PackedScene" uid="uid://5u1bok7ay85u" path="res://components/entities/players/player.tscn" id="1_i5x7m"]
 [ext_resource type="TileSet" uid="uid://c8kmts0lbhm6c" path="res://components/levels/water_tile_layer.tres" id="1_irhby"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b1lu1250qk75w" path="res://components/entities/animals/chicken.tscn" id="4_7obii"]
 [ext_resource type="Script" uid="uid://duag1ks07egki" path="res://components/levels/inventory.gd" id="5_cvk7v"]
 [ext_resource type="PackedScene" uid="uid://h11osunbmsip" path="res://components/levels/slot.tscn" id="6_ifgvi"]
+[ext_resource type="PackedScene" uid="uid://ek4px0gc3xn3" path="res://components/items/AbstractItem.tscn" id="7_xmg66"]
 
 [node name="World" type="Node2D"]
 
@@ -57,3 +58,6 @@ offset_right = 48.0
 layout_mode = 0
 offset_left = 48.0
 offset_right = 64.0
+
+[node name="AbstractItem" parent="." instance=ExtResource("7_xmg66")]
+position = Vector2(-49, -17)

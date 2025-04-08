@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d00d1uuo2ppbd"
-path="res://.godot/imported/chicken_egg.png-246072b94f306b644b89132347fa199d.ctex"
+path="res://.godot/imported/chicken_egg.png-ef504522616821cdffee7362e9d44299.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/items/foods/chicken_egg.png"
-dest_files=["res://.godot/imported/chicken_egg.png-246072b94f306b644b89132347fa199d.ctex"]
+source_file="res://assets/textures/items/chicken_egg.png"
+dest_files=["res://.godot/imported/chicken_egg.png-ef504522616821cdffee7362e9d44299.ctex"]
 
 [params]
 

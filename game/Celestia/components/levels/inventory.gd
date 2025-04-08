@@ -3,7 +3,7 @@ extends ItemList
 var inventory = []
 
 
-func _ready():
+func _ready() -> void:
 	clear_inventory()
 
 

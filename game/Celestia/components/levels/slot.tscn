@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://h11osunbmsip"]
 
-[ext_resource type="Texture2D" uid="uid://d00d1uuo2ppbd" path="res://assets/textures/items/foods/chicken_egg.png" id="1_sry1y"]
+[ext_resource type="Texture2D" uid="uid://d00d1uuo2ppbd" path="res://assets/textures/items/chicken_egg.png" id="1_sry1y"]
 
 [node name="Slot" type="Panel"]
 offset_right = 16.0
