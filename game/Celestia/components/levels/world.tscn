@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://dnha7l542riug"]
+[gd_scene load_steps=7 format=4 uid="uid://dnha7l542riug"]
 
 [ext_resource type="PackedScene" uid="uid://5u1bok7ay85u" path="res://components/entities/players/player.tscn" id="1_i5x7m"]
 [ext_resource type="TileSet" uid="uid://c8kmts0lbhm6c" path="res://components/levels/water_tile_layer.tres" id="1_irhby"]
 [ext_resource type="TileSet" uid="uid://dgvgpoe2lbrqa" path="res://components/levels/land_tile_layer.tres" id="2_7obii"]
 [ext_resource type="PackedScene" uid="uid://b1lu1250qk75w" path="res://components/entities/animals/chicken.tscn" id="4_7obii"]
-[ext_resource type="PackedScene" uid="uid://bg80xl40o12ml" path="res://components/entities/players/inventory/inventory.tscn" id="5_ifgvi"]
-[ext_resource type="PackedScene" uid="uid://02ml4phlil6d" path="res://components/ui/HUD.tscn" id="6_xmg66"]
+[ext_resource type="PackedScene" uid="uid://lv768o4g6j4a" path="res://components/ui/ui.tscn" id="5_ifgvi"]
 [ext_resource type="PackedScene" uid="uid://ek4px0gc3xn3" path="res://components/items/abstract_item.tscn" id="7_xmg66"]
 
 [node name="World" type="Node2D"]
@@ -30,11 +29,7 @@ position = Vector2(-73, -42)
 WATER_LAYER_PATH = NodePath("../Water")
 LAND_LAYER_PATH = NodePath("../Land1")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="UI" instance=ExtResource("6_xmg66")]
-
-[node name="Inventory" parent="UI" instance=ExtResource("5_ifgvi")]
+[node name="UI" parent="." instance=ExtResource("5_ifgvi")]
 
 [node name="AbstractItem1" parent="." instance=ExtResource("7_xmg66")]
 position = Vector2(-112, 66)

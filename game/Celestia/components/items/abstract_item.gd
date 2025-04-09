@@ -19,7 +19,7 @@ func _on_body_entered(body):
 		)
 		await follow_tween.finished
 		var data_item = DataRegister.ITEMS[item_id]
-		var is_add_item: bool = get_parent().find_child("Inventory").add_item_to_invent(
+		var is_add_item: bool = get_parent().find_child("BackpackSlots").add_item_to_invent(
 			BaseItem.new(
 				data_item.item_name,
 				data_item.icon_name,

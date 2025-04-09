@@ -1,4 +1,4 @@
-extends ItemList
+extends Control
 
 var main_inventory = []
 
@@ -73,11 +73,3 @@ func remove_item_to_invent(index: int, amount: int) -> void:
 	if amount < 1: return
 	main_inventory[index].amount -= amount
 	update_inventory()
-
-
-func _input(event):
-	if event.is_action_pressed("ui_inventory"):
-		visible = !visible
-		if visible:
-			grab_focus()
-			select(0)

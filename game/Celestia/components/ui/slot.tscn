@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d00d1uuo2ppbd" path="res://assets/textures/items/chicken_egg.png" id="1_sry1y"]
 
 [node name="Slot" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
 offset_bottom = 16.0
 
