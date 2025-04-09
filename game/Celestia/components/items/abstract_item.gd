@@ -23,9 +23,6 @@ func _on_body_entered(body):
 			BaseItem.new(
 				data_item.item_name,
 				data_item.icon_name,
-				data_item.stackable,
-				data_item.amount,
-				data_item.type,
-				data_item.use
+				data_item.stackable
 			), amount_item)
 		if is_add_item: queue_free()
