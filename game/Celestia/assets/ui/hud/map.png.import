@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqp7mtap7wh1y"
-path="res://.godot/imported/all_inventory.png-050d26056c0e89755daf38ad11b19973.ctex"
+uid="uid://bty2sgc8idoo8"
+path="res://.godot/imported/map.png-9ac8fe4238e21ed59a4859dda966cd71.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/all_inventory.png"
-dest_files=["res://.godot/imported/all_inventory.png-050d26056c0e89755daf38ad11b19973.ctex"]
+source_file="res://assets/ui/hud/map.png"
+dest_files=["res://.godot/imported/map.png-9ac8fe4238e21ed59a4859dda966cd71.ctex"]
 
 [params]
 

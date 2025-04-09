@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvngpw874fpmx"
-path="res://.godot/imported/main_inventory.png-22fbdf7765cbe5cd7bb2e49c552bcc1b.ctex"
+uid="uid://dfxnicjxmcjre"
+path="res://.godot/imported/rotative_invent_hand_v2.png-0e9811a3eddccd38fbce79ec271e29ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/main_inventory.png"
-dest_files=["res://.godot/imported/main_inventory.png-22fbdf7765cbe5cd7bb2e49c552bcc1b.ctex"]
+source_file="res://assets/ui/hud/rotative_invent_hand_v2.png"
+dest_files=["res://.godot/imported/rotative_invent_hand_v2.png-0e9811a3eddccd38fbce79ec271e29ff.ctex"]
 
 [params]
 
