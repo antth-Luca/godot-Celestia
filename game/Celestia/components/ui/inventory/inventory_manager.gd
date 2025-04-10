@@ -4,6 +4,7 @@ var main_inventory = []
 
 var stack_in_cursor: ItemStack
 var cursor_click_origin_slot: int
+var sprite_to_cursor: Sprite2D = null
 
 # Init
 func _ready() -> void:
@@ -113,21 +114,25 @@ func handle_left_click(slot):
 			cursor_click_origin_slot = slot_index
 			main_inventory[slot_index] = ItemStack.get_empty_slot()
 			clear_slot(slot)
+			set_sprite_to_cursor(stack_in_cursor.item_class.icon_name)
 	# Segurando algo
 	else:
 		# Slot do inventátio vazio
 		if slot_stack.amount <= 0:
 			main_inventory[slot_index] = stack_in_cursor
 			stack_in_cursor = null
+			clear_sprite_to_cursor()
 		# Slot do inventário é igual ao do cursor
 		elif stack_in_cursor.item_class.item_name == slot_stack.item_class.item_name and slot_stack.item_class.stackable:
 			slot_stack.amount += stack_in_cursor.amount
 			stack_in_cursor = null
+			clear_sprite_to_cursor()
 		# Slot do inventário é diferente do cursor
 		else:
 			var temp = main_inventory[slot_index]
 			main_inventory[slot_index] = stack_in_cursor
 			stack_in_cursor = temp
+			clear_sprite_to_cursor()
 	update_inventory()
 
 
@@ -143,6 +148,7 @@ func handle_right_click(slot):
 			stack_in_cursor = ItemStack.new(slot_stack.item_class, take_amount)
 			cursor_click_origin_slot = slot_index
 			slot_stack.amount -= take_amount
+			set_sprite_to_cursor(stack_in_cursor.item_class.icon_name)
 	# Segurando algo
 	else:
 		# Slot do inventátio vazio
@@ -156,4 +162,26 @@ func handle_right_click(slot):
 
 	if stack_in_cursor and stack_in_cursor.amount <= 0:
 		stack_in_cursor = null
+		clear_sprite_to_cursor()
 	update_inventory()
+
+
+func set_sprite_to_cursor(icon_name: String):
+	sprite_to_cursor = Sprite2D.new()
+	sprite_to_cursor.texture = load("res://assets/textures/items/" + icon_name + ".png")
+	add_child(sprite_to_cursor)
+	update_sprite_to_cursor()
+
+
+func clear_sprite_to_cursor():
+	sprite_to_cursor.queue_free()
+	sprite_to_cursor = null
+
+
+func update_sprite_to_cursor():
+	if stack_in_cursor == null or stack_in_cursor.amount <= 0: return
+	sprite_to_cursor.global_position = get_global_mouse_position()
+
+
+func _input(event):
+	update_sprite_to_cursor()
