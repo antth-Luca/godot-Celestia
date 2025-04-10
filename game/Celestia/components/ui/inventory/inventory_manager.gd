@@ -2,22 +2,31 @@ extends Control
 
 var main_inventory = []
 
-var stack_in_hand: ItemStack
+var stack_in_cursor: ItemStack
+var cursor_click_origin_slot: int
 
-
+# Init
 func _ready() -> void:
 	clear_inventory()
 	connect_slots()
 
 
 func clear_inventory() -> void:
+	# Esvazia TODOS os slots que estiverem dentro do inventário
 	var count_slots = get_child_count()
 	for c in count_slots:
 		main_inventory.append(ItemStack.get_empty_slot())
 	update_inventory()
 
 
+func connect_slots():
+	# Conecta CADA UM dos slots que estiverem dentro do inventário à uma função
+	for slot in get_children():
+		slot.gui_input.connect(_on_slot_gui_input.bind(slot))
+
+# Inventory and slot handlers
 func update_inventory():
+	# Atualiza CADA UM dos slots que estiverem dentro do inventário, esvaziando, ou renderizando
 	for index in main_inventory.size():
 		var slot = get_child(index)
 		if main_inventory[index].amount <= 0:
@@ -28,11 +37,13 @@ func update_inventory():
 
 
 func clear_slot(slot) -> void:
+	# Esvazia um slot específico
 	slot.get_node('Sprite').visible = false
 	slot.get_node('LabelAmount').visible = false
 
 
 func render_slot(slot, item_slot: ItemStack) -> void:
+	# Renderiza graficamente o slot (Sprite de item e valor da pilha)
 	var sprite = slot.get_node('Sprite')
 	var labelAmount = slot.get_node('LabelAmount')
 
@@ -42,19 +53,8 @@ func render_slot(slot, item_slot: ItemStack) -> void:
 	labelAmount.visible = item_slot.amount > 1
 
 
-func connect_slots():
-	var callable = Callable(on_slot_clicked)
-	for slot in get_children():
-		slot.pressed.connect(callable.bind(slot))
-
-
-func on_slot_clicked(slot):
-	if stack_in_hand == null:
-		stack_in_hand = main_inventory[slot.get_index()]
-		print(stack_in_hand.item_class.item_name)
-
-
 func has_item(item_name: String) -> bool:
+	# Verfica se há ou não um item em CADA UM dos slots do inventário
 	for item in main_inventory:
 		if item.item_class.item_name == item_name:
 			return true
@@ -62,6 +62,7 @@ func has_item(item_name: String) -> bool:
 
 
 func add_item_to_invent(item_class: BaseItem, amount: int) -> bool:
+	# Adiciona um item no inventário, já cuidando de empilhar, criar ou ignorar
 	if amount < 1: return false
 	if has_item(item_class.item_name) and item_class.stackable:
 		main_inventory[get_stackable_index(item_class.item_name)].amount += amount
@@ -77,6 +78,7 @@ func add_item_to_invent(item_class: BaseItem, amount: int) -> bool:
 
 
 func get_stackable_index(item_name: String) -> int:
+	# Busca o slot que tenha um item específico e que seja stackable no inventário COMPLETO
 	for index in main_inventory.size():
 		if main_inventory[index].item_class.item_name == item_name and main_inventory[index].item_class.stackable:
 			return index
@@ -84,6 +86,74 @@ func get_stackable_index(item_name: String) -> int:
 
 
 func remove_item_to_invent(index: int, amount: int) -> void:
+	# Remove uma quantia de um slot, sem muitas verificações
 	if amount < 1: return
 	main_inventory[index].amount -= amount
+	update_inventory()
+
+# Inventory cursor handlers
+func _on_slot_gui_input(event: InputEvent, slot):
+	# Separa e direciona os cliques direito e esquerdo para suas funções
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			handle_left_click(slot)
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			handle_right_click(slot)
+
+
+func handle_left_click(slot):
+	# Manuseio de slots com clique esquerdo, ações totais
+	var slot_index = slot.get_index()
+	var slot_stack = main_inventory[slot_index]
+
+	# Se não estamos segurando nada
+	if stack_in_cursor == null or stack_in_cursor.amount <= 0:
+		if slot_stack.amount > 0:
+			stack_in_cursor = slot_stack
+			cursor_click_origin_slot = slot_index
+			main_inventory[slot_index] = ItemStack.get_empty_slot()
+			clear_slot(slot)
+	# Segurando algo
+	else:
+		# Slot do inventátio vazio
+		if slot_stack.amount <= 0:
+			main_inventory[slot_index] = stack_in_cursor
+			stack_in_cursor = null
+		# Slot do inventário é igual ao do cursor
+		elif stack_in_cursor.item_class.item_name == slot_stack.item_class.item_name and slot_stack.item_class.stackable:
+			slot_stack.amount += stack_in_cursor.amount
+			stack_in_cursor = null
+		# Slot do inventário é diferente do cursor
+		else:
+			var temp = main_inventory[slot_index]
+			main_inventory[slot_index] = stack_in_cursor
+			stack_in_cursor = temp
+	update_inventory()
+
+
+func handle_right_click(slot):
+	# Manuseio de slots com clique direito, ações parciais
+	var slot_index = slot.get_index()
+	var slot_stack = main_inventory[slot_index]
+
+	# Se não estamos segurando nada
+	if stack_in_cursor == null or stack_in_cursor.amount <= 0:
+		if slot_stack.amount > 0:
+			var take_amount := int(ceil(slot_stack.amount / 2.0))
+			stack_in_cursor = ItemStack.new(slot_stack.item_class, take_amount)
+			cursor_click_origin_slot = slot_index
+			slot_stack.amount -= take_amount
+	# Segurando algo
+	else:
+		# Slot do inventátio vazio
+		if slot_stack.amount <= 0:
+			main_inventory[slot_index] = ItemStack.new(stack_in_cursor.item_class, 1)
+			stack_in_cursor.amount -= 1
+		# Slot do inventário é igual ao do cursor
+		elif slot_stack.item_class.item_name == stack_in_cursor.item_class.item_name and slot_stack.item_class.stackable:
+			slot_stack.amount += 1
+			stack_in_cursor.amount -= 1
+
+	if stack_in_cursor and stack_in_cursor.amount <= 0:
+		stack_in_cursor = null
 	update_inventory()
