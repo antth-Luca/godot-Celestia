@@ -25,6 +25,24 @@ func connect_slots():
 	for slot in get_children():
 		slot.gui_input.connect(_on_slot_gui_input.bind(slot))
 
+
+func on_inventory_closed():
+# Volta a pilha do cursor ao inventário 
+	if stack_in_cursor != null and stack_in_cursor.amount > 0:
+		if cursor_click_origin_slot < main_inventory.size():
+			var is_added = add_item_to_invent(stack_in_cursor.item_class, stack_in_cursor.amount)
+			if not is_added:
+				# TODO: Dropa a pilha
+				print("Inventário cheio! O item deveria ser dropado.")
+		else:
+			# TODO: Caso não tenha slot válido, dropa a pilha
+			print("Inventário cheio! O item deveria ser dropado.")
+	# Limpa variáveis do cursor
+	stack_in_cursor = null
+	clear_sprite_to_cursor()
+	update_inventory()
+
+
 # Inventory and slot handlers
 func update_inventory():
 	# Atualiza CADA UM dos slots que estiverem dentro do inventário, esvaziando, ou renderizando
@@ -174,6 +192,7 @@ func set_sprite_to_cursor(icon_name: String):
 
 
 func clear_sprite_to_cursor():
+	if sprite_to_cursor == null: return
 	sprite_to_cursor.queue_free()
 	sprite_to_cursor = null
 
