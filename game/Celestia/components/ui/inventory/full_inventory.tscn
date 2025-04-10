@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkwwfpeltlwt4"]
 
 [ext_resource type="Texture2D" uid="uid://dqp7mtap7wh1y" path="res://assets/ui/inventory/all_inventory.png" id="1_eqb5n"]
-[ext_resource type="PackedScene" uid="uid://h11osunbmsip" path="res://components/ui/slot.tscn" id="2_rt0bc"]
-[ext_resource type="Script" uid="uid://duag1ks07egki" path="res://components/ui/inventory_manager.gd" id="3_w4lmk"]
+[ext_resource type="PackedScene" uid="uid://h11osunbmsip" path="res://components/ui/inventory/slot.tscn" id="2_rt0bc"]
+[ext_resource type="Script" uid="uid://duag1ks07egki" path="res://components/ui/inventory/inventory_manager.gd" id="3_w4lmk"]
 
 [node name="FullInventory" type="Panel"]
 visible = false
