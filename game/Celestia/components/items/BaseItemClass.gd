@@ -3,13 +3,13 @@ class_name BaseItem
 
 var item_name: String
 var icon_name: String
-var stackable: bool
+var max_stack: int
 
-func _init(item: String, icon: String, is_stackable: bool) -> void:
+func _init(item: String, icon: String, num_stack: int) -> void:
 	self.item_name = item
 	self.icon_name = icon
-	self.stackable = is_stackable
+	self.max_stack = num_stack
 
 
 static func get_empty_item() -> BaseItem:
-	return BaseItem.new('', '', false)
+	return BaseItem.new('', '', 99)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://5u1bok7ay85u"]
+[gd_scene load_steps=11 format=3 uid="uid://5u1bok7ay85u"]
 
-[ext_resource type="Script" uid="uid://c6ieybpej14dv" path="res://components/entities/players/player.gd" id="1_k0a6i"]
+[ext_resource type="Script" uid="uid://c6ieybpej14dv" path="res://components/entities/players/Player.gd" id="1_k0a6i"]
+[ext_resource type="PackedScene" uid="uid://lv768o4g6j4a" path="res://components/ui/ui.tscn" id="3_fkts4"]
 [ext_resource type="Texture2D" uid="uid://bfcepksumhoew" path="res://assets/animations/player/all_player.png" id="6_h1r8s"]
 
 [sub_resource type="Animation" id="Animation_m8e5s"]
@@ -144,3 +145,5 @@ shape = SubResource("CapsuleShape2D_mjae0")
 zoom = Vector2(2.5, 2.5)
 process_callback = 0
 limit_smoothed = true
+
+[node name="UI" parent="." instance=ExtResource("3_fkts4")]

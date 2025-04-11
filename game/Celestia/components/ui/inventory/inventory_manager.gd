@@ -1,5 +1,7 @@
 extends Control
 
+const ABSTRACT_ITEM = preload("res://components/items/abstract_item.tscn")
+
 var main_inventory = []
 
 var stack_in_cursor: ItemStack
@@ -30,17 +32,20 @@ func on_inventory_closed():
 # Volta a pilha do cursor ao inventário 
 	if stack_in_cursor != null and stack_in_cursor.amount > 0:
 		if cursor_click_origin_slot < main_inventory.size():
-			var is_added = add_item_to_invent(stack_in_cursor.item_class, stack_in_cursor.amount)
-			if not is_added:
-				# TODO: Dropa a pilha
-				print("Inventário cheio! O item deveria ser dropado.")
+			add_item_to_invent(stack_in_cursor)
 		else:
-			# TODO: Caso não tenha slot válido, dropa a pilha
-			print("Inventário cheio! O item deveria ser dropado.")
+			drop_item(stack_in_cursor)
 	# Limpa variáveis do cursor
 	stack_in_cursor = null
 	clear_sprite_to_cursor()
 	update_inventory()
+
+
+func is_full() -> bool:
+	for slot in main_inventory:
+		if slot.amount < slot.item_class.max_stack:
+			return false
+	return true
 
 
 # Inventory and slot handlers
@@ -80,28 +85,36 @@ func has_item(item_name: String) -> bool:
 	return false
 
 
-func add_item_to_invent(item_class: BaseItem, amount: int) -> bool:
-	# Adiciona um item no inventário, já cuidando de empilhar, criar ou ignorar
-	if amount < 1: return false
-	if has_item(item_class.item_name) and item_class.stackable:
-		main_inventory[get_stackable_index(item_class.item_name)].amount += amount
-		update_inventory()
-		return true
-	for index in main_inventory.size():
-		if main_inventory[index].amount <= 0:
-			main_inventory[index] = ItemStack.new(item_class, amount)
-			main_inventory[index].amount = amount
-			update_inventory()
-			return true
-	return false
-
-
 func get_stackable_index(item_name: String) -> int:
-	# Busca o slot que tenha um item específico e que seja stackable no inventário COMPLETO
 	for index in main_inventory.size():
-		if main_inventory[index].item_class.item_name == item_name and main_inventory[index].item_class.stackable:
+		var inv_stack = main_inventory[index]
+		if inv_stack.item_class.item_name == item_name and inv_stack.item_class.max_stack > 1:
 			return index
 	return -1
+
+
+func add_item_to_invent(stack: ItemStack) -> void:
+	# Adiciona um item no inventário, já cuidando de empilhar, criar ou ignorar
+	if stack.amount < 1: return
+	if has_item(stack.item_class.item_name) and stack.item_class.max_stack > 1:
+		var extra = main_inventory[get_stackable_index(stack.item_class.item_name)].add_amount_safe(stack.amount)
+		if extra > 0:
+			stack.amount = extra
+			add_item_in_new_slot(stack)
+		update_inventory()
+		return
+	add_item_in_new_slot(stack)
+
+
+func add_item_in_new_slot(stack: ItemStack):
+	var is_added = false
+	for index in main_inventory.size():
+		if main_inventory[index].amount <= 0:
+			main_inventory[index] = stack
+			is_added = true
+			update_inventory()
+			break
+	if !is_added: drop_item(stack)
 
 
 func remove_item_to_invent(index: int, amount: int) -> void:
@@ -109,6 +122,13 @@ func remove_item_to_invent(index: int, amount: int) -> void:
 	if amount < 1: return
 	main_inventory[index].amount -= amount
 	update_inventory()
+
+
+func drop_item(stack: ItemStack, at_position: Vector2 = Vector2(0, 0)):
+	var abstract_item = ABSTRACT_ITEM.instantiate()
+	abstract_item.initialize(stack)
+	get_tree().root.add_child(abstract_item)
+	abstract_item.global_position = at_position
 
 # Inventory cursor handlers
 func _on_slot_gui_input(event: InputEvent, slot):
@@ -141,7 +161,7 @@ func handle_left_click(slot):
 			stack_in_cursor = null
 			clear_sprite_to_cursor()
 		# Slot do inventário é igual ao do cursor
-		elif stack_in_cursor.item_class.item_name == slot_stack.item_class.item_name and slot_stack.item_class.stackable:
+		elif stack_in_cursor.item_class.item_name == slot_stack.item_class.item_name and not slot_stack.amount + stack_in_cursor.amount > stack_in_cursor.item_class.max_stack:
 			slot_stack.amount += stack_in_cursor.amount
 			stack_in_cursor = null
 			clear_sprite_to_cursor()
@@ -174,7 +194,7 @@ func handle_right_click(slot):
 			main_inventory[slot_index] = ItemStack.new(stack_in_cursor.item_class, 1)
 			stack_in_cursor.amount -= 1
 		# Slot do inventário é igual ao do cursor
-		elif slot_stack.item_class.item_name == stack_in_cursor.item_class.item_name and slot_stack.item_class.stackable:
+		elif slot_stack.item_class.item_name == stack_in_cursor.item_class.item_name and not slot_stack.amount + stack_in_cursor.amount > stack_in_cursor.item_class.max_stack:
 			slot_stack.amount += 1
 			stack_in_cursor.amount -= 1
 
@@ -202,5 +222,5 @@ func update_sprite_to_cursor():
 	sprite_to_cursor.global_position = get_global_mouse_position()
 
 
-func _input(event):
+func _input(_event):
 	update_sprite_to_cursor()
