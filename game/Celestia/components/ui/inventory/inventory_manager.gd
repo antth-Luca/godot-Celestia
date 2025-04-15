@@ -34,7 +34,7 @@ func on_inventory_closed():
 		if cursor_click_origin_slot < main_inventory.size():
 			add_item_to_invent(stack_in_cursor)
 		else:
-			drop_item(stack_in_cursor)
+			drop_item_players_foot(stack_in_cursor)
 	# Limpa variáveis do cursor
 	stack_in_cursor = null
 	clear_sprite_to_cursor()
@@ -114,7 +114,7 @@ func add_item_in_new_slot(stack: ItemStack):
 			is_added = true
 			update_inventory()
 			break
-	if !is_added: drop_item(stack)
+	if !is_added: drop_item_players_foot(stack)
 
 
 func remove_item_to_invent(index: int, amount: int) -> void:
@@ -124,13 +124,18 @@ func remove_item_to_invent(index: int, amount: int) -> void:
 	update_inventory()
 
 
-func drop_item(stack: ItemStack):
+func drop_item_players_foot(stack: ItemStack):
 	var player = get_parent().get_parent().get_parent()
 	var at_pos = player.global_position
+	drop_item_in_position(stack, at_pos)
+
+
+func drop_item_in_position(stack: ItemStack, pos: Vector2):
 	var abstract_item = ABSTRACT_ITEM.instantiate()
 	abstract_item.initialize(stack)
 	get_tree().root.add_child(abstract_item)
-	abstract_item.global_position = at_pos
+	abstract_item.global_position = pos
+	
 
 # Inventory cursor handlers
 func _on_slot_gui_input(event: InputEvent, slot):
@@ -163,16 +168,19 @@ func handle_left_click(slot):
 			stack_in_cursor = null
 			clear_sprite_to_cursor()
 		# Slot do inventário é igual ao do cursor
-		elif stack_in_cursor.item_class.item_name == slot_stack.item_class.item_name and not slot_stack.amount + stack_in_cursor.amount > stack_in_cursor.item_class.max_stack:
-			slot_stack.amount += stack_in_cursor.amount
-			stack_in_cursor = null
-			clear_sprite_to_cursor()
+		elif stack_in_cursor.item_class.item_name == slot_stack.item_class.item_name:
+			if not slot_stack.amount + stack_in_cursor.amount > stack_in_cursor.item_class.max_stack:
+				slot_stack.amount += stack_in_cursor.amount
+				stack_in_cursor = null
+				clear_sprite_to_cursor()
+			else:
+				var extra = slot_stack.add_amount_safe(stack_in_cursor.amount)
+				stack_in_cursor.amount = extra
 		# Slot do inventário é diferente do cursor
 		else:
 			var temp = main_inventory[slot_index]
 			main_inventory[slot_index] = stack_in_cursor
 			stack_in_cursor = temp
-			clear_sprite_to_cursor()
 	update_inventory()
 
 
