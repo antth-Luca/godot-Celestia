@@ -145,6 +145,8 @@ func _on_slot_gui_input(event: InputEvent, slot):
 			handle_left_click(slot)
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			handle_right_click(slot)
+		elif event.button_index == MOUSE_BUTTON_MIDDLE:
+			handle_middle_click(slot)
 
 
 func handle_left_click(slot):
@@ -211,6 +213,18 @@ func handle_right_click(slot):
 	if stack_in_cursor and stack_in_cursor.amount <= 0:
 		stack_in_cursor = null
 		clear_sprite_to_cursor()
+	update_inventory()
+
+
+func handle_middle_click(slot):
+	# Drop de slots com clique do scroll
+	var slot_index = slot.get_index()
+	var slot_stack = main_inventory[slot_index]
+
+	if slot_stack.amount > 0:
+		drop_item_players_foot(slot_stack)
+		main_inventory[slot_index] = ItemStack.get_empty_slot()
+		clear_slot(slot)
 	update_inventory()
 
 
