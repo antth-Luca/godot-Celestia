@@ -124,11 +124,13 @@ func remove_item_to_invent(index: int, amount: int) -> void:
 	update_inventory()
 
 
-func drop_item(stack: ItemStack, at_position: Vector2 = Vector2(0, 0)):
+func drop_item(stack: ItemStack):
+	var player = get_parent().get_parent().get_parent()
+	var at_pos = player.global_position
 	var abstract_item = ABSTRACT_ITEM.instantiate()
 	abstract_item.initialize(stack)
 	get_tree().root.add_child(abstract_item)
-	abstract_item.global_position = at_position
+	abstract_item.global_position = at_pos
 
 # Inventory cursor handlers
 func _on_slot_gui_input(event: InputEvent, slot):
