@@ -28,7 +28,7 @@ func _on_body_entered(body):
 	if !can_be_picked_up: return
 
 	if body.is_in_group("player"):
-		var inventory = body.get_node("UI/FullInventory/BackpackSlots")
+		var inventory = body.get_node("UI/FullInventory")
 		if !inventory.is_full():
 			var follow_tween = create_tween()
 			follow_tween.tween_property(
@@ -38,7 +38,7 @@ func _on_body_entered(body):
 				0.1
 			)
 			await follow_tween.finished
-			inventory.add_item_to_invent(stack)
+			inventory.add_item_to_backpack(stack)
 			queue_free()
 		else:
 			can_be_picked_up = false

@@ -6,4 +6,4 @@ func _input(event):
 		var inventory = $FullInventory
 		inventory.visible = !inventory.visible
 		if !inventory.visible:
-			inventory.get_node("BackpackSlots").on_inventory_closed()
+			inventory.on_inventory_closed()
