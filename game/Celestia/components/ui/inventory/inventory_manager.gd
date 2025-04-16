@@ -8,12 +8,16 @@ var stack_in_cursor: ItemStack
 var cursor_click_origin_slot: int
 var sprite_to_cursor: Sprite2D = null
 
-# Init
+# Godot calls
 func _ready() -> void:
 	clear_inventory()
 	connect_slots()
 
 
+func _input(_event):
+	update_sprite_to_cursor()
+
+# Helpers
 func clear_inventory() -> void:
 	# Esvazia TODOS os slots que estiverem dentro do inventário
 	var count_slots = get_child_count()
@@ -50,7 +54,7 @@ func is_full() -> bool:
 
 # Inventory and slot handlers
 func update_inventory():
-	# Atualiza CADA UM dos slots que estiverem dentro do inventário, esvaziando, ou renderizando
+	# Atualiza CADA UM dos slots que estiverem dentro do inventário, esvaziando ou renderizando
 	for index in main_inventory.size():
 		var slot = get_child(index)
 		if main_inventory[index].amount <= 0:
@@ -71,24 +75,24 @@ func render_slot(slot, item_slot: ItemStack) -> void:
 	var sprite = slot.get_node('Sprite')
 	var labelAmount = slot.get_node('LabelAmount')
 
-	sprite.texture = load("res://assets/textures/items/" + item_slot.item_class.icon_name + ".png")
+	sprite.texture = load("res://assets/textures/items/" + item_slot.item_class.item_key + ".png")
 	sprite.visible = true
 	labelAmount.text = str(item_slot.amount)
 	labelAmount.visible = item_slot.amount > 1
 
 
-func has_item(item_name: String) -> bool:
+func has_item(item_key: String) -> bool:
 	# Verfica se há ou não um item em CADA UM dos slots do inventário
 	for item in main_inventory:
-		if item.item_class.item_name == item_name:
+		if item.item_class.item_key == item_key:
 			return true
 	return false
 
 
-func get_stackable_index(item_name: String) -> int:
+func get_stackable_index(item_key: String) -> int:
 	for index in main_inventory.size():
 		var inv_stack = main_inventory[index]
-		if inv_stack.item_class.item_name == item_name and inv_stack.item_class.max_stack > 1:
+		if inv_stack.item_class.item_key == item_key and inv_stack.item_class.max_stack > 1:
 			return index
 	return -1
 
@@ -96,8 +100,8 @@ func get_stackable_index(item_name: String) -> int:
 func add_item_to_invent(stack: ItemStack) -> void:
 	# Adiciona um item no inventário, já cuidando de empilhar, criar ou ignorar
 	if stack.amount < 1: return
-	if has_item(stack.item_class.item_name) and stack.item_class.max_stack > 1:
-		var extra = main_inventory[get_stackable_index(stack.item_class.item_name)].add_amount_safe(stack.amount)
+	if has_item(stack.item_class.item_key) and stack.item_class.max_stack > 1:
+		var extra = main_inventory[get_stackable_index(stack.item_class.item_key)].add_amount_safe(stack.amount)
 		if extra > 0:
 			stack.amount = extra
 			add_item_in_new_slot(stack)
@@ -125,12 +129,14 @@ func remove_item_to_invent(index: int, amount: int) -> void:
 
 
 func drop_item_players_foot(stack: ItemStack):
+	# Larga uma pilha de item no pé do jogador
 	var player = get_parent().get_parent().get_parent()
 	var at_pos = player.global_position
 	drop_item_in_position(stack, at_pos)
 
 
 func drop_item_in_position(stack: ItemStack, pos: Vector2):
+	# Larga uma pilha de item em uma posição específica
 	var abstract_item = ABSTRACT_ITEM.instantiate()
 	abstract_item.initialize(stack)
 	get_tree().root.add_child(abstract_item)
@@ -161,7 +167,7 @@ func handle_left_click(slot):
 			cursor_click_origin_slot = slot_index
 			main_inventory[slot_index] = ItemStack.get_empty_slot()
 			clear_slot(slot)
-			set_sprite_to_cursor(stack_in_cursor.item_class.icon_name)
+			set_sprite_to_cursor(stack_in_cursor.item_class.item_key)
 	# Segurando algo
 	else:
 		# Slot do inventátio vazio
@@ -170,7 +176,7 @@ func handle_left_click(slot):
 			stack_in_cursor = null
 			clear_sprite_to_cursor()
 		# Slot do inventário é igual ao do cursor
-		elif stack_in_cursor.item_class.item_name == slot_stack.item_class.item_name:
+		elif stack_in_cursor.item_class.item_key == slot_stack.item_class.item_key:
 			if not slot_stack.amount + stack_in_cursor.amount > stack_in_cursor.item_class.max_stack:
 				slot_stack.amount += stack_in_cursor.amount
 				stack_in_cursor = null
@@ -198,7 +204,7 @@ func handle_right_click(slot):
 			stack_in_cursor = ItemStack.new(slot_stack.item_class, take_amount)
 			cursor_click_origin_slot = slot_index
 			slot_stack.amount -= take_amount
-			set_sprite_to_cursor(stack_in_cursor.item_class.icon_name)
+			set_sprite_to_cursor(stack_in_cursor.item_class.item_key)
 	# Segurando algo
 	else:
 		# Slot do inventátio vazio
@@ -206,7 +212,7 @@ func handle_right_click(slot):
 			main_inventory[slot_index] = ItemStack.new(stack_in_cursor.item_class, 1)
 			stack_in_cursor.amount -= 1
 		# Slot do inventário é igual ao do cursor
-		elif slot_stack.item_class.item_name == stack_in_cursor.item_class.item_name and not slot_stack.amount + stack_in_cursor.amount > stack_in_cursor.item_class.max_stack:
+		elif slot_stack.item_class.item_key == stack_in_cursor.item_class.item_key and not slot_stack.amount + stack_in_cursor.amount > stack_in_cursor.item_class.max_stack:
 			slot_stack.amount += 1
 			stack_in_cursor.amount -= 1
 
@@ -228,9 +234,9 @@ func handle_middle_click(slot):
 	update_inventory()
 
 
-func set_sprite_to_cursor(icon_name: String):
+func set_sprite_to_cursor(item_key: String):
 	sprite_to_cursor = Sprite2D.new()
-	sprite_to_cursor.texture = load("res://assets/textures/items/" + icon_name + ".png")
+	sprite_to_cursor.texture = load("res://assets/textures/items/" + item_key + ".png")
 	add_child(sprite_to_cursor)
 	update_sprite_to_cursor()
 
@@ -244,7 +250,3 @@ func clear_sprite_to_cursor():
 func update_sprite_to_cursor():
 	if stack_in_cursor == null or stack_in_cursor.amount <= 0: return
 	sprite_to_cursor.global_position = get_global_mouse_position()
-
-
-func _input(_event):
-	update_sprite_to_cursor()

@@ -1,0 +1,12 @@
+{
+	"menu": {},
+	"config": {},
+	"item": {
+		"chicken_egg": {
+			"item_name": "Ovo de Galinha",
+			"tooltip": ""
+		}
+	},
+	"build": {},
+	"mob": {}
+}

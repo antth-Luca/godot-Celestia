@@ -17,7 +17,7 @@ func _ready():
 
 func initialize(stack_param: ItemStack):
 	self.stack = stack_param
-	texture = load("res://assets/textures/items/" + stack.item_class.icon_name + ".png")
+	texture = load("res://assets/textures/items/" + stack.item_class.item_key + ".png")
 
 
 func _on_pickup_timer_timeout():
