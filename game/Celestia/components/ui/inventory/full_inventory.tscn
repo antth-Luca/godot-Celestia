@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkwwfpeltlwt4"]
+[gd_scene load_steps=6 format=3 uid="uid://dkwwfpeltlwt4"]
 
 [ext_resource type="Texture2D" uid="uid://dqp7mtap7wh1y" path="res://assets/ui/inventory/all_inventory.png" id="1_eqb5n"]
 [ext_resource type="PackedScene" uid="uid://h11osunbmsip" path="res://components/ui/inventory/slot.tscn" id="2_rt0bc"]
+[ext_resource type="FontFile" uid="uid://d00bg0jygioly" path="res://assets/fonts/BitPotionExt.ttf" id="3_bkouf"]
 [ext_resource type="Script" uid="uid://duag1ks07egki" path="res://components/ui/inventory/inventory_manager.gd" id="3_w4lmk"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_tup32"]
+font = ExtResource("3_bkouf")
+
 [node name="FullInventory" type="Panel"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,6 +24,38 @@ script = ExtResource("3_w4lmk")
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(219.4, 123.2)
 texture = ExtResource("1_eqb5n")
+
+[node name="InfoBoard" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="InfoBoard"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 137.0
+offset_top = 45.0
+offset_right = 203.0
+offset_bottom = 111.0
+
+[node name="HContainer" type="HBoxContainer" parent="InfoBoard/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VContainer0" type="VBoxContainer" parent="InfoBoard/Panel/HContainer"]
+layout_mode = 2
+
+[node name="LabelPV" type="Label" parent="InfoBoard/Panel/HContainer/VContainer0"]
+layout_mode = 2
+text = "ui.inventory.stats.hp"
+label_settings = SubResource("LabelSettings_tup32")
+
+[node name="VContainer1" type="VBoxContainer" parent="InfoBoard/Panel/HContainer"]
+layout_mode = 2
 
 [node name="SlotsGroup" type="Control" parent="."]
 anchors_preset = 0

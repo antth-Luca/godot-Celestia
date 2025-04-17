@@ -1,0 +1,28 @@
+{
+	"ui.config.language": "",
+
+	"ui.inventory.stats.hp": "Health: ",
+	"ui.inventory.stats.mn": "Mana: ",
+	"ui.inventory.stats.dm": "Damage: ",
+	"ui.inventory.stats.df": "Defense: ",
+	"ui.inventory.stats.cc": "Critical chance: ",
+	"ui.inventory.stats.cd": "Critical damage: ",
+	"ui.inventory.stats.ls": "Life steal: ",
+	"ui.inventory.stats.pn": "Penetration: ",
+	"ui.inventory.stats.rg": "Range: ",
+	"ui.inventory.stats.ms": "Move speed: ",
+	"ui.inventory.stats.as": "Attack speed: ",
+	"ui.inventory.stats.rc": "Reducing cooldown: ",
+
+	"item.rarity.common": "Common",
+	"item.rarity.rare": "Rare",
+	"item.rarity.epic": "Epic",
+	"item.rarity.mithic": "Mithic",
+	"item.rarity.legendary": "Legendary",
+
+	"item.chicken_egg.name": "Chicken Egg",
+
+	"build": "",
+
+	"mob.chicken.name": "Chicken"
+}

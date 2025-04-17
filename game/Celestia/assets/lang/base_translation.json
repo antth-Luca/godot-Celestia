@@ -1,0 +1,28 @@
+{
+	"ui.config.language": "",
+
+	"ui.inventory.stats.hp": ": ",
+	"ui.inventory.stats.mn": ": ",
+	"ui.inventory.stats.dm": ": ",
+	"ui.inventory.stats.df": ": ",
+	"ui.inventory.stats.cc": ": ",
+	"ui.inventory.stats.cd": ": ",
+	"ui.inventory.stats.ls": ": ",
+	"ui.inventory.stats.pn": ": ",
+	"ui.inventory.stats.rg": ": ",
+	"ui.inventory.stats.ms": ": ",
+	"ui.inventory.stats.as": ": ",
+	"ui.inventory.stats.rc": ": ",
+
+	"item.rarity.common": "",
+	"item.rarity.rare": "",
+	"item.rarity.epic": "",
+	"item.rarity.mithic": "",
+	"item.rarity.legendary": "",
+
+	"item.chicken_egg.name": "",
+
+	"build": "",
+
+	"mob.chicken.name": ""
+}
