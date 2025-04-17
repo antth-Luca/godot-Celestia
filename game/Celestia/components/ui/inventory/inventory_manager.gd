@@ -34,15 +34,16 @@ func clear_inventory() -> void:
 
 func connect_slots() -> void:
 	# Conecta CADA UM dos slots que estiverem dentro do inventário à uma função
-	for c in TOTAL_SLOTS:
-		var slot = get_child(c + 1)  # (+1) pelo Sprite que há dentro de inventário
+	var slots_group = get_node("SlotsGroup")
+	for c in range(TOTAL_SLOTS):
+		var slot = slots_group.get_child(c)
 		slot.gui_input.connect(_on_slot_gui_input.bind(slot))
 
 
 func on_inventory_closed() -> void:
 # Volta a pilha do cursor ao inventário 
 	if stack_in_cursor != null and stack_in_cursor.amount > 0:
-		if (cursor_click_origin_slot - 1) < TOTAL_SLOTS:
+		if (cursor_click_origin_slot) < TOTAL_SLOTS:
 			add_item_to_backpack(stack_in_cursor)
 		else:
 			drop_item_players_foot(stack_in_cursor)
@@ -63,8 +64,9 @@ func is_full() -> bool:
 # UPDATE INVENTORY
 func update_all_inventory() -> void:
 	# Atualiza CADA UM dos slots que estiverem dentro do inventário, esvaziando ou renderizando
-	for index in TOTAL_SLOTS:
-		var slot = get_child(index + 1)  # (+1) pelo Sprite que há dentro de inventário
+	var slots_group = get_node("SlotsGroup")
+	for index in range(TOTAL_SLOTS):
+		var slot = slots_group.get_child(index)
 		if inventory[index].amount <= 0:
 			inventory[index] = ItemStack.get_empty_slot()
 			clear_slot(slot)
@@ -74,8 +76,9 @@ func update_all_inventory() -> void:
 
 func update_backpack_inventory() -> void:
 	# Atualiza CADA UM dos slots que estiverem dentro da mochila, esvaziando ou renderizando
+	var slots_group = get_node("SlotsGroup")
 	for index in range(SLOT_INDEX_RANGES['backpack_slots'][0], SLOT_INDEX_RANGES['backpack_slots'][1] + 1):
-		var slot = get_child(index + 1)  # (+1) pelo Sprite que há dentro de inventário
+		var slot = slots_group.get_child(index)
 		if inventory[index].amount <= 0:
 			inventory[index] = ItemStack.get_empty_slot()
 			clear_slot(slot)
@@ -178,22 +181,21 @@ func _on_slot_gui_input(event: InputEvent, slot):
 func handle_left_click(slot):
 	# Manuseio de slots com clique esquerdo, ações totais
 	var slot_index = slot.get_index()
-	var dict_index = slot_index - 1  # (-1) pelo Sprite que há dentro de inventário
-	var slot_stack = inventory[dict_index]
+	var slot_stack = inventory[slot_index]
 
 	# Se não estamos segurando nada
 	if stack_in_cursor == null or stack_in_cursor.amount <= 0:
 		if slot_stack.amount > 0:
 			stack_in_cursor = slot_stack
 			cursor_click_origin_slot = slot_index
-			inventory[dict_index] = ItemStack.get_empty_slot()
+			inventory[slot_index] = ItemStack.get_empty_slot()
 			clear_slot(slot)
 			set_sprite_to_cursor(stack_in_cursor.item_class.item_key)
 	# Segurando algo
 	else:
 		# Slot do inventátio vazio
 		if slot_stack.amount <= 0:
-			inventory[dict_index] = stack_in_cursor
+			inventory[slot_index] = stack_in_cursor
 			stack_in_cursor = null
 			clear_sprite_to_cursor()
 		# Slot do inventário é igual ao do cursor
@@ -207,8 +209,8 @@ func handle_left_click(slot):
 				stack_in_cursor.amount = extra
 		# Slot do inventário é diferente do cursor
 		else:
-			var temp = inventory[dict_index]
-			inventory[dict_index] = stack_in_cursor
+			var temp = inventory[slot_index]
+			inventory[slot_index] = stack_in_cursor
 			stack_in_cursor = temp
 	update_all_inventory()
 
@@ -216,8 +218,7 @@ func handle_left_click(slot):
 func handle_right_click(slot):
 	# Manuseio de slots com clique direito, ações parciais
 	var slot_index = slot.get_index()
-	var dict_index = slot_index - 1  # (-1) pelo Sprite que há dentro de inventário
-	var slot_stack = inventory[dict_index]
+	var slot_stack = inventory[slot_index]
 
 	# Se não estamos segurando nada
 	if stack_in_cursor == null or stack_in_cursor.amount <= 0:
@@ -231,7 +232,7 @@ func handle_right_click(slot):
 	else:
 		# Slot do inventátio vazio
 		if slot_stack.amount <= 0:
-			inventory[dict_index] = ItemStack.new(stack_in_cursor.item_class, 1)
+			inventory[slot_index] = ItemStack.new(stack_in_cursor.item_class, 1)
 			stack_in_cursor.amount -= 1
 		# Slot do inventário é igual ao do cursor
 		elif slot_stack.item_class.item_key == stack_in_cursor.item_class.item_key and not slot_stack.amount + stack_in_cursor.amount > stack_in_cursor.item_class.max_stack:
@@ -246,12 +247,12 @@ func handle_right_click(slot):
 
 func handle_middle_click(slot):
 	# Drop de slots com clique do scroll
-	var dict_index = slot.get_index() - 1  # (-1) pelo Sprite que há dentro de inventário
-	var slot_stack = inventory[dict_index]
+	var slot_index = slot.get_index()
+	var slot_stack = inventory[slot_index]
 
 	if slot_stack.amount > 0:
 		drop_item_players_foot(slot_stack)
-		inventory[dict_index] = ItemStack.get_empty_slot()
+		inventory[slot_index] = ItemStack.get_empty_slot()
 		clear_slot(slot)
 	update_all_inventory()
 

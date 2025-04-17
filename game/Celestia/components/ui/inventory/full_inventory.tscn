@@ -22,322 +22,327 @@ script = ExtResource("3_w4lmk")
 position = Vector2(219.4, 123.2)
 texture = ExtResource("1_eqb5n")
 
-[node name="HeadSlot" parent="." instance=ExtResource("2_rt0bc")]
+[node name="SlotsGroup" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HeadSlot" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 205.4
 offset_top = 46.2
 offset_right = 222.4
 offset_bottom = 62.2
 
-[node name="ChestSlot" parent="." instance=ExtResource("2_rt0bc")]
+[node name="ChestSlot" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 205.4
 offset_top = 63.2
 offset_right = 222.4
 offset_bottom = 79.2
 
-[node name="LegSlot" parent="." instance=ExtResource("2_rt0bc")]
+[node name="LegSlot" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 205.4
 offset_top = 80.2
 offset_right = 222.4
 offset_bottom = 96.2
 
-[node name="FootSlot" parent="." instance=ExtResource("2_rt0bc")]
+[node name="FootSlot" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 205.4
 offset_top = 97.2
 offset_right = 222.4
 offset_bottom = 113.2
 
-[node name="RelicSlot0" parent="." instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot0" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 268.4
 offset_top = 46.2
 offset_right = 284.4
 offset_bottom = 62.2
 
-[node name="RelicSlot1" parent="." instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot1" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 286.4
 offset_top = 46.2
 offset_right = 302.4
 offset_bottom = 62.2
 
-[node name="RelicSlot2" parent="." instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot2" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 269.4
 offset_top = 63.2
 offset_right = 285.4
 offset_bottom = 79.2
 
-[node name="RelicSlot3" parent="." instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot3" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 286.4
 offset_top = 63.2
 offset_right = 302.4
 offset_bottom = 79.2
 
-[node name="RelicSlot4" parent="." instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot4" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 269.4
 offset_top = 80.2
 offset_right = 285.4
 offset_bottom = 96.2
 
-[node name="RelicSlot5" parent="." instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot5" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 286.4
 offset_top = 80.2
 offset_right = 302.4
 offset_bottom = 96.2
 
-[node name="AmmoSlot0" parent="." instance=ExtResource("2_rt0bc")]
+[node name="AmmoSlot0" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 269.4
 offset_top = 97.2
 offset_right = 285.4
 offset_bottom = 113.2
 
-[node name="AmmoSlot1" parent="." instance=ExtResource("2_rt0bc")]
+[node name="AmmoSlot1" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 286.4
 offset_top = 97.2
 offset_right = 302.4
 offset_bottom = 113.2
 
-[node name="BackpackSlot0" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot0" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 135.4
 offset_top = 126.2
 offset_right = 151.4
 offset_bottom = 142.2
 
-[node name="BackpackSlot1" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot1" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 152.4
 offset_top = 126.2
 offset_right = 168.4
 offset_bottom = 142.2
 
-[node name="BackpackSlot2" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot2" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 169.4
 offset_top = 126.2
 offset_right = 185.4
 offset_bottom = 142.2
 
-[node name="BackpackSlot3" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot3" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 186.4
 offset_top = 126.2
 offset_right = 202.4
 offset_bottom = 142.2
 
-[node name="BackpackSlot4" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot4" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 203.4
 offset_top = 126.2
 offset_right = 219.4
 offset_bottom = 142.2
 
-[node name="BackpackSlot5" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot5" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 220.4
 offset_top = 126.2
 offset_right = 236.4
 offset_bottom = 142.2
 
-[node name="BackpackSlot6" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot6" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 237.4
 offset_top = 126.2
 offset_right = 253.4
 offset_bottom = 142.2
 
-[node name="BackpackSlot7" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot7" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 254.4
 offset_top = 126.2
 offset_right = 270.4
 offset_bottom = 142.2
 
-[node name="BackpackSlot8" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot8" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 271.4
 offset_top = 126.2
 offset_right = 287.4
 offset_bottom = 142.2
 
-[node name="BackpackSlot9" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot9" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 288.4
 offset_top = 126.2
 offset_right = 304.4
 offset_bottom = 142.2
 
-[node name="BackpackSlot10" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot10" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 135.4
 offset_top = 143.2
 offset_right = 151.4
 offset_bottom = 159.2
 
-[node name="BackpackSlot11" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot11" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 152.4
 offset_top = 143.2
 offset_right = 168.4
 offset_bottom = 159.2
 
-[node name="BackpackSlot12" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot12" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 169.4
 offset_top = 143.2
 offset_right = 185.4
 offset_bottom = 159.2
 
-[node name="BackpackSlot13" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot13" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 186.4
 offset_top = 143.2
 offset_right = 202.4
 offset_bottom = 159.2
 
-[node name="BackpackSlot14" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot14" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 203.4
 offset_top = 143.2
 offset_right = 219.4
 offset_bottom = 159.2
 
-[node name="BackpackSlot15" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot15" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 220.4
 offset_top = 143.2
 offset_right = 236.4
 offset_bottom = 159.2
 
-[node name="BackpackSlot16" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot16" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 237.4
 offset_top = 143.2
 offset_right = 253.4
 offset_bottom = 159.2
 
-[node name="BackpackSlot17" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot17" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 254.4
 offset_top = 143.2
 offset_right = 270.4
 offset_bottom = 159.2
 
-[node name="BackpackSlot18" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot18" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 271.4
 offset_top = 143.2
 offset_right = 287.4
 offset_bottom = 159.2
 
-[node name="BackpackSlot19" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot19" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 288.4
 offset_top = 143.2
 offset_right = 304.4
 offset_bottom = 159.2
 
-[node name="BackpackSlot20" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot20" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 135.4
 offset_top = 160.2
 offset_right = 151.4
 offset_bottom = 176.2
 
-[node name="BackpackSlot21" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot21" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 152.4
 offset_top = 160.2
 offset_right = 168.4
 offset_bottom = 176.2
 
-[node name="BackpackSlot22" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot22" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 169.4
 offset_top = 160.2
 offset_right = 185.4
 offset_bottom = 176.2
 
-[node name="BackpackSlot23" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot23" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 186.4
 offset_top = 160.2
 offset_right = 202.4
 offset_bottom = 176.2
 
-[node name="BackpackSlot24" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot24" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 203.4
 offset_top = 160.2
 offset_right = 219.4
 offset_bottom = 176.2
 
-[node name="BackpackSlot25" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot25" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 220.4
 offset_top = 160.2
 offset_right = 236.4
 offset_bottom = 176.2
 
-[node name="BackpackSlot26" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot26" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 237.4
 offset_top = 160.2
 offset_right = 253.4
 offset_bottom = 176.2
 
-[node name="BackpackSlot27" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot27" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 254.4
 offset_top = 160.2
 offset_right = 270.4
 offset_bottom = 176.2
 
-[node name="BackpackSlot28" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot28" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 271.4
 offset_top = 160.2
 offset_right = 287.4
 offset_bottom = 176.2
 
-[node name="BackpackSlot29" parent="." instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot29" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 288.4
 offset_top = 160.2
 offset_right = 304.4
 offset_bottom = 176.2
 
-[node name="PocketSlot0" parent="." instance=ExtResource("2_rt0bc")]
+[node name="PocketSlot0" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 183.4
 offset_top = 183.2
 offset_right = 199.4
 offset_bottom = 199.2
 
-[node name="PocketSlot1" parent="." instance=ExtResource("2_rt0bc")]
+[node name="PocketSlot1" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 202.4
 offset_top = 183.2
 offset_right = 218.4
 offset_bottom = 199.2
 
-[node name="PocketSlot2" parent="." instance=ExtResource("2_rt0bc")]
+[node name="PocketSlot2" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 221.4
 offset_top = 183.2
 offset_right = 237.4
 offset_bottom = 199.2
 
-[node name="PocketSlot3" parent="." instance=ExtResource("2_rt0bc")]
+[node name="PocketSlot3" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
 offset_left = 240.4
 offset_top = 183.2
