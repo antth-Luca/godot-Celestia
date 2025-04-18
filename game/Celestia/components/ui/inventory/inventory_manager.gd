@@ -10,6 +10,8 @@ const SLOT_INDEX_RANGES = {
 	'pocket_slots': [42, 45]
 }
 
+@onready var info_board = $InfoBoard
+
 var inventory = []
 var stack_in_cursor: ItemStack
 var cursor_click_origin_slot: int

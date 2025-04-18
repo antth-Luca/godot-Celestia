@@ -1,14 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkwwfpeltlwt4"]
+[gd_scene load_steps=8 format=3 uid="uid://dkwwfpeltlwt4"]
 
 [ext_resource type="Texture2D" uid="uid://dqp7mtap7wh1y" path="res://assets/ui/inventory/all_inventory.png" id="1_eqb5n"]
 [ext_resource type="PackedScene" uid="uid://h11osunbmsip" path="res://components/ui/inventory/slot.tscn" id="2_rt0bc"]
 [ext_resource type="FontFile" uid="uid://d00bg0jygioly" path="res://assets/fonts/BitPotionExt.ttf" id="3_bkouf"]
+[ext_resource type="Script" uid="uid://ba222vsa0y885" path="res://components/ui/inventory/info_board_manager.gd" id="3_ef1ig"]
 [ext_resource type="Script" uid="uid://duag1ks07egki" path="res://components/ui/inventory/inventory_manager.gd" id="3_w4lmk"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_tup32"]
+[sub_resource type="LabelSettings" id="LabelSettings_ef1ig"]
+font = ExtResource("3_bkouf")
+font_color = Color(0.517647, 0.34902, 0.168627, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bkouf"]
 font = ExtResource("3_bkouf")
 
 [node name="FullInventory" type="Panel"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,40 +28,89 @@ size_flags_vertical = 4
 script = ExtResource("3_w4lmk")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(219.4, 123.2)
+position = Vector2(230, 125.6)
 texture = ExtResource("1_eqb5n")
 
 [node name="InfoBoard" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("3_ef1ig")
 
-[node name="Panel" type="Panel" parent="InfoBoard"]
+[node name="StatsPanel" type="Panel" parent="InfoBoard"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 137.0
-offset_top = 45.0
-offset_right = 203.0
-offset_bottom = 111.0
+offset_left = 132.0
+offset_top = 49.0
+offset_right = 229.0
+offset_bottom = 116.0
 
-[node name="HContainer" type="HBoxContainer" parent="InfoBoard/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="InfoBoard/StatsPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VContainer0" type="VBoxContainer" parent="InfoBoard/Panel/HContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoBoard/StatsPanel/ScrollContainer"]
 layout_mode = 2
 
-[node name="LabelPV" type="Label" parent="InfoBoard/Panel/HContainer/VContainer0"]
+[node name="LabelTitle" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "ui.inventory.stats.hp"
-label_settings = SubResource("LabelSettings_tup32")
+label_settings = SubResource("LabelSettings_ef1ig")
 
-[node name="VContainer1" type="VBoxContainer" parent="InfoBoard/Panel/HContainer"]
+[node name="LabelHP" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
+
+[node name="LabelMN" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
+
+[node name="LabelDM" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
+
+[node name="LabelDF" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
+
+[node name="LabelCC" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
+
+[node name="LabelCD" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
+
+[node name="LabelLS" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
+
+[node name="LabelPN" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
+
+[node name="LabelRG" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
+
+[node name="LabelMS" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
+
+[node name="LabelAS" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
+
+[node name="LabelRC" type="Label" parent="InfoBoard/StatsPanel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_bkouf")
 
 [node name="SlotsGroup" type="Control" parent="."]
 anchors_preset = 0
@@ -64,322 +119,322 @@ offset_bottom = 40.0
 
 [node name="HeadSlot" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 205.4
-offset_top = 46.2
-offset_right = 222.4
-offset_bottom = 62.2
+offset_left = 232.0
+offset_top = 48.4
+offset_right = 249.0
+offset_bottom = 64.4
 
 [node name="ChestSlot" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 205.4
-offset_top = 63.2
-offset_right = 222.4
-offset_bottom = 79.2
+offset_left = 232.0
+offset_top = 65.4
+offset_right = 249.0
+offset_bottom = 81.4
 
 [node name="LegSlot" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 205.4
-offset_top = 80.2
-offset_right = 222.4
-offset_bottom = 96.2
+offset_left = 232.0
+offset_top = 82.4
+offset_right = 249.0
+offset_bottom = 98.4
 
 [node name="FootSlot" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 205.4
-offset_top = 97.2
-offset_right = 222.4
-offset_bottom = 113.2
+offset_left = 232.0
+offset_top = 99.4
+offset_right = 249.0
+offset_bottom = 115.4
 
 [node name="RelicSlot0" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 268.4
-offset_top = 46.2
-offset_right = 284.4
-offset_bottom = 62.2
+offset_left = 295.6
+offset_top = 48.8
+offset_right = 311.6
+offset_bottom = 64.8
 
 [node name="RelicSlot1" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 286.4
-offset_top = 46.2
-offset_right = 302.4
-offset_bottom = 62.2
+offset_left = 312.8
+offset_top = 48.8
+offset_right = 328.8
+offset_bottom = 64.8
 
 [node name="RelicSlot2" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 269.4
-offset_top = 63.2
-offset_right = 285.4
-offset_bottom = 79.2
+offset_left = 295.8
+offset_top = 65.8
+offset_right = 311.8
+offset_bottom = 81.8
 
 [node name="RelicSlot3" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 286.4
-offset_top = 63.2
-offset_right = 302.4
-offset_bottom = 79.2
+offset_left = 312.8
+offset_top = 65.8
+offset_right = 328.8
+offset_bottom = 81.8
 
 [node name="RelicSlot4" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 269.4
-offset_top = 80.2
-offset_right = 285.4
-offset_bottom = 96.2
+offset_left = 295.8
+offset_top = 82.8
+offset_right = 311.8
+offset_bottom = 98.8
 
 [node name="RelicSlot5" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 286.4
-offset_top = 80.2
-offset_right = 302.4
-offset_bottom = 96.2
+offset_left = 312.8
+offset_top = 82.8
+offset_right = 328.8
+offset_bottom = 98.8
 
 [node name="AmmoSlot0" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 269.4
-offset_top = 97.2
-offset_right = 285.4
-offset_bottom = 113.2
+offset_left = 295.8
+offset_top = 99.8
+offset_right = 311.8
+offset_bottom = 115.8
 
 [node name="AmmoSlot1" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 286.4
-offset_top = 97.2
-offset_right = 302.4
-offset_bottom = 113.2
+offset_left = 312.8
+offset_top = 99.8
+offset_right = 328.8
+offset_bottom = 115.8
 
 [node name="BackpackSlot0" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 135.4
-offset_top = 126.2
-offset_right = 151.4
-offset_bottom = 142.2
+offset_left = 143.2
+offset_top = 128.4
+offset_right = 159.2
+offset_bottom = 144.4
 
 [node name="BackpackSlot1" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 152.4
-offset_top = 126.2
-offset_right = 168.4
-offset_bottom = 142.2
+offset_left = 160.2
+offset_top = 128.4
+offset_right = 176.2
+offset_bottom = 144.4
 
 [node name="BackpackSlot2" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 169.4
-offset_top = 126.2
-offset_right = 185.4
-offset_bottom = 142.2
+offset_left = 177.2
+offset_top = 128.4
+offset_right = 193.2
+offset_bottom = 144.4
 
 [node name="BackpackSlot3" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 186.4
-offset_top = 126.2
-offset_right = 202.4
-offset_bottom = 142.2
+offset_left = 194.2
+offset_top = 128.4
+offset_right = 210.2
+offset_bottom = 144.4
 
 [node name="BackpackSlot4" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 203.4
-offset_top = 126.2
-offset_right = 219.4
-offset_bottom = 142.2
+offset_left = 211.2
+offset_top = 128.4
+offset_right = 227.2
+offset_bottom = 144.4
 
 [node name="BackpackSlot5" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 220.4
-offset_top = 126.2
-offset_right = 236.4
-offset_bottom = 142.2
+offset_left = 228.2
+offset_top = 128.4
+offset_right = 244.2
+offset_bottom = 144.4
 
 [node name="BackpackSlot6" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 237.4
-offset_top = 126.2
-offset_right = 253.4
-offset_bottom = 142.2
+offset_left = 245.2
+offset_top = 128.4
+offset_right = 261.2
+offset_bottom = 144.4
 
 [node name="BackpackSlot7" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 254.4
-offset_top = 126.2
-offset_right = 270.4
-offset_bottom = 142.2
+offset_left = 262.2
+offset_top = 128.4
+offset_right = 278.2
+offset_bottom = 144.4
 
 [node name="BackpackSlot8" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 271.4
-offset_top = 126.2
-offset_right = 287.4
-offset_bottom = 142.2
+offset_left = 279.2
+offset_top = 128.4
+offset_right = 295.2
+offset_bottom = 144.4
 
 [node name="BackpackSlot9" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 288.4
-offset_top = 126.2
-offset_right = 304.4
-offset_bottom = 142.2
+offset_left = 296.2
+offset_top = 128.4
+offset_right = 312.2
+offset_bottom = 144.4
 
 [node name="BackpackSlot10" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 135.4
-offset_top = 143.2
-offset_right = 151.4
-offset_bottom = 159.2
+offset_left = 143.2
+offset_top = 145.4
+offset_right = 159.2
+offset_bottom = 161.4
 
 [node name="BackpackSlot11" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 152.4
-offset_top = 143.2
-offset_right = 168.4
-offset_bottom = 159.2
+offset_left = 160.2
+offset_top = 145.4
+offset_right = 176.2
+offset_bottom = 161.4
 
 [node name="BackpackSlot12" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 169.4
-offset_top = 143.2
-offset_right = 185.4
-offset_bottom = 159.2
+offset_left = 177.2
+offset_top = 145.4
+offset_right = 193.2
+offset_bottom = 161.4
 
 [node name="BackpackSlot13" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 186.4
-offset_top = 143.2
-offset_right = 202.4
-offset_bottom = 159.2
+offset_left = 194.2
+offset_top = 145.4
+offset_right = 210.2
+offset_bottom = 161.4
 
 [node name="BackpackSlot14" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 203.4
-offset_top = 143.2
-offset_right = 219.4
-offset_bottom = 159.2
+offset_left = 211.2
+offset_top = 145.4
+offset_right = 227.2
+offset_bottom = 161.4
 
 [node name="BackpackSlot15" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 220.4
-offset_top = 143.2
-offset_right = 236.4
-offset_bottom = 159.2
+offset_left = 228.2
+offset_top = 145.4
+offset_right = 244.2
+offset_bottom = 161.4
 
 [node name="BackpackSlot16" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 237.4
-offset_top = 143.2
-offset_right = 253.4
-offset_bottom = 159.2
+offset_left = 245.2
+offset_top = 145.4
+offset_right = 261.2
+offset_bottom = 161.4
 
 [node name="BackpackSlot17" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 254.4
-offset_top = 143.2
-offset_right = 270.4
-offset_bottom = 159.2
+offset_left = 262.2
+offset_top = 145.4
+offset_right = 278.2
+offset_bottom = 161.4
 
 [node name="BackpackSlot18" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 271.4
-offset_top = 143.2
-offset_right = 287.4
-offset_bottom = 159.2
+offset_left = 279.2
+offset_top = 145.4
+offset_right = 295.2
+offset_bottom = 161.4
 
 [node name="BackpackSlot19" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 288.4
-offset_top = 143.2
-offset_right = 304.4
-offset_bottom = 159.2
+offset_left = 296.2
+offset_top = 145.4
+offset_right = 312.2
+offset_bottom = 161.4
 
 [node name="BackpackSlot20" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 135.4
-offset_top = 160.2
-offset_right = 151.4
-offset_bottom = 176.2
+offset_left = 143.2
+offset_top = 162.4
+offset_right = 159.2
+offset_bottom = 178.4
 
 [node name="BackpackSlot21" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 152.4
-offset_top = 160.2
-offset_right = 168.4
-offset_bottom = 176.2
+offset_left = 160.2
+offset_top = 162.4
+offset_right = 176.2
+offset_bottom = 178.4
 
 [node name="BackpackSlot22" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 169.4
-offset_top = 160.2
-offset_right = 185.4
-offset_bottom = 176.2
+offset_left = 177.2
+offset_top = 162.4
+offset_right = 193.2
+offset_bottom = 178.4
 
 [node name="BackpackSlot23" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 186.4
-offset_top = 160.2
-offset_right = 202.4
-offset_bottom = 176.2
+offset_left = 194.2
+offset_top = 162.4
+offset_right = 210.2
+offset_bottom = 178.4
 
 [node name="BackpackSlot24" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 203.4
-offset_top = 160.2
-offset_right = 219.4
-offset_bottom = 176.2
+offset_left = 211.2
+offset_top = 162.4
+offset_right = 227.2
+offset_bottom = 178.4
 
 [node name="BackpackSlot25" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 220.4
-offset_top = 160.2
-offset_right = 236.4
-offset_bottom = 176.2
+offset_left = 228.2
+offset_top = 162.4
+offset_right = 244.2
+offset_bottom = 178.4
 
 [node name="BackpackSlot26" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 237.4
-offset_top = 160.2
-offset_right = 253.4
-offset_bottom = 176.2
+offset_left = 245.2
+offset_top = 162.4
+offset_right = 261.2
+offset_bottom = 178.4
 
 [node name="BackpackSlot27" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 254.4
-offset_top = 160.2
-offset_right = 270.4
-offset_bottom = 176.2
+offset_left = 262.2
+offset_top = 162.4
+offset_right = 278.2
+offset_bottom = 178.4
 
 [node name="BackpackSlot28" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 271.4
-offset_top = 160.2
-offset_right = 287.4
-offset_bottom = 176.2
+offset_left = 279.2
+offset_top = 162.4
+offset_right = 295.2
+offset_bottom = 178.4
 
 [node name="BackpackSlot29" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 288.4
-offset_top = 160.2
-offset_right = 304.4
-offset_bottom = 176.2
+offset_left = 296.2
+offset_top = 162.4
+offset_right = 312.2
+offset_bottom = 178.4
 
 [node name="PocketSlot0" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 183.4
-offset_top = 183.2
-offset_right = 199.4
-offset_bottom = 199.2
+offset_left = 191.2
+offset_top = 185.6
+offset_right = 207.2
+offset_bottom = 201.6
 
 [node name="PocketSlot1" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 202.4
-offset_top = 183.2
-offset_right = 218.4
-offset_bottom = 199.2
+offset_left = 210.2
+offset_top = 185.6
+offset_right = 226.2
+offset_bottom = 201.6
 
 [node name="PocketSlot2" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 221.4
-offset_top = 183.2
-offset_right = 237.4
-offset_bottom = 199.2
+offset_left = 229.2
+offset_top = 185.6
+offset_right = 245.2
+offset_bottom = 201.6
 
 [node name="PocketSlot3" parent="SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 240.4
-offset_top = 183.2
-offset_right = 256.4
-offset_bottom = 199.2
+offset_left = 248.2
+offset_top = 185.6
+offset_right = 264.2
+offset_bottom = 201.6

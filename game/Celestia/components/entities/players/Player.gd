@@ -16,12 +16,7 @@ var target_cell: Vector2 = Vector2.ZERO
 var is_jumping: bool = false
 var is_hurted:bool = false
 
-var stats: PlayerStats
-
-
-func _ready() -> void:
-	if stats == null:
-		stats = PlayerStats.new()
+var stats: PlayerStats = PlayerStats.new()
 
 
 func _physics_process(_delta) -> void:

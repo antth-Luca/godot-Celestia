@@ -1,18 +1,19 @@
 {
 	"ui.config.language": "Linguagem",
 
+	"ui.inventory.stats.title": "Atributos",
 	"ui.inventory.stats.hp": "Vida: ",
 	"ui.inventory.stats.mn": "Mana: ",
-	"ui.inventory.stats.dm": "Dano: ",
 	"ui.inventory.stats.df": "Defesa: ",
+	"ui.inventory.stats.dm": "Dano: ",
 	"ui.inventory.stats.cc": "Chance de crít.: ",
 	"ui.inventory.stats.cd": "Dano crítico: ",
 	"ui.inventory.stats.ls": "Roubo de vida: ",
 	"ui.inventory.stats.pn": "Penetração: ",
 	"ui.inventory.stats.rg": "Alcance: ",
-	"ui.inventory.stats.ms": "Vel. Movimento: ",
 	"ui.inventory.stats.as": "Vel. Ataque: ",
-	"ui.inventory.stats.rc": "Red. Resfriamento: ",
+	"ui.inventory.stats.ms": "Vel. Movimento: ",
+	"ui.inventory.stats.rc": "Redução Resfr.: ",
 
 	"item.rarity.common": "Comum",
 	"item.rarity.rare": "Raro",

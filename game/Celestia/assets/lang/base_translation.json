@@ -1,6 +1,7 @@
 {
 	"ui.config.language": "",
 
+	"ui.inventory.stats.title": "",
 	"ui.inventory.stats.hp": ": ",
 	"ui.inventory.stats.mn": ": ",
 	"ui.inventory.stats.dm": ": ",

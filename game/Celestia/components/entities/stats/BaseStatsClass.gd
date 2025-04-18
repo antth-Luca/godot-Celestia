@@ -8,8 +8,32 @@ var health: int = 1
 const MIN_DAMAGE = 0
 var damage: int = 0
 
-var min_move_speed: float = 0.0
+const MIN_DEFENSE: int = 0
+var defense: int = 0
+
+const MIN_CRITICAL_CHANCE: int = 0
+var critical_chance: int = 0
+const MAX_CRITICAL_CHANCE: int = 100
+
+const MIN_CRITICAL_DAMAGE: int = 200
+var critical_damage: int = 200
+const MAX_CRITICAL_DAMAGE: int = 250
+
+const MIN_LIFE_STEAL: int = 0
+var life_steal: int = 0
+
+const MIN_PENETRATION: int = 0
+var penetration: int = 0
+const MAX_PENETRATION: int = 100
+
+const MIN_RANGE: int = 1
+var range: int = 1
+
+const MIN_MOVE_SPEED: float = 0.0
 var move_speed: float = 0.0
+
+const MIN_ATTACK_SPEED: float = 0.0
+var attack_speed: float = 0.0
 
 # Getters and Settes
 func get_max_health() -> int:
@@ -34,16 +58,63 @@ func get_damage() -> int:
 
 
 func set_damage(newDamage:int) -> void:
-	if newDamage < MIN_DAMAGE: return
+	if newDamage < MIN_DAMAGE:
+		damage = MIN_DAMAGE
 	damage = newDamage
 
 
-func get_min_move_speed() -> float:
-	return min_move_speed
+func get_defense() -> int:
+	return defense
 
 
-func set_min_move_speed(newMinSpeed:float) -> void:
-	min_move_speed = newMinSpeed
+func set_defense(newDefense:int) -> void:
+	if newDefense < MIN_DEFENSE:
+		defense = MIN_DEFENSE
+	defense = newDefense
+
+
+func get_critical_chance() -> int:
+	return critical_chance
+
+
+func set_critical_chance(newCritChance:int) -> void:
+	critical_chance = clamp(newCritChance, MIN_CRITICAL_CHANCE, MAX_CRITICAL_CHANCE)
+
+
+func get_critical_damage() -> int:
+	return critical_damage
+
+
+func set_critical_damage(newCritDamage:int) -> void:
+	critical_damage = clamp(newCritDamage, MIN_CRITICAL_DAMAGE, MAX_CRITICAL_DAMAGE)
+
+
+func get_life_steal() -> int:
+	return life_steal
+
+
+func set_life_steal(newLifeSteal:int) -> void:
+	if newLifeSteal < MIN_LIFE_STEAL:
+		life_steal = MIN_LIFE_STEAL
+	life_steal = newLifeSteal
+
+
+func get_penetration() -> int:
+	return penetration
+
+
+func set_penetration(newPen) -> void:
+	penetration = clamp(newPen, MIN_PENETRATION, MAX_PENETRATION)
+
+
+func get_range() -> int:
+	return range
+
+
+func set_range(newRange:int) -> void:
+	if newRange < MIN_RANGE:
+		range = MIN_RANGE
+	range = newRange
 
 
 func get_move_speed() -> float:
@@ -51,5 +122,14 @@ func get_move_speed() -> float:
 
 
 func set_move_speed(newSpeed:float) -> void:
-	if newSpeed < min_move_speed: return
+	if newSpeed < MIN_MOVE_SPEED: return
 	move_speed = newSpeed
+
+
+func get_attack_speed() -> float:
+	return attack_speed
+
+
+func set_attack_speed(newSpeed:float) -> void:
+	if newSpeed < MIN_ATTACK_SPEED: return
+	attack_speed = newSpeed
