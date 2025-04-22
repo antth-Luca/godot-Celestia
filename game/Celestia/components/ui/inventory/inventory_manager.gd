@@ -10,8 +10,6 @@ const SLOT_INDEX_RANGES = {
 	'pocket_slots': [42, 45]
 }
 
-@onready var info_board = $InfoBoard
-
 var inventory = []
 var stack_in_cursor: ItemStack
 var cursor_click_origin_slot: int
@@ -155,7 +153,7 @@ func remove_item_to_invent(index: int, amount: int) -> void:
 
 func drop_item_players_foot(stack: ItemStack):
 	# Larga uma pilha de item no pé do jogador
-	var player = get_parent().get_parent().get_parent()
+	var player = get_parent().get_parent()
 	var at_pos = player.global_position
 	drop_item_in_position(stack, at_pos)
 

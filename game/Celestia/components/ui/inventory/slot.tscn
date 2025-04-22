@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://h11osunbmsip"]
+[gd_scene load_steps=3 format=3 uid="uid://h11osunbmsip"]
 
+[ext_resource type="Texture2D" uid="uid://crji6ocj2c5q2" path="res://assets/ui/inventory/slot_background.png" id="1_377hb"]
 [ext_resource type="Texture2D" uid="uid://d00d1uuo2ppbd" path="res://assets/textures/items/chicken_egg.png" id="1_sry1y"]
 
 [node name="Slot" type="Button"]
@@ -9,16 +10,20 @@ offset_right = 16.0
 offset_bottom = 16.0
 button_mask = 3
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(8, 9)
+texture = ExtResource("1_377hb")
+
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(8, 8)
+position = Vector2(8, 9)
 texture = ExtResource("1_sry1y")
 
 [node name="LabelAmount" type="Label" parent="."]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 5.0
-offset_right = 16.0
-offset_bottom = 17.0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 15.0
+offset_bottom = 18.0
 theme_override_font_sizes/font_size = 8
 text = "00"
 horizontal_alignment = 2
