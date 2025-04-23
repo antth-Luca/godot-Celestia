@@ -1,5 +1,6 @@
 extends Control
 
+@onready var full_inventory = $".."
 @onready var inventory_tab = $"../InventoryTab"
 @onready var stats_tab = $"../StatsTab"
 
@@ -7,6 +8,14 @@ extends Control
 func _ready():
 	update_data_to_stats()
 	show_inventory()
+
+
+func _input(event: InputEvent) -> void:
+	if full_inventory.visible:
+		if event.is_action_pressed("1"):
+			_on_inventory_button_pressed()
+		elif event.is_action_pressed("2"):
+			_on_stats_button_pressed()
 
 
 func update_data_to_stats():
@@ -45,12 +54,12 @@ func show_inventory():
 
 
 func show_stats():
-	update_data_to_stats()
 	inventory_tab.visible = false
 	stats_tab.visible = true
 
 
 func _on_stats_button_pressed():
+	update_data_to_stats()
 	show_stats()
 
 

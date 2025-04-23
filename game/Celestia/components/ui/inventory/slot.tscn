@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://h11osunbmsip"]
 
-[ext_resource type="Texture2D" uid="uid://crji6ocj2c5q2" path="res://assets/ui/inventory/slot_background.png" id="1_377hb"]
+[ext_resource type="Texture2D" uid="uid://b52t4k2ehu5x1" path="res://assets/ui/inventory/slots/slot_background.png" id="1_377hb"]
 [ext_resource type="Texture2D" uid="uid://d00d1uuo2ppbd" path="res://assets/textures/items/chicken_egg.png" id="1_sry1y"]
 
 [node name="Slot" type="Button"]
