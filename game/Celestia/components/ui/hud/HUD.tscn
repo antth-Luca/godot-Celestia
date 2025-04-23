@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://02ml4phlil6d"]
 
-[ext_resource type="Texture2D" uid="uid://bty2sgc8idoo8" path="res://assets/ui/hud/map.png" id="1_fumvy"]
-[ext_resource type="Texture2D" uid="uid://b6lmnk77qj62s" path="res://assets/ui/hud/craft.png" id="2_6jyiw"]
-[ext_resource type="Texture2D" uid="uid://duu62lanmf0nd" path="res://assets/ui/hud/build.png" id="3_28el2"]
-[ext_resource type="Texture2D" uid="uid://do11n6xlueu5q" path="res://assets/ui/hud/inventory.png" id="4_d3t88"]
+[ext_resource type="Texture2D" uid="uid://bty2sgc8idoo8" path="res://assets/ui/icons/map.png" id="1_fumvy"]
+[ext_resource type="Texture2D" uid="uid://b6lmnk77qj62s" path="res://assets/ui/icons/craft.png" id="2_6jyiw"]
+[ext_resource type="Texture2D" uid="uid://duu62lanmf0nd" path="res://assets/ui/icons/build.png" id="3_28el2"]
+[ext_resource type="Texture2D" uid="uid://do11n6xlueu5q" path="res://assets/ui/icons/inventory.png" id="4_d3t88"]
 
 [node name="HUD" type="MarginContainer"]
 anchors_preset = 15

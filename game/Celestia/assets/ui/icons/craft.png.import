@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ra6n1k3g86ap"
-path="res://.godot/imported/stats.png-110e3a24363904943637ea222f386c83.ctex"
+uid="uid://b6lmnk77qj62s"
+path="res://.godot/imported/craft.png-efbe911277eb4b39f199e17985e292ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/inventory/stats.png"
-dest_files=["res://.godot/imported/stats.png-110e3a24363904943637ea222f386c83.ctex"]
+source_file="res://assets/ui/icons/craft.png"
+dest_files=["res://.godot/imported/craft.png-efbe911277eb4b39f199e17985e292ee.ctex"]
 
 [params]
 

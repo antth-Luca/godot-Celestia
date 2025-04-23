@@ -10,6 +10,8 @@ const SLOT_INDEX_RANGES = {
 	'pocket_slots': [42, 45]
 }
 
+@onready var slots_group = $InventoryTab/SlotsGroup
+
 var inventory = []
 var stack_in_cursor: ItemStack
 var cursor_click_origin_slot: int
@@ -34,9 +36,8 @@ func clear_inventory() -> void:
 
 func connect_slots() -> void:
 	# Conecta CADA UM dos slots que estiverem dentro do inventário à uma função
-	var slots_group = get_node('InventoryTab').get_node('SlotsGroup')
-	for c in range(TOTAL_SLOTS):
-		var slot = slots_group.get_child(c)
+	for index in range(TOTAL_SLOTS):
+		var slot = slots_group.get_child(index)
 		slot.gui_input.connect(_on_slot_gui_input.bind(slot))
 
 
@@ -64,7 +65,6 @@ func is_full() -> bool:
 # UPDATE INVENTORY
 func update_all_inventory() -> void:
 	# Atualiza CADA UM dos slots que estiverem dentro do inventário, esvaziando ou renderizando
-	var slots_group = get_node('InventoryTab').get_node('SlotsGroup')
 	for index in range(TOTAL_SLOTS):
 		var slot = slots_group.get_child(index)
 		if inventory[index].amount <= 0:
@@ -76,7 +76,6 @@ func update_all_inventory() -> void:
 
 func update_backpack_inventory() -> void:
 	# Atualiza CADA UM dos slots que estiverem dentro da mochila, esvaziando ou renderizando
-	var slots_group = get_node('InventoryTab').get_node('SlotsGroup')
 	for index in range(SLOT_INDEX_RANGES['backpack_slots'][0], SLOT_INDEX_RANGES['backpack_slots'][1] + 1):
 		var slot = slots_group.get_child(index)
 		if inventory[index].amount <= 0:
