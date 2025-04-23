@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkwwfpeltlwt4"]
+[gd_scene load_steps=8 format=3 uid="uid://dkwwfpeltlwt4"]
 
 [ext_resource type="PackedScene" uid="uid://h11osunbmsip" path="res://components/ui/inventory/slot.tscn" id="2_rt0bc"]
 [ext_resource type="Texture2D" uid="uid://cpdvgol4dd6p5" path="res://assets/ui/base_box.png" id="2_tup32"]
+[ext_resource type="Texture2D" uid="uid://b8kwsyjcv4jel" path="res://assets/ui/inventory/gradient_circle.png" id="3_ef1ig"]
 [ext_resource type="Script" uid="uid://duag1ks07egki" path="res://components/ui/inventory/inventory_manager.gd" id="3_w4lmk"]
+[ext_resource type="Texture2D" uid="uid://bhisle2y1154b" path="res://assets/ui/base_tab_button.png" id="4_m83es"]
+[ext_resource type="Script" uid="uid://bleumsehgqyvt" path="res://components/ui/inventory/tab_manager.gd" id="4_tck7o"]
+[ext_resource type="Texture2D" uid="uid://do11n6xlueu5q" path="res://assets/ui/hud/inventory.png" id="5_tck7o"]
 
 [node name="FullInventory" type="Panel"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,18 +22,17 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("3_w4lmk")
 
-[node name="Container2" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 137.6
-offset_top = 46.4
-offset_right = 317.6
-offset_bottom = 206.4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Container2"]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.5
+offset_top = -85.5
+offset_right = 89.5
+offset_bottom = 78.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_tup32")
@@ -38,336 +42,456 @@ patch_margin_top = 6
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="TabContainer" type="TabContainer" parent="Container2"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="CircleSprite" type="Sprite2D" parent="."]
+position = Vector2(220, 82.8)
+scale = Vector2(1, 1)
+texture = ExtResource("3_ef1ig")
+
+[node name="VisualTabButtons" type="Control" parent="."]
 layout_mode = 1
-offset_top = -31.0
-offset_right = 180.0
-offset_bottom = 160.0
-current_tab = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_tck7o")
 
-[node name="InventoryTab" type="TabBar" parent="Container2/TabContainer"]
-layout_mode = 2
-metadata/_tab_index = 0
+[node name="VisualInventory" type="Control" parent="VisualTabButtons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.3
+offset_top = -101.5
+offset_right = -71.3
+offset_bottom = -85.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HeadSlot" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
-layout_mode = 2
-offset_left = 43.2
-offset_top = 3.00001
-offset_right = 60.2
-offset_bottom = 19.0
+[node name="NinePatchRect" type="NinePatchRect" parent="VisualTabButtons/VisualInventory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_m83es")
+patch_margin_left = 2
+patch_margin_top = 7
+patch_margin_right = 2
 
-[node name="ChestSlot" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
-layout_mode = 2
-offset_left = 43.2
-offset_top = 20.0
-offset_right = 60.2
-offset_bottom = 36.0
+[node name="Sprite2D" type="Sprite2D" parent="VisualTabButtons/VisualInventory"]
+position = Vector2(8, 9.6)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_tck7o")
 
-[node name="LegSlot" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
-layout_mode = 2
-offset_left = 43.2
-offset_top = 37.0
-offset_right = 60.2
-offset_bottom = 53.0
+[node name="VisualStats" type="Control" parent="VisualTabButtons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.5
+offset_top = -101.5
+offset_right = -54.5
+offset_bottom = -85.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="FootSlot" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
-layout_mode = 2
-offset_left = 43.2
-offset_top = 54.0
-offset_right = 60.2
-offset_bottom = 70.0
+[node name="NinePatchRect" type="NinePatchRect" parent="VisualTabButtons/VisualStats"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_m83es")
+patch_margin_left = 2
+patch_margin_top = 7
+patch_margin_right = 2
 
-[node name="RelicSlot0" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
-layout_mode = 2
-offset_left = 106.2
-offset_top = 3.00001
-offset_right = 122.2
-offset_bottom = 19.0
+[node name="Sprite2D" type="Sprite2D" parent="VisualTabButtons/VisualStats"]
+position = Vector2(8, 9.6)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_tck7o")
 
-[node name="RelicSlot1" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
-layout_mode = 2
-offset_left = 123.4
-offset_top = 3.0
-offset_right = 139.4
-offset_bottom = 19.0
+[node name="InventoryTab" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="RelicSlot2" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
-layout_mode = 2
-offset_left = 106.4
-offset_top = 20.0
-offset_right = 122.4
-offset_bottom = 36.0
+[node name="StatsClickButton" type="Button" parent="InventoryTab"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 28.0
+offset_right = 176.0
+offset_bottom = 44.0
 
-[node name="RelicSlot3" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
-layout_mode = 2
-offset_left = 123.4
-offset_top = 20.0
-offset_right = 139.4
-offset_bottom = 36.0
+[node name="SlotsGroup" type="Control" parent="InventoryTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="RelicSlot4" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="HeadSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 106.4
-offset_top = 37.0
-offset_right = 122.4
-offset_bottom = 53.0
+offset_left = 180.8
+offset_top = 49.4
+offset_right = 197.8
+offset_bottom = 65.4
 
-[node name="RelicSlot5" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="ChestSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 123.4
-offset_top = 37.0
-offset_right = 139.4
-offset_bottom = 53.0
+offset_left = 180.8
+offset_top = 66.4
+offset_right = 197.8
+offset_bottom = 82.4
 
-[node name="AmmoSlot0" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="LegSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 106.4
-offset_top = 54.0
-offset_right = 122.4
-offset_bottom = 70.0
+offset_left = 180.8
+offset_top = 83.4
+offset_right = 197.8
+offset_bottom = 99.4
 
-[node name="AmmoSlot1" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="FootSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 123.4
-offset_top = 54.0
-offset_right = 139.4
-offset_bottom = 70.0
+offset_left = 180.8
+offset_top = 100.4
+offset_right = 197.8
+offset_bottom = 116.4
 
-[node name="BackpackSlot0" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 5.60001
-offset_top = 83.0
-offset_right = 21.6
-offset_bottom = 99.0
+offset_left = 243.8
+offset_top = 49.4
+offset_right = 259.8
+offset_bottom = 65.4
 
-[node name="BackpackSlot1" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 22.6
-offset_top = 83.0
-offset_right = 38.6
-offset_bottom = 99.0
+offset_left = 261.0
+offset_top = 49.4
+offset_right = 277.0
+offset_bottom = 65.4
 
-[node name="BackpackSlot2" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot2" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 39.6
-offset_top = 83.0
-offset_right = 55.6
-offset_bottom = 99.0
+offset_left = 244.0
+offset_top = 66.4
+offset_right = 260.0
+offset_bottom = 82.4
 
-[node name="BackpackSlot3" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot3" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 56.6
-offset_top = 83.0
-offset_right = 72.6
-offset_bottom = 99.0
+offset_left = 261.0
+offset_top = 66.4
+offset_right = 277.0
+offset_bottom = 82.4
 
-[node name="BackpackSlot4" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot4" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 73.6
-offset_top = 83.0
-offset_right = 89.6
-offset_bottom = 99.0
+offset_left = 244.0
+offset_top = 83.4
+offset_right = 260.0
+offset_bottom = 99.4
 
-[node name="BackpackSlot5" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="RelicSlot5" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 90.6
-offset_top = 83.0
-offset_right = 106.6
-offset_bottom = 99.0
+offset_left = 261.0
+offset_top = 83.4
+offset_right = 277.0
+offset_bottom = 99.4
 
-[node name="BackpackSlot6" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="AmmoSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 107.6
-offset_top = 83.0
-offset_right = 123.6
-offset_bottom = 99.0
+offset_left = 244.0
+offset_top = 100.4
+offset_right = 260.0
+offset_bottom = 116.4
 
-[node name="BackpackSlot7" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="AmmoSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 124.6
-offset_top = 83.0
-offset_right = 140.6
-offset_bottom = 99.0
+offset_left = 261.0
+offset_top = 100.4
+offset_right = 277.0
+offset_bottom = 116.4
 
-[node name="BackpackSlot8" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 141.6
-offset_top = 83.0
-offset_right = 157.6
-offset_bottom = 99.0
+offset_left = 143.2
+offset_top = 129.4
+offset_right = 159.2
+offset_bottom = 145.4
 
-[node name="BackpackSlot9" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 158.6
-offset_top = 83.0
-offset_right = 174.6
-offset_bottom = 99.0
+offset_left = 160.2
+offset_top = 129.4
+offset_right = 176.2
+offset_bottom = 145.4
 
-[node name="BackpackSlot10" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot2" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 5.60001
-offset_top = 100.0
-offset_right = 21.6
-offset_bottom = 116.0
+offset_left = 177.2
+offset_top = 129.4
+offset_right = 193.2
+offset_bottom = 145.4
 
-[node name="BackpackSlot11" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot3" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 22.6
-offset_top = 100.0
-offset_right = 38.6
-offset_bottom = 116.0
+offset_left = 194.2
+offset_top = 129.4
+offset_right = 210.2
+offset_bottom = 145.4
 
-[node name="BackpackSlot12" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot4" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 39.6
-offset_top = 100.0
-offset_right = 55.6
-offset_bottom = 116.0
+offset_left = 211.2
+offset_top = 129.4
+offset_right = 227.2
+offset_bottom = 145.4
 
-[node name="BackpackSlot13" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot5" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 56.6
-offset_top = 100.0
-offset_right = 72.6
-offset_bottom = 116.0
+offset_left = 228.2
+offset_top = 129.4
+offset_right = 244.2
+offset_bottom = 145.4
 
-[node name="BackpackSlot14" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot6" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 73.6
-offset_top = 100.0
-offset_right = 89.6
-offset_bottom = 116.0
+offset_left = 245.2
+offset_top = 129.4
+offset_right = 261.2
+offset_bottom = 145.4
 
-[node name="BackpackSlot15" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot7" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 90.6
-offset_top = 100.0
-offset_right = 106.6
-offset_bottom = 116.0
+offset_left = 262.2
+offset_top = 129.4
+offset_right = 278.2
+offset_bottom = 145.4
 
-[node name="BackpackSlot16" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot8" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 107.6
-offset_top = 100.0
-offset_right = 123.6
-offset_bottom = 116.0
+offset_left = 279.2
+offset_top = 129.4
+offset_right = 295.2
+offset_bottom = 145.4
 
-[node name="BackpackSlot17" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot9" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 124.6
-offset_top = 100.0
-offset_right = 140.6
-offset_bottom = 116.0
+offset_left = 296.2
+offset_top = 129.4
+offset_right = 312.2
+offset_bottom = 145.4
 
-[node name="BackpackSlot18" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot10" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 141.6
-offset_top = 100.0
-offset_right = 157.6
-offset_bottom = 116.0
+offset_left = 143.2
+offset_top = 146.4
+offset_right = 159.2
+offset_bottom = 162.4
 
-[node name="BackpackSlot19" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot11" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 158.6
-offset_top = 100.0
-offset_right = 174.6
-offset_bottom = 116.0
+offset_left = 160.2
+offset_top = 146.4
+offset_right = 176.2
+offset_bottom = 162.4
 
-[node name="BackpackSlot20" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot12" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 5.60001
-offset_top = 117.0
-offset_right = 21.6
-offset_bottom = 133.0
+offset_left = 177.2
+offset_top = 146.4
+offset_right = 193.2
+offset_bottom = 162.4
 
-[node name="BackpackSlot21" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot13" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 22.6
-offset_top = 117.0
-offset_right = 38.6
-offset_bottom = 133.0
+offset_left = 194.2
+offset_top = 146.4
+offset_right = 210.2
+offset_bottom = 162.4
 
-[node name="BackpackSlot22" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot14" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 39.6
-offset_top = 117.0
-offset_right = 55.6
-offset_bottom = 133.0
+offset_left = 211.2
+offset_top = 146.4
+offset_right = 227.2
+offset_bottom = 162.4
 
-[node name="BackpackSlot23" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot15" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 56.6
-offset_top = 117.0
-offset_right = 72.6
-offset_bottom = 133.0
+offset_left = 228.2
+offset_top = 146.4
+offset_right = 244.2
+offset_bottom = 162.4
 
-[node name="BackpackSlot24" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot16" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 73.6
-offset_top = 117.0
-offset_right = 89.6
-offset_bottom = 133.0
+offset_left = 245.2
+offset_top = 146.4
+offset_right = 261.2
+offset_bottom = 162.4
 
-[node name="BackpackSlot25" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot17" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 90.6
-offset_top = 117.0
-offset_right = 106.6
-offset_bottom = 133.0
+offset_left = 262.2
+offset_top = 146.4
+offset_right = 278.2
+offset_bottom = 162.4
 
-[node name="BackpackSlot26" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot18" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 107.6
-offset_top = 117.0
-offset_right = 123.6
-offset_bottom = 133.0
+offset_left = 279.2
+offset_top = 146.4
+offset_right = 295.2
+offset_bottom = 162.4
 
-[node name="BackpackSlot27" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot19" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 124.6
-offset_top = 117.0
-offset_right = 140.6
-offset_bottom = 133.0
+offset_left = 296.2
+offset_top = 146.4
+offset_right = 312.2
+offset_bottom = 162.4
 
-[node name="BackpackSlot28" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot20" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 141.6
-offset_top = 117.0
-offset_right = 157.6
-offset_bottom = 133.0
+offset_left = 143.2
+offset_top = 163.4
+offset_right = 159.2
+offset_bottom = 179.4
 
-[node name="BackpackSlot29" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot21" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 158.6
-offset_top = 117.0
-offset_right = 174.6
-offset_bottom = 133.0
+offset_left = 160.2
+offset_top = 163.4
+offset_right = 176.2
+offset_bottom = 179.4
 
-[node name="PocketSlot0" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot22" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 53.2
-offset_top = 139.8
-offset_right = 69.2
-offset_bottom = 155.8
+offset_left = 177.2
+offset_top = 163.4
+offset_right = 193.2
+offset_bottom = 179.4
 
-[node name="PocketSlot1" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot23" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 72.2
-offset_top = 139.8
-offset_right = 88.2
-offset_bottom = 155.8
+offset_left = 194.2
+offset_top = 163.4
+offset_right = 210.2
+offset_bottom = 179.4
 
-[node name="PocketSlot2" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot24" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 91.2
-offset_top = 139.8
-offset_right = 107.2
-offset_bottom = 155.8
+offset_left = 211.2
+offset_top = 163.4
+offset_right = 227.2
+offset_bottom = 179.4
 
-[node name="PocketSlot3" parent="Container2/TabContainer/InventoryTab" instance=ExtResource("2_rt0bc")]
+[node name="BackpackSlot25" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
 layout_mode = 2
-offset_left = 110.2
-offset_top = 139.8
-offset_right = 126.2
-offset_bottom = 155.8
+offset_left = 228.2
+offset_top = 163.4
+offset_right = 244.2
+offset_bottom = 179.4
+
+[node name="BackpackSlot26" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
+layout_mode = 2
+offset_left = 245.2
+offset_top = 163.4
+offset_right = 261.2
+offset_bottom = 179.4
+
+[node name="BackpackSlot27" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
+layout_mode = 2
+offset_left = 262.2
+offset_top = 163.4
+offset_right = 278.2
+offset_bottom = 179.4
+
+[node name="BackpackSlot28" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
+layout_mode = 2
+offset_left = 279.2
+offset_top = 163.4
+offset_right = 295.2
+offset_bottom = 179.4
+
+[node name="BackpackSlot29" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
+layout_mode = 2
+offset_left = 296.2
+offset_top = 163.4
+offset_right = 312.2
+offset_bottom = 179.4
+
+[node name="PocketSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
+layout_mode = 2
+offset_left = 190.8
+offset_top = 186.2
+offset_right = 206.8
+offset_bottom = 202.2
+
+[node name="PocketSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
+layout_mode = 2
+offset_left = 209.8
+offset_top = 186.2
+offset_right = 225.8
+offset_bottom = 202.2
+
+[node name="PocketSlot2" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
+layout_mode = 2
+offset_left = 228.8
+offset_top = 186.2
+offset_right = 244.8
+offset_bottom = 202.2
+
+[node name="PocketSlot3" parent="InventoryTab/SlotsGroup" instance=ExtResource("2_rt0bc")]
+layout_mode = 2
+offset_left = 247.8
+offset_top = 186.2
+offset_right = 263.8
+offset_bottom = 202.2
+
+[node name="StatsTab" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryClickButton" type="Button" parent="StatsTab"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 143.2
+offset_top = 28.0
+offset_right = 159.2
+offset_bottom = 44.0
+
+[connection signal="pressed" from="InventoryTab/StatsClickButton" to="VisualTabButtons" method="_on_stats_button_pressed"]
+[connection signal="pressed" from="StatsTab/InventoryClickButton" to="VisualTabButtons" method="_on_inventory_button_pressed"]
