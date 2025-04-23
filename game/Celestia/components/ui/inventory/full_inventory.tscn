@@ -99,7 +99,6 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_27rch")
 
 [node name="StatsTab" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,10 +119,13 @@ offset_right = 129.5
 offset_bottom = 79.5
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="ColumnContainer" type="HBoxContainer" parent="StatsTab/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_constants/separation = 12
+alignment = 1
 
 [node name="ListContainer" type="VBoxContainer" parent="StatsTab/VBoxContainer/ColumnContainer"]
 layout_mode = 2
@@ -140,14 +142,24 @@ layout_mode = 2
 text = "DF"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelMS" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer/ListContainer"]
+[node name="LabelLS" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer/ListContainer"]
 layout_mode = 2
-text = "MS"
+text = "LS"
+label_settings = ExtResource("7_27rch")
+
+[node name="LabelRG" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer/ListContainer"]
+layout_mode = 2
+text = "RG"
 label_settings = ExtResource("7_27rch")
 
 [node name="LabelCC" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer/ListContainer"]
 layout_mode = 2
 text = "CC"
+label_settings = ExtResource("7_27rch")
+
+[node name="LabelMS" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer/ListContainer"]
+layout_mode = 2
+text = "MS"
 label_settings = ExtResource("7_27rch")
 
 [node name="ListContainer2" type="VBoxContainer" parent="StatsTab/VBoxContainer/ColumnContainer"]
@@ -165,49 +177,25 @@ layout_mode = 2
 text = "DM"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelAS" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer/ListContainer2"]
-layout_mode = 2
-text = "AS"
-label_settings = ExtResource("7_27rch")
-
 [node name="LabelRC" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer/ListContainer2"]
 layout_mode = 2
 text = "RC"
 label_settings = ExtResource("7_27rch")
 
-[node name="ColumnContainer2" type="HBoxContainer" parent="StatsTab/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="ListContainer" type="VBoxContainer" parent="StatsTab/VBoxContainer/ColumnContainer2"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="LabelPN" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer2/ListContainer"]
+[node name="LabelPN" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer/ListContainer2"]
 layout_mode = 2
 text = "PN"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelLS" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer2/ListContainer"]
-layout_mode = 2
-text = "LS"
-label_settings = ExtResource("7_27rch")
-
-[node name="LabelRG" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer2/ListContainer"]
-layout_mode = 2
-text = "RG"
-label_settings = ExtResource("7_27rch")
-
-[node name="LabelCD" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer2/ListContainer"]
+[node name="LabelCD" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer/ListContainer2"]
 layout_mode = 2
 text = "CD"
 label_settings = ExtResource("7_27rch")
 
-[node name="ListContainer2" type="VBoxContainer" parent="StatsTab/VBoxContainer/ColumnContainer2"]
+[node name="LabelAS" type="Label" parent="StatsTab/VBoxContainer/ColumnContainer/ListContainer2"]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
+text = "AS"
+label_settings = ExtResource("7_27rch")
 
 [node name="InventoryClickButton" type="Button" parent="StatsTab"]
 self_modulate = Color(1, 1, 1, 0)
@@ -218,6 +206,7 @@ offset_right = 119.2
 offset_bottom = 48.0
 
 [node name="InventoryTab" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

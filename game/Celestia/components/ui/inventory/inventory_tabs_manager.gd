@@ -21,31 +21,25 @@ func _input(event: InputEvent) -> void:
 func update_data_to_stats():
 	var player_stats = get_parent().get_parent().get_parent().stats
 	var v_box_container = stats_tab.get_node('VBoxContainer')
+	var secao = v_box_container.get_node('ColumnContainer')
 
-	var secao1 = v_box_container.get_node('ColumnContainer')
-	var coluna1A = secao1.get_node('ListContainer')
-	var coluna1B = secao1.get_node('ListContainer2')
+	var coluna1 = secao.get_node('ListContainer')
+	var coluna2 = secao.get_node('ListContainer2')
 
-	var secao2 = v_box_container.get_node('ColumnContainer2')
-	var coluna2A = secao2.get_node('ListContainer')
-
-	# >> Coluna 1 - A
-	coluna1A.get_node('LabelHP').text = CustomTr.t('ui.inventory.stats.hp') + str(player_stats.get_max_health())
-	coluna1A.get_node('LabelDF').text = CustomTr.t('ui.inventory.stats.df') + str(player_stats.get_defense())
-	coluna1A.get_node('LabelMS').text = CustomTr.t('ui.inventory.stats.ms') + str(player_stats.get_move_speed())
-	coluna1A.get_node('LabelCC').text = CustomTr.t('ui.inventory.stats.cc') + str(player_stats.get_critical_chance()) + '%'
-
-	# >> Coluna 1 - B
-	coluna1B.get_node('LabelMN').text = CustomTr.t('ui.inventory.stats.mn') + str(player_stats.get_max_mana())
-	coluna1B.get_node('LabelDM').text = CustomTr.t('ui.inventory.stats.dm') + str(player_stats.get_damage())
-	coluna1B.get_node('LabelAS').text = CustomTr.t('ui.inventory.stats.as') + str(player_stats.get_attack_speed())
-	coluna1B.get_node('LabelRC').text = CustomTr.t('ui.inventory.stats.rc') + str(player_stats.get_cooldown()) + '%'
-
-	# >> Coluna 2 - A
-	coluna2A.get_node('LabelPN').text = CustomTr.t('ui.inventory.stats.pn') + str(player_stats.get_penetration()) + '%'
-	coluna2A.get_node('LabelLS').text = CustomTr.t('ui.inventory.stats.ls') + str(player_stats.get_life_steal()) + '%'
-	coluna2A.get_node('LabelRG').text = CustomTr.t('ui.inventory.stats.rg') + str(player_stats.get_range())
-	coluna2A.get_node('LabelCD').text = CustomTr.t('ui.inventory.stats.cd') + str(player_stats.get_critical_damage()) + '%'
+	# >> Coluna 1
+	coluna1.get_node('LabelHP').text = CustomTr.t('ui.inventory.stats.hp') + str(player_stats.get_max_health())
+	coluna1.get_node('LabelDF').text = CustomTr.t('ui.inventory.stats.df') + str(player_stats.get_defense())
+	coluna1.get_node('LabelLS').text = CustomTr.t('ui.inventory.stats.ls') + str(player_stats.get_life_steal()) + '%'
+	coluna1.get_node('LabelRG').text = CustomTr.t('ui.inventory.stats.rg') + str(player_stats.get_range())
+	coluna1.get_node('LabelCC').text = CustomTr.t('ui.inventory.stats.cc') + str(player_stats.get_critical_chance()) + '%'
+	coluna1.get_node('LabelMS').text = CustomTr.t('ui.inventory.stats.ms') + str(player_stats.get_move_speed())
+	# >> Coluna 2
+	coluna2.get_node('LabelMN').text = CustomTr.t('ui.inventory.stats.mn') + str(player_stats.get_max_mana())
+	coluna2.get_node('LabelDM').text = CustomTr.t('ui.inventory.stats.dm') + str(player_stats.get_damage())
+	coluna2.get_node('LabelRC').text = CustomTr.t('ui.inventory.stats.rc') + str(player_stats.get_cooldown()) + '%'
+	coluna2.get_node('LabelPN').text = CustomTr.t('ui.inventory.stats.pn') + str(player_stats.get_penetration()) + '%'
+	coluna2.get_node('LabelCD').text = CustomTr.t('ui.inventory.stats.cd') + str(player_stats.get_critical_damage()) + '%'
+	coluna2.get_node('LabelAS').text = CustomTr.t('ui.inventory.stats.as') + str(player_stats.get_attack_speed())
 
 
 func show_inventory():
