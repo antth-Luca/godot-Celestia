@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://d00bg0jygioly"
-path="res://.godot/imported/BitPotionExt.ttf-60f5b149b6e76217da237d899a0a7f10.fontdata"
+uid="uid://cvqudktu6cron"
+path="res://.godot/imported/Bescii-Mono.ttf-8170ba6a551248e4b336eed8610af2fc.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/BitPotionExt.ttf"
-dest_files=["res://.godot/imported/BitPotionExt.ttf-60f5b149b6e76217da237d899a0a7f10.fontdata"]
+source_file="res://assets/fonts/Bescii-Mono.ttf"
+dest_files=["res://.godot/imported/Bescii-Mono.ttf-8170ba6a551248e4b336eed8610af2fc.fontdata"]
 
 [params]
 

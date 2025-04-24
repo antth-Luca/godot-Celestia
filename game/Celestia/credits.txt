@@ -1,2 +1,2 @@
-Thanks to Joeb Rogers for the BitPotion font,
-Downloaded on April 17, 2025 from Itch.io.
+Thanks to Damian Vila for the Bescii font,
+Downloaded on April 23, 2025 from https://github.com/damianvila/font-bescii

@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="project-Celestia"
+config/version="1.0"
 run/main_scene="uid://dnha7l542riug"
 config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="uid://cbxy3kgjpn6qm"
 
 [autoload]
 

@@ -20,11 +20,10 @@ func _input(event: InputEvent) -> void:
 
 func update_data_to_stats():
 	var player_stats = get_parent().get_parent().get_parent().stats
-	var v_box_container = stats_tab.get_node('VBoxContainer')
-	var secao = v_box_container.get_node('ColumnContainer')
 
-	var coluna1 = secao.get_node('ListContainer')
-	var coluna2 = secao.get_node('ListContainer2')
+	var container = stats_tab.get_node('VBoxContainer').get_node('HBoxContainer')
+	var coluna1 = container.get_node('ListContainer')
+	var coluna2 = container.get_node('ListContainer2')
 
 	# >> Coluna 1
 	coluna1.get_node('LabelHP').text = CustomTr.t('ui.inventory.stats.hp') + str(player_stats.get_max_health())

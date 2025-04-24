@@ -11,6 +11,7 @@ const SLOT_INDEX_RANGES = {
 }
 
 @onready var slots_group = $InventoryTab/SlotsGroup
+@onready var popup = $Popup
 
 var inventory = []
 var stack_in_cursor: ItemStack
@@ -39,6 +40,8 @@ func connect_slots() -> void:
 	for index in range(TOTAL_SLOTS):
 		var slot = slots_group.get_child(index)
 		slot.gui_input.connect(_on_slot_gui_input.bind(slot))
+		slot.mouse_entered.connect(_on_slot_mouse_entered.bind(slot))
+		slot.mouse_exited.connect(_on_slot_mouse_exited.bind())
 
 
 func on_inventory_closed() -> void:
@@ -164,6 +167,21 @@ func drop_item_in_position(stack: ItemStack, pos: Vector2):
 	get_tree().root.add_child(abstract_item)
 	abstract_item.global_position = pos
 	
+
+# Popup
+func _on_slot_mouse_entered(slot):
+	var slot_stack = inventory[slot.get_index()]
+	if slot_stack.amount > 0:
+		popup.update_data_popup(slot_stack.item_class)
+		popup.item_popup(
+			Rect2i(
+				Vector2i(slot.global_position),
+				Vector2i(slot.size)
+			), slot_stack.item_class)
+
+
+func _on_slot_mouse_exited():
+	popup.hide_popup()
 
 # Inventory cursor handlers
 func _on_slot_gui_input(event: InputEvent, slot):

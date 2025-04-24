@@ -1,7 +1,6 @@
 {
 	"ui.config.language": "Linguagem",
 
-	"ui.inventory.stats.title": "Atributos",
 	"ui.inventory.stats.hp": "Vida: ",
 	"ui.inventory.stats.mn": "Mana: ",
 	"ui.inventory.stats.df": "Defesa: ",

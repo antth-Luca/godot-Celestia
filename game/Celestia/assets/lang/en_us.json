@@ -1,19 +1,18 @@
 {
 	"ui.config.language": "",
 
-	"ui.inventory.stats.title": "Attributes",
 	"ui.inventory.stats.hp": "Health: ",
 	"ui.inventory.stats.mn": "Mana: ",
 	"ui.inventory.stats.dm": "Damage: ",
 	"ui.inventory.stats.df": "Defense: ",
-	"ui.inventory.stats.cc": "Critical chance: ",
-	"ui.inventory.stats.cd": "Critical damage: ",
+	"ui.inventory.stats.cc": "Crit. Chance: ",
+	"ui.inventory.stats.cd": "Crit. Damage: ",
 	"ui.inventory.stats.ls": "Life steal: ",
 	"ui.inventory.stats.pn": "Penetration: ",
 	"ui.inventory.stats.rg": "Range: ",
 	"ui.inventory.stats.ms": "Move speed: ",
 	"ui.inventory.stats.as": "Attack speed: ",
-	"ui.inventory.stats.rc": "Reducing cooldown: ",
+	"ui.inventory.stats.rc": "Red. Cooldown: ",
 
 	"item.rarity.common": "Common",
 	"item.rarity.rare": "Rare",
