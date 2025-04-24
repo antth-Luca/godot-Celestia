@@ -3,6 +3,14 @@ class_name BaseItem
 
 enum Rarity { COMMON, RARE, EPIC, MITHIC, LEGENDARY }
 
+const RARITY_COLORS = {
+	Rarity.COMMON: '#ffffff',
+	Rarity.RARE: '#3dd63a',
+	Rarity.EPIC: '#6c44d2',
+	Rarity.MITHIC: '#db375b',
+	Rarity.LEGENDARY: '#f9c600'
+}
+
 var item_key: String
 var max_stack: int
 var rarity: Rarity
@@ -13,8 +21,12 @@ func _init(key: String, enum_rarity: Rarity, num_stack: int) -> void:
 	self.rarity = enum_rarity
 
 
-func get_rarity_name() -> String:
-	return Rarity.keys()[self.rarity]
+func get_rarity_name(rarity: Rarity = self.rarity) -> String:
+	return Rarity.keys()[rarity]
+
+
+func get_rarity_color(rarity: Rarity = self.rarity) -> Color:
+	return Color(RARITY_COLORS[rarity])
 
 
 static func get_empty_item() -> BaseItem:

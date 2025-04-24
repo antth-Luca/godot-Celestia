@@ -1,10 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck6h6s83ajjvt"]
+[gd_scene load_steps=7 format=3 uid="uid://ck6h6s83ajjvt"]
 
 [ext_resource type="Texture2D" uid="uid://ch1mbhw7gj54q" path="res://assets/ui/inventory/tooltip_box.png" id="1_l20gf"]
 [ext_resource type="Script" uid="uid://bk042i5yun3al" path="res://components/ui/inventory/popup.gd" id="1_urbq1"]
 [ext_resource type="LabelSettings" uid="uid://btbcfqgqplxrr" path="res://assets/labels/player_stats_label.tres" id="2_urbq1"]
+[ext_resource type="FontFile" uid="uid://cvqudktu6cron" path="res://assets/fonts/Bescii-Mono.ttf" id="4_0nvww"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_urbq1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dud1d"]
+font = ExtResource("4_0nvww")
+font_size = 8
 
 [node name="Popup" type="Control"]
 layout_mode = 3
@@ -56,5 +61,5 @@ vertical_alignment = 1
 [node name="LabelRarity" type="Label" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "??"
-label_settings = ExtResource("2_urbq1")
+label_settings = SubResource("LabelSettings_dud1d")
 vertical_alignment = 1

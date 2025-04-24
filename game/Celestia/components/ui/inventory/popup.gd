@@ -1,8 +1,8 @@
 extends Control
 
-@onready var popup_panel = $CanvasLayer/PopupPanel
-@onready var label_name = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/LabelName
-@onready var label_rarity = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/LabelRarity
+@onready var popup_panel: PopupPanel = $CanvasLayer/PopupPanel
+@onready var label_name: Label = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/LabelName
+@onready var label_rarity: Label = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/LabelRarity
 
 
 func item_popup(slot: Rect2i, item: BaseItem):
@@ -31,3 +31,4 @@ func hide_popup():
 func update_data_popup(item: BaseItem):
 	label_name.text = CustomTr.t('item.' + item.item_key + '.name')
 	label_rarity.text = CustomTr.t('item.rarity.' + item.get_rarity_name().to_lower())
+	label_rarity.label_settings.font_color = item.get_rarity_color()
