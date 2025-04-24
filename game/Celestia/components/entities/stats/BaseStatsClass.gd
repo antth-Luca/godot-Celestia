@@ -26,8 +26,8 @@ const MIN_PENETRATION: int = 0
 var penetration: int = 0
 const MAX_PENETRATION: int = 100
 
-const MIN_RANGE: int = 1
-var range: int = 1
+const MIN_USE_RANGE: int = 1
+var use_range: int = 1
 
 const MIN_MOVE_SPEED: float = 0.0
 var move_speed: float = 0.0
@@ -108,13 +108,13 @@ func set_penetration(newPen) -> void:
 
 
 func get_range() -> int:
-	return range
+	return use_range
 
 
 func set_range(newRange:int) -> void:
-	if newRange < MIN_RANGE:
-		range = MIN_RANGE
-	range = newRange
+	if newRange < MIN_USE_RANGE:
+		use_range = MIN_USE_RANGE
+	use_range = newRange
 
 
 func get_move_speed() -> float:

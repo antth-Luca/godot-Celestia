@@ -21,12 +21,12 @@ func _init(key: String, enum_rarity: Rarity, num_stack: int) -> void:
 	self.rarity = enum_rarity
 
 
-func get_rarity_name(rarity: Rarity = self.rarity) -> String:
-	return Rarity.keys()[rarity]
+func get_rarity_name(enum_rarity: Rarity = self.rarity) -> String:
+	return Rarity.keys()[enum_rarity]
 
 
-func get_rarity_color(rarity: Rarity = self.rarity) -> Color:
-	return Color(RARITY_COLORS[rarity])
+func get_rarity_color(enum_rarity: Rarity = self.rarity) -> Color:
+	return Color(RARITY_COLORS[enum_rarity])
 
 
 static func get_empty_item() -> BaseItem:
