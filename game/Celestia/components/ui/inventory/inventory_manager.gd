@@ -54,7 +54,6 @@ func on_inventory_closed() -> void:
 	# Limpa variáveis do cursor
 	stack_in_cursor = null
 	clear_sprite_to_cursor()
-	update_backpack_inventory()
 
 
 func is_full() -> bool:
@@ -105,14 +104,6 @@ func render_slot(slot, item_slot: ItemStack) -> void:
 	labelAmount.visible = item_slot.amount > 1
 
 
-func has_item_in_backpack(item_key: String) -> bool:
-	# Verfica se há ou não um item em CADA UM dos slots do inventário
-	for index in range(SLOT_INDEX_RANGES['backpack_slots'][0], SLOT_INDEX_RANGES['backpack_slots'][1] + 1):
-		if inventory[index].item_class.item_key == item_key:
-			return true
-	return false
-
-
 func get_stackable_index(item_key: String) -> int:
 	for index in range(SLOT_INDEX_RANGES['backpack_slots'][0], SLOT_INDEX_RANGES['backpack_slots'][1] + 1):
 		var inv_stack = inventory[index]
@@ -124,26 +115,25 @@ func get_stackable_index(item_key: String) -> int:
 func add_item_to_backpack(stack: ItemStack) -> void:
 	# Adiciona um item no inventário, já cuidando de empilhar, criar ou ignorar
 	if stack.amount < 1: return
-	if has_item_in_backpack(stack.item_class.item_key) and stack.item_class.max_stack > 1:
-		var extra = inventory[get_stackable_index(stack.item_class.item_key)].add_amount_safe(stack.amount)
+	var stackable_index = get_stackable_index(stack.item_class.item_key)
+	if stackable_index >= 0 and stack.item_class.max_stack > 1:
+		var extra = inventory[stackable_index].add_amount_safe(stack.amount)
 		if extra > 0:
 			stack.amount = extra
 			add_item_to_bp_new_slot(stack)
 			return
-		update_backpack_inventory()
+		render_slot(slots_group.get_child(stackable_index), inventory[stackable_index])
 		return
 	add_item_to_bp_new_slot(stack)
 
 
 func add_item_to_bp_new_slot(stack: ItemStack):
-	var is_added = false
 	for index in range(SLOT_INDEX_RANGES['backpack_slots'][0], SLOT_INDEX_RANGES['backpack_slots'][1] + 1):
 		if inventory[index].amount <= 0:
 			inventory[index] = stack
-			is_added = true
-			update_backpack_inventory()
-			break
-	if !is_added: drop_item_players_foot(stack)
+			render_slot(slots_group.get_child(index), inventory[index])
+			return
+	drop_item_players_foot(stack)
 
 
 func remove_item_to_invent(index: int, amount: int) -> void:
@@ -271,10 +261,9 @@ func handle_middle_click(slot):
 	var slot_stack = inventory[slot_index]
 
 	if slot_stack.amount > 0:
-		drop_item_players_foot(slot_stack)
 		inventory[slot_index] = ItemStack.get_empty_slot()
+		drop_item_players_foot(slot_stack)
 		clear_slot(slot)
-	update_all_inventory()
 
 
 func set_sprite_to_cursor(item_key: String):
