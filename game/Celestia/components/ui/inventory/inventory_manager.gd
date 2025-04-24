@@ -170,18 +170,21 @@ func drop_item_in_position(stack: ItemStack, pos: Vector2):
 
 # Popup
 func _on_slot_mouse_entered(slot):
-	var slot_stack = inventory[slot.get_index()]
-	if slot_stack.amount > 0:
-		popup.update_data_popup(slot_stack.item_class)
-		popup.item_popup(
-			Rect2i(
-				Vector2i(slot.global_position),
-				Vector2i(slot.size)
-			), slot_stack.item_class)
+	if stack_in_cursor == null:
+		var slot_stack = inventory[slot.get_index()]
+		if slot_stack.amount > 0:
+			popup.item_popup(
+				Rect2i(
+					Vector2i(slot.global_position),
+					Vector2i(slot.size)
+				),
+				slot_stack.item_class
+			)
 
 
 func _on_slot_mouse_exited():
-	popup.hide_popup()
+	if stack_in_cursor == null:
+		popup.hide_popup()
 
 # Inventory cursor handlers
 func _on_slot_gui_input(event: InputEvent, slot):

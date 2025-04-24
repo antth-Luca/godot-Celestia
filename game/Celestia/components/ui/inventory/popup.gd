@@ -1,32 +1,33 @@
-extends PopupPanel
+extends Control
 
+@onready var popup_panel = $CanvasLayer/PopupPanel
+@onready var label_name = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/LabelName
+@onready var label_rarity = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/LabelRarity
 
-@onready var label_name = $VBoxContainer/LabelName
-@onready var label_rarity = $VBoxContainer/LabelRarity
-@onready var label_type = $VBoxContainer/LabelType
 
 func item_popup(slot: Rect2i, item: BaseItem):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var correction
-	var padding = 4
 
-	if mouse_pos.x > get_visible_rect().size.x / 2:
-		correction = Vector2i(slot.size.x + padding, 0)
+	update_data_popup(item)
+	popup_panel.size = Vector2i.ZERO
+
+	if mouse_pos.x <= get_viewport_rect().size.x / 2:
+		correction = Vector2i((slot.size.x * 2) + 10, 8)
 	else:
-		correction = -Vector2i(self.size.x + padding, 0)
+		correction = -Vector2i(popup_panel.size.x, -8)
 
-	self.popup(
+	popup_panel.popup(
 		Rect2i(
 			slot.position + correction,
-			self.size
+			popup_panel.size
 	))
 
 
 func hide_popup():
-	self.hide()
+	popup_panel.hide()
 
 
 func update_data_popup(item: BaseItem):
 	label_name.text = CustomTr.t('item.' + item.item_key + '.name')
-	#label_rarity.text = CustomTr.t('item.rarity.' + item.item_key)
-	#label_type.text = CustomTr.t('item.type.' + item.item_key)
+	label_rarity.text = CustomTr.t('item.rarity.' + item.get_rarity_name().to_lower())
