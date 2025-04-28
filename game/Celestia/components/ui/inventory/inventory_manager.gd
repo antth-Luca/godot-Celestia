@@ -116,14 +116,21 @@ func add_item_to_backpack(stack: ItemStack) -> void:
 	# Adiciona um item no inventário, já cuidando de empilhar, criar ou ignorar
 	if stack.amount < 1: return
 	var stackable_index = get_stackable_index(stack.item_class.item_key)
-	if stackable_index >= 0 and stack.item_class.max_stack > 1:
-		var extra = inventory[stackable_index].add_amount_safe(stack.amount)
-		if extra > 0:
-			stack.amount = extra
-			add_item_to_bp_new_slot(stack)
-			return
+	if not stackable_index < 0:  # Convertido para: >= 0
+		var remaining_amount = inventory[stackable_index].add_amount_safe(stack.amount)
 		render_slot(slots_group.get_child(stackable_index), inventory[stackable_index])
-		return
+		# Enquanto houver remanescente, tenta adicionar
+		while remaining_amount > 0:
+			if remaining_amount <= stack.item_class.max_stack:
+				add_item_to_bp_new_slot(ItemStack.new(
+					stack.item_class,
+					remaining_amount))
+			else:
+				add_item_to_bp_new_slot(ItemStack.new(
+					stack.item_class,
+					stack.item_class.max_stack))
+				remaining_amount -= stack.item_class.max_stack
+	# Se não tiver o item, se não for empilhável ou não houver espaço no slot, cria um novo slot
 	add_item_to_bp_new_slot(stack)
 
 
