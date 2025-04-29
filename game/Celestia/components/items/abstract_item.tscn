@@ -1,16 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://ek4px0gc3xn3"]
+[gd_scene load_steps=4 format=3 uid="uid://ek4px0gc3xn3"]
 
-[ext_resource type="Script" uid="uid://ccj7else7plke" path="res://components/items/abstract_item.gd" id="1_1tkbx"]
+[ext_resource type="Script" uid="uid://ccj7else7plke" path="res://components/items/AbstractItem.gd" id="1_1tkbx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tkbx"]
 radius = 8.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g87wb"]
+radius = 44.0
+
 [node name="AbstractItem" type="Sprite2D"]
 script = ExtResource("1_1tkbx")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="PickupArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_1tkbx")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[node name="JoinArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JoinArea"]
+shape = SubResource("CircleShape2D_g87wb")
+debug_color = Color(0.636607, 0.526557, 1.92523e-07, 0.42)
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
+[connection signal="body_entered" from="JoinArea" to="." method="_on_join_area_body_entered"]

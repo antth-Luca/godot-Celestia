@@ -20,6 +20,7 @@ config/icon="uid://ct3vlmtpejhpx"
 
 GameConfig="*res://components/globals/game_config.gd"
 CustomTr="*res://components/globals/translation.gd"
+GameData="*res://components/game_data.gd"
 
 [global_group]
 
