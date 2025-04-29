@@ -6,6 +6,11 @@ extends Control
 
 
 func _ready():
+	stats_tab.get_node(
+		'VBoxContainer'	).get_node(
+		'HBoxContainer'	).get_node(
+		'LabelTitle').text = '- ' + CustomTr.t('ui.inventory.stats.title') + ' -'
+
 	update_data_to_stats()
 	show_inventory()
 
@@ -21,7 +26,7 @@ func _input(event: InputEvent) -> void:
 func update_data_to_stats():
 	var player_stats = get_parent().get_parent().get_parent().stats
 
-	var container = stats_tab.get_node('VBoxContainer').get_node('HBoxContainer')
+	var container = stats_tab.get_node('VBoxContainer').get_node('HBoxContainer2')
 	var coluna1 = container.get_node('ListContainer')
 	var coluna2 = container.get_node('ListContainer2')
 
