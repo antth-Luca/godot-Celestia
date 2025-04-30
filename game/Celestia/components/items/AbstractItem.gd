@@ -42,9 +42,3 @@ func _on_pickup_area_body_entered(body):
 		else:
 			can_be_picked_up = false
 			pickup_timer.start()
-
-
-func _on_join_area_body_entered(body):
-	if body is AbstractItem and body.stack.item_class == self.stack.item_class:
-		self.stack.amount += body.stack.amount
-		body.queue_free()

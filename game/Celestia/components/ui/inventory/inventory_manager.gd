@@ -189,13 +189,17 @@ func _on_slot_mouse_exited():
 # Inventory cursor handlers
 func _on_slot_gui_input(event: InputEvent, slot):
 	# Separa e direciona os cliques direito e esquerdo para suas funções
-	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			handle_left_click(slot)
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			handle_right_click(slot)
-		elif event.button_index == MOUSE_BUTTON_MIDDLE:
-			handle_middle_click(slot)
+	if event is InputEventMouseButton:
+		print('Event is Mouse Button')
+		if event.pressed:
+			print('Event is pressed')
+			match event.button_index:
+				MOUSE_BUTTON_LEFT:
+					handle_left_click(slot)
+				MOUSE_BUTTON_RIGHT:
+					handle_right_click(slot)
+				MOUSE_BUTTON_MIDDLE:
+					handle_middle_click(slot)
 
 
 func handle_left_click(slot):
