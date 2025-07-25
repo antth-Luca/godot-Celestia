@@ -1,4 +1,5 @@
 extends Sprite2D
+class_name AbstractItem
 
 var stack: ItemStack
 var can_be_picked_up = false
@@ -24,10 +25,8 @@ func _on_pickup_timer_timeout():
 	can_be_picked_up = true
 
 
-func _on_body_entered(body):
-	if !can_be_picked_up: return
-
-	if body.is_in_group("player"):
+func _on_pickup_area_body_entered(body):
+	if can_be_picked_up and body.is_in_group("player"):
 		var inventory = body.get_node("UI/FullInventory")
 		if !inventory.is_full():
 			var follow_tween = create_tween()

@@ -100,6 +100,7 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_27rch")
 
 [node name="StatsTab" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,80 +122,90 @@ offset_bottom = 119.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
+theme_override_constants/separation = 12
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="StatsTab/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LabelTitle" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Title"
+label_settings = ExtResource("7_27rch")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="StatsTab/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="ListContainer" type="VBoxContainer" parent="StatsTab/VBoxContainer/HBoxContainer"]
+[node name="ListContainer" type="VBoxContainer" parent="StatsTab/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="LabelHP" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer"]
+[node name="LabelHP" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer"]
 layout_mode = 2
 text = "HP"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelDF" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer"]
+[node name="LabelDF" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer"]
 layout_mode = 2
 text = "DF"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelLS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer"]
+[node name="LabelLS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer"]
 layout_mode = 2
 text = "LS"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelRG" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer"]
+[node name="LabelRG" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer"]
 layout_mode = 2
 text = "RG"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelCC" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer"]
+[node name="LabelCC" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer"]
 layout_mode = 2
 text = "CC"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelMS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer"]
+[node name="LabelMS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer"]
 layout_mode = 2
 text = "MS"
 label_settings = ExtResource("7_27rch")
 
-[node name="ListContainer2" type="VBoxContainer" parent="StatsTab/VBoxContainer/HBoxContainer"]
+[node name="ListContainer2" type="VBoxContainer" parent="StatsTab/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="LabelMN" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer2"]
+[node name="LabelMN" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer2"]
 layout_mode = 2
 text = "MN"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelDM" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer2"]
+[node name="LabelDM" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer2"]
 layout_mode = 2
 text = "DM"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelRC" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer2"]
+[node name="LabelRC" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer2"]
 layout_mode = 2
 text = "RC"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelPN" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer2"]
+[node name="LabelPN" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer2"]
 layout_mode = 2
 text = "PN"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelCD" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer2"]
+[node name="LabelCD" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer2"]
 layout_mode = 2
 text = "CD"
 label_settings = ExtResource("7_27rch")
 
-[node name="LabelAS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer/ListContainer2"]
+[node name="LabelAS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainer2/ListContainer2"]
 layout_mode = 2
 text = "AS"
 label_settings = ExtResource("7_27rch")
@@ -208,7 +219,6 @@ offset_right = 119.2
 offset_bottom = 48.0
 
 [node name="InventoryTab" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

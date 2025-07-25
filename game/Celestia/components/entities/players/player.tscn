@@ -119,8 +119,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mjae0"]
-radius = 6.0
-height = 14.0
+radius = 5.0
+height = 10.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_k0a6i")

@@ -14,12 +14,13 @@ config/name="project-Celestia"
 config/version="1.0"
 run/main_scene="uid://dnha7l542riug"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://cbxy3kgjpn6qm"
+config/icon="uid://ct3vlmtpejhpx"
 
 [autoload]
 
 GameConfig="*res://components/globals/game_config.gd"
 CustomTr="*res://components/globals/translation.gd"
+GameData="*res://components/game_data.gd"
 
 [global_group]
 

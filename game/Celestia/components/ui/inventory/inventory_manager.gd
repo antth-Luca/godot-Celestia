@@ -1,6 +1,5 @@
 extends Control
 
-const ABSTRACT_ITEM = preload("res://components/items/abstract_item.tscn")
 const TOTAL_SLOTS: int = 46
 const SLOT_INDEX_RANGES = {
 	'equip_slots': [0, 3],
@@ -115,16 +114,27 @@ func get_stackable_index(item_key: String) -> int:
 func add_item_to_backpack(stack: ItemStack) -> void:
 	# Adiciona um item no inventário, já cuidando de empilhar, criar ou ignorar
 	if stack.amount < 1: return
+	var remaining_amount = 0
 	var stackable_index = get_stackable_index(stack.item_class.item_key)
-	if stackable_index >= 0 and stack.item_class.max_stack > 1:
-		var extra = inventory[stackable_index].add_amount_safe(stack.amount)
-		if extra > 0:
-			stack.amount = extra
-			add_item_to_bp_new_slot(stack)
-			return
+	if not stackable_index < 0:  # Convertido para: >= 0
+		remaining_amount = inventory[stackable_index].add_amount_safe(stack.amount)
 		render_slot(slots_group.get_child(stackable_index), inventory[stackable_index])
-		return
-	add_item_to_bp_new_slot(stack)
+	else:
+		remaining_amount = stack.amount
+	# Enquanto houver remanescente, tenta adicionar
+	while remaining_amount > 0:
+		if remaining_amount <= stack.item_class.max_stack:
+			add_item_to_bp_new_slot(ItemStack.new(
+				stack.item_class,
+				remaining_amount
+			))
+			return
+		else:
+			add_item_to_bp_new_slot(ItemStack.new(
+				stack.item_class,
+				stack.item_class.max_stack
+			))
+			remaining_amount -= stack.item_class.max_stack
 
 
 func add_item_to_bp_new_slot(stack: ItemStack):
@@ -152,7 +162,7 @@ func drop_item_players_foot(stack: ItemStack):
 
 func drop_item_in_position(stack: ItemStack, pos: Vector2):
 	# Larga uma pilha de item em uma posição específica
-	var abstract_item = ABSTRACT_ITEM.instantiate()
+	var abstract_item = GameData.ABSTRACT_ITEM.instantiate()
 	abstract_item.initialize(stack)
 	get_tree().root.add_child(abstract_item)
 	abstract_item.global_position = pos
@@ -180,12 +190,13 @@ func _on_slot_mouse_exited():
 func _on_slot_gui_input(event: InputEvent, slot):
 	# Separa e direciona os cliques direito e esquerdo para suas funções
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			handle_left_click(slot)
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
-			handle_right_click(slot)
-		elif event.button_index == MOUSE_BUTTON_MIDDLE:
-			handle_middle_click(slot)
+		match event.button_index:
+			MOUSE_BUTTON_LEFT:
+				handle_left_click(slot)
+			MOUSE_BUTTON_RIGHT:
+				handle_right_click(slot)
+			MOUSE_BUTTON_MIDDLE:
+				handle_middle_click(slot)
 
 
 func handle_left_click(slot):
