@@ -1,7 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://btbcfqgqplxrr"]
-
-[ext_resource type="FontFile" uid="uid://cvqudktu6cron" path="res://assets/fonts/Bescii-Mono.ttf" id="1_cmtxf"]
-
-[resource]
-font = ExtResource("1_cmtxf")
-font_size = 8
