@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk38kias17xwm"]
+[gd_scene load_steps=3 format=3 uid="uid://bk38kias17xwm"]
 
+[ext_resource type="PackedScene" uid="uid://cj1d4dgd5lwqi" path="res://core/world/TerrainManager.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://qvrm2d7b1xca" path="res://core/entities/player/Player.tscn" id="1_ig7tw"]
 
 [node name="Main" type="Node2D"]
 
+[node name="TerrainManager" parent="." instance=ExtResource("1_0xm2m")]
+
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(540, 303)
