@@ -1,5 +1,5 @@
 extends Node
-class_name SurvivorLevels
+class_name SurvivorLevelsManager
 
 # STATS
 # Survivor XP
