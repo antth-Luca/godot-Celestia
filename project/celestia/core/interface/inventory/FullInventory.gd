@@ -1,5 +1,10 @@
 extends Control
 
+var inventory = []
+var stack_in_cursor: ItemStack
+var cursor_click_origin_slot: int
+var sprite_to_cursor: Sprite2D = null
+
 func _ready() -> void:
 	visible = false
 
