@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3nywi3j43fbq"]
+
+[ext_resource type="Script" uid="uid://bbnhnyem2n73k" path="res://core/interface/inventory/Inventory.gd" id="1_1aygw"]
+[ext_resource type="Texture2D" uid="uid://doyecvwh2b31d" path="res://assets/interface/base_box.png" id="2_jraim"]
+
+[node name="Inventory" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1aygw")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -439.0
+offset_top = -265.0
+offset_right = 439.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jraim")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 5
+patch_margin_top = 6
+patch_margin_right = 5
+patch_margin_bottom = 5

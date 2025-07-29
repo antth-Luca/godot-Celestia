@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://7hauijtfq470"]
+
+[ext_resource type="Texture2D" uid="uid://btnuubbiilyo4" path="res://assets/interface/hud/stats_bar/background.png" id="1_4n8cl"]
+[ext_resource type="Texture2D" uid="uid://b3xcheqxbydlw" path="res://assets/interface/hud/stats_bar/vessel.png" id="2_wdvpt"]
+[ext_resource type="Texture2D" uid="uid://cl3twyd33shnf" path="res://assets/interface/hud/stats_bar/heart.png" id="3_abe2h"]
+[ext_resource type="Texture2D" uid="uid://x1ifmif6ol6j" path="res://assets/interface/hud/pocket_inventory.png" id="4_wdvpt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo12g"]
+atlas = ExtResource("3_abe2h")
+region = Rect2(0, 11, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pimi0"]
+atlas = ExtResource("3_abe2h")
+region = Rect2(12, 11, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5cyb"]
+atlas = ExtResource("3_abe2h")
+region = Rect2(24, 11, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjip1"]
+atlas = ExtResource("3_abe2h")
+region = Rect2(0, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjk5h"]
+atlas = ExtResource("3_abe2h")
+region = Rect2(12, 0, 12, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqn0w"]
+atlas = ExtResource("3_abe2h")
+region = Rect2(24, 0, 12, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_23r18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jo12g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pimi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5cyb")
+}],
+"loop": false,
+"name": &"death",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjip1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjk5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqn0w")
+}],
+"loop": true,
+"name": &"pulse",
+"speed": 5.0
+}]
+
+[node name="HUD" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HContainerLeft" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VContainerTop" type="VBoxContainer" parent="HContainerLeft"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VContainerDown" type="VBoxContainer" parent="HContainerLeft"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="StatsBar" type="Node2D" parent="HContainerLeft/VContainerDown"]
+position = Vector2(-4, 0)
+scale = Vector2(3.5, 3.5)
+
+[node name="Background" type="Sprite2D" parent="HContainerLeft/VContainerDown/StatsBar"]
+position = Vector2(45, -12.5)
+texture = ExtResource("1_4n8cl")
+
+[node name="Vessel" type="Sprite2D" parent="HContainerLeft/VContainerDown/StatsBar"]
+position = Vector2(26.5, -14)
+texture = ExtResource("2_wdvpt")
+
+[node name="AnimatedHeart" type="AnimatedSprite2D" parent="HContainerLeft/VContainerDown/StatsBar"]
+position = Vector2(14, -13.5)
+sprite_frames = SubResource("SpriteFrames_23r18")
+animation = &"pulse"
+autoplay = "pulse"
+frame_progress = 0.872027
+
+[node name="HContainerRight" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="VContainerTop" type="VBoxContainer" parent="HContainerRight"]
+layout_mode = 2
+
+[node name="VContainerDown" type="VBoxContainer" parent="HContainerRight"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="InventoryPocket" type="Node2D" parent="HContainerRight/VContainerDown"]
+
+[node name="BackgroundPocket" type="Sprite2D" parent="HContainerRight/VContainerDown/InventoryPocket"]
+position = Vector2(-101, -102)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_wdvpt")

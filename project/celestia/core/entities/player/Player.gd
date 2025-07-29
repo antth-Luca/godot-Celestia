@@ -22,6 +22,7 @@ func _physics_process(_delta) -> void:
 	_set_state()
 	move_and_slide()
 
+
 func _set_state() -> void:
 	var state = "idle"
 	if direction != Vector2.ZERO:

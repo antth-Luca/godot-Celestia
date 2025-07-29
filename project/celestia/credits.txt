@@ -1,0 +1,5 @@
+Thanks to Damian Vila for the assets/fonts/Bescii-Mono.ttf,
+Downloaded on April 23, 2025 from https://github.com/damianvila/font-bescii
+
+Thanks to Clécio Espindola for the assets/particles/light2d-pixel.png,
+Downloaded on July 26, 2025 from https://drive.google.com/drive/folders/1M5ro-aHu5-7U2SNGLmpcdhchvEjLJy0T
