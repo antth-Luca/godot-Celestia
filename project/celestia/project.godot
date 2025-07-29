@@ -17,9 +17,9 @@ config/icon="uid://bgrpx5mgkejj"
 
 [autoload]
 
-EventBus="*res://core/events/EventBus.gd"
 GameConfig="*res://config/GameConfig.gd"
 CustomTranslation="*res://core/globals/CustomTranslation.gd"
+EventBus="*res://core/events/EventBus.gd"
 
 [input]
 

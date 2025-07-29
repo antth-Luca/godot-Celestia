@@ -3,9 +3,9 @@ class_name BaseItem
 
 var item_key: String
 var max_stack: int
-var rarity: Rarity
+var rarity: int
 
-func _init(key: String, enum_rarity: Rarity, num_stack: int) -> void:
+func _init(key: String, enum_rarity: int, num_stack: int) -> void:
 	self.item_key = key
 	self.max_stack = num_stack
 	self.rarity = enum_rarity

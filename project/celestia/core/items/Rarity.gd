@@ -6,15 +6,15 @@ enum { COMMON, UNCOMMON, RARE, EPIC, LEGENDARY }
 
 static func get_color(rarity: Rarity) -> Color:
 	match rarity:
-		Rarity.COMMON:
+		COMMON:
 			return Color('#F5F5F5')
-		Rarity.UNCOMMON:
+		UNCOMMON:
 			return Color('#55A74E')
-		Rarity.RARE:
+		RARE:
 			return Color('#4F7FD9')
-		Rarity.EPIC:
+		EPIC:
 			return Color('#A763C2')
-		Rarity.LEGENDARY:
+		LEGENDARY:
 			return Color('#FFC300')
 		_:
 			return Color.WHITE
