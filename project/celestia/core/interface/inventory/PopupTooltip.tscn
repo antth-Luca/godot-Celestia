@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://dhijmeg3qwcwg"]
+[gd_scene load_steps=4 format=3 uid="uid://dhijmeg3qwcwg"]
+
+[ext_resource type="Script" uid="uid://bpqr368cotsnc" path="res://core/interface/inventory/PopupTooltip.gd" id="1_wskah"]
+[ext_resource type="Texture2D" uid="uid://bs4suw6ji2v1n" path="res://assets/interface/inventory/tooltip_box.png" id="2_gygj8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ueyc5"]
 
 [node name="PopupTooltip" type="Control"]
 layout_mode = 3
@@ -7,3 +12,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wskah")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer"]
+visible = true
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ueyc5")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/PopupPanel"]
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("2_gygj8")
+patch_margin_left = 5
+patch_margin_top = 6
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PopupPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PopupPanel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ovo"
+
+[node name="TooltipLabel" type="Label" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "???"

@@ -4,8 +4,8 @@ class_name Rarity
 enum { COMMON, UNCOMMON, RARE, EPIC, LEGENDARY }
 
 
-static func get_color(rarity: Rarity) -> Color:
-	match rarity:
+static func get_color(rarity_key: int) -> Color:
+	match rarity_key:
 		COMMON:
 			return Color('#F5F5F5')
 		UNCOMMON:
@@ -20,5 +20,5 @@ static func get_color(rarity: Rarity) -> Color:
 			return Color.WHITE
 
 
-static func get_name(rarity: Rarity) -> String:
-	return CustomTranslation.t("item.rarity." + str(rarity).to_lower())
+static func get_name(rarity_key: int) -> String:
+	return CustomTranslation.t("item.rarity." + str(rarity_key).to_lower())

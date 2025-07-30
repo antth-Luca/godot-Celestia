@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3nywi3j43fbq"]
+[gd_scene load_steps=8 format=3 uid="uid://b3nywi3j43fbq"]
 
 [ext_resource type="Script" uid="uid://bbnhnyem2n73k" path="res://core/interface/inventory/MyPanel.gd" id="1_ixect"]
 [ext_resource type="Texture2D" uid="uid://doyecvwh2b31d" path="res://assets/interface/base_box.png" id="2_7gi07"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dhijmeg3qwcwg" path="res://core/interface/inventory/PopupTooltip.tscn" id="3_xotm4"]
 [ext_resource type="Texture2D" uid="uid://cpmddc0wt48qw" path="res://assets/interface/icons/inventory.png" id="4_ogu4c"]
 [ext_resource type="Texture2D" uid="uid://d2d5embdk3je1" path="res://assets/interface/icons/stats.png" id="5_hitft"]
+[ext_resource type="PackedScene" uid="uid://bb0wjffuwv6sv" path="res://core/interface/inventory/Slot.tscn" id="6_ogu4c"]
 
 [node name="MyPanel" type="Control"]
 layout_mode = 3
@@ -23,12 +24,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -439.0
-offset_top = -265.0
-offset_right = 439.0
-offset_bottom = 265.0
+offset_left = -332.0
+offset_top = -195.0
+offset_right = -66.9999
+offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_7gi07")
 region_rect = Rect2(0, 0, 16, 16)
 patch_margin_left = 5
@@ -42,11 +44,15 @@ offset_left = 157.0
 offset_top = 47.0
 offset_right = 197.0
 offset_bottom = 87.0
+scale = Vector2(2.60426, 2.60426)
 
 [node name="InventoryButton" type="Control" parent="VisualTabButtons"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 53.7581
+offset_top = 21.1193
+offset_right = 93.7581
+offset_bottom = 61.1193
+scale = Vector2(0.876149, 0.876149)
 
 [node name="Background" type="Sprite2D" parent="VisualTabButtons/InventoryButton"]
 position = Vector2(1.19209e-07, -2)
@@ -58,9 +64,11 @@ texture = ExtResource("4_ogu4c")
 
 [node name="StatsButton" type="Control" parent="VisualTabButtons"]
 anchors_preset = 0
-offset_left = 29.0
-offset_right = 69.0
-offset_bottom = 40.0
+offset_left = 79.1013
+offset_top = 20.7353
+offset_right = 119.101
+offset_bottom = 60.7353
+scale = Vector2(0.876149, 0.876149)
 
 [node name="Background" type="Sprite2D" parent="VisualTabButtons/StatsButton"]
 position = Vector2(0, -2)
@@ -75,16 +83,160 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="SlotsGroup" type="Control" parent="InventoryTab"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HeadSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="ChestSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="LegSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="FeetSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="RelicSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="RelicSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="RelicSlot2" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="RelicSlot3" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="RelicSlot4" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="RelicSlot5" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="AmmoSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="AmmoSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot2" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot3" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot4" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot5" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot6" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot7" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot8" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot9" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot10" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot11" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot12" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot13" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot14" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot15" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot16" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot17" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot18" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot19" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot20" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot21" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot22" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot23" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot24" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot25" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot26" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot27" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot28" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="BackpackSlot29" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="PocketSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="PocketSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="PocketSlot2" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="PocketSlot3" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
+layout_mode = 0
+
+[node name="PopupTooltip" parent="InventoryTab" instance=ExtResource("3_xotm4")]
+layout_mode = 1
+
 [node name="InventoryTabButton" type="Button" parent="InventoryTab"]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 0
 offset_left = 147.0
 offset_top = 37.0
 offset_right = 167.0
 offset_bottom = 57.0
-
-[node name="PopupTooltip" parent="InventoryTab" instance=ExtResource("3_xotm4")]
-layout_mode = 1
 
 [node name="StatsTab" type="Control" parent="."]
 anchors_preset = 0
@@ -139,6 +291,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="StatsTabButton" type="Button" parent="StatsTab"]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 0
 offset_left = 176.0
