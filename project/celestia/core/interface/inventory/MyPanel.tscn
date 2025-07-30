@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3nywi3j43fbq"]
+[gd_scene load_steps=11 format=3 uid="uid://b3nywi3j43fbq"]
 
 [ext_resource type="Script" uid="uid://bbnhnyem2n73k" path="res://core/interface/inventory/MyPanel.gd" id="1_ixect"]
 [ext_resource type="Texture2D" uid="uid://doyecvwh2b31d" path="res://assets/interface/base_box.png" id="2_7gi07"]
 [ext_resource type="Texture2D" uid="uid://be2d3vwd08wbn" path="res://assets/interface/base_tab_button.png" id="3_3njho"]
-[ext_resource type="PackedScene" uid="uid://dhijmeg3qwcwg" path="res://core/interface/inventory/PopupTooltip.tscn" id="3_xotm4"]
+[ext_resource type="PackedScene" uid="uid://dhijmeg3qwcwg" path="res://core/interface/inventory/tooltip/PopupTooltip.tscn" id="3_xotm4"]
 [ext_resource type="Texture2D" uid="uid://cpmddc0wt48qw" path="res://assets/interface/icons/inventory.png" id="4_ogu4c"]
 [ext_resource type="Texture2D" uid="uid://d2d5embdk3je1" path="res://assets/interface/icons/stats.png" id="5_hitft"]
-[ext_resource type="PackedScene" uid="uid://bb0wjffuwv6sv" path="res://core/interface/inventory/Slot.tscn" id="6_ogu4c"]
+[ext_resource type="Texture2D" uid="uid://dpv26yrlxmg35" path="res://assets/interface/inventory/gradient_circle.png" id="6_hitft"]
+[ext_resource type="Script" uid="uid://4iidgsbidemo" path="res://core/interface/inventory/InventoryTab.gd" id="6_n6qys"]
+[ext_resource type="PackedScene" uid="uid://bb0wjffuwv6sv" path="res://core/interface/inventory/slots/Slot.tscn" id="6_ogu4c"]
+[ext_resource type="Script" uid="uid://flxwg31wj6uj" path="res://core/interface/inventory/StatsTab.gd" id="11_ncsyl"]
 
 [node name="MyPanel" type="Control"]
 layout_mode = 3
@@ -82,6 +85,12 @@ texture = ExtResource("5_hitft")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(2.5, 2.5)
+script = ExtResource("6_n6qys")
+
+[node name="CircleSprite" type="Sprite2D" parent="InventoryTab"]
+position = Vector2(228, 92)
+texture = ExtResource("6_hitft")
 
 [node name="SlotsGroup" type="Control" parent="InventoryTab"]
 anchors_preset = 0
@@ -90,211 +99,444 @@ offset_bottom = 40.0
 
 [node name="HeadSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 186.4
+offset_top = 56.0
+offset_right = 202.4
+offset_bottom = 72.0
+defined_slot_type = 1
 
 [node name="ChestSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 186.4
+offset_top = 74.0
+offset_right = 202.4
+offset_bottom = 90.0
+defined_slot_type = 2
 
 [node name="LegSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 186.4
+offset_top = 92.0
+offset_right = 202.4
+offset_bottom = 108.0
+defined_slot_type = 3
 
 [node name="FeetSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 186.4
+offset_top = 110.0
+offset_right = 202.4
+offset_bottom = 126.0
+defined_slot_type = 4
 
 [node name="RelicSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 254.4
+offset_top = 56.0
+offset_right = 270.4
+offset_bottom = 72.0
+defined_slot_type = 5
 
 [node name="RelicSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 271.2
+offset_top = 56.0
+offset_right = 287.2
+offset_bottom = 72.0
+defined_slot_type = 5
 
 [node name="RelicSlot2" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 254.4
+offset_top = 74.0
+offset_right = 270.4
+offset_bottom = 90.0
+defined_slot_type = 5
 
 [node name="RelicSlot3" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 271.2
+offset_top = 74.0
+offset_right = 287.2
+offset_bottom = 90.0
+defined_slot_type = 5
 
 [node name="RelicSlot4" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 254.4
+offset_top = 92.0
+offset_right = 270.4
+offset_bottom = 108.0
+defined_slot_type = 5
 
 [node name="RelicSlot5" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 271.2
+offset_top = 92.0
+offset_right = 287.2
+offset_bottom = 108.0
+defined_slot_type = 5
 
 [node name="AmmoSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 254.4
+offset_top = 110.0
+offset_right = 270.4
+offset_bottom = 126.0
+defined_slot_type = 6
 
 [node name="AmmoSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 271.2
+offset_top = 110.0
+offset_right = 287.2
+offset_bottom = 126.0
+defined_slot_type = 6
 
 [node name="BackpackSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 152.4
+offset_top = 130.8
+offset_right = 168.4
+offset_bottom = 146.8
 
 [node name="BackpackSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 169.2
+offset_top = 130.8
+offset_right = 185.2
+offset_bottom = 146.8
 
 [node name="BackpackSlot2" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 186.4
+offset_top = 130.8
+offset_right = 202.4
+offset_bottom = 146.8
 
 [node name="BackpackSlot3" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 203.2
+offset_top = 130.8
+offset_right = 219.2
+offset_bottom = 146.8
 
 [node name="BackpackSlot4" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 220.4
+offset_top = 130.8
+offset_right = 236.4
+offset_bottom = 146.8
 
 [node name="BackpackSlot5" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 237.2
+offset_top = 130.8
+offset_right = 253.2
+offset_bottom = 146.8
 
 [node name="BackpackSlot6" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 254.4
+offset_top = 130.8
+offset_right = 270.4
+offset_bottom = 146.8
 
 [node name="BackpackSlot7" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 271.2
+offset_top = 130.8
+offset_right = 287.2
+offset_bottom = 146.8
 
 [node name="BackpackSlot8" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 288.4
+offset_top = 130.8
+offset_right = 304.4
+offset_bottom = 146.8
 
 [node name="BackpackSlot9" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 305.2
+offset_top = 130.8
+offset_right = 321.2
+offset_bottom = 146.8
 
 [node name="BackpackSlot10" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 152.4
+offset_top = 148.8
+offset_right = 168.4
+offset_bottom = 164.8
 
 [node name="BackpackSlot11" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 169.2
+offset_top = 148.8
+offset_right = 185.2
+offset_bottom = 164.8
 
 [node name="BackpackSlot12" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 186.4
+offset_top = 148.8
+offset_right = 202.4
+offset_bottom = 164.8
 
 [node name="BackpackSlot13" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 203.2
+offset_top = 148.8
+offset_right = 219.2
+offset_bottom = 164.8
 
 [node name="BackpackSlot14" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 220.4
+offset_top = 148.8
+offset_right = 236.4
+offset_bottom = 164.8
 
 [node name="BackpackSlot15" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 237.2
+offset_top = 148.8
+offset_right = 253.2
+offset_bottom = 164.8
 
 [node name="BackpackSlot16" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 254.4
+offset_top = 148.8
+offset_right = 270.4
+offset_bottom = 164.8
 
 [node name="BackpackSlot17" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 271.2
+offset_top = 148.8
+offset_right = 287.2
+offset_bottom = 164.8
 
 [node name="BackpackSlot18" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 288.4
+offset_top = 148.8
+offset_right = 304.4
+offset_bottom = 164.8
 
 [node name="BackpackSlot19" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 305.2
+offset_top = 148.8
+offset_right = 321.2
+offset_bottom = 164.8
 
 [node name="BackpackSlot20" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 152.4
+offset_top = 166.8
+offset_right = 168.4
+offset_bottom = 182.8
 
 [node name="BackpackSlot21" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 169.2
+offset_top = 166.8
+offset_right = 185.2
+offset_bottom = 182.8
 
 [node name="BackpackSlot22" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 186.4
+offset_top = 166.8
+offset_right = 202.4
+offset_bottom = 182.8
 
 [node name="BackpackSlot23" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 203.2
+offset_top = 166.8
+offset_right = 219.2
+offset_bottom = 182.8
 
 [node name="BackpackSlot24" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 220.4
+offset_top = 166.8
+offset_right = 236.4
+offset_bottom = 182.8
 
 [node name="BackpackSlot25" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 237.2
+offset_top = 166.8
+offset_right = 253.2
+offset_bottom = 182.8
 
 [node name="BackpackSlot26" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 254.4
+offset_top = 166.8
+offset_right = 270.4
+offset_bottom = 182.8
 
 [node name="BackpackSlot27" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 271.2
+offset_top = 166.8
+offset_right = 287.2
+offset_bottom = 182.8
 
 [node name="BackpackSlot28" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 288.4
+offset_top = 166.8
+offset_right = 304.4
+offset_bottom = 182.8
 
 [node name="BackpackSlot29" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 305.2
+offset_top = 166.8
+offset_right = 321.2
+offset_bottom = 182.8
 
 [node name="PocketSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 201.2
+offset_top = 187.6
+offset_right = 217.2
+offset_bottom = 203.6
 
 [node name="PocketSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 219.2
+offset_top = 187.6
+offset_right = 235.2
+offset_bottom = 203.6
 
 [node name="PocketSlot2" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 237.2
+offset_top = 187.6
+offset_right = 253.2
+offset_bottom = 203.6
 
 [node name="PocketSlot3" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
+offset_left = 255.2
+offset_top = 187.6
+offset_right = 271.2
+offset_bottom = 203.6
 
 [node name="PopupTooltip" parent="InventoryTab" instance=ExtResource("3_xotm4")]
 layout_mode = 1
 
-[node name="InventoryTabButton" type="Button" parent="InventoryTab"]
+[node name="StatsTabButton" type="Button" parent="InventoryTab"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 0
-offset_left = 147.0
-offset_top = 37.0
-offset_right = 167.0
-offset_bottom = 57.0
+offset_left = 135.2
+offset_top = 31.6
+offset_right = 155.2
+offset_bottom = 51.6
 
 [node name="StatsTab" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_ncsyl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StatsTab"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -92.5
+offset_right = 45.5
+offset_bottom = 92.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
 
 [node name="HBoxContainerTop" type="HBoxContainer" parent="StatsTab/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerTop"]
+layout_mode = 2
+text = "- Atributos -"
 
 [node name="HBoxContainerDown" type="HBoxContainer" parent="StatsTab/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 12
 
 [node name="VBoxContainerLeft" type="VBoxContainer" parent="StatsTab/VBoxContainer/HBoxContainerDown"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+[node name="LabelHP" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+[node name="LabelAM" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+[node name="LabelLS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+[node name="LabelRG" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
 layout_mode = 2
 
-[node name="Label5" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+[node name="LabelCritCh" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+layout_mode = 2
+
+[node name="LabelMS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
 layout_mode = 2
 
 [node name="VBoxContainerRight" type="VBoxContainer" parent="StatsTab/VBoxContainer/HBoxContainerDown"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+[node name="LabelMP" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+[node name="LabelFR" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+[node name="LabelCdR" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+[node name="LabelPN" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
 layout_mode = 2
 
-[node name="Label5" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+[node name="LabelCritDm" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
 layout_mode = 2
 
-[node name="StatsTabButton" type="Button" parent="StatsTab"]
+[node name="LabelUS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+layout_mode = 2
+
+[node name="InventoryTabButton" type="Button" parent="StatsTab"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 0
-offset_left = 176.0
-offset_top = 37.0
-offset_right = 196.0
-offset_bottom = 57.0
+offset_left = 273.0
+offset_top = 81.0
+offset_right = 293.0
+offset_bottom = 101.0
+scale = Vector2(2.5, 2.5)
+
+[connection signal="pressed" from="InventoryTab/StatsTabButton" to="." method="_on_stats_button_pressed"]
+[connection signal="pressed" from="StatsTab/InventoryTabButton" to="." method="_on_inventory_button_pressed"]

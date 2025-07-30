@@ -1,6 +1,14 @@
 extends Button
 
-const slot_types = [ "generic", "ammo", "chestplate", "feet", "head", "legs", "relic" ]
+const slot_types = [
+	"generic",
+	"head",
+	"chestplate",
+	"legs",
+	"feet",
+	"relic",
+	"ammo"
+]
 
 @export var defined_slot_type: int
 

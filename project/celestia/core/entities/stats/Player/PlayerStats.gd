@@ -3,13 +3,16 @@ class_name PlayerStats
 
 # STATS
 # Mana
-var max_mp: int = 50
-var mp: int = 50
+var max_mp: float = 50
+var mp: float = 50
 
 # GETTERS AND SETTERS
 # Mana
-func get_max_mana() -> int:
+func get_max_mana() -> float:
 	return max_mp
+
+func get_format_max_mana() -> int:
+	return ceil(max_mp)
 
 func set_max_mana(newStat) -> void:
 	if newStat <= 0: return
