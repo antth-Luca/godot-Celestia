@@ -1,0 +1,23 @@
+extends RefCounted
+class_name DeferredRegister
+
+var mod_id: String
+var registry: Registry
+var holders := {}
+
+
+func _init(mod_id: String, registry: Registry):
+	self.mod_id = mod_id
+	self.registry = registry
+
+
+func register(id: String, factory: Callable) -> Resource:
+	var full_id = "%s:%s" % [mod_id, id]
+	if registry.has(full_id):
+		push_error("Duplicate ID: " + full_id)
+		return null
+
+	var entry = factory.call()
+	registry.register(full_id, entry)
+	holders[full_id] = entry
+	return entry

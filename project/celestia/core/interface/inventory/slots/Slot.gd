@@ -25,7 +25,7 @@ func _ready():
 
 func render_slot(item_slot: ItemStack) -> void:
 	slotTypeSprite.visible = false
-	itemSprite.texture = load("res://assets/textures/items/" + item_slot.item_class.item_key + ".png")
+	itemSprite.texture = load("res://assets/textures/items/" + item_slot.item_id + ".png")
 	itemSprite.visible = true
 	if item_slot.amount > 1:
 		itemAmount.text = str(item_slot.amount)
