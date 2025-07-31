@@ -8,4 +8,5 @@ static func setup() -> void:
 		RegistryManager.ITEM_REGISTRY
 	)
 
-	var EGG = ITEMS.register("egg", func(): Egg.new())
+	var EGG = ITEMS.register(
+		"egg", func(): BaseItem.new(Rarity.COMMON, 12))

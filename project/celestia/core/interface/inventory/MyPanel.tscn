@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cpmddc0wt48qw" path="res://assets/interface/icons/inventory.png" id="4_ogu4c"]
 [ext_resource type="Texture2D" uid="uid://d2d5embdk3je1" path="res://assets/interface/icons/stats.png" id="5_hitft"]
 [ext_resource type="Texture2D" uid="uid://dpv26yrlxmg35" path="res://assets/interface/inventory/gradient_circle.png" id="6_hitft"]
-[ext_resource type="Script" uid="uid://4iidgsbidemo" path="res://core/interface/inventory/InventoryTab.gd" id="6_n6qys"]
+[ext_resource type="Script" uid="uid://4iidgsbidemo" path="res://core/interface/inventory/InventoryManager.gd" id="6_n6qys"]
 [ext_resource type="PackedScene" uid="uid://bb0wjffuwv6sv" path="res://core/interface/inventory/slots/Slot.tscn" id="6_ogu4c"]
-[ext_resource type="Script" uid="uid://flxwg31wj6uj" path="res://core/interface/inventory/StatsTab.gd" id="11_ncsyl"]
+[ext_resource type="Script" uid="uid://flxwg31wj6uj" path="res://core/interface/inventory/StatsManager.gd" id="11_ncsyl"]
 
 [node name="MyPanel" type="Control"]
 layout_mode = 3

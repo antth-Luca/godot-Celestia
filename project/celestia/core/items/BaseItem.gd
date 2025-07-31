@@ -11,3 +11,7 @@ func _init(num_stack: int, enum_rarity: int) -> void:
 
 static func get_empty_item() -> BaseItem:
 	return BaseItem.new(Rarity.COMMON, 1)
+
+
+func use():
+	pass

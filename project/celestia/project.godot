@@ -21,6 +21,10 @@ GameConfig="*res://config/GameConfig.gd"
 CustomTranslation="*res://core/globals/CustomTranslation.gd"
 EventBus="*res://core/events/EventBus.gd"
 
+[global_group]
+
+player=""
+
 [input]
 
 ui_left={
