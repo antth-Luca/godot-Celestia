@@ -18,8 +18,9 @@ const slot_types = [
 
 
 func _ready():
-	if defined_slot_type < 0 or defined_slot_type > 6: push_error("Slot type selected invalid.")
-	if defined_slot_type != 0:
+	if defined_slot_type < 0 or defined_slot_type > 6:
+		push_error("Slot type selected invalid.")
+	elif defined_slot_type != 0:
 		slotTypeSprite.texture = load("res://assets/interface/inventory/slots/types/" + slot_types[defined_slot_type] + ".png")
 
 

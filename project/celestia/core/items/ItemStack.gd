@@ -1,24 +1,33 @@
-extends Object
+extends RefCounted
 class_name ItemStack
 
-var item_id: String
-var amount: int
+var _item: BaseItem
+var _amount: int
 
 
-func _init(item_id: String, amount_slot: int):
-	if amount_slot < 0: return
-	self.item_id = item_id
-	self.amount = amount_slot
+func _init(item_class: BaseItem, amount: int = 1) -> void:
+	if item_class == null:
+		push_error('ItemStack must be created with an instance of BaseItem.')
+	
+	_item = item_class
+	_amount = amount
 
 
-static func get_empty_slot() -> ItemStack:
-	return ItemStack.new('', 1)
+static func get_empty_stack() -> ItemStack:
+	return ItemStack.new(BaseItem.new(), 0)
+
+
+func get_item() -> BaseItem:
+	return _item
+
+
+func get_amount() -> int:
+	return _amount
 
 
 func add_amount_safe(amount_safe: int) -> int:
-	if amount_safe > 0:
-		var space_left = RegistryManager.ITEM_REGISTRY.get_entry(item_id).max_stack - amount
-		var to_add = min(space_left, amount_safe)
-		amount += to_add
-		return amount_safe - to_add
-	return amount_safe
+	if amount_safe <= 0: return amount_safe
+	var space_left = _item.get_max_stack() - _amount
+	var to_add = min(space_left, amount_safe)
+	_amount += to_add
+	return amount_safe - to_add

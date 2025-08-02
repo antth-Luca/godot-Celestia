@@ -1,6 +1,8 @@
 extends Object
 class_name InitItems
 
+static var EGG: BaseItem
+
 
 static func setup() -> void:
 	var ITEMS = DeferredRegister.new(
@@ -8,5 +10,10 @@ static func setup() -> void:
 		RegistryManager.ITEM_REGISTRY
 	)
 
-	var EGG = ITEMS.register(
-		"egg", func(): BaseItem.new(Rarity.COMMON, 12))
+	EGG = ITEMS.register(
+		'egg',
+		func():
+			var item = BaseItem.new()
+			item.set_max_stack(12)
+			return item
+	)

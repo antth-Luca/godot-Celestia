@@ -142,4 +142,4 @@ limit_smoothed = true
 
 [node name="HUD" parent="UI" instance=ExtResource("3_mi63l")]
 
-[node name="Inventory" parent="UI" instance=ExtResource("4_wx6c8")]
+[node name="MyPanel" parent="UI" instance=ExtResource("4_wx6c8")]

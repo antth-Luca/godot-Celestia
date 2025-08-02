@@ -10,18 +10,29 @@ var sprite_to_cursor: Sprite2D = null
 
 
 func _ready() -> void:
-	clear_inventory()
+	clear_all_inventory()
 
 
-func clear_inventory() -> void:
+func update_all_inventory() -> void:
+	# Updates EACH of the slots in your inventory by emptying or rendering them
+	for index in range(46):
+		var slot = slots_group.get_child(index)
+		if inventory[index].get_amount() == 0:
+			slot.clear_slot()
+			continue
+		slot.render_slot(inventory[index])
+
+
+func clear_all_inventory() -> void:
 	for c in slots_group.get_children():
-		c.clear_slot()
+		inventory.append(ItemStack.get_empty_stack())
+	update_all_inventory()
 
 
 func is_full() -> bool:
 	for c in range(12, 42):  # Slots for backpack
 		var slot: ItemStack = inventory[c]
-		if slot.amount < RegistryManager.ITEM_REGISTRY.get(slot.item_id).max_stack:
+		if slot.amount < slot.item.max_stack:
 			return false
 	return true
 
@@ -29,7 +40,7 @@ func is_full() -> bool:
 func get_stackable_index(item_id: String) -> int:
 	for index in range(12, 42):  # Slots for backpack
 		var invent_stack: ItemStack = inventory[index]
-		if invent_stack.item_id == item_id and RegistryManager.ITEM_REGISTRY.get(invent_stack.item_id).max_stack > 1:
+		if invent_stack.item_id == item_id and invent_stack.item.max_stack > 1:
 			return index
 	return -1
 
@@ -52,7 +63,7 @@ func drop_item_players_foot(stack: ItemStack):
 
 func add_item_to_bp_new_slot(stack: ItemStack):
 	for index in range(12, 42):  # Slots for backpack
-		if inventory[index].amount <= 0:
+		if inventory[index].amount == 0:
 			inventory[index] = stack
 			slots_group.get_child(index).render_slot(inventory[index])
 			return
@@ -70,7 +81,7 @@ func add_item_to_backpack(stack: ItemStack) -> void:
 		remaining_amount = stack.amount
 	# As long as there is an remaining amount, try adding
 	while remaining_amount > 0:
-		var item_max_stack: int = RegistryManager.ITEM_REGISTRY.get(stack.item_id).max_stack
+		var item_max_stack: int = stack.item.max_stack
 		if remaining_amount <= item_max_stack:
 			add_item_to_bp_new_slot(ItemStack.new(
 				stack.item_id,

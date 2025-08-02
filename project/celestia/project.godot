@@ -20,6 +20,7 @@ config/icon="uid://bgrpx5mgkejj"
 GameConfig="*res://config/GameConfig.gd"
 CustomTranslation="*res://core/globals/CustomTranslation.gd"
 EventBus="*res://core/events/EventBus.gd"
+RegistryManager="*res://core/registries/RegistryManager.gd"
 
 [global_group]
 

@@ -11,7 +11,7 @@ func _init(mod_id: String, registry: Registry):
 	self.registry = registry
 
 
-func register(id: String, factory: Callable) -> Resource:
+func register(id: String, factory: Callable):
 	var full_id = "%s:%s" % [mod_id, id]
 	if registry.has(full_id):
 		push_error("Duplicate ID: " + full_id)
