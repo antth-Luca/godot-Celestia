@@ -6,12 +6,13 @@ var stack: ItemStack
 
 func initialize(stack_param: ItemStack):
 	stack = stack_param
-	$ItemSprite.texture = load("res://assets/textures/items/" + stack.get_item().get_id() + ".png")
+	var id_parts: Array = stack.get_item().get_splited_id()
+	$ItemSprite.texture = load('res://assets/%s/textures/items/%s.png' % id_parts)
 
 
 func _on_body_entered(body):
-	if body.is_in_group("player"):
-		var inventory = body.get_node("UI/MyPanel/InventoryTab")
+	if body.is_in_group('player'):
+		var inventory = body.get_node('UI/MyPanel/InventoryTab')
 		if not inventory.is_full():
 			var follow_tween = create_tween()
 			follow_tween.tween_property(

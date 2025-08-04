@@ -11,6 +11,10 @@ func get_id() -> String:
 	return _id
 
 
+func get_splited_id() -> Array:
+	return _id.split(':')
+
+
 func set_id(new_id: String) -> void:
 	if _id != '' and _id != new_id:
 		push_warning('Item ID already set. It cannot be changed after initialization.')

@@ -7,12 +7,12 @@ func _ready() -> void:
 
 
 func load_translations() -> void:
-	var tr_file = FileAccess.open("res://assets/lang/%s.json" % GameConfig.config.get('language'), FileAccess.READ)
+	var tr_file = FileAccess.open('res://assets/celestia/lang/%s.json' % GameConfig.config.get('language'), FileAccess.READ)
 	if tr_file:
 		var content = tr_file.get_as_text()
 		translation = JSON.parse_string(content)
 	else:
-		push_error("Error loading translation.")
+		push_error('Error loading translation.')
 
 
 func t(key: String) -> String:

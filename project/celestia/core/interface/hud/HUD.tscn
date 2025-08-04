@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://7hauijtfq470"]
 
-[ext_resource type="Texture2D" uid="uid://btnuubbiilyo4" path="res://assets/interface/hud/stats_bar/background.png" id="1_4n8cl"]
-[ext_resource type="Texture2D" uid="uid://b3xcheqxbydlw" path="res://assets/interface/hud/stats_bar/vessel.png" id="2_wdvpt"]
-[ext_resource type="Texture2D" uid="uid://cl3twyd33shnf" path="res://assets/interface/hud/stats_bar/heart.png" id="3_abe2h"]
-[ext_resource type="Texture2D" uid="uid://x1ifmif6ol6j" path="res://assets/interface/hud/pocket_inventory.png" id="4_wdvpt"]
+[ext_resource type="Texture2D" uid="uid://btnuubbiilyo4" path="res://assets/celestia/interface/hud/stats_bar/background.png" id="1_4n8cl"]
+[ext_resource type="Texture2D" uid="uid://b3xcheqxbydlw" path="res://assets/celestia/interface/hud/stats_bar/vessel.png" id="2_wdvpt"]
+[ext_resource type="Texture2D" uid="uid://cl3twyd33shnf" path="res://assets/celestia/interface/hud/stats_bar/heart.png" id="3_abe2h"]
+[ext_resource type="Texture2D" uid="uid://x1ifmif6ol6j" path="res://assets/celestia/interface/hud/pocket_inventory.png" id="4_wdvpt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jo12g"]
 atlas = ExtResource("3_abe2h")

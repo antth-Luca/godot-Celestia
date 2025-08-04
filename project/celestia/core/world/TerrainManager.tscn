@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=4 uid="uid://cj1d4dgd5lwqi"]
 
-[ext_resource type="Texture2D" uid="uid://dv6ondm0mm3e1" path="res://assets/textures/terrain/water.png" id="1_67ld7"]
-[ext_resource type="Texture2D" uid="uid://ccfbhc64dur6" path="res://assets/textures/terrain/sand_cover.png" id="2_1gpnw"]
-[ext_resource type="Texture2D" uid="uid://bi70yqqf12kop" path="res://assets/textures/terrain/stone.png" id="3_0vhmk"]
-[ext_resource type="Texture2D" uid="uid://dv0qfqt0ud7cv" path="res://assets/textures/terrain/grass_cover.png" id="4_yhwit"]
+[ext_resource type="Texture2D" uid="uid://dv6ondm0mm3e1" path="res://assets/celestia/textures/terrain/water.png" id="1_67ld7"]
+[ext_resource type="Texture2D" uid="uid://ccfbhc64dur6" path="res://assets/celestia/textures/terrain/sand_cover.png" id="2_1gpnw"]
+[ext_resource type="Texture2D" uid="uid://bi70yqqf12kop" path="res://assets/celestia/textures/terrain/stone.png" id="3_0vhmk"]
+[ext_resource type="Texture2D" uid="uid://dv0qfqt0ud7cv" path="res://assets/celestia/textures/terrain/grass_cover.png" id="4_yhwit"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0vhmk"]
 texture = ExtResource("1_67ld7")

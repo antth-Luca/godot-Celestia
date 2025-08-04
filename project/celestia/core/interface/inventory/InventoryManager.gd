@@ -32,7 +32,7 @@ func clear_all_inventory() -> void:
 func is_full() -> bool:
 	for c in range(12, 42):  # Slots for backpack
 		var slot: ItemStack = inventory[c]
-		if slot.amount < slot.item.max_stack:
+		if slot.get_amount() < slot.get_item().get_max_stack():
 			return false
 	return true
 
@@ -40,7 +40,7 @@ func is_full() -> bool:
 func get_stackable_index(item_id: String) -> int:
 	for index in range(12, 42):  # Slots for backpack
 		var invent_stack: ItemStack = inventory[index]
-		if invent_stack.item_id == item_id and invent_stack.item.max_stack > 1:
+		if invent_stack.get_item().get_id() == item_id and invent_stack.get_item().get_max_stack() > 1:
 			return index
 	return -1
 
@@ -63,7 +63,7 @@ func drop_item_players_foot(stack: ItemStack):
 
 func add_item_to_bp_new_slot(stack: ItemStack):
 	for index in range(12, 42):  # Slots for backpack
-		if inventory[index].amount == 0:
+		if inventory[index].get_amount() == 0:
 			inventory[index] = stack
 			slots_group.get_child(index).render_slot(inventory[index])
 			return
@@ -73,24 +73,24 @@ func add_item_to_bp_new_slot(stack: ItemStack):
 func add_item_to_backpack(stack: ItemStack) -> void:
 	# Adds an item to the inventory, stacking, creating or ignoring it
 	var remaining_amount = 0
-	var stackable_index = get_stackable_index(stack.item_id)
+	var stackable_index = get_stackable_index(stack.get_item().get_id())
 	if not stackable_index < 0:  # Or: >= 0
-		remaining_amount = inventory[stackable_index].add_amount_safe(stack.amount)
+		remaining_amount = inventory[stackable_index].add_amount_safe(stack.get_amount())
 		slots_group.get_child(stackable_index).render_slot(inventory[stackable_index])
 	else:
-		remaining_amount = stack.amount
+		remaining_amount = stack.get_amount()
 	# As long as there is an remaining amount, try adding
 	while remaining_amount > 0:
-		var item_max_stack: int = stack.item.max_stack
+		var item_max_stack: int = stack.get_item().get_max_stack()
 		if remaining_amount <= item_max_stack:
 			add_item_to_bp_new_slot(ItemStack.new(
-				stack.item_id,
+				stack.get_item(),
 				remaining_amount
 			))
 			return
 		else:
 			add_item_to_bp_new_slot(ItemStack.new(
-				stack.item_id,
+				stack.get_item(),
 				item_max_stack
 			))
 			remaining_amount -= item_max_stack
