@@ -3,7 +3,7 @@ extends Control
 @onready var slots_group = $SlotsGroup
 @onready var popup_tooltip = $PopupTooltip
 
-var inventory = []
+var inventory: Array[ItemStack] = []
 var stack_in_cursor: ItemStack
 var cursor_click_origin_slot: int
 var sprite_to_cursor: Sprite2D = null
@@ -11,6 +11,11 @@ var sprite_to_cursor: Sprite2D = null
 
 func _ready() -> void:
 	clear_all_inventory()
+	EventBus.client_inventory.connect('left_click_slot', Callable(self, '_handle_left_click_on_slot'))
+	EventBus.client_inventory.connect('middle_click_slot', Callable(self, '_handle_middle_click_on_slot'))
+	EventBus.client_inventory.connect('right_click_slot', Callable(self, '_handle_right_click_on_slot'))
+	EventBus.client_inventory.connect('mouse_entered_slot', Callable(self, '_handle_entered_mouse_on_slot'))
+	EventBus.client_inventory.connect('mouse_exited_slot', Callable(self, '_handle_exited_mouse_on_slot'))
 
 
 func update_all_inventory() -> void:
@@ -39,15 +44,15 @@ func is_full() -> bool:
 
 func get_stackable_index(item_id: String) -> int:
 	for index in range(12, 42):  # Slots for backpack
-		var invent_stack: ItemStack = inventory[index]
-		if invent_stack.get_item().get_id() == item_id and invent_stack.get_item().get_max_stack() > 1:
+		var invent_item: BaseItem = inventory[index].get_item()
+		if invent_item.get_id() == item_id and invent_item.get_max_stack() > 1:
 			return index
 	return -1
 
 
 func drop_item_in_position(stack: ItemStack, pos: Vector2):
 	# Drops an item in a specific position
-	var dropped_item = preload("res://core/items/DroppedItem.tscn")
+	var dropped_item = preload('res://core/items/DroppedItem.tscn')
 	var drop = dropped_item.instantiate()
 	drop.initialize(stack)
 	get_tree().root.add_child(drop)
@@ -94,3 +99,23 @@ func add_item_to_backpack(stack: ItemStack) -> void:
 				item_max_stack
 			))
 			remaining_amount -= item_max_stack
+
+# HANDLERS
+func _handle_left_click_on_slot(slot):
+	print('Clique esquerdo no slot: %s' % [slot.get_index()])
+
+
+func _handle_middle_click_on_slot(slot):
+	print('Clique médio no slot: %s' % [slot.get_index()])
+
+
+func _handle_right_click_on_slot(slot):
+	print('Clique direito no slot: %s' % [slot.get_index()])
+
+
+func _handle_entered_mouse_on_slot(slot):
+	print('Mouse entrou no slot: %s' % [slot.get_index()])
+
+
+func _handle_exited_mouse_on_slot():
+	print('Mouse saiu deu um slot')
