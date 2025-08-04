@@ -16,6 +16,8 @@
 	"ui.inventory.stats.rc": "Redução Resfr.: ",
 
 	"item.rarity.common": "Comum",
+	"item.rarity.0": "0Comum",
+	"item.rarity.1": "1Comum",
 	"item.rarity.rare": "Raro",
 	"item.rarity.epic": "Épico",
 	"item.rarity.mithic": "Mítico",

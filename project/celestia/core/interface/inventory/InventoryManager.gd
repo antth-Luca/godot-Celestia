@@ -4,18 +4,26 @@ extends Control
 @onready var popup_tooltip = $PopupTooltip
 
 var inventory: Array[ItemStack] = []
-var stack_in_cursor: ItemStack
+var _stack_in_cursor: ItemStack
 var cursor_click_origin_slot: int
 var sprite_to_cursor: Sprite2D = null
 
-
+# GODOT
 func _ready() -> void:
 	clear_all_inventory()
 	EventBus.client_inventory.connect('left_click_slot', Callable(self, '_handle_left_click_on_slot'))
 	EventBus.client_inventory.connect('middle_click_slot', Callable(self, '_handle_middle_click_on_slot'))
 	EventBus.client_inventory.connect('right_click_slot', Callable(self, '_handle_right_click_on_slot'))
 
+# GETTERS AND SETTERS
+func get_stack_in_inventory(pos: int) -> ItemStack:
+	return inventory[pos]
 
+
+func get_stack_in_cursor() -> ItemStack:
+	return _stack_in_cursor
+
+# MAIN
 func update_all_inventory() -> void:
 	# Updates EACH of the slots in your inventory by emptying or rendering them
 	for index in range(46):

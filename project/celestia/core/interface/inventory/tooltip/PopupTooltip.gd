@@ -1,5 +1,6 @@
 extends Control
 
+@onready var INVENTORY = get_parent()
 @onready var popup_panel: PopupPanel = $CanvasLayer/PopupPanel
 @onready var title_label: Label = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TitleLabel
 @onready var tooltip_label: Label = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TooltipLabel
@@ -34,14 +35,27 @@ func hide_popup():
 
 
 func update_data_popup(item: BaseItem):
-	title_label.text = CustomTranslation.t('item.' + item.item_key + '.name') + " (" + CustomTranslation.t('item.rarity.' + Rarity.get_name(item.rarity)) + ")"
-	title_label.label_settings.font_color = Rarity.get_color(item.rarity)
-	tooltip_label.text = CustomTranslation.t('item.' + item.item_key + '.tooltip')
+	title_label.text = '%s (%s)' % [
+		CustomTranslation.t('item.%s.name' % [item.get_splited_id()[1]]),
+		Rarity.get_name(item.get_rarity())
+	]
+	title_label.label_settings.font_color = Rarity.get_color(item.get_rarity())
+	tooltip_label.text = CustomTranslation.t('item.' + item.get_splited_id()[1] + '.tooltip')
 
 # HANDLERS
 func _handle_entered_mouse_on_slot(slot):
-	print('Mouse entrou no slot: %s' % [slot.get_index()])
+	if INVENTORY.get_stack_in_cursor() == null:
+		var slot_stack = INVENTORY.get_stack_in_inventory(slot.get_index())
+		if slot_stack.get_amount() > 0:
+			item_popup(
+				Rect2i(
+					Vector2i(slot.global_position),
+					Vector2i(slot.size)
+				),
+				slot_stack.get_item()
+			)
 
 
 func _handle_exited_mouse_on_slot():
-	print('Mouse saiu deu um slot')
+	if INVENTORY.get_stack_in_cursor() == null:
+		hide_popup()
