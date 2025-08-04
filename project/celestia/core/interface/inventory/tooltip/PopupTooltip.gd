@@ -5,6 +5,11 @@ extends Control
 @onready var tooltip_label: Label = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TooltipLabel
 
 
+func _ready():
+	EventBus.client_inventory.connect('mouse_entered_slot', Callable(self, '_handle_entered_mouse_on_slot'))
+	EventBus.client_inventory.connect('mouse_exited_slot', Callable(self, '_handle_exited_mouse_on_slot'))
+
+
 func item_popup(slot: Rect2i, item: BaseItem):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var correction
@@ -32,3 +37,11 @@ func update_data_popup(item: BaseItem):
 	title_label.text = CustomTranslation.t('item.' + item.item_key + '.name') + " (" + CustomTranslation.t('item.rarity.' + Rarity.get_name(item.rarity)) + ")"
 	title_label.label_settings.font_color = Rarity.get_color(item.rarity)
 	tooltip_label.text = CustomTranslation.t('item.' + item.item_key + '.tooltip')
+
+# HANDLERS
+func _handle_entered_mouse_on_slot(slot):
+	print('Mouse entrou no slot: %s' % [slot.get_index()])
+
+
+func _handle_exited_mouse_on_slot():
+	print('Mouse saiu deu um slot')

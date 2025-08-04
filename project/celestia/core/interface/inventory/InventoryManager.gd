@@ -14,8 +14,6 @@ func _ready() -> void:
 	EventBus.client_inventory.connect('left_click_slot', Callable(self, '_handle_left_click_on_slot'))
 	EventBus.client_inventory.connect('middle_click_slot', Callable(self, '_handle_middle_click_on_slot'))
 	EventBus.client_inventory.connect('right_click_slot', Callable(self, '_handle_right_click_on_slot'))
-	EventBus.client_inventory.connect('mouse_entered_slot', Callable(self, '_handle_entered_mouse_on_slot'))
-	EventBus.client_inventory.connect('mouse_exited_slot', Callable(self, '_handle_exited_mouse_on_slot'))
 
 
 func update_all_inventory() -> void:
@@ -111,11 +109,3 @@ func _handle_middle_click_on_slot(slot):
 
 func _handle_right_click_on_slot(slot):
 	print('Clique direito no slot: %s' % [slot.get_index()])
-
-
-func _handle_entered_mouse_on_slot(slot):
-	print('Mouse entrou no slot: %s' % [slot.get_index()])
-
-
-func _handle_exited_mouse_on_slot():
-	print('Mouse saiu deu um slot')
