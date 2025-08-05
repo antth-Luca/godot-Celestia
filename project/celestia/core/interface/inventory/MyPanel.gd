@@ -24,8 +24,8 @@ func _input(event):
 			_on_inventory_button_pressed()
 		elif event.is_action_pressed("ui_tab_2"):
 			_on_stats_button_pressed()
-	# else:
-			# on_inventory_closed()
+	else:
+			inventory_tab._on_inventory_closed()
 
 
 func show_inventory() -> void:

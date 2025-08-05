@@ -15,6 +15,10 @@ func _ready() -> void:
 	EventBus.client_inventory.connect('middle_click_slot', Callable(self, '_handle_middle_click_on_slot'))
 	EventBus.client_inventory.connect('right_click_slot', Callable(self, '_handle_right_click_on_slot'))
 
+
+func _input(_event):
+	update_cursor_sprite_position()
+
 # GETTERS AND SETTERS
 func get_stack_in_inventory(pos: int) -> ItemStack:
 	return inventory[pos]
@@ -24,6 +28,16 @@ func get_stack_in_cursor() -> ItemStack:
 	return _stack_in_cursor
 
 # MAIN
+func _on_inventory_closed() -> void:
+	if _stack_in_cursor != null and _stack_in_cursor.get_amount() > 0:
+		if cursor_click_origin_slot < 46:
+			add_item_to_backpack(_stack_in_cursor)
+		else:
+			drop_item_players_foot(_stack_in_cursor)
+		_stack_in_cursor = null
+		clear_sprite_to_cursor()
+
+
 func update_all_inventory() -> void:
 	# Updates EACH of the slots in your inventory by emptying or rendering them
 	for index in range(46):
@@ -106,9 +120,36 @@ func add_item_to_backpack(stack: ItemStack) -> void:
 			))
 			remaining_amount -= item_max_stack
 
-# HANDLERS
+# CURSOR HANDLERS
+func set_sprite_to_cursor(item_key: String):
+	sprite_to_cursor = Sprite2D.new()
+	sprite_to_cursor.texture = load('res://assets/celestia/textures/items/%s.png' % item_key)
+	add_child(sprite_to_cursor)
+	update_cursor_sprite_position()
+
+
+func clear_sprite_to_cursor():
+	if sprite_to_cursor == null: return
+	sprite_to_cursor.queue_free()
+	sprite_to_cursor = null
+
+
+func update_cursor_sprite_position():
+	if _stack_in_cursor == null or _stack_in_cursor.get_amount() <= 0: return
+	sprite_to_cursor.global_position = get_global_mouse_position()
+
+
 func _handle_left_click_on_slot(slot):
-	print('Clique esquerdo no slot: %s' % [slot.get_index()])
+	var slot_index = slot.get_index()
+	var slot_stack = inventory[slot_index]
+
+	if _stack_in_cursor == null or _stack_in_cursor.get_amount() <= 0:
+		if slot_stack.get_amount() > 0:
+			_stack_in_cursor = slot_stack
+			cursor_click_origin_slot = slot_index
+			inventory[slot_index] = ItemStack.get_empty_stack()
+			slot.clear_slot()
+			set_sprite_to_cursor(_stack_in_cursor.get_item().get_splited_id()[1])
 
 
 func _handle_middle_click_on_slot(slot):
