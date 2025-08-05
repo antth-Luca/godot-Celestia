@@ -4,21 +4,33 @@ class_name Rarity
 enum { COMMON, UNCOMMON, RARE, EPIC, LEGENDARY }
 
 
-static func get_color(rarity_key: int) -> Color:
+static func get_color(rarity_key: int) -> String:
 	match rarity_key:
 		COMMON:
-			return Color('#F5F5F5')
+			return '#D5D5D5'
 		UNCOMMON:
-			return Color('#55A74E')
+			return '#55A74E'
 		RARE:
-			return Color('#4F7FD9')
+			return '#4F7FD9'
 		EPIC:
-			return Color('#A763C2')
+			return '#A763C2'
 		LEGENDARY:
-			return Color('#FFC300')
+			return '#FFC300'
 		_:
-			return Color.WHITE
+			return '#FFFFFF'
 
 
-static func get_name(rarity_key: int) -> String:
-	return CustomTranslation.t("item.rarity." + str(rarity_key).to_lower())
+static func get_tr_name(rarity_key: int) -> String:
+	var rarity_id
+	match rarity_key:
+		COMMON:
+			rarity_id = 'common'
+		UNCOMMON:
+			rarity_id = 'uncommon'
+		RARE:
+			rarity_id = 'rare'
+		EPIC:
+			rarity_id = 'epic'
+		LEGENDARY:
+			rarity_id = 'legendary'
+	return CustomTranslation.t('celestia.item.rarity.%s' % [rarity_id])

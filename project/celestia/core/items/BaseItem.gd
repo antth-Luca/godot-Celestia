@@ -45,5 +45,15 @@ func set_rarity(new_rarity: int) -> void:
 	_rarity = new_rarity
 
 
+func get_tooltip() -> Array[String]:
+	var splited_id: Array = get_splited_id()
+	var name_line = '%s [color=%s](%s)[/color]' % [
+		CustomTranslation.t('%s.item.%s.name' % splited_id),
+		Rarity.get_color(_rarity),
+		Rarity.get_tr_name(_rarity)
+	]
+	return [name_line]
+
+
 func use():
 	pass

@@ -2,8 +2,8 @@ extends Control
 
 @onready var INVENTORY = get_parent()
 @onready var popup_panel: PopupPanel = $CanvasLayer/PopupPanel
-@onready var title_label: Label = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TitleLabel
-@onready var tooltip_label: Label = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TooltipLabel
+@onready var title_label: RichTextLabel = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TitleRichLabel
+@onready var tooltip_label: RichTextLabel = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TooltipRichLabel
 
 
 func _ready():
@@ -35,12 +35,16 @@ func hide_popup():
 
 
 func update_data_popup(item: BaseItem):
-	title_label.text = '%s (%s)' % [
-		CustomTranslation.t('item.%s.name' % [item.get_splited_id()[1]]),
-		Rarity.get_name(item.get_rarity())
-	]
-	title_label.label_settings.font_color = Rarity.get_color(item.get_rarity())
-	tooltip_label.text = CustomTranslation.t('item.' + item.get_splited_id()[1] + '.tooltip')
+	title_label.clear()
+	tooltip_label.clear()
+	var tooltip_lines: Array[String] = item.get_tooltip()
+	title_label.append_text(tooltip_lines[0])
+	if tooltip_lines.size() > 1:
+		tooltip_label.visible = true
+		for c in range(1, tooltip_lines.size()):
+			tooltip_label.append_text(tooltip_lines[c])
+	else:
+		tooltip_label.visible = false
 
 # HANDLERS
 func _handle_entered_mouse_on_slot(slot):

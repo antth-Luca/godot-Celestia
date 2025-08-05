@@ -1,31 +1,29 @@
 {
-	"ui.config.language": "Linguagem",
+	"celestia.ui.config.language": "Linguagem",
 
-	"ui.inventory.stats.title": "Atributos",
-	"ui.inventory.stats.hp": "Vida: ",
-	"ui.inventory.stats.mn": "Mana: ",
-	"ui.inventory.stats.df": "Defesa: ",
-	"ui.inventory.stats.dm": "Dano: ",
-	"ui.inventory.stats.cc": "Chance de crít.: ",
-	"ui.inventory.stats.cd": "Dano crítico: ",
-	"ui.inventory.stats.ls": "Roubo de vida: ",
-	"ui.inventory.stats.pn": "Penetração: ",
-	"ui.inventory.stats.rg": "Alcance: ",
-	"ui.inventory.stats.as": "Vel. Ataque: ",
-	"ui.inventory.stats.ms": "Vel. Movimento: ",
-	"ui.inventory.stats.rc": "Redução Resfr.: ",
+	"celestia.ui.inventory.stats.title": "Atributos",
+	"celestia.ui.inventory.stats.hp": "Vida: ",
+	"celestia.ui.inventory.stats.mn": "Mana: ",
+	"celestia.ui.inventory.stats.df": "Defesa: ",
+	"celestia.ui.inventory.stats.dm": "Dano: ",
+	"celestia.ui.inventory.stats.cc": "Chance de crít.: ",
+	"celestia.ui.inventory.stats.cd": "Dano crítico: ",
+	"celestia.ui.inventory.stats.ls": "Roubo de vida: ",
+	"celestia.ui.inventory.stats.pn": "Penetração: ",
+	"celestia.ui.inventory.stats.rg": "Alcance: ",
+	"celestia.ui.inventory.stats.as": "Vel. Ataque: ",
+	"celestia.ui.inventory.stats.ms": "Vel. Movimento: ",
+	"celestia.ui.inventory.stats.rc": "Redução Resfr.: ",
 
-	"item.rarity.common": "Comum",
-	"item.rarity.0": "0Comum",
-	"item.rarity.1": "1Comum",
-	"item.rarity.rare": "Raro",
-	"item.rarity.epic": "Épico",
-	"item.rarity.mithic": "Mítico",
-	"item.rarity.legendary": "Lendário",
+	"celestia.item.rarity.common": "Comum",
+	"celestia.item.rarity.rare": "Raro",
+	"celestia.item.rarity.epic": "Épico",
+	"celestia.item.rarity.mithic": "Mítico",
+	"celestia.item.rarity.legendary": "Lendário",
 
-	"item.chicken_egg.name": "Ovo de Galinha",
+	"celestia.item.egg.name": "Ovo de Galinha",
 
-	"build": "",
+	"celestia.build": "",
 
-	"mob.chicken.name": "Galinha"
+	"celestia.mob.chicken.name": "Galinha"
 }

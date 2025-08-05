@@ -1,9 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhijmeg3qwcwg"]
+[gd_scene load_steps=5 format=3 uid="uid://dhijmeg3qwcwg"]
 
 [ext_resource type="Script" uid="uid://bpqr368cotsnc" path="res://core/interface/inventory/tooltip/PopupTooltip.gd" id="1_wskah"]
 [ext_resource type="Texture2D" uid="uid://bs4suw6ji2v1n" path="res://assets/celestia/interface/inventory/tooltip_box.png" id="2_gygj8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ueyc5"]
+
+[sub_resource type="FontFile" id="FontFile_1gl0d"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
 [node name="PopupTooltip" type="Control"]
 layout_mode = 3
@@ -45,10 +52,14 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 4
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
+[node name="TitleRichLabel" type="RichTextLabel" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Ovo"
+theme_override_fonts/normal_font = SubResource("FontFile_1gl0d")
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
 
-[node name="TooltipLabel" type="Label" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
+[node name="TooltipRichLabel" type="RichTextLabel" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "???"
+bbcode_enabled = true
+fit_content = true
