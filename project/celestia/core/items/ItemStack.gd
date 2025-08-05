@@ -25,6 +25,10 @@ func get_amount() -> int:
 	return _amount
 
 
+func set_amount(new_amount: int) -> void:
+	_amount = new_amount
+
+
 func add_amount_safe(amount_safe: int) -> int:
 	if amount_safe <= 0: return amount_safe
 	var space_left = _item.get_max_stack() - _amount
