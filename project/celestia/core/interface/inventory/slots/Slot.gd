@@ -1,15 +1,5 @@
 extends Button
 
-const slot_types = [
-	'generic',
-	'head',
-	'chestplate',
-	'legs',
-	'feet',
-	'relic',
-	'ammo'
-]
-
 @export var defined_slot_type: int
 
 @onready var slotTypeSprite: Sprite2D = $SlotType
@@ -21,7 +11,7 @@ func _ready():
 	if defined_slot_type < 0 or defined_slot_type > 6:
 		push_error('Slot type selected invalid.')
 	elif defined_slot_type != 0:
-		slotTypeSprite.texture = load('res://assets/celestia/interface/inventory/slots/types/%s.png' % [slot_types[defined_slot_type]])
+		slotTypeSprite.texture = load('res://assets/%s/interface/inventory/slots/types/%s.png' % SlotTypes.get_splited_id(defined_slot_type))
 
 
 func render_slot(item_slot: ItemStack) -> void:

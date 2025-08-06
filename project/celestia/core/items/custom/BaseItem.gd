@@ -55,5 +55,21 @@ func get_tooltip() -> Array[String]:
 	return [name_line]
 
 
+func can_equip() -> bool:
+	return true
+
+
+func on_equip():
+	pass
+
+
+func can_unequip() -> bool:
+	return true
+
+
+func on_unequip():
+	pass
+
+
 func use():
 	pass

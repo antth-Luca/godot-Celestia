@@ -72,7 +72,7 @@ func get_stackable_index(item_id: String) -> int:
 
 func drop_item_in_position(stack: ItemStack, pos: Vector2):
 	# Drops an item in a specific position
-	var dropped_item = preload('res://core/items/DroppedItem.tscn')
+	var dropped_item = preload('res://core/items/custom/DroppedItem.tscn')
 	var drop = dropped_item.instantiate()
 	drop.initialize(stack)
 	get_tree().root.add_child(drop)

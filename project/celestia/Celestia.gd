@@ -9,7 +9,7 @@ func _ready():
 	InitItems.setup()
 
 	# TESTS CODE
-	var dropped_item = preload("res://core/items/DroppedItem.tscn")
+	var dropped_item = preload("res://core/items/custom/DroppedItem.tscn")
 	var drop = dropped_item.instantiate()
 	drop.initialize(ItemStack.new(InitItems.EGG, 16))
 	add_child(drop)
