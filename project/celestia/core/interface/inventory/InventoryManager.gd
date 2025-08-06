@@ -81,7 +81,7 @@ func drop_item_in_position(stack: ItemStack, pos: Vector2):
 
 func drop_item_players_foot(stack: ItemStack):
 	# Drops an item at the player's feet
-	var player = get_parent().get_parent()
+	var player = get_parent().get_parent().get_parent()
 	var at_pos = player.global_position
 	drop_item_in_position(stack, at_pos)
 
@@ -172,7 +172,12 @@ func _handle_left_click_on_slot(slot):
 
 
 func _handle_middle_click_on_slot(slot):
-	print('Clique médio no slot: %s' % [slot.get_index()])
+	var slot_index = slot.get_index()
+	var slot_stack = inventory[slot_index]
+	if slot_stack.get_amount() > 0:
+		inventory[slot_index] = ItemStack.get_empty_stack()
+		drop_item_players_foot(slot_stack)
+		slot.clear_slot()
 
 
 func _handle_right_click_on_slot(slot):

@@ -10,4 +10,4 @@ script = ExtResource("1_7jpfq")
 [node name="TerrainManager" parent="." instance=ExtResource("1_0xm2m")]
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(540, 303)
+position = Vector2(443, 158)
