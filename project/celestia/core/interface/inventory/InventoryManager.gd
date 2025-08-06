@@ -121,9 +121,9 @@ func add_item_to_backpack(stack: ItemStack) -> void:
 			remaining_amount -= item_max_stack
 
 # CURSOR HANDLERS
-func set_sprite_to_cursor(item_key: String):
+func set_sprite_to_cursor(splited_id: Array):
 	sprite_to_cursor = Sprite2D.new()
-	sprite_to_cursor.texture = load('res://assets/celestia/textures/items/%s.png' % item_key)
+	sprite_to_cursor.texture = load('res://assets/%s/textures/items/%s.png' % splited_id)
 	add_child(sprite_to_cursor)
 	update_cursor_sprite_position()
 
@@ -149,7 +149,7 @@ func _handle_left_click_on_slot(slot):
 			cursor_click_origin_slot = slot_index
 			inventory[slot_index] = ItemStack.get_empty_stack()
 			slot.clear_slot()
-			set_sprite_to_cursor(_stack_in_cursor.get_item().get_splited_id()[1])
+			set_sprite_to_cursor(_stack_in_cursor.get_item().get_splited_id())
 	# Cursor loaded and slot empty
 	elif slot_stack.get_amount() <= 0:
 		inventory[slot_index] = _stack_in_cursor
@@ -176,4 +176,34 @@ func _handle_middle_click_on_slot(slot):
 
 
 func _handle_right_click_on_slot(slot):
-	print('Clique direito no slot: %s' % [slot.get_index()])
+	var slot_index = slot.get_index()
+	var slot_stack = inventory[slot_index]
+	# Empty cursor
+	if _stack_in_cursor == null or _stack_in_cursor.get_amount() <= 0:
+		if slot_stack.get_amount() > 0:
+			var take_amount := int(ceil(slot_stack.get_amount() / 2.0))
+			_stack_in_cursor = ItemStack.new(slot_stack.get_item(), take_amount)
+			cursor_click_origin_slot = slot_index
+			slot_stack.set_amount(slot_stack.get_amount() - take_amount)
+			set_sprite_to_cursor(_stack_in_cursor.get_item().get_splited_id())
+	# Cursor loaded and slot empty
+	elif slot_stack.get_amount() <= 0:
+		inventory[slot_index] = ItemStack.new(_stack_in_cursor.get_item(), 1)
+		_stack_in_cursor.set_amount(_stack_in_cursor.get_amount() - 1)
+	# Cursor loaded and equal to slot
+	elif _stack_in_cursor.get_item().get_id() == slot_stack.get_item().get_id():
+		var extra = slot_stack.add_amount_safe(1)
+		if extra == 0:
+			_stack_in_cursor.set_amount(_stack_in_cursor.get_amount() - 1)
+		else:
+			_stack_in_cursor.set_amount(extra)
+	# Cursor loaded, but different from the slot
+	else:
+		var temp = inventory[slot_index]
+		inventory[slot_index] = _stack_in_cursor
+		_stack_in_cursor = temp
+	# 
+	if _stack_in_cursor and _stack_in_cursor.get_amount() <= 0:
+		_stack_in_cursor = null
+		clear_sprite_to_cursor()
+	update_all_inventory()
