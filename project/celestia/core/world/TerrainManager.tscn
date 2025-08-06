@@ -69,7 +69,7 @@ sources/1 = SubResource("TileSetAtlasSource_yhwit")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n7pkd"]
 texture = ExtResource("4_yhwit")
-separation = Vector2i(1, 1)
+separation = Vector2i(4, 4)
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
