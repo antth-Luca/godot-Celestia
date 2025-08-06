@@ -14,3 +14,8 @@ func _ready():
 	drop.initialize(ItemStack.new(InitItems.EGG, 16))
 	add_child(drop)
 	drop.global_position = Vector2(208, 133)
+	
+	var drop2 = dropped_item.instantiate()
+	drop2.initialize(ItemStack.new(InitItems.GOLD_INGOT, 5))
+	add_child(drop2)
+	drop2.global_position = Vector2(212, 133)

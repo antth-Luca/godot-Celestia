@@ -1,29 +1,30 @@
 {
-	"ui.config.language": "",
+	"celestia.ui.config.language": "",
 
-	"ui.inventory.stats.title": "",
-	"ui.inventory.stats.hp": ": ",
-	"ui.inventory.stats.mn": ": ",
-	"ui.inventory.stats.dm": ": ",
-	"ui.inventory.stats.df": ": ",
-	"ui.inventory.stats.cc": ": ",
-	"ui.inventory.stats.cd": ": ",
-	"ui.inventory.stats.ls": ": ",
-	"ui.inventory.stats.pn": ": ",
-	"ui.inventory.stats.rg": ": ",
-	"ui.inventory.stats.ms": ": ",
-	"ui.inventory.stats.as": ": ",
-	"ui.inventory.stats.rc": ": ",
+	"celestia.ui.inventory.stats.title": "",
+	"celestia.ui.inventory.stats.hp": ": ",
+	"celestia.ui.inventory.stats.mn": ": ",
+	"celestia.ui.inventory.stats.df": ": ",
+	"celestia.ui.inventory.stats.dm": ": ",
+	"celestia.ui.inventory.stats.cc": ": ",
+	"celestia.ui.inventory.stats.cd": ": ",
+	"celestia.ui.inventory.stats.ls": ": ",
+	"celestia.ui.inventory.stats.pn": ": ",
+	"celestia.ui.inventory.stats.rg": ": ",
+	"celestia.ui.inventory.stats.as": ": ",
+	"celestia.ui.inventory.stats.ms": ": ",
+	"celestia.ui.inventory.stats.rc": ": ",
 
-	"item.rarity.common": "",
-	"item.rarity.rare": "",
-	"item.rarity.epic": "",
-	"item.rarity.mithic": "",
-	"item.rarity.legendary": "",
+	"celestia.item.rarity.common": "",
+	"celestia.item.rarity.rare": "",
+	"celestia.item.rarity.epic": "",
+	"celestia.item.rarity.mithic": "",
+	"celestia.item.rarity.legendary": "",
 
-	"item.chicken_egg.name": "",
+	"celestia.item.egg.name": "",
+	"celestia.item.gold_ingot.name": "",
 
-	"build": "",
+	"celestia.build": "",
 
-	"mob.chicken.name": ""
+	"celestia.mob.chicken.name": ""
 }

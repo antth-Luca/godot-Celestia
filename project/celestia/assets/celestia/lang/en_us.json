@@ -1,29 +1,30 @@
 {
-	"ui.config.language": "",
+	"celestia.ui.config.language": "Language",
 
-	"ui.inventory.stats.title": "Attributes",
-	"ui.inventory.stats.hp": "Health: ",
-	"ui.inventory.stats.mn": "Mana: ",
-	"ui.inventory.stats.dm": "Damage: ",
-	"ui.inventory.stats.df": "Defense: ",
-	"ui.inventory.stats.cc": "Crit. Chance: ",
-	"ui.inventory.stats.cd": "Crit. Damage: ",
-	"ui.inventory.stats.ls": "Life steal: ",
-	"ui.inventory.stats.pn": "Penetration: ",
-	"ui.inventory.stats.rg": "Range: ",
-	"ui.inventory.stats.ms": "Move speed: ",
-	"ui.inventory.stats.as": "Attack speed: ",
-	"ui.inventory.stats.rc": "Red. Cooldown: ",
+	"celestia.ui.inventory.stats.title": "Attributes",
+	"celestia.ui.inventory.stats.hp": "Health: ",
+	"celestia.ui.inventory.stats.mn": "Mana: ",
+	"celestia.ui.inventory.stats.df": "Defense: ",
+	"celestia.ui.inventory.stats.dm": "Damage: ",
+	"celestia.ui.inventory.stats.cc": "Crit. Chance: ",
+	"celestia.ui.inventory.stats.cd": "Crit. Damage: ",
+	"celestia.ui.inventory.stats.ls": "Life Steal: ",
+	"celestia.ui.inventory.stats.pn": "Penetration: ",
+	"celestia.ui.inventory.stats.rg": "Range: ",
+	"celestia.ui.inventory.stats.as": "Attack speed: ",
+	"celestia.ui.inventory.stats.ms": "Move speed: ",
+	"celestia.ui.inventory.stats.rc": "Red. Cooldown: ",
 
-	"item.rarity.common": "Common",
-	"item.rarity.rare": "Rare",
-	"item.rarity.epic": "Epic",
-	"item.rarity.mithic": "Mithic",
-	"item.rarity.legendary": "Legendary",
+	"celestia.item.rarity.common": "Common",
+	"celestia.item.rarity.rare": "Rare",
+	"celestia.item.rarity.epic": "Epic",
+	"celestia.item.rarity.mithic": "Mithic",
+	"celestia.item.rarity.legendary": "Legendary",
 
-	"item.chicken_egg.name": "Chicken Egg",
+	"celestia.item.egg.name": "Chicken Egg",
+	"celestia.item.gold_ingot.name": "Gold Ingot",
 
-	"build": "",
+	"celestia.build": "",
 
-	"mob.chicken.name": "Chicken"
+	"celestia.mob.chicken.name": "Chicken"
 }

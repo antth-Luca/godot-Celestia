@@ -2,6 +2,7 @@ extends Object
 class_name InitItems
 
 static var EGG: BaseItem
+static var GOLD_INGOT: BaseItem
 
 
 static func setup() -> void:
@@ -16,4 +17,10 @@ static func setup() -> void:
 			var item = BaseItem.new()
 			item.set_max_stack(12)
 			return item
+	)
+
+	GOLD_INGOT = ITEMS.register(
+		'gold_ingot',
+		func():
+			return BaseItem.new()
 	)
