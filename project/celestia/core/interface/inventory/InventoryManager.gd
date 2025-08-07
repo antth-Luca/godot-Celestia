@@ -1,12 +1,10 @@
 extends Control
 
-@onready var slots_group = $SlotsGroup
-@onready var popup_tooltip = $PopupTooltip
+@onready var slots_group := $SlotsGroup
+@onready var popup_tooltip := $PopupTooltip
 
+var cursor := CursorManager.new()
 var inventory: Array[ItemStack] = []
-var _stack_in_cursor: ItemStack
-var cursor_click_origin_slot: int
-var sprite_to_cursor: Sprite2D = null
 
 # GODOT
 func _ready() -> void:
@@ -17,25 +15,18 @@ func _ready() -> void:
 
 
 func _input(_event):
-	update_cursor_sprite_position()
+	if not cursor.is_cursor_stack_empty():
+		cursor.update_cursor_sprite_position(get_global_mouse_position())
 
 # GETTERS AND SETTERS
 func get_stack_in_inventory(pos: int) -> ItemStack:
 	return inventory[pos]
 
-
-func get_stack_in_cursor() -> ItemStack:
-	return _stack_in_cursor
-
 # MAIN
 func _on_inventory_closed() -> void:
-	if _stack_in_cursor != null and _stack_in_cursor.get_amount() > 0:
-		if cursor_click_origin_slot < 46:
-			add_item_to_backpack(_stack_in_cursor)
-		else:
-			drop_item_players_foot(_stack_in_cursor)
-		_stack_in_cursor = null
-		clear_sprite_to_cursor()
+	if not cursor.is_cursor_stack_empty():
+		add_item_to_backpack(cursor.get_cursor_stack())
+		cursor.clear_cursor()
 
 
 func update_all_inventory() -> void:
@@ -120,61 +111,39 @@ func add_item_to_backpack(stack: ItemStack) -> void:
 			))
 			remaining_amount -= item_max_stack
 
-# CURSOR HANDLERS
-func set_sprite_to_cursor(splited_id: Array):
-	sprite_to_cursor = Sprite2D.new()
-	sprite_to_cursor.texture = load('res://assets/%s/textures/items/%s.png' % splited_id)
-	add_child(sprite_to_cursor)
-	update_cursor_sprite_position()
-
-
-func clear_sprite_to_cursor():
-	if sprite_to_cursor == null: return
-	sprite_to_cursor.queue_free()
-	sprite_to_cursor = null
-
-
-func update_cursor_sprite_position():
-	if _stack_in_cursor == null or _stack_in_cursor.get_amount() <= 0: return
-	sprite_to_cursor.global_position = get_global_mouse_position()
-
-
+# HANDLERS
 func _handle_left_click_on_slot(slot):
 	var slot_index = slot.get_index()
 	var slot_stack = inventory[slot_index]
 	# Empty cursor
-	if _stack_in_cursor == null or _stack_in_cursor.get_amount() <= 0:
+	if cursor.is_cursor_stack_empty():
 		if slot_stack.get_amount() > 0:
-			_stack_in_cursor = slot_stack
-			cursor_click_origin_slot = slot_index
+			cursor.set_click(slot_stack, slot_index, self)
 			inventory[slot_index] = ItemStack.get_empty_stack()
 			slot.clear_slot()
-			set_sprite_to_cursor(_stack_in_cursor.get_item().get_splited_id())
 	# Cursor loaded and slot empty
 	elif slot_stack.get_amount() <= 0:
-		inventory[slot_index] = _stack_in_cursor
-		_stack_in_cursor = null
-		clear_sprite_to_cursor()
+		inventory[slot_index] = cursor.get_cursor_stack()
+		cursor.clear_cursor()
 	# Cursor loaded and equal to slot
-	elif _stack_in_cursor.get_item().get_id() == slot_stack.get_item().get_id():
-		var extra = slot_stack.add_amount_safe(_stack_in_cursor.get_amount())
+	elif cursor.is_equal_to(slot_stack):
+		var extra = slot_stack.add_amount_safe(cursor.get_cursor_stack().get_amount())
 		if extra <= 0:
-			_stack_in_cursor = null
-			clear_sprite_to_cursor()
+			cursor.clear_cursor()
 		else:
-			_stack_in_cursor.set_amount(extra)
+			cursor.get_cursor_stack().set_amount(extra)
 	# Cursor loaded, but different from the slot
 	else:
 		var temp = inventory[slot_index]
-		inventory[slot_index] = _stack_in_cursor
-		_stack_in_cursor = temp
+		inventory[slot_index] = cursor.get_cursor_stack()
+		cursor.set_cursor_stack(temp)
 	update_all_inventory()
 
 
 func _handle_middle_click_on_slot(slot):
 	var slot_index = slot.get_index()
 	var slot_stack = inventory[slot_index]
-	if slot_stack.get_amount() > 0:
+	if slot_stack.get_amount() > 0 and slot_stack.get_item().can_unequip():
 		inventory[slot_index] = ItemStack.get_empty_stack()
 		drop_item_players_foot(slot_stack)
 		slot.clear_slot()
@@ -184,31 +153,35 @@ func _handle_right_click_on_slot(slot):
 	var slot_index = slot.get_index()
 	var slot_stack = inventory[slot_index]
 	# Empty cursor
-	if _stack_in_cursor == null or _stack_in_cursor.get_amount() <= 0:
-		if slot_stack.get_amount() > 0:
+	if cursor.is_cursor_stack_empty():
+		if slot_stack.get_amount() > 0 and slot_stack.get_item().can_unequip():
 			var take_amount := int(ceil(slot_stack.get_amount() / 2.0))
-			_stack_in_cursor = ItemStack.new(slot_stack.get_item(), take_amount)
-			cursor_click_origin_slot = slot_index
+			cursor.set_click(
+				ItemStack.new(slot_stack.get_item(), take_amount),
+				slot_index,
+				self
+			)
 			slot_stack.set_amount(slot_stack.get_amount() - take_amount)
-			set_sprite_to_cursor(_stack_in_cursor.get_item().get_splited_id())
 	# Cursor loaded and slot empty
 	elif slot_stack.get_amount() <= 0:
-		inventory[slot_index] = ItemStack.new(_stack_in_cursor.get_item(), 1)
-		_stack_in_cursor.set_amount(_stack_in_cursor.get_amount() - 1)
+		inventory[slot_index] = ItemStack.new(
+			cursor.get_cursor_stack().get_item(),
+			1
+		)
+		cursor.get_cursor_stack().set_amount(cursor.get_cursor_stack().get_amount() - 1)
 	# Cursor loaded and equal to slot
-	elif _stack_in_cursor.get_item().get_id() == slot_stack.get_item().get_id():
+	elif cursor.is_equal_to(slot_stack):
 		var extra = slot_stack.add_amount_safe(1)
 		if extra == 0:
-			_stack_in_cursor.set_amount(_stack_in_cursor.get_amount() - 1)
+			cursor.get_cursor_stack().set_amount(cursor.get_cursor_stack().get_amount() - 1)
 		else:
-			_stack_in_cursor.set_amount(extra)
+			cursor.get_cursor_stack().set_amount(extra)
 	# Cursor loaded, but different from the slot
 	else:
 		var temp = inventory[slot_index]
-		inventory[slot_index] = _stack_in_cursor
-		_stack_in_cursor = temp
+		inventory[slot_index] = cursor.get_cursor_stack()
+		cursor.set_cursor_stack(temp)
 	# 
-	if _stack_in_cursor and _stack_in_cursor.get_amount() <= 0:
-		_stack_in_cursor = null
-		clear_sprite_to_cursor()
+	if cursor.is_cursor_stack_empty():
+		cursor.clear_cursor()
 	update_all_inventory()

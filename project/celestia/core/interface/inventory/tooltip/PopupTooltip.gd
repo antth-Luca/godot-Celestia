@@ -1,6 +1,7 @@
 extends Control
 
 @onready var INVENTORY = get_parent()
+@onready var CURSOR: CursorManager = INVENTORY.cursor
 @onready var popup_panel: PopupPanel = $CanvasLayer/PopupPanel
 @onready var title_label: RichTextLabel = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TitleRichLabel
 @onready var tooltip_label: RichTextLabel = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TooltipRichLabel
@@ -48,7 +49,7 @@ func update_data_popup(item: BaseItem):
 
 # HANDLERS
 func _handle_entered_mouse_on_slot(slot):
-	if INVENTORY.get_stack_in_cursor() == null:
+	if CURSOR.is_cursor_stack_empty():
 		var slot_stack = INVENTORY.get_stack_in_inventory(slot.get_index())
 		if slot_stack.get_amount() > 0:
 			item_popup(
@@ -61,5 +62,5 @@ func _handle_entered_mouse_on_slot(slot):
 
 
 func _handle_exited_mouse_on_slot():
-	if INVENTORY.get_stack_in_cursor() == null:
+	if CURSOR.is_cursor_stack_empty():
 		hide_popup()
