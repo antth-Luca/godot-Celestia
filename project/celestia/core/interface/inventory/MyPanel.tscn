@@ -103,7 +103,7 @@ offset_left = 186.4
 offset_top = 56.0
 offset_right = 202.4
 offset_bottom = 72.0
-defined_slot_type = 1
+_defined_slot_type = 1
 
 [node name="ChestSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -111,7 +111,7 @@ offset_left = 186.4
 offset_top = 74.0
 offset_right = 202.4
 offset_bottom = 90.0
-defined_slot_type = 2
+_defined_slot_type = 2
 
 [node name="LegSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -119,7 +119,7 @@ offset_left = 186.4
 offset_top = 92.0
 offset_right = 202.4
 offset_bottom = 108.0
-defined_slot_type = 3
+_defined_slot_type = 3
 
 [node name="FeetSlot" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -127,7 +127,7 @@ offset_left = 186.4
 offset_top = 110.0
 offset_right = 202.4
 offset_bottom = 126.0
-defined_slot_type = 4
+_defined_slot_type = 4
 
 [node name="RelicSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -135,7 +135,7 @@ offset_left = 254.4
 offset_top = 56.0
 offset_right = 270.4
 offset_bottom = 72.0
-defined_slot_type = 5
+_defined_slot_type = 5
 
 [node name="RelicSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -143,7 +143,7 @@ offset_left = 271.2
 offset_top = 56.0
 offset_right = 287.2
 offset_bottom = 72.0
-defined_slot_type = 5
+_defined_slot_type = 5
 
 [node name="RelicSlot2" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -151,7 +151,7 @@ offset_left = 254.4
 offset_top = 74.0
 offset_right = 270.4
 offset_bottom = 90.0
-defined_slot_type = 5
+_defined_slot_type = 5
 
 [node name="RelicSlot3" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -159,7 +159,7 @@ offset_left = 271.2
 offset_top = 74.0
 offset_right = 287.2
 offset_bottom = 90.0
-defined_slot_type = 5
+_defined_slot_type = 5
 
 [node name="RelicSlot4" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -167,7 +167,7 @@ offset_left = 254.4
 offset_top = 92.0
 offset_right = 270.4
 offset_bottom = 108.0
-defined_slot_type = 5
+_defined_slot_type = 5
 
 [node name="RelicSlot5" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -175,7 +175,7 @@ offset_left = 271.2
 offset_top = 92.0
 offset_right = 287.2
 offset_bottom = 108.0
-defined_slot_type = 5
+_defined_slot_type = 5
 
 [node name="AmmoSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -183,7 +183,7 @@ offset_left = 254.4
 offset_top = 110.0
 offset_right = 270.4
 offset_bottom = 126.0
-defined_slot_type = 6
+_defined_slot_type = 6
 
 [node name="AmmoSlot1" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -191,7 +191,7 @@ offset_left = 271.2
 offset_top = 110.0
 offset_right = 287.2
 offset_bottom = 126.0
-defined_slot_type = 6
+_defined_slot_type = 6
 
 [node name="BackpackSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0

@@ -1,6 +1,6 @@
 extends Button
 
-@export var defined_slot_type: int
+@export var _defined_slot_type: int
 
 @onready var slotTypeSprite: Sprite2D = $SlotType
 @onready var itemSprite: Sprite2D = $ItemSprite
@@ -8,12 +8,20 @@ extends Button
 
 
 func _ready():
-	if defined_slot_type < 0 or defined_slot_type > 6:
+	if _defined_slot_type < 0 or _defined_slot_type > 6:
 		push_error('Slot type selected invalid.')
-	elif defined_slot_type != 0:
-		slotTypeSprite.texture = load('res://assets/%s/interface/inventory/slots/types/%s.png' % SlotTypes.get_splited_id(defined_slot_type))
+	elif _defined_slot_type != 0:
+		slotTypeSprite.texture = load('res://assets/%s/interface/inventory/slots/types/%s.png' % SlotTypes.get_splited_id(_defined_slot_type))
+
+# GETTERS AND SETTERS
+func get_slot_type() -> int:
+	return _defined_slot_type
 
 
+func set_slot_type(type_key: int) -> void:
+	_defined_slot_type = type_key
+
+# HANDLERS
 func render_slot(item_slot: ItemStack) -> void:
 	slotTypeSprite.visible = false
 	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % item_slot.get_item().get_splited_id())
@@ -31,6 +39,14 @@ func clear_slot() -> void:
 	itemAmount.visible = false
 
 
+func _on_mouse_entered():
+	EventBus.client_inventory.emit_signal('mouse_entered_slot', self)
+
+
+func _on_mouse_exited():
+	EventBus.client_inventory.emit_signal('mouse_exited_slot')
+
+# SIGNALS
 func _on_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
@@ -40,11 +56,3 @@ func _on_gui_input(event: InputEvent):
 				EventBus.client_inventory.emit_signal('middle_click_slot', self)
 			MOUSE_BUTTON_RIGHT:
 				EventBus.client_inventory.emit_signal('right_click_slot', self)
-
-
-func _on_mouse_entered():
-	EventBus.client_inventory.emit_signal('mouse_entered_slot', self)
-
-
-func _on_mouse_exited():
-	EventBus.client_inventory.emit_signal('mouse_exited_slot')
