@@ -27,7 +27,8 @@ func set_cursor_click_origin_slot(slot_index: int) -> void:
 
 
 func set_cursor_sprite(splited_id: Array, inventory: Control):
-	_cursor_sprite = Sprite2D.new()
+	if _cursor_sprite == null:
+		_cursor_sprite = Sprite2D.new()
 	_cursor_sprite.texture = load('res://assets/%s/textures/items/%s.png' % splited_id)
 	inventory.add_child(_cursor_sprite)
 	_cursor_sprite.global_position = inventory.get_global_mouse_position()
