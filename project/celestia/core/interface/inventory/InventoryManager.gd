@@ -47,8 +47,8 @@ func clear_all_inventory() -> void:
 
 func is_full() -> bool:
 	for c in range(12, 42):  # Slots for backpack
-		var slot: ItemStack = inventory[c]
-		if slot.get_amount() < slot.get_item().get_max_stack():
+		var slot_stack: ItemStack = inventory[c]
+		if slot_stack.get_amount() < slot_stack.get_item().get_max_stack():
 			return false
 	return true
 
@@ -112,7 +112,7 @@ func add_item_to_backpack(stack: ItemStack) -> void:
 			remaining_amount -= item_max_stack
 
 # HANDLERS
-func _handle_left_click_on_slot(slot):
+func _handle_left_click_on_slot(slot: Slot):
 	var slot_index: int = slot.get_index()
 	var slot_stack: ItemStack = inventory[slot_index]
 	var slot_amount: int = slot_stack.get_amount()
@@ -153,7 +153,7 @@ func _handle_left_click_on_slot(slot):
 	update_all_inventory()
 
 
-func _handle_middle_click_on_slot(slot):
+func _handle_middle_click_on_slot(slot: Slot):
 	var slot_index: int = slot.get_index()
 	var slot_stack: ItemStack = inventory[slot_index]
 
@@ -164,7 +164,7 @@ func _handle_middle_click_on_slot(slot):
 	update_all_inventory()
 
 
-func _handle_right_click_on_slot(slot):
+func _handle_right_click_on_slot(slot: Slot):
 	var slot_index: int = slot.get_index()
 	var slot_stack: ItemStack = inventory[slot_index]
 	var slot_amount: int = slot_stack.get_amount()

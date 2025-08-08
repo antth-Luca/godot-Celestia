@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwg5p07b83530"]
+
+[ext_resource type="Texture2D" uid="uid://d1mx3m4jkq0p6" path="res://assets/celestia/textures/items/egg.png" id="1_8ue1h"]
+[ext_resource type="Script" uid="uid://cg1nkge08geso" path="res://core/interface/hud/rotative_pocket/pseudoslot/PseudoSlot.gd" id="1_mhe7l"]
+
+[node name="PseudoSlot" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_mhe7l")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_8ue1h")
+
+[node name="ItemAmount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 15.0
+offset_bottom = 18.0
+theme_override_font_sizes/font_size = 8
+text = "00"
+horizontal_alignment = 2
+vertical_alignment = 2

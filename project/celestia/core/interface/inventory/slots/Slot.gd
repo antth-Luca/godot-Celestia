@@ -1,4 +1,5 @@
 extends Button
+class_name Slot
 
 @export var _defined_slot_type: int
 
@@ -31,6 +32,10 @@ func render_slot(item_slot: ItemStack) -> void:
 		itemAmount.visible = true
 	else:
 		itemAmount.visible = false
+
+	var slot_index: int = get_index()
+	if slot_index > 42 and slot_index < 47:
+		EventBus.client_inventory.emit_signal('some_pocket_slot_has_updated', self, item_slot)
 
 
 func clear_slot() -> void:
