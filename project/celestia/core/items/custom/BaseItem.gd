@@ -64,7 +64,7 @@ func on_equip():
 
 
 func can_unequip() -> bool:
-	return false
+	return true
 
 
 func on_unequip():

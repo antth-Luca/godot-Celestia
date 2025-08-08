@@ -1,7 +1,7 @@
 extends Node
 class_name CursorManager
 
-var _cursor_stack: ItemStack
+var _cursor_stack: ItemStack = ItemStack.get_empty_stack()
 var _cursor_click_origin_slot: int
 var _cursor_sprite: Sprite2D = null
 
@@ -40,12 +40,12 @@ func set_click(new_stack: ItemStack, slot_index: int, inventory: Control) -> voi
 
 
 func clear_cursor() -> void:
-	_cursor_stack = null
+	_cursor_stack = ItemStack.get_empty_stack()
 	clear_cursor_sprite()
 
 
 func is_cursor_stack_empty() -> bool:
-	return _cursor_stack == null or _cursor_stack.get_amount() <= 0
+	return _cursor_stack.get_amount() <= 0
 
 
 func is_equal_to(stack: ItemStack) -> bool:
