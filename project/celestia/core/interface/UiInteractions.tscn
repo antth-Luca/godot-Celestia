@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://duymmu34dph3j"]
-
-[ext_resource type="PackedScene" uid="uid://b3nywi3j43fbq" path="res://core/interface/inventory/MyPanel.tscn" id="1_jwowt"]
-
-[node name="UiInteractions" type="Panel"]
-
-[node name="MyPanel" parent="." instance=ExtResource("1_jwowt")]
-layout_mode = 1
