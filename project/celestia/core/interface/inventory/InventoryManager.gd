@@ -1,5 +1,8 @@
 extends Control
 
+const TOTAL_SLOTS: int = 46
+const BACKPACK_LAST_POSITION: int = 33
+
 @onready var slots_group := $SlotsGroup
 @onready var popup_tooltip := $PopupTooltip
 
@@ -31,7 +34,7 @@ func _on_inventory_closed() -> void:
 
 func update_all_inventory() -> void:
 	# Updates EACH of the slots in your inventory by emptying or rendering them
-	for index in range(46):
+	for index in range(TOTAL_SLOTS):
 		var slot = slots_group.get_child(index)
 		if inventory[index].get_amount() == 0:
 			slot.clear_slot()
@@ -46,7 +49,7 @@ func clear_all_inventory() -> void:
 
 
 func is_full() -> bool:
-	for c in range(12, 42):  # Slots for backpack
+	for c in range(BACKPACK_LAST_POSITION):  # Slots for backpack
 		var slot_stack: ItemStack = inventory[c]
 		if slot_stack.get_amount() < slot_stack.get_item().get_max_stack():
 			return false
@@ -54,7 +57,7 @@ func is_full() -> bool:
 
 
 func get_stackable_index(item_id: String) -> int:
-	for index in range(12, 42):  # Slots for backpack
+	for index in range(BACKPACK_LAST_POSITION):  # Slots for backpack
 		var invent_item: BaseItem = inventory[index].get_item()
 		if invent_item.get_id() == item_id and invent_item.get_max_stack() > 1:
 			return index
@@ -78,7 +81,7 @@ func drop_item_players_foot(stack: ItemStack):
 
 
 func add_item_to_bp_new_slot(stack: ItemStack):
-	for index in range(12, 42):  # Slots for backpack
+	for index in range(BACKPACK_LAST_POSITION):  # Slots for backpack
 		if inventory[index].get_amount() == 0:
 			inventory[index] = stack
 			slots_group.get_child(index).render_slot(inventory[index])

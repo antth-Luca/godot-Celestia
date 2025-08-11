@@ -35,13 +35,13 @@ func render_slot(item_slot: ItemStack) -> void:
 
 	var slot_index: int = get_index()
 	match slot_index:
-		42:
+		0:
 			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 1, item_slot)
-		43:
+		1:
 			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 2, item_slot)
-		44:
+		2:
 			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 3, item_slot)
-		45:
+		3:
 			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 4, item_slot)
 
 
@@ -52,13 +52,13 @@ func clear_slot() -> void:
 
 	var slot_index: int = get_index()
 	match slot_index:
-		42:
+		0:
 			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 1)
-		43:
+		1:
 			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 2)
-		44:
+		2:
 			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 3)
-		45:
+		3:
 			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 4)
 
 
