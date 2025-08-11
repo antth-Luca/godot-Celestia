@@ -14,11 +14,6 @@ func _ready() -> void:
 
 
 func _input(event):
-	if event.is_action_pressed("ui_inventory"):
-		self.visible = !self.visible
-	elif event.is_action_pressed("ui_cancel") and self.visible:
-		self.visible = false
-
 	if self.visible:
 		if event.is_action_pressed("ui_tab_1"):
 			_on_inventory_button_pressed()
