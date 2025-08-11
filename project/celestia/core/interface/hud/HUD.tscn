@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://7hauijtfq470"]
+[gd_scene load_steps=12 format=3 uid="uid://7hauijtfq470"]
 
 [ext_resource type="Texture2D" uid="uid://btnuubbiilyo4" path="res://assets/celestia/interface/hud/stats_bar/background.png" id="1_4n8cl"]
 [ext_resource type="Texture2D" uid="uid://b3xcheqxbydlw" path="res://assets/celestia/interface/hud/stats_bar/vessel.png" id="2_wdvpt"]
 [ext_resource type="Texture2D" uid="uid://cl3twyd33shnf" path="res://assets/celestia/interface/hud/stats_bar/heart.png" id="3_abe2h"]
-[ext_resource type="Texture2D" uid="uid://x1ifmif6ol6j" path="res://assets/celestia/interface/hud/pocket_inventory.png" id="4_wdvpt"]
-[ext_resource type="PackedScene" uid="uid://cwg5p07b83530" path="res://core/interface/hud/rotative_pocket/pseudoslot/PseudoSlot.tscn" id="5_abe2h"]
+[ext_resource type="PackedScene" uid="uid://bwhj3oh0nw37o" path="res://core/interface/hud/rotative_pocket/RotativePocket.tscn" id="4_wdvpt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jo12g"]
 atlas = ExtResource("3_abe2h")
@@ -110,33 +109,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="RotativePocket" type="Node2D" parent="HContainerRight/VContainerDown"]
-
-[node name="BackgroundPocket" type="Sprite2D" parent="HContainerRight/VContainerDown/RotativePocket"]
-position = Vector2(-101, -102)
+[node name="RotativePocket" parent="HContainerRight/VContainerDown" instance=ExtResource("4_wdvpt")]
+position = Vector2(-100, -99)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("4_wdvpt")
-
-[node name="PseudoSlot" parent="HContainerRight/VContainerDown/RotativePocket" instance=ExtResource("5_abe2h")]
-offset_left = -110.0
-offset_top = -156.0
-offset_right = -110.0
-offset_bottom = -156.0
-
-[node name="PseudoSlot2" parent="HContainerRight/VContainerDown/RotativePocket" instance=ExtResource("5_abe2h")]
-offset_left = -64.0
-offset_top = -111.0
-offset_right = -64.0
-offset_bottom = -111.0
-
-[node name="PseudoSlot3" parent="HContainerRight/VContainerDown/RotativePocket" instance=ExtResource("5_abe2h")]
-offset_left = -109.0
-offset_top = -64.0
-offset_right = -109.0
-offset_bottom = -64.0
-
-[node name="PseudoSlot4" parent="HContainerRight/VContainerDown/RotativePocket" instance=ExtResource("5_abe2h")]
-offset_left = -156.0
-offset_top = -111.0
-offset_right = -156.0
-offset_bottom = -111.0

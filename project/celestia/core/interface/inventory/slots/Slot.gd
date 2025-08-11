@@ -34,8 +34,15 @@ func render_slot(item_slot: ItemStack) -> void:
 		itemAmount.visible = false
 
 	var slot_index: int = get_index()
-	if slot_index > 42 and slot_index < 47:
-		EventBus.client_inventory.emit_signal('some_pocket_slot_has_updated', self, item_slot)
+	match slot_index:
+		42:
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_updated', 1, item_slot)
+		43:
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_updated', 2, item_slot)
+		44:
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_updated', 3, item_slot)
+		45:
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_updated', 4, item_slot)
 
 
 func clear_slot() -> void:

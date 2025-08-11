@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwhj3oh0nw37o"]
+
+[ext_resource type="Texture2D" uid="uid://x1ifmif6ol6j" path="res://assets/celestia/interface/hud/pocket_inventory.png" id="1_11jbb"]
+[ext_resource type="PackedScene" uid="uid://cwg5p07b83530" path="res://core/interface/hud/rotative_pocket/pseudoslot/PseudoSlot.tscn" id="2_bjxet"]
+
+[node name="RotativePocket" type="Node2D"]
+
+[node name="BackgroundPocket" type="Sprite2D" parent="."]
+texture = ExtResource("1_11jbb")
+
+[node name="PseudoSlot" parent="." instance=ExtResource("2_bjxet")]
+offset_left = -8.0
+offset_top = -27.0
+offset_right = -8.0
+offset_bottom = -27.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PseudoSlot2" parent="." instance=ExtResource("2_bjxet")]
+offset_left = 10.0
+offset_top = -9.0
+offset_right = 10.0
+offset_bottom = -9.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PseudoSlot3" parent="." instance=ExtResource("2_bjxet")]
+offset_left = -8.0
+offset_top = 9.0
+offset_right = -8.0
+offset_bottom = 9.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PseudoSlot4" parent="." instance=ExtResource("2_bjxet")]
+offset_left = -26.0
+offset_top = -9.0
+offset_right = -26.0
+offset_bottom = -9.0
+metadata/_edit_use_anchors_ = true
