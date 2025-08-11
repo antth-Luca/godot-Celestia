@@ -5,7 +5,8 @@ extends Control
 
 # GODOT
 func _ready():
-	EventBus.client_inventory.connect('some_pocket_slot_has_updated', Callable(self, '_handle_pocket_slot_has_updated'))
+	EventBus.client_inventory.connect('some_pocket_slot_has_rendered', Callable(self, '_handle_pocket_slot_has_rendered'))
+	EventBus.client_inventory.connect('some_pocket_slot_has_cleaned', Callable(self, '_handle_pocket_slot_has_cleaned'))
 	clear_slot()
 
 # MAIN
@@ -24,6 +25,11 @@ func clear_slot() -> void:
 	itemAmount.visible = false
 
 # HANDLRES
-func _handle_pocket_slot_has_updated(slot_index: int, stack: ItemStack) -> void:
+func _handle_pocket_slot_has_rendered(slot_index: int, stack: ItemStack) -> void:
 	if slot_index == get_index():
 		render_slot(stack)
+
+
+func _handle_pocket_slot_has_cleaned(slot_index: int) -> void:
+	if slot_index == get_index():
+		clear_slot()

@@ -36,19 +36,30 @@ func render_slot(item_slot: ItemStack) -> void:
 	var slot_index: int = get_index()
 	match slot_index:
 		42:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_updated', 1, item_slot)
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 1, item_slot)
 		43:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_updated', 2, item_slot)
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 2, item_slot)
 		44:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_updated', 3, item_slot)
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 3, item_slot)
 		45:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_updated', 4, item_slot)
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 4, item_slot)
 
 
 func clear_slot() -> void:
 	slotTypeSprite.visible = true
 	itemSprite.visible = false
 	itemAmount.visible = false
+
+	var slot_index: int = get_index()
+	match slot_index:
+		42:
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 1)
+		43:
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 2)
+		44:
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 3)
+		45:
+			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 4)
 
 
 func _on_mouse_entered():

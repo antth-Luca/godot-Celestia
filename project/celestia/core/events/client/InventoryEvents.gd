@@ -7,4 +7,5 @@ signal left_click_slot(slot: Slot)
 signal middle_click_slot(slot: Slot)
 signal right_click_slot(slot: Slot)
 
-signal some_pocket_slot_has_updated(slot_index: int, stack: ItemStack)
+signal some_pocket_slot_has_rendered(slot_index: int, stack: ItemStack)
+signal some_pocket_slot_has_cleaned(slot_index: int)
