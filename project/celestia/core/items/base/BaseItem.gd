@@ -55,7 +55,7 @@ func get_tooltip() -> Array[String]:
 	return [name_line]
 
 
-func can_equip(slot) -> bool:
+func can_equip(slot: Slot) -> bool:
 	return slot.get_slot_type() == 0
 
 
@@ -63,7 +63,7 @@ func on_equip():
 	pass
 
 
-func can_unequip(_slot) -> bool:
+func can_unequip(_slot: Slot) -> bool:
 	return true
 
 
