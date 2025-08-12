@@ -130,12 +130,14 @@ func _handle_left_click_on_slot(slot: Slot):
 		if slot_amount > 0 and slot_can_unequip:
 			cursor.set_click(slot_stack, slot_index, self)
 			inventory[slot_index] = ItemStack.get_empty_stack()
+			slot.clear_slot()
 
 	# Case 2: Cursor loaded and slot empty
 	elif slot_amount <= 0:
 		if cursor_can_equip:
 			inventory[slot_index] = cursor_stack
 			cursor.clear_cursor()
+			slot.render_slot(cursor_stack)
 
 	# Case 3: Cursor loaded and equal to slot
 	elif cursor.is_equal_to(slot_stack):
@@ -145,6 +147,7 @@ func _handle_left_click_on_slot(slot: Slot):
 				cursor.clear_cursor()
 			else:
 				cursor_stack.set_amount(extra)
+			slot.render_slot(slot_stack)
 
 	# Case 4: Cursor loaded, but different from the slot
 	else:
@@ -152,8 +155,7 @@ func _handle_left_click_on_slot(slot: Slot):
 			var temp: ItemStack = inventory[slot_index]
 			inventory[slot_index] = cursor_stack
 			cursor.set_click(temp, slot_index, self)
-
-	update_all_inventory()
+			slot.render_slot(cursor_stack)
 
 
 func _handle_middle_click_on_slot(slot: Slot):
@@ -163,8 +165,7 @@ func _handle_middle_click_on_slot(slot: Slot):
 	if slot_stack.get_amount() > 0 and slot_stack.get_item().can_unequip(slot):
 		inventory[slot_index] = ItemStack.get_empty_stack()
 		drop_item_players_foot(slot_stack)
-
-	update_all_inventory()
+		slot.clear_slot()
 
 
 func _handle_right_click_on_slot(slot: Slot):
@@ -189,12 +190,14 @@ func _handle_right_click_on_slot(slot: Slot):
 				self
 			)
 			slot_stack.set_amount(slot_amount - take_amount)
+			slot.render_slot(slot_stack)
 
 	# Case 2: Cursor loaded and slot empty
 	elif slot_amount <= 0:
 		if cursor_can_equip:
 			inventory[slot_index] = ItemStack.new(cursor_item, 1)
 			cursor_stack.set_amount(cursor_amount - 1)
+			slot.render_slot(inventory[slot_index])
 
 	# Case 3: Cursor loaded and equal to slot
 	elif cursor.is_equal_to(slot_stack):
@@ -204,6 +207,7 @@ func _handle_right_click_on_slot(slot: Slot):
 				cursor_stack.set_amount(cursor_amount - 1)
 			else:
 				cursor_stack.set_amount(extra)
+			slot.render_slot(slot_stack)
 
 	# Case 4: Cursor loaded, but different from the slot
 	else:
@@ -211,9 +215,8 @@ func _handle_right_click_on_slot(slot: Slot):
 			var temp: ItemStack = inventory[slot_index]
 			inventory[slot_index] = cursor_stack
 			cursor.set_click(temp, slot_index, self)
+			slot.render_slot(inventory[slot_index])
 
 	# If the cursor is empty, clear it.
 	if cursor.is_cursor_stack_empty():
 		cursor.clear_cursor()
-
-	update_all_inventory()
