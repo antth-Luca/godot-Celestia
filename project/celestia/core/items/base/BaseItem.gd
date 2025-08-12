@@ -4,7 +4,7 @@ class_name BaseItem
 var _id: String = ''
 var _max_stack: int = 99
 var _max_damage: int = 0
-var _rarity: int = Rarity.COMMON
+var _rarity: BaseRarity = InitRarities.COMMON
 
 
 func get_id() -> String:
@@ -37,11 +37,11 @@ func set_durability(new_damage: int) -> void:
 	_max_stack = 1
 
 
-func get_rarity() -> int:
+func get_rarity() -> BaseRarity:
 	return _rarity
 
 
-func set_rarity(new_rarity: int) -> void:
+func set_rarity(new_rarity: BaseRarity) -> void:
 	_rarity = new_rarity
 
 
@@ -49,8 +49,8 @@ func get_tooltip() -> Array[String]:
 	var splited_id: Array = get_splited_id()
 	var name_line = '%s [color=%s](%s)[/color]' % [
 		CustomTranslation.t('%s.item.%s.name' % splited_id),
-		Rarity.get_color(_rarity),
-		Rarity.get_tr_name(_rarity)
+		_rarity.get_hex_color(),
+		_rarity.get_tr_name()
 	]
 	return [name_line]
 

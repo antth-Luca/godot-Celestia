@@ -6,6 +6,7 @@ const GAME_ID: String = "celestia"
 
 func _ready():
 	# MAIN CODE
+	InitRarities.setup()
 	InitItems.setup()
 	InitMaterials.setup()
 
