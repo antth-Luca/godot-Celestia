@@ -63,7 +63,7 @@ func on_equip():
 	pass
 
 
-func can_unequip(slot) -> bool:
+func can_unequip(_slot) -> bool:
 	return true
 
 

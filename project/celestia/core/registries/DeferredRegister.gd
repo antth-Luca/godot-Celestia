@@ -6,9 +6,9 @@ var registry: Registry
 var holders := {}
 
 
-func _init(mod_id: String, registry: Registry):
-	self.mod_id = mod_id
-	self.registry = registry
+func _init(_mod_id: String, _registry: Registry):
+	mod_id = _mod_id
+	registry = _registry
 
 
 func register(id: String, factory: Callable):

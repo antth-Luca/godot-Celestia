@@ -19,6 +19,7 @@ func set_max_mana(newStat) -> void:
 	max_mp = newStat
 
 func get_mana() -> int:
+	@warning_ignore("narrowing_conversion")
 	return mp
 
 func set_mana(newStat) -> void:

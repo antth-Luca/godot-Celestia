@@ -128,6 +128,7 @@ func get_crit_chance() -> float:
 
 
 func get_format_crit_chance() -> int:
+	@warning_ignore("narrowing_conversion")
 	return crit_ch * 100
 
 
@@ -140,6 +141,7 @@ func get_crit_damage() -> float:
 
 
 func get_format_crit_damage() -> int:
+	@warning_ignore("narrowing_conversion")
 	return crit_dm * 100
 
 
@@ -152,6 +154,7 @@ func get_life_steal() -> float:
 
 
 func get_format_life_steal() -> int:
+	@warning_ignore("narrowing_conversion")
 	return ls * 100
 
 
@@ -188,6 +191,7 @@ func get_cooldown_reduction() -> float:
 
 
 func get_format_cooldown_reduction() -> int:
+	@warning_ignore("narrowing_conversion")
 	return cd_r * 100
 
 
