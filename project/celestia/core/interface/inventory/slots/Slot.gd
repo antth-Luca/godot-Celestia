@@ -1,7 +1,7 @@
 extends Button
 class_name Slot
 
-@export var _defined_slot_type: int
+@export var _slot_type: int
 
 @onready var slotTypeSprite: Sprite2D = $SlotType
 @onready var itemSprite: Sprite2D = $ItemSprite
@@ -9,18 +9,18 @@ class_name Slot
 
 
 func _ready():
-	if _defined_slot_type < 0 or _defined_slot_type > 6:
-		push_error('Slot type selected invalid.')
-	elif _defined_slot_type != 0:
-		slotTypeSprite.texture = load('res://assets/%s/interface/inventory/slots/types/%s.png' % SlotTypes.get_splited_id(_defined_slot_type))
+	if _slot_type < 0 or _slot_type > 6:
+		push_error('Slot: Slot type selected invalid.')
+	elif _slot_type != 0:
+		slotTypeSprite.texture = load('res://assets/%s/interface/inventory/slots/types/%s.png' % SlotTypes.get_splited_id(_slot_type))
 
 # GETTERS AND SETTERS
 func get_slot_type() -> int:
-	return _defined_slot_type
+	return _slot_type
 
 
 func set_slot_type(type_key: int) -> void:
-	_defined_slot_type = type_key
+	_slot_type = type_key
 
 # HANDLERS
 func render_slot(item_slot: ItemStack) -> void:
