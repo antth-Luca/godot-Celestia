@@ -1,7 +1,6 @@
 extends Object
 class_name InitItems
 
-static var EMPTY: BaseItem
 static var EGG: BaseItem
 static var GOLD_INGOT: BaseItem
 
@@ -10,12 +9,6 @@ static func setup() -> void:
 	var ITEMS = DeferredRegister.new(
 		Celestia.GAME_ID,
 		RegistryManager.ITEM_REGISTRY
-	)
-
-	EMPTY = ITEMS.register(
-		'empty',
-		func():
-			return BaseItem.new()
 	)
 
 	EGG = ITEMS.register(

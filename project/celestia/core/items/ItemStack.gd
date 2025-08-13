@@ -14,7 +14,7 @@ func _init(item_class: BaseItem, amount: int = 1) -> void:
 
 
 static func get_empty_stack() -> ItemStack:
-	return ItemStack.new(InitItems.EMPTY, 0)
+	return ItemStack.new(BaseItem.new(), 0)
 
 
 func get_item() -> BaseItem:

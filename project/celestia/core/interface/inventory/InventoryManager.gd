@@ -51,7 +51,6 @@ func clear_all_inventory() -> void:
 func is_full() -> bool:
 	for c in range(BACKPACK_LAST_POSITION):  # Slots for backpack
 		var slot_stack: ItemStack = inventory[c]
-		print(slot_stack.get_item())
 		if slot_stack.get_amount() < slot_stack.get_item().get_max_stack():
 			return false
 	return true

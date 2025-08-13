@@ -11,6 +11,10 @@ func _init(sp: String, pa: String):
 	path = pa
 
 
+static func get_empty_location() -> ResourceLocation:
+	return ResourceLocation.new(Celestia.GAME_ID, 'empty')
+
+
 func get_string() -> String:
 	return "%s:%s" % [space, path]
 

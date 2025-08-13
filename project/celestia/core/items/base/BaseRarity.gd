@@ -1,6 +1,6 @@
 class_name BaseRarity
 
-var _id: ResourceLocation
+var _id: ResourceLocation = ResourceLocation.get_empty_location()
 var _hex_color: String = '#FFFFFF'
 
 
@@ -9,11 +9,12 @@ func get_id() -> ResourceLocation:
 
 
 func get_splited_id() -> Array:
-	return _id.get_splited() if _id else ['']
+	return _id.get_splited()
 
 
 func set_id(new_id: ResourceLocation) -> void:
-	if _id != null and _id.get_string() != new_id.get_string():
+	var current_string_id: String = _id.get_string()
+	if current_string_id != ResourceLocation.get_empty_location().get_string() and current_string_id != new_id.get_string():
 		push_warning('Item ID already set. It cannot be changed after initialization.')
 	_id = new_id
 
