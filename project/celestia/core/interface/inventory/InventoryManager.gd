@@ -51,12 +51,13 @@ func clear_all_inventory() -> void:
 func is_full() -> bool:
 	for c in range(BACKPACK_LAST_POSITION):  # Slots for backpack
 		var slot_stack: ItemStack = inventory[c]
+		print(slot_stack.get_item())
 		if slot_stack.get_amount() < slot_stack.get_item().get_max_stack():
 			return false
 	return true
 
 
-func get_stackable_index(item_id: String) -> int:
+func get_stackable_index(item_id: ResourceLocation) -> int:
 	for index in range(BACKPACK_LAST_POSITION):  # Slots for backpack
 		var invent_item: BaseItem = inventory[index].get_item()
 		if invent_item.get_id() == item_id and invent_item.get_max_stack() > 1:

@@ -7,14 +7,14 @@ var _amount: int
 
 func _init(item_class: BaseItem, amount: int = 1) -> void:
 	if item_class == null:
-		push_error('ItemStack must be created with an instance of BaseItem.')
+		push_error('ItemStack: must be created with an instance of BaseItem.')
 	
 	_item = item_class
 	_amount = amount
 
 
 static func get_empty_stack() -> ItemStack:
-	return ItemStack.new(BaseItem.new(), 0)
+	return ItemStack.new(InitItems.EMPTY, 0)
 
 
 func get_item() -> BaseItem:
