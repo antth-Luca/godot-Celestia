@@ -5,6 +5,10 @@ extends CanvasLayer
 @onready var MyPanel := $MyPanel
 
 # GODOT
+func _ready():
+	BgBlur.visible = false
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_inventory"):
 		update_my_panel(MyPanel.visible)

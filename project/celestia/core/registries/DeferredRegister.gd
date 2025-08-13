@@ -11,13 +11,13 @@ func _init(_mod_id: String, _registry: Registry):
 	registry = _registry
 
 
-func register(id: String, factory: Callable):
-	var full_id = "%s:%s" % [mod_id, id]
-	if registry.has(full_id):
-		push_error("Duplicate ID: " + full_id)
+func register(path: String, factory: Callable):
+	var location = ResourceLocation.new(mod_id, path)
+	if registry.has(location):
+		push_error("Duplicate ID: " + location.get_string())
 		return null
 
 	var entry = factory.call()
-	registry.register(full_id, entry)
-	holders[full_id] = entry
+	registry.register(location, entry)
+	holders[location.get_string()] = entry
 	return entry

@@ -7,7 +7,7 @@ var _amount: int
 
 func _init(item_class: BaseItem, amount: int = 1) -> void:
 	if item_class == null:
-		push_error('ItemStack must be created with an instance of BaseItem.')
+		push_error('ItemStack: must be created with an instance of BaseItem.')
 	
 	_item = item_class
 	_amount = amount
