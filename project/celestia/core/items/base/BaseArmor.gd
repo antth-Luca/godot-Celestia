@@ -2,10 +2,10 @@ extends BaseItem
 class_name BaseArmor
 
 
-var _armor_attribute: int = 0
 var _armor_type: int = -1
-var _material: BaseMaterial = InitMaterials.GENERIC
+var _protection: float = 0
 var _durability_factor: float = 1
+var _material: BaseMaterial = InitMaterials.GENERIC
 
 # SUPER
 func _init():
@@ -13,11 +13,13 @@ func _init():
 
 
 func get_durability() -> int:
+	@warning_ignore("narrowing_conversion")
 	return _material.get_base_max_damage() * _durability_factor
 
 
 func can_equip(slot: Slot) -> bool:
-	return slot.get_slot_type() == ArmorTypes.get_compatible_slot(_armor_type)
+	var slot_type = slot.get_slot_type()
+	return slot_type == ArmorTypes.get_compatible_slot(_armor_type) or slot_type == 0
 
 
 func on_equip() -> void:
@@ -28,23 +30,28 @@ func on_unequip() -> void:
 	pass
 
 # GETTERS AND SETTERS
-func get_armor_attribute() -> int:
-	return _armor_attribute
-
-
-func set_armor_attribute(new_armor: int) -> void:
-	if new_armor < 1: return
-	_armor_attribute = new_armor
-
-
 func get_armor_type() -> int:
 	return _armor_type
 
 
 func set_armor_type(new_type: int) -> void:
-	if _armor_type < 0 or _armor_type > 3:
+	if new_type < 0 or new_type > 3:
 		push_error('BaseArmor: Armor type selected invalid.')
 	_armor_type = new_type
+
+
+func get_protection() -> float:
+	return _protection
+
+
+func set_protection(new_protection: float) -> void:
+	if new_protection < 1: return
+	_protection = new_protection
+
+
+func set_durability_factor(new_factor: float) -> void:
+	if new_factor < 1: return
+	_durability_factor = new_factor
 
 
 func get_material() -> BaseMaterial:
@@ -53,11 +60,6 @@ func get_material() -> BaseMaterial:
 
 func set_material(new_material: BaseMaterial) -> void:
 	_material = new_material
-
-
-func set_durability_factor(new_factor: float) -> void:
-	if new_factor < 1: return
-	_durability_factor = new_factor
 
 #HANDLES
 func get_attribute_modifiers():

@@ -6,7 +6,7 @@ var stack: ItemStack
 
 func initialize(stack_param: ItemStack):
 	stack = stack_param
-	var id_parts: Array = stack.get_item().get_splited_id()
+	var id_parts: Array = stack.get_item().get_id().get_splited()
 	$ItemSprite.texture = load('res://assets/%s/textures/items/%s.png' % id_parts)
 
 

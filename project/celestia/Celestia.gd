@@ -7,8 +7,9 @@ const GAME_ID: String = "celestia"
 func _ready():
 	# MAIN CODE
 	InitRarities.setup()
-	InitItems.setup()
 	InitMaterials.setup()
+	InitItems.setup()
+	InitArmors.setup()
 
 	# TESTS CODE
 	var dropped_item = preload("res://core/items/DroppedItem.tscn")
