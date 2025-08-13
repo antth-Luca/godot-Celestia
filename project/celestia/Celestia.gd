@@ -13,11 +13,11 @@ func _ready():
 	# TESTS CODE
 	var dropped_item = preload("res://core/items/DroppedItem.tscn")
 	var drop = dropped_item.instantiate()
-	drop.initialize(ItemStack.new(InitItems.EGG, 16))
+	drop.initialize(ItemStack.new(InitArmors.IRON_CHESTPLATE, 1))
 	add_child(drop)
 	drop.global_position = Vector2(208, 133)
 	
 	var drop2 = dropped_item.instantiate()
-	drop2.initialize(ItemStack.new(InitItems.GOLD_INGOT, 5))
+	drop2.initialize(ItemStack.new(InitItems.IRON_INGOT, 5))
 	add_child(drop2)
 	drop2.global_position = Vector2(212, 133)

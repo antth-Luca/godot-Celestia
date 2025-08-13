@@ -3,6 +3,7 @@ class_name InitItems
 
 static var EGG: BaseItem
 static var GOLD_INGOT: BaseItem
+static var IRON_INGOT: BaseItem
 
 
 static func setup() -> void:
@@ -21,6 +22,12 @@ static func setup() -> void:
 
 	GOLD_INGOT = ITEMS.register(
 		'gold_ingot',
+		func():
+			return BaseItem.new()
+	)
+
+	IRON_INGOT = ITEMS.register(
+		'iron_ingot',
 		func():
 			return BaseItem.new()
 	)

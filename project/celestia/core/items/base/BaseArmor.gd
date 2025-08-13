@@ -5,12 +5,15 @@ class_name BaseArmor
 var _armor_attribute: int = 0
 var _armor_type: int = -1
 var _material: BaseMaterial = InitMaterials.GENERIC
-var _max_damage_utilization: float = 1
+var _durability_factor: float = 1
 
 # SUPER
 func _init():
 	set_max_stack(1)
-	set_durability(_material.get_base_max_damage() * _max_damage_utilization)
+
+
+func get_durability() -> int:
+	return _material.get_base_max_damage() * _durability_factor
 
 
 func can_equip(slot: Slot) -> bool:
@@ -50,6 +53,11 @@ func get_material() -> BaseMaterial:
 
 func set_material(new_material: BaseMaterial) -> void:
 	_material = new_material
+
+
+func set_durability_factor(new_factor: float) -> void:
+	if new_factor < 1: return
+	_durability_factor = new_factor
 
 #HANDLES
 func get_attribute_modifiers():

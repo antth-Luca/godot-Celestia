@@ -1,5 +1,6 @@
 extends Node
 
-static var RARITY_REGISTRY := Registry.new()
+static var RARITY_REGISTRY := RarityRegistry.new()
+static var MATERIAL_REGISTRY := MaterialRegistry.new()
 static var ITEM_REGISTRY := ItemRegistry.new()
-static var MATERIAL_REGISTRY := Registry.new()
+static var ARMOR_REGISTRY := ArmorRegistry.new()
