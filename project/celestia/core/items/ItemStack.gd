@@ -30,3 +30,7 @@ func add_amount_safe(amount_safe: int) -> int:
 	var to_add = min(space_left, amount_safe)
 	_amount += to_add
 	return amount_safe - to_add
+
+
+func is_empty() -> bool:
+	return self == EMPTY or self.get_amount() <= 0
