@@ -3,7 +3,7 @@ class_name DeferredRegister
 
 var mod_id: String
 var registry: Registry
-var holders := {}
+var _entries: Dictionary = {}
 
 
 func _init(_mod_id: String, _registry: Registry):
@@ -11,13 +11,24 @@ func _init(_mod_id: String, _registry: Registry):
 	registry = _registry
 
 
-func register(path: String, factory: Callable):
+static func create(_mod_id: String, type: String):
+	return DeferredRegister.new(
+		_mod_id,
+		RegistryManager.registries[type]
+	)
+
+
+func add_entry(path: String, factory: Callable) -> DeferredHolder:
 	var location = ResourceLocation.new(mod_id, path)
-	if registry.has(location):
+	if _entries.has(location):
 		push_error("Duplicate ID: " + location.get_string())
 		return null
 
 	var entry = factory.call()
-	registry.register(location, entry)
-	holders[location.get_string()] = entry
-	return entry
+	_entries[location] = entry
+	return DeferredHolder.new(registry.REGISTRY_TYPE, location)
+
+
+func register() -> void:
+	for location in _entries:
+		registry.register(location, _entries[location])

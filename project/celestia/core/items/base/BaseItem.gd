@@ -4,7 +4,7 @@ class_name BaseItem
 var _id: ResourceLocation = ResourceLocation.get_empty_location()
 var _max_stack: int = 99
 var _max_damage: int = 0
-var _rarity: BaseRarity = InitRarities.COMMON
+var _rarity: BaseRarity = InitRarities.COMMON.get_registered()
 
 
 func get_id() -> ResourceLocation:
