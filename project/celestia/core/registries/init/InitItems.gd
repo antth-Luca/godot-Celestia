@@ -1,29 +1,36 @@
-extends RefCounted
+extends Node
 class_name InitItems
 
-
-static var ITEMS = DeferredRegister.create(
-	Celestia.GAME_ID,
-	ItemRegistry.REGISTRY_TYPE
-)
-
+static var ITEMS: DeferredRegister
 # Items
-static var EGG: DeferredHolder = ITEMS.add_entry(
-	'egg',
-	func():
-		var item = BaseItem.new()
-		item.set_max_stack(12)
-		return item
-)
+static var EGG: DeferredHolder
+static var GOLD_INGOT: DeferredHolder
+static var IRON_INGOT: DeferredHolder
 
-static var GOLD_INGOT: DeferredHolder = ITEMS.add_entry(
-	'gold_ingot',
-	func():
-		return BaseItem.new()
-)
 
-static var IRON_INGOT: DeferredHolder = ITEMS.add_entry(
-	'iron_ingot',
-	func():
-		return BaseItem.new()
-)
+func _ready() -> void:
+	ITEMS = DeferredRegister.create(
+		Celestia.GAME_ID,
+		ItemRegistry.REGISTRY_TYPE
+	)
+
+	# Items
+	EGG = ITEMS.add_entry(
+		'egg',
+		func():
+			var item = BaseItem.new()
+			item.set_max_stack(12)
+			return item
+	)
+
+	GOLD_INGOT = ITEMS.add_entry(
+		'gold_ingot',
+		func():
+			return BaseItem.new()
+	)
+
+	IRON_INGOT = ITEMS.add_entry(
+		'iron_ingot',
+		func():
+			return BaseItem.new()
+	)
