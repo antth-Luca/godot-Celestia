@@ -1,18 +1,21 @@
-extends Object
+extends Node
 class_name InitItems
 
-static var EGG: BaseItem
-static var GOLD_INGOT: BaseItem
-static var IRON_INGOT: BaseItem
+static var ITEMS: DeferredRegister
+# Items
+static var EGG: DeferredHolder
+static var GOLD_INGOT: DeferredHolder
+static var IRON_INGOT: DeferredHolder
 
 
 static func setup() -> void:
-	var ITEMS = DeferredRegister.new(
+	ITEMS = DeferredRegister.create(
 		Celestia.GAME_ID,
-		RegistryManager.ITEM_REGISTRY
+		ItemRegistry.REGISTRY_TYPE
 	)
 
-	EGG = ITEMS.register(
+	# Items
+	EGG = ITEMS.add_entry(
 		'egg',
 		func():
 			var item = BaseItem.new()
@@ -20,14 +23,16 @@ static func setup() -> void:
 			return item
 	)
 
-	GOLD_INGOT = ITEMS.register(
+	GOLD_INGOT = ITEMS.add_entry(
 		'gold_ingot',
 		func():
 			return BaseItem.new()
 	)
 
-	IRON_INGOT = ITEMS.register(
+	IRON_INGOT = ITEMS.add_entry(
 		'iron_ingot',
 		func():
 			return BaseItem.new()
 	)
+
+	ITEMS.register()

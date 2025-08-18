@@ -1,33 +1,36 @@
-extends Object
+extends Node
 class_name InitMaterials
 
-static var GENERIC: BaseMaterial
-static var WOOD: BaseMaterial
-static var STONE: BaseMaterial
-static var FULGURITE: BaseMaterial
-static var COPPER: BaseMaterial
-static var ERUPTITE: BaseMaterial
-static var CARNIGO: BaseMaterial
-static var IRON: BaseMaterial
-static var DARK_IRON: BaseMaterial
-static var ASTRONITE: BaseMaterial
-static var LUNATITE: BaseMaterial
-static var CELESTITE: BaseMaterial
+static var MATERIALS: DeferredRegister
+# Materials
+static var GENERIC: DeferredHolder
+static var WOOD: DeferredHolder
+static var STONE: DeferredHolder
+static var FULGURITE: DeferredHolder
+static var COPPER: DeferredHolder
+static var ERUPTITE: DeferredHolder
+static var CARNIGO: DeferredHolder
+static var IRON: DeferredHolder
+static var DARK_IRON: DeferredHolder
+static var ASTRONITE: DeferredHolder
+static var LUNATITE: DeferredHolder
+static var CELESTITE: DeferredHolder
 
 
 static func setup() -> void:
-	var MATERIALS = DeferredRegister.new(
+	MATERIALS = DeferredRegister.create(
 		Celestia.GAME_ID,
-		RegistryManager.MATERIAL_REGISTRY
+		MaterialRegistry.REGISTRY_TYPE
 	)
 
-	GENERIC = MATERIALS.register(
+	# Materials
+	GENERIC = MATERIALS.add_entry(
 		'generic',
 		func():
 			return BaseMaterial.new()
 	)
 
-	WOOD = MATERIALS.register(
+	WOOD = MATERIALS.add_entry(
 		'wood',
 		func():
 			var material = BaseMaterial.new()
@@ -36,7 +39,7 @@ static func setup() -> void:
 			return material
 	)
 
-	STONE = MATERIALS.register(
+	STONE = MATERIALS.add_entry(
 		'stone',
 		func():
 			var material = BaseMaterial.new()
@@ -45,7 +48,7 @@ static func setup() -> void:
 			return material
 	)
 
-	FULGURITE = MATERIALS.register(
+	FULGURITE = MATERIALS.add_entry(
 		'fulgurite',
 		func():
 			var material = BaseMaterial.new()
@@ -53,7 +56,7 @@ static func setup() -> void:
 			return material
 	)
 
-	COPPER = MATERIALS.register(
+	COPPER = MATERIALS.add_entry(
 		'copper',
 		func():
 			var material = BaseMaterial.new()
@@ -62,7 +65,7 @@ static func setup() -> void:
 			return material
 	)
 
-	ERUPTITE = MATERIALS.register(
+	ERUPTITE = MATERIALS.add_entry(
 		'eruptite',
 		func():
 			var material = BaseMaterial.new()
@@ -71,7 +74,7 @@ static func setup() -> void:
 			return material
 	)
 
-	CARNIGO = MATERIALS.register(
+	MATERIALS.add_entry(
 		'carnigo',
 		func():
 			var material = BaseMaterial.new()
@@ -80,7 +83,7 @@ static func setup() -> void:
 			return material
 	)
 
-	IRON = MATERIALS.register(
+	IRON = MATERIALS.add_entry(
 		'iron',
 		func():
 			var material = BaseMaterial.new()
@@ -89,7 +92,7 @@ static func setup() -> void:
 			return material
 	)
 
-	DARK_IRON = MATERIALS.register(
+	DARK_IRON = MATERIALS.add_entry(
 		'dark_iron',
 		func():
 			var material = BaseMaterial.new()
@@ -98,7 +101,7 @@ static func setup() -> void:
 			return material
 	)
 
-	ASTRONITE = MATERIALS.register(
+	ASTRONITE = MATERIALS.add_entry(
 		'astronite',
 		func():
 			var material = BaseMaterial.new()
@@ -107,7 +110,7 @@ static func setup() -> void:
 			return material
 	)
 
-	LUNATITE = MATERIALS.register(
+	MATERIALS.add_entry(
 		'lunatite',
 		func():
 			var material = BaseMaterial.new()
@@ -116,7 +119,7 @@ static func setup() -> void:
 			return material
 	)
 
-	CELESTITE = MATERIALS.register(
+	CELESTITE = MATERIALS.add_entry(
 		'celestite',
 		func():
 			var material = BaseMaterial.new()
@@ -124,3 +127,5 @@ static func setup() -> void:
 			material.set_efficiency(6)
 			return material
 	)
+
+	MATERIALS.register()

@@ -44,23 +44,19 @@ func update_all_inventory() -> void:
 
 func clear_all_inventory() -> void:
 	for c in slots_group.get_children():
-		inventory.append(ItemStack.get_empty_stack())
+		inventory.append(ItemStack.EMPTY)
 	update_all_inventory()
-
-
-func is_full() -> bool:
-	for c in range(BACKPACK_LAST_POSITION):  # Slots for backpack
-		var slot_stack: ItemStack = inventory[c]
-		if slot_stack.get_amount() < slot_stack.get_item().get_max_stack():
-			return false
-	return true
 
 
 func get_stackable_index(item_id: ResourceLocation) -> int:
 	for index in range(BACKPACK_LAST_POSITION):  # Slots for backpack
-		var invent_item: BaseItem = inventory[index].get_item()
-		if invent_item.get_id() == item_id and invent_item.get_max_stack() > 1:
+		var invent_stack: ItemStack = inventory[index]
+		if invent_stack.is_empty():
 			return index
+		else:
+			var invent_item: BaseItem = invent_stack.get_item()
+			if invent_item.get_id() == item_id and invent_stack.get_amount() < invent_item.get_max_stack():
+				return index
 	return -1
 
 
@@ -91,13 +87,14 @@ func add_item_to_bp_new_slot(stack: ItemStack):
 
 func add_item_to_backpack(stack: ItemStack) -> void:
 	# Adds an item to the inventory, stacking, creating or ignoring it
-	var remaining_amount = 0
 	var stackable_index = get_stackable_index(stack.get_item().get_id())
-	if not stackable_index < 0:  # Or: >= 0
-		remaining_amount = inventory[stackable_index].add_amount_safe(stack.get_amount())
+	if inventory[stackable_index].is_empty():
+		inventory[stackable_index] = stack
 		slots_group.get_child(stackable_index).render_slot(inventory[stackable_index])
-	else:
-		remaining_amount = stack.get_amount()
+		return
+
+	var remaining_amount = inventory[stackable_index].add_amount_safe(stack.get_amount())
+	slots_group.get_child(stackable_index).render_slot(inventory[stackable_index])
 	# As long as there is an remaining amount, try adding
 	while remaining_amount > 0:
 		var item_max_stack: int = stack.get_item().get_max_stack()
@@ -120,16 +117,16 @@ func _handle_left_click_on_slot(slot: Slot):
 	var slot_stack: ItemStack = inventory[slot_index]
 	var slot_amount: int = slot_stack.get_amount()
 	var slot_item: BaseItem = slot_stack.get_item()
-	var slot_can_unequip: bool = slot_item != null and slot_item.can_unequip(slot)
+	var slot_can_unequip: bool = false if slot_stack.is_empty() else slot_item.can_unequip(slot)
 
 	var cursor_stack: ItemStack = cursor.get_cursor_stack()
-	var cursor_can_equip: bool = cursor_stack.get_item().can_equip(slot)
+	var cursor_can_equip: bool = true if cursor_stack.is_empty() else cursor_stack.get_item().can_equip(slot)
 
 	# Case 1: Empty cursor
 	if cursor.is_cursor_stack_empty():
 		if slot_amount > 0 and slot_can_unequip:
 			cursor.set_click(slot_stack, slot_index, self)
-			inventory[slot_index] = ItemStack.get_empty_stack()
+			inventory[slot_index] = ItemStack.EMPTY
 			slot.clear_slot()
 
 	# Case 2: Cursor loaded and slot empty
@@ -163,7 +160,7 @@ func _handle_middle_click_on_slot(slot: Slot):
 	var slot_stack: ItemStack = inventory[slot_index]
 
 	if slot_stack.get_amount() > 0 and slot_stack.get_item().can_unequip(slot):
-		inventory[slot_index] = ItemStack.get_empty_stack()
+		inventory[slot_index] = ItemStack.EMPTY
 		drop_item_players_foot(slot_stack)
 		slot.clear_slot()
 
@@ -173,12 +170,12 @@ func _handle_right_click_on_slot(slot: Slot):
 	var slot_stack: ItemStack = inventory[slot_index]
 	var slot_amount: int = slot_stack.get_amount()
 	var slot_item: BaseItem = slot_stack.get_item()
-	var slot_can_unequip: bool = slot_item != null and slot_item.can_unequip(slot)
+	var slot_can_unequip: bool = false if slot_stack.is_empty() else slot_item.can_unequip(slot)
 
 	var cursor_stack: ItemStack = cursor.get_cursor_stack()
 	var cursor_item: BaseItem = cursor_stack.get_item()
 	var cursor_amount: int = cursor_stack.get_amount()
-	var cursor_can_equip: bool = cursor_item.can_equip(slot)
+	var cursor_can_equip: bool = true if cursor_stack.is_empty() else cursor_stack.get_item().can_equip(slot)
 
 	# Case 1: Empty cursor
 	if cursor.is_cursor_stack_empty():

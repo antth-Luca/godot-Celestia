@@ -5,7 +5,7 @@ class_name BaseArmor
 var _armor_type: int = -1
 var _protection: float = 0
 var _durability_factor: float = 1
-var _material: BaseMaterial = InitMaterials.GENERIC
+var _material: BaseMaterial = InitMaterials.GENERIC.get_registered()
 
 # SUPER
 func _init():

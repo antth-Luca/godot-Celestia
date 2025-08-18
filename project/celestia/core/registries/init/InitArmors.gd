@@ -1,21 +1,33 @@
-extends Object
+extends Node
 class_name InitArmors
 
-static var IRON_CHESTPLATE: BaseArmor
+static var ARMORS: DeferredRegister
+# Helmets
+# Chestplates
+static var IRON_CHESTPLATE: DeferredHolder
+# Leggings
+# Boots
+
 
 static func setup() -> void:
-	var ARMORS = DeferredRegister.new(
+	ARMORS = DeferredRegister.create(
 		Celestia.GAME_ID,
-		RegistryManager.ARMOR_REGISTRY
+		ArmorRegistry.REGISTRY_TYPE
 	)
 
-	IRON_CHESTPLATE = ARMORS.register(
+	# Helmets
+	# Chestplates
+	IRON_CHESTPLATE = ARMORS.add_entry(
 		'iron_chestplate',
 		func():
 			var armor = BaseArmor.new()
 			armor.set_armor_type(ArmorTypes.CHESTPLATE)
 			armor.set_protection(1.5)
 			armor.set_durability_factor(2)
-			armor.set_material(InitMaterials.IRON)
+			armor.set_material(InitMaterials.IRON.get_registered())
 			return armor
 	)
+	# Leggings
+	# Boots
+
+	ARMORS.register()

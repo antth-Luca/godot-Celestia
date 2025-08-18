@@ -1,4 +1,4 @@
-extends Node
+extends RefCounted
 
 @warning_ignore("unused_signal") signal mouse_entered_slot(slot: Slot)
 @warning_ignore("unused_signal") signal mouse_exited_slot()

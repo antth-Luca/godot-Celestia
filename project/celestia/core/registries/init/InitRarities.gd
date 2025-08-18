@@ -1,20 +1,23 @@
-extends Object
+extends Node
 class_name InitRarities
 
-static var COMMON: BaseRarity
-static var UNCOMMON: BaseRarity
-static var RARE: BaseRarity
-static var EPIC: BaseRarity
-static var LEGENDARY: BaseRarity
+static var RARITIES: DeferredRegister
+# Rarities
+static var COMMON: DeferredHolder
+static var UNCOMMON: DeferredHolder
+static var RARE: DeferredHolder
+static var EPIC: DeferredHolder
+static var LEGENDARY: DeferredHolder
 
 
 static func setup() -> void:
-	var RARITIES = DeferredRegister.new(
+	RARITIES = DeferredRegister.create(
 		Celestia.GAME_ID,
-		RegistryManager.RARITY_REGISTRY
+		RarityRegistry.REGISTRY_TYPE
 	)
 
-	COMMON = RARITIES.register(
+# Rarities
+	COMMON = RARITIES.add_entry(
 		'common',
 		func():
 			var rarity = BaseRarity.new()
@@ -22,7 +25,7 @@ static func setup() -> void:
 			return rarity
 	)
 
-	UNCOMMON = RARITIES.register(
+	UNCOMMON = RARITIES.add_entry(
 		'uncommon',
 		func():
 			var rarity = BaseRarity.new()
@@ -30,7 +33,7 @@ static func setup() -> void:
 			return rarity
 	)
 
-	RARE = RARITIES.register(
+	RARE = RARITIES.add_entry(
 		'rare',
 		func():
 			var rarity = BaseRarity.new()
@@ -38,7 +41,7 @@ static func setup() -> void:
 			return rarity
 	)
 
-	EPIC = RARITIES.register(
+	EPIC = RARITIES.add_entry(
 		'epic',
 		func():
 			var rarity = BaseRarity.new()
@@ -46,10 +49,12 @@ static func setup() -> void:
 			return rarity
 	)
 
-	LEGENDARY = RARITIES.register(
+	LEGENDARY = RARITIES.add_entry(
 		'legendary',
 		func():
 			var rarity = BaseRarity.new()
 			rarity.set_hex_color('#FFC300')
 			return rarity
 	)
+
+	RARITIES.register()
