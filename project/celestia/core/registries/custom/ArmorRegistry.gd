@@ -1,9 +1,7 @@
 extends Registry
 class_name ArmorRegistry
 
-
-func _ready() -> void:
-	REGISTRY_TYPE = 'Armors'
+static var REGISTRY_TYPE: String = 'Armors'
 
 
 func register(id: ResourceLocation, entry: BaseArmor) -> void:

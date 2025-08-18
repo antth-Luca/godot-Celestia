@@ -1,7 +1,5 @@
-extends Node
+extends RefCounted
 class_name Registry
-
-static var REGISTRY_TYPE: String = ''
 
 var _registries: Dictionary = {}
 

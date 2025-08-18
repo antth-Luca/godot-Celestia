@@ -1,9 +1,7 @@
 extends Registry
 class_name RarityRegistry
 
-
-func _ready() -> void:
-	REGISTRY_TYPE = 'Rarities'
+static var REGISTRY_TYPE: String = 'Rarities'
 
 
 func register(id: ResourceLocation, entry: BaseRarity) -> void:
