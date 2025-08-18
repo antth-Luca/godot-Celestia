@@ -2,8 +2,8 @@ extends Registry
 class_name ItemRegistry
 
 
-func _init():
-	super._init('Items')
+func _ready() -> void:
+	REGISTRY_TYPE = 'Items'
 
 
 func register(id: ResourceLocation, entry: BaseItem) -> void:

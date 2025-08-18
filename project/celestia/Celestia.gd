@@ -5,6 +5,8 @@ const GAME_ID: String = "celestia"
 
 
 func _ready():
+	print(RegistryManager.registries)
+
 	# MAIN CODE
 	InitRarities.setup()
 	InitMaterials.setup()

@@ -1,6 +1,8 @@
 extends RefCounted
 class_name ResourceLocation
 
+static var EMPTY := ResourceLocation.new(Celestia.GAME_ID, 'empty')
+
 var space: String
 var path: String
 
@@ -9,10 +11,6 @@ func _init(sp: String, pa: String):
 		push_error('ResourceLocation: space and path cannot contain ":".')
 	space = sp
 	path = pa
-
-
-static func get_empty_location() -> ResourceLocation:
-	return ResourceLocation.new(Celestia.GAME_ID, 'empty')
 
 
 func get_string() -> String:

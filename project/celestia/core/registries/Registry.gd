@@ -1,14 +1,9 @@
-extends RefCounted
+extends Node
 class_name Registry
 
 static var REGISTRY_TYPE: String = ''
-var EMPTY_LOCATION: String = ResourceLocation.get_empty_location().get_string()
 
 var _registries: Dictionary = {}
-
-
-func _init(type: String) -> void:
-	REGISTRY_TYPE = type
 
 
 func register(location: ResourceLocation, entry) -> void:
@@ -18,7 +13,7 @@ func register(location: ResourceLocation, entry) -> void:
 		return
 
 	var entry_id: String = entry.get_id().get_string()
-	if entry_id == EMPTY_LOCATION:
+	if entry_id == ResourceLocation.EMPTY.get_string():
 		entry.set_id(location)
 	elif entry_id != str_location:
 		push_warning(
