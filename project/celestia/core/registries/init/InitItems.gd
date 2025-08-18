@@ -8,7 +8,7 @@ static var GOLD_INGOT: DeferredHolder
 static var IRON_INGOT: DeferredHolder
 
 
-func _ready() -> void:
+static func setup() -> void:
 	ITEMS = DeferredRegister.create(
 		Celestia.GAME_ID,
 		ItemRegistry.REGISTRY_TYPE
@@ -34,3 +34,5 @@ func _ready() -> void:
 		func():
 			return BaseItem.new()
 	)
+
+	ITEMS.register()

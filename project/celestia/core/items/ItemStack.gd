@@ -1,20 +1,15 @@
 extends RefCounted
 class_name ItemStack
 
+static var EMPTY = ItemStack.new(null, 0)
+
 var _item: BaseItem
 var _amount: int
 
 
-func _init(item_class: BaseItem, amount: int = 1) -> void:
-	if item_class == null:
-		push_error('ItemStack: must be created with an instance of BaseItem.')
-	
-	_item = item_class
+func _init(item: BaseItem, amount: int = 1) -> void:
+	_item = item
 	_amount = amount
-
-
-static func get_empty_stack() -> ItemStack:
-	return ItemStack.new(BaseItem.new(), 0)
 
 
 func get_item() -> BaseItem:

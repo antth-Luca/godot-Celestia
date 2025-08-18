@@ -10,7 +10,7 @@ static var EPIC: DeferredHolder
 static var LEGENDARY: DeferredHolder
 
 
-func _ready() -> void:
+static func setup() -> void:
 	RARITIES = DeferredRegister.create(
 		Celestia.GAME_ID,
 		RarityRegistry.REGISTRY_TYPE
@@ -56,3 +56,5 @@ func _ready() -> void:
 			rarity.set_hex_color('#FFC300')
 			return rarity
 	)
+
+	RARITIES.register()

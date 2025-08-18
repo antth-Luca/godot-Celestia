@@ -9,7 +9,7 @@ static var IRON_CHESTPLATE: DeferredHolder
 # Boots
 
 
-func _ready() -> void:
+static func setup() -> void:
 	ARMORS = DeferredRegister.create(
 		Celestia.GAME_ID,
 		ArmorRegistry.REGISTRY_TYPE
@@ -29,3 +29,5 @@ func _ready() -> void:
 	)
 	# Leggings
 	# Boots
+
+	ARMORS.register()

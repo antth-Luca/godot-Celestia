@@ -17,7 +17,7 @@ static var LUNATITE: DeferredHolder
 static var CELESTITE: DeferredHolder
 
 
-func _ready() -> void:
+static func setup() -> void:
 	MATERIALS = DeferredRegister.create(
 		Celestia.GAME_ID,
 		MaterialRegistry.REGISTRY_TYPE
@@ -127,3 +127,5 @@ func _ready() -> void:
 			material.set_efficiency(6)
 			return material
 	)
+
+	MATERIALS.register()

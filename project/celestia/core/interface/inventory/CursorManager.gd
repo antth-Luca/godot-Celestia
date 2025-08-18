@@ -1,7 +1,7 @@
 extends RefCounted
 class_name CursorManager
 
-var _cursor_stack: ItemStack = ItemStack.get_empty_stack()
+var _cursor_stack: ItemStack = ItemStack.EMPTY
 var _cursor_click_origin_slot: int
 var _cursor_sprite: Sprite2D = null
 
@@ -41,7 +41,7 @@ func set_click(new_stack: ItemStack, slot_index: int, inventory: Control) -> voi
 
 
 func clear_cursor() -> void:
-	_cursor_stack = ItemStack.get_empty_stack()
+	_cursor_stack = ItemStack.EMPTY
 	clear_cursor_sprite()
 
 

@@ -44,7 +44,7 @@ func update_all_inventory() -> void:
 
 func clear_all_inventory() -> void:
 	for c in slots_group.get_children():
-		inventory.append(ItemStack.get_empty_stack())
+		inventory.append(ItemStack.EMPTY)
 	update_all_inventory()
 
 
@@ -129,7 +129,7 @@ func _handle_left_click_on_slot(slot: Slot):
 	if cursor.is_cursor_stack_empty():
 		if slot_amount > 0 and slot_can_unequip:
 			cursor.set_click(slot_stack, slot_index, self)
-			inventory[slot_index] = ItemStack.get_empty_stack()
+			inventory[slot_index] = ItemStack.EMPTY
 			slot.clear_slot()
 
 	# Case 2: Cursor loaded and slot empty
@@ -163,7 +163,7 @@ func _handle_middle_click_on_slot(slot: Slot):
 	var slot_stack: ItemStack = inventory[slot_index]
 
 	if slot_stack.get_amount() > 0 and slot_stack.get_item().can_unequip(slot):
-		inventory[slot_index] = ItemStack.get_empty_stack()
+		inventory[slot_index] = ItemStack.EMPTY
 		drop_item_players_foot(slot_stack)
 		slot.clear_slot()
 
