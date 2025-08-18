@@ -19,8 +19,5 @@ func register(location: ResourceLocation, entry) -> void:
 				entry_id, str_location
 			]
 		)
+
 	_registries[str_location] = entry
-
-
-func get_entry(str_location: String):
-	return _registries.get(str_location)

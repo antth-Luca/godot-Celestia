@@ -4,8 +4,8 @@ class_name DroppedItem
 var stack: ItemStack
 
 
-func initialize(stack_param: ItemStack):
-	stack = stack_param
+func initialize(_stack_param: ItemStack):
+	stack = _stack_param
 	var id_parts: Array = stack.get_item().get_id().get_splited()
 	$ItemSprite.texture = load('res://assets/%s/textures/items/%s.png' % id_parts)
 
