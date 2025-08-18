@@ -1,3 +1,4 @@
+extends Resource
 class_name BaseRarity
 
 var _id: ResourceLocation = ResourceLocation.get_empty_location()

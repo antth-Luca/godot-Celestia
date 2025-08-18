@@ -1,4 +1,4 @@
-extends Object
+extends Resource
 class_name BaseMaterial
 
 var _id: ResourceLocation = ResourceLocation.get_empty_location()

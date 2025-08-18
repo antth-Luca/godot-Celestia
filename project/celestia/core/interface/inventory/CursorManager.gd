@@ -1,4 +1,4 @@
-extends Node
+extends RefCounted
 class_name CursorManager
 
 var _cursor_stack: ItemStack = ItemStack.get_empty_stack()

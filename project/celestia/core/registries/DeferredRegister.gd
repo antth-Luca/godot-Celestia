@@ -11,7 +11,7 @@ func _init(_mod_id: String, _registry: Registry):
 	registry = _registry
 
 
-static func create(_mod_id: String, type: String):
+static func create(_mod_id: String, type: String) -> DeferredRegister:
 	return DeferredRegister.new(
 		_mod_id,
 		RegistryManager.registries[type]
