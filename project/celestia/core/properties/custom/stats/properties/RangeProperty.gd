@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name RangeComponent
+extends BaseProperty
+class_name RangeProperty
 
 var rg: float
 const MIN_RG: int = 1

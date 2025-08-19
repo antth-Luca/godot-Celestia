@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name ForceComponent
+extends BaseProperty
+class_name ForceProperty
 
 var fr: float
 const MIN_FR: int = 0

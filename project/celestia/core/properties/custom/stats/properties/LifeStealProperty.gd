@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name LifeStealComponent
+extends BaseProperty
+class_name LifeStealProperty
 
 var ls: float
 const MIN_LS: int = 0

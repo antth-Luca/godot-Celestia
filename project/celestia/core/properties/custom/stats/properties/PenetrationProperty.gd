@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name PenetrationComponent
+extends BaseProperty
+class_name PenetrationProperty
 
 var pn: float
 const MIN_PN: int = 0

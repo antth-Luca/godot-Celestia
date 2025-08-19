@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name DefenseReductionComponent
+extends BaseProperty
+class_name DefenseReductionProperty
 
 const MAX_DEF_R: int = 4
 var def_r: float

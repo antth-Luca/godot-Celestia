@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name ResistenceComponent
+extends BaseProperty
+class_name ResistenceProperty
 
 var rs: float
 const MIN_RS: int = 0

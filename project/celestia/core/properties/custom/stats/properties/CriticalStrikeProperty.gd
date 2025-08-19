@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name CriticalStrikeComponent
+extends BaseProperty
+class_name CriticalStrikeProperty
 
 const MAX_CRIT_CH: int = 1
 var crit_ch: float

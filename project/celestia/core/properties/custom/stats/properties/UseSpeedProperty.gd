@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name UseSpeedComponent
+extends BaseProperty
+class_name UseSpeedProperty
 
 const MAX_US: int = 3
 var us: float

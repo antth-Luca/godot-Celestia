@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name DamageReductionComponent
+extends BaseProperty
+class_name DamageReductionProperty
 
 const MAX_DAM_R: int = 4
 var dam_r: float

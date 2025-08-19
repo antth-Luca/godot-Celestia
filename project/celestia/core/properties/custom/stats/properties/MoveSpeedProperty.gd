@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name MoveSpeedComponent
+extends BaseProperty
+class_name MoveSpeedProperty
 
 var ms: float
 const MIN_MS: int = 0

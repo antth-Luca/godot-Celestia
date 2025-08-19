@@ -1,5 +1,5 @@
 extends Resource
-class_name PropertyBaseComponent
+class_name BaseProperty
 
 var _id: ResourceLocation = ResourceLocation.EMPTY
 
@@ -23,7 +23,7 @@ func create_component() -> void:
 	pass
 
 
-func copy_component(_old_component: PropertyBaseComponent) -> void:
+func copy_component(_old_component: BaseProperty) -> void:
 	pass
 
 

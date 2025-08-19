@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name HealthComponent
+extends BaseProperty
+class_name HealthProperty
 
 var MAX_HP: float
 var hp: float

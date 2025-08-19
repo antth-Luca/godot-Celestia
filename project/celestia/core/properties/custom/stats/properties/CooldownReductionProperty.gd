@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name CooldownReductionComponent
+extends BaseProperty
+class_name CooldownReductionProperty
 
 const MAX_CD_R: int = 5
 var cd_r: float

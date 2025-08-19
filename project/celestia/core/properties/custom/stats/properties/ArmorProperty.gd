@@ -1,5 +1,5 @@
-extends PropertyBaseComponent
-class_name ArmorComponent
+extends BaseProperty
+class_name ArmorProperty
 
 var am: float
 const MIN_AM: int = 0
