@@ -1,4 +1,4 @@
-extends BaseStatComponent
+extends PropertyBaseComponent
 class_name ForceComponent
 
 var fr: float

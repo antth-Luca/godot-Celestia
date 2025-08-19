@@ -1,4 +1,4 @@
-extends BaseStatComponent
+extends PropertyBaseComponent
 class_name DefenseReductionComponent
 
 const MAX_DEF_R: int = 4

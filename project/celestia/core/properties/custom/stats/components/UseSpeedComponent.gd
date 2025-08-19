@@ -1,4 +1,4 @@
-extends BaseStatComponent
+extends PropertyBaseComponent
 class_name UseSpeedComponent
 
 const MAX_US: int = 3

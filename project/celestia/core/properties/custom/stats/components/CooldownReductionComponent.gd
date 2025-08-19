@@ -1,4 +1,4 @@
-extends BaseStatComponent
+extends PropertyBaseComponent
 class_name CooldownReductionComponent
 
 const MAX_CD_R: int = 5

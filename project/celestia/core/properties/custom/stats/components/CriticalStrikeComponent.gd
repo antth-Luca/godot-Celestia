@@ -1,4 +1,4 @@
-extends BaseStatComponent
+extends PropertyBaseComponent
 class_name CriticalStrikeComponent
 
 const MAX_CRIT_CH: int = 1
