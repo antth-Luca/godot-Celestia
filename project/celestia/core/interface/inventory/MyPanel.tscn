@@ -493,13 +493,13 @@ layout_mode = 2
 [node name="LabelAM" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
 layout_mode = 2
 
+[node name="LabelRS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+layout_mode = 2
+
 [node name="LabelLS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
 layout_mode = 2
 
 [node name="LabelRG" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
-layout_mode = 2
-
-[node name="LabelCritCh" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
 layout_mode = 2
 
 [node name="LabelMS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
@@ -516,13 +516,13 @@ layout_mode = 2
 [node name="LabelFR" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
 layout_mode = 2
 
-[node name="LabelCdR" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
-layout_mode = 2
-
 [node name="LabelPN" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
 layout_mode = 2
 
-[node name="LabelCritDm" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+[node name="LabelCrit" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+layout_mode = 2
+
+[node name="LabelCdR" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
 layout_mode = 2
 
 [node name="LabelUS" type="Label" parent="StatsTab/VBoxContainer/HBoxContainerDown/VBoxContainerRight"]

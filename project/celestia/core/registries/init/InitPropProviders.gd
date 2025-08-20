@@ -11,6 +11,7 @@ static var DEFENSE_REDUCTION: DeferredHolder
 static var FORCE: DeferredHolder
 static var HEALTH: DeferredHolder
 static var LIFE_STEAL: DeferredHolder
+static var MANA: DeferredHolder
 static var MOVE_SPEED: DeferredHolder
 static var PENETRATION: DeferredHolder
 static var RANGE: DeferredHolder
@@ -55,6 +56,10 @@ static func setup() -> void:
 
 	LIFE_STEAL = PROVIDERS.add_entry(
 		'life_steal', func(): return LifeStealProvider.new()
+	)
+
+	MANA = PROVIDERS.add_entry(
+		'mana', func(): return ManaProvider.new()
 	)
 
 	MOVE_SPEED = PROVIDERS.add_entry(

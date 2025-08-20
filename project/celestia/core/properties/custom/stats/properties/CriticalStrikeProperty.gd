@@ -30,10 +30,5 @@ func get_crit_damage() -> float:
 	return crit_dm
 
 
-func get_format_crit_damage() -> int:
-	@warning_ignore("narrowing_conversion")
-	return crit_dm * 100
-
-
 func set_crit_damage(newCritDm: float) -> void:
 	crit_dm = clamp(newCritDm, MIN_CRIT_DM, MAX_CRIT_DM)

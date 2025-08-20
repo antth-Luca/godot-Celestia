@@ -20,6 +20,7 @@ func _ready():
 		InitPropProviders.DEFENSE_REDUCTION: 0,
 		InitPropProviders.CRITICAL_STRIKE: 0,
 		InitPropProviders.LIFE_STEAL: 0,
+		InitPropProviders.MANA: 50,
 		InitPropProviders.RANGE: 1,
 		InitPropProviders.USE_SPEED: 1,
 		InitPropProviders.MOVE_SPEED: 80,
@@ -30,7 +31,7 @@ func _ready():
 func _physics_process(_delta) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
-	var stats_move_speed = stats.get_property(InitPropProviders.MOVE_SPEED)
+	var stats_move_speed = stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
 	if direction != Vector2.ZERO:
 		velocity = direction * stats_move_speed
 		if direction.x != 0: TEXTURE.scale.x = sign(direction.x)

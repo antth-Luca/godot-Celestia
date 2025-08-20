@@ -7,12 +7,16 @@ const MIN_DEF_R: int = 0
 
 
 func _init(initial_value: float):
-	set_dam_reduction(initial_value)
+	set_def_reduction(initial_value)
 
 # Def. Reduction
-func get_dam_reduction() -> float:
+func get_def_reduction() -> float:
 	return def_r
 
 
-func set_dam_reduction(newDefenseReduction) -> void:
+func get_format_def_reduction() -> int:
+	return ceil(def_r)
+
+
+func set_def_reduction(newDefenseReduction) -> void:
 	def_r = clamp(newDefenseReduction, MIN_DEF_R, MAX_DEF_R)

@@ -32,4 +32,4 @@ func get_format_max_health() -> int:
 
 
 func set_max_health(newMaxHP: float) -> void:
-	MAX_HP = max(0, newMaxHP)
+	MAX_HP = max(MIN_HP, newMaxHP)
