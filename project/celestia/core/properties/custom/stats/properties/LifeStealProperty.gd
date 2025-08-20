@@ -13,9 +13,8 @@ func get_life_steal() -> float:
 	return ls
 
 
-func get_format_life_steal() -> int:
-	@warning_ignore("narrowing_conversion")
-	return ls * 100
+func get_format_life_steal() -> String:
+	return str(int(ls * 100)) + '%'
 
 
 func set_life_steal(newLS: float) -> void:

@@ -13,8 +13,8 @@ func get_penetration() -> float:
 	return pn
 
 
-func get_format_penetration() -> int:
-	return ceil(pn)
+func get_format_penetration() -> String:
+	return str(int(pn))
 
 
 func set_penetration(newPN: float) -> void:

@@ -14,8 +14,8 @@ func get_def_reduction() -> float:
 	return def_r
 
 
-func get_format_def_reduction() -> int:
-	return ceil(def_r)
+func get_format_def_reduction() -> String:
+	return str(int(def_r)) + '%'
 
 
 func set_def_reduction(newDefenseReduction) -> void:

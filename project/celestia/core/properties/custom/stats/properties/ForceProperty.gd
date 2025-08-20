@@ -13,8 +13,8 @@ func get_force() -> float:
 	return fr
 
 
-func get_format_force() -> int:
-	return ceil(fr)
+func get_format_force() -> String:
+	return str(int(fr))
 
 
 func set_force(newFR: float) -> void:

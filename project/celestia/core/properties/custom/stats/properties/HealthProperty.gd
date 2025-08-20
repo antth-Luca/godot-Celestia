@@ -15,8 +15,8 @@ func get_health() -> float:
 	return hp
 
 
-func get_format_health() -> int:
-	return ceil(hp)
+func get_format_health() -> String:
+	return str(int(hp))
 
 
 func set_health(newHP: float) -> void:
@@ -27,8 +27,8 @@ func get_max_health() -> float:
 	return MAX_HP
 
 
-func get_format_max_health() -> int:
-	return ceil(MAX_HP)
+func get_format_max_health() -> String:
+	return str(int(MAX_HP))
 
 
 func set_max_health(newMaxHP: float) -> void:

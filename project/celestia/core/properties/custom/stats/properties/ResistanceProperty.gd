@@ -13,8 +13,8 @@ func get_resistance() -> float:
 	return rs
 
 
-func get_format_resistance() -> int:
-	return ceil(rs)
+func get_format_resistance() -> String:
+	return str(int(rs))
 
 
 func set_resistance(newRS: float) -> void:

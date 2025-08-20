@@ -13,5 +13,9 @@ func get_range() -> float:
 	return rg
 
 
+func get_format_range() -> String:
+	return str(rg)
+
+
 func set_range(newRG: float) -> void:
 	rg = max(newRG, MIN_RG)

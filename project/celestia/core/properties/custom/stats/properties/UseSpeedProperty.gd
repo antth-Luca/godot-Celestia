@@ -14,5 +14,9 @@ func get_use_speed() -> float:
 	return us
 
 
+func get_format_use_speed() -> String:
+	return str(us)
+
+
 func set_use_speed(newUS: float) -> void:
 	us = clamp(newUS, MIN_US, MAX_US)

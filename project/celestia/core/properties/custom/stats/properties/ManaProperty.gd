@@ -15,8 +15,8 @@ func get_mana() -> float:
 	return mp
 
 
-func get_format_mana() -> int:
-	return ceil(mp)
+func get_format_mana() -> String:
+	return str(int(mp))
 
 
 func set_mana(newMP: float) -> void:
@@ -27,8 +27,8 @@ func get_max_mana() -> float:
 	return MAX_MP
 
 
-func get_format_max_mana() -> int:
-	return ceil(MAX_MP)
+func get_format_max_mana() -> String:
+	return str(int(MAX_MP))
 
 
 func set_max_mana(newMaxMP: float) -> void:

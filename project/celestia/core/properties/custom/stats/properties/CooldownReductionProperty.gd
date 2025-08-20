@@ -14,9 +14,8 @@ func get_cooldown_reduction() -> float:
 	return cd_r
 
 
-func get_format_cooldown_reduction() -> int:
-	@warning_ignore("narrowing_conversion")
-	return cd_r * 100
+func get_format_cooldown_reduction() -> String:
+	return str(int(cd_r * 100)) + '%'
 
 
 func set_cooldown_reduction(newCdR: float) -> void:

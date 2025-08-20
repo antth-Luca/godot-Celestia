@@ -13,8 +13,8 @@ func get_armor() -> float:
 	return am
 
 
-func get_format_armor() -> int:
-	return ceil(am)
+func get_format_armor() -> String:
+	return str(int(am))
 
 
 func set_armor(newAM: float) -> void:

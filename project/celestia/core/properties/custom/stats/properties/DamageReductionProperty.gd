@@ -14,8 +14,8 @@ func get_dam_reduction() -> float:
 	return dam_r
 
 
-func get_format_damage_reduction() -> int:
-	return ceil(dam_r)
+func get_format_damage_reduction() -> String:
+	return str(int(dam_r)) + '%'
 
 
 func set_dam_reduction(newDamageReduction) -> void:

@@ -17,9 +17,8 @@ func get_crit_chance() -> float:
 	return crit_ch
 
 
-func get_format_crit_chance() -> int:
-	@warning_ignore("narrowing_conversion")
-	return crit_ch * 100
+func get_format_crit_chance() -> String:
+	return str(int(crit_ch * 100)) + '%'
 
 
 func set_crit_chance(newCritCh: float) -> void:
@@ -28,6 +27,10 @@ func set_crit_chance(newCritCh: float) -> void:
 # Crit. Damage
 func get_crit_damage() -> float:
 	return crit_dm
+
+
+func get_format_crit_damage() -> String:
+	return str(crit_dm) + 'x'
 
 
 func set_crit_damage(newCritDm: float) -> void:
