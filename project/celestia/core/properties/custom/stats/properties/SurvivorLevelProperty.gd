@@ -6,7 +6,7 @@ var xp: int = 0
 var level: int
 
 
-func _init(initial_value: float):
+func _init(initial_value: int):
 	level = initial_value if initial_value > 0 else 1
 
 # Xp
