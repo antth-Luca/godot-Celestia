@@ -187,7 +187,7 @@ func _handle_right_click_on_slot(slot: Slot):
 				self
 			)
 			slot_stack.set_amount(slot_amount - take_amount)
-			slot.render_slot(slot_stack)
+			slot.clear_slot()
 
 	# Case 2: Cursor loaded and slot empty
 	elif slot_amount <= 0:

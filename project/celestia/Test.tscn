@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cj1d4dgd5lwqi" path="res://core/world/TerrainManager.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://dt4qxa8ig7grl" path="res://Test.gd" id="1_7jpfq"]
-[ext_resource type="PackedScene" uid="uid://qvrm2d7b1xca" path="res://core/entities/player/Player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://qvrm2d7b1xca" path="res://core/entities/creatures/player/Player.tscn" id="1_ig7tw"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7jpfq")

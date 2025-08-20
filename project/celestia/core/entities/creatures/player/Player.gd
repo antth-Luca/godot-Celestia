@@ -1,12 +1,4 @@
-extends CharacterBody2D
-
-@onready var TEXTURE: Sprite2D = $Texture
-@onready var ANIMATION: AnimationPlayer = $Animation
-
-var stats: PropertyManager
-
-var direction: Vector2 = Vector2.ZERO
-var is_hurted: bool = false
+extends LivingEntity
 
 # MAIN
 func _ready():
@@ -31,18 +23,10 @@ func _ready():
 	EventBus.client_player.connect('level_up', Callable(self, '_on_surv_level_up'))
 
 
-func _physics_process(_delta) -> void:
+func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
-	var stats_move_speed = stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
-	if direction != Vector2.ZERO:
-		velocity = direction * stats_move_speed
-		if direction.x != 0: TEXTURE.scale.x = sign(direction.x)
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, stats_move_speed)
-	# Setting state and animation and continuing movement
-	_set_state()
-	move_and_slide()
+	super._physics_process(delta)
 
 
 func _set_state() -> void:

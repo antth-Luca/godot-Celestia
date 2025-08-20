@@ -37,7 +37,7 @@ func set_cursor_sprite(splited_id: Array, inventory: Control):
 func set_click(new_stack: ItemStack, slot_index: int, inventory: Control) -> void:
 	set_cursor_stack(new_stack)
 	set_cursor_click_origin_slot(slot_index)
-	set_cursor_sprite(new_stack.get_item().get_splited_id(), inventory)
+	set_cursor_sprite(new_stack.get_item().get_id().get_splited(), inventory)
 
 
 func clear_cursor() -> void:

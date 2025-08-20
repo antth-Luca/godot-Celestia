@@ -11,7 +11,7 @@ func _ready():
 
 # MAIN
 func render_slot(stack: ItemStack) -> void:
-	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % stack.get_item().get_splited_id())
+	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % stack.get_item().get_id().get_splited())
 	itemSprite.visible = true
 	if stack.get_amount() > 1:
 		itemAmount.text = str(stack.get_amount())

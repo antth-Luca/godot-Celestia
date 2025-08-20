@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://qvrm2d7b1xca"]
 
-[ext_resource type="Script" uid="uid://dpv05wrpe5ht3" path="res://core/entities/player/Player.gd" id="1_ahdn1"]
+[ext_resource type="Script" uid="uid://dpv05wrpe5ht3" path="res://core/entities/creatures/player/Player.gd" id="1_ahdn1"]
 [ext_resource type="Texture2D" uid="uid://ce8bk4a6ciyep" path="res://assets/celestia/textures/player/default_male.png" id="2_lkete"]
 [ext_resource type="PackedScene" uid="uid://cid21w8ylowqb" path="res://core/interface/WorldUI.tscn" id="3_mi63l"]
 

@@ -25,7 +25,7 @@ func set_slot_type(type_key: int) -> void:
 # HANDLERS
 func render_slot(item_slot: ItemStack) -> void:
 	slotTypeSprite.visible = false
-	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % item_slot.get_item().get_splited_id())
+	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % item_slot.get_item().get_id().get_splited())
 	itemSprite.visible = true
 	if item_slot.get_amount() > 1:
 		itemAmount.text = str(item_slot.get_amount())
