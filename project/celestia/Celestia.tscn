@@ -1,13 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk38kias17xwm"]
+[gd_scene load_steps=2 format=3 uid="uid://bpau3xq0mkk7n"]
 
-[ext_resource type="PackedScene" uid="uid://cj1d4dgd5lwqi" path="res://core/world/TerrainManager.tscn" id="1_0xm2m"]
-[ext_resource type="Script" uid="uid://dt4qxa8ig7grl" path="res://Celestia.gd" id="1_7jpfq"]
-[ext_resource type="PackedScene" uid="uid://qvrm2d7b1xca" path="res://core/entities/player/Player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://b51pw3brfqaie" path="res://Celestia.gd" id="1_7jpfq"]
 
-[node name="Main" type="Node2D"]
+[node name="Celestia" type="Node"]
 script = ExtResource("1_7jpfq")
-
-[node name="TerrainManager" parent="." instance=ExtResource("1_0xm2m")]
-
-[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(443, 158)

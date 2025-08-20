@@ -1,0 +1,29 @@
+extends BaseProperty
+class_name ForceProperty
+
+var fr: float
+const MIN_FR: int = 0
+
+
+func _init(initial_value: float):
+	set_force(initial_value)
+
+# Force
+func get_force() -> float:
+	return fr
+
+
+func get_format_force() -> String:
+	return str(int(fr))
+
+
+func set_force(newFR: float) -> void:
+	fr = max(newFR, MIN_FR)
+
+
+func add_force(addFR: float) -> void:
+	set_force(fr + addFR)
+
+
+func sub_force(subFR: float) -> void:
+	set_force(fr - subFR)
