@@ -8,7 +8,7 @@ var path: String
 
 func _init(sp: String, pa: String):
 	if ':' in sp or ':' in pa:
-		push_error('ResourceLocation: space and path cannot contain ":".')
+		push_error('ResourceLocation: Space and path cannot contain ":".')
 	space = sp
 	path = pa
 

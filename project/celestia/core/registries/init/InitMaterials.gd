@@ -26,8 +26,7 @@ static func setup() -> void:
 	# Materials
 	GENERIC = MATERIALS.add_entry(
 		'generic',
-		func():
-			return BaseMaterial.new()
+		func(): return BaseMaterial.new()
 	)
 
 	WOOD = MATERIALS.add_entry(

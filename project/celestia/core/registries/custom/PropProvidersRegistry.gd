@@ -4,5 +4,5 @@ class_name PropProviderRegistry
 static var REGISTRY_TYPE: String = 'PropProviders'
 
 
-func register(id: ResourceLocation, entry: BasePropertyProvider) -> void:
+func register(id: ResourceLocation, entry: Callable) -> void:
 	super.register(id, entry)

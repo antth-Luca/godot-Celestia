@@ -10,14 +10,9 @@ func get_id() -> ResourceLocation:
 	return _id
 
 
-func get_splited_id() -> Array:
-	return _id.get_splited()
-
-
 func set_id(new_id: ResourceLocation) -> void:
-	var current_string_id: String = _id.get_string()
-	if current_string_id != ResourceLocation.EMPTY.get_string() and current_string_id != new_id.get_string():
-		push_warning('Item ID already set. It cannot be changed after initialization.')
+	if _id != ResourceLocation.EMPTY and _id.get_string() != new_id.get_string():
+		push_warning('BaseMaterial: Item ID already set. It cannot be changed after initialization.')
 	_id = new_id
 
 

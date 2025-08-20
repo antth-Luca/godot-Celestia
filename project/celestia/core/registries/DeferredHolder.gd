@@ -11,4 +11,6 @@ func _init(_type_registry: String, _location: ResourceLocation) -> void:
 
 
 func get_registered():
-	return RegistryManager.registries.get(type)._registries.get(location.get_string())
+	var obj = RegistryManager.registries.get(type)._registries.get(location).call()
+	obj.set_id(location)
+	return obj

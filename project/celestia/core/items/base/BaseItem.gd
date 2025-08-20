@@ -11,13 +11,8 @@ func get_id() -> ResourceLocation:
 	return _id
 
 
-func get_splited_id() -> Array:
-	return _id.get_splited()
-
-
 func set_id(new_id: ResourceLocation) -> void:
-	var current_string_id: String = _id.get_string()
-	if current_string_id != ResourceLocation.EMPTY.get_string() and current_string_id != new_id.get_string():
+	if _id != ResourceLocation.EMPTY and _id.get_string() != new_id.get_string():
 		push_warning('BaseItem: Item ID already set. It cannot be changed after initialization.')
 	_id = new_id
 
@@ -47,7 +42,7 @@ func set_rarity(new_rarity: BaseRarity) -> void:
 
 
 func get_tooltip() -> Array[String]:
-	var splited_id: Array = get_splited_id()
+	var splited_id: Array = _id.get_splited()
 	var name_line = '%s [color=%s](%s)[/color]' % [
 		CustomTranslation.t('%s.item.%s.name' % splited_id),
 		_rarity.get_hex_color(),

@@ -25,14 +25,12 @@ static func setup() -> void:
 
 	GOLD_INGOT = ITEMS.add_entry(
 		'gold_ingot',
-		func():
-			return BaseItem.new()
+		func(): return BaseItem.new()
 	)
 
 	IRON_INGOT = ITEMS.add_entry(
 		'iron_ingot',
-		func():
-			return BaseItem.new()
+		func(): return BaseItem.new()
 	)
 
 	ITEMS.register()
