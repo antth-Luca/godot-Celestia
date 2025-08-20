@@ -19,3 +19,11 @@ func get_format_force() -> String:
 
 func set_force(newFR: float) -> void:
 	fr = max(newFR, MIN_FR)
+
+
+func add_force(addFR: float) -> void:
+	set_force(fr + addFR)
+
+
+func sub_force(subFR: float) -> void:
+	set_force(fr - subFR)

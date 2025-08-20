@@ -19,3 +19,11 @@ func get_format_penetration() -> String:
 
 func set_penetration(newPN: float) -> void:
 	pn = max(newPN, MIN_PN)
+
+
+func add_penetration(addPN: float) -> void:
+	set_penetration(pn + addPN)
+
+
+func sub_penetration(subPN: float) -> void:
+	set_penetration(pn - subPN)

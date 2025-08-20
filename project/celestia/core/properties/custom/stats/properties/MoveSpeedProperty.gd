@@ -19,3 +19,11 @@ func get_format_move_speed() -> String:
 
 func set_move_speed(newMS: float) -> void:
 	ms = max(newMS, MIN_MS)
+
+
+func add_move_speed(addMS: float) -> void:
+	set_move_speed(ms + addMS)
+
+
+func sub_move_speed(subMS: float) -> void:
+	set_move_speed(ms - subMS)

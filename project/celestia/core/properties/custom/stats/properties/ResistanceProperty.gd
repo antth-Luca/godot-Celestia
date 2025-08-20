@@ -19,3 +19,11 @@ func get_format_resistance() -> String:
 
 func set_resistance(newRS: float) -> void:
 	rs = max(newRS, MIN_RS)
+
+
+func add_resistance(addRS: float) -> void:
+	set_resistance(rs + addRS)
+
+
+func sub_resistance(subRS: float) -> void:
+	set_resistance(rs - subRS)

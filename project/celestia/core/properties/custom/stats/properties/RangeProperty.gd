@@ -19,3 +19,11 @@ func get_format_range() -> String:
 
 func set_range(newRG: float) -> void:
 	rg = max(newRG, MIN_RG)
+
+
+func add_range(addRG: float) -> void:
+	set_range(rg + addRG)
+
+
+func sub_range(subRG: float) -> void:
+	set_range(rg - subRG)

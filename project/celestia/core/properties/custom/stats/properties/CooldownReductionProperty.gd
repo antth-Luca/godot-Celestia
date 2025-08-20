@@ -20,3 +20,11 @@ func get_format_cooldown_reduction() -> String:
 
 func set_cooldown_reduction(newCdR: float) -> void:
 	cd_r = clamp(newCdR, MIN_CD_R, MAX_CD_R)
+
+
+func add_cooldown_reduction(addCdR: float) -> void:
+	set_cooldown_reduction(cd_r + addCdR)
+
+
+func sub_cooldown_reduction(subCdR: float) -> void:
+	set_cooldown_reduction(cd_r - subCdR)

@@ -20,3 +20,11 @@ func get_format_def_reduction() -> String:
 
 func set_def_reduction(newDefenseReduction) -> void:
 	def_r = clamp(newDefenseReduction, MIN_DEF_R, MAX_DEF_R)
+
+
+func add_def_reduction(addDefenseReduction: float) -> void:
+	set_def_reduction(def_r + addDefenseReduction)
+
+
+func sub_def_reduction(subDefenseReduction: float) -> void:
+	set_def_reduction(def_r - subDefenseReduction)

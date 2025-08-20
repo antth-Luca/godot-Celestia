@@ -22,6 +22,14 @@ func get_format_health() -> String:
 func set_health(newHP: float) -> void:
 	hp = clamp(newHP, MIN_HP, MAX_HP)
 
+
+func add_health(addHP: float) -> void:
+	set_health(hp + addHP)
+
+
+func sub_health(subHP: float) -> void:
+	set_health(hp - subHP)
+
 # Max HP
 func get_max_health() -> float:
 	return MAX_HP
@@ -33,3 +41,11 @@ func get_format_max_health() -> String:
 
 func set_max_health(newMaxHP: float) -> void:
 	MAX_HP = max(MIN_HP, newMaxHP)
+
+
+func add_max_health(addMaxHP: float) -> void:
+	set_max_health(MAX_HP + addMaxHP)
+
+
+func sub_max_health(subMaxHP: float) -> void:
+	set_max_health(MAX_HP - subMaxHP)

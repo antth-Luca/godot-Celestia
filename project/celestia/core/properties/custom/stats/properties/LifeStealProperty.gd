@@ -19,3 +19,11 @@ func get_format_life_steal() -> String:
 
 func set_life_steal(newLS: float) -> void:
 	ls = max(newLS, MIN_LS)
+
+
+func add_life_steal(addLS: float) -> void:
+	set_life_steal(ls + addLS)
+
+
+func sub_life_steal(subLS: float) -> void:
+	set_life_steal(ls - subLS)

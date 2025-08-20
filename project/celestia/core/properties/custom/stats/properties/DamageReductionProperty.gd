@@ -20,3 +20,11 @@ func get_format_damage_reduction() -> String:
 
 func set_dam_reduction(newDamageReduction) -> void:
 	dam_r = clamp(newDamageReduction, MIN_DAM_R, MAX_DAM_R)
+
+
+func add_dam_reduction(addDamageReduction: float) -> void:
+	set_dam_reduction(dam_r + addDamageReduction)
+
+
+func sub_dam_reduction(subDamageReduction: float) -> void:
+	set_dam_reduction(dam_r - subDamageReduction)

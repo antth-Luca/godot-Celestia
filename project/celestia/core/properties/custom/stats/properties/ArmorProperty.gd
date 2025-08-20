@@ -19,3 +19,11 @@ func get_format_armor() -> String:
 
 func set_armor(newAM: float) -> void:
 	am = max(newAM, MIN_AM)
+
+
+func add_armor(addAM: float) -> void:
+	set_armor(am + addAM)
+
+
+func sub_armor(subAM: float) -> void:
+	set_armor(am - subAM)
