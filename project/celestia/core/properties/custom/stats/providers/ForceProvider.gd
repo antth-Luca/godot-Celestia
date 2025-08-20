@@ -4,13 +4,13 @@ class_name ForceProvider
 var _force: ForceProperty
 
 
-func create() -> ForceProperty:
+func create(initial_value: float) -> ForceProperty:
 	if _force == null:
-		_force = ForceProperty.new()
+		_force = ForceProperty.new(initial_value)
 	return _force
 
 
-func get_property(prop: DeferredHolder):
+func get_property(prop: DeferredHolder, initial_value: float):
 	if prop == InitPropProviders.FORCE:
-		return _optional.call()
+		return _optional.call(initial_value)
 	return null

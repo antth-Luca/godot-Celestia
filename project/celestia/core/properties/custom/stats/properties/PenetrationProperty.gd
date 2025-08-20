@@ -4,6 +4,10 @@ class_name PenetrationProperty
 var pn: float
 const MIN_PN: int = 0
 
+
+func _init(initial_value: float):
+	pn = initial_value
+
 # Penetration
 func get_penetration() -> float:
 	return pn

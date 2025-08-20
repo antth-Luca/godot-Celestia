@@ -10,6 +10,7 @@ func _ready():
 	InitMaterials.setup()
 	InitItems.setup()
 	InitArmors.setup()
+	InitPropProviders.setup()
 
 	# TESTS CODE
 	var dropped_item = preload("res://core/items/DroppedItem.tscn")

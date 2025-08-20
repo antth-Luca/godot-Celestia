@@ -4,6 +4,10 @@ class_name MoveSpeedProperty
 var ms: float
 const MIN_MS: int = 0
 
+
+func _init(initial_value: float):
+	ms = initial_value
+
 # Move Speed
 func get_move_speed() -> float:
 	return ms

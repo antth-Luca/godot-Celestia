@@ -4,6 +4,10 @@ class_name ArmorProperty
 var am: float
 const MIN_AM: int = 0
 
+
+func _init(initial_value: float):
+	am = initial_value
+
 # Armor
 func get_armor() -> float:
 	return am

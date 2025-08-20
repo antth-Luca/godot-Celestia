@@ -5,6 +5,10 @@ const MAX_CD_R: int = 5
 var cd_r: float
 const MIN_CD_R: int = 0
 
+
+func _init(initial_value: float):
+	cd_r = initial_value
+
 # Cooldown Redction
 func get_cooldown_reduction() -> float:
 	return cd_r

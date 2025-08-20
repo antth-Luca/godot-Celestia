@@ -4,6 +4,10 @@ class_name ResistanceProperty
 var rs: float
 const MIN_RS: int = 0
 
+
+func _init(initial_value: float):
+	rs = initial_value
+
 # Resistence
 func get_resistance() -> float:
 	return rs

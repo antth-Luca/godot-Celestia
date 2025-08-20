@@ -4,6 +4,10 @@ class_name RangeProperty
 var rg: float
 const MIN_RG: int = 1
 
+
+func _init(initial_value: float):
+	rg = initial_value
+
 # Range
 func get_range() -> float:
 	return rg

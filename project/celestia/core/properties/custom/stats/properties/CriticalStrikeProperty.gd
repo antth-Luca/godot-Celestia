@@ -5,8 +5,12 @@ const MAX_CRIT_CH: int = 1
 var crit_ch: float
 const MIN_CRIT_CH: int = 0
 const MAX_CRIT_DM: float = 2.5
-var crit_dm: float
+var crit_dm: float = 2.0
 const MIN_CRIT_DM: int = 1
+
+
+func _init(initial_value: float):
+	crit_ch = initial_value
 
 # Crit. Strike Chance
 func get_crit_chance() -> float:

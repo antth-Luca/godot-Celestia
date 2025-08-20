@@ -5,6 +5,10 @@ const MAX_US: int = 3
 var us: float
 const MIN_US: float = 0.2
 
+
+func _init(initial_value: float):
+	us = initial_value
+
 # Use Speed
 func get_use_speed() -> float:
 	return us

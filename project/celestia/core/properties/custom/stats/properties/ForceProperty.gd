@@ -4,6 +4,10 @@ class_name ForceProperty
 var fr: float
 const MIN_FR: int = 0
 
+
+func _init(initial_value: float):
+	fr = initial_value
+
 # Force
 func get_force() -> float:
 	return fr

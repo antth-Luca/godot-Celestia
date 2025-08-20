@@ -4,6 +4,10 @@ class_name LifeStealProperty
 var ls: float
 const MIN_LS: int = 0
 
+
+func _init(initial_value: float):
+	ls = initial_value
+
 # Life Steal
 func get_life_steal() -> float:
 	return ls

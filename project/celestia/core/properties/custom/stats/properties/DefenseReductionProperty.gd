@@ -5,6 +5,10 @@ const MAX_DEF_R: int = 4
 var def_r: float
 const MIN_DEF_R: int = 0
 
+
+func _init(initial_value: float):
+	def_r = initial_value
+
 # Def. Reduction
 func get_dam_reduction() -> float:
 	return def_r

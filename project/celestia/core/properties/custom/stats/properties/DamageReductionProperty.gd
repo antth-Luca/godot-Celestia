@@ -5,6 +5,10 @@ const MAX_DAM_R: int = 4
 var dam_r: float
 const MIN_DAM_R: int = 0
 
+
+func _init(initial_value: float):
+	dam_r = initial_value
+
 # Dam. Reduction
 func get_dam_reduction() -> float:
 	return dam_r

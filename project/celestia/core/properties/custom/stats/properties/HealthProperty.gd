@@ -5,6 +5,11 @@ var MAX_HP: float
 var hp: float
 const MIN_HP: int = 0
 
+
+func _init(initial_value: float):
+	MAX_HP = initial_value
+	hp = initial_value
+
 # HP
 func get_health() -> float:
 	return hp
