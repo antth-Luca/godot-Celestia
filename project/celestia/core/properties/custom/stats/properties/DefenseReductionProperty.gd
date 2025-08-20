@@ -7,7 +7,7 @@ const MIN_DEF_R: int = 0
 
 
 func _init(initial_value: float):
-	def_r = initial_value
+	set_dam_reduction(initial_value)
 
 # Def. Reduction
 func get_dam_reduction() -> float:

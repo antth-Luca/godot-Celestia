@@ -10,7 +10,7 @@ const MIN_CRIT_DM: int = 1
 
 
 func _init(initial_value: float):
-	crit_ch = initial_value
+	set_crit_chance(initial_value)
 
 # Crit. Strike Chance
 func get_crit_chance() -> float:

@@ -6,7 +6,7 @@ const MIN_RS: int = 0
 
 
 func _init(initial_value: float):
-	rs = initial_value
+	set_resistance(initial_value)
 
 # Resistence
 func get_resistance() -> float:

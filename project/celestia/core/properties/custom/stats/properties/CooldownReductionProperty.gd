@@ -7,7 +7,7 @@ const MIN_CD_R: int = 0
 
 
 func _init(initial_value: float):
-	cd_r = initial_value
+	set_cooldown_reduction(initial_value)
 
 # Cooldown Redction
 func get_cooldown_reduction() -> float:

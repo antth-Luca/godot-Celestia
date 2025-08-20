@@ -7,7 +7,7 @@ const MIN_US: float = 0.2
 
 
 func _init(initial_value: float):
-	us = initial_value
+	set_use_speed(initial_value)
 
 # Use Speed
 func get_use_speed() -> float:

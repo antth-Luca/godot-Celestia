@@ -6,7 +6,7 @@ const MIN_MS: int = 0
 
 
 func _init(initial_value: float):
-	ms = initial_value
+	set_move_speed(initial_value)
 
 # Move Speed
 func get_move_speed() -> float:

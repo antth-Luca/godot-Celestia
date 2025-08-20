@@ -6,7 +6,7 @@ const MIN_RG: int = 1
 
 
 func _init(initial_value: float):
-	rg = initial_value
+	set_range(initial_value)
 
 # Range
 func get_range() -> float:

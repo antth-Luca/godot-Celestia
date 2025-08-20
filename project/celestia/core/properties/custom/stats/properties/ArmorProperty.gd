@@ -6,7 +6,7 @@ const MIN_AM: int = 0
 
 
 func _init(initial_value: float):
-	am = initial_value
+	set_armor(initial_value)
 
 # Armor
 func get_armor() -> float:

@@ -6,7 +6,7 @@ const MIN_LS: int = 0
 
 
 func _init(initial_value: float):
-	ls = initial_value
+	set_life_steal(initial_value)
 
 # Life Steal
 func get_life_steal() -> float:

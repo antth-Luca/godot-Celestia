@@ -6,7 +6,7 @@ const MIN_FR: int = 0
 
 
 func _init(initial_value: float):
-	fr = initial_value
+	set_force(initial_value)
 
 # Force
 func get_force() -> float:

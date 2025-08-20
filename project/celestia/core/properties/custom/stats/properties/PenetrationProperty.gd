@@ -6,7 +6,7 @@ const MIN_PN: int = 0
 
 
 func _init(initial_value: float):
-	pn = initial_value
+	set_penetration(initial_value)
 
 # Penetration
 func get_penetration() -> float:
