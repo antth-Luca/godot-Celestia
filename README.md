@@ -1,11 +1,11 @@
-![Celestia Logo](https://github.com/antth-Luca/godot-Celestia/blob/mainNewVersion/logo.png)
+![Celestia Logo](https://github.com/antth-Luca/godot-Celestia/blob/main/logo.png)
 
  # Repositório: godot-Celestia
 
 Este repositório abriga o projeto Celestia, um jogo 2D top-down de sobrevivênca. Sendo desenvolvido por mim na engine Godot desde 25 de julho de 2025. 
 
 ## Licença
-Este projeto está sobre licença. ([Ver licença](https://github.com/antth-Luca/godot-Celestia/blob/mainNewVersion/LICENSE-pt-br))
+Este projeto está sobre licença. ([Ver licença](https://github.com/antth-Luca/godot-Celestia/blob/main/LICENSE-pt-br))
 
 ## Versões:
 * Oficial: **---**
