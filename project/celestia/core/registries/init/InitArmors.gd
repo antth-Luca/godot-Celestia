@@ -22,9 +22,12 @@ static func setup() -> void:
 		func():
 			var armor = BaseArmor.new()
 			armor.set_armor_type(ArmorTypes.CHESTPLATE)
-			armor.set_protection(1.5)
 			armor.set_durability_factor(2)
 			armor.set_material(InitMaterials.IRON.get_registered())
+			armor.add_attribute_modifier(AttributeModifier.new(
+				InitPropProviders.ARMOR,
+				'+1.5'
+			))
 			return armor
 	)
 	# Leggings

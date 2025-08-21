@@ -7,9 +7,9 @@ const GAME_ID: String = "celestia"
 func _ready():
 	InitRarities.setup()
 	InitMaterials.setup()
+	InitPropProviders.setup()
 	InitItems.setup()
 	InitArmors.setup()
-	InitPropProviders.setup()
 	call_deferred("_go_to_next_scene")
 
 

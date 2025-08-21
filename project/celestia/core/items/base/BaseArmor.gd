@@ -1,9 +1,7 @@
-extends BaseItem
+extends BaseAttributeModifierItem
 class_name BaseArmor
 
-
 var _armor_type: int = -1
-var _protection: float = 0
 var _durability_factor: float = 1
 var _material: BaseMaterial = InitMaterials.GENERIC.get_registered()
 
@@ -22,11 +20,11 @@ func can_equip(slot: Slot) -> bool:
 	return slot_type == ArmorTypes.get_compatible_slot(_armor_type) or slot_type == 0
 
 
-func on_equip() -> void:
+func on_equip(slot: Slot) -> void:
 	pass
 
 
-func on_unequip() -> void:
+func on_unequip(slot: Slot) -> void:
 	pass
 
 # GETTERS AND SETTERS
@@ -38,15 +36,6 @@ func set_armor_type(new_type: int) -> void:
 	if new_type < 0 or new_type > 3:
 		push_error('BaseArmor: Armor type selected invalid.')
 	_armor_type = new_type
-
-
-func get_protection() -> float:
-	return _protection
-
-
-func set_protection(new_protection: float) -> void:
-	if new_protection < 1: return
-	_protection = new_protection
 
 
 func set_durability_factor(new_factor: float) -> void:
