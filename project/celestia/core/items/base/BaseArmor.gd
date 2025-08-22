@@ -20,11 +20,11 @@ func can_equip(slot: Slot) -> bool:
 	return slot_type == ArmorTypes.get_compatible_slot(_armor_type) or slot_type == 0
 
 
-func on_equip(slot: Slot) -> void:
+func on_equip(_slot: Slot) -> void:
 	pass
 
 
-func on_unequip(slot: Slot) -> void:
+func on_unequip(_slot: Slot) -> void:
 	pass
 
 # GETTERS AND SETTERS

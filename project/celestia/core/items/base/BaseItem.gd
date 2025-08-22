@@ -55,7 +55,7 @@ func can_equip(slot: Slot) -> bool:
 	return slot.get_slot_type() == 0
 
 
-func on_equip(slot: Slot):
+func on_equip(_slot: Slot):
 	pass
 
 
@@ -63,7 +63,7 @@ func can_unequip(_slot: Slot) -> bool:
 	return true
 
 
-func on_unequip(slot: Slot):
+func on_unequip(_slot: Slot):
 	pass
 
 

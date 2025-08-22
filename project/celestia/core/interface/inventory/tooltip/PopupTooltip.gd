@@ -7,11 +7,6 @@ extends Control
 @onready var tooltip_label: RichTextLabel = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TooltipRichLabel
 
 
-func _ready():
-	EventBus.client_inventory.connect('mouse_entered_slot', Callable(self, '_handle_entered_mouse_on_slot'))
-	EventBus.client_inventory.connect('mouse_exited_slot', Callable(self, '_handle_exited_mouse_on_slot'))
-
-
 func item_popup(slot: Rect2i, item: BaseItem):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var correction

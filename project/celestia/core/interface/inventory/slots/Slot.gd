@@ -22,6 +22,10 @@ func get_slot_type() -> int:
 func set_slot_type(type_key: int) -> void:
 	_slot_type = type_key
 
+
+func get_inventory():
+	return get_parent().get_parent()
+
 # HANDLERS
 func render_slot(item_slot: ItemStack) -> void:
 	slotTypeSprite.visible = false
@@ -36,13 +40,13 @@ func render_slot(item_slot: ItemStack) -> void:
 	var slot_index: int = get_index()
 	match slot_index:
 		0:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 1, item_slot)
+			emit_signal('some_pocket_slot_has_rendered', 1, item_slot)
 		1:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 2, item_slot)
+			emit_signal('some_pocket_slot_has_rendered', 2, item_slot)
 		2:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 3, item_slot)
+			emit_signal('some_pocket_slot_has_rendered', 3, item_slot)
 		3:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_rendered', 4, item_slot)
+			emit_signal('some_pocket_slot_has_rendered', 4, item_slot)
 
 
 func clear_slot() -> void:
@@ -53,29 +57,29 @@ func clear_slot() -> void:
 	var slot_index: int = get_index()
 	match slot_index:
 		0:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 1)
+			emit_signal('some_pocket_slot_has_cleaned', 1)
 		1:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 2)
+			emit_signal('some_pocket_slot_has_cleaned', 2)
 		2:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 3)
+			emit_signal('some_pocket_slot_has_cleaned', 3)
 		3:
-			EventBus.client_inventory.emit_signal('some_pocket_slot_has_cleaned', 4)
+			emit_signal('some_pocket_slot_has_cleaned', 4)
 
 
 func _on_mouse_entered():
-	EventBus.client_inventory.emit_signal('mouse_entered_slot', self)
+	get_inventory().get_popup_tooltip()._handle_entered_mouse_on_slot(self)
 
 
 func _on_mouse_exited():
-	EventBus.client_inventory.emit_signal('mouse_exited_slot')
+	get_inventory().get_popup_tooltip()._handle_exited_mouse_on_slot()
 
 # SIGNALS
 func _on_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT:
-				EventBus.client_inventory.emit_signal('left_click_slot', self)
+				emit_signal('left_click_slot', self)
 			MOUSE_BUTTON_MIDDLE:
-				EventBus.client_inventory.emit_signal('middle_click_slot', self)
+				emit_signal('middle_click_slot', self)
 			MOUSE_BUTTON_RIGHT:
-				EventBus.client_inventory.emit_signal('right_click_slot', self)
+				emit_signal('right_click_slot', self)

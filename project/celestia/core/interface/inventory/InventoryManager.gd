@@ -12,9 +12,9 @@ var inventory: Array[ItemStack] = []
 # GODOT
 func _ready() -> void:
 	clear_all_inventory()
-	EventBus.client_inventory.connect('left_click_slot', Callable(self, '_handle_left_click_on_slot'))
-	EventBus.client_inventory.connect('middle_click_slot', Callable(self, '_handle_middle_click_on_slot'))
-	EventBus.client_inventory.connect('right_click_slot', Callable(self, '_handle_right_click_on_slot'))
+	#EventBus.client_inventory.connect('left_click_slot', Callable(self, '_handle_left_click_on_slot'))
+	#EventBus.client_inventory.connect('middle_click_slot', Callable(self, '_handle_middle_click_on_slot'))
+	#EventBus.client_inventory.connect('right_click_slot', Callable(self, '_handle_right_click_on_slot'))
 
 
 func _input(_event):
@@ -24,6 +24,10 @@ func _input(_event):
 # GETTERS AND SETTERS
 func get_stack_in_inventory(pos: int) -> ItemStack:
 	return inventory[pos]
+
+
+func get_popup_tooltip():
+	return get_node('PopupTooltip')
 
 # MAIN
 func _on_inventory_closed() -> void:

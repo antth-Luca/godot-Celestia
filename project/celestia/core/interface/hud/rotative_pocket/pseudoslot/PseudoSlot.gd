@@ -5,8 +5,8 @@ extends Control
 
 # GODOT
 func _ready():
-	EventBus.client_inventory.connect('some_pocket_slot_has_rendered', Callable(self, '_handle_pocket_slot_has_rendered'))
-	EventBus.client_inventory.connect('some_pocket_slot_has_cleaned', Callable(self, '_handle_pocket_slot_has_cleaned'))
+	#EventBus.client_inventory.connect('some_pocket_slot_has_rendered', Callable(self, '_handle_pocket_slot_has_rendered'))
+	#EventBus.client_inventory.connect('some_pocket_slot_has_cleaned', Callable(self, '_handle_pocket_slot_has_cleaned'))
 	clear_slot()
 
 # MAIN
