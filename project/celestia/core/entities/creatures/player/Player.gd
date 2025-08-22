@@ -1,6 +1,6 @@
 extends LivingEntity
 
-# MAIN
+# GODOT
 func _ready():
 	stats = PropertyManager.create_manager({
 		InitPropProviders.SURVIVOR_LEVEL: 1,
@@ -28,8 +28,13 @@ func _physics_process(delta: float) -> void:
 	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 	super._physics_process(delta)
 
+# GETTERS AND SETTERS
+# Nodes
+func get_ui():
+	return get_node('WorldUI')
 
-func _set_state() -> void:
+# State
+func set_state() -> void:
 	var state = "idle"
 	if direction != Vector2.ZERO:
 		state = "walk"
@@ -38,7 +43,7 @@ func _set_state() -> void:
 	if ANIMATION.current_animation != state:
 		ANIMATION.play(state)
 
-
+# HANDLERS
 func _on_surv_level_up() -> void:
 	var health_prov = stats.get_property(InitPropProviders.HEALTH)
 	health_prov.add_max_health(10)

@@ -8,6 +8,7 @@ var stats: PropertyManager
 
 var is_hurted: bool = false
 
-
-func _set_state() -> void:
+# GETTERS AND SETTERS
+# State
+func set_state() -> void:
 	pass

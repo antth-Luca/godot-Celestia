@@ -19,20 +19,23 @@ func _input(_event):
 		cursor.update_cursor_sprite_position(get_global_mouse_position())
 
 # GETTERS AND SETTERS
-func get_stack_in_inventory(pos: int) -> ItemStack:
-	return inventory[pos]
+# Nodes
+func get_inventory_panel():
+	return get_parent()
+
+
+func get_slot(slot_index: int):
+	return get_node('SlotsGroup').get_child(slot_index)
 
 
 func get_popup_tooltip():
 	return get_node('PopupTooltip')
 
+# Inventory
+func get_stack_in_inventory(pos: int) -> ItemStack:
+	return inventory[pos]
+
 # MAIN
-func _on_inventory_closed() -> void:
-	if not cursor.is_cursor_stack_empty():
-		add_item_to_backpack(cursor.get_cursor_stack())
-		cursor.clear_cursor()
-
-
 func update_all_inventory() -> void:
 	# Updates EACH of the slots in your inventory by emptying or rendering them
 	for index in range(TOTAL_SLOTS):
@@ -113,6 +116,12 @@ func add_item_to_backpack(stack: ItemStack) -> void:
 			remaining_amount -= item_max_stack
 
 # HANDLERS
+func _on_inventory_closed() -> void:
+	if not cursor.is_cursor_stack_empty():
+		add_item_to_backpack(cursor.get_cursor_stack())
+		cursor.clear_cursor()
+
+
 func _handle_left_click_on_slot(slot: Slot):
 	var slot_index: int = slot.get_index()
 	var slot_stack: ItemStack = inventory[slot_index]

@@ -3,14 +3,10 @@ extends Control
 @onready var inventory_tab = $InventoryTab
 @onready var stats_tab = $StatsTab
 
-var inventory = []
-var stack_in_cursor: ItemStack
-var cursor_click_origin_slot: int
-var sprite_to_cursor: Sprite2D = null
-
+# GODOT
 func _ready() -> void:
 	visible = false
-	show_inventory()
+	_show_inventory()
 
 
 func _input(event):
@@ -23,20 +19,33 @@ func _input(event):
 			inventory_tab._on_inventory_closed()
 
 
-func show_inventory() -> void:
-	stats_tab.visible = false
-	inventory_tab.visible = true
-
-
-func show_stats() -> void:
-	inventory_tab.visible = false
-	stats_tab.visible = true
-
-
 func _on_inventory_button_pressed():
-	show_inventory()
+	_show_inventory()
 
 
 func _on_stats_button_pressed():
 	stats_tab.update_data_to_stats()
-	show_stats()
+	_show_stats()
+
+# GETTERS AND SETTERS
+# Nodes
+func get_ui():
+	return get_parent()
+
+
+func get_inventory_tab():
+	return get_node('InventoryTab')
+
+
+func get_stats_tab():
+	return get_node('StatsTab')
+
+# HANDLERS
+func _show_inventory() -> void:
+	stats_tab.visible = false
+	inventory_tab.visible = true
+
+
+func _show_stats() -> void:
+	inventory_tab.visible = false
+	stats_tab.visible = true

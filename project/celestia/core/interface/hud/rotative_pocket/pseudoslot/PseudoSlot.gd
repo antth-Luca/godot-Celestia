@@ -7,6 +7,11 @@ extends Control
 func _ready():
 	clear_slot()
 
+# GETTERS AND SETTERS
+# Nodes
+func get_rotative_pocket():
+	return get_parent()
+
 # MAIN
 func render_slot(stack: ItemStack) -> void:
 	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % stack.get_item().get_id().get_splited())
