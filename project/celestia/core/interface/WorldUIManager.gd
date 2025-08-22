@@ -15,6 +15,10 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ui_cancel") and BgBlur.visible:
 		update_my_panel(true)
 
+# GETTERS
+func get_hud():
+	return get_node('HUD')
+
 # HANDLERS
 func update_my_panel(current_switch: bool) -> void:
 	BgBlur.visible = !current_switch

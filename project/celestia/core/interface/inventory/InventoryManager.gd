@@ -12,9 +12,6 @@ var inventory: Array[ItemStack] = []
 # GODOT
 func _ready() -> void:
 	clear_all_inventory()
-	#EventBus.client_inventory.connect('left_click_slot', Callable(self, '_handle_left_click_on_slot'))
-	#EventBus.client_inventory.connect('middle_click_slot', Callable(self, '_handle_middle_click_on_slot'))
-	#EventBus.client_inventory.connect('right_click_slot', Callable(self, '_handle_right_click_on_slot'))
 
 
 func _input(_event):
@@ -191,7 +188,7 @@ func _handle_right_click_on_slot(slot: Slot):
 				self
 			)
 			slot_stack.set_amount(slot_amount - take_amount)
-			slot.clear_slot()
+			slot.render_slot(slot_stack)
 
 	# Case 2: Cursor loaded and slot empty
 	elif slot_amount <= 0:

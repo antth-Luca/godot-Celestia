@@ -26,6 +26,10 @@ func set_slot_type(type_key: int) -> void:
 func get_inventory():
 	return get_parent().get_parent()
 
+
+func get_world_ui():
+	return get_inventory().get_parent().get_parent()
+
 # HANDLERS
 func render_slot(item_slot: ItemStack) -> void:
 	slotTypeSprite.visible = false
@@ -38,15 +42,11 @@ func render_slot(item_slot: ItemStack) -> void:
 		itemAmount.visible = false
 
 	var slot_index: int = get_index()
-	match slot_index:
-		0:
-			emit_signal('some_pocket_slot_has_rendered', 1, item_slot)
-		1:
-			emit_signal('some_pocket_slot_has_rendered', 2, item_slot)
-		2:
-			emit_signal('some_pocket_slot_has_rendered', 3, item_slot)
-		3:
-			emit_signal('some_pocket_slot_has_rendered', 4, item_slot)
+	if slot_index in [0, 1, 2, 3]:
+		get_world_ui().get_hud().get_rotative_pocket()._synchronize_pseudo_slot(
+			slot_index + 1,
+			item_slot
+		)
 
 
 func clear_slot() -> void:
@@ -55,15 +55,10 @@ func clear_slot() -> void:
 	itemAmount.visible = false
 
 	var slot_index: int = get_index()
-	match slot_index:
-		0:
-			emit_signal('some_pocket_slot_has_cleaned', 1)
-		1:
-			emit_signal('some_pocket_slot_has_cleaned', 2)
-		2:
-			emit_signal('some_pocket_slot_has_cleaned', 3)
-		3:
-			emit_signal('some_pocket_slot_has_cleaned', 4)
+	if slot_index in [0, 1, 2, 3]:
+		get_world_ui().get_hud().get_rotative_pocket()._synchronize_pseudo_slot(
+			slot_index + 1
+		)
 
 
 func _on_mouse_entered():
@@ -78,8 +73,8 @@ func _on_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT:
-				emit_signal('left_click_slot', self)
+				get_inventory()._handle_left_click_on_slot(self)
 			MOUSE_BUTTON_MIDDLE:
-				emit_signal('middle_click_slot', self)
+				get_inventory()._handle_middle_click_on_slot(self)
 			MOUSE_BUTTON_RIGHT:
-				emit_signal('right_click_slot', self)
+				get_inventory()._handle_right_click_on_slot(self)

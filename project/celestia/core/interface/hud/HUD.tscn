@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://7hauijtfq470"]
+[gd_scene load_steps=13 format=3 uid="uid://7hauijtfq470"]
 
 [ext_resource type="Texture2D" uid="uid://btnuubbiilyo4" path="res://assets/celestia/interface/hud/stats_bar/background.png" id="1_4n8cl"]
+[ext_resource type="Script" uid="uid://dekh1i2slf8dn" path="res://core/interface/hud/HUD.gd" id="1_abe2h"]
 [ext_resource type="Texture2D" uid="uid://b3xcheqxbydlw" path="res://assets/celestia/interface/hud/stats_bar/vessel.png" id="2_wdvpt"]
 [ext_resource type="Texture2D" uid="uid://cl3twyd33shnf" path="res://assets/celestia/interface/hud/stats_bar/heart.png" id="3_abe2h"]
 [ext_resource type="PackedScene" uid="uid://bwhj3oh0nw37o" path="res://core/interface/hud/rotative_pocket/RotativePocket.tscn" id="4_wdvpt"]
@@ -66,6 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_abe2h")
 
 [node name="HContainerLeft" type="HBoxContainer" parent="."]
 layout_mode = 2

@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwhj3oh0nw37o"]
+[gd_scene load_steps=4 format=3 uid="uid://bwhj3oh0nw37o"]
 
 [ext_resource type="Texture2D" uid="uid://x1ifmif6ol6j" path="res://assets/celestia/interface/hud/pocket_inventory.png" id="1_11jbb"]
+[ext_resource type="Script" uid="uid://dmp4jnorare36" path="res://core/interface/hud/rotative_pocket/RotativePocket.gd" id="1_bjxet"]
 [ext_resource type="PackedScene" uid="uid://cwg5p07b83530" path="res://core/interface/hud/rotative_pocket/pseudoslot/PseudoSlot.tscn" id="2_bjxet"]
 
 [node name="RotativePocket" type="Node2D"]
+script = ExtResource("1_bjxet")
 
 [node name="BackgroundPocket" type="Sprite2D" parent="."]
 texture = ExtResource("1_11jbb")
