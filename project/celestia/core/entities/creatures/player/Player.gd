@@ -1,4 +1,5 @@
 extends LivingEntity
+class_name Player
 
 # GODOT
 func _ready():

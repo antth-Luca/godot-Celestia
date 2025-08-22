@@ -130,6 +130,7 @@ func _handle_left_click_on_slot(slot: Slot):
 	var slot_can_unequip: bool = false if slot_stack.is_empty() else slot_item.can_unequip(slot)
 
 	var cursor_stack: ItemStack = cursor.get_cursor_stack()
+	var cursor_item: BaseItem = cursor_stack.get_item()
 	var cursor_can_equip: bool = true if cursor_stack.is_empty() else cursor_stack.get_item().can_equip(slot)
 
 	# Case 1: Empty cursor
@@ -138,6 +139,7 @@ func _handle_left_click_on_slot(slot: Slot):
 			cursor.set_click(slot_stack, slot_index, self)
 			inventory[slot_index] = ItemStack.EMPTY
 			slot.clear_slot()
+			slot_item.on_unequip(slot)
 
 	# Case 2: Cursor loaded and slot empty
 	elif slot_amount <= 0:
@@ -145,6 +147,7 @@ func _handle_left_click_on_slot(slot: Slot):
 			inventory[slot_index] = cursor_stack
 			cursor.clear_cursor()
 			slot.render_slot(cursor_stack)
+			cursor_item.on_equip(slot)
 
 	# Case 3: Cursor loaded and equal to slot
 	elif cursor.is_equal_to(slot_stack):
@@ -160,7 +163,9 @@ func _handle_left_click_on_slot(slot: Slot):
 	else:
 		if slot_can_unequip and cursor_can_equip:
 			var temp: ItemStack = inventory[slot_index]
+			temp.get_item().on_unequip(slot)
 			inventory[slot_index] = cursor_stack
+			cursor_item.on_equip(slot)
 			cursor.set_click(temp, slot_index, self)
 			slot.render_slot(cursor_stack)
 
@@ -170,6 +175,7 @@ func _handle_middle_click_on_slot(slot: Slot):
 	var slot_stack: ItemStack = inventory[slot_index]
 
 	if slot_stack.get_amount() > 0 and slot_stack.get_item().can_unequip(slot):
+		inventory[slot_index].get_item().on_unequip(slot)
 		inventory[slot_index] = ItemStack.EMPTY
 		drop_item_players_foot(slot_stack)
 		slot.clear_slot()
@@ -190,7 +196,7 @@ func _handle_right_click_on_slot(slot: Slot):
 	# Case 1: Empty cursor
 	if cursor.is_cursor_stack_empty():
 		if slot_amount > 0 and slot_can_unequip:
-			var take_amount := int(ceil(slot_amount / 2.0))
+			var take_amount := int(slot_amount / 2.0)
 			cursor.set_click(
 				ItemStack.new(slot_item, take_amount),
 				slot_index,
@@ -205,6 +211,7 @@ func _handle_right_click_on_slot(slot: Slot):
 			inventory[slot_index] = ItemStack.new(cursor_item, 1)
 			cursor_stack.set_amount(cursor_amount - 1)
 			slot.render_slot(inventory[slot_index])
+			cursor_item.on_equip(slot)
 
 	# Case 3: Cursor loaded and equal to slot
 	elif cursor.is_equal_to(slot_stack):
@@ -220,7 +227,9 @@ func _handle_right_click_on_slot(slot: Slot):
 	else:
 		if slot_can_unequip and cursor_can_equip:
 			var temp: ItemStack = inventory[slot_index]
+			temp.get_item().on_unequip(slot)
 			inventory[slot_index] = cursor_stack
+			cursor_item.on_equip(slot)
 			cursor.set_click(temp, slot_index, self)
 			slot.render_slot(inventory[slot_index])
 

@@ -1,13 +1,22 @@
-extends BaseAttributeModifierItem
+extends BaseItem
 class_name BaseArmor
 
 var _armor_type: int = -1
+var _protection: float
 var _durability_factor: float = 1
 var _material: BaseMaterial = InitMaterials.GENERIC.get_registered()
 
 # SUPER
 func _init():
 	set_max_stack(1)
+
+
+func get_protection() -> float:
+	return _protection
+
+
+func set_protection(new_protection: float) -> void:
+	_protection = new_protection
 
 
 func get_durability() -> int:
@@ -20,12 +29,15 @@ func can_equip(slot: Slot) -> bool:
 	return slot_type == ArmorTypes.get_compatible_slot(_armor_type) or slot_type == 0
 
 
-func on_equip(_slot: Slot) -> void:
-	pass
+func on_equip(slot: Slot) -> void:
+	var player: Player = slot.get_inventory_tab().get_inventory_panel().get_ui().get_player()
+	var prop = player.stats.get_property(InitPropProviders.ARMOR)
+	prop.add_armor(get_protection())
 
 
-func on_unequip(_slot: Slot) -> void:
-	pass
+func on_unequip(slot: Slot) -> void:
+	var player: Player = slot.get_inventory_tab().get_inventory_panel().get_ui().get_player()
+	player.stats.get_property(InitPropProviders.ARMOR).sub_armor(get_protection())
 
 # GETTERS AND SETTERS
 func get_armor_type() -> int:
@@ -49,7 +61,3 @@ func get_material() -> BaseMaterial:
 
 func set_material(new_material: BaseMaterial) -> void:
 	_material = new_material
-
-#HANDLES
-func get_attribute_modifiers():
-	return
