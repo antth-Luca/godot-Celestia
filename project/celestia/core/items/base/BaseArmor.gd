@@ -26,18 +26,24 @@ func get_durability() -> int:
 
 func can_equip(slot: Slot) -> bool:
 	var slot_type = slot.get_slot_type()
-	return slot_type == ArmorTypes.get_compatible_slot(_armor_type) or slot_type == 0
+	return is_compatible_slot(slot_type, [
+		0, 
+		ArmorTypes.get_compatible_slot(_armor_type)
+	])
 
 
 func on_equip(slot: Slot) -> void:
-	var player: Player = slot.get_inventory_tab().get_inventory_panel().get_ui().get_player()
-	var prop = player.stats.get_property(InitPropProviders.ARMOR)
-	prop.add_armor(get_protection())
+	if is_compatible_slot(slot.get_slot_type(), [ArmorTypes.get_compatible_slot(_armor_type)]):
+		var player: Player = slot.get_inventory_tab().get_inventory_panel().get_ui().get_player()
+		var prop = player.stats.get_property(InitPropProviders.ARMOR)
+		prop.add_armor(get_protection())
 
 
 func on_unequip(slot: Slot) -> void:
-	var player: Player = slot.get_inventory_tab().get_inventory_panel().get_ui().get_player()
-	player.stats.get_property(InitPropProviders.ARMOR).sub_armor(get_protection())
+	if is_compatible_slot(slot.get_slot_type(), [ArmorTypes.get_compatible_slot(_armor_type)]):
+		var player: Player = slot.get_inventory_tab().get_inventory_panel().get_ui().get_player()
+		var prop = player.stats.get_property(InitPropProviders.ARMOR)
+		prop.sub_armor(get_protection())
 
 # GETTERS AND SETTERS
 func get_armor_type() -> int:
@@ -61,3 +67,10 @@ func get_material() -> BaseMaterial:
 
 func set_material(new_material: BaseMaterial) -> void:
 	_material = new_material
+
+
+func is_compatible_slot(slot_type: int, allowed: Array[int]) -> bool:
+	for allow in allowed:
+		if slot_type == allow:
+			return true
+	return false
