@@ -42,19 +42,26 @@ patch_margin_right = 5
 patch_margin_bottom = 5
 
 [node name="VisualTabButtons" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 157.0
-offset_top = 47.0
-offset_right = 197.0
-offset_bottom = 87.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(2.60426, 2.60426)
 
 [node name="InventoryButton" type="Control" parent="VisualTabButtons"]
 anchors_preset = 0
-offset_left = 53.7581
-offset_top = 21.1193
-offset_right = 93.7581
-offset_bottom = 61.1193
+offset_left = -102.14
+offset_top = -77.9492
+offset_right = -62.1403
+offset_bottom = -37.9492
 scale = Vector2(0.876149, 0.876149)
 
 [node name="Background" type="Sprite2D" parent="VisualTabButtons/InventoryButton"]
@@ -67,10 +74,10 @@ texture = ExtResource("4_ogu4c")
 
 [node name="StatsButton" type="Control" parent="VisualTabButtons"]
 anchors_preset = 0
-offset_left = 79.1013
-offset_top = 20.7353
-offset_right = 119.101
-offset_bottom = 60.7353
+offset_left = -76.7971
+offset_top = -78.3332
+offset_right = -36.7974
+offset_bottom = -38.3332
 scale = Vector2(0.876149, 0.876149)
 
 [node name="Background" type="Sprite2D" parent="VisualTabButtons/StatsButton"]
@@ -82,20 +89,31 @@ texture = ExtResource("3_3njho")
 texture = ExtResource("5_hitft")
 
 [node name="InventoryTab" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(2.5, 2.5)
 script = ExtResource("6_n6qys")
 
 [node name="CircleSprite" type="Sprite2D" parent="InventoryTab"]
-position = Vector2(228, 92)
+position = Vector2(5.60001, -29.6)
 texture = ExtResource("6_hitft")
 
 [node name="SlotsGroup" type="Control" parent="InventoryTab"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -222.4
+offset_top = -121.6
+offset_right = -182.4
+offset_bottom = -81.6
 
 [node name="PocketSlot0" parent="InventoryTab/SlotsGroup" instance=ExtResource("6_ogu4c")]
 layout_mode = 0
@@ -433,15 +451,19 @@ _slot_type = 6
 
 [node name="PopupTooltip" parent="InventoryTab" instance=ExtResource("3_xotm4")]
 layout_mode = 1
+offset_left = -222.4
+offset_top = -121.6
+offset_right = -222.4
+offset_bottom = -121.6
 
 [node name="StatsTabButton" type="Button" parent="InventoryTab"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 0
-offset_left = 135.2
-offset_top = 31.6
-offset_right = 155.2
-offset_bottom = 51.6
+offset_left = -87.2
+offset_top = -90.0
+offset_right = -67.2
+offset_bottom = -70.0
 
 [node name="StatsTab" type="Control" parent="."]
 layout_mode = 1
