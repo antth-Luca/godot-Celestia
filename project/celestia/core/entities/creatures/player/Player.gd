@@ -42,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, stats_move_speed)
 	# Setting state and animation and continuing movement
-	set_state()
+	set_animation()
 	move_and_slide()
 
 # GETTERS AND SETTERS
@@ -51,14 +51,14 @@ func get_ui():
 	return get_node('WorldUI')
 
 # State
-func set_state() -> void:
-	var state = "idle"
+func set_animation() -> void:
+	var anim = "idle"
 	if direction != Vector2.ZERO:
-		state = "walk"
+		anim = "walk"
 	if is_hurted:
-		state = "hurt"
-	if ANIMATION.current_animation != state:
-		ANIMATION.play(state)
+		anim = "hurt"
+	if ANIMATION.current_animation != anim:
+		ANIMATION.play(anim)
 
 # HANDLERS
 func _on_surv_level_up() -> void:

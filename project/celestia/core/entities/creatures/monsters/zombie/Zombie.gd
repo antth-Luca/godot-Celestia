@@ -21,11 +21,9 @@ func _ready():
 		InitPropProviders.DEFENSE_REDUCTION: 0,
 		InitPropProviders.CRITICAL_STRIKE: 0,
 		InitPropProviders.LIFE_STEAL: 3,
-		InitPropProviders.MANA: 50,
 		InitPropProviders.RANGE: 1,
 		InitPropProviders.USE_SPEED: 1,
-		InitPropProviders.MOVE_SPEED: 40,
-		InitPropProviders.COOLDOWN_REDUCTION: 0
+		InitPropProviders.MOVE_SPEED: 40
 	})
 
 
@@ -38,16 +36,16 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, stats_move_speed)
 	# Setting state and animation and continuing movement
-	set_state()
+	set_animation()
 	move_and_slide()
 
 # GETTERS AND SETTERS
-# State
-func set_state() -> void:
-	var state = "idle"
+# Animation
+func set_animation() -> void:
+	var anim = "idle"
 	if direction != Vector2.ZERO:
-		state = "walk"
+		anim = "walk"
 	if is_hurted:
-		state = "hurt"
-	if ANIMATION.current_animation != state:
-		ANIMATION.play(state)
+		anim = "hurt"
+	if ANIMATION.current_animation != anim:
+		ANIMATION.play(anim)
