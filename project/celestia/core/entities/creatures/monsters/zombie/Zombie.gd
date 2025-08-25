@@ -7,6 +7,7 @@ class_name Zombie
 var stats: PropertyManager
 var direction: Vector2 = Vector2.ZERO
 var is_hurted: bool = false
+var state_left_time: float
 
 # GODOT
 func _ready():
@@ -28,9 +29,7 @@ func _ready():
 	})
 
 
-func _physics_process(delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	direction = Vector2(0, 0)
+func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var stats_move_speed = stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
 	if direction != Vector2.ZERO:

@@ -31,7 +31,7 @@ func _ready():
 	EventBus.client_player.connect('level_up', Callable(self, '_on_surv_level_up'))
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 	# Get the input direction and handle the movement/deceleration.

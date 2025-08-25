@@ -38,6 +38,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_wx6c8"]
 resource_name = "hurt"
 length = 0.3
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -71,6 +72,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_w4q67"]
 resource_name = "knock_hurt"
 length = 0.3
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -115,6 +117,7 @@ _data = {
 size = Vector2(14, 6)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 0
 script = ExtResource("1_ahdn1")
 
 [node name="Texture" type="Sprite2D" parent="."]
