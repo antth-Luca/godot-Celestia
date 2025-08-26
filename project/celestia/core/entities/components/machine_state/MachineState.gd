@@ -1,4 +1,5 @@
 extends Node
+class_name MachineState
 
 @export var initial_state: BaseState
 
@@ -18,6 +19,11 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if current_state: current_state.physics_update(delta)
+
+# GETTERS AND SETTERS
+# Nodes
+func get_state(state_name: String):
+	if states.get(state_name.to_lower()): return get_node(state_name.capitalize())
 
 # MAIN
 func switch_state(new_state: BaseState):

@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3lfgr81bgo4q"]
+[gd_scene load_steps=16 format=3 uid="uid://b3lfgr81bgo4q"]
 
 [ext_resource type="Script" uid="uid://bas2xslnhn10h" path="res://core/entities/creatures/monsters/zombie/Zombie.gd" id="1_cflnr"]
 [ext_resource type="Texture2D" uid="uid://cxk0fabv8lbhu" path="res://assets/celestia/textures/enemies/zombie.png" id="2_shrvl"]
 [ext_resource type="PackedScene" uid="uid://ds4tba05sxc36" path="res://core/entities/components/machine_state/MachineState.tscn" id="3_uk3j3"]
 [ext_resource type="Script" uid="uid://cm0iny1i3r4w1" path="res://core/entities/components/machine_state/states/WanderState.gd" id="4_xp2tj"]
+[ext_resource type="Script" uid="uid://cfro8u6rbpvh8" path="res://core/entities/components/machine_state/states/ChaseState.gd" id="5_xp2tj"]
+[ext_resource type="PackedScene" uid="uid://b5jmp07l7t3cp" path="res://core/entities/components/detection_area/DetectionArea.tscn" id="6_hbwmh"]
 
 [sub_resource type="Animation" id="Animation_frwts"]
 length = 0.001
@@ -117,8 +119,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngtr2"]
 size = Vector2(10, 5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7c1m"]
+radius = 64.0
+
 [node name="Zombie" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 32
 script = ExtResource("1_cflnr")
 
 [node name="Texture" type="Sprite2D" parent="."]
@@ -142,3 +147,14 @@ initial_state = NodePath("Wander")
 [node name="Wander" type="Node" parent="MachineState" node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_xp2tj")
 enemy = NodePath("../..")
+
+[node name="Chase" type="Node" parent="MachineState" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_xp2tj")
+enemy = NodePath("../..")
+
+[node name="DetectionArea" parent="." node_paths=PackedStringArray("machine_state") instance=ExtResource("6_hbwmh")]
+target_group = "player"
+machine_state = NodePath("../MachineState")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_l7c1m")

@@ -40,6 +40,10 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 # GETTERS AND SETTERS
+# Nodes
+func get_machine_state():
+	return get_node('MachineState')
+
 # Animation
 func set_animation() -> void:
 	var anim = "idle"

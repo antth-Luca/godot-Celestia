@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5jmp07l7t3cp"]
+
+[ext_resource type="Script" uid="uid://dya8na3ir7sdq" path="res://core/entities/components/detection_area/DetectionArea.gd" id="1_afmdv"]
+
+[node name="DetectionArea" type="Area2D"]
+script = ExtResource("1_afmdv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
