@@ -5,7 +5,7 @@ extends Area2D
 
 # GETTERS AND SETTERS
 # Nodes
-func get_enemy():
+func get_enemy() -> CharacterBody2D:
 	return get_parent()
 
 
@@ -14,9 +14,9 @@ func _on_body_entered(body):
 	print('Corpo entrou!')
 	if body.is_in_group(target_group):
 		print('Está no grupo!')
-		var machine = get_enemy().get_machine_state()
+		var machine: MachineState = get_enemy().get_machine_state()
 		machine.get_state('chase').set_target(body)
-		machine.switch_state('chase')
+		machine.switch_state(ChaseState.new())
 
 
 func _on_body_exited(body):

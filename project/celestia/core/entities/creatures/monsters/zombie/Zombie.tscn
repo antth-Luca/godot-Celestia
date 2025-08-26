@@ -124,6 +124,7 @@ radius = 64.0
 
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 32
+collision_mask = 17
 script = ExtResource("1_cflnr")
 
 [node name="Texture" type="Sprite2D" parent="."]
