@@ -23,7 +23,7 @@ func _ready():
 		InitPropProviders.LIFE_STEAL: 3,
 		InitPropProviders.RANGE: 1,
 		InitPropProviders.USE_SPEED: 1,
-		InitPropProviders.MOVE_SPEED: 40
+		InitPropProviders.MOVE_SPEED: 20
 	})
 
 
