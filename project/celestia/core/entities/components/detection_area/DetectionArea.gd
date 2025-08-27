@@ -11,16 +11,11 @@ func get_enemy() -> CharacterBody2D:
 
 # HANDLERS
 func _on_body_entered(body):
-	print('Corpo entrou!')
 	if body.is_in_group(target_group):
-		print('Está no grupo!')
-		var machine: MachineState = get_enemy().get_machine_state()
-		machine.get_state('chase').set_target(body)
-		machine.switch_state(ChaseState.new())
+		var state_node = machine_state.states.get('chase')
+		state_node.set_target(body)
+		machine_state.change_state_to_node(state_node)
 
 
 func _on_body_exited(body):
-	print('Corpo saiu!')
-	if body.is_in_group(target_group):
-		print('Está no grupo!')
-		get_enemy().get_machine_state().switch_state('wander')
+	if body.is_in_group(target_group): machine_state.change_state_to_string('wander')

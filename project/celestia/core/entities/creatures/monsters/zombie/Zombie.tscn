@@ -154,6 +154,8 @@ script = ExtResource("5_xp2tj")
 enemy = NodePath("../..")
 
 [node name="DetectionArea" parent="." node_paths=PackedStringArray("machine_state") instance=ExtResource("6_hbwmh")]
+collision_layer = 0
+collision_mask = 16
 target_group = "player"
 machine_state = NodePath("../MachineState")
 

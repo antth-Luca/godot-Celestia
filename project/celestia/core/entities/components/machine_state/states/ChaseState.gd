@@ -6,7 +6,8 @@ class_name ChaseState
 var target: CharacterBody2D
 
 # SUPER
-func _physics_process(_delta: float) -> void:
+func physics_update(_delta: float) -> void:
+	print('Estou em Chase')
 	if enemy and target: enemy.direction = (target.global_position - enemy.global_position).normalized()
 
 # GETTERS AND SETTERS

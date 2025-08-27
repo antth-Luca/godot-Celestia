@@ -18,7 +18,8 @@ func update(delta: float) -> void:
 		randomize_wander()
 
 
-func _physics_process(_delta: float) -> void:
+func physics_update(_delta: float) -> void:
+	print('Estou em Wander')
 	if enemy: enemy.direction = move_direction
 
 # MAIN
