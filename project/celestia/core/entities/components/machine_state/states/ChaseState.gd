@@ -7,7 +7,6 @@ var target: CharacterBody2D
 
 # SUPER
 func physics_update(_delta: float) -> void:
-	print('Estou em Chase')
 	if enemy and target: enemy.direction = (target.global_position - enemy.global_position).normalized()
 
 # GETTERS AND SETTERS

@@ -15,12 +15,15 @@ func update(delta: float) -> void:
 	if left_time > 0:
 		left_time -= delta
 	else:
-		randomize_wander()
+		get_parent().change_state_to_string('idle')
 
 
 func physics_update(_delta: float) -> void:
-	print('Estou em Wander')
 	if enemy: enemy.direction = move_direction
+
+
+func exit() -> void:
+	if enemy: enemy.direction = Vector2.ZERO
 
 # MAIN
 func randomize_wander() -> void:
@@ -28,4 +31,4 @@ func randomize_wander() -> void:
 		randf_range(-1, 1),
 		randf_range(-1, 1)
 	).normalized()
-	left_time = randf_range(1, 3)
+	left_time = randf_range(1, 4)
