@@ -1,8 +1,9 @@
 extends BaseState
 class_name WanderState
 
-@export var enemy: CharacterBody2D
 @export var ray_vision: RayCast2D
+
+@onready var parent_entity: CharacterBody2D = get_parent().get_parent()  # StateMachine > Entity
 
 var left_time: float
 var move_direction: Vector2
@@ -24,11 +25,11 @@ func physics_update(_delta: float) -> void:
 		ray_vision.target_position = move_direction * 32
 		if ray_vision.is_colliding():
 			randomize_move_direction()
-		elif enemy: enemy.direction = move_direction
+		elif parent_entity: parent_entity.direction = move_direction
 
 
 func exit() -> void:
-	if enemy: enemy.direction = Vector2.ZERO
+	if parent_entity: parent_entity.direction = Vector2.ZERO
 
 # MAIN
 func randomize_wander() -> void:

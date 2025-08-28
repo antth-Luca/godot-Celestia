@@ -1,8 +1,6 @@
 extends BaseState
 class_name IdleState
 
-@export var enemy: CharacterBody2D
-
 var left_time: float
 
 # SUPER

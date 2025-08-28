@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds4tba05sxc36"]
-
-[ext_resource type="Script" uid="uid://urn3ngqxyhgm" path="res://core/entities/components/machine_state/MachineState.gd" id="1_vh1px"]
-
-[node name="MachineState" type="Node"]
-script = ExtResource("1_vh1px")
