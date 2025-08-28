@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://ym3awtb3ksm4"]
+
+[sub_resource type="GDScript" id="GDScript_vs6sr"]
+script/source = "extends RayCast2D
+class_name WallVision
+
+@export var enemy: CharacterBody2D
+@export var state_machine: StateMachine
+
+func _physics_process(_delta):
+	if enemy: target_position = enemy.direction
+	if is_colliding():
+		pass
+"
+
+[node name="WallVision" type="RayCast2D"]
+target_position = Vector2(32, 0)
+script = SubResource("GDScript_vs6sr")

@@ -154,7 +154,10 @@ enemy = NodePath("../..")
 [node name="Wander" type="Node" parent="MachineState" node_paths=PackedStringArray("enemy", "ray_vision")]
 script = ExtResource("4_xp2tj")
 enemy = NodePath("../..")
-ray_vision = NodePath("../../WallVision")
+ray_vision = NodePath("WallVision")
+
+[node name="WallVision" parent="MachineState/Wander" instance=ExtResource("6_thrsc")]
+script = null
 
 [node name="Chase" type="Node" parent="MachineState" node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_xp2tj")
@@ -168,7 +171,3 @@ machine_state = NodePath("../MachineState")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_l7c1m")
-
-[node name="WallVision" parent="." instance=ExtResource("6_thrsc")]
-position = Vector2(0, 3)
-script = null

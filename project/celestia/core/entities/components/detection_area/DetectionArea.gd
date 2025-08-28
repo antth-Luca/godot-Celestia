@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var target_group: String
-@export var machine_state: MachineState
+@export var machine_state: StateMachine
 
 # GETTERS AND SETTERS
 # Nodes
