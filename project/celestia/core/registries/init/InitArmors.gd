@@ -21,10 +21,10 @@ static func setup() -> void:
 		'iron_chestplate',
 		func():
 			var armor = BaseArmor.new()
-			armor.set_armor_type(ArmorTypes.CHESTPLATE)
-			armor.set_durability_factor(2)
-			armor.set_material(InitMaterials.IRON.get_registered())
-			armor.set_protection(1.5)
+			armor.armor_type = ArmorTypes.CHESTPLATE
+			armor.durability_factor = 2
+			armor.material = InitMaterials.IRON.get_registered()
+			armor.protection = 1.5
 			return armor
 	)
 	# Leggings

@@ -14,10 +14,10 @@ func get_rotative_pocket():
 
 # MAIN
 func render_slot(stack: ItemStack) -> void:
-	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % stack.get_item().get_id().get_splited())
+	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % stack.item.id.get_splited())
 	itemSprite.visible = true
-	if stack.get_amount() > 1:
-		itemAmount.text = str(stack.get_amount())
+	if stack.amount > 1:
+		itemAmount.text = str(stack.amount)
 		itemAmount.visible = true
 	else:
 		itemAmount.visible = false

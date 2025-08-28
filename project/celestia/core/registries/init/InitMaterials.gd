@@ -33,8 +33,8 @@ static func setup() -> void:
 		'wood',
 		func():
 			var material = BaseMaterial.new()
-			material.set_base_max_damage(32)
-			material.set_efficiency(0)
+			material.base_max_damage = 32
+			material.efficiency = 0
 			return material
 	)
 
@@ -42,8 +42,8 @@ static func setup() -> void:
 		'stone',
 		func():
 			var material = BaseMaterial.new()
-			material.set_base_max_damage(48)
-			material.set_efficiency(1)
+			material.base_max_damage = 48
+			material.efficiency = 1
 			return material
 	)
 
@@ -51,7 +51,7 @@ static func setup() -> void:
 		'fulgurite',
 		func():
 			var material = BaseMaterial.new()
-			material.set_base_max_damage(58)
+			material.base_max_damage = 58
 			return material
 	)
 
@@ -59,8 +59,8 @@ static func setup() -> void:
 		'copper',
 		func():
 			var material = BaseMaterial.new()
-			material.set_base_max_damage(65)
-			material.set_efficiency(2)
+			material.base_max_damage = 65
+			material.efficiency = 2
 			return material
 	)
 
@@ -68,8 +68,8 @@ static func setup() -> void:
 		'eruptite',
 		func():
 			var material = BaseMaterial.new()
-			material.set_base_max_damage(74)
-			material.set_efficiency(2)
+			material.base_max_damage = 74
+			material.efficiency = 2
 			return material
 	)
 
@@ -77,8 +77,8 @@ static func setup() -> void:
 		'carnigo',
 		func():
 			var material = BaseMaterial.new()
-			material.set_base_max_damage(90)
-			material.set_efficiency(2)
+			material.base_max_damage = 90
+			material.efficiency = 2
 			return material
 	)
 
@@ -86,8 +86,8 @@ static func setup() -> void:
 		'iron',
 		func():
 			var material = BaseMaterial.new()
-			material.set_base_max_damage(112)
-			material.set_efficiency(3)
+			material.base_max_damage = 112
+			material.efficiency = 3
 			return material
 	)
 
@@ -95,8 +95,8 @@ static func setup() -> void:
 		'dark_iron',
 		func():
 			var material = BaseMaterial.new()
-			material.set_base_max_damage(122)
-			material.set_efficiency(3)
+			material.base_max_damage = 122
+			material.efficiency = 3
 			return material
 	)
 
@@ -104,8 +104,8 @@ static func setup() -> void:
 		'astronite',
 		func():
 			var material = BaseMaterial.new()
-			material.set_base_max_damage(160)
-			material.set_efficiency(4)
+			material.base_max_damage = 160
+			material.efficiency = 4
 			return material
 	)
 
@@ -113,8 +113,8 @@ static func setup() -> void:
 		'lunatite',
 		func():
 			var material = BaseMaterial.new()
-			material.set_base_max_damage(208)
-			material.set_efficiency(5)
+			material.base_max_damage = 208
+			material.efficiency = 5
 			return material
 	)
 
@@ -122,8 +122,8 @@ static func setup() -> void:
 		'celestite',
 		func():
 			var material = BaseMaterial.new()
-			material.set_base_max_damage(272)
-			material.set_efficiency(6)
+			material.base_max_damage = 272
+			material.efficiency = 6
 			return material
 	)
 

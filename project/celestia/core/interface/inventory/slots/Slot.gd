@@ -1,7 +1,9 @@
 extends Button
 class_name Slot
 
-@export var _slot_type: int
+@export var slot_type: int:
+	get:
+		return slot_type
 
 @onready var slotTypeSprite: Sprite2D = $SlotType
 @onready var itemSprite: Sprite2D = $ItemSprite
@@ -9,31 +11,23 @@ class_name Slot
 
 
 func _ready():
-	if _slot_type < 0 or _slot_type > 6:
+	if slot_type < 0 or slot_type > 6:
 		push_error('Slot: Slot type selected invalid.')
-	elif _slot_type != 0:
-		slotTypeSprite.texture = load('res://assets/%s/interface/inventory/slots/types/%s.png' % SlotTypes.get_splited_id(_slot_type))
+	elif slot_type != 0:
+		slotTypeSprite.texture = load('res://assets/%s/interface/inventory/slots/types/%s.png' % SlotTypes.get_splited_id(slot_type))
 
 # GETTERS AND SETTERS
 # Node
 func get_inventory_tab():
 	return get_parent().get_parent()
 
-# Variables
-func get_slot_type() -> int:
-	return _slot_type
-
-
-func set_slot_type(type_key: int) -> void:
-	_slot_type = type_key
-
 # HANDLERS
 func render_slot(item_slot: ItemStack) -> void:
 	slotTypeSprite.visible = false
-	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % item_slot.get_item().get_id().get_splited())
+	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % item_slot.item.id.get_splited())
 	itemSprite.visible = true
-	if item_slot.get_amount() > 1:
-		itemAmount.text = str(item_slot.get_amount())
+	if item_slot.amount > 1:
+		itemAmount.text = str(item_slot.amount)
 		itemAmount.visible = true
 	else:
 		itemAmount.visible = false

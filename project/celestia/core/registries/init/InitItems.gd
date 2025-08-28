@@ -19,7 +19,7 @@ static func setup() -> void:
 		'egg',
 		func():
 			var item = BaseItem.new()
-			item.set_max_stack(12)
+			item.max_stack = 12
 			return item
 	)
 

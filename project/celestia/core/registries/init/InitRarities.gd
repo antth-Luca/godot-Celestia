@@ -21,7 +21,7 @@ static func setup() -> void:
 		'common',
 		func():
 			var rarity = BaseRarity.new()
-			rarity.set_hex_color('#D5D5D5')
+			rarity.hex_color = '#D5D5D5'
 			return rarity
 	)
 
@@ -29,7 +29,7 @@ static func setup() -> void:
 		'uncommon',
 		func():
 			var rarity = BaseRarity.new()
-			rarity.set_hex_color('#55A74E')
+			rarity.hex_color = '#55A74E'
 			return rarity
 	)
 
@@ -37,7 +37,7 @@ static func setup() -> void:
 		'rare',
 		func():
 			var rarity = BaseRarity.new()
-			rarity.set_hex_color('#4F7FD9')
+			rarity.hex_color = '#4F7FD9'
 			return rarity
 	)
 
@@ -45,7 +45,7 @@ static func setup() -> void:
 		'epic',
 		func():
 			var rarity = BaseRarity.new()
-			rarity.set_hex_color('#A763C2')
+			rarity.hex_color = '#A763C2'
 			return rarity
 	)
 
@@ -53,7 +53,7 @@ static func setup() -> void:
 		'legendary',
 		func():
 			var rarity = BaseRarity.new()
-			rarity.set_hex_color('#FFC300')
+			rarity.hex_color = '#FFC300'
 			return rarity
 	)
 

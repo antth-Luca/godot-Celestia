@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://7hauijtfq470"]
+[gd_scene load_steps=20 format=3 uid="uid://7hauijtfq470"]
 
 [ext_resource type="Texture2D" uid="uid://btnuubbiilyo4" path="res://assets/celestia/interface/hud/stats_bar/background.png" id="1_4n8cl"]
 [ext_resource type="Script" uid="uid://dekh1i2slf8dn" path="res://core/interface/hud/HUD.gd" id="1_abe2h"]
 [ext_resource type="Texture2D" uid="uid://b3xcheqxbydlw" path="res://assets/celestia/interface/hud/stats_bar/vessel.png" id="2_wdvpt"]
 [ext_resource type="Texture2D" uid="uid://cl3twyd33shnf" path="res://assets/celestia/interface/hud/stats_bar/heart.png" id="3_abe2h"]
+[ext_resource type="Script" uid="uid://mujnrxqp2dy4" path="res://core/interface/hud/bars/HealthBar.gd" id="3_jo12g"]
 [ext_resource type="PackedScene" uid="uid://bwhj3oh0nw37o" path="res://core/interface/hud/rotative_pocket/RotativePocket.tscn" id="4_wdvpt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abe2h"]
@@ -117,6 +118,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_abe2h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jo12g")
 value = 50.0
 show_percentage = false
+script = ExtResource("3_jo12g")
 
 [node name="ManaBar" type="ProgressBar" parent="HContainerLeft/VContainerDown/StatsBar"]
 offset_left = 26.4286

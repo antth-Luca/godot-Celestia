@@ -46,13 +46,13 @@ func update_data_popup(item: BaseItem):
 func _handle_entered_mouse_on_slot(slot: Slot):
 	if CURSOR.is_cursor_stack_empty():
 		var slot_stack = INVENTORY.get_stack_in_inventory(slot.get_index())
-		if slot_stack.get_amount() > 0:
+		if slot_stack.amount > 0:
 			item_popup(
 				Rect2i(
 					Vector2i(slot.global_position),
 					Vector2i(slot.size)
 				),
-				slot_stack.get_item()
+				slot_stack.item
 			)
 
 
