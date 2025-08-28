@@ -1,10 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://7hauijtfq470"]
+[gd_scene load_steps=19 format=3 uid="uid://7hauijtfq470"]
 
 [ext_resource type="Texture2D" uid="uid://btnuubbiilyo4" path="res://assets/celestia/interface/hud/stats_bar/background.png" id="1_4n8cl"]
 [ext_resource type="Script" uid="uid://dekh1i2slf8dn" path="res://core/interface/hud/HUD.gd" id="1_abe2h"]
 [ext_resource type="Texture2D" uid="uid://b3xcheqxbydlw" path="res://assets/celestia/interface/hud/stats_bar/vessel.png" id="2_wdvpt"]
 [ext_resource type="Texture2D" uid="uid://cl3twyd33shnf" path="res://assets/celestia/interface/hud/stats_bar/heart.png" id="3_abe2h"]
 [ext_resource type="PackedScene" uid="uid://bwhj3oh0nw37o" path="res://core/interface/hud/rotative_pocket/RotativePocket.tscn" id="4_wdvpt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abe2h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jo12g"]
+bg_color = Color(0.905882, 0.156863, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pimi0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5cyb"]
+bg_color = Color(0.23978, 0.442944, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjip1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjk5h"]
+bg_color = Color(0.813229, 0.532719, 9.62615e-07, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jo12g"]
 atlas = ExtResource("3_abe2h")
@@ -86,15 +104,49 @@ position = Vector2(-4, 0)
 scale = Vector2(3.5, 3.5)
 
 [node name="Background" type="Sprite2D" parent="HContainerLeft/VContainerDown/StatsBar"]
-position = Vector2(45, -12.5)
+position = Vector2(52.7143, -14.2143)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_4n8cl")
 
+[node name="HealthBar" type="ProgressBar" parent="HContainerLeft/VContainerDown/StatsBar"]
+offset_left = 26.4286
+offset_top = -21.2857
+offset_right = 76.4286
+offset_bottom = -19.2857
+theme_override_styles/background = SubResource("StyleBoxFlat_abe2h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jo12g")
+value = 50.0
+show_percentage = false
+
+[node name="ManaBar" type="ProgressBar" parent="HContainerLeft/VContainerDown/StatsBar"]
+offset_left = 26.4286
+offset_top = -15.0
+offset_right = 76.4286
+offset_bottom = -13.0
+theme_override_styles/background = SubResource("StyleBoxFlat_pimi0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c5cyb")
+value = 50.0
+show_percentage = false
+
+[node name="HungryBar" type="ProgressBar" parent="HContainerLeft/VContainerDown/StatsBar"]
+offset_left = 26.4286
+offset_top = -9.0
+offset_right = 74.4286
+offset_bottom = -7.0
+theme_override_styles/background = SubResource("StyleBoxFlat_sjip1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rjk5h")
+max_value = 50.0
+value = 25.0
+show_percentage = false
+
 [node name="Vessel" type="Sprite2D" parent="HContainerLeft/VContainerDown/StatsBar"]
-position = Vector2(26.5, -14)
+position = Vector2(30.5, -16.2857)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_wdvpt")
 
 [node name="AnimatedHeart" type="AnimatedSprite2D" parent="HContainerLeft/VContainerDown/StatsBar"]
-position = Vector2(14, -13.5)
+position = Vector2(15.4286, -15.7143)
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_23r18")
 animation = &"pulse"
 autoplay = "pulse"
