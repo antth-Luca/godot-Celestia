@@ -5,40 +5,21 @@
 Este repositório abriga o projeto Celestia, um jogo 2D top-down de sobrevivênca. Sendo desenvolvido por mim na engine Godot desde 25 de julho de 2025. 
 
 ## Licença
-Este projeto está sobre licença. ([Ver licença](https://github.com/antth-Luca/godot-Celestia/blob/main/LICENSE-pt-br))
+[Licença personalizada](https://github.com/antth-Luca/godot-Celestia/blob/main/LICENSE-pt-br)
 
 ## Versões:
-* Oficial: **---**
-* Em desenvolvimento: **Early alpha**:
-    * ✅ Registro de conteúdo
-    * ✅ Eventos globais (EventBus)
-    * ✅ Movimentação do jogador
-    * ✅ Atributos do jogador
-    * ✅ Inventário do jogador
-    * ✅ Classe de itens e itens dropados
-    * ✅ Terreno
-    * ⌛ Primeiro inimigo
-    * ⌛ Ferramentas
-    * ⌛ Sistema de dano e ressurreição do jogador
-    * ⌛ Passagem de tempo e visual de noite
-    * ⌛ Dormir e regeneração passiva de saúde
-    * ⌛ Primeiro animal
-    * ⌛ Comidas
-    * ⌛ Primeira planta
-    * ⌛ Receitas e fabricação
-    * ⌛ Primeira estrutura para construir
-    * ⌛ Sistema de fome
- 
-## Versões previstas:
-* Advanced alpha
-* Beta
-* Act 1 (esse é o release de MVP)
-* New horizons
-* Let’s go to combat
-* Magera
-* Cooks at the ready!
-* Fiesta!
-* Act 2
+| Versão | Título | Situação | Início desenv. | Fim desenv. |
+| ------ | ------ | -------- | -------------- | ----------- |
+| placeholder | Early alpha | Em desenvolvimento | 25/07/25 | - |
+| placeholder | Advanced alpha | Planejada | - | - |
+| placeholder | Beta | Planejada | - | - |
+| placeholder | Act 1 | Planejada | - | - |
+| placeholder | New horizons | Planejada | - | - |
+| placeholder | Let’s go to combat | Planejada | - | - |
+| placeholder | MagEra | Planejada | - | - |
+| placeholder | Cooks at the ready! | Planejada | - | - |
+| placeholder | Fiesta | Planejada | - | - |
+| placeholder | Act 2 | Planejada | - | - |
 
 ---
 
