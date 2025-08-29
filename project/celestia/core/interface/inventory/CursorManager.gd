@@ -7,7 +7,7 @@ var cursor_stack: ItemStack = ItemStack.EMPTY:
 	get:
 		return cursor_stack
 	set(new_stack):
-		if new_stack == null or new_stack.item == null or new_stack.amount <= 0:
+		if new_stack == null:
 			return
 		cursor_stack = new_stack
 
@@ -15,7 +15,7 @@ var cursor_click_origin_slot: int:
 	get:
 		return cursor_click_origin_slot
 	set(slot_index):
-		if slot_index < 0 or slot_index > 46:
+		if slot_index < inventory.MIN_SLOTS or slot_index > inventory.TOTAL_SLOTS:
 			return
 		cursor_click_origin_slot = slot_index
 
@@ -46,7 +46,7 @@ func clear_cursor() -> void:
 
 
 func is_cursor_stack_empty() -> bool:
-	return cursor_stack == ItemStack.EMPTY or cursor_stack.amount <= 0
+	return cursor_stack.amount <= 0
 
 
 func is_equal_to(stack: ItemStack) -> bool:

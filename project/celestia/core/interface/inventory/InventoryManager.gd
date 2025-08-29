@@ -1,5 +1,6 @@
 extends Control
 
+const MIN_SLOTS: int = 0
 const TOTAL_SLOTS: int = 46
 const BACKPACK_LAST_POSITION: int = 33
 
