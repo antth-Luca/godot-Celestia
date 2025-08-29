@@ -1,4 +1,4 @@
-extends Node
+extends RefCounted
 class_name PropertyManager
 
 var _providers: Dictionary[DeferredHolder, Array]

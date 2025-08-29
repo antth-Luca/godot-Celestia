@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3lfgr81bgo4q"]
+[gd_scene load_steps=20 format=3 uid="uid://b3lfgr81bgo4q"]
 
 [ext_resource type="Script" uid="uid://bas2xslnhn10h" path="res://core/entities/creatures/monsters/zombie/Zombie.gd" id="1_cflnr"]
 [ext_resource type="Texture2D" uid="uid://cxk0fabv8lbhu" path="res://assets/celestia/textures/enemies/zombie.png" id="2_shrvl"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cfro8u6rbpvh8" path="res://core/entities/components/state_machine/states/ChaseState.gd" id="5_xp2tj"]
 [ext_resource type="PackedScene" uid="uid://b5jmp07l7t3cp" path="res://core/entities/components/detection_area/DetectionArea.tscn" id="6_hbwmh"]
 [ext_resource type="PackedScene" uid="uid://ym3awtb3ksm4" path="res://core/entities/components/wall_vision/WallVision.tscn" id="6_thrsc"]
+[ext_resource type="PackedScene" uid="uid://cn13ycpy1ji50" path="res://core/entities/components/hitbox/Hitbox.tscn" id="9_haekf"]
 
 [sub_resource type="Animation" id="Animation_frwts"]
 length = 0.001
@@ -124,6 +125,9 @@ size = Vector2(10, 5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7c1m"]
 radius = 64.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ipk5"]
+size = Vector2(7, 24)
+
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 32
 collision_mask = 17
@@ -147,18 +151,15 @@ shape = SubResource("RectangleShape2D_ngtr2")
 [node name="MachineState" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_uk3j3")]
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="MachineState" node_paths=PackedStringArray("enemy")]
+[node name="Idle" type="Node" parent="MachineState"]
 script = ExtResource("4_l7c1m")
-enemy = NodePath("../..")
 
-[node name="Wander" type="Node" parent="MachineState" node_paths=PackedStringArray("enemy", "ray_vision")]
+[node name="Wander" type="Node" parent="MachineState" node_paths=PackedStringArray("ray_vision")]
 script = ExtResource("4_xp2tj")
-enemy = NodePath("../..")
 ray_vision = NodePath("../../WallVision")
 
-[node name="Chase" type="Node" parent="MachineState" node_paths=PackedStringArray("enemy")]
+[node name="Chase" type="Node" parent="MachineState"]
 script = ExtResource("5_xp2tj")
-enemy = NodePath("../..")
 
 [node name="DetectionArea" parent="." node_paths=PackedStringArray("machine_state") instance=ExtResource("6_hbwmh")]
 collision_layer = 0
@@ -172,3 +173,9 @@ shape = SubResource("CircleShape2D_l7c1m")
 [node name="WallVision" parent="." instance=ExtResource("6_thrsc")]
 position = Vector2(0, 3)
 script = null
+
+[node name="Hitbox" parent="." instance=ExtResource("9_haekf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, 2)
+shape = SubResource("RectangleShape2D_0ipk5")
