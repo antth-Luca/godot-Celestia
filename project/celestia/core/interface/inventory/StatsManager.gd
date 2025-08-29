@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func update_data_to_stats():
-	var player_stats: PropertyManager = get_parent().get_parent().get_parent().stats
+	var player_stats: PropertyManager = get_parent().get_parent().get_parent().entity_data.stats
 
 	var left_column = $VBoxContainer/HBoxContainerDown/VBoxContainerLeft
 	var right_column = $VBoxContainer/HBoxContainerDown/VBoxContainerRight

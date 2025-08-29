@@ -9,8 +9,14 @@ enum FACTION_MASK {
 	STRUCT = 0b1001
 }
 
-var faction: FACTION_MASK
+var faction: FACTION_MASK = FACTION_MASK.STRUCT
 var team: String
 var stats: PropertyManager
-var is_invincible: bool
+var is_invincible: bool = false
 var is_alive: bool
+
+# GODOT
+func _init(faction_param: FACTION_MASK, stats_param: PropertyManager, is_alive_param: bool = true):
+	faction = faction_param
+	stats = stats_param
+	is_alive = is_alive_param
