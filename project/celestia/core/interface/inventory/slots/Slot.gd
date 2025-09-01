@@ -1,9 +1,28 @@
 extends Button
 class_name Slot
 
-@export var slot_type: int:
-	get:
-		return slot_type
+signal slot_rendered(stack: ItemStack)
+signal slot_cleaned()
+
+const Type: Dictionary =  {
+	GENERIC = 'generic',
+	HEAD = 'head',
+	CHESTPLATE = 'chestplate',
+	LEGS = 'legs',
+	FEET = 'feet',
+	RELIC = 'relic',
+	AMMO = 'ammo'
+}
+
+@export_enum(
+	'generic',
+	'head',
+	'chestplate',
+	'legs',
+	'feet',
+	'relic',
+	'ammo'
+) var slot_type: String = Type.GENERIC
 
 @onready var slotTypeSprite: Sprite2D = $SlotType
 @onready var itemSprite: Sprite2D = $ItemSprite
@@ -11,10 +30,8 @@ class_name Slot
 
 
 func _ready():
-	if slot_type < 0 or slot_type > 6:
-		push_error('Slot: Slot type selected invalid.')
-	elif slot_type != 0:
-		slotTypeSprite.texture = load('res://assets/%s/interface/inventory/slots/types/%s.png' % SlotTypes.get_splited_id(slot_type))
+	if slot_type != Type.GENERIC:
+		slotTypeSprite.texture = load('res://assets/%s/interface/inventory/slots/types/%s.png' % [Celestia.GAME_ID, slot_type])
 
 # GETTERS AND SETTERS
 # Node
@@ -22,22 +39,19 @@ func get_inventory_tab():
 	return get_parent().get_parent()
 
 # HANDLERS
-func render_slot(item_slot: ItemStack) -> void:
+func render_slot(slot_stack: ItemStack) -> void:
 	slotTypeSprite.visible = false
-	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % item_slot.item.id.get_splited())
+	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % slot_stack.item.id.get_splited())
 	itemSprite.visible = true
-	if item_slot.amount > 1:
-		itemAmount.text = str(item_slot.amount)
+	if slot_stack.amount > 1:
+		itemAmount.text = str(slot_stack.amount)
 		itemAmount.visible = true
 	else:
 		itemAmount.visible = false
 
 	var slot_index: int = get_index()
 	if slot_index in [0, 1, 2, 3]:
-		get_inventory_tab().get_inventory_panel().get_ui().get_hud().get_rotative_pocket()._synchronize_pseudo_slot(
-			slot_index,
-			item_slot
-		)
+		emit_signal('slot_rendered', slot_stack)
 
 
 func clear_slot() -> void:
@@ -47,9 +61,7 @@ func clear_slot() -> void:
 
 	var slot_index: int = get_index()
 	if slot_index in [0, 1, 2, 3]:
-		get_inventory_tab().get_inventory_panel().get_ui().get_hud().get_rotative_pocket()._synchronize_pseudo_slot(
-			slot_index
-		)
+		emit_signal('slot_cleaned')
 
 
 func _on_mouse_entered():

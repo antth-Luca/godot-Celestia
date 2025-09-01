@@ -2,8 +2,6 @@ extends RefCounted
 class_name BasePropertyProvider
 
 var id: ResourceLocation = ResourceLocation.EMPTY:
-	get:
-		return id
 	set(new_id):
 		if id != ResourceLocation.EMPTY and id.get_string() != new_id.get_string():
 			push_warning('BasePropertyProvider: Property ID already set. It cannot be changed after initialization.')

@@ -3,17 +3,8 @@ class_name ItemStack
 
 static var EMPTY = ItemStack.new(null, 0)
 
-var item: BaseItem:
-	get:
-		return item
-	set(new_item):
-		item = new_item
-
-var amount: int:
-	get:
-		return amount
-	set(new_amount):
-		amount = new_amount
+var item: BaseItem
+var amount: int
 
 
 func _init(item_param: BaseItem, amount_param: int = 1) -> void:

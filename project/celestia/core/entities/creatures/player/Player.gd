@@ -29,7 +29,7 @@ var is_hurted: bool = false
 
 # GODOT
 func _ready():
-	EventBus.client_player.connect('level_up', Callable(self, '_on_surv_level_up'))
+	entity_data.stats.get_property(InitPropProviders.SURVIVOR_LEVEL).connect('level_up', Callable(self, '_on_surv_level_up'))
 
 
 func _physics_process(_delta: float) -> void:

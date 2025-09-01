@@ -1,32 +1,15 @@
 extends BaseItem
 class_name BaseArmor
 
-var armor_type: int = -1:
-	get:
-		return armor_type
-	set(new_type):
-		if new_type < 0 or new_type > 3:
-			push_error('BaseArmor: Armor type selected invalid.')
-		armor_type = new_type
+enum Type { HELMET, CHESTPLATE, LEGGINGS, BOOTS }
 
-var protection: float:
-	get:
-		return protection
-	set(new_protection):
-		protection = new_protection
-
+var armor_type: Type
+var protection: float
 var durability_factor: float = 1:
-	get:
-		return durability_factor
 	set(new_factor):
 		if new_factor < 1: return
 		durability_factor = new_factor
-
-var material: BaseMaterial = InitMaterials.GENERIC.get_registered():
-	get:
-		return material
-	set(new_material):
-		material = new_material
+var material: BaseMaterial = InitMaterials.GENERIC.get_registered()
 
 # SUPER
 func _init():
@@ -39,28 +22,32 @@ func get_durability() -> int:
 
 func can_equip(slot: Slot) -> bool:
 	var slot_type = slot.slot_type
-	return is_compatible_slot(slot_type, [
-		0, 
-		ArmorTypes.get_compatible_slot(armor_type)
-	])
+	return slot_type == Slot.Type.GENERIC or slot_type == get_compatible_slot()
 
 
 func on_equip(slot: Slot) -> void:
-	if is_compatible_slot(slot.slot_type, [ArmorTypes.get_compatible_slot(armor_type)]):
+	if slot.slot_type == get_compatible_slot():
 		var player: Player = slot.get_inventory_tab().get_inventory_panel().get_ui().get_player()
-		var prop = player.stats.get_property(InitPropProviders.ARMOR)
+		var prop = player.entity_data.stats.get_property(InitPropProviders.ARMOR)
 		prop.add_armor(protection)
 
 
 func on_unequip(slot: Slot) -> void:
-	if is_compatible_slot(slot.slot_type, [ArmorTypes.get_compatible_slot(armor_type)]):
+	if slot.slot_type == get_compatible_slot():
 		var player: Player = slot.get_inventory_tab().get_inventory_panel().get_ui().get_player()
-		var prop = player.stats.get_property(InitPropProviders.ARMOR)
+		var prop = player.entity_data.stats.get_property(InitPropProviders.ARMOR)
 		prop.sub_armor(protection)
 
 
-func is_compatible_slot(slot_type: int, allowed: Array[int]) -> bool:
-	for allow in allowed:
-		if slot_type == allow:
-			return true
-	return false
+func get_compatible_slot() -> String:
+	var compatible_slot: String
+	match armor_type:
+		Type.HELMET:
+			compatible_slot = Slot.Type.HEAD
+		Type.CHESTPLATE:
+			compatible_slot = Slot.Type.CHESTPLATE
+		Type.LEGGINGS:
+			compatible_slot = Slot.Type.LEGS
+		Type.BOOTS:
+			compatible_slot = Slot.Type.FEET
+	return compatible_slot

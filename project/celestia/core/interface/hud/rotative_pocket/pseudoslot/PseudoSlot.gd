@@ -5,12 +5,15 @@ extends Control
 
 # GODOT
 func _ready():
+	var slot: Slot = get_rotative_pocket().get_hud().get_ui().get_invent_panel().get_inventory_tab().get_slot(get_index())
+	slot.connect('slot_rendered', Callable(self, "render_slot"))
+	slot.connect('slot_cleaned', Callable(self, "clear_slot"))
 	clear_slot()
 
 # GETTERS AND SETTERS
 # Nodes
 func get_rotative_pocket():
-	return get_parent()
+	return get_parent().get_parent()
 
 # MAIN
 func render_slot(stack: ItemStack) -> void:

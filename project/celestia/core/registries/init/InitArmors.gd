@@ -21,7 +21,7 @@ static func setup() -> void:
 		'iron_chestplate',
 		func():
 			var armor = BaseArmor.new()
-			armor.armor_type = ArmorTypes.CHESTPLATE
+			armor.armor_type = BaseArmor.Type.CHESTPLATE
 			armor.durability_factor = 2
 			armor.material = InitMaterials.IRON.get_registered()
 			armor.protection = 1.5
