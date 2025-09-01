@@ -21,4 +21,4 @@ func add_amount_safe(amount_safe: int) -> int:
 
 
 func is_empty() -> bool:
-	return self == EMPTY or self.amount <= 0
+	return self.amount <= 0

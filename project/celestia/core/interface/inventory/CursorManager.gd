@@ -4,16 +4,12 @@ class_name CursorManager
 var inventory
 
 var cursor_stack: ItemStack = ItemStack.EMPTY:
-	get:
-		return cursor_stack
 	set(new_stack):
 		if new_stack == null:
 			return
 		cursor_stack = new_stack
 
 var cursor_click_origin_slot: int:
-	get:
-		return cursor_click_origin_slot
 	set(slot_index):
 		if slot_index < inventory.MIN_SLOTS or slot_index > inventory.TOTAL_SLOTS:
 			return
