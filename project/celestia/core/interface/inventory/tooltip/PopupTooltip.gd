@@ -43,7 +43,7 @@ func update_data_popup(item: BaseItem):
 		tooltip_label.visible = false
 
 # HANDLERS
-func _handle_entered_mouse_on_slot(slot: Slot):
+func _handle_mouse_entered_on_slot(slot: Slot):
 	if CURSOR.is_cursor_stack_empty():
 		var slot_stack = INVENTORY.get_stack_in_inventory(slot.get_index())
 		if slot_stack.amount > 0:
@@ -56,6 +56,6 @@ func _handle_entered_mouse_on_slot(slot: Slot):
 			)
 
 
-func _handle_exited_mouse_on_slot():
+func _handle_mouse_exited_on_slot():
 	if CURSOR.is_cursor_stack_empty():
 		hide_popup()

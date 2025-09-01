@@ -13,6 +13,9 @@ var inventory: Array[ItemStack] = []
 # GODOT
 func _ready() -> void:
 	clear_all_inventory()
+	for slot in slots_group.get_children():
+		slot.connect('slot_hovered', Callable(popup_tooltip, '_handle_mouse_entered_on_slot'))
+		slot.connect('slot_unhovered', Callable(popup_tooltip, '_handle_mouse_exited_on_slot'))
 
 
 func _input(event):

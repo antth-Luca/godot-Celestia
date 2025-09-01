@@ -3,6 +3,8 @@ class_name Slot
 
 signal slot_rendered(stack: ItemStack)
 signal slot_cleaned()
+signal slot_hovered(slot: Slot)
+signal slot_unhovered()
 
 const Type: Dictionary =  {
 	GENERIC = 'generic',
@@ -65,11 +67,11 @@ func clear_slot() -> void:
 
 
 func _on_mouse_entered():
-	get_inventory_tab().get_popup_tooltip()._handle_entered_mouse_on_slot(self)
+	emit_signal('slot_hovered', self)
 
 
 func _on_mouse_exited():
-	get_inventory_tab().get_popup_tooltip()._handle_exited_mouse_on_slot()
+	emit_signal('slot_unhovered')
 
 # SIGNALS
 func _on_gui_input(event: InputEvent):
