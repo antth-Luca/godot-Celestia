@@ -10,16 +10,16 @@ Este repositório abriga o projeto Celestia, um jogo 2D top-down de sobrevivênc
 ## Versões:
 | Versão | Título | Situação | Início desenv. | Fim desenv. |
 | ------ | ------ | -------- | -------------- | ----------- |
-| placeholder | Early alpha | Em desenvolvimento | 25/07/25 | - |
-| placeholder | Advanced alpha | Planejada | - | - |
-| placeholder | Beta | Planejada | - | - |
-| placeholder | Act 1 | Planejada | - | - |
-| placeholder | New horizons | Planejada | - | - |
-| placeholder | Let’s go to combat | Planejada | - | - |
-| placeholder | MagEra | Planejada | - | - |
-| placeholder | Cooks at the ready! | Planejada | - | - |
-| placeholder | Fiesta | Planejada | - | - |
-| placeholder | Act 2 | Planejada | - | - |
+| v1.25-earlyalpha | Early alpha | Em desenvolvimento | 25/07/25 | - |
+| v1.25-alpha | Advanced alpha | Planejada | - | - |
+| v1.25-beta | Beta | Planejada | - | - |
+| v1.25.1.1 | Act 1 | Planejada | - | - |
+| v1.25.1.2 | New horizons | Planejada | - | - |
+| v1.25.1.3 | Let’s go to combat | Planejada | - | - |
+| v1.25.1.4 | MagEra | Planejada | - | - |
+| v1.25.1.5 | Cooks at the ready! | Planejada | - | - |
+| v1.25.1.6 | Fiesta | Planejada | - | - |
+| v1.25.2.1 | Act 2 | Planejada | - | - |
 
 ---
 
