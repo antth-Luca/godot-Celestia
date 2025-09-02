@@ -75,6 +75,7 @@ func drop_item_in_position(stack: ItemStack, pos: Vector2):
 	drop.initialize(stack)
 	get_tree().root.add_child(drop)
 	drop.global_position = pos
+	drop.set_delay_to_collect()
 
 
 func drop_item_players_foot(stack: ItemStack):

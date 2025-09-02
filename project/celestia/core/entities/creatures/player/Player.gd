@@ -81,3 +81,8 @@ func _on_surv_level_up() -> void:
 	entity_data.stats.get_property(InitPropProviders.FORCE).add_force(2.5)
 	entity_data.stats.get_property(InitPropProviders.RESISTANCE).add_resistance(0.5)
 	entity_data.stats.get_property(InitPropProviders.PENETRATION).add_penetration(0.2)
+
+
+func _on_hurtbox_area_entered(area) -> void:
+	if area.is_in_group('hitbox'):
+		print('Houve dano em %s' % name)

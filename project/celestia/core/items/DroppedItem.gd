@@ -2,6 +2,7 @@ extends Area2D
 class_name DroppedItem
 
 var stack: ItemStack
+var can_collect: bool = true
 
 
 func initialize(_stack_param: ItemStack):
@@ -10,8 +11,24 @@ func initialize(_stack_param: ItemStack):
 	$ItemSprite.texture = load('res://assets/%s/textures/items/%s.png' % id_parts)
 
 
-func _on_body_entered(body):
-	if body.is_in_group('player'):
+func set_delay_to_collect():
+	can_collect = false
+	var timer := Timer.new()
+	timer.wait_time = 1
+	timer.one_shot = true
+	timer.connect(
+		'timeout',
+		func():
+			can_collect = true
+			timer.queue_free()
+	)
+	add_child(timer)
+	timer.start()
+
+
+func _on_area_entered(area):
+	var body = area.get_parent()
+	if body.is_in_group('player') and can_collect:
 		var inventory = body.get_node('WorldUI/MyPanel/InventoryTab')
 		if not inventory.get_stackable_index(stack.item.id) < 0:
 			var follow_tween = create_tween()

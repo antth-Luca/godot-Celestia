@@ -25,6 +25,8 @@ RegistryManager="*res://core/registries/RegistryManager.gd"
 [global_group]
 
 player=""
+hitbox=""
+hurtbox=""
 
 [input]
 
