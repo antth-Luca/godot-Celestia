@@ -48,7 +48,7 @@ func update_data_popup(item: BaseItem):
 
 # HANDLERS
 func _handle_mouse_entered_on_slot(slot: Slot):
-	if CURSOR.is_cursor_stack_empty():
+	if CURSOR.cursor_stack.is_empty():
 		var slot_stack = INVENTORY.get_stack_in_inventory(slot.get_index())
 		if slot_stack.amount > 0:
 			item_popup(
@@ -61,5 +61,5 @@ func _handle_mouse_entered_on_slot(slot: Slot):
 
 
 func _handle_mouse_exited_on_slot():
-	if CURSOR.is_cursor_stack_empty():
+	if CURSOR.cursor_stack.is_empty():
 		hide_popup()

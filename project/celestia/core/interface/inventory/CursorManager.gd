@@ -41,10 +41,6 @@ func clear_cursor() -> void:
 	clear_cursor_sprite()
 
 
-func is_cursor_stack_empty() -> bool:
-	return cursor_stack.amount <= 0
-
-
 func is_equal_to(stack: ItemStack) -> bool:
 	return cursor_stack.item.id == stack.item.id
 

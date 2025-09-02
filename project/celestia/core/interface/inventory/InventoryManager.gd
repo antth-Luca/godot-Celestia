@@ -20,7 +20,7 @@ func _ready() -> void:
 
 
 func _input(event):
-	if event is InputEventMouseMotion and not cursor.is_cursor_stack_empty():
+	if event is InputEventMouseMotion and not cursor.cursor_stack.is_empty():
 		cursor.update_cursor_sprite_position(get_global_mouse_position())
 
 # GETTERS AND SETTERS
@@ -45,9 +45,6 @@ func update_all_inventory() -> void:
 	# Updates EACH of the slots in your inventory by emptying or rendering them
 	for index in range(TOTAL_SLOTS):
 		var slot = slots_group.get_child(index)
-		if inventory[index].amount == 0:
-			slot.render_slot()
-			continue
 		slot.render_slot(inventory[index])
 
 
@@ -135,7 +132,7 @@ func _on_ui_rotate_pressed() -> void:
 
 
 func _on_inventory_closed() -> void:
-	if not cursor.is_cursor_stack_empty():
+	if not cursor.cursor_stack.is_empty():
 		add_item_to_backpack(cursor.get_cursor_stack())
 		cursor.clear_cursor()
 
@@ -152,7 +149,7 @@ func _handle_left_click_on_slot(slot: Slot):
 	var cursor_can_equip: bool = true if cursor_stack.is_empty() else cursor_stack.item.can_equip(slot)
 
 	# Case 1: Empty cursor
-	if cursor.is_cursor_stack_empty():
+	if cursor.cursor_stack.is_empty():
 		if slot_amount > 0 and slot_can_unequip:
 			cursor.set_click(slot_stack, slot_index)
 			inventory[slot_index] = ItemStack.EMPTY
@@ -212,7 +209,7 @@ func _handle_right_click_on_slot(slot: Slot):
 	var cursor_can_equip: bool = true if cursor_stack.is_empty() else cursor_stack.item.can_equip(slot)
 
 	# Case 1: Empty cursor
-	if cursor.is_cursor_stack_empty():
+	if cursor.cursor_stack.is_empty():
 		if slot_amount > 0 and slot_can_unequip:
 			var take_amount := int(slot_amount / 2.0)
 			cursor.set_click(ItemStack.new(slot_item, take_amount), slot_index)
@@ -248,5 +245,5 @@ func _handle_right_click_on_slot(slot: Slot):
 			slot.render_slot(inventory[slot_index])
 
 	# If the cursor is empty, clear it.
-	if cursor.is_cursor_stack_empty():
+	if cursor.cursor_stack.is_empty():
 		cursor.clear_cursor()
