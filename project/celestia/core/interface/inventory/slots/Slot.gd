@@ -41,29 +41,26 @@ func get_inventory_tab():
 	return get_parent().get_parent()
 
 # HANDLERS
-func render_slot(slot_stack: ItemStack) -> void:
-	slotTypeSprite.visible = false
-	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % slot_stack.item.id.get_splited())
-	itemSprite.visible = true
-	if slot_stack.amount > 1:
-		itemAmount.text = str(slot_stack.amount)
-		itemAmount.visible = true
-	else:
+func render_slot(slot_stack: ItemStack = ItemStack.EMPTY) -> void:
+	if slot_stack.is_empty():
+		slotTypeSprite.visible = true
+		itemSprite.visible = false
 		itemAmount.visible = false
-
-	var slot_index: int = get_index()
-	if slot_index in [0, 1, 2, 3]:
-		emit_signal('slot_rendered', slot_stack)
-
-
-func clear_slot() -> void:
-	slotTypeSprite.visible = true
-	itemSprite.visible = false
-	itemAmount.visible = false
-
-	var slot_index: int = get_index()
-	if slot_index in [0, 1, 2, 3]:
-		emit_signal('slot_cleaned')
+		var slot_index: int = get_index()
+		if slot_index in [0, 1, 2, 3]:
+			emit_signal('slot_cleaned')
+	else:
+		slotTypeSprite.visible = false
+		itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % slot_stack.item.id.get_splited())
+		itemSprite.visible = true
+		if slot_stack.amount > 1:
+			itemAmount.text = str(slot_stack.amount)
+			itemAmount.visible = true
+		else:
+			itemAmount.visible = false
+		var slot_index: int = get_index()
+		if slot_index in [0, 1, 2, 3]:
+			emit_signal('slot_rendered', slot_stack)
 
 
 func _on_mouse_entered():

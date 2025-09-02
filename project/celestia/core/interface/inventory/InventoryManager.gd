@@ -16,6 +16,7 @@ func _ready() -> void:
 	for slot in slots_group.get_children():
 		slot.connect('slot_hovered', Callable(popup_tooltip, '_handle_mouse_entered_on_slot'))
 		slot.connect('slot_unhovered', Callable(popup_tooltip, '_handle_mouse_exited_on_slot'))
+	get_inventory_panel().get_ui().connect('ui_rotate_pressed', Callable(self, '_on_ui_rotate_pressed'))
 
 
 func _input(event):
@@ -45,7 +46,7 @@ func update_all_inventory() -> void:
 	for index in range(TOTAL_SLOTS):
 		var slot = slots_group.get_child(index)
 		if inventory[index].amount == 0:
-			slot.clear_slot()
+			slot.render_slot()
 			continue
 		slot.render_slot(inventory[index])
 
@@ -121,6 +122,18 @@ func add_item_to_backpack(stack: ItemStack) -> void:
 			remaining_amount -= item_max_stack
 
 # HANDLERS
+func _on_ui_rotate_pressed() -> void:
+	var temp_stack: ItemStack = inventory[3]
+	# Pocket slots from 3 to 1
+	for c in range(3, 0, -1):
+		var updated_stack: ItemStack = inventory[c - 1]
+		inventory[c] = updated_stack
+		get_slot(c).render_slot(updated_stack)
+	# Pocket slot 0
+	inventory[0] = temp_stack
+	get_slot(0).render_slot(temp_stack)
+
+
 func _on_inventory_closed() -> void:
 	if not cursor.is_cursor_stack_empty():
 		add_item_to_backpack(cursor.get_cursor_stack())
@@ -143,7 +156,7 @@ func _handle_left_click_on_slot(slot: Slot):
 		if slot_amount > 0 and slot_can_unequip:
 			cursor.set_click(slot_stack, slot_index)
 			inventory[slot_index] = ItemStack.EMPTY
-			slot.clear_slot()
+			slot.render_slot()
 			slot_item.on_unequip(slot)
 
 	# Case 2: Cursor loaded and slot empty
@@ -183,7 +196,7 @@ func _handle_middle_click_on_slot(slot: Slot):
 		inventory[slot_index].item.on_unequip(slot)
 		inventory[slot_index] = ItemStack.EMPTY
 		drop_item_players_foot(slot_stack)
-		slot.clear_slot()
+		slot.render_slot()
 
 
 func _handle_right_click_on_slot(slot: Slot):
