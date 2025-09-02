@@ -13,7 +13,7 @@ Este repositório abriga o projeto Celestia, um jogo 2D top-down de sobrevivênc
 | v1.25-earlyalpha | Early alpha | Em desenvolvimento | 25/07/25 | - |
 | v1.25-alpha | Advanced alpha | Planejada | - | - |
 | v1.25-beta | Beta | Planejada | - | - |
-| v1.25.1.1 | Act 1 | Planejada | - | - |
+| v1.25.1.1 | Act 1 (este é **MVP**) | Planejada | - | - |
 | v1.25.1.2 | New horizons | Planejada | - | - |
 | v1.25.1.3 | Let’s go to combat | Planejada | - | - |
 | v1.25.1.4 | MagEra | Planejada | - | - |
