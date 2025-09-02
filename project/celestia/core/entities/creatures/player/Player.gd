@@ -85,4 +85,6 @@ func _on_surv_level_up() -> void:
 
 func _on_hurtbox_area_entered(area) -> void:
 	if area.is_in_group('hitbox'):
-		print('Houve dano em %s' % name)
+		var source_entity = area.get_parent()
+		var hit = source_entity.get_data_hit()
+		DamageManager.try_apply(hit, entity_data)

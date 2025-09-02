@@ -40,6 +40,14 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 # GETTERS AND SETTERS
+# Attack
+func get_data_hit() -> HitData:
+	return HitData.new(
+		entity_data,
+		HitData.PRIMITIVE_TYPE.PHYSIC,
+		HitData.SPECIALIZED_TYPE.NONE
+	)
+
 # Animation
 func set_animation() -> void:
 	var anim = 'idle'
