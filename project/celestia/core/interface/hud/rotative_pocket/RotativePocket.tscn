@@ -1,8 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwhj3oh0nw37o"]
+[gd_scene load_steps=8 format=3 uid="uid://bwhj3oh0nw37o"]
 
 [ext_resource type="Texture2D" uid="uid://x1ifmif6ol6j" path="res://assets/celestia/interface/hud/pocket_inventory.png" id="1_11jbb"]
 [ext_resource type="Script" uid="uid://dmp4jnorare36" path="res://core/interface/hud/rotative_pocket/RotativePocket.gd" id="1_bjxet"]
 [ext_resource type="PackedScene" uid="uid://cwg5p07b83530" path="res://core/interface/hud/rotative_pocket/pseudoslot/PseudoSlot.tscn" id="2_bjxet"]
+[ext_resource type="Texture2D" uid="uid://bna3lomydne0" path="res://assets/celestia/interface/hud/selected_pocket.png" id="3_w88e1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgbeb"]
+atlas = ExtResource("3_w88e1")
+region = Rect2(0, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idqa7"]
+atlas = ExtResource("3_w88e1")
+region = Rect2(34, 0, 34, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cqkr1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgbeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idqa7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
 
 [node name="RotativePocket" type="Node2D"]
 script = ExtResource("1_bjxet")
@@ -10,34 +33,40 @@ script = ExtResource("1_bjxet")
 [node name="BackgroundPocket" type="Sprite2D" parent="."]
 texture = ExtResource("1_11jbb")
 
+[node name="AnimatedSelected" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -18)
+sprite_frames = SubResource("SpriteFrames_cqkr1")
+autoplay = "default"
+frame_progress = 0.842052
+
 [node name="PseudoSlotsGroup" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="PseudoSlot" parent="PseudoSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = -8.0
-offset_top = -27.0
+offset_top = -26.0
 offset_right = -8.0
-offset_bottom = -27.0
+offset_bottom = -26.0
 metadata/_edit_use_anchors_ = true
 
 [node name="PseudoSlot2" parent="PseudoSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = 10.0
-offset_top = -9.0
+offset_top = -8.0
 offset_right = 10.0
-offset_bottom = -9.0
+offset_bottom = -8.0
 metadata/_edit_use_anchors_ = true
 
 [node name="PseudoSlot3" parent="PseudoSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = -8.0
-offset_top = 9.0
+offset_top = 12.0
 offset_right = -8.0
-offset_bottom = 9.0
+offset_bottom = 12.0
 metadata/_edit_use_anchors_ = true
 
 [node name="PseudoSlot4" parent="PseudoSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = -26.0
-offset_top = -9.0
+offset_top = -8.0
 offset_right = -26.0
-offset_bottom = -9.0
+offset_bottom = -8.0
 metadata/_edit_use_anchors_ = true
