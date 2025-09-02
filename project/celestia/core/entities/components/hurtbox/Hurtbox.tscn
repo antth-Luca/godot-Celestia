@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dx3eluaakvdj2" path="res://core/entities/components/hurtbox/Hurtbox.gd" id="1_qx105"]
 
-[node name="HurtboxComponent" type="Area2D"]
+[node name="Hurtbox" type="Area2D"]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_qx105")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -130,7 +130,6 @@ size = Vector2(11, 21)
 
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 32
-collision_mask = 17
 script = ExtResource("1_cflnr")
 
 [node name="Texture" type="Sprite2D" parent="."]
@@ -179,3 +178,4 @@ script = null
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_0ipk5")
+debug_color = Color(0.579262, 0.552326, 5.77569e-07, 0.42)
