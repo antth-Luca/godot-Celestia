@@ -31,6 +31,18 @@ var is_hurted: bool = false
 func _ready():
 	entity_data.stats.get_property(InitPropProviders.SURVIVOR_LEVEL).connect('level_up', Callable(self, '_on_surv_level_up'))
 
+	var stats_bar = get_ui().get_hud().get_stats_bar()
+	var health_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
+	health_prop.connect('max_health_changed', Callable(stats_bar, '_on_max_health_changed'))
+	health_prop.emit_signal('max_health_changed', health_prop.get_max_health())
+	health_prop.connect('health_changed', Callable(stats_bar, '_on_health_changed'))
+	health_prop.emit_signal('health_changed', health_prop.get_health())
+	var mana_prop: ManaProperty = entity_data.stats.get_property(InitPropProviders.MANA)
+	mana_prop.connect('max_mana_changed', Callable(stats_bar, '_on_max_mana_changed'))
+	mana_prop.emit_signal('max_mana_changed', mana_prop.get_max_mana())
+	mana_prop.connect('mana_changed', Callable(stats_bar, '_on_mana_changed'))
+	mana_prop.emit_signal('mana_changed', mana_prop.get_mana())
+
 
 func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.

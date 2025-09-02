@@ -16,6 +16,7 @@ static var MOVE_SPEED: DeferredHolder
 static var PENETRATION: DeferredHolder
 static var RANGE: DeferredHolder
 static var RESISTANCE: DeferredHolder
+static var STAMINA: DeferredHolder
 static var SURVIVOR_LEVEL: DeferredHolder
 static var USE_SPEED: DeferredHolder
 
@@ -77,6 +78,10 @@ static func setup() -> void:
 
 	RESISTANCE = PROVIDERS.add_entry(
 		'resistance', func(): return ResistanceProvider.new()
+	)
+
+	STAMINA = PROVIDERS.add_entry(
+		'stamina', func(): return StaminaProvider.new()
 	)
 
 	SURVIVOR_LEVEL = PROVIDERS.add_entry(

@@ -7,7 +7,7 @@ func get_ui():
 
 
 func get_stats_bar():
-	return get_node("HContainerLeft/VContainerDown/StatsBar")
+	return get_node('HContainerLeft/VContainerDown/StatsBar')
 
 
 func get_rotative_pocket():

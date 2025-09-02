@@ -7,6 +7,10 @@ extends Control
 @onready var tooltip_label: RichTextLabel = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TooltipRichLabel
 
 
+func _ready():
+	hide_popup()
+
+
 func item_popup(slot: Rect2i, item: BaseItem):
 	var mouse_pos = get_viewport().get_mouse_position()
 	var correction

@@ -1,6 +1,9 @@
 extends BaseProperty
 class_name ManaProperty
 
+signal max_mana_changed(new_max_mana: float)
+signal mana_changed(new_mana: float)
+
 var MAX_MP: float
 var mp: float
 const MIN_MP: int = 0
@@ -21,6 +24,7 @@ func get_format_mana() -> String:
 
 func set_mana(newMP: float) -> void:
 	mp = clamp(newMP, MIN_MP, MAX_MP)
+	emit_signal('mana_changed', mp)
 
 
 func add_mana(addMP: float) -> void:
@@ -41,6 +45,7 @@ func get_format_max_mana() -> String:
 
 func set_max_mana(newMaxMP: float) -> void:
 	MAX_MP = max(MIN_MP, newMaxMP)
+	emit_signal('max_mana_changed', MAX_MP)
 
 
 func add_max_mana(addMaxMP: float) -> void:

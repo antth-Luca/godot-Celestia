@@ -120,13 +120,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngtr2"]
-size = Vector2(10, 5)
+size = Vector2(6, 5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7c1m"]
 radius = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ipk5"]
-size = Vector2(7, 24)
+size = Vector2(11, 21)
 
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 32
@@ -177,5 +177,5 @@ script = null
 [node name="Hitbox" parent="." instance=ExtResource("9_haekf")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-0.5, 2)
+position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_0ipk5")

@@ -1,6 +1,9 @@
 extends BaseProperty
 class_name HealthProperty
 
+signal max_health_changed(new_max_health)
+signal health_changed(new_health)
+
 var MAX_HP: float
 var hp: float
 const MIN_HP: int = 0
@@ -21,6 +24,7 @@ func get_format_health() -> String:
 
 func set_health(newHP: float) -> void:
 	hp = clamp(newHP, MIN_HP, MAX_HP)
+	emit_signal('health_changed', hp)
 
 
 func add_health(addHP: float) -> void:
@@ -41,6 +45,7 @@ func get_format_max_health() -> String:
 
 func set_max_health(newMaxHP: float) -> void:
 	MAX_HP = max(MIN_HP, newMaxHP)
+	emit_signal('max_health_changed', MAX_HP)
 
 
 func add_max_health(addMaxHP: float) -> void:

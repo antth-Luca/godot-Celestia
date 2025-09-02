@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://qvrm2d7b1xca"]
+[gd_scene load_steps=14 format=3 uid="uid://qvrm2d7b1xca"]
 
 [ext_resource type="Script" uid="uid://dpv05wrpe5ht3" path="res://core/entities/creatures/player/Player.gd" id="1_ahdn1"]
 [ext_resource type="Texture2D" uid="uid://ce8bk4a6ciyep" path="res://assets/celestia/textures/player/default_male.png" id="2_lkete"]
 [ext_resource type="PackedScene" uid="uid://cid21w8ylowqb" path="res://core/interface/WorldUI.tscn" id="3_mi63l"]
+[ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="4_33tkp"]
 
 [sub_resource type="Animation" id="Animation_3cpg6"]
 length = 0.001
@@ -114,7 +115,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkete"]
-size = Vector2(14, 6)
+size = Vector2(10, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sskaw"]
+size = Vector2(14, 22)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 16
@@ -141,3 +145,10 @@ process_callback = 0
 limit_smoothed = true
 
 [node name="WorldUI" parent="." instance=ExtResource("3_mi63l")]
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_33tkp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_sskaw")
+debug_color = Color(0.754633, 0.340155, 0.773971, 0.42)
