@@ -26,8 +26,9 @@ func _init() -> void:
 
 
 func _ready():
+	# Survivor level signal
 	entity_data.stats.get_property(InitPropProviders.SURVIVOR_LEVEL).connect('level_up', Callable(self, '_on_surv_level_up'))
-
+	# Stats bar signals
 	var stats_bar = get_ui().get_hud().get_stats_bar()
 	var health_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
 	health_prop.connect('max_health_changed', Callable(stats_bar, '_on_max_health_changed'))
@@ -49,10 +50,14 @@ func _physics_process(delta: float) -> void:
 
 # GETTERS AND SETTERS
 # Nodes
-func get_ui():
+func get_ui() -> WorldUI:
 	return get_node('WorldUI')
 
 # HANDLERS
+func perform_attack(item: BaseTool) -> int:
+	return 0
+
+
 func _on_surv_level_up() -> void:
 	var health_prov = entity_data.stats.get_property(InitPropProviders.HEALTH)
 	health_prov.add_max_health(10)

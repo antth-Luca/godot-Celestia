@@ -1,7 +1,8 @@
 extends Control
+class_name MyPanel
 
-@onready var inventory_tab = $InventoryTab
-@onready var stats_tab = $StatsTab
+@onready var inventory_tab: InventoryManager = $InventoryTab
+@onready var stats_tab: StatsManager = $StatsTab
 
 # GODOT
 func _ready() -> void:
@@ -29,15 +30,15 @@ func _on_stats_button_pressed():
 
 # GETTERS AND SETTERS
 # Nodes
-func get_ui():
+func get_ui() -> WorldUI:
 	return get_parent()
 
 
-func get_inventory_tab():
+func get_inventory_tab() -> InventoryManager:
 	return get_node('InventoryTab')
 
 
-func get_stats_tab():
+func get_stats_tab() -> StatsManager:
 	return get_node('StatsTab')
 
 # HANDLERS

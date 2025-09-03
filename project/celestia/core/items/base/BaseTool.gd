@@ -12,5 +12,5 @@ func _init():
 
 
 func use(player: Player) -> void:
-	var targets_number: int = player.perform_attack()
-	consome_durability(1 * targets_number, player.get_ui())  # TODO: Completar
+	var targets_number: int = player.perform_attack(self)
+	consome_durability(1 * targets_number, player.get_ui().get_invent_panel().get_inventory_tab().get_slot(0))

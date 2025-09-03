@@ -1,4 +1,5 @@
 extends Control
+class_name StatsManager
 
 const BASE_T_KET: String = 'celestia.ui.inventory.stats.'
 

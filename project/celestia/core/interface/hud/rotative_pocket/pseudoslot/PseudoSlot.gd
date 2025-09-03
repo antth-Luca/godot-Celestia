@@ -1,4 +1,5 @@
 extends Control
+class_name PseudoSlot
 
 @onready var itemSprite: Sprite2D = $ItemSprite
 @onready var itemAmount: Label = $ItemAmount

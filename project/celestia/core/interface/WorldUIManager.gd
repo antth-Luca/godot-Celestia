@@ -1,10 +1,11 @@
 extends CanvasLayer
+class_name WorldUI
 
 signal ui_rotate_pressed
 
-@onready var Hud := $HUD
+@onready var Hud: PlayerHUD = $HUD
 @onready var BgBlur := $Panel
-@onready var MyPanel := $MyPanel
+@onready var MyPanel: MyPanel = $MyPanel
 
 # GODOT
 func _ready():
@@ -21,15 +22,15 @@ func _input(event: InputEvent) -> void:
 
 # GETTERS AND SETTERS
 # Nodes
-func get_player():
+func get_player() -> Player:
 	return get_parent()
 
 
-func get_hud():
+func get_hud() -> PlayerHUD:
 	return get_node('HUD')
 
 
-func get_invent_panel():
+func get_invent_panel() -> MyPanel:
 	return get_node('MyPanel')
 
 # HANDLERS

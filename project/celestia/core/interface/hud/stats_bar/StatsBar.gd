@@ -1,4 +1,5 @@
 extends Node2D
+class_name StatsBar
 
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var mana_bar: ProgressBar = $ManaBar

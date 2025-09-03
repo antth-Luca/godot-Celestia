@@ -6,7 +6,7 @@ const TOTAL_SLOTS: int = 46
 const BACKPACK_LAST_POSITION: int = 33
 
 @onready var slots_group := $SlotsGroup
-@onready var popup_tooltip := $PopupTooltip
+@onready var popup_tooltip: PopupTooltip = $PopupTooltip
 
 var cursor := CursorManager.new(self)
 var inventory: Array[ItemStack] = []
