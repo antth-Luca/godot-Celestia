@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3lfgr81bgo4q"]
+[gd_scene load_steps=22 format=3 uid="uid://b3lfgr81bgo4q"]
 
 [ext_resource type="Script" uid="uid://bas2xslnhn10h" path="res://core/entities/creatures/monsters/zombie/Zombie.gd" id="1_cflnr"]
 [ext_resource type="Texture2D" uid="uid://cxk0fabv8lbhu" path="res://assets/celestia/textures/enemies/zombie.png" id="2_shrvl"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b5jmp07l7t3cp" path="res://core/entities/components/detection_area/DetectionArea.tscn" id="6_hbwmh"]
 [ext_resource type="PackedScene" uid="uid://ym3awtb3ksm4" path="res://core/entities/components/wall_vision/WallVision.tscn" id="6_thrsc"]
 [ext_resource type="PackedScene" uid="uid://cn13ycpy1ji50" path="res://core/entities/components/hitbox/Hitbox.tscn" id="9_haekf"]
+[ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="10_0ipk5"]
 
 [sub_resource type="Animation" id="Animation_frwts"]
 length = 0.001
@@ -126,6 +127,9 @@ size = Vector2(6, 5)
 radius = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ipk5"]
+size = Vector2(13, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6tfs"]
 size = Vector2(11, 21)
 
 [node name="Zombie" type="CharacterBody2D"]
@@ -176,6 +180,13 @@ script = null
 [node name="Hitbox" parent="." instance=ExtResource("9_haekf")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-0.5, -1.5)
+position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_0ipk5")
 debug_color = Color(0.579262, 0.552326, 5.77569e-07, 0.42)
+
+[node name="Hurtbox" parent="." instance=ExtResource("10_0ipk5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_w6tfs")
+debug_color = Color(0.884413, 0.000312657, 0.810662, 0.42)

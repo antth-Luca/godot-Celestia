@@ -5,7 +5,6 @@ class_name Player
 @onready var ANIMATION: AnimationPlayer = $Animation
 
 var knockback_vector: Vector2 = Vector2.ZERO
-var knockback_timer: float = 0
 var entity_data: EntityData = EntityData.new(
 	EntityData.FACTION_MASK.PLAYER,
 	PropertyManager.create_manager({
@@ -46,12 +45,10 @@ func _ready():
 	mana_prop.emit_signal('mana_changed', mana_prop.get_mana())
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Knockback
-	if knockback_timer > 0:
+	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
-		knockback_timer -= delta
-		if knockback_timer <= 0: knockback_vector = Vector2.ZERO
 	else:
 		# Get the input direction and handle the movement/deceleration.
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
@@ -99,6 +96,7 @@ func _on_hurtbox_area_entered(area) -> void:
 
 
 func apply_knockback(attacker_pos: Vector2, target_pos: Vector2, hit_specialized_type: HitData.SPECIALIZED_TYPE = HitData.SPECIALIZED_TYPE.NONE) -> void:
-	var multiplier: float = 100 if hit_specialized_type == HitData.SPECIALIZED_TYPE.EXPLOSION else 75
+	var multiplier: float = 120 if hit_specialized_type == HitData.SPECIALIZED_TYPE.EXPLOSION else 100
 	knockback_vector = (attacker_pos - target_pos).normalized() * multiplier
-	knockback_timer = 0.25
+	var knockback_tween: Tween = get_tree().create_tween()
+	knockback_tween.tween_property(self, 'knockback_vector', Vector2.ZERO, .2)
