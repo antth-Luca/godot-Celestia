@@ -47,7 +47,7 @@ func on_unequip(_slot: Slot):
 	pass
 
 
-func use() -> void:
+func use(_player: Player) -> void:
 	pass
 
 
