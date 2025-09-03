@@ -77,3 +77,5 @@ func apply_knockback(attacker_pos: Vector2, target_pos: Vector2, hit_specialized
 	knockback_vector = (attacker_pos - target_pos).normalized() * multiplier
 	var knockback_tween: Tween = get_tree().create_tween()
 	knockback_tween.tween_property(self, 'knockback_vector', Vector2.ZERO, .2)
+	TEXTURE.modulate = Color.INDIAN_RED
+	knockback_tween.tween_property(TEXTURE, 'modulate', Color.WHITE, .15)

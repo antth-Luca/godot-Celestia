@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b3lfgr81bgo4q"]
+[gd_scene load_steps=20 format=3 uid="uid://b3lfgr81bgo4q"]
 
 [ext_resource type="Script" uid="uid://bas2xslnhn10h" path="res://core/entities/creatures/monsters/zombie/Zombie.gd" id="1_cflnr"]
 [ext_resource type="Texture2D" uid="uid://cxk0fabv8lbhu" path="res://assets/celestia/textures/enemies/zombie.png" id="2_shrvl"]
@@ -42,23 +42,6 @@ tracks/0/keys = {
 "values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3)]
 }
 
-[sub_resource type="Animation" id="Animation_mnwbq"]
-resource_name = "hurt"
-length = 0.3
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(2, 2)]
-}
-
 [sub_resource type="Animation" id="Animation_bkl4u"]
 resource_name = "idle"
 length = 0.9
@@ -74,23 +57,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ngtr2"]
-resource_name = "knock_hurt"
-length = 0.3
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(3, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_l0w2k"]
@@ -114,9 +80,7 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_frwts"),
 &"death": SubResource("Animation_q5i3r"),
-&"hurt": SubResource("Animation_mnwbq"),
 &"idle": SubResource("Animation_bkl4u"),
-&"knock_hurt": SubResource("Animation_ngtr2"),
 &"walk": SubResource("Animation_l0w2k")
 }
 
