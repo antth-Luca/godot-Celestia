@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cmhue8evj0uhb"]
+
+[ext_resource type="FontFile" uid="uid://jdjyib7dyy0c" path="res://assets/celestia/fonts/Bescii-Mono.ttf" id="1_e2ka5"]
+
+[resource]
+default_font = ExtResource("1_e2ka5")

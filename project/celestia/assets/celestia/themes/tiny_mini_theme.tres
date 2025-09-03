@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://itbvstxdxmvc"]
+
+[ext_resource type="FontFile" uid="uid://drsryugjm4i17" path="res://assets/celestia/fonts/Tiny5-Regular.ttf" id="1_wxc1o"]
+
+[resource]
+default_font = ExtResource("1_wxc1o")
