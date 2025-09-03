@@ -5,21 +5,12 @@ enum Type { HELMET, CHESTPLATE, LEGGINGS, BOOTS }
 
 var armor_type: Type
 var protection: float
-var durability_factor: float = 1:
-	set(new_factor):
-		if new_factor < 1: return
-		durability_factor = new_factor
-var material: BaseMaterial = InitMaterials.GENERIC.get_registered()
 
 # SUPER
 func _init():
 	max_stack = 1
 
 # HANDLERS
-func get_durability() -> int:
-	return ceil(material.base_max_damage * durability_factor)
-
-
 func can_equip(slot: Slot) -> bool:
 	var slot_type = slot.slot_type
 	return slot_type == Slot.Type.GENERIC or slot_type == get_compatible_slot()

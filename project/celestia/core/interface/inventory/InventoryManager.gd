@@ -1,4 +1,5 @@
 extends Control
+class_name InventoryManager
 
 const MIN_SLOTS: int = 0
 const TOTAL_SLOTS: int = 46
