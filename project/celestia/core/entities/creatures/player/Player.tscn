@@ -33,7 +33,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4)]
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3)]
 }
 
 [sub_resource type="Animation" id="Animation_lkete"]
@@ -95,7 +95,7 @@ script = ExtResource("1_ahdn1")
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_lkete")
 hframes = 4
-vframes = 5
+vframes = 4
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {

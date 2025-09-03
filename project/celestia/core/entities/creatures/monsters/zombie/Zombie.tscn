@@ -39,7 +39,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3)]
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(2, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_bkl4u"]
@@ -103,7 +103,7 @@ script = ExtResource("1_cflnr")
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_shrvl")
 hframes = 4
-vframes = 4
+vframes = 3
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
