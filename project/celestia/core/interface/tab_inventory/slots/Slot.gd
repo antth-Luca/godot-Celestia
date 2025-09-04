@@ -42,11 +42,14 @@ func get_inventory_tab() -> InventoryManager:
 
 # HANDLERS
 func render_slot(slot_stack: ItemStack = ItemStack.EMPTY) -> void:
+	var player: Player = get_inventory_tab().player
 	if slot_stack.is_empty():
 		slotTypeSprite.visible = true
 		itemSprite.visible = false
 		itemAmount.visible = false
 		var slot_index: int = get_index()
+		if player and slot_index == InventoryManager.MIN_SLOTS:
+			player.ITEM_HAND_TEXTURE.texture = null
 		if slot_index in [0, 1, 2, 3]:
 			emit_signal('slot_cleaned')
 	else:
@@ -60,7 +63,7 @@ func render_slot(slot_stack: ItemStack = ItemStack.EMPTY) -> void:
 			itemAmount.visible = false
 		var slot_index: int = get_index()
 		if slot_index == InventoryManager.MIN_SLOTS:
-			get_inventory_tab().player.ITEM_HAND_TEXTURE.texture = itemSprite.texture
+			player.ITEM_HAND_TEXTURE.texture = itemSprite.texture
 		if slot_index in [0, 1, 2, 3]:
 			emit_signal('slot_rendered', slot_stack)
 
