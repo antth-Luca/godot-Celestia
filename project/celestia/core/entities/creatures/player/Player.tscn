@@ -1,9 +1,90 @@
-[gd_scene load_steps=13 format=3 uid="uid://qvrm2d7b1xca"]
+[gd_scene load_steps=18 format=3 uid="uid://qvrm2d7b1xca"]
 
 [ext_resource type="Script" uid="uid://dpv05wrpe5ht3" path="res://core/entities/creatures/player/Player.gd" id="1_ahdn1"]
 [ext_resource type="Texture2D" uid="uid://ce8bk4a6ciyep" path="res://assets/celestia/textures/player/default_male.png" id="2_lkete"]
+[ext_resource type="Texture2D" uid="uid://ccun0q3uylx8" path="res://assets/celestia/textures/items/iron_sword.png" id="2_sskaw"]
 [ext_resource type="PackedScene" uid="uid://cid21w8ylowqb" path="res://core/interface/WorldUI.tscn" id="3_mi63l"]
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="4_33tkp"]
+
+[sub_resource type="Animation" id="Animation_gu7p7"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemHandTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-49, -7), Vector2(-49, -6), Vector2(-49, -6), Vector2(-49, -7)]
+}
+
+[sub_resource type="Animation" id="Animation_bj32v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemHandTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-49, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ItemHandTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1hx33"]
+resource_name = "walk"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemHandTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.305311, 0.609235, 0.902056),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-51, -7), Vector2(-50, -6), Vector2(-47, -7), Vector2(-49, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ItemHandTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.305311, 0.609235, 0.902056),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-0.261799, 0.0, 0.261799, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1fgk"]
+_data = {
+&"RESET": SubResource("Animation_bj32v"),
+&"idle": SubResource("Animation_gu7p7"),
+&"walk": SubResource("Animation_1hx33")
+}
 
 [sub_resource type="Animation" id="Animation_3cpg6"]
 length = 0.001
@@ -92,10 +173,20 @@ collision_layer = 16
 collision_mask = 33
 script = ExtResource("1_ahdn1")
 
+[node name="ItemHandTexture" type="Sprite2D" parent="."]
+position = Vector2(-49, -6)
+texture = ExtResource("2_sskaw")
+
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_lkete")
 hframes = 4
 vframes = 4
+
+[node name="ItemHandAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_g1fgk")
+}
+autoplay = "idle"
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -103,11 +194,8 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="ItemHandTexture" type="Sprite2D" parent="."]
-
-[node name="ItemHandAnimation" type="AnimationPlayer" parent="."]
-
 [node name="WorldUI" parent="." instance=ExtResource("3_mi63l")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
