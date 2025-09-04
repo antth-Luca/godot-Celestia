@@ -67,6 +67,11 @@ func set_animation() -> void:
 	if ANIMATION.current_animation != anim:
 		ANIMATION.play(anim)
 
+# Handlers
+func flip_texture(x_dir) -> void:
+	super(x_dir)
+	ITEM_HAND_TEXTURE.scale.x = sign(x_dir)
+
 # GETTERS AND SETTERS
 # Nodes
 func get_ui() -> WorldUI:

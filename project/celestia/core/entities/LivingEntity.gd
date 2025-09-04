@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
 		if direction != Vector2.ZERO:
 			velocity = direction * stats_move_speed
-			if direction.x != 0: TEXTURE.scale.x = sign(direction.x)
+			if direction.x != 0: flip_texture(direction.x)
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, stats_move_speed)
 	# Setting state and animation and continuing movement
@@ -45,6 +45,10 @@ func _on_hurtbox_area_entered(area) -> void:
 		var hit: HitData = source_entity.get_data_hit()
 		DamageManager.try_apply(hit, entity_data)
 		apply_knockback(global_position, area.get_parent().global_position, hit.specialized_type)
+
+
+func flip_texture(x_dir) -> void:
+	TEXTURE.scale.x = sign(x_dir)
 
 
 func apply_knockback(attacker_pos: Vector2, target_pos: Vector2, hit_specialized_type: HitData.SPECIALIZED_TYPE = HitData.SPECIALIZED_TYPE.NONE) -> void:
