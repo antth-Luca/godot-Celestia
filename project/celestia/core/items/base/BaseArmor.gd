@@ -16,16 +16,14 @@ func can_equip(slot: Slot) -> bool:
 	return slot_type == Slot.Type.GENERIC or slot_type == get_compatible_slot()
 
 
-func on_equip(slot: Slot) -> void:
+func on_equip(slot: Slot, player: Player) -> void:
 	if slot.slot_type == get_compatible_slot():
-		var player: Player = slot.get_inventory_tab().get_inventory_panel().get_ui().get_player()
 		var prop = player.entity_data.stats.get_property(InitPropProviders.ARMOR)
 		prop.add_armor(protection)
 
 
-func on_unequip(slot: Slot) -> void:
+func on_unequip(slot: Slot, player: Player) -> void:
 	if slot.slot_type == get_compatible_slot():
-		var player: Player = slot.get_inventory_tab().get_inventory_panel().get_ui().get_player()
 		var prop = player.entity_data.stats.get_property(InitPropProviders.ARMOR)
 		prop.sub_armor(protection)
 

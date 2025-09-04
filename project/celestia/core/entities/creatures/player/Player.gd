@@ -1,6 +1,11 @@
 extends LivingEntity
 class_name Player
 
+@onready var ITEM_HAND_TEXTURE: Sprite2D = $ItemHandTexture
+@onready var ITEM_HAND_ANIMATION: AnimationPlayer = $ItemHandAnimation
+
+var inventory: InventoryManager
+
 # GODOT
 func _init() -> void:
 	entity_data = EntityData.new(
@@ -40,6 +45,11 @@ func _ready():
 	mana_prop.emit_signal('max_mana_changed', mana_prop.get_max_mana())
 	mana_prop.connect('mana_changed', Callable(stats_bar, '_on_mana_changed'))
 	mana_prop.emit_signal('mana_changed', mana_prop.get_mana())
+	# Inventory
+	inventory = get_ui().get_invent_panel().get_inventory_tab()
+	inventory.player = self
+	# Item Hand Animation
+	set_item_hand_texture(get_item_in_hand().item)
 
 
 func _physics_process(delta: float) -> void:
@@ -48,16 +58,26 @@ func _physics_process(delta: float) -> void:
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 	super(delta)
 
+# SUPER
+# Animation
+func set_animation() -> void:
+	var anim = 'idle'
+	if direction != Vector2.ZERO:
+		anim = 'walk'
+	if ANIMATION.current_animation != anim:
+		ANIMATION.play(anim)
+
 # GETTERS AND SETTERS
 # Nodes
 func get_ui() -> WorldUI:
 	return get_node('WorldUI')
 
+# Item Hand
+func set_item_hand_texture(item_hand: BaseItem) -> void:
+	if item_hand: ITEM_HAND_TEXTURE.texture = load('res://assets/%s/textures/items/%s.png' % item_hand.id.get_splited())
+
 # HANDLERS
-func perform_attack(item: BaseTool) -> int:
-	return 0
-
-
+# Survivor level
 func _on_surv_level_up() -> void:
 	var health_prov = entity_data.stats.get_property(InitPropProviders.HEALTH)
 	health_prov.add_max_health(10)
@@ -65,3 +85,31 @@ func _on_surv_level_up() -> void:
 	entity_data.stats.get_property(InitPropProviders.FORCE).add_force(2.5)
 	entity_data.stats.get_property(InitPropProviders.RESISTANCE).add_resistance(0.5)
 	entity_data.stats.get_property(InitPropProviders.PENETRATION).add_penetration(0.2)
+
+# Attack
+func perform_attack(_item: BaseTool) -> int:
+	return 0
+
+# Inventory
+func get_item_in_hand() -> ItemStack:
+	return inventory.inventory[InventoryManager.MIN_SLOTS]
+
+
+func get_items_in_pocket() -> Array[ItemStack]:
+	return inventory.inventory.slice(InventoryManager.MIN_SLOTS, InventoryManager.POCKET_LAST_POSITION + 1)
+
+
+func get_items_in_backpack() -> Array[ItemStack]:
+	return inventory.inventory.slice(InventoryManager.POCKET_LAST_POSITION + 1, InventoryManager.BACKPACK_LAST_POSITION + 1)
+
+
+func get_armor_equiped() -> Array[ItemStack]:
+	return inventory.inventory.slice(InventoryManager.BACKPACK_LAST_POSITION + 1, InventoryManager.ARMOR_LAST_POSITION + 1)
+
+
+func get_relic_equipped() -> Array[ItemStack]:
+	return inventory.inventory.slice(InventoryManager.ARMOR_LAST_POSITION + 1, InventoryManager.RELIC_LAST_POSITION + 1)
+
+
+func get_ammo_available() -> Array[ItemStack]:
+	return inventory.inventory.slice(InventoryManager.RELIC_LAST_POSITION + 1, InventoryManager.AMMO_LAST_POSITION + 1)

@@ -35,7 +35,7 @@ func can_equip(slot: Slot) -> bool:
 	return slot.slot_type == Slot.Type.GENERIC
 
 
-func on_equip(_slot: Slot) -> void:
+func on_equip(_slot: Slot, _player: Player) -> void:
 	pass
 
 
@@ -43,7 +43,7 @@ func can_unequip(_slot: Slot) -> bool:
 	return true
 
 
-func on_unequip(_slot: Slot):
+func on_unequip(_slot: Slot, _player: Player):
 	pass
 
 

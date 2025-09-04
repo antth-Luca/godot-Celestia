@@ -103,6 +103,17 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="ItemHandTexture" type="Sprite2D" parent="."]
+
+[node name="ItemHandAnimation" type="AnimationPlayer" parent="."]
+
+[node name="WorldUI" parent="." instance=ExtResource("3_mi63l")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+process_callback = 0
+limit_smoothed = true
+
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 13)
 shape = SubResource("RectangleShape2D_lkete")
@@ -112,13 +123,6 @@ collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
 shape = SubResource("CircleShape2D_33tkp")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
-process_callback = 0
-limit_smoothed = true
-
-[node name="WorldUI" parent="." instance=ExtResource("3_mi63l")]
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_33tkp")]
 

@@ -37,7 +37,7 @@ func _ready():
 
 # GETTERS AND SETTERS
 # Node
-func get_inventory_tab():
+func get_inventory_tab() -> InventoryManager:
 	return get_parent().get_parent()
 
 # HANDLERS
@@ -59,6 +59,8 @@ func render_slot(slot_stack: ItemStack = ItemStack.EMPTY) -> void:
 		else:
 			itemAmount.visible = false
 		var slot_index: int = get_index()
+		if slot_index == InventoryManager.MIN_SLOTS:
+			get_inventory_tab().player.ITEM_HAND_TEXTURE.texture = itemSprite.texture
 		if slot_index in [0, 1, 2, 3]:
 			emit_signal('slot_rendered', slot_stack)
 

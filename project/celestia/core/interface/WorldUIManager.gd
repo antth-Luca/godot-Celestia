@@ -3,21 +3,21 @@ class_name WorldUI
 
 signal ui_rotate_pressed
 
-@onready var Hud: PlayerHUD = $HUD
-@onready var BgBlur := $Panel
-@onready var MyPanel: MyPanel = $MyPanel
+@onready var hud: PlayerHUD = $HUD
+@onready var bg_blur := $Panel
+@onready var my_panel: MyPanel = $MyPanel
 
 # GODOT
 func _ready():
-	BgBlur.visible = false
+	bg_blur.visible = false
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed('ui_rotate') and !BgBlur.visible:
+	if event.is_action_pressed('ui_rotate') and !bg_blur.visible:
 		emit_signal('ui_rotate_pressed')
 	elif event.is_action_pressed("ui_inventory"):
-		update_my_panel(MyPanel.visible)
-	elif event.is_action_pressed("ui_cancel") and BgBlur.visible:
+		update_my_panel(my_panel.visible)
+	elif event.is_action_pressed("ui_cancel") and bg_blur.visible:
 		update_my_panel(true)
 
 # GETTERS AND SETTERS
@@ -35,5 +35,5 @@ func get_invent_panel() -> MyPanel:
 
 # HANDLERS
 func update_my_panel(current_switch: bool) -> void:
-	BgBlur.visible = !current_switch
-	MyPanel.visible = !current_switch
+	bg_blur.visible = !current_switch
+	my_panel.visible = !current_switch

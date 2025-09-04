@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cagv87v3lq2t6" path="res://core/interface/WorldUIManager.gd" id="1_rklmp"]
 [ext_resource type="PackedScene" uid="uid://7hauijtfq470" path="res://core/interface/hud/HUD.tscn" id="1_x3ylb"]
-[ext_resource type="PackedScene" uid="uid://b3nywi3j43fbq" path="res://core/interface/inventory/MyPanel.tscn" id="2_rklmp"]
+[ext_resource type="PackedScene" uid="uid://b3nywi3j43fbq" path="res://core/interface/tab_inventory/MyPanel.tscn" id="2_rklmp"]
 
 [node name="WorldUI" type="CanvasLayer"]
 script = ExtResource("1_rklmp")

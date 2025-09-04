@@ -3,10 +3,16 @@ class_name InventoryManager
 
 const MIN_SLOTS: int = 0
 const TOTAL_SLOTS: int = 46
+const POCKET_LAST_POSITION: int = 3
 const BACKPACK_LAST_POSITION: int = 33
+const ARMOR_LAST_POSITION: int = 37
+const RELIC_LAST_POSITION: int = 43
+const AMMO_LAST_POSITION: int = 45
 
 @onready var slots_group := $SlotsGroup
 @onready var popup_tooltip: PopupTooltip = $PopupTooltip
+
+var player: Player  # Filled by Player#_ready()
 
 var cursor := CursorManager.new(self)
 var inventory: Array[ItemStack] = []
@@ -26,20 +32,16 @@ func _input(event):
 
 # GETTERS AND SETTERS
 # Nodes
-func get_inventory_panel():
+func get_inventory_panel() -> MyPanel:
 	return get_parent()
 
 
-func get_slot(slot_index: int):
+func get_slot(slot_index: int) -> Slot:
 	return get_node('SlotsGroup').get_child(slot_index)
 
 
-func get_popup_tooltip():
+func get_popup_tooltip() -> PopupTooltip:
 	return get_node('PopupTooltip')
-
-# Inventory
-func get_stack_in_inventory(pos: int) -> ItemStack:
-	return inventory[pos]
 
 # MAIN
 func update_all_inventory() -> void:
@@ -67,7 +69,7 @@ func get_stackable_index(item_id: ResourceLocation) -> int:
 	return -1
 
 
-func drop_item_in_position(stack: ItemStack, pos: Vector2):
+func drop_item_in_position(stack: ItemStack, pos: Vector2) -> void:
 	# Drops an item in a specific position
 	var dropped_item = preload('res://core/items/DroppedItem.tscn')
 	var drop = dropped_item.instantiate()
@@ -77,16 +79,15 @@ func drop_item_in_position(stack: ItemStack, pos: Vector2):
 	drop.set_delay_to_collect()
 
 
-func drop_item_players_foot(stack: ItemStack):
+func drop_item_players_foot(stack: ItemStack) -> void:
 	# Drops an item at the player's feet
-	var player = get_parent().get_parent().get_parent()
 	var at_pos = player.global_position
 	drop_item_in_position(stack, at_pos)
 
 
-func add_item_to_bp_new_slot(stack: ItemStack):
+func add_item_to_bp_new_slot(stack: ItemStack) -> void:
 	for index in range(BACKPACK_LAST_POSITION):  # Slots for backpack
-		if inventory[index].amount == 0:
+		if inventory[index].is_empty():
 			inventory[index] = stack
 			slots_group.get_child(index).render_slot(inventory[index])
 			return
@@ -155,7 +156,7 @@ func _handle_left_click_on_slot(slot: Slot):
 			cursor.set_click(slot_stack, slot_index)
 			inventory[slot_index] = ItemStack.EMPTY
 			slot.render_slot()
-			slot_item.on_unequip(slot)
+			slot_item.on_unequip(slot, player)
 
 	# Case 2: Cursor loaded and slot empty
 	elif slot_amount <= 0:
@@ -163,7 +164,7 @@ func _handle_left_click_on_slot(slot: Slot):
 			inventory[slot_index] = cursor_stack
 			cursor.clear_cursor()
 			slot.render_slot(cursor_stack)
-			cursor_item.on_equip(slot)
+			cursor_item.on_equip(slot, player)
 
 	# Case 3: Cursor loaded and equal to slot
 	elif cursor.is_equal_to(slot_stack):
@@ -179,9 +180,9 @@ func _handle_left_click_on_slot(slot: Slot):
 	else:
 		if slot_can_unequip and cursor_can_equip:
 			var temp: ItemStack = inventory[slot_index]
-			temp.item.on_unequip(slot)
+			temp.item.on_unequip(slot, player)
 			inventory[slot_index] = cursor_stack
-			cursor_item.on_equip(slot)
+			cursor_item.on_equip(slot, player)
 			cursor.set_click(temp, slot_index)
 			slot.render_slot(cursor_stack)
 
@@ -191,7 +192,7 @@ func _handle_middle_click_on_slot(slot: Slot):
 	var slot_stack: ItemStack = inventory[slot_index]
 
 	if slot_stack.amount > 0 and slot_stack.item.can_unequip(slot):
-		inventory[slot_index].item.on_unequip(slot)
+		inventory[slot_index].item.on_unequip(slot, player)
 		inventory[slot_index] = ItemStack.EMPTY
 		drop_item_players_foot(slot_stack)
 		slot.render_slot()
@@ -223,7 +224,7 @@ func _handle_right_click_on_slot(slot: Slot):
 			inventory[slot_index] = ItemStack.new(cursor_item, 1)
 			cursor_stack.amount = cursor_amount - 1
 			slot.render_slot(inventory[slot_index])
-			cursor_item.on_equip(slot)
+			cursor_item.on_equip(slot, player)
 
 	# Case 3: Cursor loaded and equal to slot
 	elif cursor.is_equal_to(slot_stack):
@@ -239,9 +240,9 @@ func _handle_right_click_on_slot(slot: Slot):
 	else:
 		if slot_can_unequip and cursor_can_equip:
 			var temp: ItemStack = inventory[slot_index]
-			temp.item.on_unequip(slot)
+			temp.item.on_unequip(slot, player)
 			inventory[slot_index] = cursor_stack
-			cursor_item.on_equip(slot)
+			cursor_item.on_equip(slot, player)
 			cursor.set_click(temp, slot_index)
 			slot.render_slot(inventory[slot_index])
 
