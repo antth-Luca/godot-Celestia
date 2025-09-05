@@ -50,6 +50,8 @@ func _ready():
 	# Inventory
 	inventory = get_ui().get_invent_panel().get_inventory_tab()
 	inventory.player = self
+	# World UI
+	get_ui().player = self
 	# Item Hand Animation
 	set_item_hand_texture(get_item_in_hand().item)
 
