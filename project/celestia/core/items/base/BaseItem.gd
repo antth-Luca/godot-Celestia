@@ -1,6 +1,12 @@
 extends Resource
 class_name BaseItem
 
+const AnimType: Dictionary = {
+	ATTACK = 'attack',
+	USE = 'use',
+	HOLD = 'hold'
+}
+
 var id: ResourceLocation = ResourceLocation.EMPTY:
 	set(new_id):
 		if id != ResourceLocation.EMPTY and id.get_string() != new_id.get_string():
@@ -13,6 +19,7 @@ var max_stack: int = 99:
 var _durability: int = 0
 var material: BaseMaterial = InitMaterials.GENERIC.get_registered()
 var rarity: BaseRarity = InitRarities.COMMON.get_registered()
+var anim_type: String
 
 # GETTERS AND SETTERS
 # Variables

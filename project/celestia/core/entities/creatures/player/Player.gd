@@ -92,9 +92,13 @@ func _on_surv_level_up() -> void:
 	entity_data.stats.get_property(InitPropProviders.RESISTANCE).add_resistance(0.5)
 	entity_data.stats.get_property(InitPropProviders.PENETRATION).add_penetration(0.2)
 
-# Attack
-func perform_attack(_item: BaseTool) -> int:
-	return 0
+# Use
+func perform_use_item_hand() -> void:
+	var stack_hand: ItemStack = get_item_in_hand()
+	is_attacking = true
+	stack_hand.item.use(self)
+	await ITEM_HAND_ANIMATION.play(stack_hand.item.anim_type)
+	is_attacking = false
 
 # Inventory
 func get_item_in_hand() -> ItemStack:
