@@ -19,7 +19,7 @@ var max_stack: int = 99:
 var _durability: int = 0
 var material: BaseMaterial = InitMaterials.GENERIC.get_registered()
 var rarity: BaseRarity = InitRarities.COMMON.get_registered()
-var anim_type: String
+var anim_type: String = AnimType.HOLD
 
 # GETTERS AND SETTERS
 # Variables

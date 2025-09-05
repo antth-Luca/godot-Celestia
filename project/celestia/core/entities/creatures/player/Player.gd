@@ -97,9 +97,11 @@ func _on_surv_level_up() -> void:
 # Use
 func perform_use_item_hand() -> void:
 	var stack_hand: ItemStack = get_item_in_hand()
+	if stack_hand.is_empty(): return
 	is_attacking = true
 	stack_hand.item.use(self)
-	await ITEM_HAND_ANIMATION.play(stack_hand.item.anim_type)
+	ITEM_HAND_ANIMATION.play(stack_hand.item.anim_type)
+	await ITEM_HAND_ANIMATION.animation_finished
 	is_attacking = false
 
 # Inventory

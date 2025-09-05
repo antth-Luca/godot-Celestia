@@ -17,7 +17,7 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if !bg_blur.visible:
 		if event.is_action_pressed('ui_use'):
-			print('Usou o item: %s' % player.get_item_in_hand().item.id.get_string())
+			player.perform_use_item_hand()
 		elif event.is_action_pressed('ui_rotate'):
 			emit_signal('ui_rotate_pressed')
 		elif event.is_action_pressed("ui_inventory"):

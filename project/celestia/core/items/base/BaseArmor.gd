@@ -10,6 +10,27 @@ var protection: float
 func _init():
 	max_stack = 1
 
+
+func use(player: Player) -> void:
+	for c in range(InventoryManager.BACKPACK_LAST_POSITION + 1,
+			InventoryManager.ARMOR_LAST_POSITION + 1):
+		var slot: Slot = player.inventory.get_slot(c)
+		var armor_slot_type: String = get_compatible_slot()
+		if slot.slot_type == armor_slot_type:
+			# TODO: Corrigir tudo aqui...
+			var equipped_stack: ItemStack = player.inventory.inventory[c]
+			if equipped_stack.is_empty():
+				player.inventory.inventory[c] = player.inventory.inventory[0]
+				self.on_equip(slot, player)
+				player.inventory.inventory[0] = equipped_stack
+				slot.render_slot()
+			elif equipped_stack.item.can_unequip(slot) and can_equip(slot):
+				equipped_stack.item.on_unequip(slot, player)
+				player.inventory.inventory[c] = player.inventory.inventory[0]
+				self.on_equip(slot, player)
+				player.inventory.inventory[0] = equipped_stack
+				slot.render_slot(player.inventory.inventory[0])
+
 # HANDLERS
 func can_equip(slot: Slot) -> bool:
 	var slot_type = slot.slot_type
