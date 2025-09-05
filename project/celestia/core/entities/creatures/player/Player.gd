@@ -6,6 +6,8 @@ class_name Player
 
 var inventory: InventoryManager
 
+var is_attacking: bool = false
+
 # GODOT
 func _init() -> void:
 	entity_data = EntityData.new(
@@ -62,15 +64,14 @@ func _physics_process(delta: float) -> void:
 # Animation
 func set_animation() -> void:
 	var anim = 'idle'
-	if direction != Vector2.ZERO:
-		anim = 'walk'
-	if ANIMATION.current_animation != anim:
-		ANIMATION.play(anim)
+	if direction != Vector2.ZERO: anim = 'walk'
+	if ANIMATION.current_animation != anim: ANIMATION.play(anim)
+	if not is_attacking and ITEM_HAND_ANIMATION.current_animation != anim: ITEM_HAND_ANIMATION.play(anim)
 
 # Handlers
 func flip_texture(x_dir) -> void:
 	super(x_dir)
-	ITEM_HAND_TEXTURE.scale.x = sign(x_dir)
+	ITEM_HAND_TEXTURE.flip_h = x_dir < 0
 
 # GETTERS AND SETTERS
 # Nodes

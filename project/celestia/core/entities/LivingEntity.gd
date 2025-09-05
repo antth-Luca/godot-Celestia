@@ -48,7 +48,7 @@ func _on_hurtbox_area_entered(area) -> void:
 
 
 func flip_texture(x_dir) -> void:
-	TEXTURE.scale.x = sign(x_dir)
+	TEXTURE.flip_h = x_dir < 0
 
 
 func apply_knockback(attacker_pos: Vector2, target_pos: Vector2, hit_specialized_type: HitData.SPECIALIZED_TYPE = HitData.SPECIALIZED_TYPE.NONE) -> void:
