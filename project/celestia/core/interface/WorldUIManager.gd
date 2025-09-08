@@ -15,16 +15,19 @@ func _ready():
 
 
 func _input(event: InputEvent) -> void:
+	# When there is NO open window...
 	if !bg_blur.visible:
 		if event.is_action_pressed('ui_use'):
 			player.perform_use_item_hand()
 		elif event.is_action_pressed('ui_rotate'):
 			emit_signal('ui_rotate_pressed')
-		elif event.is_action_pressed("ui_inventory"):
-			update_my_panel(my_panel.visible)
+	# ...when there is
 	else:
 		if event.is_action_pressed('ui_cancel'):
 				update_my_panel(true)
+	# Any case
+	if event.is_action_pressed("ui_inventory"):
+			update_my_panel(my_panel.visible)
 
 # GETTERS AND SETTERS
 # Nodes

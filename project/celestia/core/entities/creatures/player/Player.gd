@@ -1,12 +1,12 @@
 extends LivingEntity
 class_name Player
 
-@onready var ITEM_HAND_TEXTURE: Sprite2D = $ItemHandTexture
-@onready var ITEM_HAND_ANIMATION: AnimationPlayer = $ItemHandAnimation
+@onready var ITEM_HAND_TEXTURE: Sprite2D = $Hand/ItemHandTexture
+@onready var ITEM_HAND_ANIMATION: AnimationPlayer = $Hand/ItemHandAnimation
 
 var inventory: InventoryManager
 
-var is_attacking: bool = false
+var is_using_hand: bool = false
 
 # GODOT
 func _init() -> void:
@@ -68,12 +68,13 @@ func set_animation() -> void:
 	var anim = 'idle'
 	if direction != Vector2.ZERO: anim = 'walk'
 	if ANIMATION.current_animation != anim: ANIMATION.play(anim)
-	if not is_attacking and ITEM_HAND_ANIMATION.current_animation != anim: ITEM_HAND_ANIMATION.play(anim)
+	if not is_using_hand and ITEM_HAND_ANIMATION.current_animation != anim: ITEM_HAND_ANIMATION.play(anim)
 
 # Handlers
-func flip_texture(x_dir) -> void:
-	super(x_dir)
-	ITEM_HAND_TEXTURE.flip_h = x_dir < 0
+func flip_texture() -> void:
+	var mouse_direction: Vector2 = global_position.direction_to(get_global_mouse_position())
+	TEXTURE.flip_h = mouse_direction.x < 0
+	ITEM_HAND_TEXTURE.flip_h = mouse_direction.x < 0
 
 # GETTERS AND SETTERS
 # Nodes
@@ -98,11 +99,11 @@ func _on_surv_level_up() -> void:
 func perform_use_item_hand() -> void:
 	var stack_hand: ItemStack = get_item_in_hand()
 	if stack_hand.is_empty(): return
-	is_attacking = true
+	is_using_hand = true
 	stack_hand.item.use(self)
 	ITEM_HAND_ANIMATION.play(stack_hand.item.anim_type)
 	await ITEM_HAND_ANIMATION.animation_finished
-	is_attacking = false
+	is_using_hand = false
 
 # Inventory
 func get_item_in_hand() -> ItemStack:

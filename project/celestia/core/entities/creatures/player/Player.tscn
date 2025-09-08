@@ -6,12 +6,85 @@
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="4_33tkp"]
 [ext_resource type="PackedScene" uid="uid://cn13ycpy1ji50" path="res://core/entities/components/hitbox/Hitbox.tscn" id="6_gu7p7"]
 
+[sub_resource type="Animation" id="Animation_3cpg6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p2dpe"]
+resource_name = "death"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_lkete"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mi63l"]
+resource_name = "walk"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mi63l"]
+_data = {
+&"RESET": SubResource("Animation_3cpg6"),
+&"death": SubResource("Animation_p2dpe"),
+&"idle": SubResource("Animation_lkete"),
+&"walk": SubResource("Animation_mi63l")
+}
+
 [sub_resource type="Animation" id="Animation_bj32v"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ItemHandTexture:position")
+tracks/0/path = NodePath("Hand/ItemHandTexture:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +96,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ItemHandTexture:rotation")
+tracks/1/path = NodePath("Hand/ItemHandTexture:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -35,7 +108,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ItemHandTexture:visible")
+tracks/2/path = NodePath("Hand/ItemHandTexture:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -127,7 +200,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ItemHandTexture:position")
+tracks/0/path = NodePath("Hand/ItemHandTexture:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -139,7 +212,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ItemHandTexture:rotation")
+tracks/1/path = NodePath("Hand/ItemHandTexture:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -226,7 +299,7 @@ resource_name = "death"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ItemHandTexture:visible")
+tracks/0/path = NodePath("Hand/ItemHandTexture:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -241,7 +314,7 @@ resource_name = "hold"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ItemHandTexture:position")
+tracks/0/path = NodePath("Hand/ItemHandTexture:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -253,7 +326,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ItemHandTexture:rotation")
+tracks/1/path = NodePath("Hand/ItemHandTexture:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -270,7 +343,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ItemHandTexture:position")
+tracks/0/path = NodePath("Hand/ItemHandTexture:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -280,42 +353,13 @@ tracks/0/keys = {
 "values": [Vector2(9, 5), Vector2(9, 5), Vector2(9, 5)]
 }
 
-[sub_resource type="Animation" id="Animation_gu7p7"]
-resource_name = "walk"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ItemHandTexture:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(8, -1), Vector2(9, 1.19209e-07), Vector2(10, 1), Vector2(11, 2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ItemHandTexture:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [-0.261799, -0.139626, 0.261799, 0.139626]
-}
-
 [sub_resource type="Animation" id="Animation_t17jw"]
 resource_name = "use"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ItemHandTexture:position")
+tracks/0/path = NodePath("Hand/ItemHandTexture:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -327,7 +371,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ItemHandTexture:rotation")
+tracks/1/path = NodePath("Hand/ItemHandTexture:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -335,6 +379,35 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.785398, 0.0, 1.0472]
+}
+
+[sub_resource type="Animation" id="Animation_gu7p7"]
+resource_name = "walk"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand/ItemHandTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(8, -1), Vector2(9, 1.19209e-07), Vector2(10, 1), Vector2(11, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand/ItemHandTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-0.261799, -0.139626, 0.261799, 0.139626]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g1fgk"]
@@ -346,79 +419,6 @@ _data = {
 &"idle": SubResource("Animation_sskaw"),
 &"use": SubResource("Animation_t17jw"),
 &"walk": SubResource("Animation_gu7p7")
-}
-
-[sub_resource type="Animation" id="Animation_3cpg6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_p2dpe"]
-resource_name = "death"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3)]
-}
-
-[sub_resource type="Animation" id="Animation_lkete"]
-resource_name = "idle"
-length = 1.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_mi63l"]
-resource_name = "walk"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mi63l"]
-_data = {
-&"RESET": SubResource("Animation_3cpg6"),
-&"death": SubResource("Animation_p2dpe"),
-&"idle": SubResource("Animation_lkete"),
-&"walk": SubResource("Animation_mi63l")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkete"]
@@ -435,23 +435,26 @@ collision_layer = 16
 collision_mask = 33
 script = ExtResource("1_ahdn1")
 
-[node name="ItemHandTexture" type="Sprite2D" parent="."]
-position = Vector2(-49, -6)
-
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_lkete")
 hframes = 4
 vframes = 4
 
-[node name="ItemHandAnimation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_g1fgk")
-}
-autoplay = "idle"
-
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_mi63l")
+}
+autoplay = "idle"
+
+[node name="Hand" type="Node2D" parent="."]
+
+[node name="ItemHandTexture" type="Sprite2D" parent="Hand"]
+position = Vector2(-49, -6)
+
+[node name="ItemHandAnimation" type="AnimationPlayer" parent="Hand"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_g1fgk")
 }
 autoplay = "idle"
 
