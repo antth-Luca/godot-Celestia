@@ -10,6 +10,7 @@ func _ready():
 	InitPropProviders.setup()
 	InitItems.setup()
 	InitArmors.setup()
+	InitWeapons.setup()
 	call_deferred("_go_to_next_scene")
 
 

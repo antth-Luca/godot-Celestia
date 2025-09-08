@@ -18,7 +18,7 @@ static func setup() -> void:
 		func():
 			var weapon = BaseTool.new()
 			weapon.set_durability(2)
-			weapon.material = InitMaterials.IRON
+			weapon.material = InitMaterials.IRON.get_registered()
 			weapon.base_damage = 1
 			return weapon
 	)
