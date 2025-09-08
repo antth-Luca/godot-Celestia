@@ -3,11 +3,16 @@ class_name InventoryManager
 
 const MIN_SLOTS: int = 0
 const TOTAL_SLOTS: int = 46
-const POCKET_LAST_POSITION: int = 3
-const BACKPACK_LAST_POSITION: int = 33
-const ARMOR_LAST_POSITION: int = 37
-const RELIC_LAST_POSITION: int = 43
-const AMMO_LAST_POSITION: int = 45
+const POCKET_SLOTS: Array[int] = [ 0, 1, 2, 3 ]
+const BACKPACK_SLOTS: Array[int] = [ 4, 33 ]
+const ARMOR_SLOTS: Dictionary[String, int] = {
+	Slot.Type.HEAD: 34,
+	Slot.Type.CHESTPLATE: 35,
+	Slot.Type.LEGS: 36,
+	Slot.Type.FEET: 37,
+}
+const RELIC_SLOTS: Array[int] = [ 38, 39, 40, 41, 42, 43 ]
+const AMMO_SLOTS: Array[int] = [ 44, 45 ]
 
 @onready var slots_group := $SlotsGroup
 @onready var popup_tooltip: PopupTooltip = $PopupTooltip
@@ -16,6 +21,7 @@ var player: Player  # Filled by Player#_ready()
 
 var cursor := CursorManager.new(self)
 var inventory: Array[ItemStack] = []
+var selected: int = 0
 
 # GODOT
 func _ready() -> void:
@@ -43,6 +49,53 @@ func get_slot(slot_index: int) -> Slot:
 func get_popup_tooltip() -> PopupTooltip:
 	return get_node('PopupTooltip')
 
+# Inventory
+func get_hand() -> ItemStack:
+	return inventory[selected]
+
+
+func get_pocket() -> Array[ItemStack]:
+	return inventory.slice(
+		POCKET_SLOTS.front(),
+		POCKET_SLOTS.back() + 1
+	)
+
+
+func get_backpack() -> Array[ItemStack]:
+	return inventory.slice(
+		BACKPACK_SLOTS.front(),
+		BACKPACK_SLOTS.back() + 1
+	)
+
+
+func get_armor(slot_type: String = '') -> Array[ItemStack]:
+	if !slot_type in Slot.Type:
+		return inventory.slice(
+			ARMOR_SLOTS[Slot.Type.HEAD],
+			ARMOR_SLOTS[Slot.Type.FEET] + 1
+		)
+	var index: int
+	match slot_type:
+		Slot.Type.HEAD: index = ARMOR_SLOTS[Slot.Type.HEAD]
+		Slot.Type.CHESTPLATE: index = ARMOR_SLOTS[Slot.Type.CHESTPLATE]
+		Slot.Type.LEGS: index = ARMOR_SLOTS[Slot.Type.LEGS]
+		Slot.Type.FEET: index = ARMOR_SLOTS[Slot.Type.FEET]
+	return inventory.slice(index, index + 1)
+
+
+func get_relics() -> Array[ItemStack]:
+	return inventory.slice(
+		RELIC_SLOTS.front(),
+		RELIC_SLOTS.back() + 1
+	)
+
+
+func get_ammo_available() -> Array[ItemStack]:
+	return inventory.slice(
+		AMMO_SLOTS.front(),
+		AMMO_SLOTS.back() + 1
+	)
+
 # MAIN
 func update_all_inventory() -> void:
 	# Updates EACH of the slots in your inventory by emptying or rendering them
@@ -52,13 +105,13 @@ func update_all_inventory() -> void:
 
 
 func clear_all_inventory() -> void:
-	for c in slots_group.get_children():
-		inventory.append(ItemStack.EMPTY)
+	inventory.resize(TOTAL_SLOTS)
+	inventory.fill(ItemStack.EMPTY)
 	update_all_inventory()
 
 
 func get_stackable_index(item_id: ResourceLocation) -> int:
-	for index in range(BACKPACK_LAST_POSITION):  # Slots for backpack
+	for index in range(BACKPACK_SLOTS.back()):  # Slots for backpack
 		var invent_stack: ItemStack = inventory[index]
 		if invent_stack.is_empty():
 			return index
@@ -86,7 +139,7 @@ func drop_item_players_foot(stack: ItemStack) -> void:
 
 
 func add_item_to_bp_new_slot(stack: ItemStack) -> void:
-	for index in range(BACKPACK_LAST_POSITION):  # Slots for backpack
+	for index in range(BACKPACK_SLOTS.back()):  # Slots for backpack
 		if inventory[index].is_empty():
 			inventory[index] = stack
 			slots_group.get_child(index).render_slot(inventory[index])

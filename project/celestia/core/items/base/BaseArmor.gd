@@ -12,8 +12,8 @@ func _init():
 
 
 func use(player: Player) -> void:
-	for c in range(InventoryManager.BACKPACK_LAST_POSITION + 1,
-			InventoryManager.ARMOR_LAST_POSITION + 1):
+	for c in range(InventoryManager.ARMOR_SLOTS[Slot.Type.HEAD],
+			InventoryManager.ARMOR_SLOTS[Slot.Type.FEET] + 1):
 		var slot: Slot = player.inventory.get_slot(c)
 		var armor_slot_type: String = get_compatible_slot()
 		if slot.slot_type == armor_slot_type:

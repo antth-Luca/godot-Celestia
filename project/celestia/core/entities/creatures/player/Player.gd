@@ -53,7 +53,7 @@ func _ready():
 	# World UI
 	get_ui().player = self
 	# Item Hand Animation
-	set_item_hand_texture(get_item_in_hand().item)
+	set_item_hand_texture(inventory.get_hand().item)
 
 
 func _physics_process(delta: float) -> void:
@@ -97,34 +97,10 @@ func _on_surv_level_up() -> void:
 
 # Use
 func perform_use_item_hand() -> void:
-	var stack_hand: ItemStack = get_item_in_hand()
+	var stack_hand: ItemStack = inventory.get_hand()
 	if stack_hand.is_empty(): return
 	is_using_hand = true
 	stack_hand.item.use(self)
 	ITEM_HAND_ANIMATION.play(stack_hand.item.anim_type)
 	await ITEM_HAND_ANIMATION.animation_finished
 	is_using_hand = false
-
-# Inventory
-func get_item_in_hand() -> ItemStack:
-	return inventory.inventory[InventoryManager.MIN_SLOTS]
-
-
-func get_items_in_pocket() -> Array[ItemStack]:
-	return inventory.inventory.slice(InventoryManager.MIN_SLOTS, InventoryManager.POCKET_LAST_POSITION + 1)
-
-
-func get_items_in_backpack() -> Array[ItemStack]:
-	return inventory.inventory.slice(InventoryManager.POCKET_LAST_POSITION + 1, InventoryManager.BACKPACK_LAST_POSITION + 1)
-
-
-func get_armor_equiped() -> Array[ItemStack]:
-	return inventory.inventory.slice(InventoryManager.BACKPACK_LAST_POSITION + 1, InventoryManager.ARMOR_LAST_POSITION + 1)
-
-
-func get_relic_equipped() -> Array[ItemStack]:
-	return inventory.inventory.slice(InventoryManager.ARMOR_LAST_POSITION + 1, InventoryManager.RELIC_LAST_POSITION + 1)
-
-
-func get_ammo_available() -> Array[ItemStack]:
-	return inventory.inventory.slice(InventoryManager.RELIC_LAST_POSITION + 1, InventoryManager.AMMO_LAST_POSITION + 1)
