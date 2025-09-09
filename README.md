@@ -63,7 +63,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 * [ ] Correções:
   * [ ] Bolso rotativo pula posições se girar antes de coletar algum item;
   * [ ] Os cliques 'middle' e 'left' não funcionam no inventário, se o Tooltip estiver aberto;
-  * [ ] Adicionar sobreposição de sprites dinâmica, simulando profundidade;
+  * [ ] Adicionar sobreposição de sprites dinâmica, simulando profundidade.
 * [ ] Sistema de nível de sobrevivente;
 * [ ] Sistema de coleção de itens;
 * [ ] Sistema de conquistas;
@@ -77,7 +77,17 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 #### Ato 1
 * [ ] Melhorias:
-  * [ ] 
+  * [ ] Adição: Cliques duplos de 'left' e 'right' no inventário;
+  * [ ] Adição: Tentar usar uma armadura ou relíquia fará a troca dela com a já equipada;
+  * [ ] Adição: Contorno branco aos itens dropados no chão;
+  * [ ] Adição: Sombras a todas as entidades (como component);
+  * [ ] Adição: Animação de "pingar" nos itens dropados no chão;
+  * [ ] Adição: Partículas de poeira as entidades ao andar;
+  * [ ] Adição: Representação do dano em números flutuantes;
+  * [ ] Alteração: Sprite de água sendo animado;
+  * [ ] Alteração: Animação 2 ao entrar em um mundo;
+* [ ] Adição de todo o conteúdo possível com os sistemas desenvolvidos até aqui;
+* [ ] Multiplayer em LAN.
 
 #### Novos horizontes
 
