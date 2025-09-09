@@ -176,14 +176,11 @@ func add_item_to_backpack(stack: ItemStack) -> void:
 # HANDLERS
 func _on_ui_rotate_pressed() -> void:
 	selected += 1
-	if not selected < POCKET_SLOTS.back(): selected = POCKET_SLOTS.front()
+	if selected > POCKET_SLOTS.back(): selected = POCKET_SLOTS.front()
 	# Slots
 	for c in range(POCKET_SLOTS.back() + 1):
 		var slot: Slot = get_slot(c)
-		if c < 3:
-			slot.render_slot(inventory[c - selected])
-		else:
-			slot.render_slot(inventory[0])
+		slot.render_slot(inventory[c - selected])
 
 
 func _on_inventory_closed() -> void:
