@@ -26,33 +26,67 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 > Estou muito entusiasmado em desenvolver Celestia, mas jogos não são o meu trabalho! Novas features virão conforme meu tempo disponível permitir o desenvolvimento.
 
 ### Recursos:
-* Pré-alpha
-  * [ ] Sistema de dano;
-  * [ ] Sistema de ressurreição;
-  * [ ] Sistema de tempo (dia e noite);
-  * [ ] Estrutura de cama;
-  * [ ] Sistema de fome;
-  * [ ] Sistema de LootTables (drop de entidades);
-  * [ ] Sistema de receitas;
-  * [ ] Sistema de fabricação;
-  * [ ] Pausa de mundo/jogo;
-  * [ ] Animação versão 1 ao entrar em um mundo;
-  * [x] Cena do Jogador/Player;
-  * [x] Sistema de tradução;
-  * [x] Inventário do Jogador/Player;
-  * [x] Itens dropados no chão;
-  * [x] Sistema de registro de conteúdo;
-  * [x] Sistema de Properties (usado nos atributos/stats de entidades);
-  * [x] Sistema de Components para entidades;
-  * [x] Primeira entidade-monstro: Zumbi/Zombie;
-  * [x] HUD do jogador.
-* Alpha
-* Beta
-* Ato 1
-* Novos horizontes
-* Vamos ao combate!
-* MagEra
-* Cozinheiros a postos!
-* Festeiro
-* Ato 2
+#### Pré-alpha
+* [ ] Sistema de dano;
+* [ ] Sistema de ressurreição;
+* [ ] Sistema de tempo (dia e noite);
+* [ ] Estrutura de cama;
+* [ ] Sistema de fome;
+* [ ] Sistema de LootTables (drop de entidades);
+* [ ] Sistema de receitas;
+* [ ] Sistema de fabricação;
+* [ ] Pausa de mundo/jogo;
+* [ ] Animação versão 1 ao entrar em um mundo;
+* [x] Cena do Jogador/Player;
+* [x] Sistema de tradução;
+* [x] Inventário do Jogador/Player;
+* [x] Itens dropados no chão;
+* [x] Sistema de registro de conteúdo;
+* [x] Sistema de Properties (usado nos atributos/stats de entidades);
+* [x] Sistema de Components para entidades;
+* [x] Primeira entidade-monstro: Zumbi/Zombie;
+* [x] HUD do jogador.
 
+#### Alpha
+* [ ] Item de combate à distância: Arco;
+* [ ] Movimento de rolagem do Jogador/Player;
+* [ ] Sistema de efeitos para entidades;
+* [ ] Sistema de encantamentos para itens;
+* [ ] Sistema de relíquias (atributos e passivas únicas);
+* [ ] Sistema de cultivo
+* [ ] Adição de efeitos sonoros;
+* [ ] Primeiro chefe/boss;
+* [ ] Sistema de eventos históricos;
+* [ ] Sistema de dimensões: adição das Cavernas.
+
+#### Beta
+* [ ] Correções:
+  * [ ] Bolso rotativo pula posições se girar antes de coletar algum item;
+  * [ ] Os cliques 'middle' e 'left' não funcionam no inventário, se o Tooltip estiver aberto;
+  * [ ] Adicionar sobreposição de sprites dinâmica, simulando profundidade;
+* [ ] Sistema de nível de sobrevivente;
+* [ ] Sistema de coleção de itens;
+* [ ] Sistema de conquistas;
+* [ ] Configurações de mundo;
+* [ ] Geração procedural de mundo;
+* [ ] Nascimento natural de entidades;
+* [ ] Cliente/menu do jogo;
+* [ ] Configurações do jogo;
+* [ ] Salvar mundo e retormar;
+* [ ] Carregamento de addons/mods (a se decidir o nível de modificação).
+
+#### Ato 1
+* [ ] Melhorias:
+  * [ ] 
+
+#### Novos horizontes
+
+#### Vamos ao combate!
+
+#### MagEra
+
+#### Cozinheiros a postos!
+
+#### Festeiro
+
+#### Ato 2
