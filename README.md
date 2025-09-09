@@ -68,8 +68,9 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 * [ ] Sistema de coleção de itens;
 * [ ] Sistema de conquistas;
 * [ ] Configurações de mundo;
+* [ ] Sistema de biomas;
 * [ ] Geração procedural de mundo;
-* [ ] Nascimento natural de entidades;
+* [ ] Nascimento natural de entidades (levando o bioma em consideração);
 * [ ] Cliente/menu do jogo;
 * [ ] Configurações do jogo;
 * [ ] Salvar mundo e retormar;
@@ -90,8 +91,17 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 * [ ] Multiplayer em LAN.
 
 #### Novos horizontes
+* [ ] Novos biomas;
+* [ ] Novos animais;
+* [ ] Novos itens: "Tijolo da Ruína", "Eruptite";
+* [ ] Nova comida: "Mel Lilás";
+* [ ] Novas estruturas: "Colméia Lilás", "Ruína de Templo Celério";
+* [ ] Nascimento de estruturas (com baús considerando LootTables);
+* [ ] Partícula noturna: Vagalumes.
 
 #### Vamos ao combate!
+* [ ] Novas munições: "Bala de Canhão", "Bala de Estilhaços";
+* [ ] ...
 
 #### MagEra
 
