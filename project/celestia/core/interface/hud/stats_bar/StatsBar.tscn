@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bky1fxhtd5kg7"]
+[gd_scene load_steps=20 format=3 uid="uid://bky1fxhtd5kg7"]
 
 [ext_resource type="Script" uid="uid://t8qpmwtjkx3j" path="res://core/interface/hud/stats_bar/StatsBar.gd" id="1_1cjgp"]
 [ext_resource type="Texture2D" uid="uid://btnuubbiilyo4" path="res://assets/celestia/interface/hud/stats_bar/background.png" id="1_5lu1f"]
@@ -10,6 +10,12 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jo12g"]
 bg_color = Color(0.905882, 0.156863, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lu1f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cjgp"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pimi0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -83,6 +89,7 @@ scale = Vector2(3.5, 3.5)
 script = ExtResource("1_1cjgp")
 
 [node name="Background" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(52.7143, -14.2143)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_5lu1f")
@@ -97,6 +104,20 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_jo12g")
 value = 50.0
 show_percentage = false
 
+[node name="PrevHealthBar" type="ProgressBar" parent="HealthBar"]
+z_index = -1
+offset_left = 0.14283
+offset_top = 0.142841
+offset_right = 50.1428
+offset_bottom = 2.14284
+theme_override_styles/background = SubResource("StyleBoxFlat_5lu1f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1cjgp")
+value = 50.0
+show_percentage = false
+
+[node name="HealthTimer" type="Timer" parent="HealthBar"]
+one_shot = true
+
 [node name="ManaBar" type="ProgressBar" parent="."]
 offset_left = 26.4286
 offset_top = -15.0
@@ -107,16 +128,44 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_c5cyb")
 value = 50.0
 show_percentage = false
 
+[node name="PrevManaBar" type="ProgressBar" parent="ManaBar"]
+z_index = -1
+offset_left = 0.142826
+offset_top = -0.142856
+offset_right = 50.1428
+offset_bottom = 1.85715
+theme_override_styles/background = SubResource("StyleBoxFlat_5lu1f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1cjgp")
+value = 50.0
+show_percentage = false
+
+[node name="ManaTimer" type="Timer" parent="ManaBar"]
+one_shot = true
+
 [node name="HungryBar" type="ProgressBar" parent="."]
-offset_left = 26.4286
-offset_top = -9.0
-offset_right = 74.4286
-offset_bottom = -7.0
+offset_left = 26.0
+offset_top = -9.14286
+offset_right = 74.0
+offset_bottom = -7.14286
 theme_override_styles/background = SubResource("StyleBoxFlat_sjip1")
 theme_override_styles/fill = SubResource("StyleBoxFlat_rjk5h")
 max_value = 50.0
 value = 25.0
 show_percentage = false
+
+[node name="PrevHungryBar" type="ProgressBar" parent="HungryBar"]
+z_index = -1
+offset_left = -2.0
+offset_right = 48.0
+offset_bottom = 2.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5lu1f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1cjgp")
+max_value = 50.0
+value = 25.0
+show_percentage = false
+
+[node name="HungryTimer" type="Timer" parent="HungryBar"]
+one_shot = true
 
 [node name="Vessel" type="Sprite2D" parent="."]
 position = Vector2(30.5, -16.2857)
@@ -130,3 +179,7 @@ sprite_frames = SubResource("SpriteFrames_23r18")
 animation = &"pulse"
 autoplay = "pulse"
 frame_progress = 0.872027
+
+[connection signal="timeout" from="HealthBar/HealthTimer" to="." method="_on_health_timer_timeout"]
+[connection signal="timeout" from="ManaBar/ManaTimer" to="." method="_on_mana_timer_timeout"]
+[connection signal="timeout" from="HungryBar/HungryTimer" to="." method="_on_hungry_timer_timeout"]
