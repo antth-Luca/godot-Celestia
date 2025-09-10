@@ -100,13 +100,38 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 * [ ] Partícula noturna: Vagalumes.
 
 #### Vamos ao combate!
-* [ ] Novas munições: "Bala de Canhão", "Bala de Estilhaços";
-* [ ] ...
+* [ ] Novas munições;
+* [ ] Novas armas;
+* [ ] Novos itens de defesa;
+* [ ] Novos materiais para armaduras;
+* [ ] NPC comerciante e moedas;
 
 #### MagEra
+* [ ] Sistema de mana;
+* [ ] Pedras preciosas nas cavernas;
+* [ ] Cajados mágicos para combate;
+* [ ] Novos inimigos mágicos;
+* [ ] Novas plantas;
+* [ ] Nova relíquia lendária;
+* [ ] Novas armas mágicas.
 
 #### Cozinheiros a postos!
+* [ ] Novos animais mágicos;
+* [ ] Nova estrutura: "Viveiro de lesma";
+* [ ] Novas receitas de comidas;
+* [ ] Novos NPC aldeões da caverna, os Gnolens;
+* [ ] Nova estrutura da caverna: "Vila Subterrânea dos Gnolens";
+* [ ] Nova moeda exclusiva dos Gnolens;
+* [ ] Comidas mágicas (vendidas pelos Gnolens).
 
 #### Festeiro
+* [ ] Novos NPC’s companheiros: "Anin", "Golem Vitrola", "Balle";
+* [ ] Novas estruturas decorativas: "Banner", "Estátua";
+* [ ] Novo cliente/inicializador do jogo;
+* [ ] Contas pessoais;
 
 #### Ato 2
+* [ ] Novo bioma: "Bioma Corrupto";
+* [ ] Novo inimigo: "Balão de Corrupção";
+* [ ] Novo material para armadura;
+* 📅  Planejando...
