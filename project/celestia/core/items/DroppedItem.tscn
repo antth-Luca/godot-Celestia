@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cefmnf7nvw7sq"]
+[gd_scene load_steps=5 format=3 uid="uid://cefmnf7nvw7sq"]
 
 [ext_resource type="Script" uid="uid://3gev7ttxblf5" path="res://core/items/DroppedItem.gd" id="1_5ypab"]
+[ext_resource type="Shader" uid="uid://bmvdo5ej0f52o" path="res://assets/celestia/shaders/2DPixelOutline.gdshader" id="2_2relo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2relo"]
 radius = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqak8"]
+shader = ExtResource("2_2relo")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/corner_pixel = false
 
 [node name="DroppedItem" type="Area2D"]
 collision_layer = 2
@@ -14,5 +20,6 @@ script = ExtResource("1_5ypab")
 shape = SubResource("CircleShape2D_2relo")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pqak8")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
