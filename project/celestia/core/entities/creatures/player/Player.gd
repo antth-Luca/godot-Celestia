@@ -1,12 +1,8 @@
 extends LivingEntity
 class_name Player
 
-@onready var ITEM_HAND_TEXTURE: Sprite2D = $Hand/ItemHandTexture
-@onready var ITEM_HAND_ANIMATION: AnimationPlayer = $Hand/ItemHandAnimation
-
 var inventory: InventoryManager
-
-var is_using_hand: bool = false
+var hand: PlayerHand
 
 # GODOT
 func _init() -> void:
@@ -52,8 +48,11 @@ func _ready():
 	inventory.player = self
 	# World UI
 	get_ui().player = self
+	# Player Hand
+	hand = get_hand()
+	hand.player = self
 	# Item Hand Animation
-	set_item_hand_texture(inventory.get_hand().item)
+	hand.set_item_hand_texture(inventory.get_hand().item)
 
 
 func _physics_process(delta: float) -> void:
@@ -68,22 +67,22 @@ func set_animation() -> void:
 	var anim = 'idle'
 	if direction != Vector2.ZERO: anim = 'walk'
 	if ANIMATION.current_animation != anim: ANIMATION.play(anim)
-	if not is_using_hand and ITEM_HAND_ANIMATION.current_animation != anim: ITEM_HAND_ANIMATION.play(anim)
+	if not hand.is_using and hand.ITEM_HAND_ANIMATION.current_animation != anim: hand.ITEM_HAND_ANIMATION.play(anim)
 
 # Handlers
 func flip_texture() -> void:
 	var mouse_direction: Vector2 = global_position.direction_to(get_global_mouse_position())
 	TEXTURE.flip_h = mouse_direction.x < 0
-	ITEM_HAND_TEXTURE.flip_h = mouse_direction.x < 0
+	hand.ITEM_HAND_TEXTURE.flip_h = mouse_direction.x < 0
 
 # GETTERS AND SETTERS
 # Nodes
 func get_ui() -> WorldUI:
 	return get_node('WorldUI')
 
-# Item Hand
-func set_item_hand_texture(item_hand: BaseItem) -> void:
-	if item_hand: ITEM_HAND_TEXTURE.texture = load('res://assets/%s/textures/items/%s.png' % item_hand.id.get_splited())
+
+func get_hand() -> PlayerHand:
+	return get_node('Hand')
 
 # HANDLERS
 # Survivor level
@@ -99,8 +98,6 @@ func _on_surv_level_up() -> void:
 func perform_use_item_hand() -> void:
 	var stack_hand: ItemStack = inventory.get_hand()
 	if stack_hand.is_empty(): return
-	is_using_hand = true
+	hand.is_using = true
 	stack_hand.item.use(self)
-	ITEM_HAND_ANIMATION.play(stack_hand.item.anim_type)
-	await ITEM_HAND_ANIMATION.animation_finished
-	is_using_hand = false
+	hand.ITEM_HAND_ANIMATION.play(stack_hand.item.anim_type)

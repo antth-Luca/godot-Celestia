@@ -1,9 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://qvrm2d7b1xca"]
+[gd_scene load_steps=25 format=3 uid="uid://qvrm2d7b1xca"]
 
 [ext_resource type="Script" uid="uid://dpv05wrpe5ht3" path="res://core/entities/creatures/player/Player.gd" id="1_ahdn1"]
 [ext_resource type="Texture2D" uid="uid://ce8bk4a6ciyep" path="res://assets/celestia/textures/player/default_male.png" id="2_lkete"]
+[ext_resource type="Script" uid="uid://ck2k3aynypc8y" path="res://core/entities/creatures/player/PlayerHand.gd" id="3_gu7p7"]
 [ext_resource type="PackedScene" uid="uid://cid21w8ylowqb" path="res://core/interface/WorldUI.tscn" id="3_mi63l"]
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="4_33tkp"]
+[ext_resource type="Texture2D" uid="uid://ccun0q3uylx8" path="res://assets/celestia/textures/items/iron_sword.png" id="4_bj32v"]
 [ext_resource type="PackedScene" uid="uid://cn13ycpy1ji50" path="res://core/entities/components/hitbox/Hitbox.tscn" id="6_gu7p7"]
 
 [sub_resource type="Animation" id="Animation_3cpg6"]
@@ -447,9 +449,11 @@ libraries = {
 autoplay = "idle"
 
 [node name="Hand" type="Node2D" parent="."]
+script = ExtResource("3_gu7p7")
 
 [node name="ItemHandTexture" type="Sprite2D" parent="Hand"]
 position = Vector2(-49, -6)
+texture = ExtResource("4_bj32v")
 
 [node name="ItemHandAnimation" type="AnimationPlayer" parent="Hand"]
 root_node = NodePath("../..")
@@ -489,4 +493,5 @@ rotation = 0.785398
 disabled = true
 debug_color = Color(0.665561, 0.511718, 3.85046e-07, 0.42)
 
+[connection signal="animation_finished" from="Hand/ItemHandAnimation" to="Hand" method="_on_item_hand_animation_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
