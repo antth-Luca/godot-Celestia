@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buo4be6dmpmyr"
-path="res://.godot/imported/conical.png-86e478401774da8e263837e95a649d05.ctex"
+uid="uid://btyqiujbeytn8"
+path="res://.godot/imported/slash.png-2dcdad6731766938431ffcf89daa346b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/celestia/textures/player/attacks_anim/conical.png"
-dest_files=["res://.godot/imported/conical.png-86e478401774da8e263837e95a649d05.ctex"]
+source_file="res://assets/celestia/particles/attacks/slash.png"
+dest_files=["res://.godot/imported/slash.png-2dcdad6731766938431ffcf89daa346b.ctex"]
 
 [params]
 
