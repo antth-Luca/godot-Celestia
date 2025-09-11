@@ -29,7 +29,7 @@ func set_delay_to_collect():
 func _on_area_entered(area):
 	var body = area.get_parent()
 	if body.is_in_group('player') and can_collect:
-		var inventory = body.get_node('WorldUI/MyPanel/InventoryTab')
+		var inventory = body.get_ui().get_invent_panel().get_inventory_tab()
 		if not inventory.get_stackable_index(stack.item.id) < 0:
 			var follow_tween = create_tween()
 			follow_tween.tween_property(

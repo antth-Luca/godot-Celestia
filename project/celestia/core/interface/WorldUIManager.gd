@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 	# When there is NO open window...
 	if !bg_blur.visible:
 		if event.is_action_pressed('ui_use'):
-			player.perform_use_item_hand()
+			player.hand.perform_use()
 		elif event.is_action_pressed('ui_rotate'):
 			emit_signal('ui_rotate_pressed')
 	# ...when there is

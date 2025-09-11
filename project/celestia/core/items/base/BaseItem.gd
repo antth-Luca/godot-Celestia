@@ -2,7 +2,6 @@ extends Resource
 class_name BaseItem
 
 const AnimType: Dictionary = {
-	ATTACK = 'attack',
 	USE = 'use',
 	HOLD = 'hold'
 }

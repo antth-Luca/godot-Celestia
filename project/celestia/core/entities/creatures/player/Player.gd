@@ -72,8 +72,12 @@ func set_animation() -> void:
 # Handlers
 func flip_texture() -> void:
 	var mouse_direction: Vector2 = global_position.direction_to(get_global_mouse_position())
-	TEXTURE.flip_h = mouse_direction.x < 0
-	hand.ITEM_HAND_TEXTURE.flip_h = mouse_direction.x < 0
+	var is_flip: bool = mouse_direction.x < 0
+	TEXTURE.flip_h = is_flip
+	if is_flip:
+		hand.scale.x = -1
+	else:
+		hand.scale.x = 1
 
 # GETTERS AND SETTERS
 # Nodes
@@ -93,11 +97,3 @@ func _on_surv_level_up() -> void:
 	entity_data.stats.get_property(InitPropProviders.FORCE).add_force(2.5)
 	entity_data.stats.get_property(InitPropProviders.RESISTANCE).add_resistance(0.5)
 	entity_data.stats.get_property(InitPropProviders.PENETRATION).add_penetration(0.2)
-
-# Use
-func perform_use_item_hand() -> void:
-	var stack_hand: ItemStack = inventory.get_hand()
-	if stack_hand.is_empty(): return
-	hand.is_using = true
-	stack_hand.item.use(self)
-	hand.ITEM_HAND_ANIMATION.play(stack_hand.item.anim_type)

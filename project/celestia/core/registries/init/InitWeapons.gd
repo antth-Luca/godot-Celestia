@@ -20,6 +20,7 @@ static func setup() -> void:
 			weapon.set_durability(2)
 			weapon.material = InitMaterials.IRON.get_registered()
 			weapon.base_damage = 1
+			weapon.anim_type = BaseItem.AnimType.USE
 			return weapon
 	)
 
