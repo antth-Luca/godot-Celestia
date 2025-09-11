@@ -18,7 +18,7 @@ func get_rotative_pocket():
 
 # MAIN
 func render_slot(stack: ItemStack) -> void:
-	itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % stack.item.id.get_splited())
+	itemSprite.texture = load(Celestia.ITEM_SPRITE_PATH % stack.item.id.get_splited())
 	itemSprite.visible = true
 	if stack.amount > 1:
 		itemAmount.text = str(stack.amount)

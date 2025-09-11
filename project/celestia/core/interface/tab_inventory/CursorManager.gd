@@ -22,7 +22,7 @@ func set_cursor_sprite(splited_id: Array):
 	if _cursor_sprite == null:
 		_cursor_sprite = Sprite2D.new()
 		inventory.add_child(_cursor_sprite)
-	_cursor_sprite.texture = load('res://assets/%s/textures/items/%s.png' % splited_id)
+	_cursor_sprite.texture = load(Celestia.ITEM_SPRITE_PATH % splited_id)
 	update_cursor_sprite_position(inventory.get_global_mouse_position())
 
 # GODOT

@@ -1,7 +1,7 @@
 extends RefCounted
 class_name ResourceLocation
 
-static var EMPTY := ResourceLocation.new(Celestia.GAME_ID, 'empty')
+static var EMPTY := ResourceLocation.new('', '')
 
 var space: String
 var path: String

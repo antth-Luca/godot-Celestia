@@ -16,4 +16,4 @@ var hex_color: String = '#FFFFFF':
 
 
 func get_tr_name() -> String:
-	return CustomTranslation.t('%s.item.rarity.%s' % id.get_splited())
+	return CustomTranslation.t(Celestia.TRANSLATION_KEY_BASES.RARITY % id.get_splited())

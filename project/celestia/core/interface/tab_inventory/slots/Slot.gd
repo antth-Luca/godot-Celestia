@@ -33,7 +33,7 @@ const Type: Dictionary =  {
 
 func _ready():
 	if slot_type != Type.GENERIC:
-		slotTypeSprite.texture = load('res://assets/%s/interface/inventory/slots/types/%s.png' % [Celestia.GAME_ID, slot_type])
+		slotTypeSprite.texture = load(Celestia.SLOT_TYPE_SPRITE_PATH % [Celestia.GAME_ID, slot_type])
 
 # GETTERS AND SETTERS
 # Node
@@ -54,7 +54,7 @@ func render_slot(slot_stack: ItemStack = ItemStack.EMPTY) -> void:
 			emit_signal('slot_cleaned')
 	else:
 		slotTypeSprite.visible = false
-		itemSprite.texture = load('res://assets/%s/textures/items/%s.png' % slot_stack.item.id.get_splited())
+		itemSprite.texture = load(Celestia.ITEM_SPRITE_PATH % slot_stack.item.id.get_splited())
 		itemSprite.visible = true
 		if slot_stack.amount > 1:
 			itemAmount.text = str(slot_stack.amount)

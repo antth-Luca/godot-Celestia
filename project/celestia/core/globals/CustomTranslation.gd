@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func load_translations() -> void:
-	var tr_file = FileAccess.open('res://assets/celestia/lang/%s.json' % GameConfig.config.get('language'), FileAccess.READ)
+	var tr_file = FileAccess.open(Celestia.TRANSLATION_FILE_PATH % GameConfig.config.get('language'), FileAccess.READ)
 	if tr_file:
 		var content = tr_file.get_as_text()
 		translation = JSON.parse_string(content)
