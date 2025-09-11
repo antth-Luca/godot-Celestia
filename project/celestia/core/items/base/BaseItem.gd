@@ -58,8 +58,9 @@ func use(_player: Player) -> void:
 
 
 func consome_durability(damage: int, slot: Slot) -> void:
-	if _durability != 0 and damage != 0: _durability -= damage
-	if _durability <= 0: break_item(slot)
+	if _durability != 0 and damage != 0:
+		_durability -= damage
+		if _durability <= 0: break_item(slot)
 
 
 func break_item(slot: Slot) -> void:

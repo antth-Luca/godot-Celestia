@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl2qt1r8mb64m"]
+
+[ext_resource type="Script" uid="uid://ddnw55a5641x8" path="res://core/damage/hit/base/slash/SlashHit.gd" id="1_ghvdo"]
+[ext_resource type="PackedScene" uid="uid://cn13ycpy1ji50" path="res://core/entities/components/hitbox/Hitbox.tscn" id="2_nlli3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wsmk"]
+
+[node name="SlashHit" type="Node2D"]
+script = ExtResource("1_ghvdo")
+
+[node name="Texture" type="Sprite2D" parent="."]
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Hitbox" parent="." instance=ExtResource("2_nlli3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_2wsmk")

@@ -27,3 +27,11 @@ func _init() -> void:
 # Source Entity
 func get_source_entity() -> LivingEntity:
 	return self
+
+# HitData
+func get_hit_data() -> HitData:
+	return HitData.new(
+		entity_data,
+		HitData.PRIMITIVE_TYPE.PHYSIC,
+		HitData.SPECIALIZED_TYPE.NONE
+	)

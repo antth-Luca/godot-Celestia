@@ -15,9 +15,10 @@ const TRANSLATION_KEY_BASES: Dictionary = {
 
 
 func _ready():
+	InitPropProviders.setup()
 	InitRarities.setup()
 	InitMaterials.setup()
-	InitPropProviders.setup()
+	InitHits.setup()
 	InitItems.setup()
 	InitArmors.setup()
 	InitWeapons.setup()

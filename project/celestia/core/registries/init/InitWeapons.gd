@@ -17,10 +17,12 @@ static func setup() -> void:
 		'iron_sword',
 		func():
 			var weapon = BaseTool.new()
-			weapon.set_durability(2)
 			weapon.material = InitMaterials.IRON.get_registered()
-			weapon.base_damage = 1
+			weapon.set_durability(2)
+			weapon.damage_factor = 1
+			weapon.use_speed_factor = 1
 			weapon.anim_type = BaseItem.AnimType.USE
+			weapon.hit_type = InitHits.SLASH.get_listed()
 			return weapon
 	)
 

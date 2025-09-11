@@ -1,7 +1,9 @@
 extends BaseItem
 class_name BaseTool
 
-var base_damage: float
+var damage_factor: float
+var use_speed_factor: float
+var hit_type: PackedScene = InitHits.SLASH.get_listed()
 
 # SUPER
 func _init():
@@ -9,4 +11,5 @@ func _init():
 
 
 func use(player: Player) -> void:
-	consome_durability(1, player.inventory.get_slot(0))
+	HitUtils.spawn_hit()  # TODO: Preencher parâmetros.
+	consome_durability(1, player.inventory.get_slot(player.inventory.selected))

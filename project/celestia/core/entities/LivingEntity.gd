@@ -37,7 +37,7 @@ func set_animation() -> void:
 # HANDLERS
 func _on_hurtbox_area_entered(hitbox) -> void:
 	if hitbox.is_in_group('hitbox'):
-		var hitdata: HitData = hitbox.get_hit_data()
+		var hitdata: HitData = hitbox.get_parent().get_hit_data()
 		DamageManager.try_apply(hitdata, entity_data)
 		apply_knockback(global_position, hitbox.get_parent().get_source_entity().global_position, hitdata.specialized_type)
 

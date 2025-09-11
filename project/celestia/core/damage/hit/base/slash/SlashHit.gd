@@ -1,9 +1,11 @@
-extends Hitbox
-class_name ZombieHitbox
+extends BaseHit
+class_name SlashHit
 
+# GETTERS AND SETTERS
+# HitData
 func get_hit_data() -> HitData:
 	return HitData.new(
-		get_parent().entity_data,
+		source_entity.entity_data,
 		HitData.PRIMITIVE_TYPE.PHYSIC,
 		HitData.SPECIALIZED_TYPE.NONE
 	)

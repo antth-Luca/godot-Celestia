@@ -1,5 +1,6 @@
 extends Node
 
+
 func drop_item_in_position(stack: ItemStack, pos: Vector2) -> void:
 	# Drops an item in a specific position
 	var dropped_item = preload(Celestia.DROPPED_ITEM_SCENE_PATH)

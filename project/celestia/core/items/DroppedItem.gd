@@ -8,7 +8,7 @@ var can_collect: bool = true
 func initialize(_stack_param: ItemStack):
 	stack = _stack_param
 	var id_parts: Array = stack.item.id.get_splited()
-	$ItemSprite.texture = load('res://assets/%s/textures/items/%s.png' % id_parts)
+	$ItemSprite.texture = load(Celestia.ITEM_SPRITE_PATH % id_parts)
 
 
 func set_delay_to_collect():

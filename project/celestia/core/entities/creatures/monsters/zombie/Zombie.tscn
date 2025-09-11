@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b3lfgr81bgo4q"]
+[gd_scene load_steps=20 format=3 uid="uid://b3lfgr81bgo4q"]
 
 [ext_resource type="Script" uid="uid://bas2xslnhn10h" path="res://core/entities/creatures/monsters/zombie/Zombie.gd" id="1_cflnr"]
 [ext_resource type="Texture2D" uid="uid://cxk0fabv8lbhu" path="res://assets/celestia/textures/enemies/zombie.png" id="2_shrvl"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://ym3awtb3ksm4" path="res://core/entities/components/wall_vision/WallVision.tscn" id="6_thrsc"]
 [ext_resource type="PackedScene" uid="uid://cn13ycpy1ji50" path="res://core/entities/components/hitbox/Hitbox.tscn" id="9_haekf"]
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="10_0ipk5"]
-[ext_resource type="Script" uid="uid://lptjnl18vklr" path="res://core/entities/creatures/monsters/zombie/ZombieHitbox.gd" id="11_w6tfs"]
 
 [sub_resource type="Animation" id="Animation_frwts"]
 length = 0.001
@@ -143,7 +142,6 @@ position = Vector2(0, 3)
 script = null
 
 [node name="Hitbox" parent="." instance=ExtResource("9_haekf")]
-script = ExtResource("11_w6tfs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0.5, -0.5)

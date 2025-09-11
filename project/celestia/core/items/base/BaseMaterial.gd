@@ -9,7 +9,7 @@ var id: ResourceLocation = ResourceLocation.EMPTY:
 
 var base_max_damage: int = 1:
 	set(new_max_damage):
-		if new_max_damage >= 0: return
+		if new_max_damage <= 0: return
 		base_max_damage = new_max_damage
 
 var efficiency: int = -1:
