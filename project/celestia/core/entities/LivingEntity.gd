@@ -26,10 +26,6 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 # GETTERS AND SETTERS
-# Attack
-func get_data_hit() -> HitData:
-	return null
-
 # Animation
 func set_animation() -> void:
 	var anim = 'idle'
@@ -39,12 +35,11 @@ func set_animation() -> void:
 		ANIMATION.play(anim)
 
 # HANDLERS
-func _on_hurtbox_area_entered(area) -> void:
-	if area.is_in_group('hitbox'):
-		var source_entity = area.get_parent()
-		var hit: HitData = source_entity.get_data_hit()
-		DamageManager.try_apply(hit, entity_data)
-		apply_knockback(global_position, area.get_parent().global_position, hit.specialized_type)
+func _on_hurtbox_area_entered(hitbox) -> void:
+	if hitbox.is_in_group('hitbox'):
+		var hitdata: HitData = hitbox.get_hit_data()
+		DamageManager.try_apply(hitdata, entity_data)
+		apply_knockback(global_position, hitbox.get_parent().get_source_entity().global_position, hitdata.specialized_type)
 
 
 func flip_texture() -> void:

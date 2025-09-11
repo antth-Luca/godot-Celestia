@@ -24,10 +24,6 @@ func _init() -> void:
 	)
 
 # GETTERS AND SETTERS
-# Attack
-func get_data_hit() -> HitData:
-	return HitData.new(
-		entity_data,
-		HitData.PRIMITIVE_TYPE.PHYSIC,
-		HitData.SPECIALIZED_TYPE.NONE
-	)
+# Source Entity
+func get_source_entity() -> LivingEntity:
+	return self
