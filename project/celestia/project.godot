@@ -21,6 +21,7 @@ GameConfig="*res://config/GameConfig.gd"
 CustomTranslation="*res://core/globals/CustomTranslation.gd"
 EventBus="*res://core/events/EventBus.gd"
 RegistryManager="*res://core/registries/RegistryManager.gd"
+DroppedItemUtils="*res://core/utils/DroppedItemUtils.gd"
 
 [global_group]
 

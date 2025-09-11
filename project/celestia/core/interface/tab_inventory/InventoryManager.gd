@@ -122,29 +122,13 @@ func get_stackable_index(item_id: ResourceLocation) -> int:
 	return -1
 
 
-func drop_item_in_position(stack: ItemStack, pos: Vector2) -> void:
-	# Drops an item in a specific position
-	var dropped_item = preload('res://core/items/DroppedItem.tscn')
-	var drop = dropped_item.instantiate()
-	drop.initialize(stack)
-	get_tree().root.add_child(drop)
-	drop.global_position = pos
-	drop.set_delay_to_collect()
-
-
-func drop_item_players_foot(stack: ItemStack) -> void:
-	# Drops an item at the player's feet
-	var at_pos = player.global_position
-	drop_item_in_position(stack, at_pos)
-
-
 func add_item_to_bp_new_slot(stack: ItemStack) -> void:
 	for index in range(BACKPACK_SLOTS.back()):  # Slots for backpack
 		if inventory[index].is_empty():
 			inventory[index] = stack
 			slots_group.get_child(index).render_slot(inventory[index])
 			return
-	drop_item_players_foot(stack)
+	DroppedItemUtils.drop_item_entity_foot(stack, player)
 
 
 func add_item_to_backpack(stack: ItemStack) -> void:
@@ -244,7 +228,7 @@ func _handle_middle_click_on_slot(slot: Slot):
 	if slot_stack.amount > 0 and slot_stack.item.can_unequip(slot):
 		inventory[slot_index].item.on_unequip(slot, player)
 		inventory[slot_index] = ItemStack.EMPTY
-		drop_item_players_foot(slot_stack)
+		DroppedItemUtils.drop_item_entity_foot(slot_stack, player)
 		slot.render_slot()
 
 
