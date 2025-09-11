@@ -80,13 +80,13 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 * [ ] Melhorias:
   * [ ] Adição: Cliques duplos de 'left' e 'right' no inventário;
   * [ ] Adição: Tentar usar uma armadura ou relíquia fará a troca dela com a já equipada;
-  * [ ] Adição: Contorno branco aos itens dropados no chão;
   * [ ] Adição: Sombras a todas as entidades (como component);
   * [ ] Adição: Animação de "pingar" nos itens dropados no chão;
   * [ ] Adição: Partículas de poeira as entidades ao andar;
   * [ ] Adição: Representação do dano em números flutuantes;
   * [ ] Alteração: Sprite de água sendo animado;
   * [ ] Alteração: Animação 2 ao entrar em um mundo;
+  * [x] Adição: Contorno branco aos itens dropados no chão;
 * [ ] Adição de todo o conteúdo possível com os sistemas desenvolvidos até aqui;
 * [ ] Multiplayer em LAN.
 
