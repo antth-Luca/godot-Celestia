@@ -53,7 +53,7 @@ func on_unequip(_slot: Slot, _player: Player):
 	pass
 
 
-func use(_player: Player) -> void:
+func use(_player: Player, _calc_use_speed: float) -> void:
 	pass
 
 

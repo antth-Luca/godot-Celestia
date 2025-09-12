@@ -10,6 +10,6 @@ func _init():
 	max_stack = 1
 
 
-func use(player: Player) -> void:
-	HitUtils.spawn_hit()  # TODO: Preencher parâmetros.
+func use(player: Player, calc_use_speed: float) -> void:
+	HitUtils.spawn_hit(player, InitHits.SLASH.get_listed(), calc_use_speed)
 	consome_durability(1, player.inventory.get_slot(player.inventory.selected))

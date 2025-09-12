@@ -1,8 +1,11 @@
 extends BaseHit
 class_name SlashHit
 
-# GETTERS AND SETTERS
-# HitData
+# SUPER
+func _ready() -> void:
+	ANIMATION.speed_scale = ANIMATION.get_animation('attack').length / calc_use_speed
+
+# Get hitdata
 func get_hit_data() -> HitData:
 	return HitData.new(
 		source_entity.entity_data,
