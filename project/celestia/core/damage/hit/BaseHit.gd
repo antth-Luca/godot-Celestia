@@ -36,7 +36,7 @@ func initialize(source_entity_param: LivingEntity, range_factor_param: float, da
 
 
 func flip_texture() -> void:
-	var mouse_direction: Vector2 = source_entity.global_position.direction_to(source_entity.get_global_mouse_position())
+	var mouse_direction: Vector2 = source_entity.get_mouse_direction()
 	TEXTURE.flip_h = mouse_direction.x < 0
 
 

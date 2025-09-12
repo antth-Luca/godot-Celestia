@@ -71,7 +71,7 @@ func set_animation() -> void:
 
 # Handlers
 func flip_texture() -> void:
-	var mouse_direction: Vector2 = global_position.direction_to(get_global_mouse_position())
+	var mouse_direction = get_mouse_direction()
 	var is_flip: bool = mouse_direction.x < 0
 	TEXTURE.flip_h = is_flip
 	if is_flip:
@@ -87,6 +87,10 @@ func get_ui() -> WorldUI:
 
 func get_hand() -> PlayerHand:
 	return get_node('Hand')
+
+
+func get_mouse_direction() -> Vector2:
+	return global_position.direction_to(get_global_mouse_position())
 
 # HANDLERS
 # Survivor level
