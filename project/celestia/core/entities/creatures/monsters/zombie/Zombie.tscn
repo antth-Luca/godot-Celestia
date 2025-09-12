@@ -98,6 +98,7 @@ size = Vector2(11, 21)
 
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 32
+collision_mask = 65
 script = ExtResource("1_cflnr")
 
 [node name="Texture" type="Sprite2D" parent="."]
@@ -154,3 +155,5 @@ debug_color = Color(0.579262, 0.552326, 5.77569e-07, 0.42)
 position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_w6tfs")
 debug_color = Color(0.884413, 0.000312657, 0.810662, 0.42)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

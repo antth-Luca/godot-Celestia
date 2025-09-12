@@ -42,13 +42,14 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlli3"]
-size = Vector2(30, 30)
+size = Vector2(27, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wsmk"]
 size = Vector2(32, 32)
 
 [node name="SlashHit" type="CharacterBody2D"]
 collision_layer = 64
+collision_mask = 49
 script = ExtResource("1_ghvdo")
 
 [node name="Texture" type="Sprite2D" parent="."]

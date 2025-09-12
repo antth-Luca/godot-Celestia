@@ -24,9 +24,9 @@ func _ready():
 
 func _physics_process(delta):
 	velocity = direction * speed
-	var is_collide = move_and_collide(velocity * delta)
-	if global_position >= calc_max_distance or is_collide:
-		queue_free()
+	var collision = move_and_collide(velocity * delta)
+	_on_collide(collision)
+	if global_position >= calc_max_distance: despawn_hit()
 
 # MAIN
 func initialize(source_entity_param: LivingEntity, range_factor_param: float, damage_factor_param: float) -> void:
@@ -39,7 +39,16 @@ func flip_texture() -> void:
 	var mouse_direction: Vector2 = source_entity.global_position.direction_to(source_entity.get_global_mouse_position())
 	TEXTURE.flip_h = mouse_direction.x < 0
 
+
+func despawn_hit() -> void:
+	queue_free()
+
 # GETTERS AND SETTERS
 # HitData
 func get_hit_data() -> HitData:
 	return null
+
+# HANDLERS
+func _on_collide(collision: KinematicCollision2D) -> void:
+	if collision == null or source_entity == collision.get_collider(): return
+	despawn_hit()
