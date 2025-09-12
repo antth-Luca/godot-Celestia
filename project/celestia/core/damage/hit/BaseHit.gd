@@ -11,6 +11,7 @@ var hit_max_distance: float = 20
 
 var source_entity: LivingEntity  # Filled on #initialize()
 var range_factor: float  # Filled on #initialize()
+var damage_factor: float  # Filled on #initialize()
 
 # GODOT
 func _ready():
@@ -28,9 +29,10 @@ func _physics_process(delta):
 		queue_free()
 
 # MAIN
-func initialize(source_entity_param: LivingEntity, range_factor_param: float) -> void:
+func initialize(source_entity_param: LivingEntity, range_factor_param: float, damage_factor_param: float) -> void:
 	source_entity = source_entity_param
 	range_factor = range_factor_param
+	damage_factor = damage_factor_param
 
 
 func flip_texture() -> void:

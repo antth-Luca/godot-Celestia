@@ -12,5 +12,5 @@ func _init():
 
 
 func use(player: Player) -> void:
-	HitUtils.spawn_hit(player, InitHits.SLASH.get_listed(), range_factor)
+	HitUtils.spawn_hit(player, InitHits.SLASH.get_listed(), range_factor, damage_factor)
 	consome_durability(1, player.inventory.get_slot(player.inventory.selected))

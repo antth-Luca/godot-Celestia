@@ -24,7 +24,7 @@ static func compute_defense(hit: HitData, target_stats: PropertyManager) -> floa
 
 
 static func compute_damage(hit: HitData, target_stats: PropertyManager, calc_def: float) -> float:
-	var brute_dam = hit.attacker.stats.get_property(InitPropProviders.FORCE).get_force()
+	var brute_dam = hit.attacker.stats.get_property(InitPropProviders.FORCE).get_force() * hit.damage_factor
 	var calc_dam = brute_dam - (brute_dam * target_stats.get_property(InitPropProviders.DAMAGE_REDUCTION).get_dam_reduction())
 	if calc_def >= 0: return calc_dam * (1 / (1 + calc_def / K))
 	return calc_dam * (2 - (1 / (1 - calc_def / K)))
