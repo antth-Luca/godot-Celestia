@@ -44,6 +44,10 @@ func despawn_hit() -> void:
 	queue_free()
 
 # GETTERS AND SETTERS
+# Source entity
+func get_source_entity() -> LivingEntity:
+	return source_entity
+
 # HitData
 func get_hit_data() -> HitData:
 	return null
