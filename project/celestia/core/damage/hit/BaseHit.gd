@@ -4,19 +4,19 @@ class_name BaseHit
 @onready var TEXTURE: Sprite2D = $Texture
 @onready var ANIMATION: AnimationPlayer = $Animation
 
-var speed: float = 240
+var speed: float = 100
 var direction: Vector2  # Filled on #_ready()
-var hit_max_distance: float = 1000
-var calc_max_distance: Vector2
+var calc_max_distance: Vector2  # Filled on #_ready()
+var hit_max_distance: float = 20
 
-var source_entity: LivingEntity
-var range_factor: float
+var source_entity: LivingEntity  # Filled on #initialize()
+var range_factor: float  # Filled on #initialize()
 
 # GODOT
 func _ready():
 	direction = Vector2.RIGHT.rotated(global_rotation)
 	calc_max_distance = global_position + direction.normalized() * (
-		(source_entity.entity_data.stats.get_property(InitPropProviders.RANGE.get_registered()).get_range() * range_factor) * hit_max_distance 
+		(source_entity.entity_data.stats.get_property(InitPropProviders.RANGE).get_range() * range_factor) * hit_max_distance 
 	)
 	flip_texture()
 
@@ -24,7 +24,7 @@ func _ready():
 func _physics_process(delta):
 	velocity = direction * speed
 	var is_collide = move_and_collide(velocity * delta)
-	if global_position == calc_max_distance or is_collide:
+	if global_position >= calc_max_distance or is_collide:
 		queue_free()
 
 # MAIN

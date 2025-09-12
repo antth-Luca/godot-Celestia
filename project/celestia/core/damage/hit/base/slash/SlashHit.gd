@@ -3,6 +3,7 @@ class_name SlashHit
 
 # SUPER
 func _ready() -> void:
+	super()
 	ANIMATION.play('attack')
 
 # Get hitdata
