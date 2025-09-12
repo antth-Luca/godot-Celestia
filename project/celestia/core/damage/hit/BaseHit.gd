@@ -1,20 +1,36 @@
-extends Node
+extends CharacterBody2D
 class_name BaseHit
 
 @onready var TEXTURE: Sprite2D = $Texture
 @onready var ANIMATION: AnimationPlayer = $Animation
 
+var speed: float = 240
+var direction: Vector2  # Filled on #_ready()
+var hit_max_distance: float = 1000
+var calc_max_distance: Vector2
+
 var source_entity: LivingEntity
-var calc_use_speed: float
+var range_factor: float
 
 # GODOT
 func _ready():
+	direction = Vector2.RIGHT.rotated(global_rotation)
+	calc_max_distance = global_position + direction.normalized() * (
+		(source_entity.entity_data.stats.get_property(InitPropProviders.RANGE.get_registered()).get_range() * range_factor) * hit_max_distance 
+	)
 	flip_texture()
 
+
+func _physics_process(delta):
+	velocity = direction * speed
+	var is_collide = move_and_collide(velocity * delta)
+	if global_position == calc_max_distance or is_collide:
+		queue_free()
+
 # MAIN
-func initialize(source_entity_param: LivingEntity, calc_use_speed_param: float) -> void:
+func initialize(source_entity_param: LivingEntity, range_factor_param: float) -> void:
 	source_entity = source_entity_param
-	calc_use_speed = calc_use_speed_param
+	range_factor = range_factor_param
 
 
 func flip_texture() -> void:

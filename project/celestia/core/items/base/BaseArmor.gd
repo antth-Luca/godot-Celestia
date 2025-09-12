@@ -11,7 +11,7 @@ func _init():
 	max_stack = 1
 
 
-func use(player: Player, _calc_use_speed: float) -> void:
+func use(player: Player) -> void:
 	for c in range(InventoryManager.ARMOR_SLOTS[Slot.Type.HEAD],
 			InventoryManager.ARMOR_SLOTS[Slot.Type.FEET] + 1):
 		var slot: Slot = player.inventory.get_slot(c)

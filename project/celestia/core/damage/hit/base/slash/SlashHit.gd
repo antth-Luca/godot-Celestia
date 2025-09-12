@@ -3,7 +3,7 @@ class_name SlashHit
 
 # SUPER
 func _ready() -> void:
-	ANIMATION.speed_scale = ANIMATION.get_animation('attack').length / calc_use_speed
+	ANIMATION.play('attack')
 
 # Get hitdata
 func get_hit_data() -> HitData:

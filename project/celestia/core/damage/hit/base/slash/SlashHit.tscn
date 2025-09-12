@@ -1,8 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://bl2qt1r8mb64m"]
+[gd_scene load_steps=9 format=3 uid="uid://bl2qt1r8mb64m"]
 
 [ext_resource type="Script" uid="uid://ddnw55a5641x8" path="res://core/damage/hit/base/slash/SlashHit.gd" id="1_ghvdo"]
 [ext_resource type="Texture2D" uid="uid://btyqiujbeytn8" path="res://assets/celestia/particles/attacks/slash.png" id="2_2wsmk"]
 [ext_resource type="PackedScene" uid="uid://cn13ycpy1ji50" path="res://core/entities/components/hitbox/Hitbox.tscn" id="2_nlli3"]
+
+[sub_resource type="Animation" id="Animation_oyka7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_nou0u"]
 resource_name = "attack"
@@ -20,31 +35,20 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_oyka7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gg7dq"]
 _data = {
 &"RESET": SubResource("Animation_oyka7"),
 &"attack": SubResource("Animation_nou0u")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlli3"]
+size = Vector2(30, 30)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wsmk"]
 size = Vector2(32, 32)
 
-[node name="SlashHit" type="Node2D"]
+[node name="SlashHit" type="CharacterBody2D"]
+collision_layer = 64
 script = ExtResource("1_ghvdo")
 
 [node name="Texture" type="Sprite2D" parent="."]
@@ -56,7 +60,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_gg7dq")
 }
 
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nlli3")
+
 [node name="Hitbox" parent="." instance=ExtResource("2_nlli3")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_2wsmk")
+debug_color = Color(0.89076, 0.000246814, 0.792218, 0.42)

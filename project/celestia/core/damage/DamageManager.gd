@@ -3,13 +3,15 @@ class_name DamageManager
 
 const K: float = 15
 
-static func try_apply(hit: HitData, target: EntityData) -> void:
+static func try_apply(hit: HitData, target: EntityData) -> bool:
 	if DamageRules.can_damage(hit, target):
 		var final_def = compute_defense(hit, target.stats)
 		var final_dam = compute_crit(
 			hit, compute_damage(hit, target.stats, final_def)
 		)
 		apply_damage(final_dam, target.stats)
+		return true
+	return false
 
 
 static func compute_defense(hit: HitData, target_stats: PropertyManager) -> float:
