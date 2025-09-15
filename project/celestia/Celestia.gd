@@ -19,6 +19,7 @@ func _ready():
 	InitRarities.setup()
 	InitMaterials.setup()
 	InitHits.setup()
+	InitEntities.setup()
 	InitItems.setup()
 	InitArmors.setup()
 	InitWeapons.setup()
@@ -26,4 +27,4 @@ func _ready():
 
 
 func _go_to_next_scene():
-	get_tree().change_scene_to_file('res://Test.tscn')
+	get_tree().change_scene_to_file('res://core/world/World.tscn')

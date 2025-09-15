@@ -3,6 +3,7 @@ class_name WorldUI
 
 signal ui_rotate_pressed
 
+@onready var view := $ViewTransition
 @onready var hud: PlayerHUD = $HUD
 @onready var bg_blur := $Panel
 @onready var my_panel: MyPanel = $MyPanel
@@ -12,6 +13,7 @@ var player: Player
 # GODOT
 func _ready():
 	bg_blur.visible = false
+	view.open_eyes()
 
 
 func _input(event: InputEvent) -> void:

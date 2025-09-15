@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmmcjcw2tpjtm"]
+
+[ext_resource type="Shader" uid="uid://bwhl2clqwsqac" path="res://assets/celestia/shaders/eyelid_transition.gdshader" id="1_pfrfo"]
+[ext_resource type="Script" uid="uid://bovivkqo73b2u" path="res://core/interface/view_transition/ViewTransition.gd" id="2_5m645"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvhmc"]
+shader = ExtResource("1_pfrfo")
+shader_parameter/open_amount = 0.0
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/aspect = Vector2(1, 0.6)
+
+[node name="ViewTransition" type="ColorRect"]
+material = SubResource("ShaderMaterial_jvhmc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_5m645")
