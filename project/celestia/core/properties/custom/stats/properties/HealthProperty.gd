@@ -3,6 +3,7 @@ class_name HealthProperty
 
 signal max_health_changed(new_max_health)
 signal health_changed(new_health)
+signal zero_health()
 
 var MAX_HP: float
 var hp: float
@@ -25,6 +26,7 @@ func get_format_health() -> String:
 func set_health(newHP: float) -> void:
 	hp = clamp(newHP, MIN_HP, MAX_HP)
 	emit_signal('health_changed', hp)
+	if hp <= 0: emit_signal('zero_health')
 
 
 func add_health(addHP: float) -> void:

@@ -17,8 +17,6 @@ func _init() -> void:
 			InitPropProviders.DEFENSE_REDUCTION: 0,
 			InitPropProviders.CRITICAL_STRIKE: 0,
 			InitPropProviders.LIFE_STEAL: 0.3,
-			InitPropProviders.RANGE: 1,
-			InitPropProviders.USE_SPEED: 1,
 			InitPropProviders.MOVE_SPEED: 20
 		})
 	)

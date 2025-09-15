@@ -4,12 +4,20 @@ class_name LivingEntity
 @onready var TEXTURE: Sprite2D = $Texture
 @onready var ANIMATION: AnimationPlayer = $Animation
 
+var direction: Vector2 = Vector2.ZERO
 var knockback_vector: Vector2 = Vector2.ZERO
 var entity_data: EntityData
-var direction: Vector2 = Vector2.ZERO
+var is_dead: bool = false
 
 # GODOT
+func _ready() -> void:
+	var health_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
+	# Health drained
+	health_prop.connect('zero_health', Callable(self, 'die'))
+
+
 func _physics_process(_delta: float) -> void:
+	if is_dead: return
 	# Knockback
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
@@ -25,9 +33,17 @@ func _physics_process(_delta: float) -> void:
 	set_animation()
 	move_and_slide()
 
+# MAIN
+func die() -> void:
+	is_dead = true
+	ANIMATION.play('death')
+	await ANIMATION.animation_finished
+	queue_free()
+
 # GETTERS AND SETTERS
 # Animation
 func set_animation() -> void:
+	if is_dead: return
 	var anim = 'idle'
 	if direction != Vector2.ZERO:
 		anim = 'walk'
@@ -36,7 +52,7 @@ func set_animation() -> void:
 
 # HANDLERS
 func _on_hurtbox_area_entered(hitbox) -> void:
-	if hitbox.is_in_group('hitbox'):
+	if not is_dead and hitbox.is_in_group('hitbox'):
 		var hitbox_parent = hitbox.get_parent()
 		var hitdata: HitData = hitbox_parent.get_hit_data()
 		if DamageManager.try_apply(hitdata, entity_data):

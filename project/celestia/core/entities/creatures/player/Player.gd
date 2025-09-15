@@ -43,6 +43,8 @@ func _ready():
 	mana_prop.emit_signal('max_mana_changed', mana_prop.get_max_mana())
 	mana_prop.connect('mana_changed', Callable(stats_bar, '_on_mana_changed'))
 	mana_prop.emit_signal('mana_changed', mana_prop.get_mana())
+	# Health drained
+	health_prop.connect('zero_health', Callable(self, 'die'))
 	# Inventory
 	inventory = get_ui().get_invent_panel().get_inventory_tab()
 	inventory.player = self
@@ -59,11 +61,12 @@ func _physics_process(delta: float) -> void:
 	if knockback_vector == Vector2.ZERO:
 		# Get the input direction and handle the movement/deceleration.
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
-	super(delta)
+	super._physics_process(delta)
 
 # SUPER
 # Animation
 func set_animation() -> void:
+	if is_dead: return
 	var anim = 'idle'
 	if direction != Vector2.ZERO: anim = 'walk'
 	if ANIMATION.current_animation != anim: ANIMATION.play(anim)
