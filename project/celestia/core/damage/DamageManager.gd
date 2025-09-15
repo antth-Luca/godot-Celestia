@@ -9,7 +9,7 @@ static func try_apply(hit: HitData, target: EntityData) -> bool:
 		var final_dam = compute_crit(
 			hit, compute_damage(hit, target.stats, final_def)
 		)
-		apply_damage(final_dam, target.stats)
+		apply_damage(final_dam, target.stats, hit.attacker.stats)
 		return true
 	return false
 
@@ -35,6 +35,9 @@ static func compute_crit(hit: HitData, calc_dam: float) -> float:
 	return calc_dam
 
 
-static func apply_damage(final_dam: float, target_stats: PropertyManager) -> void:
-	var hp_prop = target_stats.get_property(InitPropProviders.HEALTH)
-	hp_prop.sub_health(final_dam)
+static func apply_damage(final_dam: float, target_stats: PropertyManager, attacker_stats: PropertyManager) -> void:
+	var target_hp_prop: HealthProperty = target_stats.get_property(InitPropProviders.HEALTH)
+	target_hp_prop.sub_health(final_dam)
+	var attacker_life_steal = attacker_stats.get_property(InitPropProviders.LIFE_STEAL).get_life_steal()
+	if attacker_life_steal > 0:
+		attacker_stats.get_property(InitPropProviders.HEALTH).add_health(final_dam * attacker_life_steal)
