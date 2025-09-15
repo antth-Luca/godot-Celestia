@@ -64,6 +64,13 @@ func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 
 # SUPER
+# Main
+func die() -> void:
+	is_dead = true
+	ANIMATION.play('death')
+	await ANIMATION.animation_finished
+	get_tree().change_scene_to_file("res://client/screens/title_screen/TitleScreen.tscn")
+
 # Animation
 func set_animation() -> void:
 	if is_dead: return

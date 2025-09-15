@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Celestia"
-run/main_scene="uid://bpau3xq0mkk7n"
+run/main_scene="uid://dkgksui4mcmf"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://bgrpx5mgkejj"
 
