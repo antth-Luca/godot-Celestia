@@ -6,7 +6,7 @@ func drop_item_in_position(stack: ItemStack, pos: Vector2) -> void:
 	var dropped_item = preload(Celestia.DROPPED_ITEM_SCENE_PATH)
 	var drop = dropped_item.instantiate()
 	drop.initialize(stack)
-	get_tree().root.add_child(drop)
+	get_tree().current_scene.add_child(drop)
 	drop.global_position = pos
 	drop.set_delay_to_collect()
 

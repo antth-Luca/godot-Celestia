@@ -19,6 +19,7 @@ static func setup() -> void:
 			var weapon = BaseTool.new()
 			weapon.material = InitMaterials.IRON.get_registered()
 			weapon.set_durability(2)
+			weapon.base_lifespan = .3
 			weapon.anim_type = BaseItem.AnimType.USE
 			weapon.hit_type = InitHits.SLASH.get_listed()
 			return weapon
