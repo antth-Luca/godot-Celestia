@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 class_name BaseHit
 
 @onready var TEXTURE: Sprite2D = $Texture
@@ -23,9 +23,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	velocity = direction * speed
-	var collision = move_and_collide(velocity * delta)
-	_on_collide(collision)
+	translate(direction * delta * speed)
 	# TODO: Resolver o despawn ao atingir alcance máximo:
 	# if global_position >= calc_max_distance: despawn_hit()
 
@@ -49,6 +47,5 @@ func get_hit_data() -> HitData:
 	return null
 
 # HANDLERS
-func _on_collide(collision: KinematicCollision2D) -> void:
-	if collision == null or source_entity == collision.get_collider(): return
-	despawn_hit()
+func _on_hurt_entity() -> void:
+	return

@@ -37,9 +37,11 @@ func set_animation() -> void:
 # HANDLERS
 func _on_hurtbox_area_entered(hitbox) -> void:
 	if hitbox.is_in_group('hitbox'):
-		var hitdata: HitData = hitbox.get_parent().get_hit_data()
+		var hitbox_parent = hitbox.get_parent()
+		var hitdata: HitData = hitbox_parent.get_hit_data()
 		if DamageManager.try_apply(hitdata, entity_data):
-			apply_knockback(global_position, hitbox.get_parent().get_source_entity().global_position, hitdata.specialized_type)
+			if hitbox_parent is BaseHit: hitbox_parent._on_hurt_entity()
+			apply_knockback(global_position, hitbox_parent.get_source_entity().global_position, hitdata.specialized_type)
 
 
 func flip_texture() -> void:

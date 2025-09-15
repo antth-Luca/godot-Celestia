@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl2qt1r8mb64m"]
+[gd_scene load_steps=8 format=3 uid="uid://bl2qt1r8mb64m"]
 
 [ext_resource type="Script" uid="uid://ddnw55a5641x8" path="res://core/damage/hit/base/slash/SlashHit.gd" id="1_ghvdo"]
 [ext_resource type="Texture2D" uid="uid://btyqiujbeytn8" path="res://assets/celestia/particles/attacks/slash.png" id="2_2wsmk"]
@@ -41,15 +41,10 @@ _data = {
 &"slash": SubResource("Animation_nou0u")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlli3"]
-size = Vector2(27, 27)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wsmk"]
 size = Vector2(32, 32)
 
-[node name="SlashHit" type="CharacterBody2D"]
-collision_layer = 64
-collision_mask = 49
+[node name="SlashHit" type="Node2D"]
 script = ExtResource("1_ghvdo")
 
 [node name="Texture" type="Sprite2D" parent="."]
@@ -60,9 +55,6 @@ hframes = 4
 libraries = {
 &"": SubResource("AnimationLibrary_gg7dq")
 }
-
-[node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_nlli3")
 
 [node name="Hitbox" parent="." instance=ExtResource("2_nlli3")]
 
