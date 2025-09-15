@@ -15,29 +15,25 @@ var damage_factor: float  # Filled on #initialize()
 
 # GODOT
 func _ready():
-	direction = Vector2.RIGHT.rotated(global_rotation)
+	direction = global_position.direction_to(source_entity.get_mouse_direction())
+	rotation_degrees = rad_to_deg(direction.angle())
 	calc_max_distance = global_position + direction.normalized() * (
 		(source_entity.entity_data.stats.get_property(InitPropProviders.RANGE).get_range() * range_factor) * hit_max_distance 
 	)
-	flip_texture()
 
 
 func _physics_process(delta):
 	velocity = direction * speed
 	var collision = move_and_collide(velocity * delta)
 	_on_collide(collision)
-	if global_position >= calc_max_distance: despawn_hit()
+	# TODO: Resolver o despawn ao atingir alcance máximo:
+	# if global_position >= calc_max_distance: despawn_hit()
 
 # MAIN
 func initialize(source_entity_param: LivingEntity, range_factor_param: float, damage_factor_param: float) -> void:
 	source_entity = source_entity_param
 	range_factor = range_factor_param
 	damage_factor = damage_factor_param
-
-
-func flip_texture() -> void:
-	var mouse_direction: Vector2 = source_entity.get_mouse_direction()
-	TEXTURE.flip_h = mouse_direction.x < 0
 
 
 func despawn_hit() -> void:

@@ -5,7 +5,7 @@ class_name SlashHit
 # Godot
 func _ready() -> void:
 	super()
-	ANIMATION.play('attack')
+	ANIMATION.play('slash')
 
 # Getters and setters
 func get_hit_data() -> HitData:
