@@ -3,10 +3,11 @@ class_name WorldUI
 
 signal ui_rotate_pressed
 
-@onready var view := $ViewTransition
 @onready var hud: PlayerHUD = $HUD
 @onready var bg_blur := $Panel
 @onready var my_panel: MyPanel = $MyPanel
+@onready var view: ViewTransition = $ViewTransition
+@onready var essence_vessel: EssenceVessel = $EssenceVessel
 
 var player: Player
 

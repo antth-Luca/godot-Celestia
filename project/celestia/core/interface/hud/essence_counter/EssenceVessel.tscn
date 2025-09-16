@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://0rph5meg44x0"]
+[gd_scene load_steps=14 format=3 uid="uid://0rph5meg44x0"]
 
-[ext_resource type="Texture2D" uid="uid://bcvq01kiytqau" path="res://assets/celestia/interface/hud/artificial_heart.png" id="1_618a1"]
-[ext_resource type="Script" uid="uid://hdhfm87rlycd" path="res://core/interface/hud/essence_counter/EssenceCounter.gd" id="1_ds4do"]
+[ext_resource type="Script" uid="uid://hdhfm87rlycd" path="res://core/interface/hud/essence_counter/EssenceVessel.gd" id="1_8g62b"]
+[ext_resource type="Texture2D" uid="uid://bcvq01kiytqau" path="res://assets/celestia/interface/hud/artificial_heart.png" id="2_bb7ba"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds4do"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -14,33 +14,6 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ahde"]
 bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Animation" id="Animation_ds4do"]
-resource_name = "entry"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/ArtificialHeart:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer/ArtificialHeart/Heart:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.4, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(10, 10), Vector2(11, 11), Vector2(10, 10)]
-}
 
 [sub_resource type="Animation" id="Animation_xkk3x"]
 length = 0.001
@@ -80,6 +53,69 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HBoxContainer/ArtificialHeart:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HBoxContainer/ArtificialHeart:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HBoxContainer/ArtificialHeart/EssenceParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ds4do"]
+resource_name = "entry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/ArtificialHeart:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/ArtificialHeart/Heart:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(11, 11), Vector2(10, 10)]
+}
 
 [sub_resource type="Animation" id="Animation_ut7ja"]
 resource_name = "exit"
@@ -106,6 +142,46 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(10, 10), Vector2(11, 11), Vector2(10, 10), Vector2(11, 11), Vector2(10, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_vpwo1"]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/ArtificialHeart:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, -0.0872665, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/ArtificialHeart:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/ArtificialHeart/EssenceParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.125),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_3ahde"]
@@ -141,17 +217,22 @@ _data = {
 &"RESET": SubResource("Animation_xkk3x"),
 &"entry": SubResource("Animation_ds4do"),
 &"exit": SubResource("Animation_ut7ja"),
+&"hurt": SubResource("Animation_vpwo1"),
 &"over": SubResource("Animation_3ahde")
 }
 
-[node name="EssenceCounter" type="Control"]
+[sub_resource type="Curve" id="Curve_ds4do"]
+_data = [Vector2(0.0560748, 1), 0.0, 0.0, 0, 0, Vector2(0.990654, 0.0898877), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="EssenceVessel" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ds4do")
+script = ExtResource("1_8g62b")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -195,10 +276,25 @@ one_shot = true
 [node name="Heart" type="Sprite2D" parent="HBoxContainer/ArtificialHeart"]
 position = Vector2(0, 315)
 scale = Vector2(10, 10)
-texture = ExtResource("1_618a1")
+texture = ExtResource("2_bb7ba")
 
 [node name="Animation" type="AnimationPlayer" parent="HBoxContainer/ArtificialHeart"]
 root_node = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_ut7ja")
 }
+
+[node name="EssenceParticles" type="CPUParticles2D" parent="HBoxContainer/ArtificialHeart"]
+position = Vector2(30, 326)
+emitting = false
+amount = 24
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_ds4do")
+color = Color(1, 0.776471, 0.235294, 1)

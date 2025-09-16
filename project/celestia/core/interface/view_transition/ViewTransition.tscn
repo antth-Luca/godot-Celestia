@@ -7,7 +7,7 @@
 shader = ExtResource("1_pfrfo")
 shader_parameter/open_amount = 0.0
 shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/smoothness = 0.08
+shader_parameter/smoothness = 0.0
 
 [node name="ViewTransition" type="ColorRect"]
 material = SubResource("ShaderMaterial_jvhmc")

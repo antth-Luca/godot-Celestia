@@ -1,6 +1,8 @@
 extends LivingEntity
 class_name Player
 
+var ESSENCE_COUNTER: int = 3
+
 var inventory: InventoryManager
 var hand: PlayerHand
 
@@ -49,7 +51,10 @@ func _ready():
 	inventory = get_ui().get_invent_panel().get_inventory_tab()
 	inventory.player = self
 	# World UI
-	get_ui().player = self
+	var ui = get_ui()
+	ui.player = self
+	ui.essence_vessel.set_max_essence(ESSENCE_COUNTER)
+	ui.essence_vessel.set_essence(ESSENCE_COUNTER)
 	# Player Hand
 	hand = get_hand()
 	hand.player = self
@@ -67,10 +72,25 @@ func _physics_process(delta: float) -> void:
 # Main
 func die() -> void:
 	is_dead = true
+	ESSENCE_COUNTER -= 1
 	ANIMATION.play('death')
 	await ANIMATION.animation_finished
-	await get_ui().view.close_eyes()
-	get_tree().change_scene_to_file("res://client/screens/title_screen/TitleScreen.tscn")
+	var ui = get_ui()
+	await ui.view.close_eyes()
+	await ui.essence_vessel.discount_essence()
+	if ESSENCE_COUNTER <= 0:
+		get_tree().change_scene_to_file("res://client/screens/title_screen/TitleScreen.tscn")
+	else:
+		respawn()
+
+
+func respawn() -> void:
+	var health_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
+	health_prop.set_health(
+		health_prop.get_max_health() * .4
+	)
+	get_ui().view.open_eyes()
+	is_dead = false
 
 # Animation
 func set_animation() -> void:

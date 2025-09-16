@@ -1,6 +1,6 @@
 extends Node
 
-var config = {}
+var config := {}
 
 
 func _ready() -> void:
