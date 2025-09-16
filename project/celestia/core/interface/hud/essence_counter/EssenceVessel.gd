@@ -16,7 +16,7 @@ func _ready() -> void:
 	var mid_coord = get_viewport_rect().size / 2
 	SPRITE.position = mid_coord
 	essence_bar.position = mid_coord + Vector2(20, 0)
-	essence_particles.position = mid_coord + Vector2(20, 0)
+	essence_particles.position = mid_coord + Vector2(10, 30)
 	# Timer
 	essence_timer.wait_time = default_change_time
 	# Visibility
