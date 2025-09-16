@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5ojxudq5dkh4"]
+[gd_scene load_steps=3 format=3 uid="uid://b5ojxudq5dkh4"]
 
 [ext_resource type="Shader" uid="uid://cotthynm0c7vs" path="res://assets/celestia/shaders/background_blur.gdshader" id="1_nlp4t"]
-[ext_resource type="Script" uid="uid://cnkv67qfppr07" path="res://core/interface/pause_menu/PauseMenu.gd" id="2_bri5l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bri5l"]
 shader = ExtResource("1_nlp4t")
@@ -16,7 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-script = ExtResource("2_bri5l")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2

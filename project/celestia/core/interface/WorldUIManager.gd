@@ -8,12 +8,16 @@ signal ui_rotate_pressed
 @onready var my_panel: MyPanel = $MyPanel
 @onready var view: ViewTransition = $ViewTransition
 @onready var essence_vessel: EssenceVessel = $EssenceVessel
-@onready var pause_menu: PauseMenu = $PauseMenu
+@onready var pause_menu := $PauseMenu
 
 var player: Player
 
 # GODOT
 func _ready():
+	# Signals
+	pause_menu.get_node('VBoxContainer/ResumeButton').connect('pressed', Callable(self, '_on_resume_button_pressed'))
+	pause_menu.get_node('VBoxContainer/QuitButton').connect('pressed', Callable(self, '_on_quit_button_pressed'))
+	# Visible
 	bg_blur.visible = false
 	pause_menu.visible = false
 	view.open_eyes()
@@ -58,3 +62,11 @@ func update_my_panel(current_switch: bool) -> void:
 func update_pause_menu(current_switch: bool) -> void:
 	bg_blur.visible = !current_switch
 	pause_menu.visible = !current_switch
+
+
+func _on_resume_button_pressed() -> void:
+	update_pause_menu(true)
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().change_scene_to_file('res://client/screens/title_screen/TitleScreen.tscn')
