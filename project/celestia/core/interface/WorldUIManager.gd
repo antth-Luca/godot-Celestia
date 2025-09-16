@@ -8,6 +8,7 @@ signal ui_rotate_pressed
 @onready var my_panel: MyPanel = $MyPanel
 @onready var view: ViewTransition = $ViewTransition
 @onready var essence_vessel: EssenceVessel = $EssenceVessel
+@onready var pause_menu: PauseMenu = $PauseMenu
 
 var player: Player
 

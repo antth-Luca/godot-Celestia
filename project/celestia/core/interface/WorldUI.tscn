@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cid21w8ylowqb"]
+[gd_scene load_steps=9 format=3 uid="uid://cid21w8ylowqb"]
 
 [ext_resource type="Script" uid="uid://cagv87v3lq2t6" path="res://core/interface/WorldUIManager.gd" id="1_rklmp"]
 [ext_resource type="PackedScene" uid="uid://7hauijtfq470" path="res://core/interface/hud/HUD.tscn" id="1_x3ylb"]
 [ext_resource type="PackedScene" uid="uid://dmmcjcw2tpjtm" path="res://core/interface/view_transition/ViewTransition.tscn" id="2_p0033"]
 [ext_resource type="PackedScene" uid="uid://b3nywi3j43fbq" path="res://core/interface/tab_inventory/MyPanel.tscn" id="2_rklmp"]
+[ext_resource type="Shader" uid="uid://cotthynm0c7vs" path="res://assets/celestia/shaders/background_blur.gdshader" id="3_ucq0c"]
 [ext_resource type="PackedScene" uid="uid://0rph5meg44x0" path="res://core/interface/hud/essence_counter/EssenceVessel.tscn" id="5_ximc0"]
+[ext_resource type="PackedScene" uid="uid://b5ojxudq5dkh4" path="res://core/interface/pause_menu/PauseMenu.tscn" id="6_ruaqd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yxikf"]
+shader = ExtResource("3_ucq0c")
+shader_parameter/lod = 1.0
 
 [node name="WorldUI" type="CanvasLayer"]
 script = ExtResource("1_rklmp")
@@ -12,6 +18,7 @@ script = ExtResource("1_rklmp")
 [node name="HUD" parent="." instance=ExtResource("1_x3ylb")]
 
 [node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_yxikf")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,3 +30,6 @@ grow_vertical = 2
 [node name="ViewTransition" parent="." instance=ExtResource("2_p0033")]
 
 [node name="EssenceVessel" parent="." instance=ExtResource("5_ximc0")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_ruaqd")]
+visible = false
