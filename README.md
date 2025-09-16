@@ -27,7 +27,6 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 ### Recursos:
 #### Pré-alpha
-* [ ] Sistema de dano;
 * [ ] Sistema de ressurreição;
 * [ ] Sistema de tempo (dia e noite);
 * [ ] Estrutura de cama;
@@ -45,7 +44,8 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 * [x] Sistema de Properties (usado nos atributos/stats de entidades);
 * [x] Sistema de Components para entidades;
 * [x] Primeira entidade-monstro: Zumbi/Zombie;
-* [x] HUD do jogador.
+* [x] HUD do jogador;
+* [x] Sistema de dano.
 
 #### Alpha
 * [ ] Item de combate à distância: Arco;
