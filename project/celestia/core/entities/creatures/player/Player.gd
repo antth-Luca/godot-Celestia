@@ -69,6 +69,7 @@ func die() -> void:
 	is_dead = true
 	ANIMATION.play('death')
 	await ANIMATION.animation_finished
+	await get_ui().view.close_eyes()
 	get_tree().change_scene_to_file("res://client/screens/title_screen/TitleScreen.tscn")
 
 # Animation
