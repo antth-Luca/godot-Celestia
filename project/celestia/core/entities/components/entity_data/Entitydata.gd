@@ -13,10 +13,10 @@ var faction: FACTION_MASK = FACTION_MASK.STRUCT
 var team: String
 var stats: PropertyManager
 var is_invincible: bool = false
-var is_alive: bool
+var is_dead: bool
 
 # GODOT
-func _init(faction_param: FACTION_MASK, stats_param: PropertyManager, is_alive_param: bool = true):
+func _init(faction_param: FACTION_MASK, stats_param: PropertyManager, is_dead_param: bool = false):
 	faction = faction_param
 	stats = stats_param
-	is_alive = is_alive_param
+	is_dead = is_dead_param

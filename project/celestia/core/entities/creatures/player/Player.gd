@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 # SUPER
 # Main
 func die() -> void:
-	is_dead = true
+	entity_data.is_dead = true
 	ESSENCE_COUNTER -= 1
 	ANIMATION.play('death')
 	await ANIMATION.animation_finished
@@ -90,11 +90,12 @@ func respawn() -> void:
 		health_prop.get_max_health() * .4
 	)
 	get_ui().view.open_eyes()
-	is_dead = false
+	entity_data.is_dead = false
+	set_invencibility(2.5)
 
 # Animation
 func set_animation() -> void:
-	if is_dead: return
+	if entity_data.is_dead: return
 	var anim = 'idle'
 	if direction != Vector2.ZERO: anim = 'walk'
 	if ANIMATION.current_animation != anim: ANIMATION.play(anim)

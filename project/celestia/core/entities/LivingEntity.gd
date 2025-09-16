@@ -7,7 +7,6 @@ class_name LivingEntity
 var direction: Vector2 = Vector2.ZERO
 var knockback_vector: Vector2 = Vector2.ZERO
 var entity_data: EntityData
-var is_dead: bool = false
 
 # GODOT
 func _ready() -> void:
@@ -17,7 +16,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if is_dead: return
+	if entity_data.is_dead: return
 	# Knockback
 	if knockback_vector != Vector2.ZERO:
 		velocity = knockback_vector
@@ -35,15 +34,36 @@ func _physics_process(_delta: float) -> void:
 
 # MAIN
 func die() -> void:
-	is_dead = true
+	entity_data.is_dead = true
 	ANIMATION.play('death')
 	await ANIMATION.animation_finished
 	queue_free()
 
 # GETTERS AND SETTERS
+# Entity data
+func set_invencibility(invenc_time: float) -> void:
+	entity_data.is_invincible = true
+	# Blink
+	var blink_tween: Tween = create_tween()
+	blink_tween.set_loops()
+	blink_tween.tween_property(TEXTURE, 'self_modulate', Color.YELLOW, .3)
+	blink_tween.tween_property(TEXTURE, 'self_modulate', Color.WHITE, .3).from(Color.YELLOW)
+	# Timer
+	var timer := Timer.new()
+	timer.wait_time = invenc_time
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	# Deactivate
+	await timer.timeout
+	entity_data.is_invincible = false
+	blink_tween.kill()
+	TEXTURE.self_modulate = Color.WHITE
+	timer.queue_free()
+
 # Animation
 func set_animation() -> void:
-	if is_dead: return
+	if entity_data.is_dead: return
 	var anim = 'idle'
 	if direction != Vector2.ZERO:
 		anim = 'walk'
@@ -52,7 +72,7 @@ func set_animation() -> void:
 
 # HANDLERS
 func _on_hurtbox_area_entered(hitbox) -> void:
-	if not is_dead and hitbox.is_in_group('hitbox'):
+	if not entity_data.is_dead and hitbox.is_in_group('hitbox'):
 		var hitbox_parent = hitbox.get_parent()
 		var hitdata: HitData = hitbox_parent.get_hit_data()
 		if DamageManager.try_apply(hitdata, entity_data):

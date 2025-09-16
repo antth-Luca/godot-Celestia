@@ -21,7 +21,7 @@ const DAMAGE_RULES = {
 static func can_damage(hit: HitData, target: EntityData) -> bool:
 	if (
 		hit.attacker == target or
-		not target.is_alive or
+		target.is_dead or
 		target.is_invincible
 	): return false
 	return (DAMAGE_RULES.get(hit.attacker.faction, 0) & target.faction) != 0
