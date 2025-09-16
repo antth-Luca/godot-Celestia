@@ -1,4 +1,4 @@
-extends ColorRect
+extends HBoxContainer
 class_name PauseMenu
 
 @onready var shader_material: ShaderMaterial = self.material

@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://0rph5meg44x0" path="res://core/interface/hud/essence_counter/EssenceVessel.tscn" id="5_ximc0"]
 [ext_resource type="PackedScene" uid="uid://b5ojxudq5dkh4" path="res://core/interface/pause_menu/PauseMenu.tscn" id="6_ruaqd"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yxikf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ucq0c"]
 shader = ExtResource("3_ucq0c")
-shader_parameter/lod = 1.0
+shader_parameter/lod = 2.0
+shader_parameter/tint_color = Color(0.590441, 0.590441, 0.590441, 1)
 
 [node name="WorldUI" type="CanvasLayer"]
 script = ExtResource("1_rklmp")
@@ -18,7 +19,7 @@ script = ExtResource("1_rklmp")
 [node name="HUD" parent="." instance=ExtResource("1_x3ylb")]
 
 [node name="Panel" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_yxikf")
+material = SubResource("ShaderMaterial_ucq0c")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,4 +33,3 @@ grow_vertical = 2
 [node name="EssenceVessel" parent="." instance=ExtResource("5_ximc0")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_ruaqd")]
-visible = false
