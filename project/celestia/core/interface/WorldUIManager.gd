@@ -62,6 +62,7 @@ func update_my_panel(current_switch: bool) -> void:
 func update_pause_menu(current_switch: bool) -> void:
 	bg_blur.visible = !current_switch
 	pause_menu.visible = !current_switch
+	get_tree().paused = !current_switch
 
 
 func _on_resume_button_pressed() -> void:
