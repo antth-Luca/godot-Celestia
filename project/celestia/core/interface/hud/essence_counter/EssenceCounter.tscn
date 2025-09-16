@@ -1,0 +1,204 @@
+[gd_scene load_steps=12 format=3 uid="uid://0rph5meg44x0"]
+
+[ext_resource type="Texture2D" uid="uid://bcvq01kiytqau" path="res://assets/celestia/interface/hud/artificial_heart.png" id="1_618a1"]
+[ext_resource type="Script" uid="uid://hdhfm87rlycd" path="res://core/interface/hud/essence_counter/EssenceCounter.gd" id="1_ds4do"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds4do"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkk3x"]
+bg_color = Color(1, 0.729412, 0.0588235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ut7ja"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ahde"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_ds4do"]
+resource_name = "entry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/ArtificialHeart:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/ArtificialHeart/Heart:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(11, 11), Vector2(10, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_xkk3x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/ArtificialHeart:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/ArtificialHeart/Heart:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/ArtificialHeart/Heart:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ut7ja"]
+resource_name = "exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/ArtificialHeart:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/ArtificialHeart/Heart:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(11, 11), Vector2(10, 10), Vector2(11, 11), Vector2(10, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_3ahde"]
+resource_name = "over"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/ArtificialHeart/Heart:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.266667, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 1), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 1), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/ArtificialHeart/Heart:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.2667, 0.3, 0.35, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(11, 11), Vector2(10, 10), Vector2(10.5, 10.5), Vector2(10, 10), Vector2(11, 11), Vector2(10, 10), Vector2(10.5, 10.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ut7ja"]
+_data = {
+&"RESET": SubResource("Animation_xkk3x"),
+&"entry": SubResource("Animation_ds4do"),
+&"exit": SubResource("Animation_ut7ja"),
+&"over": SubResource("Animation_3ahde")
+}
+
+[node name="EssenceCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ds4do")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ArtificialHeart" type="Node2D" parent="HBoxContainer"]
+position = Vector2(576, 0)
+
+[node name="EssenceBar" type="ProgressBar" parent="HBoxContainer/ArtificialHeart"]
+offset_left = 20.0
+offset_top = 315.0
+offset_right = 40.0
+offset_bottom = 335.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ds4do")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xkk3x")
+max_value = 3.0
+value = 2.0
+fill_mode = 3
+show_percentage = false
+
+[node name="PrevEssenceBar" type="ProgressBar" parent="HBoxContainer/ArtificialHeart/EssenceBar"]
+z_index = -1
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ut7ja")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3ahde")
+max_value = 3.0
+value = 2.5
+fill_mode = 3
+show_percentage = false
+
+[node name="EssenceTimer" type="Timer" parent="HBoxContainer/ArtificialHeart/EssenceBar"]
+one_shot = true
+
+[node name="Heart" type="Sprite2D" parent="HBoxContainer/ArtificialHeart"]
+position = Vector2(0, 315)
+scale = Vector2(10, 10)
+texture = ExtResource("1_618a1")
+
+[node name="Animation" type="AnimationPlayer" parent="HBoxContainer/ArtificialHeart"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_ut7ja")
+}
