@@ -3,12 +3,12 @@ class_name EssenceVessel
 
 const default_change_time: float = .4
 
-@onready var SPRITE: Sprite2D = $HBoxContainer/ArtificialHeart/Heart
-@onready var ANIMATION: AnimationPlayer = $HBoxContainer/ArtificialHeart/Animation
-@onready var essence_bar: ProgressBar = $HBoxContainer/ArtificialHeart/EssenceBar
-@onready var prev_essence_bar: ProgressBar = $HBoxContainer/ArtificialHeart/EssenceBar/PrevEssenceBar
-@onready var essence_timer: Timer = $HBoxContainer/ArtificialHeart/EssenceBar/EssenceTimer
-@onready var essence_particles: CPUParticles2D = $HBoxContainer/ArtificialHeart/EssenceParticles
+@onready var SPRITE: Sprite2D = $ArtificialHeart/Heart
+@onready var ANIMATION: AnimationPlayer = $ArtificialHeart/Animation
+@onready var essence_bar: ProgressBar = $ArtificialHeart/EssenceBar
+@onready var prev_essence_bar: ProgressBar = $ArtificialHeart/EssenceBar/PrevEssenceBar
+@onready var essence_timer: Timer = $ArtificialHeart/EssenceBar/EssenceTimer
+@onready var essence_particles: CPUParticles2D = $ArtificialHeart/EssenceParticles
 
 # GODOT
 func _ready() -> void:

@@ -20,7 +20,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/ArtificialHeart:modulate")
+tracks/0/path = NodePath("ArtificialHeart:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer/ArtificialHeart/Heart:scale")
+tracks/1/path = NodePath("ArtificialHeart/Heart:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -44,7 +44,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HBoxContainer/ArtificialHeart/Heart:modulate")
+tracks/2/path = NodePath("ArtificialHeart/Heart:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -56,7 +56,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HBoxContainer/ArtificialHeart:rotation")
+tracks/3/path = NodePath("ArtificialHeart:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -68,7 +68,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HBoxContainer/ArtificialHeart:scale")
+tracks/4/path = NodePath("ArtificialHeart:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -80,7 +80,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HBoxContainer/ArtificialHeart/EssenceParticles:emitting")
+tracks/5/path = NodePath("ArtificialHeart/EssenceParticles:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -95,7 +95,7 @@ resource_name = "entry"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/ArtificialHeart:modulate")
+tracks/0/path = NodePath("ArtificialHeart:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -107,7 +107,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer/ArtificialHeart/Heart:scale")
+tracks/1/path = NodePath("ArtificialHeart/Heart:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -122,7 +122,7 @@ resource_name = "exit"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/ArtificialHeart:modulate")
+tracks/0/path = NodePath("ArtificialHeart:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -134,7 +134,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer/ArtificialHeart/Heart:scale")
+tracks/1/path = NodePath("ArtificialHeart/Heart:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -150,7 +150,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/ArtificialHeart:rotation")
+tracks/0/path = NodePath("ArtificialHeart:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -162,7 +162,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer/ArtificialHeart:scale")
+tracks/1/path = NodePath("ArtificialHeart:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -174,7 +174,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HBoxContainer/ArtificialHeart/EssenceParticles:emitting")
+tracks/2/path = NodePath("ArtificialHeart/EssenceParticles:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -190,7 +190,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer/ArtificialHeart/Heart:modulate")
+tracks/0/path = NodePath("ArtificialHeart/Heart:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -202,7 +202,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer/ArtificialHeart/Heart:scale")
+tracks/1/path = NodePath("ArtificialHeart/Heart:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -234,23 +234,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8g62b")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+[node name="ArtificialHeart" type="Node2D" parent="."]
 
-[node name="ArtificialHeart" type="Node2D" parent="HBoxContainer"]
-position = Vector2(576, 0)
-
-[node name="EssenceBar" type="ProgressBar" parent="HBoxContainer/ArtificialHeart"]
-offset_left = 20.0
-offset_top = 315.0
-offset_right = 40.0
-offset_bottom = 335.0
+[node name="EssenceBar" type="ProgressBar" parent="ArtificialHeart"]
+offset_left = 22.0
+offset_right = 44.0
+offset_bottom = 22.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ds4do")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xkk3x")
 max_value = 3.0
@@ -258,11 +247,11 @@ value = 2.0
 fill_mode = 3
 show_percentage = false
 
-[node name="PrevEssenceBar" type="ProgressBar" parent="HBoxContainer/ArtificialHeart/EssenceBar"]
+[node name="PrevEssenceBar" type="ProgressBar" parent="ArtificialHeart/EssenceBar"]
 z_index = -1
 layout_mode = 0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_right = 22.0
+offset_bottom = 22.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ut7ja")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3ahde")
 max_value = 3.0
@@ -270,22 +259,21 @@ value = 2.5
 fill_mode = 3
 show_percentage = false
 
-[node name="EssenceTimer" type="Timer" parent="HBoxContainer/ArtificialHeart/EssenceBar"]
+[node name="EssenceTimer" type="Timer" parent="ArtificialHeart/EssenceBar"]
 one_shot = true
 
-[node name="Heart" type="Sprite2D" parent="HBoxContainer/ArtificialHeart"]
-position = Vector2(0, 315)
+[node name="Heart" type="Sprite2D" parent="ArtificialHeart"]
 scale = Vector2(10, 10)
 texture = ExtResource("2_bb7ba")
 
-[node name="Animation" type="AnimationPlayer" parent="HBoxContainer/ArtificialHeart"]
-root_node = NodePath("../../..")
+[node name="Animation" type="AnimationPlayer" parent="ArtificialHeart"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_ut7ja")
 }
 
-[node name="EssenceParticles" type="CPUParticles2D" parent="HBoxContainer/ArtificialHeart"]
-position = Vector2(30, 326)
+[node name="EssenceParticles" type="CPUParticles2D" parent="ArtificialHeart"]
+position = Vector2(33, 11)
 emitting = false
 amount = 24
 one_shot = true
