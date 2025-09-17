@@ -27,14 +27,11 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 ### Recursos:
 #### Pré-alpha
-* [ ] Sistema de tempo (dia e noite);
 * [ ] Estrutura de cama;
 * [ ] Sistema de fome;
 * [ ] Sistema de LootTables (drop de entidades);
 * [ ] Sistema de receitas;
 * [ ] Sistema de fabricação;
-* [ ] Pausa de mundo/jogo;
-* [ ] Animação pré-mundo (versõa 1);
 * [x] Cena do Jogador/Player;
 * [x] Sistema de tradução;
 * [x] Inventário do Jogador/Player;
@@ -45,7 +42,10 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 * [x] Primeira entidade-monstro: Zumbi/Zombie;
 * [x] HUD do jogador;
 * [x] Sistema de dano;
-* [x] Sistema de ressurreição do Player.
+* [x] Pausa de mundo/jogo;
+* [x] Sistema de ressurreição do Player;
+* [x] Animação pré-mundo (versão 1);
+* [x] Sistema de tempo (dia e noite).
 
 #### Alpha
 * [ ] Item de combate à distância: Arco;
@@ -64,6 +64,8 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
   * [ ] Bolso rotativo pula posições se girar antes de coletar algum item;
   * [ ] Os cliques 'middle' e 'left' não funcionam no inventário, se o Tooltip estiver aberto;
   * [ ] Adicionar sobreposição de sprites dinâmica, simulando profundidade.
+* [ ] Melhorias:
+  * [ ] Botões do menu de pause com TextureButton.
 * [ ] Sistema de nível de sobrevivente;
 * [ ] Sistema de coleção de itens;
 * [ ] Sistema de conquistas;
@@ -85,7 +87,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
   * [ ] Adição: Partículas de poeira as entidades ao andar;
   * [ ] Adição: Representação do dano em números flutuantes;
   * [ ] Alteração: Sprite de água sendo animado;
-  * [ ] Alteração: Animação pré-mundo (versõa 2);
+  * [ ] Alteração: Animação pré-mundo (versão 2);
   * [x] Adição: Contorno branco aos itens dropados no chão;
 * [ ] Adição de todo o conteúdo possível com os sistemas desenvolvidos até aqui;
 * [ ] Multiplayer em LAN.
