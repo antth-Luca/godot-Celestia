@@ -1,12 +1,11 @@
 extends Node2D
 
 var config := {}
-var time_manager: TimeManager
 
 # GODOT
 func _ready() -> void:
 	# Time
-	time_manager = TimeManager.new(12, $NaturalLight)
+	TimeManager.initialize(0, $NaturalLight)
 	# World config
 	var config_file = FileAccess.open('res://saves/MyWorld/config/world_config.json', FileAccess.READ)
 	if config_file:
@@ -29,7 +28,3 @@ func _ready() -> void:
 		ItemStack.new(InitWeapons.IRON_SWORD.get_registered(), 1),
 		Vector2(208, 133)
 	)
-
-
-func _process(delta: float) -> void:
-	time_manager.update(delta)

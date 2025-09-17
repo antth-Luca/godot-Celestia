@@ -1,6 +1,8 @@
 extends LivingEntity
 class_name Player
 
+@onready var light_point = $LightPoint
+
 var ESSENCE_COUNTER: int = 3
 
 var inventory: InventoryManager
@@ -62,6 +64,10 @@ func _ready():
 	hand.player = self
 	# Item Hand Animation
 	hand.set_item_hand_texture(inventory.get_hand().item)
+
+
+func _process(_delta: float) -> void:
+	light_point.energy = remap(TimeManager.time_curve_value, 0, 1, 1, 0)
 
 
 func _physics_process(delta: float) -> void:

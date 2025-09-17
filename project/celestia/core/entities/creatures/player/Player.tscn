@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://qvrm2d7b1xca"]
+[gd_scene load_steps=24 format=3 uid="uid://qvrm2d7b1xca"]
 
 [ext_resource type="Script" uid="uid://dpv05wrpe5ht3" path="res://core/entities/creatures/player/Player.gd" id="1_ahdn1"]
 [ext_resource type="Shader" uid="uid://bn7mgcor6vpkh" path="res://assets/celestia/shaders/color_blink.gdshader" id="1_gu7p7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ck2k3aynypc8y" path="res://core/entities/creatures/player/PlayerHand.gd" id="3_gu7p7"]
 [ext_resource type="PackedScene" uid="uid://cid21w8ylowqb" path="res://core/interface/WorldUI.tscn" id="3_mi63l"]
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="4_33tkp"]
+[ext_resource type="PackedScene" uid="uid://poc1k1x3jvr3" path="res://core/entities/components/light_point/LightPoint.tscn" id="7_bj32v"]
 
 [sub_resource type="Animation" id="Animation_bj32v"]
 length = 0.001
@@ -361,5 +362,9 @@ shape = SubResource("CircleShape2D_33tkp")
 position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_sskaw")
 debug_color = Color(0.754633, 0.340155, 0.773971, 0.42)
+
+[node name="LightPoint" parent="." instance=ExtResource("7_bj32v")]
+shadow_item_cull_mask = 1
+texture_scale = 0.8
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dhngptmcjn3yv" path="res://core/world/terrain/Sand.tscn" id="3_3qjha"]
 [ext_resource type="PackedScene" uid="uid://c7vjjneyr5tvv" path="res://core/world/terrain/DirtElevation.tscn" id="4_m2nfl"]
 [ext_resource type="PackedScene" uid="uid://chrpnw6us04l7" path="res://core/world/terrain/PlainGrass.tscn" id="5_tnak5"]
-[ext_resource type="PackedScene" uid="uid://4byhmk3r3ox2" path="res://core/world/time/natural_light/NaturalLight.tscn" id="6_0qxeh"]
+[ext_resource type="PackedScene" uid="uid://4byhmk3r3ox2" path="res://core/world/natural_light/NaturalLight.tscn" id="6_0qxeh"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_js7pq")
