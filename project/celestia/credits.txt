@@ -1,8 +1,11 @@
-Thanks to Damian Vila for the assets/fonts/Bescii-Mono.ttf,
+Thanks to Damian Vila for the assets/celestia/fonts/Bescii-Mono.ttf,
 Downloaded on April 23, 2025 from https://github.com/damianvila/font-bescii
 
-Thanks to Clécio Espindola for the assets/particles/light2d-pixel.png,
+Thanks to Clécio Espindola for the assets/celestia/particles/light2d-pixel.png,
 Downloaded on July 26, 2025 from https://drive.google.com/drive/folders/1M5ro-aHu5-7U2SNGLmpcdhchvEjLJy0T
 
-Thanks to Gissio for the assets/fonts/Tiny5-Regular.ttf,
+Thanks to Gissio for the assets/celestia/fonts/Tiny5-Regular.ttf,
 Downloaded on September 3, 2025 from https://fonts.google.com/specimen/Tiny5
+
+Thanks to EriNixie for the assets/celestia/shaders/2D_glow_and_pixel_outline.gdshader,
+Downloaded and edited on September 17, 2025 from https://godotshaders.com/shader/shine-2d-configurable
