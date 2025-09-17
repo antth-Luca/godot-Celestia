@@ -89,6 +89,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
   * [ ] Alteração: Sprite de água sendo animado;
   * [ ] Alteração: Animação pré-mundo (versão 2);
   * [x] Adição: Contorno branco aos itens dropados no chão;
+  * [x] Adição: Brilho branco aos itens dropados no chão.
 * [ ] Adição de todo o conteúdo possível com os sistemas desenvolvidos até aqui;
 * [ ] Multiplayer em LAN.
 
