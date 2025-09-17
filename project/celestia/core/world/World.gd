@@ -1,13 +1,19 @@
 extends Node2D
 
+const real_sec_to_ingame_min_factor: float = 60
+
 @onready var natural_light: CanvasModulate = $NaturalLight
 @onready var day_night_cycle_gradient: GradientTexture1D = load('res://assets/celestia/particles/daynightcycle-gradient-texture.tres')
 
 var config := {}
+# World time
+var initial_hour: float = 12
 var time: float = 0
 
 # GODOT
 func _ready() -> void:
+	# Time
+	time = initial_hour * real_sec_to_ingame_min_factor
 	# World config
 	var config_file = FileAccess.open('res://saves/MyWorld/config/world_config.json', FileAccess.READ)
 	if config_file:
