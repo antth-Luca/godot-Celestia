@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk38kias17xwm"]
+[gd_scene load_steps=7 format=3 uid="uid://bk38kias17xwm"]
 
 [ext_resource type="Script" uid="uid://dt4qxa8ig7grl" path="res://core/world/World.gd" id="1_js7pq"]
 [ext_resource type="PackedScene" uid="uid://c2fpypla1svk" path="res://core/world/terrain/Water.tscn" id="2_dc12c"]
 [ext_resource type="PackedScene" uid="uid://dhngptmcjn3yv" path="res://core/world/terrain/Sand.tscn" id="3_3qjha"]
 [ext_resource type="PackedScene" uid="uid://c7vjjneyr5tvv" path="res://core/world/terrain/DirtElevation.tscn" id="4_m2nfl"]
 [ext_resource type="PackedScene" uid="uid://chrpnw6us04l7" path="res://core/world/terrain/PlainGrass.tscn" id="5_tnak5"]
+[ext_resource type="PackedScene" uid="uid://4byhmk3r3ox2" path="res://core/world/time/natural_light/NaturalLight.tscn" id="6_0qxeh"]
 
-[node name="Main" type="Node2D"]
+[node name="World" type="Node2D"]
 script = ExtResource("1_js7pq")
 
 [node name="Terrain" type="Node2D" parent="."]
@@ -18,3 +19,5 @@ script = ExtResource("1_js7pq")
 [node name="DirtElevation" parent="Terrain" instance=ExtResource("4_m2nfl")]
 
 [node name="Grass" parent="Terrain" instance=ExtResource("5_tnak5")]
+
+[node name="NaturalLight" parent="." instance=ExtResource("6_0qxeh")]

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://4byhmk3r3ox2"]
+
+[node name="NaturalLight" type="CanvasModulate"]
