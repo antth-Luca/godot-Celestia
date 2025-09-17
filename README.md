@@ -20,7 +20,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 | v1.25.1.4 | MagEra | Planejada 📅 | - | - |
 | v1.25.1.5 | Cozinheiros a postos! | Planejada 📅 | - | - |
 | v1.25.1.6 | Festeiro | Planejada 📅 | - | - |
-| v1.25.2.1 | Ato 2 | Planejada 📅 | - | - |
+| v1.25.2.1 | Ato 2 | Planejando... 📅 | - | - |
 
 > [!NOTE]
 > Estou muito entusiasmado em desenvolver Celestia, mas jogos não são o meu trabalho! Novas features virão conforme meu tempo disponível permitir o desenvolvimento.
