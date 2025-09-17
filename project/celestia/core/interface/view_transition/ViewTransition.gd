@@ -6,7 +6,7 @@ class_name ViewTransition
 # MAIN
 func open_eyes() -> void:
 	var open_tween: Tween = create_tween()
-	open_tween.tween_property(shader_material, 'shader_parameter/open_amount', 1.0, 0.5)
+	open_tween.tween_property(shader_material, 'shader_parameter/open_amount', 1.0, .8)
 	await open_tween.finished
 	visible = false
 
@@ -14,5 +14,5 @@ func open_eyes() -> void:
 func close_eyes() -> void:
 	visible = true
 	var open_tween: Tween = create_tween()
-	open_tween.tween_property(shader_material, 'shader_parameter/open_amount', 0, 0.5).from(1.0)
+	open_tween.tween_property(shader_material, 'shader_parameter/open_amount', 0, .8).from(1.0)
 	await open_tween.finished

@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://qvrm2d7b1xca"]
+[gd_scene load_steps=23 format=3 uid="uid://qvrm2d7b1xca"]
 
 [ext_resource type="Script" uid="uid://dpv05wrpe5ht3" path="res://core/entities/creatures/player/Player.gd" id="1_ahdn1"]
+[ext_resource type="Shader" uid="uid://b6vs5n0pwsda0" path="res://assets/celestia/shaders/color_blink.gdshader" id="1_gu7p7"]
 [ext_resource type="Texture2D" uid="uid://ce8bk4a6ciyep" path="res://assets/celestia/textures/player/default_male.png" id="2_lkete"]
 [ext_resource type="Script" uid="uid://ck2k3aynypc8y" path="res://core/entities/creatures/player/PlayerHand.gd" id="3_gu7p7"]
 [ext_resource type="PackedScene" uid="uid://cid21w8ylowqb" path="res://core/interface/WorldUI.tscn" id="3_mi63l"]
@@ -220,6 +221,11 @@ _data = {
 &"walk": SubResource("Animation_gu7p7")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gu7p7"]
+shader = ExtResource("1_gu7p7")
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/is_blink = false
+
 [sub_resource type="Animation" id="Animation_3cpg6"]
 length = 0.001
 tracks/0/type = "value"
@@ -321,6 +327,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gu7p7")
 texture = ExtResource("2_lkete")
 hframes = 4
 vframes = 4

@@ -10,8 +10,8 @@ var entity_data: EntityData
 
 # GODOT
 func _ready() -> void:
+	# Signals
 	var health_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
-	# Health drained
 	health_prop.connect('zero_health', Callable(self, 'die'))
 
 
@@ -46,8 +46,9 @@ func set_invencibility(invenc_time: float) -> void:
 	# Blink
 	var blink_tween: Tween = create_tween()
 	blink_tween.set_loops()
-	blink_tween.tween_property(TEXTURE, 'self_modulate', Color.YELLOW, .3)
-	blink_tween.tween_property(TEXTURE, 'self_modulate', Color.WHITE, .3).from(Color.YELLOW)
+	TEXTURE.material.set_shader_parameter('blink_color', Color(Color.WHITE, .8))
+	blink_tween.tween_property(TEXTURE.material, 'shader_parameter/is_blink', true, .15)
+	blink_tween.tween_property(TEXTURE.material, 'shader_parameter/is_blink', false, .15)
 	# Timer
 	var timer := Timer.new()
 	timer.wait_time = invenc_time
@@ -58,7 +59,7 @@ func set_invencibility(invenc_time: float) -> void:
 	await timer.timeout
 	entity_data.is_invincible = false
 	blink_tween.kill()
-	TEXTURE.self_modulate = Color.WHITE
+	TEXTURE.material.set_shader_parameter('is_blink', false)
 	timer.queue_free()
 
 # Animation
