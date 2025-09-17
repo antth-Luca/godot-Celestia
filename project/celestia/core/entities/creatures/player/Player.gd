@@ -31,6 +31,8 @@ func _init() -> void:
 
 
 func _ready():
+	# Shader
+	TEXTURE.material.set_shader_parameter('blink_color', hurt_color)
 	# Survivor level signal
 	entity_data.stats.get_property(InitPropProviders.SURVIVOR_LEVEL).connect('level_up', Callable(self, '_on_surv_level_up'))
 	# Stats bar signals
@@ -45,7 +47,7 @@ func _ready():
 	mana_prop.emit_signal('max_mana_changed', mana_prop.get_max_mana())
 	mana_prop.connect('mana_changed', Callable(stats_bar, '_on_mana_changed'))
 	mana_prop.emit_signal('mana_changed', mana_prop.get_mana())
-	# Health drained
+	# Health drained signal
 	health_prop.connect('zero_health', Callable(self, 'die'))
 	# Inventory
 	inventory = get_ui().get_invent_panel().get_inventory_tab()

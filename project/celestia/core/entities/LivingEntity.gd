@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name LivingEntity
 
+const hurt_color: Color = Color.INDIAN_RED
+const invencible_color: Color = Color.WHITE
+
 @onready var TEXTURE: Sprite2D = $Texture
 @onready var ANIMATION: AnimationPlayer = $Animation
 
@@ -10,7 +13,9 @@ var entity_data: EntityData
 
 # GODOT
 func _ready() -> void:
-	# Signals
+	# Shader
+	TEXTURE.material.set_shader_parameter('blink_color', hurt_color)
+	# health drained signal
 	var health_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
 	health_prop.connect('zero_health', Callable(self, 'die'))
 
@@ -46,9 +51,9 @@ func set_invencibility(invenc_time: float) -> void:
 	# Blink
 	var blink_tween: Tween = create_tween()
 	blink_tween.set_loops()
-	TEXTURE.material.set_shader_parameter('blink_color', Color(Color.WHITE, .8))
-	blink_tween.tween_property(TEXTURE.material, 'shader_parameter/is_blink', true, .15)
-	blink_tween.tween_property(TEXTURE.material, 'shader_parameter/is_blink', false, .15)
+	TEXTURE.material.set_shader_parameter('blink_color', invencible_color)
+	blink_tween.tween_property(TEXTURE.material, 'shader_parameter/blink_value', 1.0, .15)
+	blink_tween.tween_property(TEXTURE.material, 'shader_parameter/blink_value', 0, .15).from(1.0)
 	# Timer
 	var timer := Timer.new()
 	timer.wait_time = invenc_time
@@ -59,7 +64,8 @@ func set_invencibility(invenc_time: float) -> void:
 	await timer.timeout
 	entity_data.is_invincible = false
 	blink_tween.kill()
-	TEXTURE.material.set_shader_parameter('is_blink', false)
+	TEXTURE.material.set_shader_parameter('blink_value', 0)
+	TEXTURE.material.set_shader_parameter('blink_color', hurt_color)
 	timer.queue_free()
 
 # Animation
@@ -90,5 +96,5 @@ func apply_knockback(attacker_pos: Vector2, target_pos: Vector2, hit_specialized
 	knockback_vector = (attacker_pos - target_pos).normalized() * multiplier
 	var knockback_tween: Tween = get_tree().create_tween()
 	knockback_tween.tween_property(self, 'knockback_vector', Vector2.ZERO, .2)
-	TEXTURE.modulate = Color.INDIAN_RED
-	knockback_tween.tween_property(TEXTURE, 'modulate', Color.WHITE, .15)
+	TEXTURE.material.set_shader_parameter('blink_value', 1.0)
+	knockback_tween.tween_property(TEXTURE.material, 'shader_parameter/blink_value', 0, .15).from(1.0)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3lfgr81bgo4q"]
+[gd_scene load_steps=22 format=3 uid="uid://b3lfgr81bgo4q"]
 
 [ext_resource type="Script" uid="uid://bas2xslnhn10h" path="res://core/entities/creatures/monsters/zombie/Zombie.gd" id="1_cflnr"]
 [ext_resource type="Texture2D" uid="uid://cxk0fabv8lbhu" path="res://assets/celestia/textures/enemies/zombie.png" id="2_shrvl"]
+[ext_resource type="Shader" uid="uid://bn7mgcor6vpkh" path="res://assets/celestia/shaders/color_blink.gdshader" id="2_w6tfs"]
 [ext_resource type="PackedScene" uid="uid://ds4tba05sxc36" path="res://core/entities/components/state_machine/StateMachine.tscn" id="3_uk3j3"]
 [ext_resource type="Script" uid="uid://48asptnty6fm" path="res://core/entities/components/state_machine/states/IdleState.gd" id="4_l7c1m"]
 [ext_resource type="Script" uid="uid://cm0iny1i3r4w1" path="res://core/entities/components/state_machine/states/WanderState.gd" id="4_xp2tj"]
@@ -10,6 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://ym3awtb3ksm4" path="res://core/entities/components/wall_vision/WallVision.tscn" id="6_thrsc"]
 [ext_resource type="PackedScene" uid="uid://cn13ycpy1ji50" path="res://core/entities/components/hitbox/Hitbox.tscn" id="9_haekf"]
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="10_0ipk5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdmcm"]
+shader = ExtResource("2_w6tfs")
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_value = 0.0
 
 [sub_resource type="Animation" id="Animation_frwts"]
 length = 0.001
@@ -102,6 +108,7 @@ collision_mask = 65
 script = ExtResource("1_cflnr")
 
 [node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fdmcm")
 texture = ExtResource("2_shrvl")
 hframes = 4
 vframes = 3
