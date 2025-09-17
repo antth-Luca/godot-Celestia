@@ -27,7 +27,6 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 ### Recursos:
 #### Pré-alpha
-* [ ] Sistema de ressurreição;
 * [ ] Sistema de tempo (dia e noite);
 * [ ] Estrutura de cama;
 * [ ] Sistema de fome;
@@ -35,7 +34,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 * [ ] Sistema de receitas;
 * [ ] Sistema de fabricação;
 * [ ] Pausa de mundo/jogo;
-* [ ] Animação versão 1 ao entrar em um mundo;
+* [ ] Animação pré-mundo (versõa 1);
 * [x] Cena do Jogador/Player;
 * [x] Sistema de tradução;
 * [x] Inventário do Jogador/Player;
@@ -45,7 +44,8 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 * [x] Sistema de Components para entidades;
 * [x] Primeira entidade-monstro: Zumbi/Zombie;
 * [x] HUD do jogador;
-* [x] Sistema de dano.
+* [x] Sistema de dano;
+* [x] Sistema de ressurreição do Player.
 
 #### Alpha
 * [ ] Item de combate à distância: Arco;
@@ -85,7 +85,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
   * [ ] Adição: Partículas de poeira as entidades ao andar;
   * [ ] Adição: Representação do dano em números flutuantes;
   * [ ] Alteração: Sprite de água sendo animado;
-  * [ ] Alteração: Animação 2 ao entrar em um mundo;
+  * [ ] Alteração: Animação pré-mundo (versõa 2);
   * [x] Adição: Contorno branco aos itens dropados no chão;
 * [ ] Adição de todo o conteúdo possível com os sistemas desenvolvidos até aqui;
 * [ ] Multiplayer em LAN.
