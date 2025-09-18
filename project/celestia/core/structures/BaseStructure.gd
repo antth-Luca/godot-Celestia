@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 class_name BaseStructure
 
 # MAIN
@@ -7,6 +7,7 @@ func on_interact(_entity: LivingEntity) -> void:
 
 # HANDLERS
 func _on_interaction_entity_entered(body: Node2D) -> void:
+	print_debug('Entrou')
 	if body.is_in_group('player'):
 		body.hand.active_interacts.push_back(self)
 

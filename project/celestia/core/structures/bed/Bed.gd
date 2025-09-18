@@ -1,6 +1,9 @@
 extends BaseStructure
 class_name Bed
 
+@onready var TEXTURE = $Texture
+@onready var ANIMATION = $Animation
+
 var stats: PropertyManager
 
 # GODOT

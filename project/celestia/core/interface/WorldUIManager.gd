@@ -28,6 +28,8 @@ func _input(event: InputEvent) -> void:
 	if !bg_blur.visible:
 		if event.is_action_pressed('ui_use'):
 			player.hand.perform_use()
+		elif event.is_action_pressed('ui_interact'):
+			player.hand.perform_interact()
 		elif event.is_action_pressed('ui_rotate'):
 			emit_signal('ui_rotate_pressed')
 		elif event.is_action_pressed('ui_cancel'):

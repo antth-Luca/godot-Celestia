@@ -8,10 +8,11 @@ var player: Player
 var is_using: bool = false
 var is_interacting: bool = false
 var active_interacts: Array[BaseStructure] = []
+var highlighted_interact: BaseStructure  # TODO: Implementar destaque com contorno.
 
 # GODOT
 func _process(_delta: float) -> void:
-	print_debug('Olá da PlayerHand!')
+	pass  # TODO: Implementar a verificação de estrutura em destaque.
 
 # GETTERS AND SETTERS
 func set_item_hand_texture(item_hand: BaseItem) -> void:
@@ -19,7 +20,7 @@ func set_item_hand_texture(item_hand: BaseItem) -> void:
 
 # MAIN
 func perform_use() -> void:
-	if is_using: return
+	if is_using or is_interacting: return
 	var stack_hand: ItemStack = player.inventory.get_hand()
 	if stack_hand.is_empty(): return
 	is_using = true
@@ -31,4 +32,6 @@ func perform_use() -> void:
 
 
 func perform_interact() -> void:
-	pass
+	if is_interacting or is_using: return
+	is_interacting = true
+	active_interacts[0].on_interact(player)
