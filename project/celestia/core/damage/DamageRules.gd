@@ -5,8 +5,7 @@ const DAMAGE_RULES = {
 	EntityData.FACTION_MASK.PLAYER: 
 		EntityData.FACTION_MASK.BOSS | 
 		EntityData.FACTION_MASK.MONSTER |
-		EntityData.FACTION_MASK.ANIMAL |
-		EntityData.FACTION_MASK.STRUCT,
+		EntityData.FACTION_MASK.ANIMAL,
 	EntityData.FACTION_MASK.BOSS:
 		EntityData.FACTION_MASK.PLAYER,
 	EntityData.FACTION_MASK.MONSTER:
@@ -14,8 +13,7 @@ const DAMAGE_RULES = {
 		EntityData.FACTION_MASK.MONSTER,
 	EntityData.FACTION_MASK.ANIMAL:
 		EntityData.FACTION_MASK.PLAYER |
-		EntityData.FACTION_MASK.ANIMAL,
-	EntityData.FACTION_MASK.STRUCT: 0
+		EntityData.FACTION_MASK.ANIMAL
 }
 
 static func can_damage(hit: HitData, target: EntityData) -> bool:

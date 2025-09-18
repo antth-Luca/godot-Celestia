@@ -6,6 +6,12 @@ class_name PlayerHand
 
 var player: Player
 var is_using: bool = false
+var is_interacting: bool = false
+var active_interacts: Array[BaseStructure] = []
+
+# GODOT
+func _process(_delta: float) -> void:
+	print_debug('Olá da PlayerHand!')
 
 # GETTERS AND SETTERS
 func set_item_hand_texture(item_hand: BaseItem) -> void:
@@ -22,3 +28,7 @@ func perform_use() -> void:
 	var calc_use_speed: float = player.entity_data.stats.get_property(InitPropProviders.USE_SPEED).get_use_speed() * stack_hand.item.use_speed_factor
 	await get_tree().create_timer(1 / calc_use_speed).timeout
 	is_using = false
+
+
+func perform_interact() -> void:
+	pass

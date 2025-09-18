@@ -5,11 +5,10 @@ enum FACTION_MASK {
 	PLAYER = 0b0001,
 	BOSS = 0b0010,
 	MONSTER = 0b0100,
-	ANIMAL = 0b1000,
-	STRUCT = 0b1001
+	ANIMAL = 0b1000
 }
 
-var faction: FACTION_MASK = FACTION_MASK.STRUCT
+var faction: FACTION_MASK = FACTION_MASK.ANIMAL
 var team: String
 var stats: PropertyManager
 var is_invincible: bool = false
