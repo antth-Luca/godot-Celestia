@@ -30,17 +30,16 @@ func set_item_hand_texture(item_hand: BaseItem) -> void:
 func perform_use() -> void:
 	if is_using or is_interacting: return
 	var stack_hand: ItemStack = player.inventory.get_hand()
-	if stack_hand.is_empty(): return
+	if stack_hand.is_empty() or stack_hand.item.in_cooldown: return
 	is_using = true
 	ITEM_HAND_ANIMATION.play(stack_hand.item.anim_type)
 	stack_hand.item.use(player)
-	var calc_use_speed: float = player.entity_data.stats.get_property(InitPropProviders.USE_SPEED).get_use_speed() * stack_hand.item.use_speed_factor
-	await get_tree().create_timer(1 / calc_use_speed).timeout
+	await ITEM_HAND_ANIMATION.animation_finished
 	is_using = false
 
 
 func perform_interact() -> void:
-	if is_interacting or is_using: return
+	if is_interacting or is_using or not highlighted_interaction: return
 	is_interacting = true
 	highlighted_interaction.on_interact(player)
 

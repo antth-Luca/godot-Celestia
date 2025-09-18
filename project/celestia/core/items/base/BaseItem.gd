@@ -19,8 +19,20 @@ var _durability: int = 0
 var material: BaseMaterial = InitMaterials.GENERIC.get_registered()
 var rarity: BaseRarity = InitRarities.COMMON.get_registered()
 var anim_type: String = AnimType.HOLD
+var use_speed_factor: float = 1
+var in_cooldown: bool = false
 
 # GETTERS AND SETTERS
+# Cooldown
+func set_cooldown(player: LivingEntity, cd_time: float = 0, can_reduce: bool = true) -> void:
+	if cd_time == 0:
+		cd_time = 1 / (player.entity_data.stats.get_property(InitPropProviders.USE_SPEED).get_use_speed() * use_speed_factor)
+	elif can_reduce:
+		cd_time *= player.entity_data.stats.get_property(InitPropProviders.COOLDOWN_REDUCTION).get_cooldown_reduction()
+	in_cooldown = true
+	await player.get_tree().create_timer(cd_time).timeout
+	in_cooldown = false
+
 # Variables
 func set_durability(durability_factor: float = 1):
 	_durability = ceil(material.base_max_damage * durability_factor)

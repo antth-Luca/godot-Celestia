@@ -2,7 +2,6 @@ extends BaseItem
 class_name BaseTool
 
 var damage_factor: float = 1
-var use_speed_factor: float = 1
 var base_lifespan: float = 1:
 	set(new_base):
 		base_lifespan = max(new_base, 0)
@@ -16,3 +15,4 @@ func _init():
 func use(player: Player) -> void:
 	HitUtils.spawn_hit(player, InitHits.SLASH.get_listed(), self)
 	consome_durability(1, player.inventory.get_slot(player.inventory.selected))
+	set_cooldown(player)
