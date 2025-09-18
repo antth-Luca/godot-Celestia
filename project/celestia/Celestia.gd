@@ -20,6 +20,7 @@ func _ready():
 	InitMaterials.setup()
 	InitHits.setup()
 	InitEntities.setup()
+	InitStructures.setup()
 	InitItems.setup()
 	InitArmors.setup()
 	InitWeapons.setup()

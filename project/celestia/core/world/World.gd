@@ -20,7 +20,7 @@ func _ready() -> void:
 	player.ESSENCE_COUNTER = config.get('max_resilient_essence')
 	# TESTS CODE
 	# Spawn Bed
-	var bed: Bed = preload('res://core/structures/bed/Bed.tscn').instantiate()
+	var bed: Bed = InitStructures.BED.get_listed().instantiate()
 	get_tree().current_scene.add_child(bed)
 	bed.global_position = Vector2(487, 117)
 	# Spawn Sword
