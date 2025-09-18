@@ -364,6 +364,8 @@ shape = SubResource("RectangleShape2D_sskaw")
 debug_color = Color(0.754633, 0.340155, 0.773971, 0.42)
 
 [node name="LightPoint" parent="." instance=ExtResource("7_bj32v")]
+visible = false
+enabled = false
 shadow_item_cull_mask = 1
 texture_scale = 0.8
 

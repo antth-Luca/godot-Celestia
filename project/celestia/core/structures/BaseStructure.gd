@@ -1,19 +1,27 @@
 extends StaticBody2D
 class_name BaseStructure
 
+@onready var TEXTURE = $Texture
+@onready var ANIMATION = $Animation
+
 # MAIN
 func on_interact(_entity: LivingEntity) -> void:
 	pass
 
+
+func add_highlight() -> void:
+	TEXTURE.material.set_shader_parameter('enabled', true)
+
+
+func remove_highlight() -> void:
+	TEXTURE.material.set_shader_parameter('enabled', false)
+
 # HANDLERS
 func _on_interaction_entity_entered(body: Node2D) -> void:
-	print_debug('Entrou')
 	if body.is_in_group('player'):
-		body.hand.active_interacts.push_back(self)
+		body.hand.register_interaction(self)
 
 
 func _on_interaction_entity_exited(body: Node2D) -> void:
 	if body.is_in_group('player'):
-		var interacts = body.hand.active_interacts
-		var index = interacts.find(self)
-		if index != -1: interacts.remove_at(index)
+		body.hand.unregister_interaction(self)
