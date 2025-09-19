@@ -5,6 +5,5 @@ class_name AxeTool
 func _init() -> void:
 	damage_factor = .8
 	base_lifespan = .2
-	set_durability(1.5)
 	anim_type = BaseItem.AnimType.USE
 	hit_type = InitHits.SLASH.get_listed()

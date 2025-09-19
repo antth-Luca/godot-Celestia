@@ -47,10 +47,12 @@ func is_time_to_go_to_bed() -> bool:
 	): return true
 	return false
 
-# GETTERS AND SETTERS
-func set_morning() -> void:
-	time_counter = TimeOfDay.EARLY_MORNING.back()
 
+func turn_the_day() -> void:
+	time_counter = TimeOfDay.EARLY_MORNING.back()
+	day_counter += 1
+
+# GETTERS AND SETTERS
 func get_hours() -> int:
 	return int(time_counter / total_Rseconds_per_Ihour) % total_Ihours_per_Iday
 

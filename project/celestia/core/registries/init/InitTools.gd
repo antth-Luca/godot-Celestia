@@ -16,9 +16,10 @@ static func setup() -> void:
 	IRON_AXE = TOOLS.add_entry(
 		'iron_axe',
 		func():
-			var weapon = AxeTool.new()
-			weapon.material = InitMaterials.IRON.get_registered()
-			return weapon
+			var tool = AxeTool.new()
+			tool.material = InitMaterials.IRON.get_registered()
+			tool.set_durability(1.5)
+			return tool
 	)
 
 	TOOLS.register()

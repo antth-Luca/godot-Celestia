@@ -18,6 +18,7 @@ static func setup() -> void:
 		func():
 			var weapon = SwordTool.new()
 			weapon.material = InitMaterials.IRON.get_registered()
+			weapon.set_durability(2)
 			return weapon
 	)
 

@@ -27,7 +27,7 @@ func on_interact(entity: LivingEntity) -> void:
 		await entity.sleep()
 		ANIMATION.stop()
 		TEXTURE.frame = 0
-		TimeManager.set_morning()
+		TimeManager.turn_the_day()
 
 
 func destroy() -> void:
