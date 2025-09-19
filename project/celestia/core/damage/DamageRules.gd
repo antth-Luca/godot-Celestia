@@ -22,4 +22,4 @@ static func can_damage(hit: HitData, target: EntityData) -> bool:
 		target.is_dead or
 		target.is_invincible
 	): return false
-	return (DAMAGE_RULES.get(hit.attacker.faction, 0) & target.faction) != 0
+	return (DAMAGE_RULES.get(hit.attacker.entity_data.faction, 0) & target.faction) != 0

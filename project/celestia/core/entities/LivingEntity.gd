@@ -80,20 +80,23 @@ func set_animation() -> void:
 # HANDLERS
 func _on_hurtbox_area_entered(hitbox) -> void:
 	if not entity_data.is_dead and hitbox.is_in_group('hitbox'):
-		var hitbox_parent = hitbox.get_parent()
-		var hitdata: HitData = hitbox_parent.get_hit_data()
-		if DamageManager.try_apply(hitdata, entity_data):
-			if hitbox_parent is BaseHit: hitbox_parent._on_hurt_entity()
-			apply_knockback(global_position, hitbox_parent.get_source_entity().global_position, hitdata.specialized_type)
+		DamageManager.try_apply(hitbox.get_parent(), self)
 
 
 func flip_texture() -> void:
 	TEXTURE.flip_h = direction.x < 0
 
 
-func apply_knockback(attacker_pos: Vector2, target_pos: Vector2, hit_specialized_type: HitData.SPECIALIZED_TYPE = HitData.SPECIALIZED_TYPE.NONE) -> void:
+func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
+	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
+	hp_prop.sub_health(final_dam)
+	apply_knockback(hit.attacker.global_position, hit.specialized_type)
+	if hitbox_parent is BaseHit: hitbox_parent._on_hurt_entity()
+
+
+func apply_knockback(attacker_pos: Vector2, hit_specialized_type: HitData.SPECIALIZED_TYPE = HitData.SPECIALIZED_TYPE.NONE) -> void:
 	var multiplier: float = 120 if hit_specialized_type == HitData.SPECIALIZED_TYPE.EXPLOSION else 100
-	knockback_vector = (attacker_pos - target_pos).normalized() * multiplier
+	knockback_vector = (global_position - attacker_pos).normalized() * multiplier
 	var knockback_tween: Tween = get_tree().create_tween()
 	knockback_tween.tween_property(self, 'knockback_vector', Vector2.ZERO, .2)
 	TEXTURE.material.set_shader_parameter('blink_value', 1.0)

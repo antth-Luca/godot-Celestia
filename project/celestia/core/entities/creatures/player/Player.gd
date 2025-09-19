@@ -175,6 +175,14 @@ func get_mouse_direction() -> Vector2:
 	return global_position.direction_to(get_global_mouse_position())
 
 # HANDLERS
+# Damage
+func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
+	super.hurt(final_dam, hit, hitbox_parent)
+	var third_part = final_dam / 3.0
+	PASSIVE_REGEN_VALUES[0] += third_part
+	PASSIVE_REGEN_VALUES[1] += third_part
+	PASSIVE_REGEN_VALUES[2] += final_dam - (third_part * 2)
+
 # Survivor level
 func _on_surv_level_up() -> void:
 	var health_prov = entity_data.stats.get_property(InitPropProviders.HEALTH)

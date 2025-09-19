@@ -10,7 +10,7 @@ func _ready() -> void:
 # Getters and setters
 func get_hit_data() -> HitData:
 	return HitData.new(
-		source_entity.entity_data,
+		source_entity,
 		source_tool.damage_factor,
 		HitData.PRIMITIVE_TYPE.PHYSIC,
 		HitData.SPECIALIZED_TYPE.NONE
