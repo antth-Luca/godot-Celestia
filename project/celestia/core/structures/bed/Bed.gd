@@ -17,7 +17,12 @@ func _ready() -> void:
 
 # MAIN
 func on_interact(entity: LivingEntity) -> void:
-	if TimeManager.is_time_to_go_to_bed():
+	var hand_item: BaseItem = entity.inventory.get_hand().item
+	if hand_item is AxeTool:
+		stats.get_property(InitPropProviders.HEALTH).sub_health(1)
+		await hand_item.set_cooldown(entity)
+		entity.hand.is_interacting = false
+	elif TimeManager.is_time_to_go_to_bed():
 		ANIMATION.play('sleep')
 		await entity.sleep()
 		ANIMATION.stop()
