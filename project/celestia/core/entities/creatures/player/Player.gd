@@ -118,6 +118,11 @@ func sleep() -> void:
 	hand.is_interacting = false
 	TEXTURE.visible = true
 	hand.ITEM_HAND_TEXTURE.visible = true
+	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
+	hp_prop.add_health(PASSIVE_REGEN_VALUES[0])
+	PASSIVE_REGEN_VALUES[0] = PASSIVE_REGEN_VALUES[1]
+	PASSIVE_REGEN_VALUES[1] = PASSIVE_REGEN_VALUES[2]
+	PASSIVE_REGEN_VALUES[2] = 0
 
 
 func die() -> void:
