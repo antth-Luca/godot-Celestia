@@ -38,7 +38,19 @@ func initialize(initial_hour: float, natural_light_param: CanvasModulate) -> voi
 	time_counter = initial_hour * total_Ihours_per_Iday
 	is_freeze = false
 
+
+func is_time_to_go_to_bed() -> bool:
+	if (
+		time_counter < TimeOfDay.EARLY_MORNING.back()
+	) or (
+		time_counter > TimeOfDay.NIGHT.front()
+	): return true
+	return false
+
 # GETTERS AND SETTERS
+func set_morning() -> void:
+	time_counter = TimeOfDay.EARLY_MORNING.back()
+
 func get_hours() -> int:
 	return int(time_counter / total_Rseconds_per_Ihour) % total_Ihours_per_Iday
 

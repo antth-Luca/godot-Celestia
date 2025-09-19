@@ -7,6 +7,7 @@ var ESSENCE_COUNTER: int = 3
 
 var inventory: InventoryManager
 var hand: PlayerHand
+var is_sleeping: bool = false
 
 # GODOT
 func _init() -> void:
@@ -71,6 +72,7 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if is_sleeping: return
 	if knockback_vector == Vector2.ZERO:
 		# Get the input direction and handle the movement/deceleration.
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
@@ -78,6 +80,19 @@ func _physics_process(delta: float) -> void:
 
 # SUPER
 # Main
+func sleep() -> void:
+	is_sleeping = true
+	entity_data.is_invincible = true
+	TEXTURE.visible = false
+	hand.ITEM_HAND_TEXTURE.visible = false
+	await get_tree().create_timer(5).timeout
+	is_sleeping = false
+	entity_data.is_invincible = false
+	hand.is_interacting = false
+	TEXTURE.visible = true
+	hand.ITEM_HAND_TEXTURE.visible = true
+
+
 func die() -> void:
 	entity_data.is_dead = true
 	ESSENCE_COUNTER -= 1
@@ -103,7 +118,7 @@ func respawn() -> void:
 
 # Animation
 func set_animation() -> void:
-	if entity_data.is_dead: return
+	if entity_data.is_dead or is_sleeping: return
 	var anim = 'idle'
 	if direction != Vector2.ZERO: anim = 'walk'
 	if ANIMATION.current_animation != anim: ANIMATION.play(anim)

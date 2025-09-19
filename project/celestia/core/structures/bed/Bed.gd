@@ -16,8 +16,13 @@ func _ready() -> void:
 	health_prop.connect('zero_health', Callable(self, 'destroy'))
 
 # MAIN
-func on_interact(_entity: LivingEntity) -> void:
-	print_debug('Interagiu com a cama!')  # TODO: Implementar a sonequinha!
+func on_interact(entity: LivingEntity) -> void:
+	if TimeManager.is_time_to_go_to_bed():
+		ANIMATION.play('sleep')
+		await entity.sleep()
+		ANIMATION.stop()
+		TEXTURE.frame = 0
+		TimeManager.set_morning()
 
 
 func destroy() -> void:

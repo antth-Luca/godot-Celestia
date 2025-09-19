@@ -1,8 +1,8 @@
 extends StaticBody2D
 class_name BaseStructure
 
-@onready var TEXTURE = $Texture
-@onready var ANIMATION = $Animation
+@onready var TEXTURE: Sprite2D = $Texture
+@onready var ANIMATION: AnimationPlayer = $Animation
 
 # MAIN
 func on_interact(_entity: LivingEntity) -> void:

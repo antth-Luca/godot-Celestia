@@ -18,9 +18,6 @@ func _process(_delta: float) -> void:
 			highlighted_interaction.remove_highlight()
 			nearest_interaction.add_highlight()
 			highlighted_interaction = nearest_interaction
-	elif not highlighted_interaction and not active_interactions.is_empty():
-		highlighted_interaction = active_interactions.front()
-		highlighted_interaction.add_highlight()
 
 # GETTERS AND SETTERS
 func set_item_hand_texture(item_hand: BaseItem) -> void:
@@ -28,7 +25,7 @@ func set_item_hand_texture(item_hand: BaseItem) -> void:
 
 # MAIN
 func perform_use() -> void:
-	if is_using or is_interacting: return
+	if is_using or is_interacting or player.is_sleeping: return
 	var stack_hand: ItemStack = player.inventory.get_hand()
 	if stack_hand.is_empty() or stack_hand.item.in_cooldown: return
 	is_using = true
@@ -39,20 +36,27 @@ func perform_use() -> void:
 
 
 func perform_interact() -> void:
-	if is_interacting or is_using or not highlighted_interaction: return
+	if is_interacting or is_using or not highlighted_interaction or player.is_sleeping: return
 	is_interacting = true
 	highlighted_interaction.on_interact(player)
 
 
 func register_interaction(interact: BaseStructure) -> void:
 	active_interactions.push_back(interact)
+	if not highlighted_interaction:
+		highlighted_interaction = interact
+		highlighted_interaction.add_highlight()
 
 
 func unregister_interaction(interact: BaseStructure) -> void:
 	var index = active_interactions.find(interact)
 	if index != -1:
 		active_interactions.remove_at(index)
-		if highlighted_interaction == interact: interact.remove_highlight()
+		if highlighted_interaction == interact:
+			interact.remove_highlight()
+			if not active_interactions.is_empty():
+				highlighted_interaction = active_interactions.front()
+				highlighted_interaction.add_highlight()
 
 # HANDLERS
 func _get_nearest_interaction() -> BaseStructure:
@@ -63,3 +67,7 @@ func _get_nearest_interaction() -> BaseStructure:
 		if nearest.is_empty() or interaction_distance < nearest.back():
 			nearest = [interaction, interaction_distance]
 	return nearest.front()
+
+
+func _ready_to_interact() -> void:
+	is_interacting = false
