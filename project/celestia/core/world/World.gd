@@ -26,5 +26,9 @@ func _ready() -> void:
 	# Spawn Sword
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(InitWeapons.IRON_SWORD.get_registered(), 1),
-		Vector2(208, 133)
+		Vector2(487, 133)
 	)
+	# Spawn Zombie
+	var zombie: Zombie = InitEntities.ZOMBIE.get_listed().instantiate()
+	get_tree().current_scene.add_child(zombie)
+	zombie.global_position = Vector2(208, 200)

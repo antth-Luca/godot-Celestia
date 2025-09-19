@@ -28,7 +28,8 @@ func _init() -> void:
 			InitPropProviders.RANGE: 1,
 			InitPropProviders.USE_SPEED: 1,
 			InitPropProviders.MOVE_SPEED: 80,
-			InitPropProviders.COOLDOWN_REDUCTION: 0
+			InitPropProviders.COOLDOWN_REDUCTION: 0,
+			InitPropProviders.HUNGRY: 50
 		})
 	)
 
@@ -50,6 +51,11 @@ func _ready():
 	mana_prop.emit_signal('max_mana_changed', mana_prop.get_max_mana())
 	mana_prop.connect('mana_changed', Callable(stats_bar, '_on_mana_changed'))
 	mana_prop.emit_signal('mana_changed', mana_prop.get_mana())
+	var hungry_prop: HungryProperty = entity_data.stats.get_property(InitPropProviders.HUNGRY)
+	hungry_prop.connect('max_hungry_changed', Callable(stats_bar, '_on_max_hungry_changed'))
+	hungry_prop.emit_signal('max_hungry_changed', hungry_prop.get_max_hungry())
+	hungry_prop.connect('hungry_changed', Callable(stats_bar, '_on_hungry_changed'))
+	hungry_prop.emit_signal('hungry_changed', hungry_prop.get_hungry())
 	# Health drained signal
 	health_prop.connect('zero_health', Callable(self, 'die'))
 	# Inventory
@@ -71,12 +77,23 @@ func _process(_delta: float) -> void:
 	light_point.energy = remap(TimeManager.time_curve_value, 0, 1, 1, 0)
 
 
-func _physics_process(delta: float) -> void:
-	if is_sleeping: return
+func _physics_process(_delta: float) -> void:
+	if entity_data.is_dead or is_sleeping: return
 	if knockback_vector == Vector2.ZERO:
 		# Get the input direction and handle the movement/deceleration.
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
-	super._physics_process(delta)
+		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
+		if direction != Vector2.ZERO:
+			velocity = direction * stats_move_speed
+			flip_texture()
+			entity_data.stats.get_property(InitPropProviders.HUNGRY).sub_hungry(.01)
+		else:
+			velocity = velocity.move_toward(Vector2.ZERO, stats_move_speed)
+	else:  # Knockback
+		velocity = knockback_vector
+	# Setting state and animation and continuing movement
+	set_animation()
+	move_and_slide()
 
 # SUPER
 # Main
