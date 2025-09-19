@@ -23,9 +23,9 @@ func _ready() -> void:
 	var bed: Bed = InitStructures.BED.get_listed().instantiate()
 	get_tree().current_scene.add_child(bed)
 	bed.global_position = Vector2(487, 117)
-	# Spawn Sword
+	# Spawn Axe
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitWeapons.IRON_SWORD.get_registered(), 1),
+		ItemStack.new(InitTools.IRON_AXE.get_registered(), 1),
 		Vector2(487, 133)
 	)
 	# Spawn Zombie

@@ -16,12 +16,8 @@ static func setup() -> void:
 	IRON_SWORD = WEAPONS.add_entry(
 		'iron_sword',
 		func():
-			var weapon = BaseTool.new()
+			var weapon = SwordTool.new()
 			weapon.material = InitMaterials.IRON.get_registered()
-			weapon.set_durability(2)
-			weapon.base_lifespan = .3
-			weapon.anim_type = BaseItem.AnimType.USE
-			weapon.hit_type = InitHits.SLASH.get_listed()
 			return weapon
 	)
 

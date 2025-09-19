@@ -24,6 +24,7 @@ func _ready():
 	InitItems.setup()
 	InitArmors.setup()
 	InitWeapons.setup()
+	InitTools.setup()
 	call_deferred('_go_to_next_scene')
 
 
