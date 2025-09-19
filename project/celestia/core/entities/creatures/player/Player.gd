@@ -8,6 +8,7 @@ const ROLL_HUNGRY: float = .8
 @onready var light_point = $LightPoint
 
 var ESSENCE_COUNTER: int = 3
+var PASSIVE_REGEN_VALUES: Array[float]
 
 var inventory: InventoryManager
 var hand: PlayerHand
@@ -43,6 +44,8 @@ func _ready():
 	TEXTURE.material.set_shader_parameter('blink_color', hurt_color)
 	# Survivor level signal
 	entity_data.stats.get_property(InitPropProviders.SURVIVOR_LEVEL).connect('level_up', Callable(self, '_on_surv_level_up'))
+	# Passive regeneration values
+	PASSIVE_REGEN_VALUES = [0, 0, 0]
 	# Stats bar signals
 	var stats_bar = get_ui().get_hud().get_stats_bar()
 	var health_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
