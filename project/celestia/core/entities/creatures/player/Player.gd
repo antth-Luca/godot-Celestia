@@ -1,6 +1,10 @@
 extends LivingEntity
 class_name Player
 
+const WALKING_HUNGRY: float = .01
+const USE_HUNGRY: float = .3
+const ROLL_HUNGRY: float = .8
+
 @onready var light_point = $LightPoint
 
 var ESSENCE_COUNTER: int = 3
@@ -84,9 +88,12 @@ func _physics_process(_delta: float) -> void:
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
 		if direction != Vector2.ZERO:
+			if Input.is_action_just_pressed('ui_roll'):
+				entity_data.stats.get_property(InitPropProviders.HUNGRY).sub_hungry(WALKING_HUNGRY)
+				print_debug('Rolou!')  # TODO: Implementar o movimento de rolagem.
 			velocity = direction * stats_move_speed
 			flip_texture()
-			entity_data.stats.get_property(InitPropProviders.HUNGRY).sub_hungry(.01)
+			entity_data.stats.get_property(InitPropProviders.HUNGRY).sub_hungry(WALKING_HUNGRY)
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, stats_move_speed)
 	else:  # Knockback

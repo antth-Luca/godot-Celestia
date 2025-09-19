@@ -12,14 +12,11 @@ const default_change_time: float = .4
 @onready var mana_timer: Timer = $ManaBar/ManaTimer
 
 @onready var hungry_bar: ProgressBar = $HungryBar
-@onready var prev_hungry_bar: ProgressBar = $HungryBar/PrevHungryBar
-@onready var hungry_timer: Timer = $HungryBar/HungryTimer
 
 # GODOT
 func _ready():
 	health_timer.wait_time = default_change_time
 	mana_timer.wait_time = default_change_time
-	hungry_timer.wait_time = default_change_time
 
 # EXTERNAL SIGNALS
 # Health
@@ -52,12 +49,7 @@ func _on_mana_changed(newMP: float):
 
 # Hungry
 func _on_hungry_changed(newHungry: float):
-	var prev_hungry: float = hungry_bar.value
 	hungry_bar.value = newHungry
-	if newHungry < prev_hungry:
-		hungry_timer.start()
-	else:
-		prev_hungry_bar.value = newHungry
 
 # INTERNAL SIGNALS
 func _on_health_timer_timeout():
@@ -66,7 +58,3 @@ func _on_health_timer_timeout():
 
 func _on_mana_timer_timeout():
 	prev_mana_bar.value = mana_bar.value
-
-
-func _on_hungry_timer_timeout():
-	prev_hungry_bar.value = hungry_bar.value
