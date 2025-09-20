@@ -28,9 +28,9 @@ func _ready() -> void:
 		ItemStack.new(InitTools.IRON_AXE.get_registered(), 1),
 		Vector2(487, 133)
 	)
-	# Spawn Egg
+	# Spawn Beef
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitFoods.EGG.get_registered(), 12),
+		ItemStack.new(InitFoods.BEEF.get_registered(), 12),
 		Vector2(487, 145)
 	)
 	# Spawn Zombie

@@ -38,6 +38,11 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 # MAIN
+func heal(heal_value: float) -> void:
+	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
+	hp_prop.add_health(heal_value)
+
+
 func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
 	hp_prop.sub_health(final_dam)

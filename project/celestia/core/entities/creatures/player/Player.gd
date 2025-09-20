@@ -108,6 +108,19 @@ func _physics_process(_delta: float) -> void:
 
 # SUPER
 # Main
+func heal(heal_value: float) -> void:
+	super.heal(heal_value)
+	var remaining = heal_value
+	for c in 3:
+		if remaining <= 0: break
+		if PASSIVE_REGEN_VALUES[c] >= remaining:
+			PASSIVE_REGEN_VALUES[c] -= remaining
+			break
+		else:
+			remaining -= PASSIVE_REGEN_VALUES[c]
+			PASSIVE_REGEN_VALUES[c] = 0
+
+
 func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 	super.hurt(final_dam, hit, hitbox_parent)
 	consume_hungry(HURT_HUNGRY)
