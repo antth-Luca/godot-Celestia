@@ -7,6 +7,7 @@ static var registries: Dictionary = {
 	EntityRegistry.REGISTRY_TYPE: EntityRegistry.new(),
 	StructureRegistry.REGISTRY_TYPE: StructureRegistry.new(),
 	ItemRegistry.REGISTRY_TYPE: ItemRegistry.new(),
+	FoodRegistry.REGISTRY_TYPE: FoodRegistry.new(),
 	ToolRegistry.REGISTRY_TYPE: ToolRegistry.new(),
 	ArmorRegistry.REGISTRY_TYPE: ArmorRegistry.new(),
 	PropProviderRegistry.REGISTRY_TYPE: PropProviderRegistry.new()

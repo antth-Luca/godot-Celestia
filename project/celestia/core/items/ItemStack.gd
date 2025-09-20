@@ -22,8 +22,3 @@ func add_amount_safe(amount_safe: int) -> int:
 
 func is_empty() -> bool:
 	return amount <= 0
-
-
-func consome_amount(consome: int, slot: Slot) -> void:
-	if amount: amount -= consome
-	slot.render_slot(self)

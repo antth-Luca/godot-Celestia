@@ -3,7 +3,6 @@ class_name InitItems
 
 static var ITEMS: DeferredRegister
 # Items
-static var EGG: DeferredHolder
 static var GOLD_INGOT: DeferredHolder
 static var IRON_INGOT: DeferredHolder
 
@@ -15,14 +14,6 @@ static func setup() -> void:
 	)
 
 	# Items
-	EGG = ITEMS.add_entry(
-		'egg',
-		func():
-			var item = BaseItem.new()
-			item.max_stack = 12
-			return item
-	)
-
 	GOLD_INGOT = ITEMS.add_entry(
 		'gold_ingot',
 		func(): return BaseItem.new()

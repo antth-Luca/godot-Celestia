@@ -28,6 +28,11 @@ func _ready() -> void:
 		ItemStack.new(InitTools.IRON_AXE.get_registered(), 1),
 		Vector2(487, 133)
 	)
+	# Spawn Egg
+	DroppedItemUtils.drop_item_in_position(
+		ItemStack.new(InitFoods.EGG.get_registered(), 12),
+		Vector2(487, 145)
+	)
 	# Spawn Zombie
 	var zombie: Zombie = InitEntities.ZOMBIE.get_listed().instantiate()
 	get_tree().current_scene.add_child(zombie)

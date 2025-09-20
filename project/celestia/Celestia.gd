@@ -22,6 +22,7 @@ func _ready():
 	InitEntities.setup()
 	InitStructures.setup()
 	InitItems.setup()
+	InitFoods.setup()
 	InitArmors.setup()
 	InitWeapons.setup()
 	InitTools.setup()

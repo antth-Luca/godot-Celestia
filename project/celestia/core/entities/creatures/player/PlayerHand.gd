@@ -28,7 +28,7 @@ func perform_use() -> void:
 	if is_using or is_interacting or player.is_sleeping: return
 	var stack_hand: ItemStack = player.inventory.get_hand()
 	if stack_hand.is_empty() or stack_hand.item.in_cooldown: return
-	player.entity_data.stats.get_property(InitPropProviders.HUNGRY).sub_hungry(player.USE_HUNGRY)
+	if not stack_hand.item is BaseFood: player.entity_data.stats.get_property(InitPropProviders.HUNGRY).sub_hungry(player.USE_HUNGRY)
 	is_using = true
 	ITEM_HAND_ANIMATION.play(stack_hand.item.anim_type)
 	stack_hand.item.use(player)
