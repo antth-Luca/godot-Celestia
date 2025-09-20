@@ -38,6 +38,13 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 # MAIN
+func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
+	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
+	hp_prop.sub_health(final_dam)
+	apply_knockback(hit.attacker.global_position, hit.specialized_type)
+	if hitbox_parent is BaseHit: hitbox_parent._on_hurt_entity()
+
+
 func die() -> void:
 	entity_data.is_dead = true
 	ANIMATION.play('death')
@@ -85,13 +92,6 @@ func _on_hurtbox_area_entered(hitbox) -> void:
 
 func flip_texture() -> void:
 	TEXTURE.flip_h = direction.x < 0
-
-
-func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
-	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
-	hp_prop.sub_health(final_dam)
-	apply_knockback(hit.attacker.global_position, hit.specialized_type)
-	if hitbox_parent is BaseHit: hitbox_parent._on_hurt_entity()
 
 
 func apply_knockback(attacker_pos: Vector2, hit_specialized_type: HitData.SPECIALIZED_TYPE = HitData.SPECIALIZED_TYPE.NONE) -> void:
