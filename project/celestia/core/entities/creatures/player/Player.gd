@@ -35,7 +35,8 @@ func _init() -> void:
 			InitPropProviders.USE_SPEED: 1,
 			InitPropProviders.MOVE_SPEED: 80,
 			InitPropProviders.COOLDOWN_REDUCTION: 0,
-			InitPropProviders.HUNGRY: 50
+			InitPropProviders.HUNGRY: 50,
+			InitPropProviders.LUCK: 0
 		})
 	)
 
