@@ -21,12 +21,22 @@
 	"celestia.item.rarity.mithic": "Mítico",
 	"celestia.item.rarity.legendary": "Lendário",
 
+	"celestia.item.arrow.name": "Flecha",
+	"celestia.item.beef.name": "Bife",
+	"celestia.item.bow.name": "Arco",
+	"celestia.item.cobblestone.name": "Pedregulho",
+	"celestia.item.copper_ingot.name": "Barra de Cobre",
+	"celestia.item.copper_ore.name": "Minério de Cobre",
+	"celestia.item.copper_sword.name": "Espada de Cobre",
 	"celestia.item.egg.name": "Ovo de Galinha",
 	"celestia.item.gold_ingot.name": "Barra de Ouro",
 	"celestia.item.iron_axe.name": "Machado de Ferro",
 	"celestia.item.iron_chestplate.name": "Couraça de Ferro",
 	"celestia.item.iron_ingot.name": "Barra de Ferro",
 	"celestia.item.iron_sword.name": "Espada de Ferro",
+	"celestia.item.meat.name": "Carne",
+	"celestia.item.stone.name": "Pedra",
+	"celestia.item.unclean_meat.name": "Carne Impura",
 
 	"celestia.build": "",
 

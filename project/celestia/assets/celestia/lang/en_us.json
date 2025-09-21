@@ -21,12 +21,22 @@
 	"celestia.item.rarity.mithic": "Mithic",
 	"celestia.item.rarity.legendary": "Legendary",
 
+	"celestia.item.arrow.name": "Arrow",
+	"celestia.item.beef.name": "Beef",
+	"celestia.item.bow.name": "Bow",
+	"celestia.item.cobblestone.name": "Cobblestone",
+	"celestia.item.copper_ingot.name": "Copper Ingot",
+	"celestia.item.copper_ore.name": "Copper Ore",
+	"celestia.item.copper_sword.name": "Copper Sword",
 	"celestia.item.egg.name": "Chicken Egg",
 	"celestia.item.gold_ingot.name": "Gold Ingot",
 	"celestia.item.iron_axe.name": "Iron Axe",
 	"celestia.item.iron_chestplate.name": "Iron Chestplate",
 	"celestia.item.iron_ingot.name": "Iron Ingot",
 	"celestia.item.iron_sword.name": "Iron Sword",
+	"celestia.item.meat.name": "Meat",
+	"celestia.item.stone.name": "Stone",
+	"celestia.item.unclean_meat.name": "Unclean Meat",
 
 	"celestia.build": "",
 
