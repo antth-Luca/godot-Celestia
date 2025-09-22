@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b038in3s52he"]
+
+[ext_resource type="Script" uid="uid://sl0icxtfp6dj" path="res://core/structures/bush/Bush.gd" id="1_a4epx"]
+[ext_resource type="Shader" uid="uid://capg2ulc8vrff" path="res://assets/celestia/shaders/2D_pixel_outline.gdshader" id="2_c1104"]
+[ext_resource type="Texture2D" uid="uid://c5jm05udenymw" path="res://assets/celestia/textures/structures/bush.png" id="2_hphd3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1104"]
+size = Vector2(20, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wayko"]
+shader = ExtResource("2_c1104")
+shader_parameter/enabled = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/corner_pixel = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a4epx"]
+radius = 30.0
+
+[node name="Bush" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_a4epx")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_c1104")
+
+[node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wayko")
+texture = ExtResource("2_hphd3")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_a4epx")

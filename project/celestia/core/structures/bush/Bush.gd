@@ -1,5 +1,5 @@
 extends BaseStructure
-class_name Bed
+class_name Bush
 
 var stats: PropertyManager
 
@@ -12,16 +12,9 @@ func _init() -> void:
 # MAIN
 func on_interact(entity: LivingEntity) -> void:
 	var hand_item: BaseItem = entity.inventory.get_hand().item
-	if hand_item is AxeTool:
-		try_destroy()
-		await hand_item.set_cooldown(entity)
-		entity.hand.is_interacting = false
-	elif TimeManager.is_time_to_go_to_bed():
-		ANIMATION.play('sleep')
-		await entity.sleep()
-		ANIMATION.stop()
-		TEXTURE.frame = 0
-		TimeManager.turn_the_day()
+	try_destroy(3 if hand_item is AxeTool else 1)
+	await hand_item.set_cooldown(entity)
+	entity.hand.is_interacting = false
 
 
 func try_destroy(damage: int = 1) -> void:

@@ -52,13 +52,13 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_303de"]
-radius = 30.0167
+radius = 30.0
 
 [node name="Bed" type="StaticBody2D"]
 collision_mask = 0
 script = ExtResource("1_pvvu4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_laoj0")
 
