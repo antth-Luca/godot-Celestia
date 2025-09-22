@@ -1,0 +1,2 @@
+extends LivingEntity
+class_name Chicken

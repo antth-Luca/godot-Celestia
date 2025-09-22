@@ -16,7 +16,7 @@ var id: ResourceLocation = ResourceLocation.EMPTY:
 			push_warning('LootTable: Table ID already set. It cannot be changed after initialization.')
 		id = new_id
 var _cycles: Dictionary[String, int]
-var _bonus_cycles: int = 1:
+var _bonus_cycles: int = 0:
 	set(new_bonus):
 		if new_bonus < 1:
 			push_warning('LootBox: The minimum number of bonus cycles is 1.')

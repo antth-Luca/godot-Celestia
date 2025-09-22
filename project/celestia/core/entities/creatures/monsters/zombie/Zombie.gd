@@ -42,7 +42,7 @@ func die(attacker: LivingEntity) -> void:
 	ANIMATION.play('death')
 	await ANIMATION.animation_finished
 
-	var loot_box: LootBox = InitLootBoxes.ZOMBIE.get_registered()
+	var loot_box: LootBox = InitLootBoxes.ZOMBIE_DEATH.get_registered()
 	var item_stacks: Array[ItemStack] = loot_box.get_sorted_output(attacker)
 	for stack in item_stacks:
 		DroppedItemUtils.drop_item_entity_foot(stack, self)

@@ -4,11 +4,11 @@
 script/source = "extends RayCast2D
 class_name WallVision
 
-@export var enemy: CharacterBody2D
+@export var entity: CharacterBody2D
 @export var state_machine: StateMachine
 
 func _physics_process(_delta):
-	if enemy: target_position = enemy.direction
+	if entity: target_position = entity.direction
 	if is_colliding():
 		pass
 "

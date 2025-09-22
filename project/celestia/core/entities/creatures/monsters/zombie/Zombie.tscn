@@ -123,24 +123,27 @@ autoplay = "idle"
 position = Vector2(0, 13.5)
 shape = SubResource("RectangleShape2D_ngtr2")
 
-[node name="MachineState" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_uk3j3")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("3_uk3j3")]
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="MachineState"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("4_l7c1m")
+next_state = NodePath("../Wander")
 
-[node name="Wander" type="Node" parent="MachineState" node_paths=PackedStringArray("ray_vision")]
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("ray_vision", "next_state")]
 script = ExtResource("4_xp2tj")
 ray_vision = NodePath("../../WallVision")
+next_state = NodePath("../Idle")
 
-[node name="Chase" type="Node" parent="MachineState"]
+[node name="Chase" type="Node" parent="StateMachine"]
 script = ExtResource("5_xp2tj")
 
-[node name="DetectionArea" parent="." node_paths=PackedStringArray("machine_state") instance=ExtResource("6_hbwmh")]
+[node name="DetectionArea" parent="." node_paths=PackedStringArray("state_on_detect", "state_machine") instance=ExtResource("6_hbwmh")]
 collision_layer = 0
 collision_mask = 16
 target_group = "player"
-machine_state = NodePath("../MachineState")
+state_on_detect = NodePath("../StateMachine/Chase")
+state_machine = NodePath("../StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_l7c1m")

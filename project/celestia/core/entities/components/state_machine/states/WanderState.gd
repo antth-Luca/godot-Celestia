@@ -2,6 +2,7 @@ extends BaseState
 class_name WanderState
 
 @export var ray_vision: RayCast2D
+@export var next_state: BaseState
 
 @onready var parent_entity: CharacterBody2D = get_parent().get_parent()  # StateMachine > Entity
 
@@ -17,7 +18,7 @@ func update(delta: float) -> void:
 	if left_time > 0:
 		left_time -= delta
 	else:
-		get_parent().change_state_to_string('idle')
+		get_parent().change_state_to_node(next_state)
 
 
 func physics_update(_delta: float) -> void:

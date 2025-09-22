@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://bhm4j2qbybs2a"]
+
+[ext_resource type="Script" uid="uid://6fqk8gi8b3lj" path="res://core/entities/creatures/animals/chicken/Chicken.gd" id="1_muko0"]
+[ext_resource type="Texture2D" uid="uid://det6udosucu6m" path="res://assets/celestia/textures/animals/chicken/chicken_default.png" id="2_sitoo"]
+[ext_resource type="Script" uid="uid://urn3ngqxyhgm" path="res://core/entities/components/state_machine/StateMachine.gd" id="3_cb3gl"]
+[ext_resource type="PackedScene" uid="uid://b5jmp07l7t3cp" path="res://core/entities/components/detection_area/DetectionArea.tscn" id="4_cb3gl"]
+[ext_resource type="Script" uid="uid://48asptnty6fm" path="res://core/entities/components/state_machine/states/IdleState.gd" id="4_jo4u1"]
+[ext_resource type="PackedScene" uid="uid://ym3awtb3ksm4" path="res://core/entities/components/wall_vision/WallVision.tscn" id="4_kq63w"]
+[ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="5_jo4u1"]
+[ext_resource type="Script" uid="uid://cm0iny1i3r4w1" path="res://core/entities/components/state_machine/states/WanderState.gd" id="5_w4pbw"]
+[ext_resource type="Script" uid="uid://jaxnwljwr0dg" path="res://core/entities/components/state_machine/states/DodgeState.gd" id="6_w4pbw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4pbw"]
+size = Vector2(7, 3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kq63w"]
+radius = 33.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pugb2"]
+radius = 7.0
+
+[node name="Chicken" type="CharacterBody2D"]
+script = ExtResource("1_muko0")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_sitoo")
+hframes = 7
+vframes = 3
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 6.5)
+shape = SubResource("RectangleShape2D_w4pbw")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_cb3gl")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://urn3ngqxyhgm"
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_jo4u1")
+metadata/_custom_type_script = "uid://48asptnty6fm"
+
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("ray_vision")]
+script = ExtResource("5_w4pbw")
+ray_vision = NodePath("../../WallVision")
+metadata/_custom_type_script = "uid://cm0iny1i3r4w1"
+
+[node name="DodgeState" type="Node" parent="StateMachine"]
+script = ExtResource("6_w4pbw")
+metadata/_custom_type_script = "uid://jaxnwljwr0dg"
+
+[node name="DetectionArea" parent="." node_paths=PackedStringArray("state_on_detect", "state_machine") instance=ExtResource("4_cb3gl")]
+target_group = "player"
+state_on_detect = NodePath("../StateMachine/DodgeState")
+state_machine = NodePath("../StateMachine")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_kq63w")
+
+[node name="WallVision" parent="." instance=ExtResource("4_kq63w")]
+target_position = Vector2(20, 0)
+script = null
+
+[node name="Hurtbox" parent="." instance=ExtResource("5_jo4u1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_pugb2")
+debug_color = Color(0.934665, 2.05037e-05, 0.639613, 0.42)

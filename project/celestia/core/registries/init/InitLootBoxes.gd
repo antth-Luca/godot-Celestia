@@ -2,8 +2,11 @@ extends Node
 class_name InitLootBoxes
 
 static var LOOT_BOXES: DeferredRegister
-# Entities
-static var ZOMBIE: DeferredHolder
+# Animals
+static var CHICKEN_DEATH: DeferredHolder
+static var CHICKEN_LAY: DeferredHolder
+# Monsters
+static var ZOMBIE_DEATH: DeferredHolder
 
 
 static func setup() -> void:
@@ -12,9 +15,34 @@ static func setup() -> void:
 		LootBoxRegistry.REGISTRY_TYPE
 	)
 
-	# Entities
-	ZOMBIE = LOOT_BOXES.add_entry(
-		'zombie',
+	# Animals
+	CHICKEN_DEATH = LOOT_BOXES.add_entry(
+		'chicken_death',
+		func():
+			var box = LootBox.new()
+			box.set_cycles(1, 1)
+			box.add_output(
+				InitFoods.MEAT,
+				1, 1,
+				1
+			)
+	)
+
+	CHICKEN_LAY = LOOT_BOXES.add_entry(
+		'chicken_lay',
+		func():
+			var box = LootBox.new()
+			box.set_cycles(1, 1)
+			box.add_output(
+				InitFoods.EGG,
+				1, 2,
+				1
+			)
+	)
+
+	# Monsters
+	ZOMBIE_DEATH = LOOT_BOXES.add_entry(
+		'zombie_death',
 		func():
 			var box = LootBox.new()
 			box.set_cycles(1, 2)
