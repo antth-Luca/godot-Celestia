@@ -12,7 +12,12 @@ func _init() -> void:
 # MAIN
 func on_interact(entity: LivingEntity) -> void:
 	var hand_item: BaseItem = entity.inventory.get_hand().item
-	try_destroy(3 if hand_item is AxeTool else 1)
+	var damage = 1
+	if hand_item is AxeTool:
+		damage = 3
+	elif hand_item is PickaxeTool:
+		damage = 1.5
+	try_destroy(damage)
 	if hand_item: await hand_item.set_cooldown(entity)
 	entity.hand.is_interacting = false
 
