@@ -2,8 +2,10 @@ extends Node
 class_name InitTools
 
 static var TOOLS: DeferredRegister
-# Items
+# Axes
 static var IRON_AXE: DeferredHolder
+# Pickaxes
+static var IRON_PICKAXE: DeferredHolder
 
 
 static func setup() -> void:
@@ -12,11 +14,21 @@ static func setup() -> void:
 		ToolRegistry.REGISTRY_TYPE
 	)
 
-	# Swords
+	# Axes
 	IRON_AXE = TOOLS.add_entry(
 		'iron_axe',
 		func():
 			var tool = AxeTool.new()
+			tool.material = InitMaterials.IRON.get_registered()
+			tool.set_durability(1.5)
+			return tool
+	)
+
+	# Pickaxes
+	IRON_PICKAXE = TOOLS.add_entry(
+		'iron_pickaxe',
+		func():
+			var tool = PickaxeTool.new()
 			tool.material = InitMaterials.IRON.get_registered()
 			tool.set_durability(1.5)
 			return tool

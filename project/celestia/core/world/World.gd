@@ -23,8 +23,8 @@ func _ready() -> void:
 	var bush: Bush = InitStructures.BUSH.get_listed().instantiate()
 	get_tree().current_scene.add_child(bush)
 	bush.global_position = Vector2(487, 117)
-	# Spawn Axe
+	# Spawn Pickaxe
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitTools.IRON_AXE.get_registered(), 1),
+		ItemStack.new(InitTools.IRON_PICKAXE.get_registered(), 1),
 		Vector2(487, 145)
 	)
