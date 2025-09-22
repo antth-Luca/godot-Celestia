@@ -157,11 +157,10 @@ metadata/_custom_type_script = "uid://cm0iny1i3r4w1"
 script = ExtResource("6_w4pbw")
 metadata/_custom_type_script = "uid://jaxnwljwr0dg"
 
-[node name="DropResource" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state", "animation")]
+[node name="DropResource" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("8_ema0d")
 animation_name = "feed"
 next_state = NodePath("../Wander")
-animation = NodePath("../../Animation")
 
 [node name="DetectionArea" parent="." node_paths=PackedStringArray("state_on_detect", "state_machine") instance=ExtResource("4_cb3gl")]
 collision_layer = 0
@@ -185,7 +184,7 @@ shape = SubResource("CircleShape2D_pugb2")
 debug_color = Color(0.934665, 2.05037e-05, 0.639613, 0.42)
 
 [node name="LayTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 300.0
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="LayTimer" to="." method="lay_egg"]

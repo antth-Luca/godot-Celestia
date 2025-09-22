@@ -6,6 +6,7 @@ class_name Chicken
 
 var state_left_time: float
 var drop_timer: Timer
+var is_laying: bool = false
 
 # GODOT
 func _init() -> void:
@@ -41,6 +42,11 @@ func die(attacker: LivingEntity) -> void:
 
 	queue_free()
 
+# Animation
+func set_animation() -> void:
+	if is_laying: return
+	super.set_animation()
+
 # MAIN
 func lay_egg() -> void:
-	state_machine.change_state_to_string('drop_resource')
+	state_machine.change_state_to_string('dropresource')

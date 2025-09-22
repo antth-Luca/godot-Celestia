@@ -5,7 +5,7 @@ var config := {}
 # GODOT
 func _ready() -> void:
 	# Time
-	TimeManager.initialize(18, $NaturalLight)
+	TimeManager.initialize(12, $NaturalLight)
 	# World config
 	var config_file = FileAccess.open('res://saves/MyWorld/config/world_config.json', FileAccess.READ)
 	if config_file:

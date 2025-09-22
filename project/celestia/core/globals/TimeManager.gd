@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 # MAIN
 func initialize(initial_hour: float, natural_light_param: CanvasModulate) -> void:
 	natural_light = natural_light_param
-	time_counter = initial_hour * total_Ihours_per_Iday
+	time_counter = initial_hour * total_Rseconds_per_Ihour
 	is_freeze = false
 
 
