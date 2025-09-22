@@ -18,6 +18,7 @@ func _ready():
 	InitPropProviders.setup()
 	InitRarities.setup()
 	InitMaterials.setup()
+	InitLootBoxes.setup()
 	InitHits.setup()
 	InitEntities.setup()
 	InitStructures.setup()

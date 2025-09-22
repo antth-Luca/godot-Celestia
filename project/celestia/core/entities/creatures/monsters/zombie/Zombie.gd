@@ -34,3 +34,17 @@ func get_hit_data() -> HitData:
 		HitData.PRIMITIVE_TYPE.PHYSIC,
 		HitData.SPECIALIZED_TYPE.NONE
 	)
+
+# SUPER
+# Main
+func die(attacker: LivingEntity) -> void:
+	entity_data.is_dead = true
+	ANIMATION.play('death')
+	await ANIMATION.animation_finished
+
+	var loot_box: LootBox = InitLootBoxes.ZOMBIE.get_registered()
+	var item_stacks: Array[ItemStack] = loot_box.get_sorted_output(attacker)
+	for stack in item_stacks:
+		DroppedItemUtils.drop_item_entity_foot(stack, self)
+
+	queue_free()

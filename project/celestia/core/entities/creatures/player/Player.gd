@@ -65,8 +65,6 @@ func _ready():
 	hungry_prop.emit_signal('max_hungry_changed', hungry_prop.get_max_hungry())
 	hungry_prop.connect('hungry_changed', Callable(stats_bar, '_on_hungry_changed'))
 	hungry_prop.emit_signal('hungry_changed', hungry_prop.get_hungry())
-	# Health drained signal
-	health_prop.connect('zero_health', Callable(self, 'die'))
 	# Inventory
 	inventory = get_ui().get_invent_panel().get_inventory_tab()
 	inventory.player = self
@@ -131,7 +129,7 @@ func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 	PASSIVE_REGEN_VALUES[2] += final_dam - (third_part * 2)
 
 
-func die() -> void:
+func die(_attacker: LivingEntity) -> void:
 	entity_data.is_dead = true
 	ESSENCE_COUNTER -= 1
 	ANIMATION.play('death')

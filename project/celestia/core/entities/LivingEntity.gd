@@ -15,9 +15,6 @@ var entity_data: EntityData
 func _ready() -> void:
 	# Shader
 	TEXTURE.material.set_shader_parameter('blink_color', hurt_color)
-	# health drained signal
-	var health_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
-	health_prop.connect('zero_health', Callable(self, 'die'))
 
 
 func _physics_process(_delta: float) -> void:
@@ -48,9 +45,10 @@ func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 	hp_prop.sub_health(final_dam)
 	apply_knockback(hit.attacker.global_position, hit.specialized_type)
 	if hitbox_parent is BaseHit: hitbox_parent._on_hurt_entity()
+	if hp_prop.get_health() <= 0: die(hit.attacker)
 
 
-func die() -> void:
+func die(_attacker: LivingEntity) -> void:
 	entity_data.is_dead = true
 	ANIMATION.play('death')
 	await ANIMATION.animation_finished

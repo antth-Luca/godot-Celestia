@@ -7,7 +7,7 @@ const _BASE_OUTPUT: Dictionary = {
 		'min': 1,
 		'max': 1
 	},
-	'chance': 1.0
+	'weight': 1.0
 }
 
 var id: ResourceLocation = ResourceLocation.EMPTY:
@@ -30,7 +30,7 @@ func set_cycles(min_cycles: int, max_cycles: int) -> void:
 	_cycles = { 'min': min_cycles, 'max': max_cycles }
 
 
-func add_output(item: DeferredHolder, min_count: int, max_count: int, chance: float) -> void:
+func add_output(item: DeferredHolder, min_count: int, max_count: int, weight: float) -> void:
 	var new_output = _BASE_OUTPUT.duplicate()
 	if not item.get_registered() is BaseItem:
 		push_warning('LootBox/output: The ‘item’ must be a BaseItem.')
@@ -38,14 +38,36 @@ func add_output(item: DeferredHolder, min_count: int, max_count: int, chance: fl
 	if min_count < 0:
 		push_warning('LootBox/output: The minimum number of amount is 1.')
 	new_output['count'] = { 'min': min_count, 'max': max_count }
-	if 0 > chance or chance > 1:
-		push_warning('LootBox/output: The probability of an output must be between 0 -> 1 (0 -> 100%).')
-	new_output['chance'] = chance
+	new_output['weight'] = weight
 	_possible_outputs.append(new_output)
 
 # MAIN
 func get_sorted_output(player: Player) -> Array[ItemStack]:
-	var outputs = []
-	for c in randi_range(_cycles['min'], _cycles['max']):
-		pass
+	var outputs: Array[ItemStack] = []
+	var cycles: int = randi_range(_cycles['min'], _cycles['max'])
+	cycles += player.entity_data.stats.get_property(InitPropProviders.LUCK).get_luck() * _bonus_cycles
+	for c in range(cycles):
+		var chosen_output = _pick_weighted_output()
+		if chosen_output.is_empty(): continue
+		var count = randi_range(
+			chosen_output['count']['min'],
+			chosen_output['count']['max']
+		)
+		var item: BaseItem = chosen_output['item'].get_registered()
+		if item:
+			var stack := ItemStack.new(item, count)
+			outputs.append(stack)
 	return outputs
+
+
+func _pick_weighted_output() -> Dictionary:
+	if _possible_outputs.is_empty(): return {}
+	var total_weight: float = 0
+	for output in _possible_outputs:
+		total_weight += output['weight']
+	var rand_value: float = randf() * total_weight
+	var cumulative: float = 0
+	for output in _possible_outputs:
+		cumulative += output['weight']
+		if rand_value <= cumulative: return output
+	return {}
