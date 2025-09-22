@@ -7,6 +7,8 @@ static var CHICKEN_DEATH: DeferredHolder
 static var CHICKEN_LAY: DeferredHolder
 # Monsters
 static var ZOMBIE_DEATH: DeferredHolder
+# Structures
+static var BUSH_DESTROY: DeferredHolder
 
 
 static func setup() -> void:
@@ -57,6 +59,25 @@ static func setup() -> void:
 				InitItems.BONE,
 				1, 2,
 				.2
+			)
+			return box
+	)
+
+	# Structures
+	BUSH_DESTROY = LOOT_BOXES.add_entry(
+		'bush_destroy',
+		func():
+			var box = LootBox.new()
+			box.set_cycles(1, 1)
+			box.add_output(
+				InitItems.STICK,
+				1, 2,
+				.5
+			)
+			box.add_output(
+				InitItems.PLANT_FIBER,
+				2, 4,
+				.5
 			)
 			return box
 	)
