@@ -5,7 +5,7 @@ var config := {}
 # GODOT
 func _ready() -> void:
 	# Time
-	TimeManager.initialize(0, $NaturalLight)
+	TimeManager.initialize(18, $NaturalLight)
 	# World config
 	var config_file = FileAccess.open('res://saves/MyWorld/config/world_config.json', FileAccess.READ)
 	if config_file:
@@ -33,7 +33,7 @@ func _ready() -> void:
 		ItemStack.new(InitFoods.BEEF.get_registered(), 12),
 		Vector2(487, 145)
 	)
-	# Spawn Zombie
-	var zombie: Zombie = InitEntities.ZOMBIE.get_listed().instantiate()
-	get_tree().current_scene.add_child(zombie)
-	zombie.global_position = Vector2(208, 200)
+	# Spawn Chicken
+	var chicken: Chicken = InitEntities.CHICKEN.get_listed().instantiate()
+	get_tree().current_scene.add_child(chicken)
+	chicken.global_position = Vector2(208, 200)

@@ -42,10 +42,10 @@ func add_output(item: DeferredHolder, min_count: int, max_count: int, weight: fl
 	_possible_outputs.append(new_output)
 
 # MAIN
-func get_sorted_output(player: Player) -> Array[ItemStack]:
+func get_sorted_output(player: Player = null) -> Array[ItemStack]:
 	var outputs: Array[ItemStack] = []
 	var cycles: int = randi_range(_cycles['min'], _cycles['max'])
-	cycles += player.entity_data.stats.get_property(InitPropProviders.LUCK).get_luck() * _bonus_cycles
+	if player: cycles += player.entity_data.stats.get_property(InitPropProviders.LUCK).get_luck() * _bonus_cycles
 	for c in range(cycles):
 		var chosen_output = _pick_weighted_output()
 		if chosen_output.is_empty(): continue

@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhm4j2qbybs2a"]
+[gd_scene load_steps=22 format=3 uid="uid://bhm4j2qbybs2a"]
 
 [ext_resource type="Script" uid="uid://6fqk8gi8b3lj" path="res://core/entities/creatures/animals/chicken/Chicken.gd" id="1_muko0"]
+[ext_resource type="Shader" uid="uid://bn7mgcor6vpkh" path="res://assets/celestia/shaders/color_blink.gdshader" id="2_pugb2"]
 [ext_resource type="Texture2D" uid="uid://det6udosucu6m" path="res://assets/celestia/textures/animals/chicken/chicken_default.png" id="2_sitoo"]
 [ext_resource type="Script" uid="uid://urn3ngqxyhgm" path="res://core/entities/components/state_machine/StateMachine.gd" id="3_cb3gl"]
 [ext_resource type="PackedScene" uid="uid://b5jmp07l7t3cp" path="res://core/entities/components/detection_area/DetectionArea.tscn" id="4_cb3gl"]
@@ -9,6 +10,102 @@
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="5_jo4u1"]
 [ext_resource type="Script" uid="uid://cm0iny1i3r4w1" path="res://core/entities/components/state_machine/states/WanderState.gd" id="5_w4pbw"]
 [ext_resource type="Script" uid="uid://jaxnwljwr0dg" path="res://core/entities/components/state_machine/states/DodgeState.gd" id="6_w4pbw"]
+[ext_resource type="Script" uid="uid://cf4p2ueavec3i" path="res://core/entities/components/state_machine/states/DropResourceState.gd" id="8_ema0d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ema0d"]
+shader = ExtResource("2_pugb2")
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_value = 0.0
+
+[sub_resource type="Animation" id="Animation_ema0d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ydy3a"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_pugb2"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ab5aj"]
+resource_name = "walk"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.9, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_kdvto"]
+resource_name = "feed"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18, 19, 20, 20]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ab5aj"]
+_data = {
+&"RESET": SubResource("Animation_ema0d"),
+&"death": SubResource("Animation_ydy3a"),
+&"feed": SubResource("Animation_kdvto"),
+&"idle": SubResource("Animation_pugb2"),
+&"walk": SubResource("Animation_ab5aj")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4pbw"]
 size = Vector2(7, 3)
@@ -20,14 +117,21 @@ radius = 33.0
 radius = 7.0
 
 [node name="Chicken" type="CharacterBody2D"]
+collision_layer = 128
+collision_mask = 65
 script = ExtResource("1_muko0")
 
 [node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ema0d")
 texture = ExtResource("2_sitoo")
 hframes = 7
 vframes = 3
 
 [node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ab5aj")
+}
+autoplay = "idle"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 6.5)
@@ -38,22 +142,32 @@ script = ExtResource("3_cb3gl")
 initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://urn3ngqxyhgm"
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("4_jo4u1")
+next_state = NodePath("../Wander")
 metadata/_custom_type_script = "uid://48asptnty6fm"
 
-[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("ray_vision")]
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("ray_vision", "next_state")]
 script = ExtResource("5_w4pbw")
 ray_vision = NodePath("../../WallVision")
+next_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://cm0iny1i3r4w1"
 
-[node name="DodgeState" type="Node" parent="StateMachine"]
+[node name="Dodge" type="Node" parent="StateMachine"]
 script = ExtResource("6_w4pbw")
 metadata/_custom_type_script = "uid://jaxnwljwr0dg"
 
+[node name="DropResource" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state", "animation")]
+script = ExtResource("8_ema0d")
+animation_name = "feed"
+next_state = NodePath("../Wander")
+animation = NodePath("../../Animation")
+
 [node name="DetectionArea" parent="." node_paths=PackedStringArray("state_on_detect", "state_machine") instance=ExtResource("4_cb3gl")]
+collision_layer = 0
+collision_mask = 16
 target_group = "player"
-state_on_detect = NodePath("../StateMachine/DodgeState")
+state_on_detect = NodePath("../StateMachine/Dodge")
 state_machine = NodePath("../StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
@@ -69,3 +183,9 @@ script = null
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_pugb2")
 debug_color = Color(0.934665, 2.05037e-05, 0.639613, 0.42)
+
+[node name="LayTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="LayTimer" to="." method="lay_egg"]

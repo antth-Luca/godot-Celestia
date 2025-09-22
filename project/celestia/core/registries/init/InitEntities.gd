@@ -2,6 +2,8 @@ extends Node
 class_name InitEntities
 
 static var ENTITIES: DeferredRegister
+# Animals
+static var CHICKEN: DeferredHolder
 # Player
 static var PLAYER: DeferredHolder
 # Monsters
@@ -13,6 +15,13 @@ static func setup() -> void:
 	ENTITIES = DeferredRegister.create(
 		Celestia.GAME_ID,
 		EntityRegistry.REGISTRY_TYPE
+	)
+
+	# Animals
+	CHICKEN = ENTITIES.add_entry(
+		'chicken',
+		func():
+			return preload('res://core/entities/creatures/animals/chicken/Chicken.tscn')
 	)
 
 	# Player

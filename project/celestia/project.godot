@@ -132,6 +132,7 @@ ui_roll={
 2d_physics/layer_5="Players"
 2d_physics/layer_6="Enemies"
 2d_physics/layer_7="Structures"
+2d_physics/layer_8="Animals"
 
 [rendering]
 

@@ -26,6 +26,7 @@ static func setup() -> void:
 				1, 1,
 				1
 			)
+			return box
 	)
 
 	CHICKEN_LAY = LOOT_BOXES.add_entry(
@@ -38,6 +39,7 @@ static func setup() -> void:
 				1, 2,
 				1
 			)
+			return box
 	)
 
 	# Monsters
