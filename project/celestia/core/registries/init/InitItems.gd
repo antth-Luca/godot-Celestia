@@ -6,6 +6,7 @@ static var ITEMS: DeferredRegister
 static var BONE: DeferredHolder
 static var GOLD_INGOT: DeferredHolder
 static var IRON_INGOT: DeferredHolder
+static var STICK: DeferredHolder
 
 
 static func setup() -> void:
@@ -27,6 +28,11 @@ static func setup() -> void:
 
 	IRON_INGOT = ITEMS.add_entry(
 		'iron_ingot',
+		func(): return BaseItem.new()
+	)
+
+	STICK = ITEMS.add_entry(
+		'stick',
 		func(): return BaseItem.new()
 	)
 
