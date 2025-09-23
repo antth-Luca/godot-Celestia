@@ -40,9 +40,8 @@ func set_durability(durability_factor: float = 1):
 
 
 func get_tooltip() -> Array[String]:
-	var splited_id: Array = id.get_splited()
 	var name_line = '%s [color=%s](%s)[/color]' % [
-		CustomTranslation.t(Celestia.TRANSLATION_KEY_BASES.ITEM % splited_id),
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM % id.path),
 		rarity.hex_color,
 		rarity.get_tr_name()
 	]

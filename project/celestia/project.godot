@@ -18,7 +18,6 @@ config/icon="uid://bgrpx5mgkejj"
 [autoload]
 
 GameConfig="*res://config/GameConfig.gd"
-CustomTranslation="*res://core/globals/CustomTranslation.gd"
 EventBus="*res://core/events/EventBus.gd"
 TimeManager="*res://core/globals/TimeManager.gd"
 RegistryManager="*res://core/registries/RegistryManager.gd"
