@@ -1,0 +1,15 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d3vic2j7dtc2x"
+valid=false
+
+[deps]
+
+source_file="res://assets/celestia/lang/lang.csv"
+
+[params]
+
+compress=true
+delimiter=0
