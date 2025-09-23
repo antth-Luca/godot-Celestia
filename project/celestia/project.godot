@@ -124,6 +124,10 @@ ui_roll={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://assets/celestia/lang/lang.pt_BR.translation", "res://assets/celestia/lang/lang.en_US.translation")
+
 [layer_names]
 
 2d_physics/layer_1="World"
