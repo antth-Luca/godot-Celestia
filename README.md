@@ -27,9 +27,6 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 ### Recursos:
 #### Pré-alpha
-* [ ] Estrutura de cama;
-* [ ] Sistema de fome;
-* [ ] Sistema de LootTables (drop de entidades);
 * [ ] Sistema de receitas;
 * [ ] Sistema de fabricação;
 * [x] Cena do Jogador/Player;
@@ -45,7 +42,10 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 * [x] Pausa de mundo/jogo;
 * [x] Sistema de ressurreição do Player;
 * [x] Animação pré-mundo (versão 1);
-* [x] Sistema de tempo (dia e noite).
+* [x] Sistema de tempo (dia e noite);
+* [x] Estrutura de cama;
+* [x] Sistema de fome;
+* [x] Sistema de LootTables (drop de entidades).
 
 #### Alpha
 * [ ] Item de combate à distância: Arco;
