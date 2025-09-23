@@ -1,0 +1,45 @@
+key,en_US,pt_BR
+ui.menu.start,Start,Iniciar
+ui.menu.resume_game,Resume game,Retomar jogo
+ui.menu.quit_game,Quit game,Sair do jogo
+ui.config.language,Language,Linguagem
+ui.inventory.stats.title,Attributes,Atributos
+ui.inventory.stats.HP,Health,Vida
+ui.inventory.stats.MP,Mana,Mana
+ui.inventory.stats.AM,Armor,Armadura
+ui.inventory.stats.RS,Resistance,Resistência
+ui.inventory.stats.FR,Force,Força
+ui.inventory.stats.Crit,Crit. Strike,Acerto crit.
+ui.inventory.stats.LS,Life Steal,Roubo de Vida
+ui.inventory.stats.PN,Penetration,Penetração
+ui.inventory.stats.RG,Range,Alcance
+ui.inventory.stats.US,Use Speed,Vel. de Uso
+ui.inventory.stats.MS,Move Speed,Vel. de Movimento
+ui.inventory.stats.CdR,Cooldown Reduc.,Redução de Resfr.
+item.rarity.common,Common,Comum
+item.rarity.rare,Rare,Raro
+item.rarity.epic,Epic,Épico
+item.rarity.mithic,Mithic,Mítico
+item.rarity.legendary,Legendary,Lendário
+item.arrow.name,Arrow,Flecha
+item.beef.name,Beef,Bife
+item.bone.name,Bone,Osso
+item.bow.name,Bow,Arco
+item.cobblestone.name,Cobblestone,Pedregulho
+item.copper_ingot.name,Copper Ingot,Barra de Cobre
+item.copper_ore.name,Copper Ore,Minério de Cobre
+item.copper_sword.name,Copper Sword,Espada de Cobre
+item.egg.name,Chicken Egg,Ovo de Galinha
+item.gold_ingot.name,Gold Ingot,Barra de Ouro
+item.iron_axe.name,Iron Axe,Machado de Ferro
+item.iron_chestplate.name,Iron Chestplate,Couraça de Ferro
+item.iron_ingot.name,Iron Ingot,Barra de Ferro
+item.iron_pickaxe.name,Iron Pickaxe,Picareta de Ferro
+item.iron_sword.name,Iron Sword,Espada de Ferro
+item.meat.name,Meat,Carne
+item.plant_fiber.name,Plant Fiber,Fibra Vegetal
+item.stick.name,Stick,Graveto
+item.stone.name,Stone,Pedra
+item.unclean_meat.name,Unclean Meat,Carne Impura
+build.placeholder.name,placeholder,placeholder
+mob.chicken.name,placeholder,placeholder

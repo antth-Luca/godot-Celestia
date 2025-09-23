@@ -8,9 +8,9 @@ const SLOT_TYPE_SPRITE_PATH: String = 'res://assets/%s/interface/inventory/slots
 const GAME_CONFIG_PATH: String = 'res://config/game_config.json'
 const TRANSLATION_FILE_PATH: String = 'res://assets/celestia/lang/%s.json'
 const TRANSLATION_KEY_BASES: Dictionary = {
-	ITEM = '%s.item.%s.name',
-	RARITY = '%s.item.rarity.%s',
-	STATS = '%s.ui.inventory.stats.%s'
+	ITEM = 'item.%s.name',
+	RARITY = 'item.rarity.%s',
+	STATS = 'ui.inventory.stats.%s'
 }
 
 
