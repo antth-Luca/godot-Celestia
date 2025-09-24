@@ -9,7 +9,7 @@ static var IRON_SWORD: DeferredHolder
 static func setup() -> void:
 	WEAPONS = DeferredRegister.create(
 		Celestia.GAME_ID,
-		ToolRegistry.REGISTRY_TYPE
+		ItemRegistry.REGISTRY_TYPE
 	)
 
 	# Swords

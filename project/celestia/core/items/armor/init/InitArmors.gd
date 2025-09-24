@@ -12,7 +12,7 @@ static var IRON_CHESTPLATE: DeferredHolder
 static func setup() -> void:
 	ARMORS = DeferredRegister.create(
 		Celestia.GAME_ID,
-		ArmorRegistry.REGISTRY_TYPE
+		ItemRegistry.REGISTRY_TYPE
 	)
 
 	# Helmets

@@ -11,7 +11,7 @@ static var IRON_PICKAXE: DeferredHolder
 static func setup() -> void:
 	TOOLS = DeferredRegister.create(
 		Celestia.GAME_ID,
-		ToolRegistry.REGISTRY_TYPE
+		ItemRegistry.REGISTRY_TYPE
 	)
 
 	# Axes

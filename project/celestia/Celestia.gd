@@ -2,7 +2,7 @@ extends Node
 class_name Celestia
 
 const GAME_ID: String = 'celestia'
-const DROPPED_ITEM_SCENE_PATH: String = 'res://core/items/DroppedItem.tscn'
+const DROPPED_ITEM_SCENE_PATH: String = 'res://core/world/dropped_items/DroppedItem.tscn'
 const ITEM_SPRITE_PATH: String = 'res://assets/%s/textures/items/%s.png'
 const SLOT_TYPE_SPRITE_PATH: String = 'res://assets/%s/interface/inventory/slots/types/%s.png'
 const GAME_CONFIG_PATH: String = 'res://config/game_config.json'

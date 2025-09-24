@@ -19,10 +19,10 @@ config/icon="uid://bgrpx5mgkejj"
 
 GameConfig="*res://config/GameConfig.gd"
 EventBus="*res://core/events/EventBus.gd"
-TimeManager="*res://core/globals/TimeManager.gd"
+TimeManager="*res://core/world/time/TimeManager.gd"
 RegistryManager="*res://core/registries/RegistryManager.gd"
-DroppedItemUtils="*res://core/utils/DroppedItemUtils.gd"
-HitUtils="*res://core/utils/HitUtils.gd"
+DroppedItemUtils="*res://core/world/dropped_items/utils/DroppedItemUtils.gd"
+HitUtils="*res://core/damage/hit/utils/HitUtils.gd"
 
 [global_group]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bl2qt1r8mb64m"]
 
-[ext_resource type="Script" uid="uid://ddnw55a5641x8" path="res://core/damage/hit/base/slash/SlashHit.gd" id="1_ghvdo"]
+[ext_resource type="Script" uid="uid://ddnw55a5641x8" path="res://core/damage/hit/custom/slash/SlashHit.gd" id="1_ghvdo"]
 [ext_resource type="Texture2D" uid="uid://btyqiujbeytn8" path="res://assets/celestia/particles/attacks/slash.png" id="2_2wsmk"]
 [ext_resource type="PackedScene" uid="uid://cn13ycpy1ji50" path="res://core/entities/components/hitbox/Hitbox.tscn" id="2_nlli3"]
 

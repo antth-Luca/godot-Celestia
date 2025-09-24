@@ -12,7 +12,7 @@ static var BEEF: DeferredHolder
 static func setup() -> void:
 	FOODS = DeferredRegister.create(
 		Celestia.GAME_ID,
-		FoodRegistry.REGISTRY_TYPE
+		ItemRegistry.REGISTRY_TYPE
 	)
 
 	# Foods
