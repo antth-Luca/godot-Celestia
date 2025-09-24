@@ -14,13 +14,13 @@ func _ready() -> void:
 	else:
 		push_error('World: Error loading world settings.')
 	# Spawn Player
-	var player: Player = InitEntities.PLAYER.get_listed().instantiate()
+	var player: Player = InitEntities.PLAYER.get_registered()
 	get_tree().current_scene.add_child(player)
 	player.global_position = Vector2(169, 104)
 	player.ESSENCE_COUNTER = config.get('max_resilient_essence')
 	# TESTS CODE
 	# Spawn Bush
-	var bush: Bush = InitStructures.BUSH.get_listed().instantiate()
+	var bush: Bush = InitStructures.BUSH.get_registered()
 	get_tree().current_scene.add_child(bush)
 	bush.global_position = Vector2(487, 117)
 	# Spawn Pickaxe

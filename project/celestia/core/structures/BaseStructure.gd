@@ -4,6 +4,12 @@ class_name BaseStructure
 @onready var TEXTURE: Sprite2D = $Texture
 @onready var ANIMATION: AnimationPlayer = $Animation
 
+var id: ResourceLocation = ResourceLocation.EMPTY:
+	set(new_id):
+		if id != ResourceLocation.EMPTY and id.get_string() != new_id.get_string():
+			push_warning('BaseItem: Item ID already set. It cannot be changed after initialization.')
+		id = new_id
+
 # MAIN
 func on_interact(_entity: LivingEntity) -> void:
 	pass

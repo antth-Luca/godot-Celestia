@@ -21,21 +21,21 @@ static func setup() -> void:
 	CHICKEN = ENTITIES.add_entry(
 		'chicken',
 		func():
-			return preload('res://core/entities/creatures/animals/chicken/Chicken.tscn')
+			return preload('res://core/entities/creatures/animals/chicken/Chicken.tscn').instantiate()
 	)
 
 	# Player
 	PLAYER = ENTITIES.add_entry(
 		'player',
 		func():
-			return preload('res://core/entities/creatures/player/Player.tscn')
+			return preload('res://core/entities/creatures/player/Player.tscn').instantiate()
 	)
 
 	# Monsters
 	ZOMBIE = ENTITIES.add_entry(
 		'zombie',
 		func():
-			return preload('res://core/entities/creatures/monsters/zombie/Zombie.tscn')
+			return preload('res://core/entities/creatures/monsters/zombie/Zombie.tscn').instantiate()
 	)
 
 	ENTITIES.register()

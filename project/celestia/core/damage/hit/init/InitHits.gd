@@ -16,7 +16,7 @@ static func setup() -> void:
 	SLASH = HITS.add_entry(
 		'slash',
 		func():
-			return preload('res://core/damage/hit/custom/slash/SlashHit.tscn')
+			return preload('res://core/damage/hit/custom/slash/SlashHit.tscn').instantiate()
 	)
 
 	HITS.register()

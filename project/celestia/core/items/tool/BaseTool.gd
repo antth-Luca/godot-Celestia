@@ -5,7 +5,7 @@ var damage_factor: float = 1
 var base_lifespan: float = 1:
 	set(new_base):
 		base_lifespan = max(new_base, 0)
-var hit_type: PackedScene = InitHits.SLASH.get_listed()
+var hit_type: DeferredHolder = InitHits.SLASH
 
 # SUPER
 func _init():
