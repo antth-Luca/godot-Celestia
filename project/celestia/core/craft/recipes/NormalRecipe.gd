@@ -8,7 +8,7 @@ var id: ResourceLocation = ResourceLocation.EMPTY:
 		id = new_id
 var _result: Array
 var _ingredients: Array[Array] = []  # -> [item_holder, amount]
-var worbench: WorkbenchTypes
+var worbench: WorkstationTypes
 
 # GETTERS AND SETTERS
 func get_result() -> ItemStack:

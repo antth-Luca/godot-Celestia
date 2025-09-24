@@ -1,10 +1,10 @@
 extends Resource
-class_name WorkbenchTypes
+class_name WorkstationTypes
 
 enum {
 	MANUAL,
-	TABLE,
-	CLAY_OVEN,
+	BENCH,
+	CLAY_FURNACE,
 	STONE_FURNACE,
 	STAR_CHANNEL,
 	STAR_FORGE
