@@ -10,7 +10,7 @@ var _result: Array
 var _returns: Array[Array]  # -> [item_holder, amount]
 var _damage_p_return: Array[int]
 var _ingredients: Array[Array] = []  # -> [item_holder, amount]
-var worbench: WorkstationTypes
+var workstation: int  # :WorkstationTypes
 
 # GETTERS AND SETTERS
 func get_result() -> ItemStack:

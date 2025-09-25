@@ -15,18 +15,19 @@ const TRANSLATION_KEY_BASES: Dictionary = {
 
 
 func _ready():
-	InitPropProviders.setup()
 	InitRarities.setup()
 	InitMaterials.setup()
-	InitLootBoxes.setup()
-	InitHits.setup()
-	InitEntities.setup()
-	InitStructures.setup()
 	InitItems.setup()
 	InitFoods.setup()
 	InitArmors.setup()
 	InitWeapons.setup()
 	InitTools.setup()
+	InitRecipes.setup()
+	InitLootBoxes.setup()
+	InitPropProviders.setup()
+	InitHits.setup()
+	InitEntities.setup()
+	InitStructures.setup()
 	call_deferred('_go_to_next_scene')
 
 

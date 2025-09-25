@@ -8,7 +8,7 @@ var id: ResourceLocation = ResourceLocation.EMPTY:
 		id = new_id
 var _random_result: DeferredHolder
 var _ingredients: Array[Array] = []  # -> [item_holder, amount]
-var worbench: WorkstationTypes
+var workstation: int  # :WorkstationTypes
 
 # GETTERS AND SETTERS
 func get_result() -> ItemStack:

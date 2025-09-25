@@ -3,7 +3,7 @@ class_name RecipeRegistry
 
 static var REGISTRY_TYPE: String = 'Recipes'
 
-var _per_workstation: Dictionary[WorkstationTypes, Array] = {}
+var _per_workstation: Dictionary[int, Array] = {}  # :Dictionary[WorkstationTypes, Array]
 var _per_ingredient: Dictionary[DeferredHolder, Array] = {}
 
 
@@ -19,7 +19,8 @@ func register(id: ResourceLocation, entry: Callable) -> void:
 		_per_workstation[recipe.workstation] = []
 	_per_workstation[recipe.workstation].append(id)
 	# Per ingredient
-	for ing in recipe.get_ingredients():
-		if not _per_ingredient.has(ing):
-			_per_ingredient[ing] = []
-		_per_ingredient[ing].append(id)
+	for ingred_array in recipe.get_ingredients():
+		var ingred = ingred_array.front()
+		if not _per_ingredient.has(ingred):
+			_per_ingredient[ingred] = []
+		_per_ingredient[ingred].append(id)
