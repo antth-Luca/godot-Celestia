@@ -21,24 +21,15 @@ func _ready() -> void:
 func _input(event):
 	if self.visible:
 		if event.is_action_pressed("ui_left"):
-			selected_tab += 1
-			if selected_tab > tab_buttons.size() -1: selected_tab = 0
-			tab_buttons[selected_tab].emit_signal('pressed')
-		elif event.is_action_pressed("ui_right"):
 			selected_tab -= 1
 			if selected_tab < 0: selected_tab = tab_buttons.size() - 1
 			tab_buttons[selected_tab].emit_signal('pressed')
+		elif event.is_action_pressed("ui_right"):
+			selected_tab += 1
+			if selected_tab > tab_buttons.size() -1: selected_tab = 0
+			tab_buttons[selected_tab].emit_signal('pressed')
 	else:
 			inventory_tab._on_inventory_closed()
-
-
-func _on_inventory_button_pressed():
-	_show_inventory()
-
-
-func _on_stats_button_pressed():
-	stats_tab.update_data_to_stats()
-	_show_stats()
 
 # GETTERS AND SETTERS
 # Nodes
@@ -60,5 +51,6 @@ func _show_inventory() -> void:
 
 
 func _show_stats() -> void:
+	stats_tab.update_data_to_stats()
 	inventory_tab.visible = false
 	stats_tab.visible = true

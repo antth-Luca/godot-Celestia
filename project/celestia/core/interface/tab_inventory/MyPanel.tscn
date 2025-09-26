@@ -548,5 +548,5 @@ theme = ExtResource("12_8uiqi")
 layout_mode = 2
 theme = ExtResource("12_8uiqi")
 
-[connection signal="pressed" from="Background/TabButtons/InventoryTabButton" to="." method="_on_inventory_button_pressed"]
-[connection signal="pressed" from="Background/TabButtons/StatsTabButton" to="." method="_on_stats_button_pressed"]
+[connection signal="pressed" from="Background/TabButtons/InventoryTabButton" to="." method="_show_inventory"]
+[connection signal="pressed" from="Background/TabButtons/StatsTabButton" to="." method="_show_stats"]
