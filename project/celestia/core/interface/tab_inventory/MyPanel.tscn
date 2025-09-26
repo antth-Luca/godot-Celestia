@@ -43,51 +43,42 @@ patch_margin_top = 6
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="VisualTabButtons" type="Control" parent="."]
+[node name="TabButtons" type="HBoxContainer" parent="Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -127.5
+offset_top = -106.0
+offset_right = -79.5
+offset_bottom = -82.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.60426, 2.60426)
+theme_override_constants/separation = 0
+alignment = 1
 
-[node name="InventoryButton" type="Control" parent="VisualTabButtons"]
-anchors_preset = 0
-offset_left = -102.14
-offset_top = -77.9492
-offset_right = -62.1403
-offset_bottom = -37.9492
-scale = Vector2(0.876149, 0.876149)
+[node name="InventoryTabButton" type="TextureButton" parent="Background/TabButtons"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("3_3njho")
+stretch_mode = 0
 
-[node name="Background" type="Sprite2D" parent="VisualTabButtons/InventoryButton"]
-position = Vector2(1.19209e-07, -2)
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("3_3njho")
-
-[node name="Icon" type="Sprite2D" parent="VisualTabButtons/InventoryButton"]
+[node name="Icon" type="Sprite2D" parent="Background/TabButtons/InventoryTabButton"]
+position = Vector2(12, 14)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("4_ogu4c")
 
-[node name="StatsButton" type="Control" parent="VisualTabButtons"]
-anchors_preset = 0
-offset_left = -76.7971
-offset_top = -78.3332
-offset_right = -36.7974
-offset_bottom = -38.3332
-scale = Vector2(0.876149, 0.876149)
+[node name="StatsTabButton" type="TextureButton" parent="Background/TabButtons"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("3_3njho")
+stretch_mode = 0
 
-[node name="Background" type="Sprite2D" parent="VisualTabButtons/StatsButton"]
-position = Vector2(0, -2)
-scale = Vector2(1.8, 1.8)
-texture = ExtResource("3_3njho")
-
-[node name="Icon" type="Sprite2D" parent="VisualTabButtons/StatsButton"]
+[node name="Icon" type="Sprite2D" parent="Background/TabButtons/StatsTabButton"]
+position = Vector2(12, 14)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_hitft")
 
 [node name="InventoryTab" type="Control" parent="."]
@@ -458,15 +449,6 @@ offset_top = -121.6
 offset_right = -222.4
 offset_bottom = -121.6
 
-[node name="StatsTabButton" type="Button" parent="InventoryTab"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 0
-offset_left = -87.2
-offset_top = -90.0
-offset_right = -67.2
-offset_bottom = -70.0
-
 [node name="StatsTab" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -566,15 +548,5 @@ theme = ExtResource("12_8uiqi")
 layout_mode = 2
 theme = ExtResource("12_8uiqi")
 
-[node name="InventoryTabButton" type="Button" parent="StatsTab"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 0
-offset_left = 273.0
-offset_top = 81.0
-offset_right = 293.0
-offset_bottom = 101.0
-scale = Vector2(2.5, 2.5)
-
-[connection signal="pressed" from="InventoryTab/StatsTabButton" to="." method="_on_stats_button_pressed"]
-[connection signal="pressed" from="StatsTab/InventoryTabButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="Background/TabButtons/InventoryTabButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="Background/TabButtons/StatsTabButton" to="." method="_on_stats_button_pressed"]
