@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cagv87v3lq2t6" path="res://core/interface/WorldUIManager.gd" id="1_rklmp"]
 [ext_resource type="PackedScene" uid="uid://7hauijtfq470" path="res://core/interface/hud/HUD.tscn" id="1_x3ylb"]
 [ext_resource type="PackedScene" uid="uid://dmmcjcw2tpjtm" path="res://core/interface/view_transition/ViewTransition.tscn" id="2_p0033"]
-[ext_resource type="PackedScene" uid="uid://b3nywi3j43fbq" path="res://core/interface/tab_inventory/MyPanel.tscn" id="2_rklmp"]
+[ext_resource type="PackedScene" uid="uid://b3nywi3j43fbq" path="res://core/interface/my_panel/MyPanel.tscn" id="2_rklmp"]
 [ext_resource type="Shader" uid="uid://cotthynm0c7vs" path="res://assets/celestia/shaders/background_blur.gdshader" id="3_ucq0c"]
 [ext_resource type="PackedScene" uid="uid://0rph5meg44x0" path="res://core/interface/hud/essence_counter/EssenceVessel.tscn" id="5_ximc0"]
 [ext_resource type="PackedScene" uid="uid://b5ojxudq5dkh4" path="res://core/interface/pause_menu/PauseMenu.tscn" id="6_ruaqd"]
