@@ -8,6 +8,8 @@ class_name CraftManager
 	$Sharp: [ WorkstationTypes.SHAP_STONE ]
 }
 
+var stacks: Dictionary = { 'input': [], 'output': ItemStack.EMPTY }
+
 # MAIN
 # Visibility
 func show_workstation(workstation_type: int) -> void:
