@@ -3,6 +3,7 @@ class_name MyPanel
 
 @onready var inventory_tab: InventoryManager = $InventoryTab
 @onready var stats_tab: StatsManager = $StatsTab
+@onready var craft_tab: CraftManager = $CraftTab
 
 var selected_tab: int
 var tab_buttons: Array[TextureButton] = []
@@ -14,7 +15,7 @@ func _ready() -> void:
 		tab_buttons.append(btn)
 	# Node control
 	visible = false
-	_show_inventory()
+	_on_inventory_tab_button_pressed()
 	selected_tab = 0
 
 
@@ -44,13 +45,24 @@ func get_inventory_tab() -> InventoryManager:
 func get_stats_tab() -> StatsManager:
 	return get_node('StatsTab')
 
+
+func get_craft_tab() -> CraftManager:
+	return get_node('CraftTab')
+
 # HANDLERS
-func _show_inventory() -> void:
-	stats_tab.visible = false
-	inventory_tab.visible = true
+func _on_inventory_tab_button_pressed():
+	stats_tab.switch_visible_stats_tab(false)
+	craft_tab.hide_all_workstations()
+	inventory_tab.switch_visible_all_inventory(true)
 
 
-func _show_stats() -> void:
-	stats_tab.update_data_to_stats()
-	inventory_tab.visible = false
-	stats_tab.visible = true
+func _on_stats_tab_button_pressed():
+	inventory_tab.switch_visible_all_inventory(false)
+	craft_tab.hide_all_workstations()
+	stats_tab.switch_visible_stats_tab(true)
+
+
+func _on_craft_tab_button_pressed():
+	inventory_tab.switch_visible_all_inventory(false)
+	stats_tab.switch_visible_stats_tab(false)
+	craft_tab.show_workstation(WorkstationTypes.MANUAL)

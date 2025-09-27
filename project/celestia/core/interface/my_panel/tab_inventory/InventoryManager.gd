@@ -14,6 +14,7 @@ const ARMOR_SLOTS: Dictionary[String, int] = {
 const RELIC_SLOTS: Array[int] = [ 38, 39, 40, 41, 42, 43 ]
 const AMMO_SLOTS: Array[int] = [ 44, 45 ]
 
+@onready var circle_sprite = $CircleSprite
 @onready var slots_group := $SlotsGroup
 @onready var popup_tooltip: PopupTooltip = $PopupTooltip
 
@@ -108,6 +109,27 @@ func clear_all_inventory() -> void:
 	inventory.resize(TOTAL_SLOTS)
 	inventory.fill(ItemStack.EMPTY)
 	update_all_inventory()
+
+# Visibility
+func switch_visible_top_inventory(to_bool: bool) -> void:
+	# Circle
+	circle_sprite.visible = to_bool
+	# Armor + Relic + Ammo
+	for index in range(ARMOR_SLOTS[Slot.Type.HEAD], AMMO_SLOTS.back() + 1):
+		var slot: Slot = get_slot(index)
+		slot.visible = to_bool
+
+
+func switch_visible_down_inventory(to_bool: bool) -> void:
+	# Backpack + Pocket
+	for index in range(POCKET_SLOTS.front(), BACKPACK_SLOTS.back() + 1):
+		var slot: Slot = get_slot(index)
+		slot.visible = to_bool
+
+
+func switch_visible_all_inventory(to_bool: bool) -> void:
+	switch_visible_top_inventory(to_bool)
+	switch_visible_down_inventory(to_bool)
 
 
 func get_stackable_index(item_id: ResourceLocation) -> int:

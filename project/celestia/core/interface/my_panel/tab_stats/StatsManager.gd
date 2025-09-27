@@ -1,12 +1,12 @@
 extends Control
 class_name StatsManager
 
-
+# GODOT
 func _ready() -> void:
 	var title = $VBoxContainer/HBoxContainerTop/TitleLabel
 	title.text = '- %s -' % tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'title')
 
-
+# MAIN
 func update_data_to_stats():
 	var player_stats: PropertyManager = get_parent().get_parent().get_parent().entity_data.stats
 
@@ -66,3 +66,8 @@ func update_data_to_stats():
 		tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'US'),
 		player_stats.get_property(InitPropProviders.USE_SPEED).get_format_use_speed()
 	]
+
+# Visibility
+func switch_visible_stats_tab(to_bool: bool) -> void:
+	if to_bool: update_data_to_stats()
+	self.visible = to_bool

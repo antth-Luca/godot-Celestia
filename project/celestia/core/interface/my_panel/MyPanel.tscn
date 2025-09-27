@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3nywi3j43fbq"]
+[gd_scene load_steps=15 format=3 uid="uid://b3nywi3j43fbq"]
 
 [ext_resource type="Script" uid="uid://bbnhnyem2n73k" path="res://core/interface/my_panel/MyPanel.gd" id="1_ixect"]
 [ext_resource type="Texture2D" uid="uid://doyecvwh2b31d" path="res://assets/celestia/interface/base_box.png" id="2_7gi07"]
@@ -7,11 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://cpmddc0wt48qw" path="res://assets/celestia/interface/icons/inventory.png" id="4_ogu4c"]
 [ext_resource type="Texture2D" uid="uid://d2d5embdk3je1" path="res://assets/celestia/interface/icons/stats.png" id="5_hitft"]
 [ext_resource type="Texture2D" uid="uid://dpv26yrlxmg35" path="res://assets/celestia/interface/inventory/gradient_circle.png" id="6_hitft"]
+[ext_resource type="Texture2D" uid="uid://cnq8hr0raofuk" path="res://assets/celestia/interface/icons/craft.png" id="6_mpay5"]
 [ext_resource type="Script" uid="uid://4iidgsbidemo" path="res://core/interface/my_panel/tab_inventory/InventoryManager.gd" id="6_n6qys"]
 [ext_resource type="PackedScene" uid="uid://bb0wjffuwv6sv" path="res://core/interface/my_panel/tab_inventory/slots/Slot.tscn" id="6_ogu4c"]
 [ext_resource type="Script" uid="uid://flxwg31wj6uj" path="res://core/interface/my_panel/tab_stats/StatsManager.gd" id="11_ncsyl"]
 [ext_resource type="Theme" uid="uid://cmhue8evj0uhb" path="res://assets/celestia/themes/bescii_titles_theme.tres" id="11_ne4yd"]
 [ext_resource type="Theme" uid="uid://itbvstxdxmvc" path="res://assets/celestia/themes/tiny_mini_theme.tres" id="12_8uiqi"]
+[ext_resource type="Script" uid="uid://dh4ynwqdmgs3r" path="res://core/interface/my_panel/tab_crafting/CraftManager.gd" id="14_6fao0"]
 
 [node name="MyPanel" type="Control"]
 layout_mode = 3
@@ -50,9 +52,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -127.5
+offset_left = -127.1
 offset_top = -106.0
-offset_right = -79.5
+offset_right = -55.1
 offset_bottom = -82.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -80,6 +82,17 @@ stretch_mode = 0
 position = Vector2(12, 14)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_hitft")
+
+[node name="CraftTabButton" type="TextureButton" parent="Background/TabButtons"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("3_3njho")
+stretch_mode = 0
+
+[node name="Icon" type="Sprite2D" parent="Background/TabButtons/CraftTabButton"]
+position = Vector2(12, 14.8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_mpay5")
 
 [node name="InventoryTab" type="Control" parent="."]
 layout_mode = 1
@@ -450,7 +463,6 @@ offset_right = -222.4
 offset_bottom = -121.6
 
 [node name="StatsTab" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -548,5 +560,62 @@ theme = ExtResource("12_8uiqi")
 layout_mode = 2
 theme = ExtResource("12_8uiqi")
 
-[connection signal="pressed" from="Background/TabButtons/InventoryTabButton" to="." method="_show_inventory"]
-[connection signal="pressed" from="Background/TabButtons/StatsTabButton" to="." method="_show_stats"]
+[node name="CraftTab" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_6fao0")
+
+[node name="Forge" type="Control" parent="CraftTab"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CraftTab/Forge"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Olá, este é o craft manual!"
+
+[node name="Smelt" type="Control" parent="CraftTab"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CraftTab/Smelt"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Bless" type="Control" parent="CraftTab"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="CraftTab/Bless"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Sharp" type="Control" parent="CraftTab"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label3" type="Label" parent="CraftTab/Sharp"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="Background/TabButtons/InventoryTabButton" to="." method="_on_inventory_tab_button_pressed"]
+[connection signal="pressed" from="Background/TabButtons/StatsTabButton" to="." method="_on_stats_tab_button_pressed"]
+[connection signal="pressed" from="Background/TabButtons/CraftTabButton" to="." method="_on_craft_tab_button_pressed"]
