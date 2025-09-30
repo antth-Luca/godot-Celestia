@@ -77,7 +77,7 @@ func _ready():
 	hand = get_hand()
 	hand.player = self
 	# Item Hand Animation
-	hand.set_item_hand_texture(inventory.get_hand().item)
+	hand.set_item_hand_texture(inventory.get_hand().stack.item)
 
 
 func _process(_delta: float) -> void:

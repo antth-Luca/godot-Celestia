@@ -18,18 +18,16 @@ func use(player: Player) -> void:
 		var armor_slot_type: String = get_compatible_slot()
 		if slot.slot_type == armor_slot_type:
 			# TODO: Corrigir tudo aqui...
-			var equipped_stack: ItemStack = player.inventory.inventory[c]
+			var equipped_stack: ItemStack = player.inventory.inventory[c].stack
 			if equipped_stack.is_empty():
-				player.inventory.inventory[c] = player.inventory.inventory[0]
+				player.inventory.inventory[c].stack = player.inventory.inventory[0].stack
 				self.on_equip(slot, player)
-				player.inventory.inventory[0] = equipped_stack
-				slot.render_slot()
+				player.inventory.inventory[0].stack = equipped_stack
 			elif equipped_stack.item.can_unequip(slot) and can_equip(slot):
 				equipped_stack.item.on_unequip(slot, player)
 				player.inventory.inventory[c] = player.inventory.inventory[0]
 				self.on_equip(slot, player)
-				player.inventory.inventory[0] = equipped_stack
-				slot.render_slot(player.inventory.inventory[0])
+				player.inventory.inventory[0].stack = equipped_stack
 
 # HANDLERS
 func can_equip(slot: Slot) -> bool:

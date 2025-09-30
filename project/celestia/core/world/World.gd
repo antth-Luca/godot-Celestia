@@ -28,3 +28,8 @@ func _ready() -> void:
 		ItemStack.new(InitTools.IRON_PICKAXE.get_registered(), 1),
 		Vector2(487, 145)
 	)
+	# Spawn Beef
+	DroppedItemUtils.drop_item_in_position(
+		ItemStack.new(InitFoods.BEEF.get_registered(), 12),
+		Vector2(169, 145)
+	)

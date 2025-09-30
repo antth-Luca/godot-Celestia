@@ -5,15 +5,8 @@ var inventory
 
 var cursor_stack: ItemStack = ItemStack.EMPTY:
 	set(new_stack):
-		if new_stack == null:
-			return
+		if new_stack == null: return
 		cursor_stack = new_stack
-
-var cursor_click_origin_slot: int:
-	set(slot_index):
-		if slot_index < inventory.MIN_SLOTS or slot_index > inventory.TOTAL_SLOTS:
-			return
-		cursor_click_origin_slot = slot_index
 
 var _cursor_sprite: Sprite2D = null
 
@@ -30,19 +23,14 @@ func _init(inventory_node: Control):
 	inventory = inventory_node
 
 # HANDLERS
-func set_click(new_stack: ItemStack, slot_index: int) -> void:
+func set_click(new_stack: ItemStack) -> void:
 	cursor_stack = new_stack
-	cursor_click_origin_slot = slot_index
 	set_cursor_sprite(new_stack.item.id.get_splited())
 
 
 func clear_cursor() -> void:
 	cursor_stack = ItemStack.EMPTY
 	clear_cursor_sprite()
-
-
-func is_equal_to(stack: ItemStack) -> bool:
-	return cursor_stack.item.id == stack.item.id
 
 
 func clear_cursor_sprite() -> void:

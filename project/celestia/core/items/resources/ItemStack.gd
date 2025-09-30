@@ -22,3 +22,7 @@ func add_amount_safe(amount_safe: int) -> int:
 
 func is_empty() -> bool:
 	return amount <= 0
+
+
+func is_equal_to(comp_stack: ItemStack) -> bool:
+	return item.id == comp_stack.item.id

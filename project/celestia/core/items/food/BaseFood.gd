@@ -15,8 +15,8 @@ func use(player: Player) -> void:
 		hungry_prop.add_hungry(satiation)
 		if regen_hp > 0:
 			player.heal(regen_hp)
-		var stack: ItemStack = player.inventory.inventory[player.inventory.selected]
+		var stack: ItemStack = player.inventory.inventory[player.inventory.selected].stack
 		stack.amount -= 1
 		if stack.amount <= 0: stack = ItemStack.EMPTY
-		player.inventory.get_slot(player.inventory.selected).render_slot(stack)
+		player.inventory.inventory[player.inventory.selected].render_slot()
 		

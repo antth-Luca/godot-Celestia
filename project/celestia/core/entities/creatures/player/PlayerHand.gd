@@ -26,7 +26,7 @@ func set_item_hand_texture(item_hand: BaseItem) -> void:
 # MAIN
 func perform_use() -> void:
 	if is_using or is_interacting or player.is_sleeping: return
-	var stack_hand: ItemStack = player.inventory.get_hand()
+	var stack_hand: ItemStack = player.inventory.get_hand().stack
 	if stack_hand.is_empty() or stack_hand.item.in_cooldown: return
 	if not stack_hand.item is BaseFood: player.consume_hungry(player.USE_HUNGRY)
 	is_using = true
