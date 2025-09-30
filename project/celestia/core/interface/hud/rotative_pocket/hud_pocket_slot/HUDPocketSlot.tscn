@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwg5p07b83530"]
 
 [ext_resource type="Texture2D" uid="uid://d1mx3m4jkq0p6" path="res://assets/celestia/textures/items/egg.png" id="1_8ue1h"]
-[ext_resource type="Script" uid="uid://cg1nkge08geso" path="res://core/interface/hud/rotative_pocket/pseudoslot/PseudoSlot.gd" id="1_mhe7l"]
+[ext_resource type="Script" uid="uid://cg1nkge08geso" path="res://core/interface/hud/rotative_pocket/hud_pocket_slot/HUDPocketSlot.gd" id="1_mhe7l"]
 
 [node name="PseudoSlot" type="Control"]
 layout_mode = 3

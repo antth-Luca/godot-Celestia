@@ -1,5 +1,5 @@
 extends Control
-class_name PseudoSlot
+class_name HUDPocketSlot
 
 @onready var itemSprite: Sprite2D = $ItemSprite
 @onready var itemAmount: Label = $ItemAmount

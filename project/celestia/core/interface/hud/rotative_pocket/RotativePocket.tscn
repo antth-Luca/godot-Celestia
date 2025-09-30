@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://x1ifmif6ol6j" path="res://assets/celestia/interface/hud/pocket_inventory.png" id="1_11jbb"]
 [ext_resource type="Script" uid="uid://dmp4jnorare36" path="res://core/interface/hud/rotative_pocket/RotativePocket.gd" id="1_bjxet"]
-[ext_resource type="PackedScene" uid="uid://cwg5p07b83530" path="res://core/interface/hud/rotative_pocket/pseudoslot/PseudoSlot.tscn" id="2_bjxet"]
+[ext_resource type="PackedScene" uid="uid://cwg5p07b83530" path="res://core/interface/hud/rotative_pocket/hud_pocket_slot/HUDPocketSlot.tscn" id="2_bjxet"]
 [ext_resource type="Texture2D" uid="uid://bna3lomydne0" path="res://assets/celestia/interface/hud/selected_pocket.png" id="3_w88e1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hgbeb"]
@@ -39,32 +39,32 @@ sprite_frames = SubResource("SpriteFrames_cqkr1")
 autoplay = "default"
 frame_progress = 0.842052
 
-[node name="PseudoSlotsGroup" type="Control" parent="."]
+[node name="HUDSlotsGroup" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="PseudoSlot" parent="PseudoSlotsGroup" instance=ExtResource("2_bjxet")]
+[node name="HUDPocketSlot" parent="HUDSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = -8.0
 offset_top = -26.0
 offset_right = -8.0
 offset_bottom = -26.0
 metadata/_edit_use_anchors_ = true
 
-[node name="PseudoSlot2" parent="PseudoSlotsGroup" instance=ExtResource("2_bjxet")]
+[node name="HUDPocketSlot2" parent="HUDSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = 10.0
 offset_top = -8.0
 offset_right = 10.0
 offset_bottom = -8.0
 metadata/_edit_use_anchors_ = true
 
-[node name="PseudoSlot3" parent="PseudoSlotsGroup" instance=ExtResource("2_bjxet")]
+[node name="HUDPocketSlot3" parent="HUDSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = -8.0
 offset_top = 12.0
 offset_right = -8.0
 offset_bottom = 12.0
 metadata/_edit_use_anchors_ = true
 
-[node name="PseudoSlot4" parent="PseudoSlotsGroup" instance=ExtResource("2_bjxet")]
+[node name="HUDPocketSlot4" parent="HUDSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = -26.0
 offset_top = -8.0
 offset_right = -26.0
