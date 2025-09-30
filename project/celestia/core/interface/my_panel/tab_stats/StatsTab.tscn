@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw24tjh081ko1"]
+
+[ext_resource type="Script" uid="uid://flxwg31wj6uj" path="res://core/interface/my_panel/tab_stats/StatsManager.gd" id="1_7rjil"]
+[ext_resource type="Theme" uid="uid://cmhue8evj0uhb" path="res://assets/celestia/themes/bescii_titles_theme.tres" id="2_5h13e"]
+[ext_resource type="Theme" uid="uid://itbvstxdxmvc" path="res://assets/celestia/themes/tiny_mini_theme.tres" id="3_bbboa"]
+
+[node name="StatsTab" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7rjil")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -92.5
+offset_right = 45.5
+offset_bottom = 92.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HBoxContainerTop" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/HBoxContainerTop"]
+layout_mode = 2
+theme = ExtResource("2_5h13e")
+text = "- Atributos -"
+
+[node name="HBoxContainerDown" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="VBoxContainerLeft" type="VBoxContainer" parent="VBoxContainer/HBoxContainerDown"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="LabelHP" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")
+
+[node name="LabelAM" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")
+
+[node name="LabelRS" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")
+
+[node name="LabelLS" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")
+
+[node name="LabelRG" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")
+
+[node name="LabelMS" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerLeft"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")
+
+[node name="VBoxContainerRight" type="VBoxContainer" parent="VBoxContainer/HBoxContainerDown"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="LabelMP" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")
+
+[node name="LabelFR" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")
+
+[node name="LabelPN" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")
+
+[node name="LabelCrit" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")
+
+[node name="LabelCdR" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")
+
+[node name="LabelUS" type="Label" parent="VBoxContainer/HBoxContainerDown/VBoxContainerRight"]
+layout_mode = 2
+theme = ExtResource("3_bbboa")

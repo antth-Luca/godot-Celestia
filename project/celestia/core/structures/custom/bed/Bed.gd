@@ -11,7 +11,7 @@ func _init() -> void:
 
 # MAIN
 func on_interact(entity: LivingEntity) -> void:
-	var hand_item: BaseItem = entity.inventory.get_hand().item
+	var hand_item: BaseItem = entity.inventory.get_hand().stack.item
 	if hand_item:
 		var damage
 		if hand_item is AxeTool:

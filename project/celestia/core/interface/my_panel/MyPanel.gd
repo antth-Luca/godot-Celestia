@@ -10,10 +10,10 @@ class_name MyPanel
 var selected_tab: int = 0:
 	set(new_selected):
 		var buttons_count: int = tab_buttons.size() - 1
-		if selected_tab < 0:
+		if new_selected < 0:
 			selected_tab = buttons_count
 			return
-		if selected_tab > buttons_count:
+		if new_selected > buttons_count:
 			selected_tab = 0
 			return
 		selected_tab = new_selected

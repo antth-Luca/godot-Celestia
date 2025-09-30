@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bb0wjffuwv6sv"]
 
-[ext_resource type="Script" uid="uid://wwwwdyqbehlx" path="res://core/interface/my_panel/tab_inventory/slots/Slot.gd" id="1_hw360"]
+[ext_resource type="Script" uid="uid://wwwwdyqbehlx" path="res://core/interface/my_panel/slot/Slot.gd" id="1_hw360"]
 [ext_resource type="Texture2D" uid="uid://65p76nmwpxw2" path="res://assets/celestia/interface/inventory/slots/slot_background.png" id="1_ijmr3"]
 [ext_resource type="Texture2D" uid="uid://d1mx3m4jkq0p6" path="res://assets/celestia/textures/items/egg.png" id="2_hw360"]
 
