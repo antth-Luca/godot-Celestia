@@ -75,6 +75,4 @@ func consome_durability(damage: int, slot: Slot) -> void:
 
 
 func break_item(slot: Slot) -> void:
-	var invent: InventoryManager = slot.get_inventory_tab()
-	invent.inventory[slot.get_index()] = ItemStack.EMPTY
-	slot.render_slot()
+	slot.stack = ItemStack.EMPTY

@@ -59,6 +59,7 @@ func get_invent_panel() -> MyPanel:
 func update_my_panel(current_switch: bool) -> void:
 	bg_blur.visible = !current_switch
 	my_panel.visible = !current_switch
+	player.is_sleeping = !current_switch
 
 
 func update_pause_menu(current_switch: bool) -> void:

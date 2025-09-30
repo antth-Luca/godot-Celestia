@@ -21,15 +21,6 @@ var player: Player  # Filled by Player#_ready()
 var inventory: Array[Slot]  # Filled by #_ready()
 
 var cursor := CursorManager.new(self)
-var selected: int = 0:
-	set(new_selected):
-		if new_selected > POCKET_SLOTS.back():
-			selected = POCKET_SLOTS.front()
-			return
-		if new_selected < POCKET_SLOTS.front():
-			selected = POCKET_SLOTS.back()
-			return
-		selected = new_selected
 
 # GODOT
 func _ready() -> void:
@@ -61,7 +52,7 @@ func get_popup_tooltip() -> PopupTooltip:
 
 # Inventory
 func get_hand() -> Slot:
-	return inventory[selected]
+	return inventory[POCKET_SLOTS.front()]
 
 
 func get_pocket() -> Array[Slot]:
@@ -157,10 +148,13 @@ func add_item_to_bp_new_slot(add_stack: ItemStack) -> void:
 func add_item_to_backpack(add_stack: ItemStack) -> void:
 	# Adds an item to the inventory, stacking, creating or ignoring it
 	var stackable_index = get_stackable_index(add_stack.item.id)
+	# There is no valid index...
+	if stackable_index == -1: DroppedItemUtils.drop_item_entity_foot(add_stack, player)
+	# ...Index is valid and slot is empty...
 	if inventory[stackable_index].stack.is_empty():
 		inventory[stackable_index].stack = add_stack
 		return
-
+	# ...Slot is not empty, resources need to be added.
 	var remaining_amount = inventory[stackable_index].stack.add_amount_safe(add_stack.amount)
 	inventory[stackable_index].render_slot()
 	# As long as there is an remaining amount, try adding
@@ -180,7 +174,6 @@ func add_item_to_backpack(add_stack: ItemStack) -> void:
 
 # HANDLERS
 func _on_ui_rotate_pressed() -> void:
-	selected += 1
 	# Slots
 	var last: ItemStack = inventory[POCKET_SLOTS.back()].stack
 	for c in range(POCKET_SLOTS.back(), 0, -1):

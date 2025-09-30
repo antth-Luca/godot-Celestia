@@ -14,5 +14,5 @@ func _init():
 
 func use(player: Player) -> void:
 	HitUtils.spawn_hit(player, hit_type, self)
-	consome_durability(1, player.inventory.get_slot(player.inventory.selected))
+	consome_durability(1, player.inventory.get_hand())
 	set_cooldown(player)
