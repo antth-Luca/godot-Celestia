@@ -8,6 +8,7 @@ signal slot_unhovered()
 
 const Type: Dictionary =  {
 	GENERIC = 'generic',
+	FUEL = 'fuel',
 	HEAD = 'head',
 	CHESTPLATE = 'chestplate',
 	LEGS = 'legs',
@@ -18,6 +19,7 @@ const Type: Dictionary =  {
 
 @export_enum(
 	'generic',
+	'fuel',
 	'head',
 	'chestplate',
 	'legs',
