@@ -15,7 +15,6 @@ const RELIC_SLOTS: Array[int] = [ 38, 39, 40, 41, 42, 43 ]
 const AMMO_SLOTS: Array[int] = [ 44, 45 ]
 
 @onready var circle_sprite = $CircleSprite
-@onready var popup_tooltip: PopupTooltip = $PopupTooltip
 
 var player: Player  # Filled by Player#_ready()
 var inventory: Array[Slot]  # Filled by #_ready()
@@ -24,6 +23,7 @@ var cursor: PanelCursor  # Filled by #_ready()
 # GODOT
 func _ready() -> void:
 	cursor = get_inventory_panel().get_cursor()
+	var popup_tooltip: PopupTooltip = get_inventory_panel().get_popup_tooltip()
 	for slot: Slot in $SlotsGroup.get_children():
 		inventory.append(slot)
 		slot.parent_inventory = self
@@ -182,14 +182,14 @@ func _handle_left_click_on_slot(slot: Slot):
 	var slot_item: BaseItem = slot_stack.item
 	var slot_can_unequip: bool = false if slot_stack.is_empty() else slot_item.can_unequip(slot)
 
-	var cursor_stack: ItemStack = cursor.cursor_stack
+	var cursor_stack: ItemStack = cursor.stack
 	var cursor_item: BaseItem = cursor_stack.item
 	var cursor_can_equip: bool = true if cursor_stack.is_empty() else cursor_stack.item.can_equip(slot)
 
 	# Case 1: Empty cursor
 	if cursor_stack.is_empty():
 		if slot_can_unequip:
-			cursor.set_click(slot_stack)
+			cursor.stack = slot_stack
 			slot.stack = ItemStack.EMPTY
 			slot_item.on_unequip(slot, player)
 
@@ -197,7 +197,7 @@ func _handle_left_click_on_slot(slot: Slot):
 	elif slot_stack.is_empty():
 		if cursor_can_equip:
 			slot.stack = cursor_stack
-			cursor.clear_cursor()
+			cursor.stack = ItemStack.EMPTY
 			cursor_item.on_equip(slot, player)
 
 	# Case 3: Cursor loaded and equal to slot
@@ -205,7 +205,7 @@ func _handle_left_click_on_slot(slot: Slot):
 		if slot_can_unequip and cursor_can_equip:
 			var extra: int = slot_stack.add_amount_safe(cursor_stack.amount)
 			if extra <= 0:
-				cursor.clear_cursor()
+				cursor.stack = ItemStack.EMPTY
 			else:
 				cursor_stack.amount = extra
 			slot.render_slot()
@@ -217,7 +217,7 @@ func _handle_left_click_on_slot(slot: Slot):
 			temp.item.on_unequip(slot, player)
 			slot.stack = cursor_stack
 			cursor_item.on_equip(slot, player)
-			cursor.set_click(temp)
+			cursor.stack = temp
 
 
 func _handle_middle_click_on_slot(slot: Slot):
@@ -235,16 +235,16 @@ func _handle_right_click_on_slot(slot: Slot):
 	var slot_item: BaseItem = slot_stack.item
 	var slot_can_unequip: bool = false if slot_stack.is_empty() else slot_item.can_unequip(slot)
 
-	var cursor_stack: ItemStack = cursor.cursor_stack
+	var cursor_stack: ItemStack = cursor.stack
 	var cursor_item: BaseItem = cursor_stack.item
 	var cursor_amount: int = cursor_stack.amount
 	var cursor_can_equip: bool = true if cursor_stack.is_empty() else cursor_stack.item.can_equip(slot)
 
 	# Case 1: Empty cursor
-	if cursor.cursor_stack.is_empty():
+	if cursor.stack.is_empty():
 		if slot_can_unequip:
 			var take_amount := int(slot_amount / 2.0)
-			cursor.set_click(ItemStack.new(slot_item, take_amount))
+			cursor.stack = ItemStack.new(slot_item, take_amount)
 			slot_stack.amount = slot_amount - take_amount
 			slot.render_slot()
 
@@ -272,8 +272,7 @@ func _handle_right_click_on_slot(slot: Slot):
 			temp.item.on_unequip(slot, player)
 			slot.stack = cursor_stack
 			cursor_item.on_equip(slot, player)
-			cursor.set_click(temp)
+			cursor.setack = temp
 
 	# If the cursor is empty, clear it.
-	if cursor.cursor_stack.is_empty():
-		cursor.clear_cursor()
+	if cursor.stack.is_empty(): cursor.clear_cursor()

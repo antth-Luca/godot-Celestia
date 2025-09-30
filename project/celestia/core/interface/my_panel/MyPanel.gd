@@ -2,6 +2,7 @@ extends Control
 class_name MyPanel
 
 @onready var cursor = $PanelCursor
+@onready var popup_tooltip: PopupTooltip = $PopupTooltip
 @onready var inventory_tab: InventoryManager = $InventoryTab
 @onready var stats_tab: StatsManager = $StatsTab
 @onready var craft_tab: CraftManager = $CraftTab
@@ -59,6 +60,10 @@ func get_craft_tab() -> CraftManager:
 
 func get_cursor() -> PanelCursor:
 	return get_node('PanelCursor')
+
+
+func get_popup_tooltip() -> PopupTooltip:
+	return get_node('PopupTooltip')
 
 # HANDLERS
 func _on_panel_closed() -> void:
