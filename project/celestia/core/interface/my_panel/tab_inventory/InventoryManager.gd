@@ -19,11 +19,11 @@ const AMMO_SLOTS: Array[int] = [ 44, 45 ]
 
 var player: Player  # Filled by Player#_ready()
 var inventory: Array[Slot]  # Filled by #_ready()
-
-var cursor := CursorManager.new(self)
+var cursor: PanelCursor  # Filled by #_ready()
 
 # GODOT
 func _ready() -> void:
+	cursor = get_inventory_panel().get_cursor()
 	for slot: Slot in $SlotsGroup.get_children():
 		inventory.append(slot)
 		slot.parent_inventory = self
@@ -32,10 +32,6 @@ func _ready() -> void:
 	clear_all_inventory()
 	get_inventory_panel().get_ui().connect('ui_rotate_pressed', Callable(self, '_on_ui_rotate_pressed'))
 
-
-func _input(event):
-	if event is InputEventMouseMotion and not cursor.cursor_stack.is_empty():
-		cursor.update_cursor_sprite_position(get_global_mouse_position())
 
 # GETTERS AND SETTERS
 # Nodes
@@ -179,12 +175,6 @@ func _on_ui_rotate_pressed() -> void:
 	for c in range(POCKET_SLOTS.back(), 0, -1):
 		inventory[c].stack = inventory[c - 1].stack
 	inventory[0].stack = last
-
-
-func _on_inventory_closed() -> void:
-	if not cursor.cursor_stack.is_empty():
-		add_item_to_backpack(cursor.get_cursor_stack())
-		cursor.clear_cursor()
 
 
 func _handle_left_click_on_slot(slot: Slot):

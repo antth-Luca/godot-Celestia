@@ -1,8 +1,7 @@
 extends Control
 class_name PopupTooltip
 
-@onready var INVENTORY: InventoryManager = get_parent()
-@onready var CURSOR: CursorManager = INVENTORY.cursor
+@onready var CURSOR: PanelCursor = get_parent().get_cursor()
 @onready var popup_panel: PopupPanel = $CanvasLayer/PopupPanel
 @onready var title_label: RichTextLabel = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TitleRichLabel
 @onready var tooltip_label: RichTextLabel = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TooltipRichLabel
