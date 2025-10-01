@@ -73,9 +73,10 @@ func _ready():
 	# Player Hand
 	hand = get_hand()
 	hand.player = self
-	# Item Hand Animation
-	# Fill Inventory
-	inventory = ui.get_invent_panel().get_inventory_tab()
+	# Fill
+	var mypanel: MyPanel = ui.get_invent_panel()
+	mypanel.fill_children(self)
+	inventory = mypanel.get_inventory_tab()
 	hand.set_item_hand_texture(inventory.get_hand().stack.item)
 
 

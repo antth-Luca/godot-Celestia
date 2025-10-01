@@ -1,7 +1,7 @@
 extends Control
 class_name StatsManager
 
-var player_stats: PropertyManager  # Filled by MyPanel#_ready()
+var player_stats: PropertyManager  # Filled by MyPanel#fill_children()
 
 # GODOT
 func _ready() -> void:

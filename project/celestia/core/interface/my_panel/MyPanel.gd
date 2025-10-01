@@ -21,10 +21,6 @@ var tab_buttons: Array[TextureButton] = []
 
 # GODOT
 func _ready() -> void:
-	# Fill childrens
-	var player: Player = get_parent().get_parent()
-	inventory_tab.player = player
-	stats_tab.player_stats = player.entity_data.stats
 	# Variables
 	for btn in get_node('Background/TabButtons').get_children():
 		tab_buttons.append(btn)
@@ -43,6 +39,13 @@ func _input(event):
 			tab_buttons[selected_tab].emit_signal('pressed')
 	else:
 			_on_panel_closed()
+
+# MAIN
+func fill_children(player: Player) -> void:
+	stats_tab.player_stats = player.entity_data.stats
+	inventory_tab.player = player
+	inventory_tab.fill_children()
+	craft_tab.fill_children(player)
 
 # GETTERS AND SETTERS
 # Nodes

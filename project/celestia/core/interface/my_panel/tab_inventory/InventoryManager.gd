@@ -16,7 +16,7 @@ const AMMO_SLOTS: Array[int] = [ 44, 45 ]
 
 @onready var circle_sprite = $CircleSprite
 
-var player: Player  # Filled by Player#_ready()
+var player: Player  # Filled by MyPanel#fill_children()
 var inventory: Array[BaseSlot]  # Filled by #_ready()
 
 # GODOT
@@ -26,6 +26,10 @@ func _ready() -> void:
 		slot.parent_inventory = self
 	get_inventory_panel().get_ui().connect('ui_rotate_pressed', Callable(self, '_on_ui_rotate_pressed'))
 
+# MAIN
+func fill_children() -> void:
+	for slot in inventory:
+		slot.player = player
 
 # GETTERS AND SETTERS
 # Nodes

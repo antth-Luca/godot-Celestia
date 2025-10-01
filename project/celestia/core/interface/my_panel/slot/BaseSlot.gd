@@ -36,7 +36,7 @@ const Type: Dictionary =  {
 @onready var itemSprite: Sprite2D = $ItemSprite
 @onready var itemAmount: Label = $ItemAmount
 var cursor: PanelCursor  # Filled by #_ready()
-var player: Player = null  # Filled by EquipSlot#_ready()
+var player: Player  # Filled by <parent>#fill_children() - From Inventory, Stats or Craft Tab
 var stack: ItemStack:
 	set(new_stack):
 		if not new_stack: return
