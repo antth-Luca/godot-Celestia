@@ -20,19 +20,19 @@ func get_inventory_panel() -> MyPanel:
 # MAIN
 func fill_children(player: Player) -> void:
 	# Forge
-	forge.get_node('InputSlot')
-	forge.get_node('InputSlot')
-	forge.get_node('InputSlot')
-	forge.get_node('InputSlot')
-	forge.get_node('InputSlot')
-	forge.get_node('InputSlot')
+	forge.get_node('InputSlot').player = player
+	forge.get_node('InputSlot2').player = player
+	forge.get_node('InputSlot3').player = player
+	forge.get_node('InputSlot4').player = player
+	forge.get_node('InputSlot5').player = player
+	forge.get_node('OutputSlot').player = player
 	# Smelt
-	smelt.get_node('InputSlot')
-	smelt.get_node('InputSlot')
-	smelt.get_node('InputSlot')
+	smelt.get_node('InputSlot').player = player
+	smelt.get_node('FuelSlot').player = player
+	smelt.get_node('OutputSlot').player = player
 	# Bless
-	bless.get_node('InputSlot')
-	bless.get_node('InputSlot')
+	bless.get_node('InputSlot').player = player
+	bless.get_node('OutputSlot').player = player
 
 # Visibility
 func show_workstation(workstation_type: int) -> void:
