@@ -1,8 +1,6 @@
 extends Button
 class_name BaseSlot
 
-signal slot_rendered(stack: ItemStack)
-signal slot_cleaned()
 signal slot_hovered(slot: BaseSlot)
 signal slot_unhovered()
 
@@ -73,22 +71,12 @@ func render_slot() -> void:
 		itemAmount.visible = true
 	else:
 		itemAmount.visible = false
-	var slot_index: int = get_index()
-	if slot_index == InventoryManager.MIN_SLOTS:
-		if player: player.hand.ITEM_HAND_TEXTURE.texture = itemSprite.texture
-	if slot_index in [0, 1, 2, 3]:
-		emit_signal('slot_rendered', stack)
 
 
 func clear_slot() -> void:
 	slotTypeSprite.visible = true
 	itemSprite.texture = null
 	itemAmount.visible = false
-	var slot_index: int = get_index()
-	if slot_index == InventoryManager.MIN_SLOTS:
-		if player: player.hand.ITEM_HAND_TEXTURE.texture = null
-	if slot_index in [0, 1, 2, 3]:
-		emit_signal('slot_cleaned')
 
 
 func _on_mouse_entered():

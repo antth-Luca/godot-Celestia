@@ -5,6 +5,7 @@ class_name ViewTransition
 
 # MAIN
 func open_eyes() -> void:
+	await get_tree().create_timer(.1).timeout
 	var open_tween: Tween = create_tween()
 	open_tween.tween_property(shader_material, 'shader_parameter/open_amount', 1.0, .8)
 	await open_tween.finished
