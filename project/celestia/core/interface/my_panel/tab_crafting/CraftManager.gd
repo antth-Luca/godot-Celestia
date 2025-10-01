@@ -9,6 +9,11 @@ class_name CraftManager
 
 var stacks: Dictionary = { 'input': [], 'output': ItemStack.EMPTY }
 
+# GETTERS AND SETTERS
+# Nodes
+func get_inventory_panel() -> MyPanel:
+	return get_parent()
+
 # MAIN
 # Visibility
 func show_workstation(workstation_type: int) -> void:

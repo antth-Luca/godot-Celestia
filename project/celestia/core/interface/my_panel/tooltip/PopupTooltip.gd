@@ -1,7 +1,7 @@
 extends Control
 class_name PopupTooltip
 
-@onready var CURSOR: PanelCursor = get_parent().get_cursor()
+@onready var cursor: PanelCursor = get_parent().get_cursor()
 @onready var popup_panel: PopupPanel = $CanvasLayer/PopupPanel
 @onready var title_label: RichTextLabel = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TitleRichLabel
 @onready var tooltip_label: RichTextLabel = $CanvasLayer/PopupPanel/MarginContainer/VBoxContainer/TooltipRichLabel
@@ -47,8 +47,8 @@ func update_data_popup(item: BaseItem):
 		tooltip_label.visible = false
 
 # HANDLERS
-func _handle_mouse_entered_on_slot(slot: Slot):
-	if CURSOR.stack.is_empty():
+func _handle_mouse_entered_on_slot(slot: BaseSlot):
+	if cursor.stack.is_empty():
 		var slot_stack: ItemStack = slot.stack
 		if slot_stack.amount > 0:
 			item_popup(
@@ -61,5 +61,5 @@ func _handle_mouse_entered_on_slot(slot: Slot):
 
 
 func _handle_mouse_exited_on_slot():
-	if CURSOR.stack.is_empty():
+	if cursor.stack.is_empty():
 		hide_popup()

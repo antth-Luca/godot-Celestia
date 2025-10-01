@@ -48,19 +48,19 @@ func get_tooltip() -> Array[String]:
 	return [name_line]
 
 # HANDLERS
-func can_equip(slot: Slot) -> bool:
-	return slot.slot_type == Slot.Type.GENERIC
+func can_equip(slot: BaseSlot) -> bool:
+	return slot.slot_type == BaseSlot.Type.GENERIC
 
 
-func on_equip(_slot: Slot, _player: Player) -> void:
+func on_equip(_slot: BaseSlot, _player: Player) -> void:
 	pass
 
 
-func can_unequip(_slot: Slot) -> bool:
+func can_unequip(_slot: BaseSlot) -> bool:
 	return true
 
 
-func on_unequip(_slot: Slot, _player: Player):
+func on_unequip(_slot: BaseSlot, _player: Player):
 	pass
 
 
@@ -68,11 +68,11 @@ func use(_player: Player) -> void:
 	pass
 
 
-func consome_durability(damage: int, slot: Slot) -> void:
+func consome_durability(damage: int, slot: BaseSlot) -> void:
 	if _durability != 0 and damage != 0:
 		_durability -= damage
 		if _durability <= 0: break_item(slot)
 
 
-func break_item(slot: Slot) -> void:
+func break_item(slot: BaseSlot) -> void:
 	slot.stack = ItemStack.EMPTY

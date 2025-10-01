@@ -6,7 +6,7 @@ class_name HUDPocketSlot
 
 # GODOT
 func _ready():
-	var slot: Slot = get_rotative_pocket().get_hud().get_ui().get_invent_panel().get_inventory_tab().get_slot(get_index())
+	var slot: BaseSlot = get_rotative_pocket().get_hud().get_ui().get_invent_panel().get_inventory_tab().get_slot(get_index())
 	slot.connect('slot_rendered', Callable(self, "render_slot"))
 	slot.connect('slot_cleaned', Callable(self, "clear_slot"))
 	clear_slot()
@@ -30,13 +30,3 @@ func render_slot(stack: ItemStack) -> void:
 func clear_slot() -> void:
 	itemSprite.visible = false
 	itemAmount.visible = false
-
-# HANDLRES
-func _handle_pocket_slot_has_rendered(slot_index: int, stack: ItemStack) -> void:
-	if slot_index == get_index():
-		render_slot(stack)
-
-
-func _handle_pocket_slot_has_cleaned(slot_index: int) -> void:
-	if slot_index == get_index():
-		clear_slot()

@@ -1,0 +1,2 @@
+extends InventSlot
+class_name InventPocketSlot

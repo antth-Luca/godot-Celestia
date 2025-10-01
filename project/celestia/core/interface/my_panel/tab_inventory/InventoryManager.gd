@@ -6,10 +6,10 @@ const TOTAL_SLOTS: int = 46
 const POCKET_SLOTS: Array[int] = [ 0, 1, 2, 3 ]
 const BACKPACK_SLOTS: Array[int] = [ 4, 33 ]
 const ARMOR_SLOTS: Dictionary[String, int] = {
-	Slot.Type.HEAD: 34,
-	Slot.Type.CHESTPLATE: 35,
-	Slot.Type.LEGS: 36,
-	Slot.Type.FEET: 37,
+	BaseSlot.Type.HEAD: 34,
+	BaseSlot.Type.CHESTPLATE: 35,
+	BaseSlot.Type.LEGS: 36,
+	BaseSlot.Type.FEET: 37,
 }
 const RELIC_SLOTS: Array[int] = [ 38, 39, 40, 41, 42, 43 ]
 const AMMO_SLOTS: Array[int] = [ 44, 45 ]
@@ -17,19 +17,13 @@ const AMMO_SLOTS: Array[int] = [ 44, 45 ]
 @onready var circle_sprite = $CircleSprite
 
 var player: Player  # Filled by Player#_ready()
-var inventory: Array[Slot]  # Filled by #_ready()
-var cursor: PanelCursor  # Filled by #_ready()
+var inventory: Array[BaseSlot]  # Filled by #_ready()
 
 # GODOT
 func _ready() -> void:
-	cursor = get_inventory_panel().get_cursor()
-	var popup_tooltip: PopupTooltip = get_inventory_panel().get_popup_tooltip()
-	for slot: Slot in $SlotsGroup.get_children():
+	for slot: InventSlot in $SlotsGroup.get_children():
 		inventory.append(slot)
 		slot.parent_inventory = self
-		slot.connect('slot_hovered', Callable(popup_tooltip, '_handle_mouse_entered_on_slot'))
-		slot.connect('slot_unhovered', Callable(popup_tooltip, '_handle_mouse_exited_on_slot'))
-	clear_all_inventory()
 	get_inventory_panel().get_ui().connect('ui_rotate_pressed', Callable(self, '_on_ui_rotate_pressed'))
 
 
@@ -39,7 +33,7 @@ func get_inventory_panel() -> MyPanel:
 	return get_parent()
 
 
-func get_slot(slot_index: int) -> Slot:
+func get_slot(slot_index: int) -> BaseSlot:
 	return get_node('SlotsGroup').get_child(slot_index)
 
 
@@ -47,47 +41,47 @@ func get_popup_tooltip() -> PopupTooltip:
 	return get_node('PopupTooltip')
 
 # Inventory
-func get_hand() -> Slot:
+func get_hand() -> BaseSlot:
 	return inventory[POCKET_SLOTS.front()]
 
 
-func get_pocket() -> Array[Slot]:
+func get_pocket() -> Array[BaseSlot]:
 	return inventory.slice(
 		POCKET_SLOTS.front(),
 		POCKET_SLOTS.back() + 1
 	)
 
 
-func get_backpack() -> Array[Slot]:
+func get_backpack() -> Array[BaseSlot]:
 	return inventory.slice(
 		BACKPACK_SLOTS.front(),
 		BACKPACK_SLOTS.back() + 1
 	)
 
 
-func get_armor(slot_type: String = '') -> Array[Slot]:
-	if !slot_type in Slot.Type:
+func get_armor(slot_type: String = '') -> Array[BaseSlot]:
+	if !slot_type in BaseSlot.Type:
 		return inventory.slice(
-			ARMOR_SLOTS[Slot.Type.HEAD],
-			ARMOR_SLOTS[Slot.Type.FEET] + 1
+			ARMOR_SLOTS[BaseSlot.Type.HEAD],
+			ARMOR_SLOTS[BaseSlot.Type.FEET] + 1
 		)
 	var index: int
 	match slot_type:
-		Slot.Type.HEAD: index = ARMOR_SLOTS[Slot.Type.HEAD]
-		Slot.Type.CHESTPLATE: index = ARMOR_SLOTS[Slot.Type.CHESTPLATE]
-		Slot.Type.LEGS: index = ARMOR_SLOTS[Slot.Type.LEGS]
-		Slot.Type.FEET: index = ARMOR_SLOTS[Slot.Type.FEET]
+		BaseSlot.Type.HEAD: index = ARMOR_SLOTS[BaseSlot.Type.HEAD]
+		BaseSlot.Type.CHESTPLATE: index = ARMOR_SLOTS[BaseSlot.Type.CHESTPLATE]
+		BaseSlot.Type.LEGS: index = ARMOR_SLOTS[BaseSlot.Type.LEGS]
+		BaseSlot.Type.FEET: index = ARMOR_SLOTS[BaseSlot.Type.FEET]
 	return inventory.slice(index, index + 1)
 
 
-func get_relics() -> Array[Slot]:
+func get_relics() -> Array[BaseSlot]:
 	return inventory.slice(
 		RELIC_SLOTS.front(),
 		RELIC_SLOTS.back() + 1
 	)
 
 
-func get_ammo_available() -> Array[Slot]:
+func get_ammo_available() -> Array[BaseSlot]:
 	return inventory.slice(
 		AMMO_SLOTS.front(),
 		AMMO_SLOTS.back() + 1
@@ -109,7 +103,7 @@ func switch_visible_top_inventory(to_bool: bool) -> void:
 	# Circle
 	circle_sprite.visible = to_bool
 	# Armor + Relic + Ammo
-	for index in range(ARMOR_SLOTS[Slot.Type.HEAD], AMMO_SLOTS.back() + 1):
+	for index in range(ARMOR_SLOTS[BaseSlot.Type.HEAD], AMMO_SLOTS.back() + 1):
 		inventory[index].visible = to_bool
 
 
@@ -126,7 +120,7 @@ func switch_visible_all_inventory(to_bool: bool) -> void:
 
 func get_stackable_index(item_id: ResourceLocation) -> int:
 	for index in range(BACKPACK_SLOTS.back()):  # Slots for backpack
-		var slot: Slot = inventory[index]
+		var slot: BaseSlot = inventory[index]
 		if slot.stack.is_empty(): return index
 		if slot.stack.item.id == item_id and slot.stack.amount < slot.stack.item.max_stack:
 			return index
@@ -150,7 +144,7 @@ func add_item_to_backpack(add_stack: ItemStack) -> void:
 	if inventory[stackable_index].stack.is_empty():
 		inventory[stackable_index].stack = add_stack
 		return
-	# ...Slot is not empty, resources need to be added.
+	# ...BaseSlot is not empty, resources need to be added.
 	var remaining_amount = inventory[stackable_index].stack.add_amount_safe(add_stack.amount)
 	inventory[stackable_index].render_slot()
 	# As long as there is an remaining amount, try adding
@@ -175,104 +169,3 @@ func _on_ui_rotate_pressed() -> void:
 	for c in range(POCKET_SLOTS.back(), 0, -1):
 		inventory[c].stack = inventory[c - 1].stack
 	inventory[0].stack = last
-
-
-func _handle_left_click_on_slot(slot: Slot):
-	var slot_stack: ItemStack = slot.stack
-	var slot_item: BaseItem = slot_stack.item
-	var slot_can_unequip: bool = false if slot_stack.is_empty() else slot_item.can_unequip(slot)
-
-	var cursor_stack: ItemStack = cursor.stack
-	var cursor_item: BaseItem = cursor_stack.item
-	var cursor_can_equip: bool = true if cursor_stack.is_empty() else cursor_stack.item.can_equip(slot)
-
-	# Case 1: Empty cursor
-	if cursor_stack.is_empty():
-		if slot_can_unequip:
-			cursor.stack = slot_stack
-			slot.stack = ItemStack.EMPTY
-			slot_item.on_unequip(slot, player)
-
-	# Case 2: Cursor loaded and slot empty
-	elif slot_stack.is_empty():
-		if cursor_can_equip:
-			slot.stack = cursor_stack
-			cursor.stack = ItemStack.EMPTY
-			cursor_item.on_equip(slot, player)
-
-	# Case 3: Cursor loaded and equal to slot
-	elif cursor_stack.is_equal_to(slot_stack):
-		if slot_can_unequip and cursor_can_equip:
-			var extra: int = slot_stack.add_amount_safe(cursor_stack.amount)
-			if extra <= 0:
-				cursor.stack = ItemStack.EMPTY
-			else:
-				cursor_stack.amount = extra
-			slot.render_slot()
-
-	# Case 4: Cursor loaded, but different from the slot
-	else:
-		if slot_can_unequip and cursor_can_equip:
-			var temp: ItemStack = slot.stack
-			temp.item.on_unequip(slot, player)
-			slot.stack = cursor_stack
-			cursor_item.on_equip(slot, player)
-			cursor.stack = temp
-
-
-func _handle_middle_click_on_slot(slot: Slot):
-	var slot_stack: ItemStack = slot.stack
-
-	if slot_stack.amount > 0 and slot_stack.item.can_unequip(slot):
-		slot.stack.item.on_unequip(slot, player)
-		slot.stack = ItemStack.EMPTY
-		DroppedItemUtils.drop_item_entity_foot(slot_stack, player)
-
-
-func _handle_right_click_on_slot(slot: Slot):
-	var slot_stack: ItemStack = slot.stack
-	var slot_amount: int = slot_stack.amount
-	var slot_item: BaseItem = slot_stack.item
-	var slot_can_unequip: bool = false if slot_stack.is_empty() else slot_item.can_unequip(slot)
-
-	var cursor_stack: ItemStack = cursor.stack
-	var cursor_item: BaseItem = cursor_stack.item
-	var cursor_amount: int = cursor_stack.amount
-	var cursor_can_equip: bool = true if cursor_stack.is_empty() else cursor_stack.item.can_equip(slot)
-
-	# Case 1: Empty cursor
-	if cursor.stack.is_empty():
-		if slot_can_unequip:
-			var take_amount := int(slot_amount / 2.0)
-			cursor.stack = ItemStack.new(slot_item, take_amount)
-			slot_stack.amount = slot_amount - take_amount
-			slot.render_slot()
-
-	# Case 2: Cursor loaded and slot empty
-	elif slot_stack.is_empty():
-		if cursor_can_equip:
-			slot.stack = ItemStack.new(cursor_item, 1)
-			cursor_stack.amount = cursor_amount - 1
-			cursor_item.on_equip(slot, player)
-
-	# Case 3: Cursor loaded and equal to slot
-	elif cursor_stack.is_equal_to(slot_stack):
-		if slot_can_unequip and cursor_can_equip:
-			var extra = slot_stack.add_amount_safe(1)
-			if extra == 0:
-				cursor_stack.amount = cursor_amount - 1
-			else:
-				cursor_stack.amount = extra
-			slot.render_slot()
-
-	# Case 4: Cursor loaded, but different from the slot
-	else:
-		if slot_can_unequip and cursor_can_equip:
-			var temp: ItemStack = slot.stack
-			temp.item.on_unequip(slot, player)
-			slot.stack = cursor_stack
-			cursor_item.on_equip(slot, player)
-			cursor.setack = temp
-
-	# If the cursor is empty, clear it.
-	if cursor.stack.is_empty(): cursor.clear_cursor()

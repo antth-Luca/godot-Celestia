@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwclo3b3ckhu5"]
+[gd_scene load_steps=10 format=3 uid="uid://cwclo3b3ckhu5"]
 
 [ext_resource type="Script" uid="uid://dh4ynwqdmgs3r" path="res://core/interface/my_panel/tab_crafting/CraftManager.gd" id="1_msls8"]
 [ext_resource type="PackedScene" uid="uid://bb0wjffuwv6sv" path="res://core/interface/my_panel/slot/Slot.tscn" id="2_f0mr0"]
 [ext_resource type="Texture2D" uid="uid://bc7unb74vq48o" path="res://assets/celestia/interface/crafting/big_arrow.png" id="3_4dmet"]
-[ext_resource type="Script" uid="uid://damg5gh8i3wbs" path="res://core/interface/my_panel/tab_crafting/ResultSlot.gd" id="4_myn88"]
+[ext_resource type="Script" uid="uid://d12dqn88nrgco" path="res://core/interface/my_panel/slot/custom/InputSlot.gd" id="3_f0mr0"]
+[ext_resource type="Script" uid="uid://c5wfrub8jybkc" path="res://core/interface/my_panel/slot/custom/OutputSlot.gd" id="5_4dmet"]
 [ext_resource type="Texture2D" uid="uid://b1lhjn0q2rfod" path="res://assets/celestia/interface/crafting/small_arrow.png" id="5_yrhyg"]
 [ext_resource type="Texture2D" uid="uid://bil8yg8qhwdte" path="res://assets/celestia/interface/icons/build.png" id="6_epdjq"]
 [ext_resource type="Texture2D" uid="uid://c704y800mhxbo" path="res://assets/celestia/interface/crafting/flame.png" id="7_kax5f"]
@@ -54,7 +55,8 @@ offset_top = -147.0
 offset_right = -61.0
 offset_bottom = -131.0
 scale = Vector2(2.5, 2.5)
-script = null
+script = ExtResource("3_f0mr0")
+slot_type = "input"
 
 [node name="InputSlot2" parent="Forge" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
@@ -63,7 +65,8 @@ offset_top = -99.9999
 offset_right = -4.0
 offset_bottom = -83.9999
 scale = Vector2(2.5, 2.5)
-script = null
+script = ExtResource("3_f0mr0")
+slot_type = "input"
 
 [node name="InputSlot3" parent="Forge" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
@@ -72,7 +75,8 @@ offset_top = -38.9999
 offset_right = -24.0
 offset_bottom = -22.9999
 scale = Vector2(2.5, 2.5)
-script = null
+script = ExtResource("3_f0mr0")
+slot_type = "input"
 
 [node name="InputSlot4" parent="Forge" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
@@ -81,7 +85,8 @@ offset_top = -37.9999
 offset_right = -94.9999
 offset_bottom = -21.9999
 scale = Vector2(2.5, 2.5)
-script = null
+script = ExtResource("3_f0mr0")
+slot_type = "input"
 
 [node name="InputSlot5" parent="Forge" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
@@ -90,21 +95,23 @@ offset_top = -99.9999
 offset_right = -119.0
 offset_bottom = -83.9999
 scale = Vector2(2.5, 2.5)
-script = null
+script = ExtResource("3_f0mr0")
+slot_type = "input"
 
 [node name="ResultIndicator" type="Sprite2D" parent="Forge"]
 position = Vector2(90, -25)
 scale = Vector2(3.16667, 3.16667)
 texture = ExtResource("3_4dmet")
 
-[node name="ResultSlot" parent="Forge" instance=ExtResource("2_f0mr0")]
+[node name="OutputSlot" parent="Forge" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = 165.0
 offset_top = -45.0
 offset_right = 181.0
 offset_bottom = -29.0
 scale = Vector2(2.5, 2.5)
-script = ExtResource("4_myn88")
+script = ExtResource("5_4dmet")
+slot_type = "output"
 
 [node name="HammerIndicator" type="Sprite2D" parent="Forge"]
 position = Vector2(184, -75)
@@ -130,7 +137,8 @@ offset_top = -38.0
 offset_right = 20.3803
 offset_bottom = -22.0
 scale = Vector2(2.5, 2.5)
-script = null
+script = ExtResource("3_f0mr0")
+slot_type = "fuel"
 
 [node name="ConsumeIndicator" type="Sprite2D" parent="Smelt"]
 position = Vector2(25.3803, -71)
@@ -144,21 +152,23 @@ offset_top = -147.0
 offset_right = 21.3803
 offset_bottom = -131.0
 scale = Vector2(2.5, 2.5)
-script = null
+script = ExtResource("3_f0mr0")
+slot_type = "input"
 
 [node name="ResultIndicator" type="Sprite2D" parent="Smelt"]
 position = Vector2(100.38, -125)
 scale = Vector2(1.78947, 1.78947)
 texture = ExtResource("3_4dmet")
 
-[node name="ResultSlot" parent="Smelt" instance=ExtResource("2_f0mr0")]
+[node name="OutputSlot" parent="Smelt" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = 155.38
 offset_top = -144.0
 offset_right = 171.38
 offset_bottom = -128.0
 scale = Vector2(2.5, 2.5)
-script = ExtResource("4_myn88")
+script = ExtResource("5_4dmet")
+slot_type = "output"
 
 [node name="HammerIndicator" type="Sprite2D" parent="Smelt"]
 position = Vector2(-34.6197, -17)
@@ -183,7 +193,8 @@ offset_top = -142.0
 offset_right = 32.3803
 offset_bottom = -126.0
 scale = Vector2(2.5, 2.5)
-script = null
+script = ExtResource("3_f0mr0")
+slot_type = "input"
 
 [node name="ResultIndicator" type="Sprite2D" parent="Bless"]
 position = Vector2(79.3803, -79)
@@ -191,14 +202,15 @@ rotation = 0.785398
 scale = Vector2(1.78947, 1.78947)
 texture = ExtResource("3_4dmet")
 
-[node name="ResultSlot" parent="Bless" instance=ExtResource("2_f0mr0")]
+[node name="OutputSlot" parent="Bless" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = 102.38
 offset_top = -56.0
 offset_right = 118.38
 offset_bottom = -40.0
 scale = Vector2(2.5, 2.5)
-script = ExtResource("4_myn88")
+script = ExtResource("5_4dmet")
+slot_type = "output"
 
 [node name="HammerIndicator" type="Sprite2D" parent="Bless"]
 position = Vector2(36.3803, -33)

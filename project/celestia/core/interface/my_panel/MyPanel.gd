@@ -21,6 +21,10 @@ var tab_buttons: Array[TextureButton] = []
 
 # GODOT
 func _ready() -> void:
+	# Fill childrens
+	var player: Player = get_parent().get_parent()
+	inventory_tab.player = player
+	stats_tab.player_stats = player.entity_data.stats
 	# Variables
 	for btn in get_node('Background/TabButtons').get_children():
 		tab_buttons.append(btn)

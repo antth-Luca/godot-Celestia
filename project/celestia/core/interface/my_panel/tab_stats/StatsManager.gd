@@ -1,6 +1,8 @@
 extends Control
 class_name StatsManager
 
+var player_stats: PropertyManager  # Filled by MyPanel#_ready()
+
 # GODOT
 func _ready() -> void:
 	var title = $VBoxContainer/HBoxContainerTop/TitleLabel
@@ -8,8 +10,6 @@ func _ready() -> void:
 
 # MAIN
 func update_data_to_stats():
-	var player_stats: PropertyManager = get_parent().get_parent().get_parent().entity_data.stats
-
 	var left_column = $VBoxContainer/HBoxContainerDown/VBoxContainerLeft
 	var right_column = $VBoxContainer/HBoxContainerDown/VBoxContainerRight
 
