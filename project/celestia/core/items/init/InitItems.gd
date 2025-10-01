@@ -7,7 +7,6 @@ static var BONE: DeferredHolder
 static var GOLD_INGOT: DeferredHolder
 static var IRON_INGOT: DeferredHolder
 static var PLANT_FIBER: DeferredHolder
-static var STICK: DeferredHolder
 
 
 static func setup() -> void:
@@ -34,11 +33,6 @@ static func setup() -> void:
 
 	PLANT_FIBER = ITEMS.add_entry(
 		'plant_fiber',
-		func(): return BaseItem.new()
-	)
-
-	STICK = ITEMS.add_entry(
-		'stick',
 		func(): return BaseItem.new()
 	)
 

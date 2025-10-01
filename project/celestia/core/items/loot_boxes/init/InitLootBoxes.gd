@@ -70,7 +70,7 @@ static func setup() -> void:
 			var box = LootBox.new()
 			box.set_cycles(1, 1)
 			box.add_output(
-				InitItems.STICK,
+				InitFuels.STICK,
 				1, 2,
 				.5
 			)
