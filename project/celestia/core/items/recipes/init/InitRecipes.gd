@@ -19,10 +19,10 @@ static func setup() -> void:
 	IRON_PICKAXE = RECIPES.add_entry(
 		'iron_pickaxe',
 		func():
-			var recipe = NormalRecipe.new()
-			recipe.set_result(InitTools.IRON_PICKAXE, 1)
-			recipe.workstation = WorkstationTypes.MANUAL
-			recipe.add_ingredient(InitItems.STICK, 2)
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitTools.IRON_PICKAXE, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
+			recipe.add_ingredient(InitFuels.STICK, 2)
 			recipe.add_ingredient(InitItems.IRON_INGOT, 4)
 			return recipe
 	)

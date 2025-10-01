@@ -1,30 +1,39 @@
-extends Resource
+extends BaseRecipe
 class_name WithReturnRecipe
 
-var id: ResourceLocation = ResourceLocation.EMPTY:
-	set(new_id):
-		if id != ResourceLocation.EMPTY and id.get_string() != new_id.get_string():
-			push_warning('NormalRecipe: Item ID already set. It cannot be changed after initialization.')
-		id = new_id
-var _result: Array
-var _returns: Array[Array]  # -> [item_holder, amount]
-var _damage_p_return: Array[int]
-var _ingredients: Array[Array] = []  # -> [item_holder, amount]
-var workstation: int  # :WorkstationTypes
+enum WorkstationType {
+	MANUAL,
+	BENCH,
+	CLAY_FURNACE,
+	STONE_FURNACE,
+	STAR_CHANNEL,
+	STAR_FORGE
+}
 
-# GETTERS AND SETTERS
+var _returns: Array[Ingredient]
+var _damage_p_return: Array[int]
+
+# SUPER
+func get_workstation() -> WorkstationType:
+	return super.get_workstation()
+
+
+func set_workstation(station: WorkstationType) -> void:
+	super.set_workstation(station)
+
+
 func get_result() -> ItemStack:
 	return ItemStack.new(
-		_result.front().get_registered(),
-		_result.back()
+		_result.item_holder.get_registered(),
+		_result.amount
 	)
 
 
-func set_result(new_item_holder: DeferredHolder, new_amount: int) -> void:
-	_result = [new_item_holder, new_amount]
+func set_result(result: Ingredient) -> void:
+	super.set_result(result)
 
-
-func get_returns() -> Array:
+# GETTERS AND SETTERS
+func get_returns() -> Array[ItemStack]:
 	var stacks_return: Array[ItemStack] = []
 	for c in _returns.size():
 		var stack := ItemStack.new(_returns[c].front().get_registered(), _returns[c].back())
@@ -38,23 +47,3 @@ func add_return(return_item: DeferredHolder, return_amount: int, return_damage: 
 		return_amount
 	])
 	_damage_p_return.append(return_damage)
-
-
-func get_ingredients() -> Array:
-	return _ingredients
-
-
-func add_ingredient(ingredient_item: DeferredHolder, ingredient_amount: int) -> void:
-	_ingredients.append([
-		ingredient_item,
-		ingredient_amount
-	])
-
-# MAIN
-func matches(input: Array[ItemStack]) -> bool:
-	if input.size() != _ingredients.size(): return false
-	for inp in input:
-		for ing in _ingredients:
-			if inp.item.id.get_string() != ing.front().location.get_string() or inp.amount < ing.back():
-				return false
-	return true

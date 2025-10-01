@@ -5,9 +5,9 @@ class_name CraftManager
 @onready var smelt = $Smelt
 @onready var bless = $Bless
 @onready var workstations: Dictionary[Control, Array] = {
-	forge: [ WorkstationTypes.BENCH, WorkstationTypes.STAR_FORGE, WorkstationTypes.MANUAL ],
-	smelt: [ WorkstationTypes.STONE_FURNACE, WorkstationTypes.CLAY_FURNACE ],
-	bless: [ WorkstationTypes.STAR_CHANNEL ]
+	forge: [ CraftingRecipe.WorkstationType.BENCH, CraftingRecipe.WorkstationType.STAR_FORGE, CraftingRecipe.WorkstationType.MANUAL ],
+	smelt: [ SmeltingRecipe.WorkstationType.STONE_FURNACE, SmeltingRecipe.WorkstationType.CLAY_FURNACE ],
+	bless: [ BlessingRecipe.WorkstationType.STAR_CHANNEL ]
 }
 
 var stacks: Dictionary = { 'input': [], 'output': ItemStack.EMPTY }

@@ -10,14 +10,14 @@ var _per_ingredient: Dictionary[DeferredHolder, Array] = {}
 func register(id: ResourceLocation, entry: Callable) -> void:
 	super.register(id, entry)
 	# Get recipe
-	var recipe = entry.call()
+	var recipe: BaseRecipe = entry.call()
 	if not recipe:
 		push_error('RecipeRegistry: Recipe %s is null' % id.get_string())
 		return
 	# Per workstation
-	if not _per_workstation.has(recipe.workstation):
-		_per_workstation[recipe.workstation] = []
-	_per_workstation[recipe.workstation].append(id)
+	if not _per_workstation.has(recipe.get_workstation()):
+		_per_workstation[recipe.get_workstation()] = []
+	_per_workstation[recipe.get_workstation()].append(id)
 	# Per ingredient
 	for ingred_array in recipe.get_ingredients():
 		var ingred = ingred_array.front()
