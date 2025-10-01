@@ -32,7 +32,7 @@ func use(player: Player) -> void:
 # HANDLERS
 func can_equip(slot: BaseSlot) -> bool:
 	var slot_type = slot.slot_type
-	return slot_type == BaseSlot.Type.GENERIC or slot_type == get_compatible_slot()
+	return slot_type == BaseSlot.Type.GENERIC or slot_type == BaseSlot.Type.INPUT or slot_type == get_compatible_slot()
 
 
 func on_equip(slot: BaseSlot, player: Player) -> void:

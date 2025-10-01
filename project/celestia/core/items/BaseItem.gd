@@ -49,7 +49,8 @@ func get_tooltip() -> Array[String]:
 
 # HANDLERS
 func can_equip(slot: BaseSlot) -> bool:
-	return slot.slot_type == BaseSlot.Type.GENERIC
+	var slot_type = slot.slot_type
+	return slot_type == BaseSlot.Type.GENERIC or slot_type == BaseSlot.Type.INPUT
 
 
 func on_equip(_slot: BaseSlot, _player: Player) -> void:
