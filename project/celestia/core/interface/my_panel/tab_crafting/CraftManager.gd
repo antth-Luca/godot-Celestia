@@ -1,16 +1,16 @@
 extends Control
 class_name CraftManager
 
-@onready var forge = $Forge
-@onready var smelt = $Smelt
-@onready var bless = $Bless
+@onready var forge = $Forging
+@onready var smelt = $Smelting
+@onready var bless = $Blessing
 @onready var workstations: Dictionary[Control, Array] = {
 	forge: [ CraftingRecipe.WorkstationType.BENCH, CraftingRecipe.WorkstationType.STAR_FORGE, CraftingRecipe.WorkstationType.MANUAL ],
 	smelt: [ SmeltingRecipe.WorkstationType.STONE_FURNACE, SmeltingRecipe.WorkstationType.CLAY_FURNACE ],
 	bless: [ BlessingRecipe.WorkstationType.STAR_CHANNEL ]
 }
 
-var stacks: Dictionary = { 'input': [], 'output': ItemStack.EMPTY }
+var selected: int
 
 # GETTERS AND SETTERS
 # Nodes
@@ -19,13 +19,7 @@ func get_inventory_panel() -> MyPanel:
 
 # MAIN
 func fill_children(player: Player) -> void:
-	# Forge
-	forge.get_node('InputSlot').player = player
-	forge.get_node('InputSlot2').player = player
-	forge.get_node('InputSlot3').player = player
-	forge.get_node('InputSlot4').player = player
-	forge.get_node('InputSlot5').player = player
-	forge.get_node('OutputSlot').player = player
+	forge.fill_children(player)
 	# Smelt
 	smelt.get_node('InputSlot').player = player
 	smelt.get_node('FuelSlot').player = player
@@ -42,10 +36,12 @@ func show_workstation(workstation_type: int) -> void:
 		for type in supported_types:
 			if type == workstation_type:
 				key.visible = true
+				selected = type
 				return
 
 
 func hide_all_workstations() -> void:
 	self.visible = false
+	selected = -1
 	for key in workstations.keys():
 		key.visible = false

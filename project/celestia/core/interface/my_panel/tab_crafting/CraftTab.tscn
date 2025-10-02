@@ -1,13 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwclo3b3ckhu5"]
+[gd_scene load_steps=13 format=3 uid="uid://cwclo3b3ckhu5"]
 
 [ext_resource type="Script" uid="uid://dh4ynwqdmgs3r" path="res://core/interface/my_panel/tab_crafting/CraftManager.gd" id="1_msls8"]
 [ext_resource type="PackedScene" uid="uid://bb0wjffuwv6sv" path="res://core/interface/my_panel/slot/Slot.tscn" id="2_f0mr0"]
+[ext_resource type="Script" uid="uid://o8sflt0x01rf" path="res://core/interface/my_panel/tab_crafting/stations/ForgeManager.gd" id="2_yrhyg"]
 [ext_resource type="Texture2D" uid="uid://bc7unb74vq48o" path="res://assets/celestia/interface/crafting/big_arrow.png" id="3_4dmet"]
 [ext_resource type="Script" uid="uid://d12dqn88nrgco" path="res://core/interface/my_panel/slot/custom/InputSlot.gd" id="3_f0mr0"]
 [ext_resource type="Script" uid="uid://c5wfrub8jybkc" path="res://core/interface/my_panel/slot/custom/OutputSlot.gd" id="5_4dmet"]
 [ext_resource type="Texture2D" uid="uid://b1lhjn0q2rfod" path="res://assets/celestia/interface/crafting/small_arrow.png" id="5_yrhyg"]
 [ext_resource type="Texture2D" uid="uid://bil8yg8qhwdte" path="res://assets/celestia/interface/icons/build.png" id="6_epdjq"]
 [ext_resource type="Texture2D" uid="uid://c704y800mhxbo" path="res://assets/celestia/interface/crafting/flame.png" id="7_kax5f"]
+[ext_resource type="Script" uid="uid://cois3yn0hkvud" path="res://core/interface/my_panel/tab_crafting/stations/SmeltManager.gd" id="9_epdjq"]
+[ext_resource type="Script" uid="uid://bb4hmqj1m7nbb" path="res://core/interface/my_panel/tab_crafting/stations/BlessManager.gd" id="11_kax5f"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_t334g"]
 color = Color(0.223529, 0.223529, 0.223529, 1)
@@ -43,12 +46,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_t334g")
 
-[node name="Forge" type="Control" parent="."]
+[node name="Forging" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_yrhyg")
 
-[node name="InputSlot" parent="Forge" instance=ExtResource("2_f0mr0")]
+[node name="InputSlot" parent="Forging" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = -77.0
 offset_top = -147.0
@@ -58,7 +62,7 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "input"
 
-[node name="InputSlot2" parent="Forge" instance=ExtResource("2_f0mr0")]
+[node name="InputSlot2" parent="Forging" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = -20.0
 offset_top = -99.9999
@@ -68,7 +72,7 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "input"
 
-[node name="InputSlot3" parent="Forge" instance=ExtResource("2_f0mr0")]
+[node name="InputSlot3" parent="Forging" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = -40.0
 offset_top = -38.9999
@@ -78,7 +82,7 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "input"
 
-[node name="InputSlot4" parent="Forge" instance=ExtResource("2_f0mr0")]
+[node name="InputSlot4" parent="Forging" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = -111.0
 offset_top = -37.9999
@@ -88,7 +92,7 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "input"
 
-[node name="InputSlot5" parent="Forge" instance=ExtResource("2_f0mr0")]
+[node name="InputSlot5" parent="Forging" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = -135.0
 offset_top = -99.9999
@@ -98,12 +102,12 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "input"
 
-[node name="ResultIndicator" type="Sprite2D" parent="Forge"]
+[node name="ResultIndicator" type="Sprite2D" parent="Forging"]
 position = Vector2(90, -25)
 scale = Vector2(3.16667, 3.16667)
 texture = ExtResource("3_4dmet")
 
-[node name="OutputSlot" parent="Forge" instance=ExtResource("2_f0mr0")]
+[node name="OutputSlot" parent="Forging" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = 165.0
 offset_top = -45.0
@@ -113,24 +117,25 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("5_4dmet")
 slot_type = "output"
 
-[node name="HammerIndicator" type="Sprite2D" parent="Forge"]
+[node name="HammerIndicator" type="Sprite2D" parent="Forging"]
 position = Vector2(184, -75)
 rotation = 1.5708
 scale = Vector2(2.12912, 2.12912)
 texture = ExtResource("5_yrhyg")
 
-[node name="InteractHammer" type="Sprite2D" parent="Forge"]
+[node name="InteractHammer" type="Sprite2D" parent="Forging"]
 position = Vector2(185, -123)
 scale = Vector2(2.625, 2.625)
 texture = ExtResource("6_epdjq")
 
-[node name="Smelt" type="Control" parent="."]
+[node name="Smelting" type="Control" parent="."]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("9_epdjq")
 
-[node name="FuelSlot" parent="Smelt" instance=ExtResource("2_f0mr0")]
+[node name="FuelSlot" parent="Smelting" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = 4.38028
 offset_top = -38.0
@@ -140,12 +145,12 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "fuel"
 
-[node name="ConsumeIndicator" type="Sprite2D" parent="Smelt"]
+[node name="ConsumeIndicator" type="Sprite2D" parent="Smelting"]
 position = Vector2(25.3803, -71)
 scale = Vector2(2.14718, 2.14718)
 texture = ExtResource("7_kax5f")
 
-[node name="InputSlot" parent="Smelt" instance=ExtResource("2_f0mr0")]
+[node name="InputSlot" parent="Smelting" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = 5.38028
 offset_top = -147.0
@@ -155,12 +160,12 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "input"
 
-[node name="ResultIndicator" type="Sprite2D" parent="Smelt"]
+[node name="ResultIndicator" type="Sprite2D" parent="Smelting"]
 position = Vector2(100.38, -125)
 scale = Vector2(1.78947, 1.78947)
 texture = ExtResource("3_4dmet")
 
-[node name="OutputSlot" parent="Smelt" instance=ExtResource("2_f0mr0")]
+[node name="OutputSlot" parent="Smelting" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = 155.38
 offset_top = -144.0
@@ -170,23 +175,24 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("5_4dmet")
 slot_type = "output"
 
-[node name="HammerIndicator" type="Sprite2D" parent="Smelt"]
+[node name="HammerIndicator" type="Sprite2D" parent="Smelting"]
 position = Vector2(-34.6197, -17)
 scale = Vector2(1.73209, 1.73209)
 texture = ExtResource("5_yrhyg")
 
-[node name="InteractHammer" type="Sprite2D" parent="Smelt"]
+[node name="InteractHammer" type="Sprite2D" parent="Smelting"]
 position = Vector2(-98.6197, -15)
 scale = Vector2(3.54753, 3.54753)
 texture = ExtResource("6_epdjq")
 
-[node name="Bless" type="Control" parent="."]
+[node name="Blessing" type="Control" parent="."]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("11_kax5f")
 
-[node name="InputSlot" parent="Bless" instance=ExtResource("2_f0mr0")]
+[node name="InputSlot" parent="Blessing" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = 16.3803
 offset_top = -142.0
@@ -196,13 +202,13 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "input"
 
-[node name="ResultIndicator" type="Sprite2D" parent="Bless"]
+[node name="ResultIndicator" type="Sprite2D" parent="Blessing"]
 position = Vector2(79.3803, -79)
 rotation = 0.785398
 scale = Vector2(1.78947, 1.78947)
 texture = ExtResource("3_4dmet")
 
-[node name="OutputSlot" parent="Bless" instance=ExtResource("2_f0mr0")]
+[node name="OutputSlot" parent="Blessing" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
 offset_left = 102.38
 offset_top = -56.0
@@ -212,12 +218,15 @@ scale = Vector2(2.5, 2.5)
 script = ExtResource("5_4dmet")
 slot_type = "output"
 
-[node name="HammerIndicator" type="Sprite2D" parent="Bless"]
+[node name="HammerIndicator" type="Sprite2D" parent="Blessing"]
 position = Vector2(36.3803, -33)
 scale = Vector2(2.056, 2.056)
 texture = ExtResource("5_yrhyg")
 
-[node name="InteractHammer" type="Sprite2D" parent="Bless"]
+[node name="InteractHammer" type="Sprite2D" parent="Blessing"]
 position = Vector2(-35.6197, -32)
 scale = Vector2(3.54753, 3.54753)
 texture = ExtResource("6_epdjq")
+
+[connection signal="slot_item_added" from="Forging/InputSlot" to="Forging" method="_on_input_slot_item_added"]
+[connection signal="slot_item_removed" from="Forging/InputSlot" to="Forging" method="_on_input_slot_item_removed"]
