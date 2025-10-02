@@ -6,6 +6,10 @@ enum WorkstationType {
 	STONE_FURNACE
 }
 
+var melting_point: int:
+	set(new_point):
+		melting_point = max(new_point, 1)
+
 # SUPER
 func get_workstation() -> WorkstationType:
 	return super.get_workstation()
