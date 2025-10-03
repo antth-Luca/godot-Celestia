@@ -8,8 +8,9 @@ extends Control
 	$InputSlot5,
 ]
 @onready var output_slot: OutputSlot = $OutputSlot
-@onready var interact_hammer: Sprite2D = $InteractHammer
+@onready var interact_hammer: InteractConfirm = $InteractConfirm
 
+var can_set_input := true
 var recipe_cache: BaseRecipe
 
 # GODOT
@@ -17,6 +18,7 @@ func _ready() -> void:
 	for slot in inputs:
 		slot.connect('slot_item_added', Callable(self, 'try_find_recipe'))
 		slot.connect('slot_item_removed', Callable(self, 'try_find_recipe'))
+	output_slot.connect('slot_item_removed', Callable(self, 'cleanup_craft'))
 
 # MAIN
 func fill_children(player: Player) -> void:
@@ -33,8 +35,9 @@ func try_find_recipe() -> void:
 		if not stack.is_empty(): input_stacks.append(stack)
 	# ...If there is a revenue cache and it is valid, we use...
 	if recipe_cache and recipe_cache.matches(input_stacks):
-		output_slot.set_output_preview(recipe_cache.get_result())
-		enable_interact_hammer()
+		output_slot.stack = recipe_cache.get_result()
+		output_slot.set_preview()
+		interact_hammer.enable_interaction()
 		return
 	# ...Get the recipes allowed per workstation and per ingredient...
 	var registry: RecipeRegistry = RegistryManager.registries[RecipeRegistry.REGISTRY_TYPE]
@@ -50,21 +53,14 @@ func try_find_recipe() -> void:
 		var recipe: BaseRecipe = registry._registries[possible].call()
 		if recipe and recipe.matches(input_stacks):
 			recipe_cache = recipe
-			output_slot.set_output_preview(recipe.get_result())
-			enable_interact_hammer()
+			output_slot.stack = recipe.get_result()
+			output_slot.set_preview()
+			interact_hammer.enable_interaction()
 			return
 
 
-func enable_interact_hammer() -> void:
-	# Sets the sprite's total opacity and enables dragging.
-	pass
-
-
-func set_result() -> void:
-	# Sets the result in the output slot and blocks new inputs.
-	pass
-
-
-func finish_craft() -> void:
+func cleanup_craft() -> void:
 	# Enables new inputs and sets the recipe cache.
-	pass
+	for slot in inputs:
+		slot.stack = ItemStack.EMPTY
+		can_set_input = true

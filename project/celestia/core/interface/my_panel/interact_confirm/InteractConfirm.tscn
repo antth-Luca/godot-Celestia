@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b07hgu0ei1l1j"]
+
+[ext_resource type="Script" uid="uid://dmutq6nmnghiy" path="res://core/interface/my_panel/interact_confirm/InteractConfirm.gd" id="1_kha16"]
+
+[node name="InteractConfirm" type="TextureRect"]
+script = ExtResource("1_kha16")

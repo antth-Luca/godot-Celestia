@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwclo3b3ckhu5"]
+[gd_scene load_steps=14 format=3 uid="uid://cwclo3b3ckhu5"]
 
 [ext_resource type="Script" uid="uid://dh4ynwqdmgs3r" path="res://core/interface/my_panel/tab_crafting/CraftManager.gd" id="1_msls8"]
 [ext_resource type="PackedScene" uid="uid://bb0wjffuwv6sv" path="res://core/interface/my_panel/slot/Slot.tscn" id="2_f0mr0"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bil8yg8qhwdte" path="res://assets/celestia/interface/icons/build.png" id="6_epdjq"]
 [ext_resource type="Texture2D" uid="uid://c704y800mhxbo" path="res://assets/celestia/interface/crafting/flame.png" id="7_kax5f"]
 [ext_resource type="Script" uid="uid://cois3yn0hkvud" path="res://core/interface/my_panel/tab_crafting/stations/SmeltManager.gd" id="9_epdjq"]
+[ext_resource type="PackedScene" uid="uid://b07hgu0ei1l1j" path="res://core/interface/my_panel/interact_confirm/InteractConfirm.tscn" id="11_epdjq"]
 [ext_resource type="Script" uid="uid://bb4hmqj1m7nbb" path="res://core/interface/my_panel/tab_crafting/stations/BlessManager.gd" id="11_kax5f"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_t334g"]
@@ -123,9 +124,13 @@ rotation = 1.5708
 scale = Vector2(2.12912, 2.12912)
 texture = ExtResource("5_yrhyg")
 
-[node name="InteractHammer" type="Sprite2D" parent="Forging"]
-position = Vector2(185, -123)
-scale = Vector2(2.625, 2.625)
+[node name="InteractConfirm" parent="Forging" instance=ExtResource("11_epdjq")]
+layout_mode = 0
+offset_left = 163.0
+offset_top = -156.0
+offset_right = 179.0
+offset_bottom = -140.0
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_epdjq")
 
 [node name="Smelting" type="Control" parent="."]
@@ -180,10 +185,8 @@ position = Vector2(-34.6197, -17)
 scale = Vector2(1.73209, 1.73209)
 texture = ExtResource("5_yrhyg")
 
-[node name="InteractHammer" type="Sprite2D" parent="Smelting"]
-position = Vector2(-98.6197, -15)
-scale = Vector2(3.54753, 3.54753)
-texture = ExtResource("6_epdjq")
+[node name="InteractConfirm" parent="Smelting" instance=ExtResource("11_epdjq")]
+layout_mode = 0
 
 [node name="Blessing" type="Control" parent="."]
 visible = false

@@ -46,6 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
@@ -54,10 +55,12 @@ theme_override_constants/margin_bottom = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PopupPanel/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/separation = 4
 
 [node name="TitleRichLabel" type="RichTextLabel" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_fonts/normal_font = SubResource("FontFile_1gl0d")
 bbcode_enabled = true
 fit_content = true
@@ -65,5 +68,6 @@ autowrap_mode = 0
 
 [node name="TooltipRichLabel" type="RichTextLabel" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 bbcode_enabled = true
 fit_content = true
