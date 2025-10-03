@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://d06dk3au78jx0"]
+
+[ext_resource type="Script" uid="uid://x1hhl6kqdmh7" path="res://core/structures/custom/cave_hole/CaveHole.gd" id="1_16vxy"]
+[ext_resource type="Shader" uid="uid://capg2ulc8vrff" path="res://assets/celestia/shaders/2D_pixel_outline.gdshader" id="2_5glwc"]
+[ext_resource type="Texture2D" uid="uid://befnq63umcww7" path="res://assets/celestia/textures/structures/cave_hole.png" id="2_k5c05"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5glwc"]
+size = Vector2(24, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lr648"]
+shader = ExtResource("2_5glwc")
+shader_parameter/enabled = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/corner_pixel = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lr648"]
+radius = 30.0
+
+[node name="CaveHole" type="StaticBody2D"]
+script = ExtResource("1_16vxy")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_5glwc")
+
+[node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_lr648")
+texture = ExtResource("2_k5c05")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_lr648")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_interaction_entity_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_interaction_entity_exited"]
