@@ -2,8 +2,8 @@ extends BaseRecipe
 class_name SmeltingRecipe
 
 enum WorkstationType {
-	CLAY_FURNACE,
-	STONE_FURNACE
+	CLAY_FURNACE = 3,
+	STONE_FURNACE = 4
 }
 
 var melting_point: int:

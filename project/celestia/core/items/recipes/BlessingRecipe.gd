@@ -2,7 +2,7 @@ extends BaseRecipe
 class_name BlessingRecipe
 
 enum WorkstationType {
-	STAR_CHANNEL
+	STAR_CHANNEL = 5
 }
 
 # SUPER

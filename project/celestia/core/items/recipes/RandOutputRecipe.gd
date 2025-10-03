@@ -2,12 +2,12 @@ extends BaseRecipe
 class_name RandOutputRecipe
 
 enum WorkstationType {
-	MANUAL,
-	BENCH,
-	CLAY_FURNACE,
-	STONE_FURNACE,
-	STAR_CHANNEL,
-	STAR_FORGE
+	MANUAL = 0,
+	BENCH = 1,
+	STAR_FORGE = 2,
+	CLAY_FURNACE = 3,
+	STONE_FURNACE = 4,
+	STAR_CHANNEL = 5,
 }
 
 # SUPER

@@ -2,9 +2,9 @@ extends BaseRecipe
 class_name CraftingRecipe
 
 enum WorkstationType {
-	MANUAL,
-	BENCH,
-	STAR_FORGE
+	MANUAL = 0,
+	BENCH = 1,
+	STAR_FORGE = 2
 }
 
 # SUPER

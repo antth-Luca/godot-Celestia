@@ -39,8 +39,15 @@ func set_result(result) -> void:
 # MAIN
 func matches(input: Array[ItemStack]) -> bool:
 	if input.size() != _ingredients.size(): return false
-	for inp in input:
-		for ing in _ingredients:
-			if inp.item.id.get_string() != ing.item_holder.location.get_string() or inp.amount < ing.amount:
-				return false
+	var used: Array[bool] = []
+	used.resize(_ingredients.size())
+	used.fill(false)
+	for ingred in _ingredients:
+		var matched := false
+		for c in input.size():
+			if not used[c] and ingred.item_holder.location.get_string() == input[c].item.id.get_string() and ingred.amount < input[c].amount:
+				used[c] = true
+				matched = true
+				break
+		if not matched: return false
 	return true
