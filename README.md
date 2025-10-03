@@ -26,27 +26,6 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 > Estou muito entusiasmado em desenvolver Celestia, mas jogos não são o meu trabalho! Novas features virão conforme meu tempo disponível permitir o desenvolvimento.
 
 ### Recursos:
-#### Pré-alpha
-* [ ] Sistema de receitas;
-* [ ] Sistema de fabricação;
-* [x] Cena do Jogador/Player;
-* [x] Sistema de tradução;
-* [x] Inventário do Jogador/Player;
-* [x] Itens dropados no chão;
-* [x] Sistema de registro de conteúdo;
-* [x] Sistema de Properties (usado nos atributos/stats de entidades);
-* [x] Sistema de Components para entidades;
-* [x] Primeira entidade-monstro: Zumbi/Zombie;
-* [x] HUD do jogador;
-* [x] Sistema de dano;
-* [x] Pausa de mundo/jogo;
-* [x] Sistema de ressurreição do Player;
-* [x] Animação pré-mundo (versão 1);
-* [x] Sistema de tempo (dia e noite);
-* [x] Estrutura de cama;
-* [x] Sistema de fome;
-* [x] Sistema de LootTables (drop de entidades).
-
 #### Alpha
 * [ ] Item de combate à distância: Arco;
 * [ ] Movimento de rolagem do Jogador/Player;
@@ -138,3 +117,24 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 * [ ] Novo inimigo: "Balão de Corrupção";
 * [ ] Novo material para armadura;
 * 📅  Planejando...
+
+#### Pré-alpha
+* [x] Cena do Jogador/Player;
+* [x] Sistema de tradução;
+* [x] Inventário do Jogador/Player;
+* [x] Itens dropados no chão;
+* [x] Sistema de registro de conteúdo;
+* [x] Sistema de Properties (usado nos atributos/stats de entidades);
+* [x] Sistema de Components para entidades;
+* [x] Primeira entidade-monstro: Zumbi/Zombie;
+* [x] HUD do jogador;
+* [x] Sistema de dano;
+* [x] Pausa de mundo/jogo;
+* [x] Sistema de ressurreição do Player;
+* [x] Animação pré-mundo (versão 1);
+* [x] Sistema de tempo (dia e noite);
+* [x] Estrutura de cama;
+* [x] Sistema de fome;
+* [x] Sistema de LootTables (drop de entidades);
+* [x] Sistema de fabricação;
+* [x] Sistema de receitas.
