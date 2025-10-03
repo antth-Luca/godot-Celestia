@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwclo3b3ckhu5"]
+[gd_scene load_steps=16 format=3 uid="uid://cwclo3b3ckhu5"]
 
 [ext_resource type="Script" uid="uid://dh4ynwqdmgs3r" path="res://core/interface/my_panel/tab_crafting/CraftManager.gd" id="1_msls8"]
 [ext_resource type="PackedScene" uid="uid://bb0wjffuwv6sv" path="res://core/interface/my_panel/slot/Slot.tscn" id="2_f0mr0"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b07hgu0ei1l1j" path="res://core/interface/my_panel/interact_confirm/InteractConfirm.tscn" id="11_epdjq"]
 [ext_resource type="Script" uid="uid://bb4hmqj1m7nbb" path="res://core/interface/my_panel/tab_crafting/stations/BlessManager.gd" id="11_kax5f"]
 [ext_resource type="Texture2D" uid="uid://sork1333erf0" path="res://assets/celestia/interface/icons/shovel.png" id="12_kax5f"]
+[ext_resource type="Texture2D" uid="uid://wkvjaofrkiwn" path="res://assets/celestia/interface/icons/bless.png" id="14_1fsrn"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_t334g"]
 color = Color(0.223529, 0.223529, 0.223529, 1)
@@ -136,6 +137,7 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_epdjq")
 
 [node name="Smelting" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -196,7 +198,6 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("12_kax5f")
 
 [node name="Blessing" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -233,10 +234,14 @@ position = Vector2(36.3803, -33)
 scale = Vector2(2.056, 2.056)
 texture = ExtResource("5_yrhyg")
 
-[node name="InteractHammer" type="Sprite2D" parent="Blessing"]
-position = Vector2(-35.6197, -32)
-scale = Vector2(3.54753, 3.54753)
-texture = ExtResource("6_epdjq")
+[node name="InteractConfirm" parent="Blessing" instance=ExtResource("11_epdjq")]
+layout_mode = 0
+offset_left = -46.0
+offset_top = -52.0
+offset_right = -30.0
+offset_bottom = -36.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("14_1fsrn")
 
 [connection signal="slot_item_added" from="Forging/InputSlot" to="Forging" method="_on_input_slot_item_added"]
 [connection signal="slot_item_removed" from="Forging/InputSlot" to="Forging" method="_on_input_slot_item_removed"]

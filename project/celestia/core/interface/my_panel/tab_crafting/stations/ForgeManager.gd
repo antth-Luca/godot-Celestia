@@ -45,7 +45,7 @@ func try_find_recipe() -> void:
 	var per_ingredient: Dictionary[ResourceLocation, Array] = registry._per_ingredient
 	# ...Filter recipes by input ingredients...
 	for stack in input_stacks:
-		if not stack.is_empty() and per_ingredient.has(stack.item.id):
+		if per_ingredient.has(stack.item.id):
 			var by_ingred: Array[ResourceLocation] = per_ingredient[stack.item.id]
 			per_workstation = per_workstation.filter(func(id): return id in by_ingred)
 	# ...Tests each candidate recipe...
