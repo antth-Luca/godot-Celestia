@@ -45,7 +45,7 @@ func matches(input: Array[ItemStack]) -> bool:
 	for ingred in _ingredients:
 		var matched := false
 		for c in input.size():
-			if not used[c] and ingred.item_holder.location.get_string() == input[c].item.id.get_string() and ingred.amount < input[c].amount:
+			if not used[c] and ingred.item_holder.location.get_string() == input[c].item.id.get_string() and ingred.amount == input[c].amount:
 				used[c] = true
 				matched = true
 				break
