@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwclo3b3ckhu5"]
+[gd_scene load_steps=15 format=3 uid="uid://cwclo3b3ckhu5"]
 
 [ext_resource type="Script" uid="uid://dh4ynwqdmgs3r" path="res://core/interface/my_panel/tab_crafting/CraftManager.gd" id="1_msls8"]
 [ext_resource type="PackedScene" uid="uid://bb0wjffuwv6sv" path="res://core/interface/my_panel/slot/Slot.tscn" id="2_f0mr0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cois3yn0hkvud" path="res://core/interface/my_panel/tab_crafting/stations/SmeltManager.gd" id="9_epdjq"]
 [ext_resource type="PackedScene" uid="uid://b07hgu0ei1l1j" path="res://core/interface/my_panel/interact_confirm/InteractConfirm.tscn" id="11_epdjq"]
 [ext_resource type="Script" uid="uid://bb4hmqj1m7nbb" path="res://core/interface/my_panel/tab_crafting/stations/BlessManager.gd" id="11_kax5f"]
+[ext_resource type="Texture2D" uid="uid://sork1333erf0" path="res://assets/celestia/interface/icons/shovel.png" id="12_kax5f"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_t334g"]
 color = Color(0.223529, 0.223529, 0.223529, 1)
@@ -48,6 +49,7 @@ grow_vertical = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_t334g")
 
 [node name="Forging" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -134,7 +136,6 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_epdjq")
 
 [node name="Smelting" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -187,6 +188,12 @@ texture = ExtResource("5_yrhyg")
 
 [node name="InteractConfirm" parent="Smelting" instance=ExtResource("11_epdjq")]
 layout_mode = 0
+offset_left = -112.0
+offset_top = -38.0
+offset_right = -96.0
+offset_bottom = -22.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("12_kax5f")
 
 [node name="Blessing" type="Control" parent="."]
 visible = false

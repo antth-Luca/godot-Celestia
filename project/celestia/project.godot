@@ -24,6 +24,10 @@ RegistryManager="*res://core/registries/RegistryManager.gd"
 DroppedItemUtils="*res://core/world/dropped_items/utils/DroppedItemUtils.gd"
 HitUtils="*res://core/damage/hit/utils/HitUtils.gd"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/Luca/Downloads/movie.avi"
+
 [global_group]
 
 player=""
