@@ -3,6 +3,7 @@ class_name InitFoods
 
 static var FOODS: DeferredRegister
 # Foods
+static var BOILED_EGG: DeferredHolder
 static var EGG: DeferredHolder
 static var MEAT: DeferredHolder
 static var UNCLEAN_MEAT: DeferredHolder
@@ -16,6 +17,15 @@ static func setup() -> void:
 	)
 
 	# Foods
+	BOILED_EGG = FOODS.add_entry(
+		'boiled_egg',
+		func():
+			var food = BaseFood.new()
+			food.max_stack = 36
+			food.satiation = 4.5
+			return food
+	)
+
 	EGG = FOODS.add_entry(
 		'egg',
 		func():

@@ -4,6 +4,7 @@ class_name InitRecipes
 static var RECIPES: DeferredRegister
 # Enchantment
 # Normal
+static var BOILED_EGG: DeferredHolder
 static var IRON_PICKAXE: DeferredHolder
 # Random output
 # With return
@@ -16,6 +17,17 @@ static func setup() -> void:
 	)
 
 	# Normal
+	BOILED_EGG = RECIPES.add_entry(
+		'boiled_egg',
+		func():
+			var recipe = SmeltingRecipe.new()
+			recipe.set_result(Ingredient.new(InitFoods.BOILED_EGG, 1))
+			recipe.set_workstation(SmeltingRecipe.WorkstationType.CLAY_FURNACE)
+			recipe.melting_point = 1
+			recipe.add_ingredient(InitFoods.EGG, 1)
+			return recipe
+	)
+
 	IRON_PICKAXE = RECIPES.add_entry(
 		'iron_pickaxe',
 		func():

@@ -4,9 +4,11 @@ class_name InitItems
 static var ITEMS: DeferredRegister
 # Items
 static var BONE: DeferredHolder
+static var COBBLESTONE: DeferredHolder
 static var GOLD_INGOT: DeferredHolder
 static var IRON_INGOT: DeferredHolder
 static var PLANT_FIBER: DeferredHolder
+static var STONE: DeferredHolder
 
 
 static func setup() -> void:
@@ -18,6 +20,11 @@ static func setup() -> void:
 	# Items
 	BONE = ITEMS.add_entry(
 		'bone',
+		func(): return BaseItem.new()
+	)
+
+	COBBLESTONE = ITEMS.add_entry(
+		'cobblestone',
 		func(): return BaseItem.new()
 	)
 
@@ -33,6 +40,11 @@ static func setup() -> void:
 
 	PLANT_FIBER = ITEMS.add_entry(
 		'plant_fiber',
+		func(): return BaseItem.new()
+	)
+
+	STONE = ITEMS.add_entry(
+		'stone',
 		func(): return BaseItem.new()
 	)
 
