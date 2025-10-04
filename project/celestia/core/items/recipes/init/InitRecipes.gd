@@ -6,6 +6,7 @@ static var RECIPES: DeferredRegister
 # Normal
 static var BOILED_EGG: DeferredHolder
 static var IRON_PICKAXE: DeferredHolder
+static var IRON_SWORD: DeferredHolder
 # Random output
 # With return
 
@@ -36,6 +37,17 @@ static func setup() -> void:
 			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
 			recipe.add_ingredient(InitFuels.STICK, 2)
 			recipe.add_ingredient(InitItems.IRON_INGOT, 4)
+			return recipe
+	)
+
+	IRON_SWORD = RECIPES.add_entry(
+		'iron_sword',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitWeapons.IRON_SWORD, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
+			recipe.add_ingredient(InitFuels.STICK, 2)
+			recipe.add_ingredient(InitItems.IRON_INGOT, 2)
 			return recipe
 	)
 
