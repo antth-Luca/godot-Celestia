@@ -11,7 +11,6 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 ## Versões:
 | Versão | Título | Situação | Início desenv. | Fim desenv. |
 | ------ | ------ | -------- | -------------- | ----------- |
-| v1.25-prealpha | Pré-alpha | Concluída ✅ | 25/07/25 | 04/10/2025 |
 | v1.25-alpha | Alpha | Desenvolvendo ⏳ | - | - |
 | v1.25-beta | Beta | Planejada 📅 | - | - |
 | v1.25.1.1 | Ato 1 (este é **MVP**) | Planejada 📅 | - | - |
@@ -21,6 +20,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 | v1.25.1.5 | Cozinheiros a postos! | Planejada 📅 | - | - |
 | v1.25.1.6 | Festeiro | Planejada 📅 | - | - |
 | v1.25.2.1 | Ato 2 | Planejando... 📅 | - | - |
+| v1.25-prealpha | Pré-alpha | Concluída ✅ | 25/07/25 | 04/10/2025 |
 
 > [!NOTE]
 > Estou muito entusiasmado em desenvolver Celestia, mas jogos não são o meu trabalho! Novas features virão conforme meu tempo disponível permitir o desenvolvimento.
