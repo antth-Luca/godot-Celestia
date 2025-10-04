@@ -118,11 +118,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 - [ ] Novos animais mágicos;
 - [ ] Nova estrutura: "Viveiro de lesma";
-- [ ] Novas receitas de comidas;
-- [ ] Novos NPC aldeões da caverna, os Gnolens;
-- [ ] Nova estrutura da caverna: "Vila Subterrânea dos Gnolens";
-- [ ] Nova moeda exclusiva dos Gnolens;
-- [ ] Comidas mágicas (vendidas pelos Gnolens).
+- [ ] Novas receitas de comidas.
 
 #### Festeiro
 
