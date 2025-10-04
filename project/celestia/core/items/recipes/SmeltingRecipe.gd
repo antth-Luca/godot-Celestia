@@ -19,6 +19,13 @@ func set_workstation(station: WorkstationType) -> void:
 	super.set_workstation(station)
 
 
+func get_result() -> ItemStack:
+	return ItemStack.new(
+		_result.item_holder.get_registered(),
+		_result.amount
+	)
+
+
 func matches(input: Array[ItemStack]) -> bool:
 	if input.size() - 1 != _ingredients.size(): return false
 	var simple_ingred: Ingredient = _ingredients.front()

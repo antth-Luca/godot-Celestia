@@ -22,7 +22,7 @@ static func setup() -> void:
 		func():
 			var recipe = SmeltingRecipe.new()
 			recipe.set_result(Ingredient.new(InitFoods.BOILED_EGG, 1))
-			recipe.set_workstation(SmeltingRecipe.WorkstationType.CLAY_FURNACE)
+			recipe.set_workstation(SmeltingRecipe.WorkstationType.STONE_FURNACE)
 			recipe.melting_point = 1
 			recipe.add_ingredient(InitFoods.EGG, 1)
 			return recipe

@@ -19,17 +19,17 @@ func _ready() -> void:
 	player.global_position = Vector2(169, 104)
 	player.ESSENCE_COUNTER = config.get('max_resilient_essence')
 	# TESTS CODE
-	# Spawn Bush
-	var bush: Bush = InitStructures.BUSH.get_registered()
-	get_tree().current_scene.add_child(bush)
-	bush.global_position = Vector2(487, 117)
+	# Spawn Furnace
+	var furnace: StoneFurnace = InitStructures.STONE_FURNACE.get_registered()
+	get_tree().current_scene.add_child(furnace)
+	furnace.global_position = Vector2(487, 117)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(InitFuels.STICK.get_registered(), 12),
 		Vector2(169, 145)
 	)
-	# Spawn Iron Ingot
+	# Spawn Egg
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitItems.IRON_INGOT.get_registered(), 12),
+		ItemStack.new(InitFoods.EGG.get_registered(), 12),
 		Vector2(169, 160)
 	)

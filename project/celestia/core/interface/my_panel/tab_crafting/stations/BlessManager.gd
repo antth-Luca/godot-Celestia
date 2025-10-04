@@ -2,7 +2,7 @@ extends Control
 
 @onready var input_slot: InputSlot = $InputSlot
 @onready var output_slot: OutputSlot = $OutputSlot
-@onready var interact_star: Sprite2D = $InteractConfirm
+@onready var interact_star: InteractConfirm = $InteractConfirm
 
 var can_set_input := true
 var recipe_cache: BlessingRecipe
@@ -37,8 +37,8 @@ func try_find_recipe() -> void:
 	var per_workstation: Array = registry._per_workstation.get(get_parent().selected).duplicate()
 	var per_ingredient: Dictionary[ResourceLocation, Array] = registry._per_ingredient
 	# ...Filter recipes by input ingredients...
-	if per_ingredient.has(input_stacks[0]):
-		var by_ingred: Array[ResourceLocation] = per_ingredient[input_stacks[0].item.id]
+	if not input_stacks.is_empty() and per_ingredient.has(input_stacks.front()):
+		var by_ingred: Array[ResourceLocation] = per_ingredient[input_stacks.front().item.id]
 		per_workstation = per_workstation.filter(func(id): return id in by_ingred)
 	# ...Tests each candidate recipe...
 	for possible in per_workstation:

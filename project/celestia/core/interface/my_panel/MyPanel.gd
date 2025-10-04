@@ -91,8 +91,8 @@ func _on_stats_tab_button_pressed():
 	stats_tab.switch_visible_stats_tab(true)
 
 
-func _on_craft_tab_button_pressed():
+func _on_craft_tab_button_pressed(workstation_key: int = 0):
 	inventory_tab.switch_visible_all_inventory(false)
 	inventory_tab.switch_visible_down_inventory(true)
 	stats_tab.switch_visible_stats_tab(false)
-	craft_tab.show_workstation(0)
+	craft_tab.show_workstation(workstation_key)

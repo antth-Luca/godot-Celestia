@@ -137,7 +137,6 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_epdjq")
 
 [node name="Smelting" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -145,59 +144,61 @@ script = ExtResource("9_epdjq")
 
 [node name="FuelSlot" parent="Smelting" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
-offset_left = 4.38028
-offset_top = -38.0
-offset_right = 20.3803
-offset_bottom = -22.0
+offset_left = -82.0
+offset_top = -43.0
+offset_right = -66.0
+offset_bottom = -27.0
 scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "fuel"
 
 [node name="ConsumeIndicator" type="Sprite2D" parent="Smelting"]
-position = Vector2(25.3803, -71)
+position = Vector2(-61, -76)
 scale = Vector2(2.14718, 2.14718)
 texture = ExtResource("7_kax5f")
 
 [node name="InputSlot" parent="Smelting" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
-offset_left = 5.38028
-offset_top = -147.0
-offset_right = 21.3803
-offset_bottom = -131.0
+offset_left = -81.0
+offset_top = -152.0
+offset_right = -65.0
+offset_bottom = -136.0
 scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "input"
 
 [node name="ResultIndicator" type="Sprite2D" parent="Smelting"]
-position = Vector2(100.38, -125)
+position = Vector2(13.9997, -130)
 scale = Vector2(1.78947, 1.78947)
 texture = ExtResource("3_4dmet")
 
 [node name="OutputSlot" parent="Smelting" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
-offset_left = 155.38
-offset_top = -144.0
-offset_right = 171.38
-offset_bottom = -128.0
+offset_left = 68.9997
+offset_top = -149.0
+offset_right = 84.9997
+offset_bottom = -133.0
 scale = Vector2(2.5, 2.5)
 script = ExtResource("5_4dmet")
 slot_type = "output"
 
 [node name="HammerIndicator" type="Sprite2D" parent="Smelting"]
-position = Vector2(-34.6197, -17)
+position = Vector2(88.6197, -77)
+rotation = -1.5708
 scale = Vector2(1.73209, 1.73209)
 texture = ExtResource("5_yrhyg")
 
 [node name="InteractConfirm" parent="Smelting" instance=ExtResource("11_epdjq")]
 layout_mode = 0
-offset_left = -112.0
-offset_top = -38.0
-offset_right = -96.0
-offset_bottom = -22.0
+offset_left = 69.6197
+offset_top = -41.0
+offset_right = 85.6197
+offset_bottom = -25.0
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("12_kax5f")
 
 [node name="Blessing" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

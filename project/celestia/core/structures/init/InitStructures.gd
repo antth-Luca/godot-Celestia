@@ -4,6 +4,7 @@ class_name InitStructures
 static var STRUCTURES: DeferredRegister
 # Buildable
 static var BED: DeferredHolder
+static var STONE_FURNACE: DeferredHolder
 # Natural
 static var BUSH: DeferredHolder
 
@@ -18,6 +19,11 @@ static func setup() -> void:
 	BED = STRUCTURES.add_entry(
 		'bed',
 		func(): return preload('res://core/structures/custom/bed/Bed.tscn').instantiate()
+	)
+
+	STONE_FURNACE = STRUCTURES.add_entry(
+		'stone_furnace',
+		func(): return preload('res://core/structures/custom/stone_furnace/StoneFurnace.tscn').instantiate()
 	)
 
 	# Natural
