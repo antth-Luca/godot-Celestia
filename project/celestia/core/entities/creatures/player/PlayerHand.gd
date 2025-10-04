@@ -55,6 +55,7 @@ func unregister_interaction(interact: BaseStructure) -> void:
 		active_interactions.remove_at(index)
 		if highlighted_interaction == interact:
 			interact.remove_highlight()
+			highlighted_interaction = null
 			if not active_interactions.is_empty():
 				highlighted_interaction = active_interactions.front()
 				highlighted_interaction.add_highlight()
