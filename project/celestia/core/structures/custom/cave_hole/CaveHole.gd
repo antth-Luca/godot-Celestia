@@ -24,11 +24,11 @@ func on_interact(entity: LivingEntity) -> void:
 
 
 func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
-	super.damage(final_dam, hit, hitbox_parent)
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(InitItems.STONE.get_registered(), randi_range(1, MAX_DROP_STONE)),
 		global_position
 	)
+	super.damage(final_dam, hit, hitbox_parent)
 
 
 func destroy(_attacker: LivingEntity) -> void:
