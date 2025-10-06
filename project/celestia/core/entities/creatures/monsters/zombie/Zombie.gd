@@ -30,7 +30,6 @@ func get_source_entity() -> LivingEntity:
 func get_hit_data() -> HitData:
 	return HitData.new(
 		self,
-		1,
 		HitData.PRIMITIVE_TYPE.PHYSIC,
 		HitData.SPECIALIZED_TYPE.NONE
 	)

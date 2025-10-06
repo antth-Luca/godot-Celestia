@@ -13,8 +13,7 @@ static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 		target.hurt(final_dam, hit, hitbox_parent)
 		var attacker_stats = hit.attacker.entity_data.stats
 		var attacker_life_steal = attacker_stats.get_property(InitPropProviders.LIFE_STEAL).get_life_steal()
-		if attacker_life_steal > 0:
-			attacker_stats.get_property(InitPropProviders.HEALTH).add_health(final_dam * attacker_life_steal)
+		if attacker_life_steal > 0: hit.attacker.heal(final_dam * attacker_life_steal)
 
 
 static func compute_defense(hit: HitData, target_stats: PropertyManager) -> float:
@@ -27,12 +26,14 @@ static func compute_defense(hit: HitData, target_stats: PropertyManager) -> floa
 
 
 static func compute_damage(hit: HitData, target_stats: PropertyManager, calc_def: float) -> float:
-	var brute_dam = hit.attacker.entity_data.stats.get_property(InitPropProviders.FORCE).get_force() * hit.damage_factor
+	var damage_factor: float = 1 if not hit.tool else hit.tool.damage_factor
+	var brute_dam = hit.attacker.entity_data.stats.get_property(InitPropProviders.FORCE).get_force() * damage_factor
 	var calc_dam = brute_dam - (brute_dam * target_stats.get_property(InitPropProviders.DAMAGE_REDUCTION).get_dam_reduction())
 	if calc_def >= 0: return calc_dam * (1 / (1 + calc_def / K))
 	return calc_dam * (2 - (1 / (1 - calc_def / K)))
 
 
 static func compute_crit(hit: HitData, calc_dam: float) -> float:
-	if hit.is_crit: return calc_dam + calc_dam * hit.attacker.entity_data.stats.get_property(InitPropProviders.CRITICAL_STRIKE).get_crit_dam()
+	var is_crit: bool = hit.attacker.entity_data.stats.get_property(InitPropProviders.CRITICAL_STRIKE).compute_critical_strike()
+	if is_crit: return calc_dam + calc_dam * hit.attacker.entity_data.stats.get_property(InitPropProviders.CRITICAL_STRIKE).get_crit_dam()
 	return calc_dam

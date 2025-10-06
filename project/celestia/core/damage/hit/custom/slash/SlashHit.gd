@@ -11,7 +11,7 @@ func _ready() -> void:
 func get_hit_data() -> HitData:
 	return HitData.new(
 		source_entity,
-		source_tool.damage_factor,
 		HitData.PRIMITIVE_TYPE.PHYSIC,
-		HitData.SPECIALIZED_TYPE.NONE
+		HitData.SPECIALIZED_TYPE.NONE,
+		source_tool
 	)

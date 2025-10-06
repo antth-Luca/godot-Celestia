@@ -19,7 +19,7 @@ const DAMAGE_RULES = {
 }
 
 static func can_damage(hit: HitData, target: EntityData) -> bool:
-	if (DAMAGE_RULES.get(hit.attacker.entity_data.faction, 0) & EntityData.FACTION_MASK.STRUCTURE):
+	if target.faction == EntityData.FACTION_MASK.STRUCTURE:
 		return can_damage_structure(hit, target as StructureData)
 	if (
 		hit.attacker == target or
@@ -30,6 +30,7 @@ static func can_damage(hit: HitData, target: EntityData) -> bool:
 
 
 static func can_damage_structure(hit: HitData, target: StructureData) -> bool:
+	if not (DAMAGE_RULES.get(hit.attacker.entity_data.faction, 0) & EntityData.FACTION_MASK.STRUCTURE): return false
 	if not hit.tool: return false
 	var tool_is_compatible: bool = false
 	for comp_tool in target.compatible_tools:

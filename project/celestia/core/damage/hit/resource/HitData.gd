@@ -16,17 +16,13 @@ enum SPECIALIZED_TYPE {
 }
 
 var attacker: LivingEntity
-var damage_factor: float
 var primitive_type: PRIMITIVE_TYPE
 var specialized_type: SPECIALIZED_TYPE
 var tool: BaseItem
-var is_crit: bool
 
 # GODOT
-func _init(attacker_param: LivingEntity, damage_factor_param: float, primitive_type_param: PRIMITIVE_TYPE, specialized_type_param: SPECIALIZED_TYPE, tool_param: BaseItem = null) -> void:
+func _init(attacker_param: LivingEntity, primitive_type_param: PRIMITIVE_TYPE, specialized_type_param: SPECIALIZED_TYPE, tool_param: BaseItem = null) -> void:
 	attacker = attacker_param
-	damage_factor = damage_factor_param
 	primitive_type = primitive_type_param
 	specialized_type = specialized_type_param
 	tool = tool_param
-	is_crit = attacker.entity_data.stats.get_property(InitPropProviders.CRITICAL_STRIKE).compute_critical_strike()
