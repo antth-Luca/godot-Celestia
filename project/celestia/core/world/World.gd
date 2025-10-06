@@ -42,7 +42,7 @@ func _ready() -> void:
 	bush.global_position = Vector2(487, 117)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitFuels.STICK.get_registered(), 12),
+		ItemStack.new(InitTools.IRON_AXE.get_registered(), 1),
 		Vector2(169, 165)
 	)
 	# Spawn Iron

@@ -1,6 +1,8 @@
 extends BaseTool
 class_name AxeTool
 
+static var COMPARABLE_NAME = 'AxeTool'
+
 # GODOT
 func _init() -> void:
 	damage_factor = .8
