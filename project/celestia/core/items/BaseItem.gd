@@ -72,6 +72,10 @@ func use(_player: Player) -> void:
 	pass
 
 
+func interact(_player: Player) -> void:
+	pass
+
+
 func consome_durability(damage: int, slot: BaseSlot) -> void:
 	if _durability != 0 and damage != 0:
 		_durability -= damage

@@ -22,7 +22,6 @@ func on_interact(entity: LivingEntity) -> void:
 	var ui: WorldUI = entity.get_ui()
 	ui.get_invent_panel()._on_craft_tab_button_pressed(workstation_key)
 	ui.update_my_panel(false)
-	entity.hand.is_interacting = false
 
 
 func destroy(attacker: LivingEntity) -> void:

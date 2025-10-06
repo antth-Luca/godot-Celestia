@@ -26,7 +26,6 @@ func on_interact(entity: LivingEntity) -> void:
 		HitData.SPECIALIZED_TYPE.NONE
 	)
 	damage(.4, hit, null)
-	entity.hand.is_interacting = false
 
 
 func destroy(attacker: LivingEntity) -> void:

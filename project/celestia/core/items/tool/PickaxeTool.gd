@@ -9,3 +9,10 @@ func _init() -> void:
 	base_lifespan = .2
 	anim_type = BaseItem.AnimType.USE
 	hit_type = InitHits.SLASH
+
+# SUPER
+func interact(player: Player) -> void:
+	StructuresUtils.spawn_structure_entity_foot(
+		InitStructures.STONE_FURNACE.get_registered(),
+		player
+	)

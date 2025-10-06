@@ -20,13 +20,15 @@ func _ready() -> void:
 	player.ESSENCE_COUNTER = config.get('max_resilient_essence')
 	# TESTS CODE
 	# Spawn Bed
-	var bed: Bed = InitStructures.BED.get_registered()
-	get_tree().current_scene.add_child(bed)
-	bed.global_position = Vector2(179, 114)
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.BED.get_registered(),
+		Vector2(179, 114)
+	)
 	# Spawn Furnace
-	var furnace: StoneFurnace = InitStructures.STONE_FURNACE.get_registered()
-	get_tree().current_scene.add_child(furnace)
-	furnace.global_position = Vector2(210, 114)
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.STONE_FURNACE.get_registered(),
+		Vector2(210, 114)
+	)
 	# Spawn Zombie
 	var zombie: Zombie = InitEntities.ZOMBIE.get_registered()
 	get_tree().current_scene.add_child(zombie)
@@ -37,9 +39,10 @@ func _ready() -> void:
 	chicken.global_position = Vector2(392, 269)
 	Vector2(483, 233)
 	# Spawn Bush
-	var bush: Bush = InitStructures.BUSH.get_registered()
-	get_tree().current_scene.add_child(bush)
-	bush.global_position = Vector2(487, 117)
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.BUSH.get_registered(),
+		Vector2(487, 117)
+	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(InitFuels.STICK.get_registered(), 1),

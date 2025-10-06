@@ -37,9 +37,18 @@ func perform_use() -> void:
 
 
 func perform_interact() -> void:
-	if is_interacting or is_using or not highlighted_interaction or player.is_sleeping: return
+	if is_interacting or is_using or player.is_sleeping: return
 	is_interacting = true
-	highlighted_interaction.on_interact(player)
+	if not highlighted_interaction:
+		var stack_hand: ItemStack = player.inventory.get_hand().stack
+		if stack_hand.is_empty() or stack_hand.item.in_cooldown: return
+		player.consume_hungry(player.USE_HUNGRY)
+		ITEM_HAND_ANIMATION.play(stack_hand.item.anim_type)
+		stack_hand.item.interact(player)
+		await ITEM_HAND_ANIMATION.animation_finished
+	else:
+		highlighted_interaction.on_interact(player)
+	is_interacting = false
 
 
 func register_interaction(interact: BaseStructure) -> void:

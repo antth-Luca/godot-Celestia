@@ -23,6 +23,7 @@ TimeManager="*res://core/world/time/TimeManager.gd"
 RegistryManager="*res://core/registries/RegistryManager.gd"
 DroppedItemUtils="*res://core/world/dropped_items/utils/DroppedItemUtils.gd"
 HitUtils="*res://core/damage/hit/utils/HitUtils.gd"
+StructuresUtils="*res://core/structures/utils/StructuresUtils.gd"
 
 [editor]
 
