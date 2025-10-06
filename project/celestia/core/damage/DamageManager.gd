@@ -16,6 +16,12 @@ static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 		if attacker_life_steal > 0: hit.attacker.heal(final_dam * attacker_life_steal)
 
 
+static func try_apply_structure(hitbox_parent: Variant, target: BaseStructure) -> void:
+	var hit: HitData = hitbox_parent.get_hit_data()
+	if DamageRules.can_damage_structure(hit, target.structure_data):
+		target.damage(1, hit, hitbox_parent)
+
+
 static func compute_defense(hit: HitData, target_stats: PropertyManager) -> float:
 	if hit.primitive_type == HitData.PRIMITIVE_TYPE.TRUE: return 0
 	var brute_def = target_stats.get_property(InitPropProviders.ARMOR).get_armor() - target_stats.get_property(InitPropProviders.RESISTANCE).get_resistance()
