@@ -1,6 +1,8 @@
 extends BaseTool
 class_name PickaxeTool
 
+static var COMPARABLE_NAME = 'PickaxeTool'
+
 # GODOT
 func _init() -> void:
 	damage_factor = .8

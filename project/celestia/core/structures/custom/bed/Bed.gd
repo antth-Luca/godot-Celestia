@@ -17,10 +17,7 @@ func _init() -> void:
 
 # MAIN
 func on_interact(entity: LivingEntity) -> void:
-	var hand_item: BaseItem = entity.inventory.get_hand().stack.item
-	if hand_item:
-		entity.hand.is_interacting = false
-	elif TimeManager.is_time_to_go_to_bed():
+	if TimeManager.is_time_to_go_to_bed():
 		ANIMATION.play('sleep')
 		await entity.sleep()
 		ANIMATION.stop()

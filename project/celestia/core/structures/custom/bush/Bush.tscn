@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b038in3s52he"]
+[gd_scene load_steps=9 format=3 uid="uid://b038in3s52he"]
 
 [ext_resource type="Script" uid="uid://sl0icxtfp6dj" path="res://core/structures/custom/bush/Bush.gd" id="1_a4epx"]
 [ext_resource type="Shader" uid="uid://capg2ulc8vrff" path="res://assets/celestia/shaders/2D_pixel_outline.gdshader" id="2_c1104"]
 [ext_resource type="Texture2D" uid="uid://c5jm05udenymw" path="res://assets/celestia/textures/structures/bush.png" id="2_hphd3"]
+[ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="4_4b5nf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1104"]
 size = Vector2(20, 4)
@@ -15,6 +16,9 @@ shader_parameter/corner_pixel = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a4epx"]
 radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b5nf"]
+size = Vector2(19, 19)
 
 [node name="Bush" type="StaticBody2D"]
 collision_mask = 0
@@ -37,5 +41,12 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_a4epx")
 
+[node name="Hurtbox" parent="." instance=ExtResource("4_4b5nf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_4b5nf")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_interaction_entity_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_interaction_entity_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

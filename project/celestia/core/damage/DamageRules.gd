@@ -39,6 +39,6 @@ static func can_damage_structure(hit: HitData, target: StructureData) -> bool:
 	if not tool_is_compatible: return false
 	var material_is_compatible: bool = false
 	for comp_mat in target.compatible_materials:
-		material_is_compatible = hit.tool.material.id.get_string() == comp_mat.id.get_string()
+		material_is_compatible = hit.tool.material.efficiency >= comp_mat.efficiency
 		if material_is_compatible: break
 	return material_is_compatible
