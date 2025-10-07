@@ -19,7 +19,6 @@ func _init() -> void:
 
 # MAIN
 func on_interact(entity: LivingEntity) -> void:
-	print_debug('Interagiu com a bush')
 	var hit := HitData.new(
 		entity,
 		HitData.PRIMITIVE_TYPE.PHYSIC,

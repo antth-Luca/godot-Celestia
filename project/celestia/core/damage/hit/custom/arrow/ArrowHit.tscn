@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dykw0655v0xim"]
+
+[ext_resource type="Script" uid="uid://qfcxjdrru72" path="res://core/damage/hit/custom/arrow/ArrowHit.gd" id="1_8log6"]
+[ext_resource type="Texture2D" uid="uid://dmfyauw1jemb6" path="res://assets/celestia/textures/items/arrow.png" id="2_g4bfj"]
+[ext_resource type="PackedScene" uid="uid://cn13ycpy1ji50" path="res://core/entities/components/hitbox/Hitbox.tscn" id="2_wt0oc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3layo"]
+size = Vector2(13, 6)
+
+[node name="ArrowHit" type="Node2D"]
+script = ExtResource("1_8log6")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_g4bfj")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Hitbox" parent="." instance=ExtResource("2_wt0oc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_3layo")

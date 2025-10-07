@@ -5,6 +5,7 @@ static var RECIPES: DeferredRegister
 # Enchantment
 # Normal
 static var BOILED_EGG: DeferredHolder
+static var BOW: DeferredHolder
 static var IRON_AXE: DeferredHolder
 static var IRON_PICKAXE: DeferredHolder
 static var IRON_SWORD: DeferredHolder
@@ -27,6 +28,17 @@ static func setup() -> void:
 			recipe.set_workstation(SmeltingRecipe.WorkstationType.STONE_FURNACE)
 			recipe.melting_point = 1
 			recipe.add_ingredient(InitFoods.EGG, 1)
+			return recipe
+	)
+
+	BOW = RECIPES.add_entry(
+		'bow',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitWeapons.BOW, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
+			recipe.add_ingredient(InitFuels.STICK, 4)
+			recipe.add_ingredient(InitItems.PLANT_FIBER, 3)
 			return recipe
 	)
 

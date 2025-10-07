@@ -16,6 +16,7 @@ func set_delay_to_collect():
 	var timer := Timer.new()
 	timer.wait_time = 1
 	timer.one_shot = true
+	timer.autostart = true
 	timer.connect(
 		'timeout',
 		func():
@@ -23,7 +24,6 @@ func set_delay_to_collect():
 			timer.queue_free()
 	)
 	add_child(timer)
-	timer.start()
 
 
 func _on_area_entered(area):
