@@ -45,7 +45,7 @@ func _ready() -> void:
 	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitFuels.STICK.get_registered(), 12),
+		ItemStack.new(InitTools.IRON_PICKAXE.get_registered(), 1),
 		Vector2(169, 165)
 	)
 	# Spawn Iron

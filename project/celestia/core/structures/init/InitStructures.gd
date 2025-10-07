@@ -7,6 +7,7 @@ static var BED: DeferredHolder
 static var STONE_FURNACE: DeferredHolder
 # Natural
 static var BUSH: DeferredHolder
+static var CAVE_HOLE: DeferredHolder
 
 
 static func setup() -> void:
@@ -30,6 +31,11 @@ static func setup() -> void:
 	BUSH = STRUCTURES.add_entry(
 		'bush',
 		func(): return preload('res://core/structures/custom/bush/Bush.tscn').instantiate()
+	)
+
+	CAVE_HOLE = STRUCTURES.add_entry(
+		'cave_hole',
+		func(): return preload('res://core/structures/custom/cave_hole/CaveHole.tscn').instantiate()
 	)
 
 	STRUCTURES.register()

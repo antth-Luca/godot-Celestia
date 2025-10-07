@@ -161,7 +161,7 @@ func set_animation() -> void:
 	var anim = 'idle'
 	if direction != Vector2.ZERO: anim = 'walk'
 	if ANIMATION.current_animation != anim: ANIMATION.play(anim)
-	if not hand.is_using and hand.ITEM_HAND_ANIMATION.current_animation != anim: hand.ITEM_HAND_ANIMATION.play(anim)
+	if (not hand.is_using or not hand.is_interacting) and hand.ITEM_HAND_ANIMATION.current_animation != anim: hand.ITEM_HAND_ANIMATION.play(anim)
 
 # Handlers
 func flip_texture() -> void:

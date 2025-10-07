@@ -18,7 +18,7 @@ func _init() -> void:
 	)
 
 # MAIN
-func on_interact(entity: LivingEntity) -> void:
+func on_interact(_entity: LivingEntity) -> void:
 	# TODO: Implementar o teleporte para as cavernas.
 	print_debug('Teleporto para as cavernas...')
 

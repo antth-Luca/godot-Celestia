@@ -13,6 +13,8 @@ func _init() -> void:
 # SUPER
 func interact(player: Player) -> void:
 	StructuresUtils.spawn_structure_entity_foot(
-		InitStructures.STONE_FURNACE.get_registered(),
+		InitStructures.CAVE_HOLE.get_registered(),
 		player
 	)
+	consome_durability(1, player.inventory.get_hand())
+	set_cooldown(player)
