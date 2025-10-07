@@ -133,6 +133,7 @@ func die(_attacker: LivingEntity) -> void:
 	entity_data.is_dead = true
 	ESSENCE_COUNTER -= 1
 	ANIMATION.play('death')
+	hand.ITEM_HAND_ANIMATION.play('death')
 	await ANIMATION.animation_finished
 	var ui = get_ui()
 	await ui.view.close_eyes()
@@ -161,7 +162,7 @@ func set_animation() -> void:
 	var anim = 'idle'
 	if direction != Vector2.ZERO: anim = 'walk'
 	if ANIMATION.current_animation != anim: ANIMATION.play(anim)
-	if (not hand.is_using or not hand.is_interacting) and hand.ITEM_HAND_ANIMATION.current_animation != anim: hand.ITEM_HAND_ANIMATION.play(anim)
+	if not (hand.is_using or hand.is_interacting or hand.ITEM_HAND_ANIMATION.current_animation == anim): hand.ITEM_HAND_ANIMATION.play(anim)
 
 # Handlers
 func flip_texture() -> void:

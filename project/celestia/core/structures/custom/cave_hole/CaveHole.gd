@@ -19,11 +19,14 @@ func _init() -> void:
 
 # MAIN
 func on_interact(_entity: LivingEntity) -> void:
-	# TODO: Implementar o teleporte para as cavernas.
-	print_debug('Teleporto para as cavernas...')
+	var hp_prop: HealthProperty = structure_data.stats.get_property(InitPropProviders.HEALTH)
+	if hp_prop.get_health() > 0: return
+	print_debug('Teleporto para as cavernas...')  # TODO: Implementar o teleporte para as cavernas.
 
 
 func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
+	var hp_prop: HealthProperty = structure_data.stats.get_property(InitPropProviders.HEALTH)
+	if hp_prop.get_health() <= 0: return
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(InitItems.STONE.get_registered(), randi_range(1, MAX_DROP_STONE)),
 		global_position
