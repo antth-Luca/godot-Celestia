@@ -31,11 +31,6 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 #### Alpha
 
-- [ ] Mudanças no dano a estruturas:
-  - [ ] Dano por Hit comum;
-  - [ ] Verificação de tipo de ferramenta e nível de material.
-- [ ] Mudança no uso e interação de itens e estruturas;
-- [ ] Item de combate à distância: Arco;
 - [ ] Movimento de rolagem do Jogador/Player;
 - [ ] Sistema de efeitos para entidades;
 - [ ] Sistema de encantamentos para itens;
@@ -44,7 +39,12 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 - [ ] Adição de efeitos sonoros;
 - [ ] Primeiro chefe/boss;
 - [ ] Sistema de eventos históricos;
-- [ ] Sistema de dimensões: adição das Cavernas.
+- [ ] Sistema de dimensões: adição das Cavernas;
+- [x] Mudanças no dano a estruturas:
+  - [x] Dano por Hit comum;
+  - [x] Verificação de tipo de ferramenta e nível de material.
+- [x] Mudança no uso e interação de itens e estruturas;
+- [x] Item de combate à distância: Arco.
 
 #### Beta
 
