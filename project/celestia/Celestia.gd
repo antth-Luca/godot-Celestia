@@ -18,6 +18,7 @@ func _ready():
 	InitRarities.setup()
 	InitMaterials.setup()
 	InitItems.setup()
+	InitAmmos.setup()
 	InitFoods.setup()
 	InitFuels.setup()
 	InitArmors.setup()

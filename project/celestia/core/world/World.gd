@@ -45,11 +45,11 @@ func _ready() -> void:
 	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitFuels.STICK.get_registered(), 12),
+		ItemStack.new(InitAmmos.ARROW.get_registered(), 12),
 		Vector2(169, 165)
 	)
 	# Spawn Iron
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitItems.IRON_INGOT.get_registered(), 12),
+		ItemStack.new(InitWeapons.BOW.get_registered(), 1),
 		Vector2(169, 180)
 	)

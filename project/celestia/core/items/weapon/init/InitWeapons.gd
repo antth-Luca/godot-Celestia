@@ -18,8 +18,10 @@ static func setup() -> void:
 	BOW = WEAPONS.add_entry(
 		'bow',
 		func():
-			var weapon = BaseTool.new()
+			var weapon = FiringTool.new()
 			weapon.anim_type = BaseItem.AnimType.HOLD
+			weapon.ammo_item = InitAmmos.ARROW.get_registered()
+			weapon.min_ammo_to_fire = 1
 			weapon.hit_type = InitHits.ARROW
 			weapon.material = InitMaterials.WOOD.get_registered()
 			weapon.set_durability(1)
