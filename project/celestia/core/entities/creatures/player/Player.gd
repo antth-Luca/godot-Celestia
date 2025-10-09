@@ -6,6 +6,7 @@ const USE_HUNGRY: float = .3
 const ROLL_HUNGRY: float = .8
 const HURT_HUNGRY: float = .8
 
+@onready var roll_timer = $RollTimer
 @onready var light_point = $LightPoint
 
 var ESSENCE_COUNTER: int = 3
@@ -14,6 +15,7 @@ var PASSIVE_REGEN_VALUES: Array[float]
 var inventory: InventoryManager
 var hand: PlayerHand
 var is_sleeping: bool = false
+var is_rolling: bool = false
 
 # GODOT
 func _init() -> void:
@@ -91,9 +93,12 @@ func _physics_process(_delta: float) -> void:
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
 		if direction != Vector2.ZERO:
-			if Input.is_action_just_pressed('ui_roll'):
+			if Input.is_action_just_pressed('ui_roll') and not is_rolling:
+				is_rolling = true
+				entity_data.is_invincible = true
 				consume_hungry(ROLL_HUNGRY)
-				print_debug('Rolou!')  # TODO: Implementar o movimento de rolagem.
+				roll_timer.start()
+			if is_rolling: stats_move_speed *= 2.5
 			velocity = direction * stats_move_speed
 			flip_texture()
 			consume_hungry(WALKING_HUNGRY)
@@ -161,6 +166,7 @@ func set_animation() -> void:
 	if entity_data.is_dead or is_sleeping: return
 	var anim = 'idle'
 	if direction != Vector2.ZERO: anim = 'walk'
+	if is_rolling: anim = 'roll'
 	if ANIMATION.current_animation != anim: ANIMATION.play(anim)
 	if not (hand.is_using or hand.is_interacting or hand.ITEM_HAND_ANIMATION.current_animation == anim): hand.ITEM_HAND_ANIMATION.play(anim)
 
@@ -224,3 +230,8 @@ func _on_surv_level_up() -> void:
 	entity_data.stats.get_property(InitPropProviders.FORCE).add_force(2.5)
 	entity_data.stats.get_property(InitPropProviders.RESISTANCE).add_resistance(0.5)
 	entity_data.stats.get_property(InitPropProviders.PENETRATION).add_penetration(0.2)
+
+
+func _on_roll_timer_timeout():
+	is_rolling = false
+	entity_data.is_invincible = false
