@@ -19,23 +19,23 @@ static func setup() -> void:
 	# Buildable
 	BED = STRUCTURES.add_entry(
 		'bed',
-		func(): return preload('res://core/structures/custom/bed/Bed.tscn').instantiate()
+		func(): return preload('res://core/entities/structures/custom/bed/Bed.tscn').instantiate()
 	)
 
 	STONE_FURNACE = STRUCTURES.add_entry(
 		'stone_furnace',
-		func(): return preload('res://core/structures/custom/stone_furnace/StoneFurnace.tscn').instantiate()
+		func(): return preload('res://core/entities/structures/custom/stone_furnace/StoneFurnace.tscn').instantiate()
 	)
 
 	# Natural
 	BUSH = STRUCTURES.add_entry(
 		'bush',
-		func(): return preload('res://core/structures/custom/bush/Bush.tscn').instantiate()
+		func(): return preload('res://core/entities/structures/custom/bush/Bush.tscn').instantiate()
 	)
 
 	CAVE_HOLE = STRUCTURES.add_entry(
 		'cave_hole',
-		func(): return preload('res://core/structures/custom/cave_hole/CaveHole.tscn').instantiate()
+		func(): return preload('res://core/entities/structures/custom/cave_hole/CaveHole.tscn').instantiate()
 	)
 
 	STRUCTURES.register()

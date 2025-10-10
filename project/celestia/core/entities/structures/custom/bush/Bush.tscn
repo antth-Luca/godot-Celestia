@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b038in3s52he"]
 
-[ext_resource type="Script" uid="uid://sl0icxtfp6dj" path="res://core/structures/custom/bush/Bush.gd" id="1_a4epx"]
+[ext_resource type="Script" uid="uid://sl0icxtfp6dj" path="res://core/entities/structures/custom/bush/Bush.gd" id="1_a4epx"]
 [ext_resource type="Shader" uid="uid://capg2ulc8vrff" path="res://assets/celestia/shaders/2D_pixel_outline.gdshader" id="2_c1104"]
 [ext_resource type="Texture2D" uid="uid://c5jm05udenymw" path="res://assets/celestia/textures/structures/bush.png" id="2_hphd3"]
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="4_4b5nf"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://mjmioaflkvy"]
 
-[ext_resource type="Script" uid="uid://dbgqru7uvdjil" path="res://core/structures/custom/stone_furnace/StoneFurnace.gd" id="1_d77yq"]
+[ext_resource type="Script" uid="uid://dbgqru7uvdjil" path="res://core/entities/structures/custom/stone_furnace/StoneFurnace.gd" id="1_d77yq"]
 [ext_resource type="Texture2D" uid="uid://msn26sbtbpft" path="res://assets/celestia/textures/structures/stone_furnace.png" id="2_bxhh7"]
 [ext_resource type="Shader" uid="uid://capg2ulc8vrff" path="res://assets/celestia/shaders/2D_pixel_outline.gdshader" id="2_s522c"]
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="4_s522c"]
