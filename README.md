@@ -1,4 +1,4 @@
-![Celestia Logo](https://github.com/antth-Luca/godot-Celestia/blob/main/logo.png)
+![Celestia Logo](https://github.com/antth-Luca/godot-Celestia/blob/pre-alpha/logo.png)
 
 # Repositório: godot-Celestia
 
