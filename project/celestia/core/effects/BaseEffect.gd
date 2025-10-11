@@ -20,8 +20,18 @@ var amplifier: int:
 		if not amplifier and new_ampli < 1:
 			push_warning('BaseEffect: The initial amplifier value cannot be less than 1.')
 		amplifier = clamp(new_ampli, 0, max_amplifier)
+		if amplifier == 0:
+			emit_signal('effect_finished')
+		else:
+			emit_signal('effect_updated')
 		if effect_timer: effect_timer.start()
 var max_amplifier: int
+
+# GODOT
+func _init(effect_duration: float = 0) -> void:
+	if effect_duration > 0:
+		tick_timer = Timer.new()
+		
 
 # HANDLERS
 func _on_effect_added(_entity: LivingEntity) -> void:
@@ -34,3 +44,11 @@ func _on_effect_tick(_entity: LivingEntity) -> void:
 
 func _on_effect_removed(_entity: LivingEntity) -> void:
 	pass
+
+# Timer
+func _on_effect_timer_timeout() -> void:
+	amplifier -= 1
+
+
+func _on_tick_timer_timeout() -> void:
+	tick_timer.start()
