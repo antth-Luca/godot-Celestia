@@ -30,14 +30,15 @@ func _init(max_amplifier_param: int, init_amplifier: int, effect_duration: float
 	amplifier = init_amplifier
 	if effect_duration > 0:
 		effect_timer = Timer.new()
+		effect_timer.autostart = true
 		effect_timer.wait_time = effect_duration
-		effect_timer.connect('timeout', Callable(self, '_on_effect_timer_timeout'))
+		effect_timer.timeout.connect(_on_effect_timer_timeout)
 	if tick_interval > 0:
 		tick_timer = Timer.new()
+		tick_timer.autostart = true
 		tick_timer.wait_time = tick_interval
-		tick_timer.connect('timeout', Callable(self, '_on_tick_timer_timeout'))
-	if not incompatible_effects.is_empty():
-		incompabilities = incompatible_effects
+		tick_timer.timeout.connect(_on_tick_timer_timeout)
+	incompabilities = incompatible_effects
 
 # HANDLERS
 func _on_effect_added(_entity: LivingEntity) -> void:
@@ -55,9 +56,9 @@ func _on_effect_removed(_entity: LivingEntity) -> void:
 func _on_effect_timer_timeout() -> void:
 	amplifier -= 1
 	if amplifier == 0:
-		emit_signal('effect_finished')
+		emit_signal('effect_finished', self)
 	else:
-		emit_signal('effect_updated')
+		emit_signal('effect_updated', self)
 
 
 func _on_tick_timer_timeout() -> void:

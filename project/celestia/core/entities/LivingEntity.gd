@@ -15,6 +15,7 @@ var id: ResourceLocation = ResourceLocation.EMPTY:
 var direction: Vector2 = Vector2.ZERO
 var knockback_vector: Vector2 = Vector2.ZERO
 var entity_data: EntityData
+var effect_receiver := EffectReceiver.new(self)
 
 # GODOT
 func _ready() -> void:
@@ -59,11 +60,6 @@ func die(_attacker: LivingEntity) -> void:
 	ANIMATION.play('death')
 	await ANIMATION.animation_finished
 	queue_free()
-
-# Effects
-func add_effect(effect: BaseEffect) -> void:
-	entity_data.active_effects.append(effect)
-	effect._on_effect_added(self)
 
 # GETTERS AND SETTERS
 # Entity data

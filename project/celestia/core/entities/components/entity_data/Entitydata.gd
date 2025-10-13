@@ -15,7 +15,6 @@ var stats: PropertyManager
 var is_invincible: bool = false
 var is_stunned: bool = false
 var is_dead: bool = false
-var active_effects: Array[BaseEffect]
 
 # GODOT
 func _init(faction_param: FACTION_MASK, stats_param: PropertyManager):

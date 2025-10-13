@@ -114,7 +114,7 @@ func _physics_process(_delta: float) -> void:
 func _input(event) -> void:
 	if event is InputEventKey and event.is_pressed():
 		if event.keycode == KEY_1:
-			add_effect(InitEffects.STUN.get_registered())
+			effect_receiver.add_effect(InitEffects.STUN.get_registered())
 
 # SUPER
 # Main
