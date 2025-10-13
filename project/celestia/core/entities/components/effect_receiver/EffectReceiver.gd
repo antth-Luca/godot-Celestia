@@ -22,8 +22,8 @@ func add_effect(effect: BaseEffect) -> void:
 		if effect.can_add(active_effects):
 			active_effects.append(effect)
 			effect.effect_finished.connect(remove_effect)
-			add_child(effect.effect_timer)
 			effect._on_effect_added(entity)
+			add_child(effect.effect_timer)
 			for incomp in effect.incompabilities:
 				remove_effect(incomp)
 	else:

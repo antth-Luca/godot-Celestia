@@ -22,7 +22,8 @@ func on_interact(entity: LivingEntity) -> void:
 	var hit := HitData.new(
 		entity,
 		HitData.PRIMITIVE_TYPE.PHYSIC,
-		HitData.SPECIALIZED_TYPE.NONE
+		HitData.SPECIALIZED_TYPE.NONE,
+		HitData.SOURCE.HIT
 	)
 	damage(.4, hit, null)
 

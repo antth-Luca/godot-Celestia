@@ -10,8 +10,8 @@ func _init() -> void:
 
 # Handlers
 func _on_effect_added(entity: LivingEntity) -> void:
+	super._on_effect_added(entity)
 	entity.entity_data.is_stunned = true
-	effect_timer.start()
 
 
 func _on_effect_removed(entity: LivingEntity) -> void:

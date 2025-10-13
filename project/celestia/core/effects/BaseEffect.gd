@@ -13,7 +13,7 @@ var id: ResourceLocation = ResourceLocation.EMPTY:
 		id = new_id
 var category: EffectCategory
 var incompabilities: Array[BaseEffect]
-var effect_timer: Timer
+var effect_timer := Timer.new()
 var tick_interval: float
 var is_instantaneous: bool
 var is_total_decay: bool
@@ -33,7 +33,6 @@ func _init(max_amplifier_param: int, init_amplifier: int, instantaneous: bool = 
 	is_instantaneous = instantaneous
 	is_total_decay = total_decay
 	if not is_instantaneous and effect_duration > 0:
-		effect_timer = Timer.new()
 		effect_timer.autostart = true
 		effect_timer.wait_time = effect_duration
 		effect_timer.timeout.connect(_on_effect_timer_timeout)
