@@ -87,12 +87,12 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if entity_data.is_dead or is_sleeping: return
+	if is_sleeping or entity_data.is_dead: return
 	if knockback_vector == Vector2.ZERO:
 		# Get the input direction and handle the movement/deceleration.
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
-		if direction != Vector2.ZERO:
+		if direction != Vector2.ZERO and not entity_data.is_stunned:
 			if Input.is_action_just_pressed('ui_roll') and not is_rolling:
 				is_rolling = true
 				entity_data.is_invincible = true
@@ -109,6 +109,12 @@ func _physics_process(_delta: float) -> void:
 	# Setting state and animation and continuing movement
 	set_animation()
 	move_and_slide()
+
+
+func _input(event) -> void:
+	if event is InputEventKey and event.is_pressed():
+		if event.keycode == KEY_1:
+			add_effect(InitEffects.STUN.get_registered())
 
 # SUPER
 # Main

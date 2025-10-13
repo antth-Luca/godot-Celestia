@@ -30,7 +30,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		# Get the input direction and handle the movement/deceleration.
 		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
-		if direction != Vector2.ZERO:
+		if direction != Vector2.ZERO and not entity_data.is_stunned:
 			velocity = direction * stats_move_speed
 			flip_texture()
 		else:
@@ -40,6 +40,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 # MAIN
+# Health
 func heal(heal_value: float) -> void:
 	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
 	hp_prop.add_health(heal_value)
@@ -58,6 +59,11 @@ func die(_attacker: LivingEntity) -> void:
 	ANIMATION.play('death')
 	await ANIMATION.animation_finished
 	queue_free()
+
+# Effects
+func add_effect(effect: BaseEffect) -> void:
+	entity_data.active_effects.append(effect)
+	effect._on_effect_added(self)
 
 # GETTERS AND SETTERS
 # Entity data

@@ -14,7 +14,7 @@ func _ready() -> void:
 	else:
 		push_error('World: Error loading world settings.')
 	# Spawn Player
-	var player: Player = InitEntities.PLAYER.get_registered()
+	var player: Player = InitCreatures.PLAYER.get_registered()
 	get_tree().current_scene.add_child(player)
 	player.global_position = Vector2(169, 140)
 	player.ESSENCE_COUNTER = config.get('max_resilient_essence')
@@ -30,11 +30,11 @@ func _ready() -> void:
 		Vector2(210, 114)
 	)
 	# Spawn Zombie
-	var zombie: Zombie = InitEntities.ZOMBIE.get_registered()
+	var zombie: Zombie = InitCreatures.ZOMBIE.get_registered()
 	get_tree().current_scene.add_child(zombie)
 	zombie.global_position = Vector2(392, 269)
 	# Spawn Chicken
-	var chicken: Chicken = InitEntities.CHICKEN.get_registered()
+	var chicken: Chicken = InitCreatures.CHICKEN.get_registered()
 	get_tree().current_scene.add_child(chicken)
 	chicken.global_position = Vector2(392, 269)
 	Vector2(483, 233)

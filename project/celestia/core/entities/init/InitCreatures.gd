@@ -1,7 +1,7 @@
 extends Node
-class_name InitEntities
+class_name InitCreatures
 
-static var ENTITIES: DeferredRegister
+static var CREATURES: DeferredRegister
 # Animals
 static var CHICKEN: DeferredHolder
 # Player
@@ -12,30 +12,30 @@ static var ZOMBIE: DeferredHolder
 
 
 static func setup() -> void:
-	ENTITIES = DeferredRegister.create(
+	CREATURES = DeferredRegister.create(
 		Celestia.GAME_ID,
 		EntityRegistry.REGISTRY_TYPE
 	)
 
 	# Animals
-	CHICKEN = ENTITIES.add_entry(
+	CHICKEN = CREATURES.add_entry(
 		'chicken',
 		func():
 			return preload('res://core/entities/creatures/animals/chicken/Chicken.tscn').instantiate()
 	)
 
 	# Player
-	PLAYER = ENTITIES.add_entry(
+	PLAYER = CREATURES.add_entry(
 		'player',
 		func():
 			return preload('res://core/entities/creatures/player/Player.tscn').instantiate()
 	)
 
 	# Monsters
-	ZOMBIE = ENTITIES.add_entry(
+	ZOMBIE = CREATURES.add_entry(
 		'zombie',
 		func():
 			return preload('res://core/entities/creatures/monsters/zombie/Zombie.tscn').instantiate()
 	)
 
-	ENTITIES.register()
+	CREATURES.register()
