@@ -9,14 +9,25 @@ func _init(parent_entity: LivingEntity) -> void:
 	entity = parent_entity
 
 
+func _process(_delta: float) -> void:
+	for effect in active_effects:
+		effect._on_effect_tick(entity)
+
+
 # MAIN
 func add_effect(effect: BaseEffect) -> void:
 	if not effect: return
-	active_effects.append(effect)
-	effect.connect('effect_finished', Callable(self, 'remove_effect'))
-	if effect.effect_timer: add_child(effect.effect_timer)
-	if effect.tick_timer: add_child(effect.tick_timer)
-	effect._on_effect_added(entity)
+	var pos: int = active_effects.find(effect)
+	if pos < 0:
+		if effect.can_add(active_effects):
+			active_effects.append(effect)
+			effect.effect_finished.connect(remove_effect)
+			add_child(effect.effect_timer)
+			effect._on_effect_added(entity)
+			for incomp in effect.incompabilities:
+				remove_effect(incomp)
+	else:
+		active_effects[pos]._on_effect_renewed(entity)
 
 
 func remove_effect(effect: BaseEffect) -> void:

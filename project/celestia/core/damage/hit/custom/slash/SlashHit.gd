@@ -13,5 +13,6 @@ func get_hit_data() -> HitData:
 		source_entity,
 		HitData.PRIMITIVE_TYPE.PHYSIC,
 		HitData.SPECIALIZED_TYPE.NONE,
+		HitData.SOURCE.HIT,
 		source_tool
 	)

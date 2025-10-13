@@ -41,18 +41,32 @@ func _init(max_amplifier_param: int, init_amplifier: int, instantaneous: bool = 
 		tick_interval = tick_interval_param
 	incompabilities = incompatible_effects
 
+# GETTERS AND SETTERS
+func get_hit_data() -> HitData:
+	return HitData.new(
+		null,  # TODO: Adicionar a source entity.
+		HitData.PRIMITIVE_TYPE.MAGIC,
+		HitData.SPECIALIZED_TYPE.NONE,
+		HitData.SOURCE.EFFECT
+	)
+
+# MAIN
+func can_add(active_effects: Array[BaseEffect]) -> bool:
+	for incomp in incompabilities:
+		if active_effects.has(incomp): return false
+	return true
+
 # HANDLERS
 func _on_effect_added(_entity: LivingEntity) -> void:
 	if is_instantaneous: emit_signal('effect_finished', self)
 
 
 func _on_effect_renewed(_entity: LivingEntity) -> void:
-	pass
+	effect_timer.start()
 
 
 func _on_effect_tick(_entity: LivingEntity) -> void:
 	if fmod(effect_timer.time_left, tick_interval) != 0: return
-	pass
 
 
 func _on_effect_removed(_entity: LivingEntity) -> void:

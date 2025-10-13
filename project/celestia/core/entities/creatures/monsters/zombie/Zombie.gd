@@ -31,7 +31,8 @@ func get_hit_data() -> HitData:
 	return HitData.new(
 		self,
 		HitData.PRIMITIVE_TYPE.PHYSIC,
-		HitData.SPECIALIZED_TYPE.NONE
+		HitData.SPECIALIZED_TYPE.NONE,
+		HitData.SOURCE.HIT
 	)
 
 # SUPER
