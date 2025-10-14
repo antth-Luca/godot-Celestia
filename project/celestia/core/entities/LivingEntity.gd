@@ -6,6 +6,7 @@ const invencible_color: Color = Color.WHITE
 
 @onready var TEXTURE: Sprite2D = $Texture
 @onready var ANIMATION: AnimationPlayer = $Animation
+@onready var effect_receiver: EffectReceiver = $EffectReceiver
 
 var id: ResourceLocation = ResourceLocation.EMPTY:
 	set(new_id):
@@ -15,7 +16,6 @@ var id: ResourceLocation = ResourceLocation.EMPTY:
 var direction: Vector2 = Vector2.ZERO
 var knockback_vector: Vector2 = Vector2.ZERO
 var entity_data: EntityData
-var effect_receiver := EffectReceiver.new(self)
 
 # GODOT
 func _ready() -> void:

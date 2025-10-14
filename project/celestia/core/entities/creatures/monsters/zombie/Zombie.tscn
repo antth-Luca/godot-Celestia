@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://b3lfgr81bgo4q"]
+[gd_scene load_steps=23 format=3 uid="uid://b3lfgr81bgo4q"]
 
 [ext_resource type="Script" uid="uid://bas2xslnhn10h" path="res://core/entities/creatures/monsters/zombie/Zombie.gd" id="1_cflnr"]
+[ext_resource type="Script" uid="uid://dj4f3tk1xotfc" path="res://core/entities/components/effect_receiver/EffectReceiver.gd" id="2_fdmcm"]
 [ext_resource type="Texture2D" uid="uid://cxk0fabv8lbhu" path="res://assets/celestia/textures/enemies/zombie.png" id="2_shrvl"]
 [ext_resource type="Shader" uid="uid://bn7mgcor6vpkh" path="res://assets/celestia/shaders/color_blink.gdshader" id="2_w6tfs"]
 [ext_resource type="PackedScene" uid="uid://ds4tba05sxc36" path="res://core/entities/components/state_machine/StateMachine.tscn" id="3_uk3j3"]
@@ -106,6 +107,10 @@ size = Vector2(11, 21)
 collision_layer = 32
 collision_mask = 65
 script = ExtResource("1_cflnr")
+
+[node name="EffectReceiver" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("2_fdmcm")
+entity = NodePath("..")
 
 [node name="Texture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_fdmcm")

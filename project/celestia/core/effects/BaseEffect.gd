@@ -19,7 +19,7 @@ var is_instantaneous: bool
 var is_total_decay: bool
 var amplifier: int:
 	set(new_ampli):
-		if new_ampli < 1:
+		if not amplifier and new_ampli < 1:
 			push_warning('BaseEffect: The initial amplifier value cannot be less than 1.')
 		amplifier = clamp(new_ampli, 1, max_amplifier)
 var max_amplifier: int:

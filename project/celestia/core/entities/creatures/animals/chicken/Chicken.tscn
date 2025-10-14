@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://bhm4j2qbybs2a"]
+[gd_scene load_steps=23 format=3 uid="uid://bhm4j2qbybs2a"]
 
 [ext_resource type="Script" uid="uid://6fqk8gi8b3lj" path="res://core/entities/creatures/animals/chicken/Chicken.gd" id="1_muko0"]
+[ext_resource type="Script" uid="uid://dj4f3tk1xotfc" path="res://core/entities/components/effect_receiver/EffectReceiver.gd" id="2_ab5aj"]
 [ext_resource type="Shader" uid="uid://bn7mgcor6vpkh" path="res://assets/celestia/shaders/color_blink.gdshader" id="2_pugb2"]
 [ext_resource type="Texture2D" uid="uid://det6udosucu6m" path="res://assets/celestia/textures/animals/chicken/chicken_default.png" id="2_sitoo"]
 [ext_resource type="Script" uid="uid://urn3ngqxyhgm" path="res://core/entities/components/state_machine/StateMachine.gd" id="3_cb3gl"]
@@ -120,6 +121,10 @@ radius = 7.0
 collision_layer = 128
 collision_mask = 65
 script = ExtResource("1_muko0")
+
+[node name="EffectReceiver" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("2_ab5aj")
+entity = NodePath("..")
 
 [node name="Texture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ema0d")

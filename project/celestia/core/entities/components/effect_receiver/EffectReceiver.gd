@@ -1,14 +1,11 @@
 extends Node
 class_name EffectReceiver
 
-var entity: LivingEntity
+@export var entity: LivingEntity
+
 var active_effects: Array[BaseEffect]
 
 # GODOT
-func _init(parent_entity: LivingEntity) -> void:
-	entity = parent_entity
-
-
 func _process(_delta: float) -> void:
 	for effect in active_effects:
 		effect._on_effect_tick(entity)
