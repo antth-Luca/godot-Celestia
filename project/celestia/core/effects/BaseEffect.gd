@@ -40,7 +40,6 @@ func _init(max_amplifier_param: int, init_amplifier: int, category_param: Effect
 	is_instantaneous = instantaneous
 	is_per_tick = per_tick
 	is_total_decay = total_decay
-	if tick_interval_param != 0: tick_interval = tick_interval_param
 	incompabilities = incompatible_effects
 	# Timer
 	if not is_instantaneous:
@@ -49,9 +48,10 @@ func _init(max_amplifier_param: int, init_amplifier: int, category_param: Effect
 		effect_timer.timeout.connect(_on_effect_timer_timeout)
 		if is_per_tick:
 			effect_timer.wait_time = tick_interval_param
+			tick_interval = tick_interval_param
 			effect_duration = effect_duration_param
 		else:
-			effect_timer.wait_time = effect_duration
+			effect_timer.wait_time = effect_duration_param
 
 # GETTERS AND SETTERS
 func get_hit_data() -> HitData:
