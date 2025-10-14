@@ -15,3 +15,7 @@ func get_hit_data() -> HitData:
 		HitData.SOURCE.HIT,
 		source_tool
 	)
+
+# Handlers
+func _on_hurt_entity() -> void:
+	despawn_hit()
