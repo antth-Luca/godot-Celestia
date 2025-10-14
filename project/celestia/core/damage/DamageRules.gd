@@ -42,3 +42,12 @@ static func can_damage_structure(hit: HitData, target: BaseStructure) -> bool:
 		material_is_compatible = hit.tool.material.efficiency >= comp_mat.efficiency
 		if material_is_compatible: break
 	return material_is_compatible
+
+
+static func can_damage_effect(target: LivingEntity) -> bool:
+	var target_data: EntityData = target.entity_data
+	if (
+		target_data.is_dead or
+		target_data.is_invincible
+	): return false
+	return true

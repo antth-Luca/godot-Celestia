@@ -6,6 +6,7 @@ static var EFFECTS: DeferredRegister
 # Neutral
 # Maleficial
 static var STUN: DeferredHolder
+static var VENOM: DeferredHolder
 
 
 
@@ -21,6 +22,11 @@ static func setup() -> void:
 	STUN = EFFECTS.add_entry(
 		'stun',
 		func(): return StunEffect.new()
+	)
+
+	VENOM = EFFECTS.add_entry(
+		'venom',
+		func(): return VenomEffect.new()
 	)
 
 	EFFECTS.register()
