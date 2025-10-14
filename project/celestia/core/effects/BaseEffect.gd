@@ -43,7 +43,7 @@ func _init(max_amplifier_param: int, init_amplifier: int, instantaneous: bool = 
 # GETTERS AND SETTERS
 func get_hit_data() -> HitData:
 	return HitData.new(
-		null,  # TODO: Adicionar a source entity.
+		null,
 		HitData.PRIMITIVE_TYPE.MAGIC,
 		HitData.SPECIALIZED_TYPE.NONE,
 		HitData.SOURCE.EFFECT
