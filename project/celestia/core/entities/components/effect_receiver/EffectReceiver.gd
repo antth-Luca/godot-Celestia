@@ -9,12 +9,6 @@ class_name EffectReceiver
 
 var active_effects: Array[BaseEffect]
 
-# GODOT
-func _process(_delta: float) -> void:
-	for effect in active_effects:
-		effect._on_effect_tick(entity)
-
-
 # MAIN
 func add_effect(effect: BaseEffect) -> void:
 	if not effect: return
@@ -25,7 +19,10 @@ func add_effect(effect: BaseEffect) -> void:
 			effect.effect_finished.connect(remove_effect)
 			effect._on_effect_added(entity)
 			emit_signal('effect_added', effect)
-			add_child(effect.effect_timer)
+			if effect.effect_timer:
+				add_child(effect.effect_timer)
+				if effect.is_per_tick:
+					effect.effect_tick.connect(tick_effect)
 			for incomp in effect.incompabilities:
 				remove_effect(incomp)
 	else:
@@ -40,3 +37,7 @@ func remove_effect(effect: BaseEffect) -> void:
 	if active.effect_timer: active.effect_timer.queue_free()
 	emit_signal('effect_removed', active)
 	active_effects.remove_at(pos)
+
+
+func tick_effect(effect: BaseEffect) -> void:
+	effect._on_effect_tick(entity)

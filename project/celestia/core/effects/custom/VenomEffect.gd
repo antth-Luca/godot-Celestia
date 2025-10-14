@@ -7,11 +7,11 @@ const POISON_DAMAGE_LIMITER_PERCENTAGE: float = .1
 # SUPER
 # Godot
 func _init() -> void:
-	super._init(1, 1, false, true, 30, 1)
+	super._init(1, 1, BaseEffect.EffectCategory.MALEFICIAL, false, false, true, 30, 1)
 
 # Handlers
 func _on_effect_tick(entity: LivingEntity) -> void:
-	super._on_effect_tick(entity)
+	if fmod(effect_timer.time_left, tick_interval) != 0: return
 	var hp_prop: HealthProperty = entity.entity_data.stats.get_property(InitPropProviders.HEALTH)
 	var damage: float = get_brute_damage(hp_prop)
 	var limiter: float = hp_prop.get_max_health() * POISON_DAMAGE_LIMITER_PERCENTAGE

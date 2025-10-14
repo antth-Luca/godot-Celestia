@@ -6,7 +6,7 @@ const EFFECT_DURATION := 2.0
 # SUPER
 # Godot
 func _init() -> void:
-	super._init(1, 1, false, true, EFFECT_DURATION)
+	super._init(1, 1, BaseEffect.EffectCategory.MALEFICIAL, false, false, true, EFFECT_DURATION, 0)
 
 # Handlers
 func _on_effect_added(entity: LivingEntity) -> void:
