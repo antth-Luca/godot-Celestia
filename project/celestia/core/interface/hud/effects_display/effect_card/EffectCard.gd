@@ -3,7 +3,7 @@ class_name EffectCard
 
 @onready var TEXTURE: Sprite2D = $Texture
 @onready var label_amplifier: Label = $EffectAmplifier
-@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var left_time_bar: ProgressBar = $LeftTimeBar
 
 var remaining_effect_tween: Tween
 
@@ -22,4 +22,5 @@ func _on_effect_updated(effect: BaseEffect) -> void:
 	else:
 		label_amplifier.visible = false
 	# Progress bar
-	# TODO: Completar aqui!
+	var left_time_tween: Tween = create_tween()
+	left_time_tween.tween_property(left_time_bar, 'value', 1, effect.effect_duration).from(0)

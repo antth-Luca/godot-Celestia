@@ -107,7 +107,7 @@ func flip_texture() -> void:
 func apply_knockback(attacker_pos: Vector2, hit_specialized_type: HitData.SPECIALIZED_TYPE = HitData.SPECIALIZED_TYPE.NONE) -> void:
 	var multiplier: float = 120 if hit_specialized_type == HitData.SPECIALIZED_TYPE.EXPLOSION else 100
 	knockback_vector = (global_position - attacker_pos).normalized() * multiplier
-	var knockback_tween: Tween = get_tree().create_tween()
+	var knockback_tween: Tween = create_tween()
 	knockback_tween.tween_property(self, 'knockback_vector', Vector2.ZERO, .2)
 	TEXTURE.material.set_shader_parameter('blink_value', 1.0)
 	knockback_tween.tween_property(TEXTURE.material, 'shader_parameter/blink_value', 0, .15).from(1.0)

@@ -34,6 +34,7 @@ var is_total_decay: bool
 
 # GODOT
 func _init(max_amplifier_param: int, init_amplifier: int, category_param: EffectCategory, instantaneous: bool, per_tick: bool, total_decay: bool, effect_duration_param: float, tick_interval_param: float, incompatible_effects: Array[BaseEffect] = []) -> void:
+	effect_duration = effect_duration_param
 	max_amplifier = max_amplifier_param
 	amplifier = init_amplifier
 	category = category_param
@@ -49,7 +50,6 @@ func _init(max_amplifier_param: int, init_amplifier: int, category_param: Effect
 		if is_per_tick:
 			effect_timer.wait_time = tick_interval_param
 			tick_interval = tick_interval_param
-			effect_duration = effect_duration_param
 		else:
 			effect_timer.wait_time = effect_duration_param
 

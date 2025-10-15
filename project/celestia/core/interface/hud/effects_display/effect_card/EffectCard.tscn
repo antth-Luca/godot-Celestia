@@ -18,14 +18,14 @@ script = ExtResource("1_ki72s")
 position = Vector2(9, 9)
 texture = ExtResource("2_gpk4l")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="LeftTimeBar" type="ProgressBar" parent="."]
 layout_mode = 0
 offset_right = 18.0
 offset_bottom = 18.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_gpk4l")
 theme_override_styles/fill = SubResource("StyleBoxFlat_b1ld1")
-max_value = 10.0
-value = 6.0
+max_value = 1.0
+value = 0.6
 fill_mode = 2
 show_percentage = false
 
