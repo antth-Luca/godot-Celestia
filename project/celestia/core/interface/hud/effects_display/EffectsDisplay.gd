@@ -26,5 +26,6 @@ func update_effect(_effect: BaseEffect) -> void:
 	pass
 
 
-func remove_effect(_effect: BaseEffect) -> void:
-	pass
+func remove_effect(effect: BaseEffect) -> void:
+	var effect_card: EffectCard = grid.get_node('%s_%s' % effect.id.get_splited())
+	if effect_card: effect_card.queue_free()
