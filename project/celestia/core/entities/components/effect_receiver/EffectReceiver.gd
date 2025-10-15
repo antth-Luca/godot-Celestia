@@ -16,9 +16,16 @@ func _ready() -> void:
 	effects_display.connect_signals(self)
 
 # MAIN
+func get_effect(effect: BaseEffect) -> int:
+	for c in active_effects.size():
+		if active_effects[c].id.get_string() == effect.id.get_string():
+			return c
+	return -1
+
+
 func add_effect(effect: BaseEffect) -> void:
 	if not effect: return
-	var pos: int = active_effects.find(effect)
+	var pos: int = get_effect(effect)
 	if pos < 0:
 		if effect.can_add(active_effects):
 			active_effects.append(effect)
@@ -36,7 +43,7 @@ func add_effect(effect: BaseEffect) -> void:
 
 
 func remove_effect(effect: BaseEffect) -> void:
-	var pos: int = active_effects.find(effect)
+	var pos: int = get_effect(effect)
 	if pos < 0: return
 	var active: BaseEffect = active_effects[pos]
 	active._on_effect_removed(entity)

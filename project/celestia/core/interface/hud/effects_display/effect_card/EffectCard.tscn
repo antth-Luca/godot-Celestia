@@ -19,6 +19,7 @@ position = Vector2(9, 9)
 texture = ExtResource("2_gpk4l")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
 offset_right = 18.0
 offset_bottom = 18.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_gpk4l")
@@ -29,6 +30,7 @@ fill_mode = 2
 show_percentage = false
 
 [node name="EffectAmplifier" type="Label" parent="."]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 18.0
