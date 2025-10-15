@@ -1,5 +1,5 @@
 extends BaseEffect
-class_name VenomEffect
+class_name PoisonEffect
 
 const DAMAGE_PERCENTAGE_PER_TICK: float = .05
 const POISON_DAMAGE_LIMITER_PERCENTAGE: float = .1

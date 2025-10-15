@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8swewa0buvgr"]
+[gd_scene load_steps=2 format=3 uid="uid://cwvqqakjqaopv"]
 
 [ext_resource type="Script" uid="uid://db7dtl8xv1jay" path="res://core/interface/hud/effects_display/EffectsDisplay.gd" id="1_5imtk"]
 
-[node name="EffectsDisplay" type="GridContainer"]
+[node name="EffectsDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5imtk")
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="GridContainer" type="GridContainer" parent="Node2D"]
+custom_minimum_size = Vector2(18, 18)
 offset_right = 18.0
 offset_bottom = 18.0
 columns = 2
-script = ExtResource("1_5imtk")

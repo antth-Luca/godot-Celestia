@@ -116,7 +116,7 @@ func _input(event) -> void:
 		if event.keycode == KEY_1:
 			effect_receiver.add_effect(InitEffects.STUN.get_registered())
 		if event.keycode == KEY_2:
-			effect_receiver.add_effect(InitEffects.VENOM.get_registered())
+			effect_receiver.add_effect(InitEffects.POISON.get_registered())
 
 # SUPER
 # Main

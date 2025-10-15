@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dekh1i2slf8dn" path="res://core/interface/hud/HUD.gd" id="1_abe2h"]
 [ext_resource type="PackedScene" uid="uid://bky1fxhtd5kg7" path="res://core/interface/hud/stats_bar/StatsBar.tscn" id="2_4n8cl"]
-[ext_resource type="PackedScene" uid="uid://b8swewa0buvgr" path="res://core/interface/hud/effects_display/EffectsDisplay.tscn" id="3_wdvpt"]
+[ext_resource type="PackedScene" uid="uid://cwvqqakjqaopv" path="res://core/interface/hud/effects_display/EffectsDisplay.tscn" id="3_wdvpt"]
 [ext_resource type="PackedScene" uid="uid://bwhj3oh0nw37o" path="res://core/interface/hud/rotative_pocket/RotativePocket.tscn" id="4_wdvpt"]
 
 [node name="HUD" type="MarginContainer"]
@@ -18,12 +18,9 @@ theme_override_constants/margin_bottom = 8
 script = ExtResource("1_abe2h")
 
 [node name="EffectsDisplay" parent="." instance=ExtResource("3_wdvpt")]
-custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_constants/h_separation = 2
-theme_override_constants/v_separation = 2
 
 [node name="StatsBar" parent="." instance=ExtResource("2_4n8cl")]
 layout_mode = 2

@@ -1,7 +1,9 @@
-extends GridContainer
+extends Control
 class_name EffectsDisplay
 
 const EFFECT_CARD_SCENE: PackedScene = preload("res://core/interface/hud/effects_display/effect_card/EffectCard.tscn")
+
+@onready var grid: GridContainer = $Node2D/GridContainer
 
 # MAIN
 func connect_signals(player_effect_receiver: EffectReceiver) -> void:
@@ -16,8 +18,8 @@ func get_hud() -> PlayerHUD:
 # HANDLERS
 func add_effect(effect: BaseEffect) -> void:
 	var effect_card: EffectCard = EFFECT_CARD_SCENE.instantiate()
+	grid.add_child(effect_card)
 	effect_card.initialize(effect)
-	add_child(effect_card)
 
 
 func update_effect(_effect: BaseEffect) -> void:
