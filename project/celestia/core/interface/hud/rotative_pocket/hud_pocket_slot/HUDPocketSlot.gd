@@ -13,8 +13,8 @@ func _ready():
 
 # GETTERS AND SETTERS
 # Nodes
-func get_rotative_pocket():
-	return get_parent().get_parent()
+func get_rotative_pocket() -> RotativePocket:
+	return get_parent().get_parent().get_parent()
 
 # MAIN
 func render_slot(stack: ItemStack) -> void:

@@ -1,17 +1,17 @@
-extends Node2D
+extends Control
 class_name StatsBar
 
 const default_change_time: float = .4
 
-@onready var health_bar: ProgressBar = $HealthBar
-@onready var prev_health_bar: ProgressBar = $HealthBar/PrevHealthBar
-@onready var health_timer: Timer = $HealthBar/HealthTimer
+@onready var health_bar: ProgressBar = $Node2D/HealthBar
+@onready var prev_health_bar: ProgressBar = $Node2D/HealthBar/PrevHealthBar
+@onready var health_timer: Timer = $Node2D/HealthBar/HealthTimer
 
-@onready var mana_bar: ProgressBar = $ManaBar
-@onready var prev_mana_bar: ProgressBar = $ManaBar/PrevManaBar
-@onready var mana_timer: Timer = $ManaBar/ManaTimer
+@onready var mana_bar: ProgressBar = $Node2D/ManaBar
+@onready var prev_mana_bar: ProgressBar = $Node2D/ManaBar/PrevManaBar
+@onready var mana_timer: Timer = $Node2D/ManaBar/ManaTimer
 
-@onready var hungry_bar: ProgressBar = $HungryBar
+@onready var hungry_bar: ProgressBar = $Node2D/HungryBar
 
 # GODOT
 func _ready():

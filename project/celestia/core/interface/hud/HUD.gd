@@ -8,8 +8,8 @@ func get_ui() -> WorldUI:
 
 
 func get_stats_bar() -> StatsBar:
-	return get_node('HContainerLeft/VContainerDown/StatsBar')
+	return get_node('StatsBar')
 
 
 func get_rotative_pocket() -> RotativePocket:
-	return get_node('HContainerRight/VContainerDown/RotativePocket')
+	return get_node('RotativePocket')

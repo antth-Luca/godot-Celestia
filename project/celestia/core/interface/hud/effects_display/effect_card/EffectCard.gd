@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 class_name EffectCard
 
 @onready var TEXTURE: Sprite2D = $Texture
@@ -8,9 +8,9 @@ class_name EffectCard
 var remaining_effect_tween: Tween
 
 # MAIN
-func initialize(effect: BaseEffect) -> void:
-	TEXTURE.texture = load(Celestia.EFFECT_SPRITE_PATH % effect.id.get_splited())
-	_on_effect_updated(effect)
+#func initialize(effect: BaseEffect) -> void:
+#	TEXTURE.texture = load(Celestia.EFFECT_SPRITE_PATH % effect.id.get_splited())
+#	_on_effect_updated(effect)
 
 
 func _on_effect_updated(effect: BaseEffect) -> void:

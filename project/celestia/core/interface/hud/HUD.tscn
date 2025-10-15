@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://7hauijtfq470"]
+[gd_scene load_steps=5 format=3 uid="uid://7hauijtfq470"]
 
 [ext_resource type="Script" uid="uid://dekh1i2slf8dn" path="res://core/interface/hud/HUD.gd" id="1_abe2h"]
 [ext_resource type="PackedScene" uid="uid://bky1fxhtd5kg7" path="res://core/interface/hud/stats_bar/StatsBar.tscn" id="2_4n8cl"]
+[ext_resource type="PackedScene" uid="uid://b8swewa0buvgr" path="res://core/interface/hud/effects_display/EffectsDisplay.tscn" id="3_wdvpt"]
 [ext_resource type="PackedScene" uid="uid://bwhj3oh0nw37o" path="res://core/interface/hud/rotative_pocket/RotativePocket.tscn" id="4_wdvpt"]
 
 [node name="HUD" type="MarginContainer"]
@@ -10,34 +11,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 script = ExtResource("1_abe2h")
 
-[node name="HContainerLeft" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="EffectsDisplay" parent="HBoxContainer" instance=ExtResource("3_wdvpt")]
+layout_mode = 2
+
+[node name="StatsBar" parent="." instance=ExtResource("2_4n8cl")]
 layout_mode = 2
 size_flags_horizontal = 0
-
-[node name="VContainerTop" type="VBoxContainer" parent="HContainerLeft"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="VContainerDown" type="VBoxContainer" parent="HContainerLeft"]
-layout_mode = 2
 size_flags_vertical = 8
 
-[node name="StatsBar" parent="HContainerLeft/VContainerDown" instance=ExtResource("2_4n8cl")]
-position = Vector2(-4, 0)
-
-[node name="HContainerRight" type="HBoxContainer" parent="."]
+[node name="RotativePocket" parent="." instance=ExtResource("4_wdvpt")]
 layout_mode = 2
 size_flags_horizontal = 8
-
-[node name="VContainerTop" type="VBoxContainer" parent="HContainerRight"]
-layout_mode = 2
-
-[node name="VContainerDown" type="VBoxContainer" parent="HContainerRight"]
-layout_mode = 2
 size_flags_vertical = 8
-
-[node name="RotativePocket" parent="HContainerRight/VContainerDown" instance=ExtResource("4_wdvpt")]
-position = Vector2(-100, -99)
-scale = Vector2(2.5, 2.5)

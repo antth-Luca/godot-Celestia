@@ -84,89 +84,87 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="StatsBar" type="Node2D"]
-scale = Vector2(3.5, 3.5)
+[node name="StatsBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_1cjgp")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(4, 4)
+
+[node name="Background" type="Sprite2D" parent="Node2D"]
 z_index = -2
-position = Vector2(52.7143, -14.2143)
-scale = Vector2(1.2, 1.2)
+position = Vector2(42, -10)
 texture = ExtResource("1_5lu1f")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = 26.4286
-offset_top = -21.2857
-offset_right = 76.4286
-offset_bottom = -19.2857
+[node name="HealthBar" type="ProgressBar" parent="Node2D"]
+offset_left = 21.0
+offset_top = -16.0
+offset_right = 62.0
+offset_bottom = -14.0
 theme_override_styles/background = SubResource("StyleBoxFlat_abe2h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jo12g")
 value = 50.0
 show_percentage = false
 
-[node name="PrevHealthBar" type="ProgressBar" parent="HealthBar"]
+[node name="PrevHealthBar" type="ProgressBar" parent="Node2D/HealthBar"]
 z_index = -1
 layout_mode = 0
-offset_left = 0.14283
-offset_top = 0.142841
-offset_right = 50.1428
-offset_bottom = 2.14284
+offset_right = 41.0
+offset_bottom = 2.0
 theme_override_styles/background = SubResource("StyleBoxFlat_5lu1f")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1cjgp")
 value = 50.0
 show_percentage = false
 
-[node name="HealthTimer" type="Timer" parent="HealthBar"]
+[node name="HealthTimer" type="Timer" parent="Node2D/HealthBar"]
 one_shot = true
 
-[node name="ManaBar" type="ProgressBar" parent="."]
-offset_left = 26.4286
-offset_top = -15.0
-offset_right = 76.4286
-offset_bottom = -13.0
+[node name="ManaBar" type="ProgressBar" parent="Node2D"]
+offset_left = 21.0
+offset_top = -11.0
+offset_right = 62.0
+offset_bottom = -9.0
 theme_override_styles/background = SubResource("StyleBoxFlat_pimi0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_c5cyb")
 value = 50.0
 show_percentage = false
 
-[node name="PrevManaBar" type="ProgressBar" parent="ManaBar"]
+[node name="PrevManaBar" type="ProgressBar" parent="Node2D/ManaBar"]
 z_index = -1
 layout_mode = 0
-offset_left = 0.142826
-offset_top = -0.142856
-offset_right = 50.1428
-offset_bottom = 1.85715
+offset_right = 41.0
+offset_bottom = 2.0
 theme_override_styles/background = SubResource("StyleBoxFlat_5lu1f")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1cjgp")
 value = 50.0
 show_percentage = false
 
-[node name="ManaTimer" type="Timer" parent="ManaBar"]
+[node name="ManaTimer" type="Timer" parent="Node2D/ManaBar"]
 one_shot = true
 
-[node name="HungryBar" type="ProgressBar" parent="."]
-offset_left = 26.0
-offset_top = -9.14286
-offset_right = 74.0
-offset_bottom = -7.14286
+[node name="HungryBar" type="ProgressBar" parent="Node2D"]
+offset_left = 21.0
+offset_top = -6.0
+offset_right = 60.0
+offset_bottom = -4.0
 theme_override_styles/background = SubResource("StyleBoxFlat_sjip1")
 theme_override_styles/fill = SubResource("StyleBoxFlat_rjk5h")
 max_value = 50.0
 value = 25.0
 show_percentage = false
 
-[node name="Vessel" type="Sprite2D" parent="."]
-position = Vector2(30.5, -16.2857)
-scale = Vector2(1.2, 1.2)
+[node name="Vessel" type="Sprite2D" parent="Node2D"]
+position = Vector2(24, -12)
 texture = ExtResource("3_l7w1x")
+offset = Vector2(-0.5, 0.5)
 
-[node name="AnimatedHeart" type="AnimatedSprite2D" parent="."]
-position = Vector2(15.4286, -15.7143)
-scale = Vector2(1.2, 1.2)
+[node name="AnimatedHeart" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(11, -11)
 sprite_frames = SubResource("SpriteFrames_23r18")
 animation = &"pulse"
 autoplay = "pulse"
 frame_progress = 0.872027
 
-[connection signal="timeout" from="HealthBar/HealthTimer" to="." method="_on_health_timer_timeout"]
-[connection signal="timeout" from="ManaBar/ManaTimer" to="." method="_on_mana_timer_timeout"]
+[connection signal="timeout" from="Node2D/HealthBar/HealthTimer" to="." method="_on_health_timer_timeout"]
+[connection signal="timeout" from="Node2D/ManaBar/ManaTimer" to="." method="_on_mana_timer_timeout"]

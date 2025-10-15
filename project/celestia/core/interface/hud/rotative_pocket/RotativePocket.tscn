@@ -27,44 +27,54 @@ animations = [{
 "speed": 2.5
 }]
 
-[node name="RotativePocket" type="Node2D"]
+[node name="RotativePocket" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_bjxet")
 
-[node name="BackgroundPocket" type="Sprite2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(2.5, 2.5)
+
+[node name="BackgroundPocket" type="Sprite2D" parent="Node2D"]
+position = Vector2(-36, -36)
 texture = ExtResource("1_11jbb")
 
-[node name="AnimatedSelected" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -18)
+[node name="AnimatedSelected" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(-36, -54)
 sprite_frames = SubResource("SpriteFrames_cqkr1")
 autoplay = "default"
 frame_progress = 0.842052
 
-[node name="HUDSlotsGroup" type="Control" parent="."]
+[node name="HUDSlotsGroup" type="Control" parent="Node2D"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = -36.0
+offset_top = -36.0
+offset_right = -36.0
+offset_bottom = -36.0
 
-[node name="HUDPocketSlot" parent="HUDSlotsGroup" instance=ExtResource("2_bjxet")]
+[node name="HUDPocketSlot" parent="Node2D/HUDSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = -8.0
 offset_top = -26.0
 offset_right = -8.0
 offset_bottom = -26.0
 metadata/_edit_use_anchors_ = true
 
-[node name="HUDPocketSlot2" parent="HUDSlotsGroup" instance=ExtResource("2_bjxet")]
+[node name="HUDPocketSlot2" parent="Node2D/HUDSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = 10.0
 offset_top = -8.0
 offset_right = 10.0
 offset_bottom = -8.0
 metadata/_edit_use_anchors_ = true
 
-[node name="HUDPocketSlot3" parent="HUDSlotsGroup" instance=ExtResource("2_bjxet")]
+[node name="HUDPocketSlot3" parent="Node2D/HUDSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = -8.0
 offset_top = 12.0
 offset_right = -8.0
 offset_bottom = 12.0
 metadata/_edit_use_anchors_ = true
 
-[node name="HUDPocketSlot4" parent="HUDSlotsGroup" instance=ExtResource("2_bjxet")]
+[node name="HUDPocketSlot4" parent="Node2D/HUDSlotsGroup" instance=ExtResource("2_bjxet")]
 offset_left = -26.0
 offset_top = -8.0
 offset_right = -26.0
