@@ -1,14 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8swewa0buvgr"]
 
-[ext_resource type="PackedScene" uid="uid://48ayig00g6x" path="res://core/interface/hud/effects_display/effect_card/EffectCard.tscn" id="1_5imtk"]
+[ext_resource type="Script" uid="uid://db7dtl8xv1jay" path="res://core/interface/hud/effects_display/EffectsDisplay.gd" id="1_5imtk"]
 
 [node name="EffectsDisplay" type="GridContainer"]
 offset_right = 18.0
 offset_bottom = 18.0
 columns = 2
-
-[node name="EffectCard" parent="." instance=ExtResource("1_5imtk")]
-layout_mode = 2
-
-[node name="EffectCard2" parent="." instance=ExtResource("1_5imtk")]
-layout_mode = 2
+script = ExtResource("1_5imtk")

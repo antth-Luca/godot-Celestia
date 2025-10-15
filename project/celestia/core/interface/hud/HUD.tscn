@@ -17,12 +17,13 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 script = ExtResource("1_abe2h")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-visible = false
+[node name="EffectsDisplay" parent="." instance=ExtResource("3_wdvpt")]
+custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
-
-[node name="EffectsDisplay" parent="HBoxContainer" instance=ExtResource("3_wdvpt")]
-layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
 
 [node name="StatsBar" parent="." instance=ExtResource("2_4n8cl")]
 layout_mode = 2

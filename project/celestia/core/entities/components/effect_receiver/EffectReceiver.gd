@@ -9,6 +9,12 @@ class_name EffectReceiver
 
 var active_effects: Array[BaseEffect]
 
+# GODOT
+func _ready() -> void:
+	if not entity is Player: return
+	var effects_display: EffectsDisplay = entity.get_ui().get_hud().get_effects_display()
+	effects_display.connect_signals(self)
+
 # MAIN
 func add_effect(effect: BaseEffect) -> void:
 	if not effect: return

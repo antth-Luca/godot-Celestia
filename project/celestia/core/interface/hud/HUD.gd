@@ -7,6 +7,10 @@ func get_ui() -> WorldUI:
 	return get_parent()
 
 
+func get_effects_display() -> EffectsDisplay:
+	return get_node('EffectsDisplay')
+
+
 func get_stats_bar() -> StatsBar:
 	return get_node('StatsBar')
 
