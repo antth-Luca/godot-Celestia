@@ -16,6 +16,7 @@ static var BURN: DeferredHolder
 static var DECOMPOSITION: DeferredHolder
 static var FREEZE: DeferredHolder
 static var LIFEBANE: DeferredHolder
+static var STATIC: DeferredHolder
 static var STUN: DeferredHolder
 static var POISON: DeferredHolder
 static var ROOTS: DeferredHolder
@@ -82,6 +83,11 @@ static func setup() -> void:
 	LIFEBANE = EFFECTS.add_entry(
 		'lifebane',
 		func(): return LifebaneEffect.new()
+	)
+
+	STATIC = EFFECTS.add_entry(
+		'static',
+		func(): return StaticEffect.new()
 	)
 
 	STUN = EFFECTS.add_entry(

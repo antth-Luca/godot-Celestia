@@ -4,6 +4,7 @@ class_name InitHits
 static var HITS: DeferredRegister
 # Generic hits
 static var ARROW: DeferredHolder
+static var LIGHTING: DeferredHolder
 static var SLASH: DeferredHolder
 
 
@@ -18,6 +19,12 @@ static func setup() -> void:
 		'arrow',
 		func():
 			return preload('res://core/damage/hit/custom/arrow/ArrowHit.tscn').instantiate()
+	)
+
+	LIGHTING = HITS.add_entry(
+		'lighting',
+		func():
+			return preload('res://core/damage/hit/custom/lighting/LightingHit.tscn').instantiate()
 	)
 
 	SLASH = HITS.add_entry(

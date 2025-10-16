@@ -116,11 +116,7 @@ func _input(event) -> void:
 	if event is InputEventKey and event.is_pressed():
 		if event.keycode == KEY_1:
 			effect_receiver.add_effect(
-				EffectInstance.new(InitEffects.REGENERATION)
-			)
-		if event.keycode == KEY_2:
-			effect_receiver.add_effect(
-				EffectInstance.new(InitEffects.LIFEBANE)
+				EffectInstance.new(InitEffects.STATIC)
 			)
 
 # SUPER

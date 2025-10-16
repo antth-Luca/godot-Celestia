@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq7h3wbx8o3xl"]
+
+[ext_resource type="PackedScene" uid="uid://cn13ycpy1ji50" path="res://core/entities/components/hitbox/Hitbox.tscn" id="1_macra"]
+[ext_resource type="Script" uid="uid://bc3orwxv2b7ot" path="res://core/damage/hit/custom/lighting/LightingHit.gd" id="1_s4sfp"]
+[ext_resource type="Texture2D" uid="uid://drl1025uunool" path="res://assets/celestia/particles/attacks/lighting.png" id="2_l5ume"]
+
+[sub_resource type="Animation" id="Animation_oj63d"]
+resource_name = "flash"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.062, 0.124, 0.186, 0.248, 0.31, 0.372, 0.434, 0.496, 0.558, 0.62, 0.682, 0.744),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_mos0r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ncxxi"]
+_data = {
+&"RESET": SubResource("Animation_mos0r"),
+&"flash": SubResource("Animation_oj63d")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4sfp"]
+size = Vector2(32, 20)
+
+[node name="LightingHit" type="Node2D"]
+script = ExtResource("1_s4sfp")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_l5ume")
+offset = Vector2(0, -22)
+hframes = 13
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ncxxi")
+}
+
+[node name="Hitbox" parent="." instance=ExtResource("1_macra")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_s4sfp")
+debug_color = Color(0.89076, 0.000246814, 0.792218, 0.42)

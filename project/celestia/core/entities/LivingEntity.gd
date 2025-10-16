@@ -99,8 +99,12 @@ func set_animation() -> void:
 
 # HANDLERS
 func _on_hurtbox_area_entered(hitbox) -> void:
-	if not entity_data.is_dead and hitbox.is_in_group('hitbox'):
-		DamageManager.try_apply(hitbox.get_parent(), self)
+	if hitbox.is_in_group('hitbox'):
+		var source = hitbox.get_parent()
+		if source.get_hit_data().source == HitData.SOURCE.SPELL:
+			DamageManager.try_apply_spell(source, self)
+			return
+		DamageManager.try_apply(source, self)
 
 
 func flip_texture() -> void:
