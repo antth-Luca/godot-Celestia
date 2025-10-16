@@ -7,6 +7,7 @@ var satiation: float = 1:
 var regen_hp: float = 0:
 	set(new_regen):
 		regen_hp = max(new_regen, 0)
+var effects_list: Array[EffectInstance]
 
 # SUPER
 func use(player: Player) -> void:
@@ -21,4 +22,5 @@ func use(player: Player) -> void:
 			break_item(hand_slot)
 		else:
 			hand_slot.render_slot()
-		
+		for effect_instance in effects_list:
+			player.effect_receiver.add_effect(effect_instance)
