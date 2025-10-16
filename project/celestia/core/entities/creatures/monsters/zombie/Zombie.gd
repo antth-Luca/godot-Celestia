@@ -8,6 +8,7 @@ func _init() -> void:
 	entity_data = EntityData.new(
 		EntityData.FACTION_MASK.MONSTER,
 		PropertyManager.create_manager({
+			InitPropProviders.HEAL_MODIFIER: 1,
 			InitPropProviders.HEALTH: 80,
 			InitPropProviders.ARMOR: 0,
 			InitPropProviders.RESISTANCE: 0,
@@ -35,7 +36,7 @@ func get_hit_data() -> HitData:
 		HitData.SOURCE.HIT,
 		null,
 		{
-			InitEffects.BLEED: 1
+			InitEffects.BLEED: 1  # TODO: Trocar para "decomposition, .8".
 		}
 	)
 

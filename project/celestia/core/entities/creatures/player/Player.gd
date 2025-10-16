@@ -23,6 +23,7 @@ func _init() -> void:
 		EntityData.FACTION_MASK.PLAYER,
 		PropertyManager.create_manager({
 			InitPropProviders.SURVIVOR_LEVEL: 1,
+			InitPropProviders.HEAL_MODIFIER: 1,
 			InitPropProviders.HEALTH: 100,
 			InitPropProviders.ARMOR: 0,
 			InitPropProviders.RESISTANCE: 0,
@@ -114,9 +115,9 @@ func _physics_process(_delta: float) -> void:
 func _input(event) -> void:
 	if event is InputEventKey and event.is_pressed():
 		if event.keycode == KEY_1:
-			effect_receiver.add_effect(InitEffects.BLEED.get_registered())
+			effect_receiver.add_effect(InitEffects.REVITALIZE.get_registered())
 		if event.keycode == KEY_2:
-			effect_receiver.add_effect(InitEffects.ELECTROCUTE.get_registered())
+			effect_receiver.add_effect(InitEffects.LIFEBANE.get_registered())
 
 # SUPER
 # Main

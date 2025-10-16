@@ -9,6 +9,7 @@ static var CRITICAL_STRIKE: DeferredHolder
 static var DAMAGE_REDUCTION: DeferredHolder
 static var DEFENSE_REDUCTION: DeferredHolder
 static var FORCE: DeferredHolder
+static var HEAL_MODIFIER: DeferredHolder
 static var HEALTH: DeferredHolder
 static var LIFE_STEAL: DeferredHolder
 static var LUCK: DeferredHolder
@@ -51,6 +52,10 @@ static func setup() -> void:
 
 	FORCE = PROVIDERS.add_entry(
 		'force', func(): return ForceProvider.new()
+	)
+
+	HEAL_MODIFIER = PROVIDERS.add_entry(
+		'heal_modifier', func(): return HealModifierProvider.new()
 	)
 
 	HEALTH = PROVIDERS.add_entry(

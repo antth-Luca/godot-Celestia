@@ -6,6 +6,7 @@ static var EFFECTS: DeferredRegister
 static var COLD: DeferredHolder
 static var HEAT: DeferredHolder
 static var REGENERATION: DeferredHolder
+static var REVITALIZE: DeferredHolder
 # Neutral
 static var ELECTROCUTE: DeferredHolder
 static var GHOST: DeferredHolder
@@ -13,6 +14,7 @@ static var GHOST: DeferredHolder
 static var BLEED: DeferredHolder
 static var BURN: DeferredHolder
 static var FREEZE: DeferredHolder
+static var LIFEBANE: DeferredHolder
 static var STUN: DeferredHolder
 static var POISON: DeferredHolder
 static var ROOTS: DeferredHolder
@@ -40,6 +42,11 @@ static func setup() -> void:
 		'regeneration',
 		func(): return RegenerationEffect.new()
 	)
+
+	REVITALIZE = EFFECTS.add_entry(
+		'revitalize',
+		func(): return RevitalizeEffect.new()
+	)
 	# Neutral
 	ELECTROCUTE = EFFECTS.add_entry(
 		'electrocute',
@@ -64,6 +71,11 @@ static func setup() -> void:
 	FREEZE = EFFECTS.add_entry(
 		'freeze',
 		func(): return FreezeEffect.new()
+	)
+
+	LIFEBANE = EFFECTS.add_entry(
+		'lifebane',
+		func(): return LifebaneEffect.new()
 	)
 
 	STUN = EFFECTS.add_entry(

@@ -43,6 +43,8 @@ func _physics_process(_delta: float) -> void:
 # MAIN
 # Health
 func heal(heal_value: float) -> void:
+	var heal_mod_prop: HealModifierProperty = entity_data.stats.get_property(InitPropProviders.HEAL_MODIFIER)
+	heal_value *= heal_mod_prop.get_modifier()
 	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
 	hp_prop.add_health(heal_value)
 
