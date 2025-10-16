@@ -13,7 +13,7 @@ var id: ResourceLocation = ResourceLocation.EMPTY:
 			push_warning('BaseEffect: Item ID already set. It cannot be changed after initialization.')
 		id = new_id
 var category: EffectCategory
-var incompabilities: Array[BaseEffect]
+var incompabilities: Array[DeferredHolder]
 var effect_timer: Timer
 var amplifier: int:
 	set(new_ampli):
@@ -33,7 +33,7 @@ var total_time_amount: float
 var is_total_decay: bool
 
 # GODOT
-func _init(max_amplifier_param: int, init_amplifier: int, category_param: EffectCategory, instantaneous: bool, per_tick: bool, total_decay: bool, effect_duration_param: float, tick_interval_param: float, incompatible_effects: Array[BaseEffect] = []) -> void:
+func _init(max_amplifier_param: int, init_amplifier: int, category_param: EffectCategory, instantaneous: bool, per_tick: bool, total_decay: bool, effect_duration_param: float, tick_interval_param: float, incompatible_effects: Array[DeferredHolder] = []) -> void:
 	effect_duration = effect_duration_param
 	max_amplifier = max_amplifier_param
 	amplifier = init_amplifier
@@ -63,9 +63,9 @@ func get_hit_data() -> HitData:
 	)
 
 # MAIN
-func can_add(active_effects: Array[BaseEffect]) -> bool:
+func can_add(effect_receiver: EffectReceiver) -> bool:
 	for incomp in incompabilities:
-		if active_effects.has(incomp): return false
+		if effect_receiver.get_effect(incomp.get_registered()) != -1: return false
 	return true
 
 # HANDLERS

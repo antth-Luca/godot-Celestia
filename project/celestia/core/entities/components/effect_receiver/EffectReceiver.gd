@@ -27,7 +27,7 @@ func add_effect(effect: BaseEffect) -> void:
 	if not effect: return
 	var pos: int = get_effect(effect)
 	if pos < 0:
-		if effect.can_add(active_effects):
+		if effect.can_add(self):
 			active_effects.append(effect)
 			effect.effect_finished.connect(remove_effect)
 			effect._on_effect_added(entity)
@@ -37,7 +37,7 @@ func add_effect(effect: BaseEffect) -> void:
 				if effect.is_per_tick:
 					effect.effect_tick.connect(tick_effect)
 			for incomp in effect.incompabilities:
-				remove_effect(incomp)
+				remove_effect(incomp.get_registered())
 	else:
 		active_effects[pos]._on_effect_renewed(entity)
 

@@ -8,6 +8,8 @@ static var HEAT: DeferredHolder
 static var REGENERATION: DeferredHolder
 # Neutral
 # Maleficial
+static var BURN: DeferredHolder
+static var FREEZE: DeferredHolder
 static var STUN: DeferredHolder
 static var POISON: DeferredHolder
 static var ROOTS: DeferredHolder
@@ -38,6 +40,16 @@ static func setup() -> void:
 
 	# Neutral
 	# Maleficial
+	BURN = EFFECTS.add_entry(
+		'burn',
+		func(): return BurnEffect.new()
+	)
+
+	FREEZE = EFFECTS.add_entry(
+		'freeze',
+		func(): return FreezeEffect.new()
+	)
+
 	STUN = EFFECTS.add_entry(
 		'stun',
 		func(): return StunEffect.new()
