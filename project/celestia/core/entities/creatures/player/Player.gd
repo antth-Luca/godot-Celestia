@@ -111,14 +111,6 @@ func _physics_process(_delta: float) -> void:
 	set_animation()
 	move_and_slide()
 
-
-func _input(event) -> void:
-	if event is InputEventKey and event.is_pressed():
-		if event.keycode == KEY_1:
-			effect_receiver.add_effect(
-				EffectInstance.new(InitEffects.STATIC)
-			)
-
 # SUPER
 # Main
 func heal(heal_value: float) -> void:
