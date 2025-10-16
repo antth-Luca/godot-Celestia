@@ -36,7 +36,7 @@ func get_hit_data() -> HitData:
 		HitData.SOURCE.HIT,
 		null,
 		{
-			InitEffects.BLEED: 1  # TODO: Trocar para "decomposition, .8".
+			InitEffects.DECOMPOSITION: .8
 		}
 	)
 

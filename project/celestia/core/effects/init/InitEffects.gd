@@ -13,6 +13,7 @@ static var GHOST: DeferredHolder
 # Maleficial
 static var BLEED: DeferredHolder
 static var BURN: DeferredHolder
+static var DECOMPOSITION: DeferredHolder
 static var FREEZE: DeferredHolder
 static var LIFEBANE: DeferredHolder
 static var STUN: DeferredHolder
@@ -66,6 +67,11 @@ static func setup() -> void:
 	BURN = EFFECTS.add_entry(
 		'burn',
 		func(): return BurnEffect.new()
+	)
+
+	DECOMPOSITION = EFFECTS.add_entry(
+		'decomposition',
+		func(): return DecompositionEffect.new()
 	)
 
 	FREEZE = EFFECTS.add_entry(
