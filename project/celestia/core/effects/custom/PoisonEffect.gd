@@ -7,7 +7,7 @@ const POISON_DAMAGE_LIMITER_PERCENTAGE: float = .1
 # SUPER
 # Godot
 func _init() -> void:
-	super._init(1, 1, BaseEffect.EffectCategory.MALEFICIAL, false, true, true, 30, 1)
+	super._init(1, 1, BaseEffect.EffectCategory.MALEFICIAL, false, true, true, 30, 1, [InitEffects.REVITALIZE])
 
 # Handlers
 func _on_effect_tick(entity: LivingEntity) -> void:
