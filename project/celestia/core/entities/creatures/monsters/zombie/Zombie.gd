@@ -32,7 +32,11 @@ func get_hit_data() -> HitData:
 		self,
 		HitData.PRIMITIVE_TYPE.PHYSIC,
 		HitData.SPECIALIZED_TYPE.NONE,
-		HitData.SOURCE.HIT
+		HitData.SOURCE.HIT,
+		null,
+		{
+			InitEffects.BLEED: 1
+		}
 	)
 
 # SUPER

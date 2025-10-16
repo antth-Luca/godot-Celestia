@@ -10,6 +10,7 @@ static var REGENERATION: DeferredHolder
 static var ELECTROCUTE: DeferredHolder
 static var GHOST: DeferredHolder
 # Maleficial
+static var BLEED: DeferredHolder
 static var BURN: DeferredHolder
 static var FREEZE: DeferredHolder
 static var STUN: DeferredHolder
@@ -50,6 +51,11 @@ static func setup() -> void:
 		func(): return GhostEffect.new()
 	)
 	# Maleficial
+	BLEED = EFFECTS.add_entry(
+		'bleed',
+		func(): return BleedEffect.new()
+	)
+
 	BURN = EFFECTS.add_entry(
 		'burn',
 		func(): return BurnEffect.new()
