@@ -31,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		# Get the input direction and handle the movement/deceleration.
 		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
-		if direction != Vector2.ZERO and not entity_data.is_stunned:
+		if direction != Vector2.ZERO and not entity_data.is_stunned and not entity_data.is_rooted:
 			velocity = direction * stats_move_speed
 			flip_texture()
 		else:

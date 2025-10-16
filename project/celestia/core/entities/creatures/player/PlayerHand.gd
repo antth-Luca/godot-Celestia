@@ -25,7 +25,7 @@ func set_item_hand_texture(item_hand: BaseItem) -> void:
 
 # MAIN
 func perform_use() -> void:
-	if is_using or is_interacting or player.is_rolling or player.is_sleeping: return
+	if is_using or is_interacting or player.entity_data.is_stunned or player.is_rolling or player.is_sleeping: return
 	var stack_hand: ItemStack = player.inventory.get_hand().stack
 	if stack_hand.is_empty() or stack_hand.item.in_cooldown: return
 	if not stack_hand.item is BaseFood: player.consume_hungry(player.USE_HUNGRY)
@@ -37,7 +37,7 @@ func perform_use() -> void:
 
 
 func perform_interact() -> void:
-	if is_interacting or is_using or player.is_rolling or player.is_sleeping: return
+	if is_interacting or is_using or player.entity_data.is_stunned or player.is_rolling or player.is_sleeping: return
 	if not highlighted_interaction:
 		var stack_hand: ItemStack = player.inventory.get_hand().stack
 		if stack_hand.is_empty() or stack_hand.item.in_cooldown: return

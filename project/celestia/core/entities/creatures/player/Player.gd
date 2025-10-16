@@ -92,7 +92,7 @@ func _physics_process(_delta: float) -> void:
 		# Get the input direction and handle the movement/deceleration.
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
-		if direction != Vector2.ZERO and not entity_data.is_stunned:
+		if direction != Vector2.ZERO and not entity_data.is_stunned and not entity_data.is_rooted:
 			if Input.is_action_just_pressed('ui_roll') and not is_rolling:
 				is_rolling = true
 				entity_data.is_invincible = true
@@ -116,7 +116,7 @@ func _input(event) -> void:
 		if event.keycode == KEY_1:
 			effect_receiver.add_effect(InitEffects.STUN.get_registered())
 		if event.keycode == KEY_2:
-			effect_receiver.add_effect(InitEffects.POISON.get_registered())
+			effect_receiver.add_effect(InitEffects.ROOTS.get_registered())
 
 # SUPER
 # Main

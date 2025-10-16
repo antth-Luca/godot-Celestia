@@ -14,6 +14,7 @@ var team: String
 var stats: PropertyManager
 var is_invincible: bool = false
 var is_stunned: bool = false
+var is_rooted: bool = false
 var is_dead: bool = false
 
 # GODOT

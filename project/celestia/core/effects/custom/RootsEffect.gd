@@ -1,5 +1,5 @@
 extends BaseEffect
-class_name StunEffect
+class_name RootsEffect
 
 # SUPER
 # Godot
@@ -8,8 +8,8 @@ func _init() -> void:
 
 # Handlers
 func _on_effect_added(entity: LivingEntity) -> void:
-	entity.entity_data.is_stunned = true
+	entity.entity_data.is_rooted = true
 
 
 func _on_effect_removed(entity: LivingEntity) -> void:
-	entity.entity_data.is_stunned = false
+	entity.entity_data.is_rooted = false
