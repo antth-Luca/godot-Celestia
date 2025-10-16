@@ -16,17 +16,19 @@ func _ready() -> void:
 	effects_display.connect_signals(self)
 
 # MAIN
-func get_effect(effect: BaseEffect) -> int:
+func get_effect(effect_id: ResourceLocation) -> int:
 	for c in active_effects.size():
-		if active_effects[c].id.get_string() == effect.id.get_string():
+		if active_effects[c].id.get_string() == effect_id.get_string():
 			return c
 	return -1
 
 
-func add_effect(effect: BaseEffect) -> void:
-	if not effect: return
-	var pos: int = get_effect(effect)
+func add_effect(effect_instance: EffectInstance) -> void:
+	if not effect_instance: return
+	if effect_instance.chance != 1 and randf() > effect_instance.chance: return
+	var pos: int = get_effect(effect_instance.effect.location)
 	if pos < 0:
+		var effect: BaseEffect = effect_instance.get_effect()
 		if effect.can_add(self):
 			active_effects.append(effect)
 			effect.effect_finished.connect(remove_effect)
@@ -43,7 +45,7 @@ func add_effect(effect: BaseEffect) -> void:
 
 
 func remove_effect(effect: BaseEffect) -> void:
-	var pos: int = get_effect(effect)
+	var pos: int = get_effect(effect.id)
 	if pos < 0: return
 	var active: BaseEffect = active_effects[pos]
 	active._on_effect_removed(entity)

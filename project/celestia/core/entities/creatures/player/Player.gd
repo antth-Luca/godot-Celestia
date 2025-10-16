@@ -115,9 +115,13 @@ func _physics_process(_delta: float) -> void:
 func _input(event) -> void:
 	if event is InputEventKey and event.is_pressed():
 		if event.keycode == KEY_1:
-			effect_receiver.add_effect(InitEffects.REVITALIZE.get_registered())
+			effect_receiver.add_effect(
+				EffectInstance.new(InitEffects.REGENERATION)
+			)
 		if event.keycode == KEY_2:
-			effect_receiver.add_effect(InitEffects.LIFEBANE.get_registered())
+			effect_receiver.add_effect(
+				EffectInstance.new(InitEffects.LIFEBANE)
+			)
 
 # SUPER
 # Main

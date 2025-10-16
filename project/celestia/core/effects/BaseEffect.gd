@@ -65,7 +65,7 @@ func get_hit_data() -> HitData:
 # MAIN
 func can_add(effect_receiver: EffectReceiver) -> bool:
 	for incomp in incompabilities:
-		if effect_receiver.get_effect(incomp.get_registered()) != -1: return false
+		if effect_receiver.get_effect(incomp.location) != -1: return false
 	return true
 
 # HANDLERS

@@ -54,10 +54,7 @@ func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 	hp_prop.sub_health(final_dam)
 	if hit.attacker: apply_knockback(hit.attacker.global_position, hit.specialized_type)
 	if hitbox_parent is BaseHit: hitbox_parent._on_hurt_entity()
-	for effect in hit.effects_dict.keys():
-		var rand_value: float = randf()
-		if rand_value <= hit.effects_dict[effect]:
-			effect_receiver.add_effect(effect.get_registered())
+	for effect in hit.effects_list: effect_receiver.add_effect(effect)
 	if hp_prop.get_health() <= 0: die(hit.attacker)
 
 

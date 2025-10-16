@@ -59,7 +59,7 @@ static func compute_damage(hit_specialized_type: HitData.SPECIALIZED_TYPE, brute
 	var calc_dam = brute_dam - (brute_dam * target.entity_data.stats.get_property(InitPropProviders.DAMAGE_REDUCTION).get_dam_reduction())
 	if hit_specialized_type == HitData.SPECIALIZED_TYPE.ELETRIC:
 		var electrocute_effect: ElectrocuteEffect = InitEffects.ELECTROCUTE.get_registered()
-		if target.effect_receiver.get_effect(electrocute_effect) != -1:
+		if target.effect_receiver.get_effect(electrocute_effect.id) != -1:
 			calc_dam *= electrocute_effect.ELETRIC_DAMAGE_MODIFIER
 	if calc_def >= 0: return calc_dam * (1 / (1 + calc_def / K))
 	return calc_dam * (2 - (1 / (1 - calc_def / K)))
