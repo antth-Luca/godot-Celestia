@@ -7,6 +7,8 @@ static var COLD: DeferredHolder
 static var HEAT: DeferredHolder
 static var REGENERATION: DeferredHolder
 # Neutral
+static var ELECTROCUTE: DeferredHolder
+static var GHOST: DeferredHolder
 # Maleficial
 static var BURN: DeferredHolder
 static var FREEZE: DeferredHolder
@@ -37,8 +39,16 @@ static func setup() -> void:
 		'regeneration',
 		func(): return RegenerationEffect.new()
 	)
-
 	# Neutral
+	ELECTROCUTE = EFFECTS.add_entry(
+		'electrocute',
+		func(): return ElectrocuteEffect.new()
+	)
+
+	GHOST = EFFECTS.add_entry(
+		'ghost',
+		func(): return GhostEffect.new()
+	)
 	# Maleficial
 	BURN = EFFECTS.add_entry(
 		'burn',

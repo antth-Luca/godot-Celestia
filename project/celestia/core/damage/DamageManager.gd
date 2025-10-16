@@ -6,12 +6,11 @@ const K: float = 15
 static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 	var hit: HitData = hitbox_parent.get_hit_data()
 	if DamageRules.can_damage(hit, target):
-		var target_stats: PropertyManager = target.entity_data.stats
 		var attacker_stats = hit.attacker.entity_data.stats
-		var final_def = compute_defense(hit, target_stats)
+		var final_def = compute_defense(hit, target.entity_data.stats)
 		var brute_dam = get_brute_damage(hit.tool, attacker_stats)
 		var final_dam = compute_crit(
-			attacker_stats, compute_damage(target_stats, brute_dam, final_def)
+			attacker_stats, compute_damage(hit.specialized_type, brute_dam, target, final_def)
 		)
 		target.hurt(final_dam, hit, hitbox_parent)
 		var attacker_life_steal = attacker_stats.get_property(InitPropProviders.LIFE_STEAL).get_life_steal()
@@ -30,7 +29,7 @@ static func try_apply_effect(effect: BaseEffect, target: LivingEntity) -> void:
 		var target_stats: PropertyManager = target.entity_data.stats
 		var final_def = compute_defense(hit, target_stats)
 		var brute_dam = effect.get_brute_damage(target_stats.get_property(InitPropProviders.HEALTH))
-		var final_dam = compute_damage(target_stats, brute_dam, final_def)
+		var final_dam = compute_damage(hit.specialized_type, brute_dam, target, final_def)
 		target.hurt(final_dam, hit, effect)
 
 
@@ -56,8 +55,12 @@ static func get_brute_damage(hit_tool: BaseItem, attacker_stats: PropertyManager
 	return attacker_stats.get_property(InitPropProviders.FORCE).get_force() * damage_factor
 
 
-static func compute_damage(target_stats: PropertyManager, brute_dam: float, calc_def: float) -> float:
-	var calc_dam = brute_dam - (brute_dam * target_stats.get_property(InitPropProviders.DAMAGE_REDUCTION).get_dam_reduction())
+static func compute_damage(hit_specialized_type: HitData.SPECIALIZED_TYPE, brute_dam: float, target: LivingEntity, calc_def: float) -> float:
+	var calc_dam = brute_dam - (brute_dam * target.entity_data.stats.get_property(InitPropProviders.DAMAGE_REDUCTION).get_dam_reduction())
+	if hit_specialized_type == HitData.SPECIALIZED_TYPE.ELETRIC:
+		var electrocute_effect: ElectrocuteEffect = InitEffects.ELECTROCUTE.get_registered()
+		if target.effect_receiver.get_effect(electrocute_effect) != -1:
+			calc_dam *= electrocute_effect.ELETRIC_DAMAGE_MODIFIER
 	if calc_def >= 0: return calc_dam * (1 / (1 + calc_def / K))
 	return calc_dam * (2 - (1 / (1 - calc_def / K)))
 
