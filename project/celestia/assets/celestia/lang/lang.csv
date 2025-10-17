@@ -17,6 +17,7 @@ ui.inventory.stats.US,Use Speed,Vel. de Uso
 ui.inventory.stats.MS,Move Speed,Vel. de Movimento
 ui.inventory.stats.CdR,Cooldown Reduc.,Redução de Resfr.
 item.rarity.common,Common,Comum
+item.rarity.uncommon,Uncommon,Incomum
 item.rarity.rare,Rare,Raro
 item.rarity.epic,Epic,Épico
 item.rarity.mithic,Mithic,Mítico

@@ -206,25 +206,40 @@ script = ExtResource("11_kax5f")
 
 [node name="InputSlot" parent="Blessing" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
-offset_left = 61.0
-offset_top = -99.0
-offset_right = 77.0
-offset_bottom = -83.0
+offset_left = -8.0
+offset_top = -139.0
+offset_right = 8.0
+offset_bottom = -123.0
 scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "input"
 
+[node name="ResultIndicator" type="Sprite2D" parent="Blessing"]
+position = Vector2(64, -75)
+rotation = 0.785398
+scale = Vector2(2.1811, 2.1811)
+texture = ExtResource("3_4dmet")
+
+[node name="OutputSlot" parent="Blessing" instance=ExtResource("2_f0mr0")]
+offset_left = 82.0
+offset_top = -45.0
+offset_right = 98.0
+offset_bottom = -29.0
+scale = Vector2(2.5, 2.5)
+script = ExtResource("5_4dmet")
+slot_type = "output"
+
 [node name="HammerIndicator" type="Sprite2D" parent="Blessing"]
-position = Vector2(14.3803, -76)
+position = Vector2(14.3803, -26)
 scale = Vector2(2.056, 2.056)
 texture = ExtResource("5_yrhyg")
 
 [node name="InteractConfirm" parent="Blessing" instance=ExtResource("11_epdjq")]
 layout_mode = 0
-offset_left = -68.0
-offset_top = -95.0
-offset_right = -52.0
-offset_bottom = -79.0
+offset_left = -87.0
+offset_top = -46.0
+offset_right = -71.0
+offset_bottom = -30.0
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("14_1fsrn")
 

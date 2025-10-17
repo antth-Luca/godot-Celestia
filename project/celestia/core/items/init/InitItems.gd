@@ -73,7 +73,7 @@ static func setup() -> void:
 		'scroll_altruism',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -81,7 +81,7 @@ static func setup() -> void:
 		'scroll_ambition',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -89,7 +89,7 @@ static func setup() -> void:
 		'scroll_ascendance',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -97,7 +97,7 @@ static func setup() -> void:
 		'scroll_calm',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -105,7 +105,7 @@ static func setup() -> void:
 		'scroll_chaos',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -113,7 +113,7 @@ static func setup() -> void:
 		'scroll_creation',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -121,7 +121,7 @@ static func setup() -> void:
 		'scroll_destruction',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -129,7 +129,7 @@ static func setup() -> void:
 		'scroll_efemerality',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -137,7 +137,7 @@ static func setup() -> void:
 		'scroll_illusion',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -145,7 +145,7 @@ static func setup() -> void:
 		'scroll_permanence',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -153,7 +153,7 @@ static func setup() -> void:
 		'scroll_protection',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -161,7 +161,7 @@ static func setup() -> void:
 		'scroll_submission',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -169,7 +169,7 @@ static func setup() -> void:
 		'scroll_truth',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 
@@ -177,7 +177,7 @@ static func setup() -> void:
 		'scroll_war',
 		func():
 			var item = BaseItem.new()
-			item.rarity = InitRarities.UNCOMMON
+			item.rarity = InitRarities.UNCOMMON.get_registered()
 			return item
 	)
 

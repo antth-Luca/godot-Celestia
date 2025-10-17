@@ -1,50 +1,47 @@
 extends Control
 
 @onready var input_slot: InputSlot = $InputSlot
+@onready var output_slot: OutputSlot = $OutputSlot
 @onready var interact_star: InteractConfirm = $InteractConfirm
 
 var can_set_input := true
-var recipe_cache: BlessingRecipe
-var parent_player: Player
+var recipe_cache: BaseRecipe
+var output_stacks: Array[ItemStack]
 
 # GODOT
 func _ready() -> void:
 	# Input
 	input_slot.connect('slot_item_added', Callable(self, 'try_find_recipe'))
 	input_slot.connect('slot_item_removed', Callable(self, 'try_find_recipe'))
+	# Output
+	output_slot.connect('slot_item_removed', Callable(self, 'cleanup_craft'))
 
 # MAIN
 func fill_children(player: Player) -> void:
-	parent_player = player
 	input_slot.player = player
 
 
 func try_find_recipe() -> void:
 	# Try to find a valid and compatible recipe. If find one, set the preview and enable the interaction hammer.
-	# BEGIN: Extract the stacks from the input slots...
-	var input_stacks: Array[ItemStack]
-	if not input_slot.stack.is_empty(): input_stacks.append(input_slot.stack)
-	# ...If there is a revenue cache and it is valid, we use...
-	if recipe_cache and recipe_cache.matches(input_stacks):
-		var _result = recipe_cache.get_result()
+	var input_stack: ItemStack = input_slot.stack
+	if input_stack.is_empty(): return
+	if input_stack.item.id.get_string() == InitItems.PAPYRUS.location.get_string():
+		for c in input_slot.stack.amount:
+			if not recipe_cache: recipe_cache = InitRecipes.CONSTELLATION_SCROLLS.get_registered()
+			var result = recipe_cache.get_result()
+			if output_stacks.is_empty():
+				output_stacks.append(result)
+				continue
+			for output in output_stacks:
+				if output.item.id.get_string() == result.item.id.get_string():
+					var remaining = output.add_amount_safe(result.amount)
+					if remaining > 0: output_stacks.append(ItemStack.new(result.item, remaining))
+					break
+				else:
+					output_stacks.append(result)
+		output_slot.stack = output_stacks.front()
+		output_slot.set_preview()
 		interact_star.enable_interaction()
-		return
-	# ...Get the recipes allowed per workstation and per ingredient...
-	var registry: RecipeRegistry = RegistryManager.registries[RecipeRegistry.REGISTRY_TYPE]
-	var per_workstation: Array = registry._per_workstation.get(get_parent().selected).duplicate()
-	var per_ingredient: Dictionary[ResourceLocation, Array] = registry._per_ingredient
-	# ...Filter recipes by input ingredients...
-	if not input_stacks.is_empty() and per_ingredient.has(input_stacks.front()):
-		var by_ingred: Array[ResourceLocation] = per_ingredient[input_stacks.front().item.id]
-		per_workstation = per_workstation.filter(func(id): return id in by_ingred)
-	# ...Tests each candidate recipe...
-	for possible in per_workstation:
-		var recipe: BlessingRecipe = registry._registries[possible].call()
-		if recipe and recipe.matches(input_stacks):
-			recipe_cache = recipe
-			var _result = recipe.get_result()
-			interact_star.enable_interaction()
-			return
 
 
 func cleanup_craft() -> void:

@@ -141,6 +141,7 @@ static func setup() -> void:
 				1, 1,
 				11.11
 			)
+			return box
 	)
 
 	# Structures
