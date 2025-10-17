@@ -9,6 +9,7 @@ static var GOLD_INGOT: DeferredHolder
 static var IRON_INGOT: DeferredHolder
 static var PAPYRUS: DeferredHolder
 static var PLANT_FIBER: DeferredHolder
+static var STARDUST: DeferredHolder
 static var STONE: DeferredHolder
 # Constellation scrolls
 static var SCROLL_ALTRUISM: DeferredHolder
@@ -62,6 +63,14 @@ static func setup() -> void:
 	PLANT_FIBER = ITEMS.add_entry(
 		'plant_fiber',
 		func(): return BaseItem.new()
+	)
+
+	STARDUST = ITEMS.add_entry(
+		'stardust',
+		func():
+			var item = BaseItem.new()
+			item.rarity = InitRarities.UNCOMMON.get_registered()
+			return item
 	)
 
 	STONE = ITEMS.add_entry(
