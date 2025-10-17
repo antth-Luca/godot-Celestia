@@ -9,7 +9,9 @@ static var BOW: DeferredHolder
 static var IRON_AXE: DeferredHolder
 static var IRON_PICKAXE: DeferredHolder
 static var IRON_SWORD: DeferredHolder
+static var PAPYRUS: DeferredHolder
 # Random output
+static var CONSTELLATION_SCROLLS: DeferredHolder
 # With return
 
 
@@ -72,6 +74,26 @@ static func setup() -> void:
 			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
 			recipe.add_ingredient(InitFuels.STICK, 2)
 			recipe.add_ingredient(InitItems.IRON_INGOT, 2)
+			return recipe
+	)
+
+	PAPYRUS = RECIPES.add_entry(
+		'papyrus',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.PAPYRUS, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
+			recipe.add_ingredient(InitItems.PLANT_FIBER, 2)
+			return recipe
+	)
+	# Random output
+	CONSTELLATION_SCROLLS = RECIPES.add_entry(
+		'constellation_scrolls',
+		func():
+			var recipe = RandOutputRecipe.new()
+			recipe.set_result(InitLootBoxes.CONSTELLATION_SCROLLS)
+			recipe.set_workstation(RandOutputRecipe.WorkstationType.STAR_CHANNEL)
+			recipe.add_ingredient(InitItems.PAPYRUS, 1)
 			return recipe
 	)
 

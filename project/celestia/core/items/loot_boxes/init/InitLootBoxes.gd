@@ -7,6 +7,8 @@ static var CHICKEN_DEATH: DeferredHolder
 static var CHICKEN_LAY: DeferredHolder
 # Monsters
 static var ZOMBIE_DEATH: DeferredHolder
+# Recipes
+static var CONSTELLATION_SCROLLS: DeferredHolder
 # Structures
 static var BUSH_DESTROY: DeferredHolder
 
@@ -61,6 +63,84 @@ static func setup() -> void:
 				.2
 			)
 			return box
+	)
+
+	# Recipes
+	CONSTELLATION_SCROLLS = LOOT_BOXES.add_entry(
+		'constellation_scrolls',
+		func():
+			var box = LootBox.new()
+			box.set_cycles(1, 1)
+			box.add_output(
+				InitItems.SCROLL_ALTRUISM,
+				1, 1,
+				5.55
+			)
+			box.add_output(
+				InitItems.SCROLL_AMBITION,
+				1, 1,
+				11.11
+			)
+			box.add_output(
+				InitItems.SCROLL_ASCENDANCE,
+				1, 1,
+				8.36
+			)
+			box.add_output(
+				InitItems.SCROLL_CALM,
+				1, 1,
+				5.55
+			)
+			box.add_output(
+				InitItems.SCROLL_CHAOS,
+				1, 1,
+				5.55
+			)
+			box.add_output(
+				InitItems.SCROLL_CREATION,
+				1, 1,
+				5.55
+			)
+			box.add_output(
+				InitItems.SCROLL_DESTRUCTION,
+				1, 1,
+				11.11
+			)
+			box.add_output(
+				InitItems.SCROLL_EFEMERALITY,
+				1, 1,
+				5.55
+			)
+			box.add_output(
+				InitItems.SCROLL_ILLUSION,
+				1, 1,
+				5.55
+			)
+			box.add_output(
+				InitItems.SCROLL_PERMANENCE,
+				1, 1,
+				5.55
+			)
+			box.add_output(
+				InitItems.SCROLL_PROTECTION,
+				1, 1,
+				5.55
+			)
+			box.add_output(
+				InitItems.SCROLL_SUBMISSION,
+				1, 1,
+				5.55
+			)
+			box.add_output(
+				InitItems.SCROLL_TRUTH,
+				1, 1,
+				8.36
+			)
+			box.add_output(
+				InitItems.SCROLL_WAR,
+				1, 1,
+				11.11
+			)
 	)
 
 	# Structures

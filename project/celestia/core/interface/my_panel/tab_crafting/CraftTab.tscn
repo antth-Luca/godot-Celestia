@@ -50,7 +50,6 @@ grow_vertical = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_t334g")
 
 [node name="Forging" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -137,6 +136,7 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_epdjq")
 
 [node name="Smelting" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -206,41 +206,25 @@ script = ExtResource("11_kax5f")
 
 [node name="InputSlot" parent="Blessing" instance=ExtResource("2_f0mr0")]
 layout_mode = 0
-offset_left = 16.3803
-offset_top = -142.0
-offset_right = 32.3803
-offset_bottom = -126.0
+offset_left = 61.0
+offset_top = -99.0
+offset_right = 77.0
+offset_bottom = -83.0
 scale = Vector2(2.5, 2.5)
 script = ExtResource("3_f0mr0")
 slot_type = "input"
 
-[node name="ResultIndicator" type="Sprite2D" parent="Blessing"]
-position = Vector2(79.3803, -79)
-rotation = 0.785398
-scale = Vector2(1.78947, 1.78947)
-texture = ExtResource("3_4dmet")
-
-[node name="OutputSlot" parent="Blessing" instance=ExtResource("2_f0mr0")]
-layout_mode = 0
-offset_left = 102.38
-offset_top = -56.0
-offset_right = 118.38
-offset_bottom = -40.0
-scale = Vector2(2.5, 2.5)
-script = ExtResource("5_4dmet")
-slot_type = "output"
-
 [node name="HammerIndicator" type="Sprite2D" parent="Blessing"]
-position = Vector2(36.3803, -33)
+position = Vector2(14.3803, -76)
 scale = Vector2(2.056, 2.056)
 texture = ExtResource("5_yrhyg")
 
 [node name="InteractConfirm" parent="Blessing" instance=ExtResource("11_epdjq")]
 layout_mode = 0
-offset_left = -46.0
-offset_top = -52.0
-offset_right = -30.0
-offset_bottom = -36.0
+offset_left = -68.0
+offset_top = -95.0
+offset_right = -52.0
+offset_bottom = -79.0
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("14_1fsrn")
 

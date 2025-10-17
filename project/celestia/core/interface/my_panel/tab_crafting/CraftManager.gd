@@ -26,7 +26,6 @@ func fill_children(player: Player) -> void:
 	smelt.get_node('OutputSlot').player = player
 	# Bless
 	bless.get_node('InputSlot').player = player
-	bless.get_node('OutputSlot').player = player
 
 # Visibility
 func show_workstation(workstation_type: int) -> void:

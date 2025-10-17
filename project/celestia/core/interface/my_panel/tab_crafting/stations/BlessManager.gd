@@ -1,24 +1,22 @@
 extends Control
 
 @onready var input_slot: InputSlot = $InputSlot
-@onready var output_slot: OutputSlot = $OutputSlot
 @onready var interact_star: InteractConfirm = $InteractConfirm
 
 var can_set_input := true
 var recipe_cache: BlessingRecipe
+var parent_player: Player
 
 # GODOT
 func _ready() -> void:
 	# Input
 	input_slot.connect('slot_item_added', Callable(self, 'try_find_recipe'))
 	input_slot.connect('slot_item_removed', Callable(self, 'try_find_recipe'))
-	# Output
-	output_slot.connect('slot_item_removed', Callable(self, 'cleanup_craft'))
 
 # MAIN
 func fill_children(player: Player) -> void:
+	parent_player = player
 	input_slot.player = player
-	output_slot.player = player
 
 
 func try_find_recipe() -> void:
@@ -28,8 +26,7 @@ func try_find_recipe() -> void:
 	if not input_slot.stack.is_empty(): input_stacks.append(input_slot.stack)
 	# ...If there is a revenue cache and it is valid, we use...
 	if recipe_cache and recipe_cache.matches(input_stacks):
-		output_slot.stack = recipe_cache.get_result()
-		output_slot.set_preview()
+		var _result = recipe_cache.get_result()
 		interact_star.enable_interaction()
 		return
 	# ...Get the recipes allowed per workstation and per ingredient...
@@ -45,8 +42,7 @@ func try_find_recipe() -> void:
 		var recipe: BlessingRecipe = registry._registries[possible].call()
 		if recipe and recipe.matches(input_stacks):
 			recipe_cache = recipe
-			output_slot.stack = recipe.get_result()
-			output_slot.set_preview()
+			var _result = recipe.get_result()
 			interact_star.enable_interaction()
 			return
 
