@@ -26,19 +26,21 @@ func try_find_recipe() -> void:
 	var input_stack: ItemStack = input_slot.stack
 	if input_stack.is_empty(): return
 	if input_stack.item.id.get_string() == InitItems.PAPYRUS.location.get_string():
+		var results: Array[ItemStack]
 		for c in input_slot.stack.amount:
 			if not recipe_cache: recipe_cache = InitRecipes.CONSTELLATION_SCROLLS.get_registered()
 			var result = recipe_cache.get_result()
 			if output_stacks.is_empty():
-				output_stacks.append(result)
+				results.append(result)
 				continue
-			for output in output_stacks:
+			for output in results:
 				if output.item.id.get_string() == result.item.id.get_string():
 					var remaining = output.add_amount_safe(result.amount)
-					if remaining > 0: output_stacks.append(ItemStack.new(result.item, remaining))
+					if remaining > 0: results.append(ItemStack.new(result.item, remaining))
 					break
 				else:
-					output_stacks.append(result)
+					results.append(result)
+		output_stacks = results
 		output_slot.stack = output_stacks.front()
 		output_slot.set_preview()
 		interact_star.enable_interaction()
