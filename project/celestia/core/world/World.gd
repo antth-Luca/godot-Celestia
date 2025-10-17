@@ -29,6 +29,11 @@ func _ready() -> void:
 		InitStructures.STONE_FURNACE.get_registered(),
 		Vector2(210, 114)
 	)
+	# Spawn Star Channel
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.STAR_CHANNEL.get_registered(),
+		Vector2(241, 114)
+	)
 	# Spawn Zombie
 	var zombie: Zombie = InitCreatures.ZOMBIE.get_registered()
 	get_tree().current_scene.add_child(zombie)
@@ -45,11 +50,16 @@ func _ready() -> void:
 	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitAmmos.ARROW.get_registered(), 12),
+		ItemStack.new(InitFuels.STICK.get_registered(), 12),
 		Vector2(169, 165)
 	)
 	# Spawn Iron
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitWeapons.BOW.get_registered(), 1),
+		ItemStack.new(InitItems.IRON_INGOT.get_registered(), 12),
 		Vector2(169, 180)
+	)
+	# Spawn Papyrus
+	DroppedItemUtils.drop_item_in_position(
+		ItemStack.new(InitItems.PAPYRUS.get_registered(), 12),
+		Vector2(169, 195)
 	)

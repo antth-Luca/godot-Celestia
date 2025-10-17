@@ -4,6 +4,7 @@ class_name InitStructures
 static var STRUCTURES: DeferredRegister
 # Buildable
 static var BED: DeferredHolder
+static var STAR_CHANNEL: DeferredHolder
 static var STONE_FURNACE: DeferredHolder
 # Natural
 static var BUSH: DeferredHolder
@@ -20,6 +21,11 @@ static func setup() -> void:
 	BED = STRUCTURES.add_entry(
 		'bed',
 		func(): return preload('res://core/entities/structures/custom/bed/Bed.tscn').instantiate()
+	)
+
+	STAR_CHANNEL = STRUCTURES.add_entry(
+		'star_channel',
+		func(): return preload('res://core/entities/structures/custom/star_channel/StarChannel.tscn').instantiate()
 	)
 
 	STONE_FURNACE = STRUCTURES.add_entry(
