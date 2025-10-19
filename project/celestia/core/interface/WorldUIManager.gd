@@ -40,6 +40,7 @@ func _input(event: InputEvent) -> void:
 		update_pause_menu(true)
 	# Any case
 	if not pause_menu.visible and event.is_action_pressed('ui_inventory'):
+		my_panel._on_craft_tab_button_pressed()
 		update_my_panel(my_panel.visible)
 
 # GETTERS AND SETTERS

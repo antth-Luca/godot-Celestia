@@ -33,11 +33,8 @@ func show_workstation(workstation_type: int) -> void:
 	self.visible = true
 	for key in workstations.keys():
 		var supported_types: Array = workstations[key]
-		for type in supported_types:
-			if type == workstation_type:
-				key.visible = true
-				selected = type
-				return
+		key.visible = workstation_type in supported_types
+		if key.visible: selected = workstation_type
 
 
 func hide_all_workstations() -> void:
