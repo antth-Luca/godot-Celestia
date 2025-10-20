@@ -5,7 +5,7 @@ class_name Bed
 func _init() -> void:
 	structure_data = StructureData.new(
 		[
-			AxeTool.COMPARABLE_NAME
+			AxeTool.get_comparable_name()
 		],
 		[
 			InitMaterials.IRON.get_registered()

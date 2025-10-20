@@ -7,7 +7,7 @@ const workstation_key: int = BlessingRecipe.WorkstationType.STAR_CHANNEL
 func _init() -> void:
 	structure_data = StructureData.new(
 		[
-			PickaxeTool.COMPARABLE_NAME
+			PickaxeTool.get_comparable_name()
 		],
 		[
 			InitMaterials.IRON.get_registered()

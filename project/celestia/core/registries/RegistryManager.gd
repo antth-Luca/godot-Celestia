@@ -4,6 +4,7 @@ static var registries: Dictionary = {
 	RarityRegistry.REGISTRY_TYPE: RarityRegistry.new(),
 	MaterialRegistry.REGISTRY_TYPE: MaterialRegistry.new(),
 	EffectRegistry.REGISTRY_TYPE: EffectRegistry.new(),
+	EnchantmentRegistry.REGISTRY_TYPE: EnchantmentRegistry.new(),
 	ItemRegistry.REGISTRY_TYPE: ItemRegistry.new(),
 	RecipeRegistry.REGISTRY_TYPE: RecipeRegistry.new(),
 	LootBoxRegistry.REGISTRY_TYPE: LootBoxRegistry.new(),

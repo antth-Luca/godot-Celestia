@@ -5,7 +5,6 @@ static var EMPTY = ItemStack.new(null, 0)
 
 var item: BaseItem
 var amount: int
-var enchantments: Array[BaseEnchantment]
 
 
 func _init(item_param: BaseItem, amount_param: int = 1) -> void:

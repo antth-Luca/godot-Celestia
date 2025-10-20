@@ -17,13 +17,20 @@ var max_level: int:
 	set(new_max):
 		max_level = max(new_max, 1)
 
+# GODOT
+func _init(max_level_param: int, init_level: int, applicable_items: Array[String], incompatible_enchats: Array[DeferredHolder] = []) -> void:
+	max_level = max_level_param
+	level = init_level
+	applicabilities = applicable_items
+	incompabilities = incompatible_enchats
+
 # MAIN
 func check_applicability(to_apply: BaseItem) -> bool:
 	var comparable: String = to_apply.COMPARABLE_NAME
 	return comparable and comparable in applicabilities
 
 
-func check_compability(to_apply: ItemStack) -> bool:
+func check_compability(to_apply: BaseItem) -> bool:
 	for incomp in incompabilities:
 		for enchant in to_apply.enchantments:
 			if incomp.location.get_string() == enchant.id.get_string():
@@ -31,4 +38,5 @@ func check_compability(to_apply: ItemStack) -> bool:
 	return true
 
 # HOOKS
-# 
+func check_consome_durability() -> bool:
+	return true

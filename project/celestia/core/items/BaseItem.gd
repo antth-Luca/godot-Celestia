@@ -21,8 +21,12 @@ var rarity: BaseRarity = InitRarities.COMMON.get_registered()
 var anim_type: String = AnimType.HOLD
 var use_speed_factor: float = 1
 var in_cooldown: bool = false
+var enchantments: Array[BaseEnchantment]
 
 # GETTERS AND SETTERS
+static func get_comparable_name() -> String:
+	return 'BaseItem'
+
 # Cooldown
 func set_cooldown(player: LivingEntity, cd_time: float = 0, can_reduce: bool = true) -> void:
 	if cd_time == 0:
@@ -78,7 +82,10 @@ func interact(_player: Player) -> void:
 
 func consome_durability(damage: int, slot: BaseSlot) -> void:
 	if _durability != 0 and damage != 0:
-		_durability -= damage
+		var can_consume: bool = true
+		for enchant in enchantments:
+			can_consume = enchant.check_consome_durability()
+		if can_consume: _durability -= damage
 		if _durability <= 0: break_item(slot)
 
 
