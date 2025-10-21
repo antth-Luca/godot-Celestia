@@ -17,6 +17,10 @@ static func get_static_comparable_name() -> String:
 	return 'BaseTool'
 
 
+func get_comparable_name() -> String:
+	return BaseTool.get_static_comparable_name()
+
+
 func get_tooltip() -> Array[String]:
 	var lines = super.get_tooltip()
 	lines.insert(2, '[color=%s]%s:\n  %sx %s\n  %sx %s[/color]\n' % [

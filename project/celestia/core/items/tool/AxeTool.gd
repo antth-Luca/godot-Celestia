@@ -12,3 +12,7 @@ func _init() -> void:
 # Getters and Setters
 static func get_static_comparable_name() -> String:
 	return 'AxeTool'
+
+
+func get_comparable_name() -> String:
+	return AxeTool.get_static_comparable_name()

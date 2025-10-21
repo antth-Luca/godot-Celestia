@@ -11,6 +11,10 @@ static func get_static_comparable_name() -> String:
 	return 'BaseFuel'
 
 
+func get_comparable_name() -> String:
+	return BaseFuel.get_static_comparable_name()
+
+
 func get_tooltip() -> Array[String]:
 	var lines = super.get_tooltip()
 	lines.append('[color=%s]%s: %s[/color]\n' % [

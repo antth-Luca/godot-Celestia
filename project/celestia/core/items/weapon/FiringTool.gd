@@ -29,3 +29,7 @@ func use(player: Player) -> void:
 # Getters and Setters
 static func get_static_comparable_name() -> String:
 	return 'FiringTool'
+
+
+func get_comparable_name() -> String:
+	return FiringTool.get_static_comparable_name()

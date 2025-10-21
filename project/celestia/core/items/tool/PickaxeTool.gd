@@ -13,6 +13,10 @@ func _init() -> void:
 static func get_static_comparable_name() -> String:
 	return 'PickaxeTool'
 
+
+func get_comparable_name() -> String:
+	return PickaxeTool.get_static_comparable_name()
+
 # Main
 func interact(player: Player) -> void:
 	StructuresUtils.spawn_structure_entity_foot(

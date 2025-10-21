@@ -16,6 +16,10 @@ static func get_static_comparable_name() -> String:
 	return 'BaseFood'
 
 
+func get_comparable_name() -> String:
+	return BaseFood.get_static_comparable_name()
+
+
 func get_tooltip() -> Array[String]:
 	var when_line = '[color=%s]%s:\n' % [
 		COMMON_TEXT_COLOR,

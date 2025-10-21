@@ -14,3 +14,7 @@ func _init() -> void:
 # Getters and Setters
 static func get_static_comparable_name() -> String:
 	return 'SwordTool'
+
+
+func get_comparable_name() -> String:
+	return SwordTool.get_static_comparable_name()
