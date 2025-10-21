@@ -26,17 +26,20 @@ func get_enchanted_result(input_tool: BaseTool) -> ItemStack:
 
 # MAIN
 func matches(input: Array[ItemStack]) -> bool:
-	# TODO: Alterar a lógica aqui!
-	if input.size() != _ingredients.size(): return false
+	if input.size() != _ingredients.size() + 1: return false
+	var target_item = input.front().item
+	if not enchantment.check_applicability(target_item): return false
 	var used: Array[bool] = []
 	used.resize(_ingredients.size())
 	used.fill(false)
-	for ingred in _ingredients:
+	for i in _ingredients.size():
+		var ingred: Ingredient = _ingredients[i]
 		var matched := false
-		for c in input.size():
-			if not used[c] and ingred.item_holder.location.get_string() == input[c].item.id.get_string() and ingred.amount == input[c].amount:
-				used[c] = true
+		for c in range(1, input.size()):
+			var input_stack: ItemStack = input[c]
+			if not used[i] and ingred.item_holder.location.get_string() == input_stack.item.id.get_string() and ingred.amount == input_stack.amount:
+				used[i] = true
 				matched = true
 				break
 		if not matched: return false
-	return true
+	return enchantment.check_compability(target_item)

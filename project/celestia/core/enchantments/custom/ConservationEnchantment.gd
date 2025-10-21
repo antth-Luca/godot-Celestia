@@ -6,7 +6,13 @@ const CHANCE_PER_LEVEL_NOT_CONSUME: float = .02
 # SUPER
 # Godot
 func _init(init_level: int) -> void:
-	super._init(1, init_level, [BaseItem.get_static_comparable_name()])
+	super._init(1, init_level, [
+		BaseTool.get_static_comparable_name(),
+		AxeTool.get_static_comparable_name(),
+		PickaxeTool.get_static_comparable_name(),
+		SwordTool.get_static_comparable_name(),
+		FiringTool.get_static_comparable_name()
+	])
 
 # Hooks
 func check_consume_durability() -> bool:

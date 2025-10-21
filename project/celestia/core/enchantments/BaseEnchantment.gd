@@ -26,8 +26,8 @@ func _init(max_level_param: int, init_level: int, applicable_items: Array[String
 
 # MAIN
 func check_applicability(to_apply: BaseItem) -> bool:
-	var comparable: String = to_apply.COMPARABLE_NAME
-	return comparable and comparable in applicabilities
+	var comparable: String = to_apply.get_comparable_name()
+	return comparable in applicabilities
 
 
 func check_compability(to_apply: BaseItem) -> bool:

@@ -35,7 +35,10 @@ func try_find_recipe() -> void:
 		if not stack.is_empty(): input_stacks.append(stack)
 	# ...If there is a revenue cache and it is valid, we use...
 	if recipe_cache and recipe_cache.matches(input_stacks):
-		output_slot.stack = recipe_cache.get_result()
+		if recipe_cache is EnchantRecipe:
+			output_slot.stack = recipe_cache.get_enchanted_result(input_stacks.front().item)
+		else:
+			output_slot.stack = recipe_cache.get_result()
 		output_slot.set_preview()
 		interact_hammer.enable_interaction()
 		return
@@ -53,7 +56,10 @@ func try_find_recipe() -> void:
 		var recipe: BaseRecipe = registry._registries[possible].call()
 		if recipe and recipe.matches(input_stacks):
 			recipe_cache = recipe
-			output_slot.stack = recipe.get_result()
+			if recipe is EnchantRecipe:
+				output_slot.stack = recipe.get_enchanted_result(input_stacks.front().item)
+			else:
+				output_slot.stack = recipe.get_result()
 			output_slot.set_preview()
 			interact_hammer.enable_interaction()
 			return

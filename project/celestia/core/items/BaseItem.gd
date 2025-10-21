@@ -80,8 +80,9 @@ func get_tooltip() -> Array[String]:
 	return lines
 
 # MAIN
-func add_enchantment(_enchantment: BaseEnchantment) -> void:
-	pass  # TODO: Adicionar lógica aqui!
+func add_enchantment(enchantment: BaseEnchantment) -> void:
+	if not enchantment: return
+	enchantments.append(enchantment)
 
 # HANDLERS
 func can_equip(slot: BaseSlot) -> bool:

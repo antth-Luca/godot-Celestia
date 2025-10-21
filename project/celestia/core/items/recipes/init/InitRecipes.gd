@@ -3,6 +3,7 @@ class_name InitRecipes
 
 static var RECIPES: DeferredRegister
 # Enchantment
+static var ENCHANT_CONSERVATION: DeferredHolder
 # Normal
 static var BOILED_EGG: DeferredHolder
 static var BOW: DeferredHolder
@@ -35,6 +36,17 @@ static func setup() -> void:
 		RecipeRegistry.REGISTRY_TYPE
 	)
 
+	# Enchantment
+	ENCHANT_CONSERVATION = RECIPES.add_entry(
+		'enchant_conservation',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.CONSERVATION.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_PERMANENCE, 1)
+			recipe.add_ingredient(InitItems.SCROLL_CREATION, 1)
+			return recipe
+	)
 	# Normal
 	BOILED_EGG = RECIPES.add_entry(
 		'boiled_egg',
