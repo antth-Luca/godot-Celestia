@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bel7neeg8os44"]
+
+[ext_resource type="Script" uid="uid://c05imwdyr4n1v" path="res://core/entities/structures/custom/star_forge/StarForge.gd" id="1_h0q0t"]
+[ext_resource type="Texture2D" uid="uid://dsfqihuox5ii" path="res://assets/celestia/textures/structures/star_forge.png" id="2_nnguu"]
+[ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="3_020ve"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdoor"]
+size = Vector2(24, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_07jke"]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cxlf"]
+size = Vector2(20, 8)
+
+[node name="StarForge" type="StaticBody2D"]
+script = ExtResource("1_h0q0t")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_wdoor")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_nnguu")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_07jke")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_020ve")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_0cxlf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_interaction_entity_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_interaction_entity_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
