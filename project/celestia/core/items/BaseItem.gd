@@ -5,6 +5,7 @@ const AnimType: Dictionary = {
 	USE = 'use',
 	HOLD = 'hold'
 }
+const COMMON_TEXT_COLOR: String = '#8d8d8d'
 
 var id: ResourceLocation = ResourceLocation.EMPTY:
 	set(new_id):
@@ -17,7 +18,7 @@ var max_stack: int = 99:
 		max_stack = new_stack
 var _max_durability: int = 0:
 	set(new_max):
-		_max_durability = min(new_max, 1)
+		_max_durability = max(new_max, 1)
 var _durability: int = 0:
 	set(new_durability):
 		_durability = clamp(new_durability, 0, _max_durability)
@@ -58,12 +59,17 @@ func get_tooltip() -> Array[String]:
 		rarity.get_tr_name()
 	])
 	if not enchantments.is_empty():
-		lines.append('%s:' % tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'enchantment'))
+		var enchant_line = '[color=%s]%s:\n' % [
+			COMMON_TEXT_COLOR,
+			tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'enchantment')
+		]
 		for enchant in enchantments:
-			lines.append('  %s' % tr(Celestia.TRANSLATION_KEY_BASES.ENCHANTMENT % enchant.id.path))
-		lines.append('')
+			enchant_line += '  %s\n' % tr(Celestia.TRANSLATION_KEY_BASES.ENCHANTMENT % enchant.id.path)
+		enchant_line += '[/color]'
+		lines.append(enchant_line)
 	if _durability != 0:
-		lines.append('%s: %s / %s' % [
+		lines.append('[color=%s]%s: %s / %s[/color]\n' % [
+			COMMON_TEXT_COLOR,
 			tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'durability'),
 			_durability, _max_durability
 		])

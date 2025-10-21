@@ -11,8 +11,10 @@ const TRANSLATION_KEY_BASES: Dictionary = {
 	ITEM = 'item.%s',
 	RARITY = 'item.rarity.%s',
 	ENCHANTMENT = 'item.enchantment.%s',
+	SLOT = 'item.slot.%s',
 	SECTION_TITLE = 'item.section.%s',
-	STATS = 'ui.inventory.stats.%s'
+	STATS = 'ui.inventory.stats.%s',
+	EFFECT = 'effect.%s'
 }
 
 

@@ -16,6 +16,17 @@ func _init():
 static func get_comparable_name() -> String:
 	return 'BaseTool'
 
+
+func get_tooltip() -> Array[String]:
+	var lines = super.get_tooltip()
+	lines.insert(2, '[color=%s]%s:\n  %sx %s\n  %sx %s[/color]\n' % [
+		COMMON_TEXT_COLOR,
+		tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'when_use'),
+		use_speed_factor, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'US'),
+		damage_factor, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'FR')
+	])
+	return lines
+
 # Main
 func use(player: Player) -> void:
 	HitUtils.spawn_hit(player, hit_type, self)

@@ -22,8 +22,8 @@ static func setup() -> void:
 		func():
 			var armor = BaseArmor.new()
 			armor.armor_type = BaseArmor.Type.CHESTPLATE
-			armor.set_durability(2)
 			armor.material = InitMaterials.IRON.get_registered()
+			armor.set_durability(2)
 			armor.protection = 1.5
 			return armor
 	)

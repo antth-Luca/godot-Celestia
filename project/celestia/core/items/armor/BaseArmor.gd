@@ -7,29 +7,25 @@ var armor_type: Type
 var protection: float
 
 # SUPER
+# Godot
 func _init():
 	max_stack = 1
 
+# Getters and Setters
+static func get_comparable_name() -> String:
+	return 'BaseArmor'
 
-func use(player: Player) -> void:
-	for c in range(InventoryManager.ARMOR_SLOTS[BaseSlot.Type.HEAD],
-			InventoryManager.ARMOR_SLOTS[BaseSlot.Type.FEET] + 1):
-		var slot: BaseSlot = player.inventory.get_slot(c)
-		var armor_slot_type: String = get_compatible_slot()
-		if slot.slot_type == armor_slot_type:
-			# TODO: Corrigir tudo aqui...
-			var equipped_stack: ItemStack = player.inventory.inventory[c].stack
-			if equipped_stack.is_empty():
-				player.inventory.inventory[c].stack = player.inventory.inventory[0].stack
-				self.on_equip(slot, player)
-				player.inventory.inventory[0].stack = equipped_stack
-			elif equipped_stack.item.can_unequip(slot) and can_equip(slot):
-				equipped_stack.item.on_unequip(slot, player)
-				player.inventory.inventory[c] = player.inventory.inventory[0]
-				self.on_equip(slot, player)
-				player.inventory.inventory[0].stack = equipped_stack
+func get_tooltip() -> Array[String]:
+	var lines = super.get_tooltip()
+	lines.insert(2, '[color=%s]%s %s:\n  %s %s[/color]\n' % [
+		COMMON_TEXT_COLOR,
+		tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'when_slot'),
+		tr(Celestia.TRANSLATION_KEY_BASES.SLOT % get_compatible_slot()),
+		protection, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'AM')
+	])
+	return lines
 
-# HANDLERS
+# Handlers
 func can_equip(slot: BaseSlot) -> bool:
 	var slot_type = slot.slot_type
 	return slot_type in [
@@ -51,6 +47,25 @@ func on_unequip(slot: BaseSlot, player: Player) -> void:
 		prop.sub_armor(protection)
 
 
+func use(player: Player) -> void:
+	for c in range(InventoryManager.ARMOR_SLOTS[BaseSlot.Type.HEAD],
+			InventoryManager.ARMOR_SLOTS[BaseSlot.Type.FEET] + 1):
+		var slot: BaseSlot = player.inventory.get_slot(c)
+		var armor_slot_type: String = get_compatible_slot()
+		if slot.slot_type == armor_slot_type:
+			# TODO: Corrigir tudo aqui...
+			var equipped_stack: ItemStack = player.inventory.inventory[c].stack
+			if equipped_stack.is_empty():
+				player.inventory.inventory[c].stack = player.inventory.inventory[0].stack
+				self.on_equip(slot, player)
+				player.inventory.inventory[0].stack = equipped_stack
+			elif equipped_stack.item.can_unequip(slot) and can_equip(slot):
+				equipped_stack.item.on_unequip(slot, player)
+				player.inventory.inventory[c] = player.inventory.inventory[0]
+				self.on_equip(slot, player)
+				player.inventory.inventory[0].stack = equipped_stack
+
+# HANDLERS
 func get_compatible_slot() -> String:
 	var compatible_slot: String
 	match armor_type:

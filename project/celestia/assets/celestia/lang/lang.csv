@@ -26,8 +26,13 @@ item.rarity.epic,Epic,Épico
 item.rarity.mithic,Mithic,Mítico
 item.rarity.legendary,Legendary,Lendário
 
-item.section.enchantment,Enchantments,Encantamentos
 item.section.durability,Durability,Durabilidade
+item.section.enchantment,Enchantments,Encantamentos
+item.section.satiation,Satiation,Saciação
+item.section.seconds,sec,seg
+item.section.slot_destination,Equipped in,Equipado em
+item.section.when_slot,When in,Quando em
+item.section.when_use,When use,Ao usar
 
 item.arrow,Arrow,Flecha
 item.beef,Beef,Bife
@@ -67,7 +72,34 @@ item.stick,Stick,Graveto
 item.stone,Stone,Pedra
 item.unclean_meat,Unclean Meat,Carne Impura
 
+item.slot.ammo,AMMO,Munição
+item.slot.chestplate,Chestplate,Peitoral
+item.slot.feet,Feet,Pés
+item.slot.fuel,Fuel,Combustível
+item.slot.generic,Generic,Genérico
+item.slot.head,Head,Cabeça
+item.slot.input,Input,Entrada
+item.slot.legs,Legs,Pernas
+item.slot.output,Output,Saída
+item.slot.relic,Relic,Relíquia
+
 item.enchantment.conservation,Conservation,Conservação
+
+effect.bleed,Bleed,Sangramento
+effect.burn,Burn,Combustão
+effect.cold,Cold,Gelado
+effect.decomposition,Decomposition,Decomposição
+effect.electrocute,Electrocute,Eletrocutado
+effect.freeze,Freeze,Congelamento
+effect.ghost,Ghost,Fantasma
+effect.heat,Heat,Quente
+effect.lifebane,Lifebane,Corta-cura
+effect.poison,Poison,Envenenado
+effect.regeneration,Regeneration,Regeneração
+effect.revitalize,Revitalize,Revitalizar
+effect.roots,Roots,Enraizado
+effect.static,Static,Estático
+effect.stun,Stun,Atordoamento
 
 build.placeholder.name,placeholder,placeholder
 

@@ -11,6 +11,33 @@ var regen_hp: float = 0:
 var effects_list: Array[EffectInstance]
 
 # SUPER
+# Getters and Setters
+func get_tooltip() -> Array[String]:
+	var when_line = '[color=%s]%s:\n' % [
+		COMMON_TEXT_COLOR,
+		tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'when_use')
+	]
+	if satiation != 0:
+		when_line += '  %s %s\n' % [
+			satiation, tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'satiation')
+		]
+	if regen_hp != 0:
+		when_line += '  %s %s\n' % [
+			regen_hp, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'HP')
+		]
+	if not effects_list.is_empty():
+		for instance in effects_list:
+			var effect: BaseEffect = instance.get_effect()
+			when_line += '  %s [%s%s]\n' % [
+			tr(Celestia.TRANSLATION_KEY_BASES.EFFECT % effect.id.path),
+			int(effect.effect_duration), tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'seconds')
+		]
+	when_line += '[/color]'
+	var lines = super.get_tooltip()
+	lines.append(when_line)
+	return lines
+
+# Handlers
 func use(player: Player) -> void:
 	var hungry_prop: HungryProperty = player.entity_data.stats.get_property(InitPropProviders.HUNGRY)
 	if always_eat or hungry_prop.get_hungry() < hungry_prop.get_max_hungry():
