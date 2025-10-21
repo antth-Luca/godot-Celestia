@@ -3,6 +3,9 @@ class_name BaseAmmo
 
 # SUPER
 # Getters and Setters
+static func get_static_comparable_name() -> String:
+	return 'BaseAmmo'
+
 func get_tooltip() -> Array[String]:
 	var lines = super.get_tooltip()
 	lines.append('[color=%s]%s %s[/color]\n' % [

@@ -12,6 +12,10 @@ var effects_list: Array[EffectInstance]
 
 # SUPER
 # Getters and Setters
+static func get_static_comparable_name() -> String:
+	return 'BaseFood'
+
+
 func get_tooltip() -> Array[String]:
 	var when_line = '[color=%s]%s:\n' % [
 		COMMON_TEXT_COLOR,

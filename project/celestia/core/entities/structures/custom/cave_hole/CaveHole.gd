@@ -7,7 +7,7 @@ const MAX_DROP_STONE: int = 2
 func _init() -> void:
 	structure_data = StructureData.new(
 		[
-			PickaxeTool.get_comparable_name()
+			PickaxeTool.get_static_comparable_name()
 		],
 		[
 			InitMaterials.IRON.get_registered()

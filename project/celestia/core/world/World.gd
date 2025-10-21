@@ -49,7 +49,7 @@ func _ready() -> void:
 		Vector2(487, 117)
 	)
 	# Spawn Stick
-	var sword = InitWeapons.IRON_SWORD.get_registered()
+	var sword = InitTools.IRON_PICKAXE.get_registered()
 	sword.enchantments.append(InitEnchantments.CONSERVATION.get_registered())
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(sword, 1),

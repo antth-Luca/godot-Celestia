@@ -12,7 +12,7 @@ func _init():
 	max_stack = 1
 
 # Getters and Setters
-static func get_comparable_name() -> String:
+static func get_static_comparable_name() -> String:
 	return 'BaseArmor'
 
 func get_tooltip() -> Array[String]:

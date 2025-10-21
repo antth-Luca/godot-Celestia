@@ -30,8 +30,12 @@ var in_cooldown: bool = false
 var enchantments: Array[BaseEnchantment]
 
 # GETTERS AND SETTERS
-static func get_comparable_name() -> String:
+static func get_static_comparable_name() -> String:
 	return 'BaseItem'
+
+
+func get_comparable_name() -> String:
+	return BaseItem.get_static_comparable_name()
 
 # Cooldown
 func set_cooldown(player: LivingEntity, cd_time: float = 0, can_reduce: bool = true) -> void:

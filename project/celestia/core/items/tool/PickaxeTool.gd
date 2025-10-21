@@ -10,7 +10,7 @@ func _init() -> void:
 	hit_type = InitHits.SLASH
 
 # Getters and Setters
-static func get_comparable_name() -> String:
+static func get_static_comparable_name() -> String:
 	return 'PickaxeTool'
 
 # Main

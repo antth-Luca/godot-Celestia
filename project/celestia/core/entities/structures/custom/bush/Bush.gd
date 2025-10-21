@@ -5,9 +5,9 @@ class_name Bush
 func _init() -> void:
 	structure_data = StructureData.new(
 		[
-			AxeTool.get_comparable_name(),
-			PickaxeTool.get_comparable_name(),
-			SwordTool.get_comparable_name()
+			AxeTool.get_static_comparable_name(),
+			PickaxeTool.get_static_comparable_name(),
+			SwordTool.get_static_comparable_name()
 		],
 		[
 			InitMaterials.STONE.get_registered()
