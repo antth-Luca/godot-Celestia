@@ -24,6 +24,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	super._ready()
 	# Drops
 	var drop_state: DropResourceState = get_node('StateMachine/DropResource')
 	drop_state.loot_box = InitLootBoxes.CHICKEN_LAY.get_registered()

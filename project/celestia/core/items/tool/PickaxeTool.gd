@@ -4,6 +4,7 @@ class_name PickaxeTool
 # SUPER
 # Godot
 func _init() -> void:
+	super._init()
 	damage_factor = .8
 	base_lifespan = .2
 	anim_type = BaseItem.AnimType.USE

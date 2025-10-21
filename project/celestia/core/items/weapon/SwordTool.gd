@@ -6,6 +6,7 @@ static var COMPARABLE_NAME = 'SwordTool'
 # SUPER
 # Godot
 func _init() -> void:
+	super._init()
 	damage_factor = 1.2
 	base_lifespan = .3
 	anim_type = BaseItem.AnimType.USE

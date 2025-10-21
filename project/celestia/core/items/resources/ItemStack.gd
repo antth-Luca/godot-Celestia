@@ -1,15 +1,23 @@
 extends RefCounted
 class_name ItemStack
 
-static var EMPTY = ItemStack.new(null, 0)
+static var EMPTY = ItemStack.new(null)
 
 var item: BaseItem
 var amount: int
 
 
-func _init(item_param: BaseItem, amount_param: int = 1) -> void:
+func _init(item_param: BaseItem, amount_param: int = -1) -> void:
 	item = item_param
-	amount = amount_param
+	if not item_param:
+		amount = 0
+	elif amount_param == -1:
+		amount = item_param.max_stack
+	elif amount_param < 1:
+		push_warning('ItemStack: The amount cannot be less than 0.')
+		amount_param = 1
+	else:
+		amount = min(amount_param, item_param.max_stack)
 
 
 func add_amount_safe(amount_safe: int) -> int:

@@ -49,19 +49,17 @@ func _ready() -> void:
 		Vector2(487, 117)
 	)
 	# Spawn Stick
-	var sword = InitTools.IRON_PICKAXE.get_registered()
-	sword.enchantments.append(InitEnchantments.CONSERVATION.get_registered())
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(sword, 1),
+		ItemStack.new(InitFuels.STICK.get_registered()),
 		Vector2(169, 165)
 	)
 	# Spawn Iron
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitItems.IRON_INGOT.get_registered(), 12),
+		ItemStack.new(InitItems.IRON_INGOT.get_registered()),
 		Vector2(169, 180)
 	)
 	# Spawn Papyrus
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitItems.PAPYRUS.get_registered(), 12),
+		ItemStack.new(InitItems.PAPYRUS.get_registered()),
 		Vector2(169, 195)
 	)
