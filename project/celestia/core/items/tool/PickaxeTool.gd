@@ -19,5 +19,5 @@ func interact(player: Player) -> void:
 		InitStructures.CAVE_HOLE.get_registered(),
 		player
 	)
-	consome_durability(1, player.inventory.get_hand())
+	consume_durability(1, player.inventory.get_hand())
 	set_cooldown(player)

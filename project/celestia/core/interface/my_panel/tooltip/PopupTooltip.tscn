@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhijmeg3qwcwg"]
+[gd_scene load_steps=6 format=3 uid="uid://dhijmeg3qwcwg"]
 
 [ext_resource type="Script" uid="uid://bpqr368cotsnc" path="res://core/interface/my_panel/tooltip/PopupTooltip.gd" id="1_wskah"]
 [ext_resource type="Texture2D" uid="uid://bs4suw6ji2v1n" path="res://assets/celestia/interface/inventory/tooltip_box.png" id="2_gygj8"]
@@ -9,6 +9,13 @@
 subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="FontFile_27sfi"]
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -69,5 +76,6 @@ autowrap_mode = 0
 [node name="TooltipRichLabel" type="RichTextLabel" parent="CanvasLayer/PopupPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_fonts/normal_font = SubResource("FontFile_27sfi")
 bbcode_enabled = true
 fit_content = true

@@ -9,5 +9,5 @@ func _init(init_level: int) -> void:
 	super._init(1, init_level, [BaseItem.get_comparable_name()])
 
 # Hooks
-func check_consome_durability() -> bool:
+func check_consume_durability() -> bool:
 	return not randf() <= level * CHANCE_PER_LEVEL_NOT_CONSUME

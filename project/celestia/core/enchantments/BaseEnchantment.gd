@@ -38,5 +38,5 @@ func check_compability(to_apply: BaseItem) -> bool:
 	return true
 
 # HOOKS
-func check_consome_durability() -> bool:
+func check_consume_durability() -> bool:
 	return true

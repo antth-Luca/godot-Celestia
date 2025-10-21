@@ -4,6 +4,7 @@ class_name BaseFood
 var satiation: float = 1:
 	set(new_sat):
 		satiation = max(new_sat, 0)
+var always_eat: bool = false
 var regen_hp: float = 0:
 	set(new_regen):
 		regen_hp = max(new_regen, 0)
@@ -12,7 +13,7 @@ var effects_list: Array[EffectInstance]
 # SUPER
 func use(player: Player) -> void:
 	var hungry_prop: HungryProperty = player.entity_data.stats.get_property(InitPropProviders.HUNGRY)
-	if hungry_prop.get_hungry() < hungry_prop.get_max_hungry():
+	if always_eat or hungry_prop.get_hungry() < hungry_prop.get_max_hungry():
 		hungry_prop.add_hungry(satiation)
 		if regen_hp > 0: player.heal(regen_hp)
 		var hand_slot: BaseSlot = player.inventory.get_hand()

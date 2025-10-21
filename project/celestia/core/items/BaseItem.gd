@@ -15,7 +15,12 @@ var max_stack: int = 99:
 	set(new_stack):
 		if _durability != 0: return
 		max_stack = new_stack
-var _durability: int = 0
+var _max_durability: int = 0:
+	set(new_max):
+		_max_durability = min(new_max, 1)
+var _durability: int = 0:
+	set(new_durability):
+		_durability = clamp(new_durability, 0, _max_durability)
 var material: BaseMaterial = InitMaterials.GENERIC.get_registered()
 var rarity: BaseRarity = InitRarities.COMMON.get_registered()
 var anim_type: String = AnimType.HOLD
@@ -39,17 +44,30 @@ func set_cooldown(player: LivingEntity, cd_time: float = 0, can_reduce: bool = t
 
 # Variables
 func set_durability(durability_factor: float = 1):
-	_durability = ceil(material.base_max_damage * durability_factor)
+	var new_durability = ceil(material.base_max_damage * durability_factor)
+	_max_durability = new_durability
+	_durability = new_durability
 	max_stack = 1
 
 
 func get_tooltip() -> Array[String]:
-	var name_line = '%s [color=%s](%s)[/color]' % [
+	var lines: Array[String] = []
+	lines.append('%s [color=%s](%s)[/color]' % [
 		tr(Celestia.TRANSLATION_KEY_BASES.ITEM % id.path),
 		rarity.hex_color,
 		rarity.get_tr_name()
-	]
-	return [name_line]
+	])
+	if not enchantments.is_empty():
+		lines.append('%s:' % tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'enchantment'))
+		for enchant in enchantments:
+			lines.append('  %s' % tr(Celestia.TRANSLATION_KEY_BASES.ENCHANTMENT % enchant.id.path))
+		lines.append('')
+	if _durability != 0:
+		lines.append('%s: %s / %s' % [
+			tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'durability'),
+			_durability, _max_durability
+		])
+	return lines
 
 # HANDLERS
 func can_equip(slot: BaseSlot) -> bool:
@@ -80,11 +98,11 @@ func interact(_player: Player) -> void:
 	pass
 
 
-func consome_durability(damage: int, slot: BaseSlot) -> void:
+func consume_durability(damage: int, slot: BaseSlot) -> void:
 	if _durability != 0 and damage != 0:
 		var can_consume: bool = true
 		for enchant in enchantments:
-			can_consume = enchant.check_consome_durability()
+			can_consume = enchant.check_consume_durability()
 		if can_consume: _durability -= damage
 		if _durability <= 0: break_item(slot)
 

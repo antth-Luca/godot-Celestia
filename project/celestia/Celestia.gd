@@ -8,8 +8,10 @@ const SLOT_TYPE_SPRITE_PATH: String = 'res://assets/%s/interface/inventory/slots
 const EFFECT_SPRITE_PATH: String = 'res://assets/%s/textures/effects/%s.png'
 const GAME_CONFIG_PATH: String = 'res://config/game_config.json'
 const TRANSLATION_KEY_BASES: Dictionary = {
-	ITEM = 'item.%s.name',
+	ITEM = 'item.%s',
 	RARITY = 'item.rarity.%s',
+	ENCHANTMENT = 'item.enchantment.%s',
+	SECTION_TITLE = 'item.section.%s',
 	STATS = 'ui.inventory.stats.%s'
 }
 

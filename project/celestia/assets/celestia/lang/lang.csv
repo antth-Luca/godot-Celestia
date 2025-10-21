@@ -2,7 +2,9 @@ key,en_US,pt_BR
 ui.menu.start,Start,Iniciar
 ui.menu.resume_game,Resume game,Retomar jogo
 ui.menu.quit_game,Quit game,Sair do jogo
+
 ui.config.language,Language,Linguagem
+
 ui.inventory.stats.title,Attributes,Atributos
 ui.inventory.stats.HP,Health,Vida
 ui.inventory.stats.MP,Mana,Mana
@@ -16,48 +18,57 @@ ui.inventory.stats.RG,Range,Alcance
 ui.inventory.stats.US,Use Speed,Vel. de Uso
 ui.inventory.stats.MS,Move Speed,Vel. de Movimento
 ui.inventory.stats.CdR,Cooldown Reduc.,Redução de Resfr.
+
 item.rarity.common,Common,Comum
 item.rarity.uncommon,Uncommon,Incomum
 item.rarity.rare,Rare,Raro
 item.rarity.epic,Epic,Épico
 item.rarity.mithic,Mithic,Mítico
 item.rarity.legendary,Legendary,Lendário
-item.arrow.name,Arrow,Flecha
-item.beef.name,Beef,Bife
-item.boiled_egg.name,Boiled Egg,Ovo Cozido
-item.bone.name,Bone,Osso
-item.bow.name,Bow,Arco
-item.cobblestone.name,Cobblestone,Pedregulho
-item.copper_ingot.name,Copper Ingot,Barra de Cobre
-item.copper_ore.name,Copper Ore,Minério de Cobre
-item.copper_sword.name,Copper Sword,Espada de Cobre
-item.egg.name,Chicken Egg,Ovo de Galinha
-item.gold_ingot.name,Gold Ingot,Barra de Ouro
-item.iron_axe.name,Iron Axe,Machado de Ferro
-item.iron_chestplate.name,Iron Chestplate,Couraça de Ferro
-item.iron_ingot.name,Iron Ingot,Barra de Ferro
-item.iron_pickaxe.name,Iron Pickaxe,Picareta de Ferro
-item.iron_sword.name,Iron Sword,Espada de Ferro
-item.meat.name,Meat,Carne
-item.papyrus.name,Papyrus,Papiro
-item.plant_fiber.name,Plant Fiber,Fibra Vegetal
-item.scroll_altruism.name,Scroll of Altruism,Pergaminho da Altruísmo
-item.scroll_ambition.name,Scroll of Ambition,Pergaminho da Ambição
-item.scroll_ascendance.name,Scroll of Ascendance,Pergaminho da Ascendência
-item.scroll_calm.name,Scroll of Calm,Pergaminho da Calma
-item.scroll_chaos.name,Scroll of Chaos,Pergaminho da Caos
-item.scroll_creation.name,Scroll of Creation,Pergaminho da Criação
-item.scroll_destruction.name,Scroll of Destruction,Pergaminho da Destruição
-item.scroll_efemerality.name,Scroll of Efemerality,Pergaminho da Efemeridade
-item.scroll_illusion.name,Scroll of Illusion,Pergaminho da Ilusão
-item.scroll_permanence.name,Scroll of Permanence,Pergaminho da Permanência
-item.scroll_protection.name,Scroll of Protection,Pergaminho da Proteção
-item.scroll_submission.name,Scroll of Submission,Pergaminho da Submissão
-item.scroll_truth.name,Scroll of Truth,Pergaminho da Verdade
-item.scroll_war.name,Scroll of War,Pergaminho da Guerra
-item.stardust.name,Stardust,Pó de Estrela
-item.stick.name,Stick,Graveto
-item.stone.name,Stone,Pedra
-item.unclean_meat.name,Unclean Meat,Carne Impura
+
+item.section.enchantment,Enchantments,Encantamentos
+item.section.durability,Durability,Durabilidade
+
+item.arrow,Arrow,Flecha
+item.beef,Beef,Bife
+item.boiled_egg,Boiled Egg,Ovo Cozido
+item.bone,Bone,Osso
+item.bow,Bow,Arco
+item.cobblestone,Cobblestone,Pedregulho
+item.copper_ingot,Copper Ingot,Barra de Cobre
+item.copper_ore,Copper Ore,Minério de Cobre
+item.copper_sword,Copper Sword,Espada de Cobre
+item.egg,Chicken Egg,Ovo de Galinha
+item.gold_ingot,Gold Ingot,Barra de Ouro
+item.iron_axe,Iron Axe,Machado de Ferro
+item.iron_chestplate,Iron Chestplate,Couraça de Ferro
+item.iron_ingot,Iron Ingot,Barra de Ferro
+item.iron_pickaxe,Iron Pickaxe,Picareta de Ferro
+item.iron_sword,Iron Sword,Espada de Ferro
+item.meat,Meat,Carne
+item.papyrus,Papyrus,Papiro
+item.plant_fiber,Plant Fiber,Fibra Vegetal
+item.scroll_altruism,Scroll of Altruism,Pergaminho da Altruísmo
+item.scroll_ambition,Scroll of Ambition,Pergaminho da Ambição
+item.scroll_ascendance,Scroll of Ascendance,Pergaminho da Ascendência
+item.scroll_calm,Scroll of Calm,Pergaminho da Calma
+item.scroll_chaos,Scroll of Chaos,Pergaminho da Caos
+item.scroll_creation,Scroll of Creation,Pergaminho da Criação
+item.scroll_destruction,Scroll of Destruction,Pergaminho da Destruição
+item.scroll_efemerality,Scroll of Efemerality,Pergaminho da Efemeridade
+item.scroll_illusion,Scroll of Illusion,Pergaminho da Ilusão
+item.scroll_permanence,Scroll of Permanence,Pergaminho da Permanência
+item.scroll_protection,Scroll of Protection,Pergaminho da Proteção
+item.scroll_submission,Scroll of Submission,Pergaminho da Submissão
+item.scroll_truth,Scroll of Truth,Pergaminho da Verdade
+item.scroll_war,Scroll of War,Pergaminho da Guerra
+item.stardust,Stardust,Pó de Estrela
+item.stick,Stick,Graveto
+item.stone,Stone,Pedra
+item.unclean_meat,Unclean Meat,Carne Impura
+
+item.enchantment.conservation,Conservation,Conservação
+
 build.placeholder.name,placeholder,placeholder
+
 mob.chicken.name,placeholder,placeholder

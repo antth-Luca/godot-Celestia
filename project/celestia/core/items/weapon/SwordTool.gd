@@ -3,9 +3,14 @@ class_name SwordTool
 
 static var COMPARABLE_NAME = 'SwordTool'
 
-# GODOT
+# SUPER
+# Godot
 func _init() -> void:
 	damage_factor = 1.2
 	base_lifespan = .3
 	anim_type = BaseItem.AnimType.USE
 	hit_type = InitHits.SLASH
+
+# Getters and Setters
+static func get_comparable_name() -> String:
+	return 'SwordTool'

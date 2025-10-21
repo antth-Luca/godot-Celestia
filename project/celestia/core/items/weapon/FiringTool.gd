@@ -7,6 +7,7 @@ var ammo_item: BaseAmmo
 var min_ammo_to_fire: int
 
 # SUPER
+# Main
 func use(player: Player) -> void:
 	# Check if there is enough AMMO...
 	var ammo_slots: Array[BaseSlot] = player.inventory.get_ammo_available()
@@ -24,3 +25,7 @@ func use(player: Player) -> void:
 			else:
 				slot.render_slot()
 			break
+
+# Getters and Setters
+static func get_comparable_name() -> String:
+	return 'FiringTool'

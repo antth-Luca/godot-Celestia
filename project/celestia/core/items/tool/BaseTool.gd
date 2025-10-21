@@ -19,5 +19,5 @@ static func get_comparable_name() -> String:
 # Main
 func use(player: Player) -> void:
 	HitUtils.spawn_hit(player, hit_type, self)
-	consome_durability(1, player.inventory.get_hand())
+	consume_durability(1, player.inventory.get_hand())
 	set_cooldown(player)
