@@ -34,6 +34,11 @@ func _ready() -> void:
 		InitStructures.STAR_CHANNEL.get_registered(),
 		Vector2(241, 114)
 	)
+	# Spawn Star Forge
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.STAR_FORGE.get_registered(),
+		Vector2(272, 114)
+	)
 	# Spawn Zombie
 	var zombie: Zombie = InitCreatures.ZOMBIE.get_registered()
 	get_tree().current_scene.add_child(zombie)

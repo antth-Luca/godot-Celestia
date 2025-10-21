@@ -1,11 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bel7neeg8os44"]
+[gd_scene load_steps=9 format=3 uid="uid://bel7neeg8os44"]
 
 [ext_resource type="Script" uid="uid://c05imwdyr4n1v" path="res://core/entities/structures/custom/star_forge/StarForge.gd" id="1_h0q0t"]
+[ext_resource type="Shader" uid="uid://capg2ulc8vrff" path="res://assets/celestia/shaders/2D_pixel_outline.gdshader" id="2_020ve"]
 [ext_resource type="Texture2D" uid="uid://dsfqihuox5ii" path="res://assets/celestia/textures/structures/star_forge.png" id="2_nnguu"]
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="3_020ve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdoor"]
 size = Vector2(24, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdoor"]
+shader = ExtResource("2_020ve")
+shader_parameter/enabled = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/corner_pixel = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_07jke"]
 radius = 30.0
@@ -21,6 +28,7 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_wdoor")
 
 [node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wdoor")
 texture = ExtResource("2_nnguu")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
