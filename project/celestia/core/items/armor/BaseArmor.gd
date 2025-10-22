@@ -29,6 +29,13 @@ func get_tooltip() -> Array[String]:
 	])
 	return lines
 
+# Main
+func copy(copy_obj: Variant = BaseArmor.new()) -> Variant:
+	copy_obj = super.copy(copy_obj)
+	copy_obj.armor_type = armor_type
+	copy_obj.protection = protection
+	return copy_obj
+
 # Handlers
 func can_equip(slot: BaseSlot) -> bool:
 	var slot_type = slot.slot_type

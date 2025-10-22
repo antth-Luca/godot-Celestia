@@ -19,6 +19,10 @@ func get_tooltip() -> Array[String]:
 	])
 	return lines
 
+# Main
+func copy(copy_obj: Variant = BaseAmmo.new()) -> Variant:
+	return super.copy(copy_obj)
+
 # Handlers
 func can_equip(slot: BaseSlot) -> bool:
 	return slot.slot_type in [

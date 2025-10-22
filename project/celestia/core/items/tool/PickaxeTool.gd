@@ -19,6 +19,10 @@ func get_comparable_name() -> String:
 	return PickaxeTool.get_static_comparable_name()
 
 # Main
+func copy(copy_obj: Variant = PickaxeTool.new()) -> Variant:
+	return super.copy(copy_obj)
+
+
 func interact(player: Player) -> void:
 	StructuresUtils.spawn_structure_entity_foot(
 		InitStructures.CAVE_HOLE.get_registered(),

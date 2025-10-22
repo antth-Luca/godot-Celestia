@@ -32,6 +32,14 @@ func get_tooltip() -> Array[String]:
 	return lines
 
 # Main
+func copy(copy_obj: Variant = BaseTool.new()) -> Variant:
+	copy_obj = super.copy(copy_obj)
+	copy_obj.damage_factor = damage_factor
+	copy_obj.base_lifespan = base_lifespan
+	copy_obj.hit_type = hit_type
+	return copy_obj
+
+
 func use(player: Player) -> void:
 	HitUtils.spawn_hit(player, hit_type, self)
 	consume_durability(1, player.inventory.get_hand())

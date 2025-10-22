@@ -80,6 +80,20 @@ func get_tooltip() -> Array[String]:
 	return lines
 
 # MAIN
+func copy(copy_obj: Variant = BaseItem.new()) -> Variant:
+	copy_obj.id = id
+	copy_obj.max_stack = max_stack
+	copy_obj._max_durability = _max_durability
+	copy_obj._durability = _durability
+	copy_obj.material = material
+	copy_obj.rarity = rarity
+	copy_obj.anim_type = anim_type
+	copy_obj.use_speed_factor = use_speed_factor
+	copy_obj.in_cooldown = in_cooldown
+	copy_obj.enchantments = enchantments.duplicate(true)
+	return copy_obj
+
+
 func add_enchantment(enchantment: BaseEnchantment) -> void:
 	if not enchantment: return
 	enchantments.append(enchantment)

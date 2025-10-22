@@ -1,8 +1,6 @@
 extends BaseTool
 class_name FiringTool
 
-static var COMPARABLE_NAME = 'FiringTool'
-
 var ammo_item: BaseAmmo
 var min_ammo_to_fire: int
 
@@ -33,3 +31,10 @@ static func get_static_comparable_name() -> String:
 
 func get_comparable_name() -> String:
 	return FiringTool.get_static_comparable_name()
+
+# Main
+func copy(copy_obj: Variant = FiringTool.new()) -> Variant:
+	copy_obj = super.copy(copy_obj)
+	copy_obj.ammo_item = ammo_item
+	copy_obj.min_ammo_to_fire = min_ammo_to_fire
+	return copy_obj

@@ -19,3 +19,7 @@ static func get_static_comparable_name() -> String:
 
 func get_comparable_name() -> String:
 	return SwordTool.get_static_comparable_name()
+
+# Main
+func copy(copy_obj: Variant = SwordTool.new()) -> Variant:
+	return super.copy(copy_obj)

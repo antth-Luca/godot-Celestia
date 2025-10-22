@@ -21,8 +21,9 @@ func set_result(_result_disuse) -> void:
 
 # GETTERS AND SETTERS
 func get_enchanted_result(input_tool: BaseTool) -> ItemStack:
-	input_tool.add_enchantment(enchantment)
-	return ItemStack.new(input_tool)
+	var copy = input_tool.copy()
+	copy.add_enchantment(enchantment)
+	return ItemStack.new(copy)
 
 # MAIN
 func matches(input: Array[ItemStack]) -> bool:

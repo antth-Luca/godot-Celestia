@@ -45,6 +45,15 @@ func get_tooltip() -> Array[String]:
 	lines.append(when_line)
 	return lines
 
+# Main
+func copy(copy_obj: Variant = BaseFood.new()) -> Variant:
+	copy_obj = super.copy(copy_obj)
+	copy_obj.satiation = satiation
+	copy_obj.always_eat = always_eat
+	copy_obj.regen_hp = regen_hp
+	copy_obj.effects_list = effects_list.duplicate(true)
+	return copy_obj
+
 # Handlers
 func use(player: Player) -> void:
 	var hungry_prop: HungryProperty = player.entity_data.stats.get_property(InitPropProviders.HUNGRY)

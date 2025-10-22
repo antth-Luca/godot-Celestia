@@ -17,3 +17,7 @@ static func get_static_comparable_name() -> String:
 
 func get_comparable_name() -> String:
 	return AxeTool.get_static_comparable_name()
+
+# Main
+func copy(copy_obj: Variant = AxeTool.new()) -> Variant:
+	return super.copy(copy_obj)

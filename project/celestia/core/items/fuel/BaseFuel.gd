@@ -24,6 +24,12 @@ func get_tooltip() -> Array[String]:
 	])
 	return lines
 
+# Main
+func copy(copy_obj: Variant = BaseFuel.new()) -> Variant:
+	copy_obj = super.copy(copy_obj)
+	copy_obj.energy = energy
+	return copy_obj
+
 # Handlers
 func can_equip(slot: BaseSlot) -> bool:
 	var slot_type = slot.slot_type
