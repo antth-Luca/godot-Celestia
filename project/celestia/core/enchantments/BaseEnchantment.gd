@@ -38,5 +38,6 @@ func check_compability(to_apply: BaseItem) -> bool:
 	return true
 
 # HOOKS
+## Through independent logic, it returns true or false, allowing or not allowing the consumption of the item's durability.
 func check_consume_durability() -> bool:
 	return true
