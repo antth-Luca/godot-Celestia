@@ -53,6 +53,9 @@ func heal(heal_value: float) -> void:
 func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
 	hp_prop.sub_health(final_dam)
+	var dam_indicator: FloatingIndicator = Celestia.FLOATING_INDICATOR.instantiate()
+	dam_indicator.initialize(final_dam, hit.primitive_type, hit.is_crit)
+	add_child(dam_indicator)
 	if hit.attacker: apply_knockback(hit.attacker.global_position, hit.tool, hit.specialized_type)
 	if hitbox_parent is BaseHit: hitbox_parent._on_hurt_entity()
 	for effect in hit.effects_list: effect_receiver.add_effect(effect)

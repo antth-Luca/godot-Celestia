@@ -8,11 +8,16 @@ const COLOR: Dictionary =  {
 	TRUE_DAM_COLOR = Color.FLORAL_WHITE
 }
 
-@onready var number_label = $NumberLabel
-@onready var critical_icon = $CriticalIcon
-
 # MAIN
-func initialize(value: float, color: Color, is_crit: bool) -> void:
-	number_label.text = str(value)
-	self.modulate = color
-	critical_icon.visible = is_crit
+func initialize(value: float, hit_primitive_type: int, is_crit: bool) -> void:
+	$NumberLabel.text = str(value)
+	match hit_primitive_type:
+		HitData.PRIMITIVE_TYPE.PHYSIC:
+			self.modulate = COLOR.PHYSIC_DAM_COLOR
+		HitData.PRIMITIVE_TYPE.MAGIC:
+			self.modulate = COLOR.MAGIC_DAM_COLOR
+		HitData.PRIMITIVE_TYPE.TRUE:
+			self.modulate = COLOR.TRUE_DAM_COLOR
+		_:
+			self.modulate = COLOR.HEAL_COLOR
+	$CriticalIcon.visible = is_crit

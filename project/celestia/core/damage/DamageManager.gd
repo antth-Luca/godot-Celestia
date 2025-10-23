@@ -12,9 +12,9 @@ static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 		var attacker_stats = hit.attacker.entity_data.stats
 		var final_def = compute_defense(hit, target.entity_data.stats)
 		var brute_dam = get_brute_damage(hit.tool, attacker_stats, target.entity_data.stats)
-		var final_dam = compute_crit(
-			attacker_stats, compute_damage(hit.specialized_type, brute_dam, target, final_def)
-		)
+		var compute_dam = compute_damage(hit.specialized_type, brute_dam, target, final_def)
+		var final_dam = compute_crit(attacker_stats, compute_dam)
+		if compute_dam != final_dam: hit.is_crit = true
 		target.hurt(final_dam, hit, hitbox_parent)
 		if hit.tool:
 			for enchant in hit.tool.enchantments:
