@@ -38,6 +38,35 @@ func check_compability(to_apply: BaseItem) -> bool:
 	return true
 
 # HOOKS
-## Through independent logic, it returns true or false, allowing or not allowing the consumption of the item's durability.
-func check_consume_durability() -> bool:
-	return true
+## Called by BaseTool#use and the value obtained is added to loop number to spawn hits.
+func get_addicional_hit_number() -> int: return 0
+
+## Called by BaseHit#initialize and the value obtained is added to the hit's speed.
+func get_additional_hit_speed(_base_speed: float) -> float: return 0
+
+## Called by BaseHit#set_lifespan and the value obtained is added to entity's range.
+func get_additional_range() -> float: return 0
+
+## Called by BaseHit#_on_hurt_entity. Through independent logic, it returns true or false, allowing or not allowing the despawn of hit.
+func check_despawn_hit() -> bool: return true
+
+## Called by FiringTool#use. Through independent logic, it returns true or false, allowing or not allowing the consumption of the entity's ammo.
+func check_consume_ammo() -> bool: return true
+
+## Called by BaseItem#consume_durability. Through independent logic, it returns true or false, allowing or not allowing the consumption of the item's durability.
+func check_consume_durability() -> bool: return true
+
+## Called by DamageManager#try_apply, immediately after damage is applied.
+func post_damage(_hit: HitData, _target: LivingEntity) -> void: pass
+
+## Called by LivingEntity#apply_knockback and the value obtained is added to the knockback factor.
+func get_additional_knockback_factor() -> float: return 0
+
+## Called by DamageManager#get_brute_damage and the value obtained is added to the item's damage factor.
+func get_additional_damage_factor(_hit: HitData, _target: LivingEntity) -> float: return 0
+
+## Called by DamageManager#compute_defense and the value obtained is added to the entity's resistance.
+func get_additional_resistance() -> float: return 0
+
+## Called by DamageManager#compute_defense and the value obtained is added to the entity's armor.
+func get_additional_armor() -> float: return 0

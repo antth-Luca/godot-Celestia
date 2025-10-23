@@ -3,6 +3,7 @@ class_name LivingEntity
 
 const hurt_color: Color = Color.INDIAN_RED
 const invencible_color: Color = Color.WHITE
+const base_knockback_distance: int = 100
 
 @onready var TEXTURE: Sprite2D = $Texture
 @onready var ANIMATION: AnimationPlayer = $Animation
@@ -112,8 +113,8 @@ func flip_texture() -> void:
 
 
 func apply_knockback(attacker_pos: Vector2, hit_specialized_type: HitData.SPECIALIZED_TYPE = HitData.SPECIALIZED_TYPE.NONE) -> void:
-	var multiplier: float = 120 if hit_specialized_type == HitData.SPECIALIZED_TYPE.EXPLOSION else 100
-	knockback_vector = (global_position - attacker_pos).normalized() * multiplier
+	var knockback_factor: float = 1.2 if hit_specialized_type == HitData.SPECIALIZED_TYPE.EXPLOSION else 1.0
+	knockback_vector = (global_position - attacker_pos).normalized() * (knockback_factor * base_knockback_distance)
 	var knockback_tween: Tween = create_tween()
 	knockback_tween.tween_property(self, 'knockback_vector', Vector2.ZERO, .2)
 	TEXTURE.material.set_shader_parameter('blink_value', 1.0)
