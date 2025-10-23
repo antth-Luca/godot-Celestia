@@ -48,6 +48,9 @@ func heal(heal_value: float) -> void:
 	heal_value *= heal_mod_prop.get_modifier()
 	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
 	hp_prop.add_health(heal_value)
+	var heal_indicator: FloatingIndicator = Celestia.FLOATING_INDICATOR.instantiate()
+	heal_indicator.initialize(heal_value, -1, false)
+	add_child(heal_indicator)
 
 
 func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
