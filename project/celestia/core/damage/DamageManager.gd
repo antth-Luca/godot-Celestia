@@ -5,6 +5,9 @@ const K: float = 15
 
 static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 	var hit: HitData = hitbox_parent.get_hit_data()
+	if hit.tool:
+		for enchant in hit.tool.enchantments:
+			hit = enchant.override_hitdata(hit, target)
 	if DamageRules.can_damage(hit, target):
 		var attacker_stats = hit.attacker.entity_data.stats
 		var final_def = compute_defense(hit, target.entity_data.stats)
@@ -55,13 +58,13 @@ static func compute_defense(hit: HitData, target_stats: PropertyManager) -> floa
 		brute_def = target_stats.get_property(InitPropProviders.RESISTANCE).get_resistance()
 		if hit.tool:
 			for enchant in hit.tool.enchantments:
-				brute_def += enchant.get_addicional_resistance()
+				brute_def += enchant.get_additional_resistance()
 	else:
 		brute_def = target_stats.get_property(InitPropProviders.ARMOR).get_armor() + target_stats.get_property(InitPropProviders.RESISTANCE).get_resistance()
 		if hit.tool:
 			for enchant in hit.tool.enchantments:
-				brute_def += enchant.get_addicional_resistance()
-				brute_def += enchant.get_addicional_armor()
+				brute_def += enchant.get_additional_resistance()
+				brute_def += enchant.get_additional_armor()
 	var calc_def
 	if hit.source == HitData.SOURCE.SPELL or hit.source == HitData.SOURCE.EFFECT:
 		calc_def = brute_def
@@ -79,7 +82,7 @@ static func get_brute_damage(hit_tool: BaseItem, attacker_stats: PropertyManager
 	else:
 		damage_factor = hit_tool.damage_factor
 		for enchant in hit_tool.enchantments:
-			damage_factor += enchant.get_addicional_damage_factor(attacker_stats, target_stats)
+			damage_factor += enchant.get_additional_damage_factor(attacker_stats, target_stats)
 	return attacker_stats.get_property(InitPropProviders.FORCE).get_force() * damage_factor
 
 

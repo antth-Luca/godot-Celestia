@@ -28,10 +28,10 @@ func _physics_process(delta):
 # MAIN
 func initialize(source_entity_param: LivingEntity, source_tool_param: BaseTool) -> void:
 	if source_tool_param:
-		var calc_speed: float = speed
-		for enchant in source_entity_param.enchantments:
-			calc_speed += enchant.get_additional_hit_speed()
-		speed *= calc_speed
+		var speed_factor: float = 1
+		for enchant in source_tool_param.enchantments:
+			speed_factor += enchant.get_additional_hit_speed()
+		speed *= speed_factor
 	source_entity = source_entity_param
 	source_tool = source_tool_param
 

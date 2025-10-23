@@ -2,8 +2,9 @@ extends Node
 class_name InitEnchantments
 
 static var ENCHANTMENTS: DeferredRegister
-# Base items
+# Enchantments
 static var CONSERVATION: DeferredHolder
+static var DEVOUR: DeferredHolder
 
 
 static func setup() -> void:
@@ -12,10 +13,15 @@ static func setup() -> void:
 		EnchantmentRegistry.REGISTRY_TYPE
 	)
 
-	# Base items
+	# Enchantments
 	CONSERVATION = ENCHANTMENTS.add_entry(
 		'conservation',
 		func(): return ConservationEnchantment.new(1)
+	)
+
+	DEVOUR = ENCHANTMENTS.add_entry(
+		'devour',
+		func(): return DevourEnchantment.new(1)
 	)
 
 	ENCHANTMENTS.register()

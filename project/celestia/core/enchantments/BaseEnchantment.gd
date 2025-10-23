@@ -39,7 +39,7 @@ func check_compability(to_apply: BaseItem) -> bool:
 
 # HOOKS
 ## Called by BaseTool#use and the value obtained is added to loop number to spawn hits.
-func get_addicional_hit_number() -> int: return 0
+func get_additional_hit_number() -> int: return 0
 
 ## Called by BaseHit#initialize and the value obtained is added to the hit's speed factor.
 func get_additional_hit_speed() -> float: return 0
@@ -58,6 +58,9 @@ func check_consume_durability() -> bool: return true
 
 ## Called by DamageManager#try_apply, immediately after damage is applied.
 func post_damage(_hit: HitData, _target: LivingEntity) -> void: pass
+
+## Called by DamageManager#try_apply right at the beginning to override the HitData obtained.
+func override_hitdata(hit: HitData, _target: LivingEntity) -> HitData: return hit
 
 ## Called by LivingEntity#apply_knockback and the value obtained is added to the knockback factor.
 func get_additional_knockback_factor() -> float: return 0

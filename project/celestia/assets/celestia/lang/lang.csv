@@ -85,6 +85,7 @@ item.slot.output,Output,Saída
 item.slot.relic,Relic,Relíquia
 
 item.enchantment.conservation,Conservation,Conservação
+item.enchantment.devour,Devour,Devorar
 
 effect.bleed,Bleed,Sangramento
 effect.burn,Burn,Combustão
