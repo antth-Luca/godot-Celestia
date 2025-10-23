@@ -16,6 +16,7 @@ const TRANSLATION_KEY_BASES: Dictionary = {
 	STATS = 'ui.inventory.stats.%s',
 	EFFECT = 'effect.%s'
 }
+const FLOATING_INDICATOR: PackedScene = preload('res://core/entities/components/floating_indicator/FloatingIndicator.tscn')
 
 
 func _ready():

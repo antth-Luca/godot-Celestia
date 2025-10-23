@@ -5,6 +5,7 @@ static var ENCHANTMENTS: DeferredRegister
 # Enchantments
 static var CONSERVATION: DeferredHolder
 static var DEVOUR: DeferredHolder
+static var IGNITION: DeferredHolder
 
 
 static func setup() -> void:
@@ -22,6 +23,11 @@ static func setup() -> void:
 	DEVOUR = ENCHANTMENTS.add_entry(
 		'devour',
 		func(): return DevourEnchantment.new(1)
+	)
+
+	IGNITION = ENCHANTMENTS.add_entry(
+		'ignition',
+		func(): return IgnitionEnchantment.new(1)
 	)
 
 	ENCHANTMENTS.register()
