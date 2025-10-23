@@ -41,8 +41,8 @@ func check_compability(to_apply: BaseItem) -> bool:
 ## Called by BaseTool#use and the value obtained is added to loop number to spawn hits.
 func get_addicional_hit_number() -> int: return 0
 
-## Called by BaseHit#initialize and the value obtained is added to the hit's speed.
-func get_additional_hit_speed(_base_speed: float) -> float: return 0
+## Called by BaseHit#initialize and the value obtained is added to the hit's speed factor.
+func get_additional_hit_speed() -> float: return 0
 
 ## Called by BaseHit#set_lifespan and the value obtained is added to entity's range.
 func get_additional_range() -> float: return 0
@@ -63,7 +63,7 @@ func post_damage(_hit: HitData, _target: LivingEntity) -> void: pass
 func get_additional_knockback_factor() -> float: return 0
 
 ## Called by DamageManager#get_brute_damage and the value obtained is added to the item's damage factor.
-func get_additional_damage_factor(_hit: HitData, _target: LivingEntity) -> float: return 0
+func get_additional_damage_factor(_source_stats: PropertyManager, _target_stats: PropertyManager) -> float: return 0
 
 ## Called by DamageManager#compute_defense and the value obtained is added to the entity's resistance.
 func get_additional_resistance() -> float: return 0

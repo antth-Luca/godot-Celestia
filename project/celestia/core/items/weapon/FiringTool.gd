@@ -17,12 +17,16 @@ func use(player: Player) -> void:
 		):
 			super.use(player)  # Shoot
 			# Consume available AMMO
-			slot_stack.amount -= min_ammo_to_fire
-			if slot_stack.amount <= 0:
-				break_item(slot)
-			else:
-				slot.render_slot()
-			break
+			var can_consume = true
+			for enchant in enchantments:
+				can_consume = enchant.check_consume_ammo()
+			if can_consume:
+				slot_stack.amount -= min_ammo_to_fire
+				if slot_stack.amount <= 0:
+					break_item(slot)
+				else:
+					slot.render_slot()
+				break
 
 # Getters and Setters
 static func get_static_comparable_name() -> String:

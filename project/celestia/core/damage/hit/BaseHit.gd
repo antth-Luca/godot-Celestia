@@ -27,6 +27,11 @@ func _physics_process(delta):
 
 # MAIN
 func initialize(source_entity_param: LivingEntity, source_tool_param: BaseTool) -> void:
+	if source_tool_param:
+		var calc_speed: float = speed
+		for enchant in source_entity_param.enchantments:
+			calc_speed += enchant.get_additional_hit_speed()
+		speed *= calc_speed
 	source_entity = source_entity_param
 	source_tool = source_tool_param
 
@@ -42,10 +47,11 @@ func get_source_entity() -> LivingEntity:
 # Lifespan
 func set_lifespan() -> void:
 	var timer := Timer.new()
-	timer.wait_time = (
-		source_entity.entity_data.stats.get_property(InitPropProviders.RANGE).get_range() *
-		source_tool.base_lifespan
-	)
+	var total_range = source_entity.entity_data.stats.get_property(InitPropProviders.RANGE).get_range()
+	if source_tool:
+		for enchant in source_tool.enchantments:
+			total_range += enchant.get_additional_range()
+	timer.wait_time = total_range * source_tool.base_lifespan
 	timer.one_shot = true
 	timer.connect(
 		'timeout',

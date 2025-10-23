@@ -8,11 +8,14 @@ static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 	if DamageRules.can_damage(hit, target):
 		var attacker_stats = hit.attacker.entity_data.stats
 		var final_def = compute_defense(hit, target.entity_data.stats)
-		var brute_dam = get_brute_damage(hit.tool, attacker_stats)
+		var brute_dam = get_brute_damage(hit.tool, attacker_stats, target.entity_data.stats)
 		var final_dam = compute_crit(
 			attacker_stats, compute_damage(hit.specialized_type, brute_dam, target, final_def)
 		)
 		target.hurt(final_dam, hit, hitbox_parent)
+		if hit.tool:
+			for enchant in hit.tool.enchantments:
+				enchant.post_damage(hit, target)
 		var attacker_life_steal = attacker_stats.get_property(InitPropProviders.LIFE_STEAL).get_life_steal()
 		if attacker_life_steal > 0: hit.attacker.heal(final_dam * attacker_life_steal)
 
@@ -28,7 +31,7 @@ static func try_apply_spell(hitbox_parent: Variant, target: LivingEntity) -> voi
 	if DamageRules.can_damage_effect(target):
 		var attacker_stats = hit.attacker.entity_data.stats
 		var final_def = compute_defense(hit, target.entity_data.stats)
-		var brute_dam = get_brute_damage(hit.tool, attacker_stats)
+		var brute_dam = get_brute_damage(hit.tool, attacker_stats, target.entity_data.stats)
 		var final_dam = compute_damage(hit.specialized_type, brute_dam, target, final_def)
 		target.hurt(final_dam, hit, hitbox_parent)
 		var attacker_life_steal = attacker_stats.get_property(InitPropProviders.LIFE_STEAL).get_life_steal()
@@ -50,8 +53,15 @@ static func compute_defense(hit: HitData, target_stats: PropertyManager) -> floa
 	var brute_def
 	if hit.source == HitData.SOURCE.SPELL or hit.source == HitData.SOURCE.EFFECT:
 		brute_def = target_stats.get_property(InitPropProviders.RESISTANCE).get_resistance()
+		if hit.tool:
+			for enchant in hit.tool.enchantments:
+				brute_def += enchant.get_addicional_resistance()
 	else:
-		brute_def = target_stats.get_property(InitPropProviders.ARMOR).get_armor() - target_stats.get_property(InitPropProviders.RESISTANCE).get_resistance()
+		brute_def = target_stats.get_property(InitPropProviders.ARMOR).get_armor() + target_stats.get_property(InitPropProviders.RESISTANCE).get_resistance()
+		if hit.tool:
+			for enchant in hit.tool.enchantments:
+				brute_def += enchant.get_addicional_resistance()
+				brute_def += enchant.get_addicional_armor()
 	var calc_def
 	if hit.source == HitData.SOURCE.SPELL or hit.source == HitData.SOURCE.EFFECT:
 		calc_def = brute_def
@@ -62,8 +72,14 @@ static func compute_defense(hit: HitData, target_stats: PropertyManager) -> floa
 	return calc_def
 
 
-static func get_brute_damage(hit_tool: BaseItem, attacker_stats: PropertyManager) -> float:
-	var damage_factor: float = 1 if not hit_tool else hit_tool.damage_factor
+static func get_brute_damage(hit_tool: BaseItem, attacker_stats: PropertyManager, target_stats: PropertyManager) -> float:
+	var damage_factor: float
+	if not hit_tool:
+		damage_factor = 1
+	else:
+		damage_factor = hit_tool.damage_factor
+		for enchant in hit_tool.enchantments:
+			damage_factor += enchant.get_addicional_damage_factor(attacker_stats, target_stats)
 	return attacker_stats.get_property(InitPropProviders.FORCE).get_force() * damage_factor
 
 
