@@ -55,7 +55,7 @@ func _ready() -> void:
 	)
 	# Spawn Stick
 	var sword = InitWeapons.IRON_SWORD.get_registered()
-	sword.add_enchantment(InitEnchantments.FREEZING_AIR.get_registered())
+	sword.add_enchantment(InitEnchantments.INTIMIDATION.get_registered())
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(sword),
 		Vector2(169, 165)
