@@ -6,7 +6,7 @@ const DAMAGE_PERCENTAGE_PER_TICK: float = .01
 # SUPER
 # Godot
 func _init() -> void:
-	super._init(1, 1, BaseEffect.EffectCategory.MALEFICIAL, false, true, true, 3, 1, [InitEffects.COLD])
+	super._init(1, 1, BaseEffect.EffectCategory.MALEFICIAL, false, true, true, 5, 1, [InitEffects.COLD])
 
 # Handlers
 func _on_effect_tick(entity: LivingEntity) -> void:

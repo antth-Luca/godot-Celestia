@@ -35,7 +35,7 @@ func get_hit_data() -> HitData:
 		HitData.SPECIALIZED_TYPE.NONE,
 		HitData.SOURCE.HIT,
 		null,
-		[ EffectInstance.new(InitEffects.DECOMPOSITION, 1, .8) ]
+		[ EffectInstance.new(InitEffects.DECOMPOSITION, 3, 1, .8) ]
 	)
 
 # SUPER

@@ -49,7 +49,7 @@ static func setup() -> void:
 		func():
 			var food = BaseFood.new()
 			food.satiation = 1.5
-			food.effects_list.append(EffectInstance.new(InitEffects.DECOMPOSITION, 1, .6))
+			food.effects_list.append(EffectInstance.new(InitEffects.DECOMPOSITION, 3, 1, .6))
 			return food
 	)
 

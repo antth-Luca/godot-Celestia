@@ -29,31 +29,37 @@ var is_instantaneous: bool
 var is_per_tick: bool
 var tick_interval: float
 var effect_duration: float
+var max_effect_duration: float
 var total_time_amount: float
 var is_total_decay: bool
 
 # GODOT
-func _init(max_amplifier_param: int, init_amplifier: int, category_param: EffectCategory, instantaneous: bool, per_tick: bool, total_decay: bool, effect_duration_param: float, tick_interval_param: float, incompatible_effects: Array[DeferredHolder] = []) -> void:
-	effect_duration = effect_duration_param
+func _init(max_amplifier_param: int, init_amplifier: int, category_param: EffectCategory, instantaneous: bool, per_tick: bool, total_decay: bool, max_effect_duration_param: float, tick_interval_param: float, incompatible_effects: Array[DeferredHolder] = []) -> void:
+	max_effect_duration = max_effect_duration_param
+	effect_duration = max_effect_duration_param
 	max_amplifier = max_amplifier_param
 	amplifier = init_amplifier
 	category = category_param
 	is_instantaneous = instantaneous
 	is_per_tick = per_tick
+	tick_interval = tick_interval_param
 	is_total_decay = total_decay
 	incompabilities = incompatible_effects
 	# Timer
+	set_time(max_effect_duration_param)
+
+# GETTERS AND SETTERS
+func set_time(effect_duration_param: float) -> void:
 	if not is_instantaneous:
+		effect_duration = min(effect_duration_param, max_effect_duration)
 		effect_timer = Timer.new()
 		effect_timer.autostart = true
 		effect_timer.timeout.connect(_on_effect_timer_timeout)
 		if is_per_tick:
-			effect_timer.wait_time = tick_interval_param
-			tick_interval = tick_interval_param
+			effect_timer.wait_time = tick_interval
 		else:
-			effect_timer.wait_time = effect_duration_param
+			effect_timer.wait_time = effect_duration
 
-# GETTERS AND SETTERS
 func get_hit_data() -> HitData:
 	return HitData.new(
 		null,

@@ -30,5 +30,5 @@ func get_hit_data() -> HitData:
 		HitData.SPECIALIZED_TYPE.ELETRIC,
 		HitData.SOURCE.SPELL,
 		source_tool,
-		[ EffectInstance.new(InitEffects.ELECTROCUTE) ]
+		[ EffectInstance.new(InitEffects.ELECTROCUTE, 10) ]
 	)

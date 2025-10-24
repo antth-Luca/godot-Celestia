@@ -14,4 +14,4 @@ func _init(init_level: int) -> void:
 
 # Hooks
 func post_damage(_hit: HitData, target: LivingEntity) -> void:
-	target.effect_receiver.add_effect(EffectInstance.new(InitEffects.BURN))
+	target.effect_receiver.add_effect(EffectInstance.new(InitEffects.BURN, 3))
