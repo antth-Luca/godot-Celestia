@@ -8,6 +8,9 @@ const HEALTH_CEIL_FOR_INCREASE: float = 100
 # Godot
 func _init(init_level: int) -> void:
 	super._init(1, init_level, [
+		BaseTool.get_static_comparable_name(),
+		AxeTool.get_static_comparable_name(),
+		PickaxeTool.get_static_comparable_name(),
 		SwordTool.get_static_comparable_name(),
 		FiringTool.get_static_comparable_name()
 	])
