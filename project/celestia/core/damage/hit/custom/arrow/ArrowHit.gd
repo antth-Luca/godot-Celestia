@@ -18,8 +18,9 @@ func get_hit_data() -> HitData:
 
 # Handlers
 func _on_hurt_entity() -> void:
+	if not source_tool: return
 	var can_despawn = true
-	if source_tool:
-		for enchant in source_tool.enchantments:
-			can_despawn = enchant.check_despawn_hit()
-	if can_despawn: despawn_hit()
+	for enchant in source_tool.enchantments:
+		can_despawn = enchant.check_despawn_hit()
+		if not can_despawn: return
+	despawn_hit()

@@ -3,6 +3,7 @@ class_name InitEnchantments
 
 static var ENCHANTMENTS: DeferredRegister
 # Enchantments
+static var AMMUNITION_ECO: DeferredHolder
 static var COMPULSION: DeferredHolder
 static var CONSERVATION: DeferredHolder
 static var DEVOUR: DeferredHolder
@@ -21,6 +22,11 @@ static func setup() -> void:
 	)
 
 	# Enchantments
+	AMMUNITION_ECO = ENCHANTMENTS.add_entry(
+		'ammunition_eco',
+		func(): return AmmunitionEcoEnchantment.new(1)
+	)
+
 	COMPULSION = ENCHANTMENTS.add_entry(
 		'compulsion',
 		func(): return CompulsionEnchantment.new(1)

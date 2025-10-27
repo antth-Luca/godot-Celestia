@@ -132,7 +132,8 @@ func consume_durability(damage: int, slot: BaseSlot) -> void:
 		var can_consume: bool = true
 		for enchant in enchantments:
 			can_consume = enchant.check_consume_durability()
-		if can_consume: _durability -= damage
+			if not can_consume: return
+		_durability -= damage
 		if _durability <= 0: break_item(slot)
 
 
