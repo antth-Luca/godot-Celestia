@@ -31,6 +31,7 @@ func use(player: Player) -> void:
 						break_item(slot)
 					else:
 						slot.render_slot()
+				await HitUtils.get_tree().create_timer(.1).timeout
 			set_cooldown(player)
 			return
 
