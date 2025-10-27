@@ -12,21 +12,27 @@ func use(player: Player) -> void:
 	for slot in ammo_slots:
 		var slot_stack: ItemStack = slot.stack
 		if not slot_stack.is_empty() and (
-			slot_stack.item.id.get_string() == ammo_item.id.get_string() or
+			slot_stack.item.id.get_string() == ammo_item.id.get_string() and
 			not slot_stack.amount < min_ammo_to_fire
 		):
-			super.use(player)  # Shoot
-			# Consume available AMMO
 			var can_consume = true
+			var hit_number: int = 1
 			for enchant in enchantments:
 				can_consume = enchant.check_consume_ammo()
-			if can_consume:
-				slot_stack.amount -= min_ammo_to_fire
-				if slot_stack.amount <= 0:
-					break_item(slot)
-				else:
-					slot.render_slot()
-				break
+				hit_number += enchant.get_additional_hit_number()
+			for c in hit_number:
+				# Shoot
+				HitUtils.spawn_hit(player, hit_type, self)
+				consume_durability(1, player.inventory.get_hand())
+				# Consume available AMMO
+				if can_consume:
+					slot_stack.amount -= min_ammo_to_fire
+					if slot_stack.amount <= 0:
+						break_item(slot)
+					else:
+						slot.render_slot()
+			set_cooldown(player)
+			return
 
 # Getters and Setters
 static func get_static_comparable_name() -> String:

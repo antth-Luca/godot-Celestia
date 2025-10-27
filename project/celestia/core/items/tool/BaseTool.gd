@@ -41,10 +41,6 @@ func copy(copy_obj: Variant = BaseTool.new()) -> Variant:
 
 
 func use(player: Player) -> void:
-	var loop_number: int = 1
-	for enchant in enchantments:
-		loop_number += enchant.get_additional_hit_number()
-	for c in loop_number:
-		HitUtils.spawn_hit(player, hit_type, self)
-		consume_durability(1, player.inventory.get_hand())
+	HitUtils.spawn_hit(player, hit_type, self)
+	consume_durability(1, player.inventory.get_hand())
 	set_cooldown(player)
