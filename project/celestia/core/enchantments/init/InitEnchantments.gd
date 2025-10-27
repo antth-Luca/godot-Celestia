@@ -13,6 +13,7 @@ static var IGNITION: DeferredHolder
 static var IMPULSE: DeferredHolder
 static var INTIMIDATION: DeferredHolder
 static var SAWED_OFF: DeferredHolder
+static var UNBOUND: DeferredHolder
 
 
 static func setup() -> void:
@@ -70,6 +71,11 @@ static func setup() -> void:
 	SAWED_OFF = ENCHANTMENTS.add_entry(
 		'sawed_off',
 		func(): return SawedOffEnchantment.new(1)
+	)
+
+	UNBOUND = ENCHANTMENTS.add_entry(
+		'unbound',
+		func(): return UnboundEnchantment.new(1)
 	)
 
 	ENCHANTMENTS.register()
