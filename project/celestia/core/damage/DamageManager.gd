@@ -10,7 +10,7 @@ static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 			hit = enchant.override_hitdata(hit, target)
 	if DamageRules.can_damage(hit, target):
 		var attacker_stats = hit.attacker.entity_data.stats
-		var final_def = compute_defense(hit, target.entity_data.stats)
+		var final_def = compute_defense(hit, target)
 		var brute_dam = get_brute_damage(hit.tool, attacker_stats, target.entity_data.stats)
 		var compute_dam = compute_damage(hit.specialized_type, brute_dam, target, final_def)
 		var final_dam = compute_crit(attacker_stats, compute_dam)
@@ -33,7 +33,7 @@ static func try_apply_spell(hitbox_parent: Variant, target: LivingEntity) -> voi
 	var hit: HitData = hitbox_parent.get_hit_data()
 	if DamageRules.can_damage_effect(target):
 		var attacker_stats = hit.attacker.entity_data.stats
-		var final_def = compute_defense(hit, target.entity_data.stats)
+		var final_def = compute_defense(hit, target)
 		var brute_dam = get_brute_damage(hit.tool, attacker_stats, target.entity_data.stats)
 		var final_dam = compute_damage(hit.specialized_type, brute_dam, target, final_def)
 		target.hurt(final_dam, hit, hitbox_parent)
@@ -44,28 +44,36 @@ static func try_apply_spell(hitbox_parent: Variant, target: LivingEntity) -> voi
 static func try_apply_effect(effect: BaseEffect, target: LivingEntity) -> void:
 	var hit: HitData = effect.get_hit_data()
 	if DamageRules.can_damage_effect(target):
-		var target_stats: PropertyManager = target.entity_data.stats
-		var final_def = compute_defense(hit, target_stats)
-		var brute_dam = effect.get_brute_damage(target_stats.get_property(InitPropProviders.HEALTH))
+		var final_def = compute_defense(hit, target)
+		var brute_dam = effect.get_brute_damage(target.entity_data.stats.get_property(InitPropProviders.HEALTH))
 		var final_dam = compute_damage(hit.specialized_type, brute_dam, target, final_def)
 		target.hurt(final_dam, hit, effect)
 
 
-static func compute_defense(hit: HitData, target_stats: PropertyManager) -> float:
+static func compute_defense(hit: HitData, target: LivingEntity) -> float:
 	if hit.primitive_type == HitData.PRIMITIVE_TYPE.TRUE: return 0
-	var brute_def
+	var target_stats: PropertyManager = target.entity_data.stats
+	var brute_def: float
+	var target_armor_slots: Array[BaseSlot]
+	if target is Player: target_armor_slots = target.inventory.get_armor()
 	if hit.source == HitData.SOURCE.SPELL or hit.source == HitData.SOURCE.EFFECT:
 		brute_def = target_stats.get_property(InitPropProviders.RESISTANCE).get_resistance()
-		if hit.tool:
-			for enchant in hit.tool.enchantments:
-				brute_def += enchant.get_additional_resistance()
+		if not target_armor_slots.is_empty():
+			for slot in target_armor_slots:
+				var slot_stack: ItemStack = slot.stack
+				if slot_stack.is_empty(): continue
+				for enchant in slot_stack.item.enchantments:
+					brute_def += enchant.get_additional_resistance()
 	else:
 		brute_def = target_stats.get_property(InitPropProviders.ARMOR).get_armor() + target_stats.get_property(InitPropProviders.RESISTANCE).get_resistance()
-		if hit.tool:
-			for enchant in hit.tool.enchantments:
-				brute_def += enchant.get_additional_resistance()
-				brute_def += enchant.get_additional_armor()
-	var calc_def
+		if not target_armor_slots.is_empty():
+			for slot in target_armor_slots:
+				var slot_stack: ItemStack = slot.stack
+				if slot_stack.is_empty(): continue
+				for enchant in slot_stack.item.enchantments:
+					brute_def += enchant.get_additional_resistance()
+					brute_def += enchant.get_additional_armor()
+	var calc_def: float
 	if hit.source == HitData.SOURCE.SPELL or hit.source == HitData.SOURCE.EFFECT:
 		calc_def = brute_def
 	else:

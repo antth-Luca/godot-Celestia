@@ -6,6 +6,7 @@ static var ENCHANTMENTS: DeferredRegister
 static var CONSERVATION: DeferredHolder
 static var DEVOUR: DeferredHolder
 static var FREEZING_AIR: DeferredHolder
+static var HULL_REINFORCEMENT: DeferredHolder
 static var IGNITION: DeferredHolder
 static var INTIMIDATION: DeferredHolder
 static var SAWED_OFF: DeferredHolder
@@ -31,6 +32,11 @@ static func setup() -> void:
 	FREEZING_AIR = ENCHANTMENTS.add_entry(
 		'freezing_air',
 		func(): return FreezingAirEnchantment.new(1)
+	)
+
+	HULL_REINFORCEMENT = ENCHANTMENTS.add_entry(
+		'hull_reinforcement',
+		func(): return HullReinforcementEnchantment.new(1)
 	)
 
 	IGNITION = ENCHANTMENTS.add_entry(
