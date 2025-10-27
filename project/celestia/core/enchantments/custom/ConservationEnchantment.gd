@@ -1,12 +1,12 @@
 extends BaseEnchantment
 class_name ConservationEnchantment
 
-const CHANCE_PER_LEVEL_NOT_CONSUME: float = .02
+const CHANCE_PER_LEVEL_NOT_CONSUME: float = .1
 
 # SUPER
 # Godot
 func _init(init_level: int) -> void:
-	super._init(1, init_level, [
+	super._init(5, init_level, [
 		BaseTool.get_static_comparable_name(),
 		AxeTool.get_static_comparable_name(),
 		PickaxeTool.get_static_comparable_name(),

@@ -9,6 +9,7 @@ static var DEVOUR: DeferredHolder
 static var FREEZING_AIR: DeferredHolder
 static var HULL_REINFORCEMENT: DeferredHolder
 static var IGNITION: DeferredHolder
+static var IMPULSE: DeferredHolder
 static var INTIMIDATION: DeferredHolder
 static var SAWED_OFF: DeferredHolder
 
@@ -48,6 +49,11 @@ static func setup() -> void:
 	IGNITION = ENCHANTMENTS.add_entry(
 		'ignition',
 		func(): return IgnitionEnchantment.new(1)
+	)
+
+	IMPULSE = ENCHANTMENTS.add_entry(
+		'impulse',
+		func(): return ImpulseEnchantment.new(1)
 	)
 
 	INTIMIDATION = ENCHANTMENTS.add_entry(
