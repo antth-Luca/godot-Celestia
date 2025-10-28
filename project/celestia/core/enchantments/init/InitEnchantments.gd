@@ -7,6 +7,7 @@ static var AMMUNITION_ECO: DeferredHolder
 static var COMPULSION: DeferredHolder
 static var CONSERVATION: DeferredHolder
 static var DEVOUR: DeferredHolder
+static var FAITHLESS_DEFENSE: DeferredHolder
 static var FREEZING_AIR: DeferredHolder
 static var HULL_REINFORCEMENT: DeferredHolder
 static var IGNITION: DeferredHolder
@@ -41,6 +42,11 @@ static func setup() -> void:
 	DEVOUR = ENCHANTMENTS.add_entry(
 		'devour',
 		func(): return DevourEnchantment.new(1)
+	)
+
+	FAITHLESS_DEFENSE = ENCHANTMENTS.add_entry(
+		'faithless_defense',
+		func(): return FaithlessDefense.new(1)
 	)
 
 	FREEZING_AIR = ENCHANTMENTS.add_entry(

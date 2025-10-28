@@ -55,7 +55,7 @@ func _ready() -> void:
 	)
 	# Spawn Stick
 	var bow = InitWeapons.BOW.get_registered()
-	bow.add_enchantment(InitEnchantments.UNBOUND.get_registered())
+	bow.add_enchantment(InitEnchantments.FAITHLESS_DEFENSE.get_registered())
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(bow),
 		Vector2(169, 165)

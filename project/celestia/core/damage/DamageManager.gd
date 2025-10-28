@@ -5,10 +5,10 @@ const K: float = 15
 
 static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 	var hit: HitData = hitbox_parent.get_hit_data()
-	if hit.tool:
-		for enchant in hit.tool.enchantments:
-			hit = enchant.override_hitdata(hit, target)
 	if DamageRules.can_damage(hit, target):
+		if hit.tool:
+			for enchant in hit.tool.enchantments:
+				hit = enchant.override_hitdata(hit, target)
 		var attacker_stats = hit.attacker.entity_data.stats
 		var final_def = compute_defense(hit, target)
 		var brute_dam = get_brute_damage(hit.tool, attacker_stats, target.entity_data.stats)
