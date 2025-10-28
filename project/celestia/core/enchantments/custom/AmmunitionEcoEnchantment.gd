@@ -9,5 +9,5 @@ func _init(init_level: int) -> void:
 	])
 
 # Hooks
-func check_consume_ammo() -> bool:
+func override_can_consume_ammo(_can_consume: bool) -> bool:
 	return false

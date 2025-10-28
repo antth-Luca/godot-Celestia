@@ -19,7 +19,7 @@ func use(player: Player) -> void:
 			var hit_number: int = 1
 			for enchant in enchantments:
 				hit_number += enchant.get_additional_hit_number()
-				if can_consume: can_consume = enchant.check_consume_ammo()
+				can_consume = enchant.override_can_consume_ammo(can_consume)
 			for c in hit_number:
 				# Shoot
 				HitUtils.spawn_hit(player, hit_type, self)

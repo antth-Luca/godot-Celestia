@@ -15,5 +15,5 @@ func _init(init_level: int) -> void:
 	])
 
 # Hooks
-func check_consume_durability() -> bool:
+func override_can_consume_durability(_can_consume: bool) -> bool:
 	return not randf() <= level * CHANCE_PER_LEVEL_NOT_CONSUME

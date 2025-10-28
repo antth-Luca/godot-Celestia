@@ -9,5 +9,5 @@ func _init(init_level: int) -> void:
 	])
 
 # Hooks
-func check_despawn_hit() -> bool:
+func override_can_despawn_hit(_can_despawn: bool) -> bool:
 	return false

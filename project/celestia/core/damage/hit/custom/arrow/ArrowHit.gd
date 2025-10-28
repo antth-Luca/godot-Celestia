@@ -21,6 +21,5 @@ func _on_hurt_entity() -> void:
 	if not source_tool: return
 	var can_despawn = true
 	for enchant in source_tool.enchantments:
-		can_despawn = enchant.check_despawn_hit()
-		if not can_despawn: return
-	despawn_hit()
+		can_despawn = enchant.override_can_despawn_hit(can_despawn)
+	if can_despawn: despawn_hit()

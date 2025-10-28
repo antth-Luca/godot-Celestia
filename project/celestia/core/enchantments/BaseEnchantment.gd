@@ -48,13 +48,13 @@ func get_additional_hit_speed() -> float: return 0
 func get_additional_range() -> float: return 0
 
 ## Called by BaseHit#_on_hurt_entity. Through independent logic, it returns true or false, allowing or not allowing the despawn of hit.
-func check_despawn_hit() -> bool: return true
+func override_can_despawn_hit(can_despawn: bool) -> bool: return can_despawn
 
 ## Called by FiringTool#use. Through independent logic, it returns true or false, allowing or not allowing the consumption of the entity's ammo.
-func check_consume_ammo() -> bool: return true
+func override_can_consume_ammo(can_consume: bool) -> bool: return can_consume
 
 ## Called by BaseItem#consume_durability. Through independent logic, it returns true or false, allowing or not allowing the consumption of the item's durability.
-func check_consume_durability() -> bool: return true
+func override_can_consume_durability(can_consume: bool) -> bool: return can_consume
 
 ## Called by DamageManager#try_apply, immediately after damage is applied.
 func post_damage(_hit: HitData, _target: LivingEntity) -> void: pass
