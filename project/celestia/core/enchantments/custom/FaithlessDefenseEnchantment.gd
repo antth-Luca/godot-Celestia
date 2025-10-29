@@ -1,5 +1,5 @@
 extends BaseEnchantment
-class_name FaithlessDefense
+class_name FaithlessDefenseEnchantment
 
 var hit_counter: int
 var last_target: LivingEntity
@@ -28,5 +28,4 @@ func override_hitdata(hit: HitData, _target: LivingEntity) -> HitData:
 	if not hit_counter < 2:
 		hit.primitive_type = HitData.PRIMITIVE_TYPE.TRUE
 		hit_counter = -1
-	print(hit.primitive_type)
 	return hit

@@ -8,6 +8,7 @@ static var COMPULSION: DeferredHolder
 static var CONSERVATION: DeferredHolder
 static var DEVOUR: DeferredHolder
 static var FAITHLESS_DEFENSE: DeferredHolder
+static var FIGHTING_SPIRIT: DeferredHolder
 static var FREEZING_AIR: DeferredHolder
 static var HULL_REINFORCEMENT: DeferredHolder
 static var IGNITION: DeferredHolder
@@ -46,7 +47,12 @@ static func setup() -> void:
 
 	FAITHLESS_DEFENSE = ENCHANTMENTS.add_entry(
 		'faithless_defense',
-		func(): return FaithlessDefense.new(1)
+		func(): return FaithlessDefenseEnchantment.new(1)
+	)
+
+	FIGHTING_SPIRIT = ENCHANTMENTS.add_entry(
+		'fighting_spirit',
+		func(): return FightingSpiritEnchantment.new(1)
 	)
 
 	FREEZING_AIR = ENCHANTMENTS.add_entry(
