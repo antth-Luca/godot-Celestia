@@ -27,7 +27,11 @@ func _init(max_level_param: int, init_level: int, applicable_items: Array[String
 # MAIN
 func check_applicability(to_apply: BaseItem) -> bool:
 	var comparable: String = to_apply.get_comparable_name()
-	return comparable in applicabilities
+	if not (comparable in applicabilities): return false
+	for enchant in to_apply.enchantments:
+		if id.get_string() == enchant.id.get_string():
+			return false
+	return true
 
 
 func check_compability(to_apply: BaseItem) -> bool:
