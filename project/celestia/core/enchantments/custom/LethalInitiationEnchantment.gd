@@ -5,7 +5,7 @@ const REGEN_FACTOR: float = 1.4
 const COOLDOWN_PER_TARGET: float = 8
 
 var is_active: bool = false
-var last_targets: Dictionary[LivingEntity, Timer]
+var last_targets: Dictionary[WeakRef, Timer]
 
 # SUPER
 # Godot
@@ -20,14 +20,12 @@ func _init(init_level: int) -> void:
 
 # Hooks
 func override_hitdata(hit: HitData, target: LivingEntity) -> HitData:
-	for entity in last_targets.keys():
-		if target == entity: return hit
+	for weak_entity in last_targets.keys():
+		if target == weak_entity.get_ref(): return hit
 	# Enable to regenerate
 	is_active = true
 	# Control cooldown
-	var timer = create_timer_to_target(target)
-	hit.attacker.add_child(timer)
-	last_targets[target] = timer
+	hit.attacker.add_child(create_timer_to_target(target))
 	# Critical hit/damage
 	hit.is_crit = true
 	return hit
@@ -46,10 +44,12 @@ func create_timer_to_target(target: LivingEntity) -> Timer:
 	timer.one_shot = true
 	timer.autostart = true
 	timer.wait_time = COOLDOWN_PER_TARGET
-	timer.connect('timeout', Callable(self, '_on_timer_timeout').bind(target))
+	var weak_target: WeakRef = weakref(target)
+	timer.connect('timeout', Callable(self, '_on_timer_timeout').bind(weak_target))
+	last_targets[weak_target] = timer
 	return timer
 
 # HANDLERS
-func _on_timer_timeout(target: LivingEntity) -> void:
-	last_targets[target].queue_free()
-	last_targets.erase(target)
+func _on_timer_timeout(weak_target: WeakRef) -> void:
+	last_targets[weak_target].queue_free()
+	last_targets.erase(weak_target)
