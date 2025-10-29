@@ -3,10 +3,20 @@ class_name InitRecipes
 
 static var RECIPES: DeferredRegister
 # Enchantment
+static var ENCHANT_AMMUNITION_ECO: DeferredHolder
+static var ENCHANT_COMPULSION: DeferredHolder
 static var ENCHANT_CONSERVATION: DeferredHolder
 static var ENCHANT_DEVOUR: DeferredHolder
+static var ENCHANT_FAITHLESS_DEFENSE: DeferredHolder
+static var ENCHANT_FIGHTING_SPIRIT: DeferredHolder
 static var ENCHANT_FREEZING_AIR: DeferredHolder
+static var ENCHANT_HULL_REINFORCEMENT: DeferredHolder
 static var ENCHANT_IGNITION: DeferredHolder
+static var ENCHANT_IMPULSE: DeferredHolder
+static var ENCHANT_INTIMIDATION: DeferredHolder
+static var ENCHANT_LETHAL_INITIATION: DeferredHolder
+static var ENCHANT_SAWED_OFF: DeferredHolder
+static var ENCHANT_UNBOUND: DeferredHolder
 # Normal
 static var BOILED_EGG: DeferredHolder
 static var BOW: DeferredHolder
@@ -42,6 +52,28 @@ static func setup() -> void:
 	)
 
 	# Enchantment
+	ENCHANT_AMMUNITION_ECO = RECIPES.add_entry(
+		'enchant_ammunition_eco',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.AMMUNITION_ECO.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_ILLUSION, 1)
+			recipe.add_ingredient(InitItems.SCROLL_SUBMISSION, 1)
+			return recipe
+	)
+
+	ENCHANT_COMPULSION = RECIPES.add_entry(
+		'enchant_compulsion',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.COMPULSION.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_AMBITION, 1)
+			recipe.add_ingredient(InitItems.SCROLL_ASCENDANCE, 1)
+			return recipe
+	)
+
 	ENCHANT_CONSERVATION = RECIPES.add_entry(
 		'enchant_conservation',
 		func():
@@ -58,9 +90,32 @@ static func setup() -> void:
 		func():
 			var recipe = EnchantRecipe.new()
 			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
-			recipe.enchantment = InitEnchantments.CONSERVATION.get_registered()
+			recipe.enchantment = InitEnchantments.DEVOUR.get_registered()
 			recipe.add_ingredient(InitItems.SCROLL_DESTRUCTION, 1)
 			recipe.add_ingredient(InitItems.SCROLL_SUBMISSION, 1)
+			return recipe
+	)
+
+	ENCHANT_FAITHLESS_DEFENSE = RECIPES.add_entry(
+		'enchant_faithless_defense',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.FAITHLESS_DEFENSE.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_PROTECTION, 1)
+			recipe.add_ingredient(InitItems.SCROLL_DESTRUCTION, 1)
+			recipe.add_ingredient(InitItems.SCROLL_TRUTH, 1)
+			return recipe
+	)
+
+	ENCHANT_FIGHTING_SPIRIT = RECIPES.add_entry(
+		'enchant_fighting_spirit',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.FIGHTING_SPIRIT.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_WAR, 1)
+			recipe.add_ingredient(InitItems.SCROLL_PERMANENCE, 1)
 			return recipe
 	)
 
@@ -69,9 +124,20 @@ static func setup() -> void:
 		func():
 			var recipe = EnchantRecipe.new()
 			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
-			recipe.enchantment = InitEnchantments.CONSERVATION.get_registered()
+			recipe.enchantment = InitEnchantments.FREEZING_AIR.get_registered()
 			recipe.add_ingredient(InitItems.SCROLL_SUBMISSION, 1)
 			recipe.add_ingredient(InitItems.SCROLL_EFEMERALITY, 1)
+			return recipe
+	)
+
+	ENCHANT_HULL_REINFORCEMENT = RECIPES.add_entry(
+		'enchant_hull_reinforcement',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.HULL_REINFORCEMENT.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_CREATION, 1)
+			recipe.add_ingredient(InitItems.SCROLL_PROTECTION, 1)
 			return recipe
 	)
 
@@ -80,9 +146,65 @@ static func setup() -> void:
 		func():
 			var recipe = EnchantRecipe.new()
 			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
-			recipe.enchantment = InitEnchantments.CONSERVATION.get_registered()
+			recipe.enchantment = InitEnchantments.IGNITION.get_registered()
 			recipe.add_ingredient(InitItems.SCROLL_DESTRUCTION, 1)
 			recipe.add_ingredient(InitItems.SCROLL_EFEMERALITY, 1)
+			return recipe
+	)
+
+	ENCHANT_IMPULSE = RECIPES.add_entry(
+		'enchant_impulse',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.IMPULSE.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_TRUTH, 1)
+			recipe.add_ingredient(InitItems.SCROLL_WAR, 1)
+			return recipe
+	)
+
+	ENCHANT_INTIMIDATION = RECIPES.add_entry(
+		'enchant_intimidation',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.INTIMIDATION.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_ALTRUISM, 1)
+			recipe.add_ingredient(InitItems.SCROLL_CHAOS, 1)
+			recipe.add_ingredient(InitItems.SCROLL_ASCENDANCE, 1)
+			return recipe
+	)
+
+	ENCHANT_LETHAL_INITIATION = RECIPES.add_entry(
+		'enchant_lethal_initiation',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.LETHAL_INITIATION.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_WAR, 1)
+			recipe.add_ingredient(InitItems.SCROLL_SUBMISSION, 1)
+			return recipe
+	)
+
+	ENCHANT_SAWED_OFF = RECIPES.add_entry(
+		'enchant_sawed_off',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.SAWED_OFF.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_AMBITION, 1)
+			recipe.add_ingredient(InitItems.SCROLL_CHAOS, 1)
+			return recipe
+	)
+
+	ENCHANT_UNBOUND = RECIPES.add_entry(
+		'enchant_unbound',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.UNBOUND.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_TRUTH, 1)
+			recipe.add_ingredient(InitItems.SCROLL_ASCENDANCE, 1)
 			return recipe
 	)
 
