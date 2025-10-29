@@ -21,12 +21,13 @@ func _init(init_level: int) -> void:
 	])
 
 # Hooks
-func post_damage(hit: HitData, _target: LivingEntity) -> void:
+func post_damage(hit: HitData, _target: LivingEntity, _final_damage: float) -> void:
 	if is_active: return
 	# Init Timer
 	if not timer:
 		timer = Timer.new()
 		timer.timeout.connect(_on_timer_timeout)
+		timer.name = 'FightSpiritEnchantTimer'
 		hit.attacker.add_child(timer)
 	# Enchantment manager
 	hit_counter += 1

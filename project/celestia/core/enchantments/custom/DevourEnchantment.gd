@@ -12,7 +12,7 @@ func _init(init_level: int) -> void:
 	])
 
 # Hooks
-func post_damage(hit: HitData, target: LivingEntity) -> void:
+func post_damage(hit: HitData, target: LivingEntity, _final_damage: float) -> void:
 	var devour_dam: float = target.entity_data.stats.get_property(InitPropProviders.HEALTH).get_health() * DEVOURING_PERCENTAGE
 	var devour_hit := HitData.new(
 		hit.attacker,

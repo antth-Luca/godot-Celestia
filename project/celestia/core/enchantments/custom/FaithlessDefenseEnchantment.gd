@@ -16,7 +16,7 @@ func _init(init_level: int) -> void:
 	])
 
 # Hooks
-func post_damage(_hit: HitData, target: LivingEntity) -> void:
+func post_damage(_hit: HitData, target: LivingEntity, _final_damage: float) -> void:
 	if target == last_target:
 		hit_counter += 1
 		return

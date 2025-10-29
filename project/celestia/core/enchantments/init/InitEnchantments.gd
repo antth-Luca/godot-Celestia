@@ -14,6 +14,7 @@ static var HULL_REINFORCEMENT: DeferredHolder
 static var IGNITION: DeferredHolder
 static var IMPULSE: DeferredHolder
 static var INTIMIDATION: DeferredHolder
+static var LETHAL_INITIATION: DeferredHolder
 static var SAWED_OFF: DeferredHolder
 static var UNBOUND: DeferredHolder
 
@@ -78,6 +79,11 @@ static func setup() -> void:
 	INTIMIDATION = ENCHANTMENTS.add_entry(
 		'intimidation',
 		func(): return IntimidationEnchantment.new(1)
+	)
+
+	LETHAL_INITIATION = ENCHANTMENTS.add_entry(
+		'lethal_initiation',
+		func(): return LethalInitiationEnchantment.new(1)
 	)
 
 	SAWED_OFF = ENCHANTMENTS.add_entry(

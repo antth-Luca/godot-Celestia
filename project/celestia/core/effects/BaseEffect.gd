@@ -81,7 +81,10 @@ func _on_effect_added(_entity: LivingEntity) -> void:
 
 func _on_effect_renewed(_entity: LivingEntity) -> void:
 	emit_signal('effect_updated', self)
-	effect_timer.start()
+	if is_per_tick:
+		total_time_amount = 0
+	else:
+		effect_timer.start()
 
 
 func _on_effect_tick(_entity: LivingEntity) -> void:

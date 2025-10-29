@@ -57,7 +57,7 @@ func override_can_consume_ammo(can_consume: bool) -> bool: return can_consume
 func override_can_consume_durability(can_consume: bool) -> bool: return can_consume
 
 ## Called by DamageManager#try_apply, immediately after damage is applied.
-func post_damage(_hit: HitData, _target: LivingEntity) -> void: pass
+func post_damage(_hit: HitData, _target: LivingEntity, _final_damage: float) -> void: pass
 
 ## Called by DamageManager#try_apply right at the beginning to override the HitData obtained.
 func override_hitdata(hit: HitData, _target: LivingEntity) -> HitData: return hit
