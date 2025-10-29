@@ -4,6 +4,9 @@ class_name InitRecipes
 static var RECIPES: DeferredRegister
 # Enchantment
 static var ENCHANT_CONSERVATION: DeferredHolder
+static var ENCHANT_DEVOUR: DeferredHolder
+static var ENCHANT_FREEZING_AIR: DeferredHolder
+static var ENCHANT_IGNITION: DeferredHolder
 # Normal
 static var BOILED_EGG: DeferredHolder
 static var BOW: DeferredHolder
@@ -11,6 +14,7 @@ static var IRON_AXE: DeferredHolder
 static var IRON_PICKAXE: DeferredHolder
 static var IRON_SWORD: DeferredHolder
 static var PAPYRUS: DeferredHolder
+#  Stardust
 static var STARDUST_ALTRUISM: DeferredHolder
 static var STARDUST_AMBITION: DeferredHolder
 static var STARDUST_ASCENDANCE: DeferredHolder
@@ -26,6 +30,7 @@ static var STARDUST_SUBMISSION: DeferredHolder
 static var STARDUST_TRUTH: DeferredHolder
 static var STARDUST_WAR: DeferredHolder
 # Random output
+#  Scroll
 static var CONSTELLATION_SCROLLS: DeferredHolder
 # With return
 
@@ -47,6 +52,40 @@ static func setup() -> void:
 			recipe.add_ingredient(InitItems.SCROLL_CREATION, 1)
 			return recipe
 	)
+
+	ENCHANT_DEVOUR = RECIPES.add_entry(
+		'enchant_devour',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.CONSERVATION.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_DESTRUCTION, 1)
+			recipe.add_ingredient(InitItems.SCROLL_SUBMISSION, 1)
+			return recipe
+	)
+
+	ENCHANT_FREEZING_AIR = RECIPES.add_entry(
+		'enchant_freezing_air',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.CONSERVATION.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_SUBMISSION, 1)
+			recipe.add_ingredient(InitItems.SCROLL_EFEMERALITY, 1)
+			return recipe
+	)
+
+	ENCHANT_IGNITION = RECIPES.add_entry(
+		'enchant_ignition',
+		func():
+			var recipe = EnchantRecipe.new()
+			recipe.set_workstation(EnchantRecipe.WorkstationType.STAR_FORGE)
+			recipe.enchantment = InitEnchantments.CONSERVATION.get_registered()
+			recipe.add_ingredient(InitItems.SCROLL_DESTRUCTION, 1)
+			recipe.add_ingredient(InitItems.SCROLL_EFEMERALITY, 1)
+			return recipe
+	)
+
 	# Normal
 	BOILED_EGG = RECIPES.add_entry(
 		'boiled_egg',
