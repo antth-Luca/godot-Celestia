@@ -2,6 +2,8 @@ extends Resource
 class_name DamageManager
 
 const K: float = 15
+const DAMAGE_TO_STRUCTURES: float = 1
+const NOT_TOOL_DAM_FACTOR: float = 1
 
 static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 	var hit: HitData = hitbox_parent.get_hit_data()
@@ -12,9 +14,8 @@ static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 		var attacker_stats = hit.attacker.entity_data.stats
 		var target_stats: PropertyManager = target.entity_data.stats
 		var final_def = compute_defense(hit.primitive_type, hit.source, target, target_stats, attacker_stats)
-		var brute_dam = get_brute_damage(hit.tool, attacker_stats, target.entity_data.stats)
-		var compute_dam = compute_damage(hit.specialized_type, brute_dam, target, final_def)
-		var final_dam = compute_crit(hit, compute_dam)
+		var brute_dam = get_brute_damage(hit.tool, attacker_stats, target_stats)
+		var final_dam = compute_crit(hit, compute_damage(hit.specialized_type, brute_dam, target_stats, target.effect_receiver, final_def))
 		target.hurt(final_dam, hit, hitbox_parent)
 		if hit.tool:
 			for enchant in hit.tool.enchantments:
@@ -26,7 +27,7 @@ static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 static func try_apply_structure(hitbox_parent: Variant, target: BaseStructure) -> void:
 	var hit: HitData = hitbox_parent.get_hit_data()
 	if DamageRules.can_damage_structure(hit, target):
-		target.damage(1, hit, hitbox_parent)
+		target.damage(DAMAGE_TO_STRUCTURES, hit, hitbox_parent)
 
 
 static func try_apply_spell(hitbox_parent: Variant, target: LivingEntity) -> void:
@@ -36,7 +37,7 @@ static func try_apply_spell(hitbox_parent: Variant, target: LivingEntity) -> voi
 		var target_stats: PropertyManager = target.entity_data.stats
 		var final_def = compute_defense(hit.primitive_type, hit.source, target, target_stats)
 		var brute_dam = get_brute_damage(hit.tool, attacker_stats, target_stats)
-		var final_dam = compute_damage(hit.specialized_type, brute_dam, target, final_def)
+		var final_dam = compute_damage(hit.specialized_type, brute_dam, target_stats, target.effect_receiver, final_def)
 		target.hurt(final_dam, hit, hitbox_parent)
 		var attacker_life_steal = attacker_stats.get_property(InitPropProviders.LIFE_STEAL).get_life_steal()
 		if attacker_life_steal > 0: hit.attacker.heal(final_dam * attacker_life_steal)
@@ -48,7 +49,7 @@ static func try_apply_effect(effect: BaseEffect, target: LivingEntity) -> void:
 		var target_stats: PropertyManager = target.entity_data.stats
 		var final_def = compute_defense(hit.primitive_type, hit.source, target, target_stats)
 		var brute_dam = effect.get_brute_damage(target_stats.get_property(InitPropProviders.HEALTH))
-		var final_dam = compute_damage(hit.specialized_type, brute_dam, target, final_def)
+		var final_dam = compute_damage(hit.specialized_type, brute_dam, target_stats, target.effect_receiver, final_def)
 		target.hurt(final_dam, hit, effect)
 
 
@@ -58,14 +59,13 @@ static func compute_defense(hit_primitive_type: HitData.PRIMITIVE_TYPE, hit_sour
 	var target_armor_slots: Array[BaseSlot]
 	if target is Player: target_armor_slots = target.inventory.get_armor()
 	if hit_source in [HitData.SOURCE.SPELL, HitData.SOURCE.EFFECT]:
-		var brute_def: float = target_stats.get_property(InitPropProviders.RESISTANCE).get_resistance()
+		calc_def = target_stats.get_property(InitPropProviders.RESISTANCE).get_resistance()
 		if not target_armor_slots.is_empty():
 			for slot in target_armor_slots:
 				var slot_stack: ItemStack = slot.stack
 				if slot_stack.is_empty(): continue
 				for enchant in slot_stack.item.enchantments:
-					brute_def += enchant.get_additional_resistance()
-		calc_def = brute_def
+					calc_def += enchant.get_additional_resistance()
 	else:
 		var brute_def: float = target_stats.get_property(InitPropProviders.ARMOR).get_armor() + target_stats.get_property(InitPropProviders.RESISTANCE).get_resistance()
 		if not target_armor_slots.is_empty():
@@ -83,7 +83,7 @@ static func compute_defense(hit_primitive_type: HitData.PRIMITIVE_TYPE, hit_sour
 static func get_brute_damage(hit_tool: BaseItem, attacker_stats: PropertyManager, target_stats: PropertyManager) -> float:
 	var damage_factor: float
 	if not hit_tool:
-		damage_factor = 1
+		damage_factor = NOT_TOOL_DAM_FACTOR
 	else:
 		damage_factor = hit_tool.damage_factor
 		for enchant in hit_tool.enchantments:
@@ -91,13 +91,12 @@ static func get_brute_damage(hit_tool: BaseItem, attacker_stats: PropertyManager
 	return attacker_stats.get_property(InitPropProviders.FORCE).get_force() * damage_factor
 
 
-static func compute_damage(hit_specialized_type: HitData.SPECIALIZED_TYPE, brute_dam: float, target: LivingEntity, calc_def: float) -> float:
-	var calc_dam = brute_dam - (brute_dam * target.entity_data.stats.get_property(InitPropProviders.DAMAGE_REDUCTION).get_dam_reduction())
+static func compute_damage(hit_specialized_type: HitData.SPECIALIZED_TYPE, brute_dam: float, target_stats: PropertyManager, target_effect_receiver: EffectReceiver, calc_def: float) -> float:
+	var calc_dam = brute_dam - brute_dam * target_stats.get_property(InitPropProviders.DAMAGE_REDUCTION).get_dam_reduction()
 	if hit_specialized_type == HitData.SPECIALIZED_TYPE.ELETRIC:
-		var electrocute_effect: ElectrocuteEffect = InitEffects.ELECTROCUTE.get_registered()
-		if target.effect_receiver.get_effect(electrocute_effect.id) != -1:
-			calc_dam *= electrocute_effect.ELETRIC_DAMAGE_MODIFIER
-	if calc_def >= 0: return calc_dam * (1 / (1 + calc_def / K))
+		if target_effect_receiver.get_effect(InitEffects.ELECTROCUTE.location) != -1:
+			calc_dam *= ElectrocuteEffect.ELETRIC_DAMAGE_MODIFIER
+	if not calc_def < 0: return calc_dam * (1 / (1 + calc_def / K))
 	return calc_dam * (2 - (1 / (1 - calc_def / K)))
 
 
