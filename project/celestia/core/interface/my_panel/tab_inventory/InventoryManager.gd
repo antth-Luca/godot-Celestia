@@ -92,6 +92,14 @@ func get_ammo_available() -> Array[BaseSlot]:
 	)
 
 # MAIN
+func has_relic(comp_relic: BaseRelic) -> bool:
+	var relic_slots: Array[BaseSlot] = get_relics()
+	for slot in relic_slots:
+		if comp_relic.id.get_string() == slot.stack.item.id.get_string():
+			return true
+	return false
+
+
 func update_all_inventory() -> void:
 	# Updates EACH of the slots in your inventory by emptying or rendering them
 	for index in range(TOTAL_SLOTS):
