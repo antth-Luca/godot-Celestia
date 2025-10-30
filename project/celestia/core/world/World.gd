@@ -47,21 +47,19 @@ func _ready() -> void:
 	var chicken: Chicken = InitCreatures.CHICKEN.get_registered()
 	get_tree().current_scene.add_child(chicken)
 	chicken.global_position = Vector2(392, 269)
-	Vector2(483, 233)
 	# Spawn Bush
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.BUSH.get_registered(),
 		Vector2(487, 117)
 	)
 	# Spawn Stick
-	var sword = InitWeapons.IRON_SWORD.get_registered()
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(sword),
+		ItemStack.new(InitArmors.IRON_CHESTPLATE.get_registered()),
 		Vector2(169, 165)
 	)
 	# Spawn Iron
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitAmmos.ARROW.get_registered()),
+		ItemStack.new(InitArmors.COPPER_CHESTPLATE.get_registered()),
 		Vector2(169, 180)
 	)
 	# Spawn Papyrus

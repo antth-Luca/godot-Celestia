@@ -64,7 +64,7 @@ func get_backpack() -> Array[BaseSlot]:
 
 
 func get_armor(slot_type: String = '') -> Array[BaseSlot]:
-	if slot_type == '' or not slot_type in BaseSlot.Type:
+	if slot_type == '':
 		return inventory.slice(
 			ARMOR_SLOTS[BaseSlot.Type.HEAD],
 			ARMOR_SLOTS[BaseSlot.Type.FEET] + 1

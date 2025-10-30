@@ -59,22 +59,21 @@ func on_unequip(slot: BaseSlot, player: Player) -> void:
 
 
 func use(player: Player) -> void:
-	for c in range(InventoryManager.ARMOR_SLOTS[BaseSlot.Type.HEAD],
-			InventoryManager.ARMOR_SLOTS[BaseSlot.Type.FEET] + 1):
-		var slot: BaseSlot = player.inventory.get_slot(c)
-		var armor_slot_type: String = get_compatible_slot()
-		if slot.slot_type == armor_slot_type:
-			# TODO: Corrigir tudo aqui...
-			var equipped_stack: ItemStack = player.inventory.inventory[c].stack
-			if equipped_stack.is_empty():
-				player.inventory.inventory[c].stack = player.inventory.inventory[0].stack
-				self.on_equip(slot, player)
-				player.inventory.inventory[0].stack = equipped_stack
-			elif equipped_stack.item.can_unequip(slot) and can_equip(slot):
-				equipped_stack.item.on_unequip(slot, player)
-				player.inventory.inventory[c] = player.inventory.inventory[0]
-				self.on_equip(slot, player)
-				player.inventory.inventory[0].stack = equipped_stack
+	var target_slot: BaseSlot = player.inventory.get_armor(get_compatible_slot()).front()
+	var hand_slot: BaseSlot = player.inventory.get_hand()
+	if target_slot.stack.is_empty():
+		if can_equip(target_slot):
+			hand_slot.stack.item.on_unequip(hand_slot, player)
+			target_slot.stack = hand_slot.stack
+			target_slot.stack.item.on_equip(target_slot, player)
+			hand_slot.stack = ItemStack.EMPTY
+	else:
+		if target_slot.stack.item.can_unequip(target_slot) and can_equip(target_slot):
+			var temp: ItemStack = target_slot.stack
+			temp.item.on_unequip(target_slot, player)
+			target_slot.stack = hand_slot.stack
+			hand_slot.stack.item.on_equip(target_slot, player)
+			hand_slot.stack = temp
 
 # HANDLERS
 func get_compatible_slot() -> String:

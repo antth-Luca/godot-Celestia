@@ -193,7 +193,7 @@ func _handle_right_click_on_slot():
 			temp.item.on_unequip(self, player)
 			stack = cursor_stack
 			cursor_item.on_equip(self, player)
-			cursor.setack = temp
+			cursor.stack = temp
 
 	# If the cursor is empty, clear it.
 	if cursor.stack.is_empty(): cursor.clear_cursor()
