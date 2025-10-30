@@ -6,8 +6,8 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 ## Licença
 
-- [Licença personalizada - PT-BR](https://github.com/antth-Luca/godot-Celestia/blob/main/LICENSE-pt-br)
-- [Custom license - EN-US](https://github.com/antth-Luca/godot-Celestia/blob/main/LICENSE)
+- [Licença personalizada - PT-BR](https://github.com/antth-Luca/godot-Celestia/blob/alpha/LICENSE-pt-br)
+- [Custom license - EN-US](https://github.com/antth-Luca/godot-Celestia/blob/alpha/LICENSE)
 
 ## Versões:
 
@@ -31,7 +31,6 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 #### Alpha
 
-- [ ] Sistema de encantamentos para itens;
 - [ ] Sistema de relíquias (atributos e passivas únicas);
 - [ ] Sistema de cultivo;
 - [ ] Adição de efeitos sonoros;
@@ -44,7 +43,8 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 - [x] Mudança no uso e interação de itens e estruturas;
 - [x] Item de combate à distância: Arco;
 - [x] Movimento de rolagem do Jogador/Player;
-- [x] Sistema de efeitos para entidades.
+- [x] Sistema de efeitos para entidades;
+- [x] Sistema de encantamentos para itens.
 
 #### Beta
 
