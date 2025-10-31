@@ -10,7 +10,7 @@ const COLOR: Dictionary =  {
 
 # MAIN
 func initialize(value: float, hit_primitive_type: int, is_crit: bool) -> void:
-	$NumberLabel.text = str(value)
+	$NumberLabel.text = '%.2f' % value
 	match hit_primitive_type:
 		HitData.PRIMITIVE_TYPE.PHYSIC:
 			self.modulate = COLOR.PHYSIC_DAM_COLOR

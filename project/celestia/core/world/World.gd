@@ -1,4 +1,5 @@
 extends Node2D
+class_name World
 
 var config := {}
 
@@ -67,3 +68,8 @@ func _ready() -> void:
 		ItemStack.new(InitItems.PAPYRUS.get_registered()),
 		Vector2(169, 195)
 	)
+
+# MAIN
+func get_bodies_in_range(global_pos: Vector2, range: float) -> Array:
+	get_world_2d()
+	return []
