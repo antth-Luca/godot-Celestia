@@ -55,12 +55,12 @@ func _ready() -> void:
 	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitArmors.IRON_CHESTPLATE.get_registered()),
+		ItemStack.new(InitFuels.STICK.get_registered()),
 		Vector2(169, 165)
 	)
 	# Spawn Iron
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitArmors.COPPER_CHESTPLATE.get_registered()),
+		ItemStack.new(InitItems.IRON_INGOT.get_registered()),
 		Vector2(169, 180)
 	)
 	# Spawn Papyrus
@@ -70,6 +70,6 @@ func _ready() -> void:
 	)
 
 # MAIN
-func get_bodies_in_range(global_pos: Vector2, range: float) -> Array:
-	get_world_2d()
+func get_bodies_in_range(_global_pos: Vector2, _range_search: float) -> Array:
+	#get_world_2d()
 	return []
