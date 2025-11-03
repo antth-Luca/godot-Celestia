@@ -8,6 +8,7 @@ func _init() -> void:
 	entity_data = EntityData.new(
 		EntityData.FACTION_MASK.MONSTER,
 		PropertyManager.create_manager({
+			InitPropProviders.ELETRIC_DAMAGE_MODIFIER: 1,
 			InitPropProviders.HEAL_MODIFIER: 1,
 			InitPropProviders.HEALTH: 80,
 			InitPropProviders.ARMOR: 0,

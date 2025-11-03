@@ -8,6 +8,7 @@ static var COOLDOWN_REDUCTION: DeferredHolder
 static var CRITICAL_STRIKE: DeferredHolder
 static var DAMAGE_REDUCTION: DeferredHolder
 static var DEFENSE_REDUCTION: DeferredHolder
+static var ELETRIC_DAMAGE_MODIFIER: DeferredHolder
 static var FORCE: DeferredHolder
 static var HEAL_MODIFIER: DeferredHolder
 static var HEALTH: DeferredHolder
@@ -48,6 +49,10 @@ static func setup() -> void:
 
 	DEFENSE_REDUCTION = PROVIDERS.add_entry(
 		'defense_reduction', func(): return DefenseReductionProvider.new()
+	)
+
+	ELETRIC_DAMAGE_MODIFIER = PROVIDERS.add_entry(
+		'eletric_damage_modifier', func(): return EletricDamageModifierProvider.new()
 	)
 
 	FORCE = PROVIDERS.add_entry(
