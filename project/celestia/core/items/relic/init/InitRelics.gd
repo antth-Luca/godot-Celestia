@@ -7,6 +7,7 @@ static var BLOOD_ORB: DeferredHolder
 static var CLAWED_GLOVE: DeferredHolder
 static var COIN_OF_BABYLON: DeferredHolder
 static var COLLECTORS_GLOVE: DeferredHolder
+static var COSMIC_FOCUS: DeferredHolder
 static var EXPLORERS_KIT: DeferredHolder
 static var EYE_OF_THE_STORM: DeferredHolder
 static var PALE_ROSE: DeferredHolder
@@ -38,6 +39,11 @@ static func setup() -> void:
 	COLLECTORS_GLOVE = RELICS.add_entry(
 		'collectors_glove',
 		func(): return CollectorsGloveRelic.new()
+	)
+
+	COSMIC_FOCUS = RELICS.add_entry(
+		'cosmic_focus',
+		func(): return CosmicFocusRelic.new()
 	)
 
 	EXPLORERS_KIT = RELICS.add_entry(
