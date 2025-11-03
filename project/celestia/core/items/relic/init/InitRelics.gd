@@ -4,6 +4,7 @@ class_name InitRelics
 static var RELICS: DeferredRegister
 # Relics
 static var COIN_OF_BABYLON: DeferredHolder
+static var COLLECTORS_GLOVE: DeferredHolder
 static var EXPLORERS_KIT: DeferredHolder
 static var BLOOD_ORB: DeferredHolder
 static var VITAL_CORE: DeferredHolder
@@ -19,6 +20,11 @@ static func setup() -> void:
 	COIN_OF_BABYLON = RELICS.add_entry(
 		'coin_of_babylon',
 		func(): return CoinOfBabylonRelic.new()
+	)
+
+	COLLECTORS_GLOVE = RELICS.add_entry(
+		'collectors_glove',
+		func(): return CollectorsGloveRelic.new()
 	)
 
 	EXPLORERS_KIT = RELICS.add_entry(
