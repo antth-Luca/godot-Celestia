@@ -68,7 +68,6 @@ func _ready() -> void:
 		ItemStack.new(InitItems.PAPYRUS.get_registered()),
 		Vector2(169, 195)
 	)
-	print_debug(get_living_entites_in(Vector2(392, 269), 10))
 
 # MAIN
 func get_living_entites_in(global_pos: Vector2, range_search: float) -> Array:
@@ -77,11 +76,9 @@ func get_living_entites_in(global_pos: Vector2, range_search: float) -> Array:
 	var shape = CircleShape2D.new()
 	shape.radius = range_search
 	# Define parâmetros da consulta
-	var query = PhysicsShapeQueryParameters2D.new()
+	var query := PhysicsShapeQueryParameters2D.new()
 	query.shape = shape
 	query.transform = Transform2D(0, global_pos)
-	query.collide_with_areas = true
-	query.collide_with_bodies = true
 	# Executa a detecção
 	var results = space_state.intersect_shape(query)
 	# Filtra apenas CharacterBody2D (ou subclasses)
