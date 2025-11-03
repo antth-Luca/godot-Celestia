@@ -5,6 +5,7 @@ static var RELICS: DeferredRegister
 # Relics
 static var EXPLORERS_KIT: DeferredHolder
 static var BLOOD_ORB: DeferredHolder
+static var VITAL_CORE: DeferredHolder
 
 
 static func setup() -> void:
@@ -22,6 +23,11 @@ static func setup() -> void:
 	BLOOD_ORB = RELICS.add_entry(
 		'blood_orb',
 		func(): return BloodOrbRelic.new()
+	)
+
+	VITAL_CORE = RELICS.add_entry(
+		'vital_core',
+		func(): return VitalCoreRelic.new()
 	)
 
 	RELICS.register()

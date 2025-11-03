@@ -25,6 +25,5 @@ func post_damage(hit: HitData, target: LivingEntity, _final_damage: float) -> vo
 	var target_hp_prop: HealthProperty = target.entity_data.stats.get_property(InitPropProviders.HEALTH)
 	var current_target_hp: float = target_hp_prop.get_health()
 	if not current_target_hp > target_hp_prop.get_max_health() * HP_CEIL_TO_KILL:
-		print_debug('Abateu e restaurou')
 		target.die(hit.attacker)
 		hit.attacker.heal(current_target_hp)
