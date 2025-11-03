@@ -31,6 +31,7 @@ func _ready():
 	InitArmors.setup()
 	InitWeapons.setup()
 	InitTools.setup()
+	InitRelics.setup()
 	InitRecipes.setup()
 	InitLootBoxes.setup()
 	InitPropProviders.setup()
