@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccbbl06sslf8r"
-path="res://.godot/imported/clowed_glove.png-a0f752ce93980d28d8c5449c018e8232.ctex"
+uid="uid://3df0y1mhqro7"
+path="res://.godot/imported/clawed_glove.png-50b1c15ff8240b19d15bba989a4631b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/celestia/textures/items/clowed_glove.png"
-dest_files=["res://.godot/imported/clowed_glove.png-a0f752ce93980d28d8c5449c018e8232.ctex"]
+source_file="res://assets/celestia/textures/items/clawed_glove.png"
+dest_files=["res://.godot/imported/clawed_glove.png-50b1c15ff8240b19d15bba989a4631b3.ctex"]
 
 [params]
 
