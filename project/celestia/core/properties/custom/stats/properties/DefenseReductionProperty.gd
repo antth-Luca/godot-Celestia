@@ -1,7 +1,7 @@
 extends BaseProperty
 class_name DefenseReductionProperty
 
-const MAX_DEF_R: int = 4
+const MAX_DEF_R: float = .4
 var def_r: float
 const MIN_DEF_R: int = 0
 
@@ -15,7 +15,7 @@ func get_def_reduction() -> float:
 
 
 func get_format_def_reduction() -> String:
-	return str(int(def_r)) + '%'
+	return str(int(def_r * 100)) + '%'
 
 
 func set_def_reduction(newDefenseReduction) -> void:

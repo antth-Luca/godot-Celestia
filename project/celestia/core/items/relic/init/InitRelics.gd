@@ -3,11 +3,12 @@ class_name InitRelics
 
 static var RELICS: DeferredRegister
 # Relics
+static var BLOOD_ORB: DeferredHolder
 static var CLAWED_GLOVE: DeferredHolder
 static var COIN_OF_BABYLON: DeferredHolder
 static var COLLECTORS_GLOVE: DeferredHolder
 static var EXPLORERS_KIT: DeferredHolder
-static var BLOOD_ORB: DeferredHolder
+static var PALE_ROSE: DeferredHolder
 static var VITAL_CORE: DeferredHolder
 
 
@@ -18,6 +19,11 @@ static func setup() -> void:
 	)
 
 	# Relics
+	BLOOD_ORB = RELICS.add_entry(
+		'blood_orb',
+		func(): return BloodOrbRelic.new()
+	)
+
 	CLAWED_GLOVE = RELICS.add_entry(
 		'clawed_glove',
 		func(): return ClawedGloveRelic.new()
@@ -38,9 +44,9 @@ static func setup() -> void:
 		func(): return ExplorersKitRelic.new()
 	)
 
-	BLOOD_ORB = RELICS.add_entry(
-		'blood_orb',
-		func(): return BloodOrbRelic.new()
+	PALE_ROSE = RELICS.add_entry(
+		'pale_rose',
+		func(): return PaleRoseRelic.new()
 	)
 
 	VITAL_CORE = RELICS.add_entry(

@@ -1,7 +1,7 @@
 extends BaseProperty
 class_name DamageReductionProperty
 
-const MAX_DAM_R: int = 4
+const MAX_DAM_R: float = .4
 var dam_r: float
 const MIN_DAM_R: int = 0
 
@@ -15,7 +15,7 @@ func get_dam_reduction() -> float:
 
 
 func get_format_damage_reduction() -> String:
-	return str(int(dam_r)) + '%'
+	return str(int(dam_r * 100)) + '%'
 
 
 func set_dam_reduction(newDamageReduction) -> void:
