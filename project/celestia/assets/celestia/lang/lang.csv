@@ -35,6 +35,7 @@ item.section.slot_destination,Equipped in,Equipado em
 item.section.when_slot,When in,Quando em
 item.section.when_use,When use,Ao usar
 
+item.arcane_lines,Arcane Lines,Linhas Arcanas
 item.arrow,Arrow,Flecha
 item.beef,Beef,Bife
 item.boiled_egg,Boiled Egg,Ovo Cozido
@@ -53,15 +54,22 @@ item.egg,Chicken Egg,Ovo de Galinha
 item.eye_of_the_storm,Eye of the Storm,Olho da Tempestade
 item.explorers_kit,Explorer’s Kit,Kit do Desbravador
 item.gold_ingot,Gold Ingot,Barra de Ouro
+item.heart_of_the_storm,Heart of the Storm,Coração da Tempestade
 item.iron_axe,Iron Axe,Machado de Ferro
 item.iron_chestplate,Iron Chestplate,Couraça de Ferro
 item.iron_ingot,Iron Ingot,Barra de Ferro
 item.iron_pickaxe,Iron Pickaxe,Picareta de Ferro
 item.iron_sword,Iron Sword,Espada de Ferro
+item.jade_chalice,Jade Chalice,Cálice de Jade
+item.lotus_blades,Lotus Blades,Lâminas de Lótus
+item.magma_carapace,Magma Carapace,Carapaça de Magma
 item.meat,Meat,Carne
+item.mechanical_heart,Mechanic Heart,Coração Mecânico
 item.pale_rose,Pale Rose,Rosa Pálida
 item.papyrus,Papyrus,Papiro
+item.perfectionists_glove,Perfectionist’s Glove,Luva do Perfeccionista
 item.plant_fiber,Plant Fiber,Fibra Vegetal
+item.rose_of_jericho,Rose of Jericho,Rosa-de-Jericó
 item.scroll_altruism,Scroll of Altruism,Pergaminho da Altruísmo
 item.scroll_ambition,Scroll of Ambition,Pergaminho da Ambição
 item.scroll_ascendance,Scroll of Ascendance,Pergaminho da Ascendência
@@ -76,11 +84,14 @@ item.scroll_protection,Scroll of Protection,Pergaminho da Proteção
 item.scroll_submission,Scroll of Submission,Pergaminho da Submissão
 item.scroll_truth,Scroll of Truth,Pergaminho da Verdade
 item.scroll_war,Scroll of War,Pergaminho da Guerra
+item.scroll_of_harmony,Scroll of Harmony,Pergaminho da Harmonia
+item.shattered_aegis,Shattered Aegis,Égide Fragmentada
 item.stardust,Stardust,Pó de Estrela
 item.stick,Stick,Graveto
 item.stone,Stone,Pedra
 item.unclean_meat,Unclean Meat,Carne Impura
 item.vital_core,Vital Core,Núcleo Vital
+item.winged_socks,Winged Socks,Meias Aladas
 
 item.slot.ammo,AMMO,Munição
 item.slot.chestplate,Chestplate,Peitoral
