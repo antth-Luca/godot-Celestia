@@ -1,7 +1,7 @@
 extends BaseRelic
 class_name BloodOrbRelic
 
-const BUFF_USE_SPEED: float = .10
+const BUFF_USE_SPEED: float = .1
 const BUFF_LIFE_STEAL: float = .15
 const HP_CEIL_TO_KILL: float = .05
 

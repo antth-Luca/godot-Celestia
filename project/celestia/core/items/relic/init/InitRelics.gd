@@ -4,11 +4,13 @@ class_name InitRelics
 static var RELICS: DeferredRegister
 # Relics
 static var ARCANE_LINES: DeferredHolder
+static var ARSENAL_OF_AGES: DeferredHolder
 static var BLOOD_ORB: DeferredHolder
 static var CLAWED_GLOVE: DeferredHolder
 static var COIN_OF_BABYLON: DeferredHolder
 static var COLLECTORS_GLOVE: DeferredHolder
 static var COSMIC_FOCUS: DeferredHolder
+static var CYCLOPS_MASK: DeferredHolder
 static var EXPLORERS_KIT: DeferredHolder
 static var EYE_OF_THE_STORM: DeferredHolder
 static var HEART_OF_THE_STORM: DeferredHolder
@@ -16,6 +18,7 @@ static var JADE_CHALICE: DeferredHolder
 static var LOTUS_BLADES: DeferredHolder
 static var MAGMA_CARAPACE: DeferredHolder
 static var MECHANICAL_HEART: DeferredHolder
+static var ONE_SIDED_PALDRON: DeferredHolder
 static var PALE_ROSE: DeferredHolder
 static var PERFECTIONISTS_GLOVE: DeferredHolder
 static var ROSE_OF_JERICHO: DeferredHolder
@@ -35,6 +38,11 @@ static func setup() -> void:
 	ARCANE_LINES = RELICS.add_entry(
 		'arcane_lines',
 		func(): return ArcaneLinesRelic.new()
+	)
+
+	ARSENAL_OF_AGES = RELICS.add_entry(
+		'arsenal_of_ages',
+		func(): return ArsenalOfAgesRelic.new()
 	)
 
 	BLOOD_ORB = RELICS.add_entry(
@@ -60,6 +68,11 @@ static func setup() -> void:
 	COSMIC_FOCUS = RELICS.add_entry(
 		'cosmic_focus',
 		func(): return CosmicFocusRelic.new()
+	)
+
+	CYCLOPS_MASK = RELICS.add_entry(
+		'cyclops_mask',
+		func(): return CyclopsMaskRelic.new()
 	)
 
 	EXPLORERS_KIT = RELICS.add_entry(
@@ -95,6 +108,11 @@ static func setup() -> void:
 	MECHANICAL_HEART = RELICS.add_entry(
 		'mechanical_heart',
 		func(): return MechanicHeartRelic.new()
+	)
+
+	ONE_SIDED_PALDRON = RELICS.add_entry(
+		'one_sided_paldron',
+		func(): return OneSidedPaldronRelic.new()
 	)
 
 	PALE_ROSE = RELICS.add_entry(
