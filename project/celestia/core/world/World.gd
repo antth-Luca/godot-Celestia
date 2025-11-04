@@ -55,7 +55,7 @@ func _ready() -> void:
 	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitRelics.ROSE_OF_JERICHO.get_registered()),
+		ItemStack.new(InitRelics.HEART_OF_THE_STORM.get_registered()),
 		Vector2(169, 165)
 	)
 	# Spawn Iron

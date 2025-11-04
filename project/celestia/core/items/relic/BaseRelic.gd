@@ -66,4 +66,4 @@ func post_hurt(_hit: HitData, _target: LivingEntity, _final_damage: float) -> vo
 func post_heal(_healed_entity: LivingEntity, _heal_value: float) -> void: pass
 
 ## Called by Player#add_survivor_exp, immediately after experience is added.
-func post_surv_exp_adde(_added_entity: LivingEntity, _exp_value: float) -> void: pass
+func post_surv_exp_added(_added_entity: LivingEntity, _exp_value: float) -> void: pass
