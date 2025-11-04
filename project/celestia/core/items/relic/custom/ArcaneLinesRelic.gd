@@ -12,6 +12,7 @@ var owner_player: Player
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return
 	owner_player = player
+	last_max_mana = 0
 	var player_mp_prop: ManaProperty = player.entity_data.stats.get_property(InitPropProviders.MANA)
 	player_mp_prop.connect('max_mana_changed', Callable(self, '_on_max_mana_changed'))
 	player_mp_prop.add_max_mana(BUFF_MANA)
@@ -28,7 +29,6 @@ func on_unequip(slot: BaseSlot, player: Player):
 
 # HANDLERS
 func _on_max_mana_changed(newMaxMP: float) -> void:
-	print_debug(newMaxMP)
 	if last_max_mana == newMaxMP: return
 	var player_force_prop: ForceProperty = owner_player.entity_data.stats.get_property(InitPropProviders.FORCE)
 	var difference: float
