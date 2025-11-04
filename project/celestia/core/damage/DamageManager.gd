@@ -21,10 +21,11 @@ static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 			for enchant in hit.tool.enchantments:
 				enchant.post_damage(hit, target, final_dam)
 		if hit.attacker is Player:
-			var relic_slots: Array[BaseSlot] = hit.attacker.inventory.get_relics()
-			for slot in relic_slots:
-				var relic: BaseRelic = slot.stack.item
-				if relic: relic.post_damage(hit, target, final_dam)
+			var target_relic_slots: Array[BaseSlot] = hit.attacker.inventory.get_relics()
+			for slot in target_relic_slots:
+				var relic_stack: ItemStack = slot.stack
+				if relic_stack.is_empty(): continue
+				relic_stack.item.post_damage(hit, target, final_dam)
 		var attacker_life_steal = attacker_stats.get_property(InitPropProviders.LIFE_STEAL).get_life_steal()
 		if attacker_life_steal > 0: hit.attacker.heal(final_dam * attacker_life_steal)
 

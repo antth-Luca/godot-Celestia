@@ -117,6 +117,11 @@ func _physics_process(_delta: float) -> void:
 # Main
 func heal(heal_value: float) -> void:
 	super.heal(heal_value)
+	var target_relic_slots: Array[BaseSlot] = inventory.get_relics()
+	for slot in target_relic_slots:
+		var relic_stack: ItemStack = slot.stack
+		if relic_stack.is_empty(): continue
+		relic_stack.item.post_heal(self, heal_value)
 	var remaining = heal_value
 	for c in 3:
 		if remaining <= 0: break
@@ -132,11 +137,15 @@ func hurt(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 	super.hurt(final_dam, hit, hitbox_parent)
 	consume_hungry(HURT_HUNGRY)
 	var target_armor_slots: Array[BaseSlot] = inventory.get_armor()
-	if not target_armor_slots.is_empty():
-		for slot in target_armor_slots:
-			var slot_stack: ItemStack = slot.stack
-			if slot_stack.is_empty(): continue
-			slot_stack.item.consume_durability(1, slot)
+	for slot in target_armor_slots:
+		var slot_stack: ItemStack = slot.stack
+		if slot_stack.is_empty(): continue
+		slot_stack.item.consume_durability(1, slot)
+	var target_relic_slots: Array[BaseSlot] = inventory.get_relics()
+	for slot in target_relic_slots:
+		var relic_stack: ItemStack = slot.stack
+		if relic_stack.is_empty(): continue
+		relic_stack.item.post_hurt(hit, self, final_dam)
 	var third_part = final_dam / 3.0
 	PASSIVE_REGEN_VALUES[0] += third_part
 	PASSIVE_REGEN_VALUES[1] += third_part

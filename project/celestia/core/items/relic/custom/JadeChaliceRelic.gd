@@ -4,6 +4,8 @@ class_name JadeChaliceRelic
 const BUFF_HEALTH: float = 20
 const BUFF_RESISTANCE: float = 2
 
+var soul_fragment: float
+
 # SUPER
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
@@ -24,4 +26,14 @@ func on_unequip(slot: BaseSlot, player: Player):
 	player_stats.get_property(InitPropProviders.RESISTANCE).sub_resistance(BUFF_RESISTANCE)
 
 # Hooks
-# TODO: Add passiva.
+func post_hurt(_hit: HitData, _target: LivingEntity, _final_damage: float) -> void:
+	if soul_fragment < .15: soul_fragment += .01
+
+
+func post_heal(healed_entity: LivingEntity, _heal_value: float) -> void:
+	if not soul_fragment > 0: return
+	var healed_hp_prop: HealthProperty = healed_entity.entity_data.stats.get_property(InitPropProviders.HEALTH)
+	var damaged_life: float = healed_hp_prop.get_max_health() - healed_hp_prop.get_health()
+	if not damaged_life > 0: return
+	healed_entity.heal(damaged_life * soul_fragment)
+	soul_fragment = 0
