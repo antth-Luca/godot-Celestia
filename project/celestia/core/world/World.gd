@@ -55,12 +55,12 @@ func _ready() -> void:
 	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitRelics.ARCANE_LINES.get_registered()),
+		ItemStack.new(InitRelics.PERFECTIONISTS_GLOVE.get_registered()),
 		Vector2(169, 165)
 	)
 	# Spawn Iron
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitRelics.CYCLOPS_MASK.get_registered()),
+		ItemStack.new(InitWeapons.IRON_SWORD.get_registered()),
 		Vector2(169, 180)
 	)
 	# Spawn Papyrus

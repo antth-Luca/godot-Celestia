@@ -85,12 +85,25 @@ func _ready():
 	hand.set_item_hand_texture(inventory.get_hand().stack.item)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	light_point.energy = remap(TimeManager.time_curve_value, 0, 1, 1, 0)
+	# Activating Tick for equipped relics
+	var relic_slots: Array[BaseSlot] = inventory.get_relics()
+	for slot in relic_slots:
+		var relic_stack: ItemStack = slot.stack
+		if relic_stack.is_empty(): continue
+		relic_stack.item.on_tick(self, delta)
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if is_sleeping or entity_data.is_dead: return
+	# Activating Physics Tick for equipped relics
+	var relic_slots: Array[BaseSlot] = inventory.get_relics()
+	for slot in relic_slots:
+		var relic_stack: ItemStack = slot.stack
+		if relic_stack.is_empty(): continue
+		relic_stack.item.on_physic_tick(self, delta)
+	# Move and slide
 	if knockback_vector == Vector2.ZERO:
 		# Get the input direction and handle the movement/deceleration.
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
