@@ -14,8 +14,12 @@ func _init(effect_to_apply: DeferredHolder, effect_duration: float = -1, initial
 	chance = chance_to_apply
 
 # MAIN
-func get_effect() -> BaseEffect:
+func get_effect(target_entity: LivingEntity = null) -> BaseEffect:
 	var instance: BaseEffect = effect.get_registered()
 	instance.amplifier = initial
-	if not duration < 1: instance.set_time(duration)
+	if not duration < 1:
+		if target_entity:
+			instance.set_time(duration, target_entity)
+		else:
+			instance.set_time(duration)
 	return instance

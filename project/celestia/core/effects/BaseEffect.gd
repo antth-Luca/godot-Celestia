@@ -49,7 +49,7 @@ func _init(max_amplifier_param: int, init_amplifier: int, category_param: Effect
 	set_time(max_effect_duration_param)
 
 # GETTERS AND SETTERS
-func set_time(effect_duration_param: float) -> void:
+func set_time(effect_duration_param: float, _entity: LivingEntity = null) -> void:
 	if not is_instantaneous:
 		effect_duration = min(effect_duration_param, max_effect_duration)
 		effect_timer = Timer.new()

@@ -10,6 +10,7 @@ static var CLAWED_GLOVE: DeferredHolder
 static var COIN_OF_BABYLON: DeferredHolder
 static var COLLECTORS_GLOVE: DeferredHolder
 static var COSMIC_FOCUS: DeferredHolder
+static var CROWN_OF_LUCIDITY: DeferredHolder
 static var CYCLOPS_MASK: DeferredHolder
 static var EXPLORERS_KIT: DeferredHolder
 static var EYE_OF_THE_STORM: DeferredHolder
@@ -68,6 +69,11 @@ static func setup() -> void:
 	COSMIC_FOCUS = RELICS.add_entry(
 		'cosmic_focus',
 		func(): return CosmicFocusRelic.new()
+	)
+
+	CROWN_OF_LUCIDITY = RELICS.add_entry(
+		'crown_of_lucidity',
+		func(): return CrownOfLucidityRelic.new()
 	)
 
 	CYCLOPS_MASK = RELICS.add_entry(

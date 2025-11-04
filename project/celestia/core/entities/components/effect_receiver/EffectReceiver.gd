@@ -28,7 +28,7 @@ func add_effect(effect_instance: EffectInstance) -> void:
 	if effect_instance.chance != 1 and randf() > effect_instance.chance: return
 	var pos: int = get_effect(effect_instance.effect.location)
 	if pos < 0:
-		var effect: BaseEffect = effect_instance.get_effect()
+		var effect: BaseEffect = effect_instance.get_effect(entity)
 		if effect.can_add(self):
 			active_effects.append(effect)
 			effect.effect_finished.connect(remove_effect)

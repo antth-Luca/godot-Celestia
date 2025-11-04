@@ -24,6 +24,7 @@ func _init() -> void:
 		PropertyManager.create_manager({
 			InitPropProviders.SURVIVOR_LEVEL: 1,
 			InitPropProviders.ELETRIC_DAMAGE_MODIFIER: 1,
+			InitPropProviders.MOBILITY_MODIFIER: 1,
 			InitPropProviders.HEAL_MODIFIER: 1,
 			InitPropProviders.HEALTH: 100,
 			InitPropProviders.ARMOR: 0,
