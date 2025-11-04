@@ -55,7 +55,7 @@ func _ready() -> void:
 	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitRelics.JADE_CHALICE.get_registered()),
+		ItemStack.new(InitRelics.SHATTERED_AEGIS.get_registered()),
 		Vector2(169, 165)
 	)
 	# Spawn Iron

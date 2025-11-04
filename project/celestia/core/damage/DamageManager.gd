@@ -8,24 +8,40 @@ const NOT_TOOL_DAM_FACTOR: float = 1
 static func try_apply(hitbox_parent: Variant, target: LivingEntity) -> void:
 	var hit: HitData = hitbox_parent.get_hit_data()
 	if DamageRules.can_damage(hit, target):
+		# Override HitData with hit tool enchantments
 		if hit.tool:
 			for enchant in hit.tool.enchantments:
 				hit = enchant.override_hitdata(hit, target)
+		# Calculating
 		var attacker_stats = hit.attacker.entity_data.stats
 		var target_stats: PropertyManager = target.entity_data.stats
 		var final_def = compute_defense(hit.primitive_type, hit.source, target, target_stats, attacker_stats)
 		var brute_dam = get_brute_damage(hit.tool, attacker_stats, target_stats)
 		var final_dam = compute_crit(hit, compute_damage(hit.specialized_type, brute_dam, target_stats, final_def))
+		# Checking if it can be damaged, but now with the relics
+		if target is Player:
+			var target_relic_slots: Array[BaseSlot] = target.inventory.get_relics()
+			var can_damage: bool = true
+			for slot in target_relic_slots:
+				var relic_stack: ItemStack = slot.stack
+				if relic_stack.is_empty(): continue
+				can_damage = relic_stack.item.override_can_apply_damage(hit, target, final_dam, can_damage)
+			if not can_damage:
+				target.apply_knockback(hit.attacker.global_position, hit.tool, hit.specialized_type)
+				return
+		# Dealing damage
 		target.hurt(final_dam, hit, hitbox_parent)
+		# Activating enchantments and relics in post damage
 		if hit.tool:
 			for enchant in hit.tool.enchantments:
 				enchant.post_damage(hit, target, final_dam)
 		if hit.attacker is Player:
-			var target_relic_slots: Array[BaseSlot] = hit.attacker.inventory.get_relics()
-			for slot in target_relic_slots:
+			var attacker_relic_slots: Array[BaseSlot] = hit.attacker.inventory.get_relics()
+			for slot in attacker_relic_slots:
 				var relic_stack: ItemStack = slot.stack
 				if relic_stack.is_empty(): continue
 				relic_stack.item.post_damage(hit, target, final_dam)
+		# Attacker life steal
 		var attacker_life_steal = attacker_stats.get_property(InitPropProviders.LIFE_STEAL).get_life_steal()
 		if attacker_life_steal > 0: hit.attacker.heal(final_dam * attacker_life_steal)
 
