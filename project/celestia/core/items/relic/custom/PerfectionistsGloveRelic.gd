@@ -41,7 +41,7 @@ func on_unequip(slot: BaseSlot, player: Player):
 # Hooks
 func on_tick(equipped_entity: LivingEntity, delta: float) -> void:
 	amount_time += delta
-	if amount_time >= MANA_REGEN_COOLDOWN:
+	if not amount_time < MANA_REGEN_COOLDOWN:
 		var entity_mp_prop: ManaProperty = equipped_entity.entity_data.stats.get_property(InitPropProviders.MANA)
 		entity_mp_prop.add_mana(entity_mp_prop.get_max_mana() * MANA_REGEN_PERCENTAGE)
 		amount_time = 0
