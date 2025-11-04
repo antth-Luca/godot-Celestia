@@ -108,7 +108,6 @@ func _physics_process(delta: float) -> void:
 		# Get the input direction and handle the movement/deceleration.
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
-		print_debug(stats_move_speed)
 		if direction != Vector2.ZERO and not entity_data.is_stunned and not entity_data.is_rooted:
 			if Input.is_action_just_pressed('ui_roll') and not is_rolling:
 				is_rolling = true
