@@ -7,7 +7,7 @@ const BUFF_USE_SPEED: float = .1
 const BUFF_MOVE_SPEED_PERCENTAGE: float = .15
 const BUFF_MOVE_SPEED_DURATION: float = 1.5
 const BUFF_MOVE_SPEED_COOLDOWN: float = 6
-const ADD_EFFECT_DISTANCE: int = 60
+const ADD_EFFECT_DISTANCE: int = 150
 
 var amount_time: float
 var is_cooldown: bool = false
@@ -53,6 +53,7 @@ func post_damage(hit: HitData, target: LivingEntity, _final_damage: float) -> vo
 	if is_ready_to_effect:
 		target.effect_receiver.add_effect(EffectInstance.new(InitEffects.STATIC))
 		is_ready_to_effect = false
+		amount_distance = 0
 	if is_cooldown or is_active: return
 	activate_buff_move_speed(hit.attacker)
 

@@ -55,14 +55,11 @@ static func try_apply_structure(hitbox_parent: Variant, target: BaseStructure) -
 static func try_apply_spell(hitbox_parent: Variant, target: LivingEntity) -> void:
 	var hit: HitData = hitbox_parent.get_hit_data()
 	if DamageRules.can_damage_effect(target):
-		var attacker_stats = hit.attacker.entity_data.stats
 		var target_stats: PropertyManager = target.entity_data.stats
 		var final_def = compute_defense(hit.primitive_type, hit.source, target, target_stats)
-		var brute_dam = get_brute_damage(hit.tool, attacker_stats, target_stats)
+		var brute_dam = hitbox_parent.get_brute_damage()
 		var final_dam = compute_damage(hit.specialized_type, brute_dam, target_stats, final_def)
 		target.hurt(final_dam, hit, hitbox_parent)
-		var attacker_life_steal = attacker_stats.get_property(InitPropProviders.LIFE_STEAL).get_life_steal()
-		if attacker_life_steal > 0: hit.attacker.heal(final_dam * attacker_life_steal)
 
 
 static func try_apply_effect(effect: BaseEffect, target: LivingEntity) -> void:

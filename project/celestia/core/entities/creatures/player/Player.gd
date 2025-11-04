@@ -97,18 +97,18 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_sleeping or entity_data.is_dead: return
-	# Activating Physics Tick for equipped relics
-	var relic_slots: Array[BaseSlot] = inventory.get_relics()
-	for slot in relic_slots:
-		var relic_stack: ItemStack = slot.stack
-		if relic_stack.is_empty(): continue
-		relic_stack.item.on_physic_tick(self, delta)
-	# Move and slide
 	if knockback_vector == Vector2.ZERO:
 		# Get the input direction and handle the movement/deceleration.
 		direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
 		if direction != Vector2.ZERO and not entity_data.is_stunned and not entity_data.is_rooted:
+			# Activating Physics Tick for equipped relics
+			var relic_slots: Array[BaseSlot] = inventory.get_relics()
+			for slot in relic_slots:
+				var relic_stack: ItemStack = slot.stack
+				if relic_stack.is_empty(): continue
+				relic_stack.item.on_physic_tick(self, delta)
+			# Move and slide
 			if Input.is_action_just_pressed('ui_roll') and not is_rolling:
 				is_rolling = true
 				entity_data.is_invincible = true

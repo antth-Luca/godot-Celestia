@@ -1,6 +1,8 @@
 extends BaseHit
 class_name LightingHit
 
+const HIT_FORCE: float = 10
+
 # SUPER
 # Godot
 func _ready() -> void:
@@ -32,3 +34,7 @@ func get_hit_data() -> HitData:
 		source_tool,
 		[ EffectInstance.new(InitEffects.ELECTROCUTE, 10) ]
 	)
+
+# GETTERS AND SETTERS
+func get_brute_damage() -> float:
+	return HIT_FORCE
