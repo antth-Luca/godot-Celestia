@@ -23,7 +23,6 @@ static var ONE_SIDED_PALDRON: DeferredHolder
 static var PALE_ROSE: DeferredHolder
 static var PERFECTIONISTS_GLOVE: DeferredHolder
 static var ROSE_OF_JERICHO: DeferredHolder
-static var SCROLL_OF_HARMONY: DeferredHolder
 static var SHATTERED_AEGIS: DeferredHolder
 static var VITAL_CORE: DeferredHolder
 static var WINGED_SOCKS: DeferredHolder
@@ -134,11 +133,6 @@ static func setup() -> void:
 	ROSE_OF_JERICHO = RELICS.add_entry(
 		'rose_of_jericho',
 		func(): return RoseOfJerichoRelic.new()
-	)
-
-	SCROLL_OF_HARMONY = RELICS.add_entry(
-		'scroll_of_harmony',
-		func(): return ScrollOfHarmonyRelic.new()
 	)
 
 	SHATTERED_AEGIS = RELICS.add_entry(
