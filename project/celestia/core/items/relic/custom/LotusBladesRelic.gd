@@ -3,6 +3,7 @@ class_name LotusBladesRelic
 
 const BUFF_ARMOR: float = 1
 const BUFF_PENETRATION: float = 2
+const BLADES_DAMAGE: float = 10
 
 # SUPER
 # Handlers
@@ -20,4 +21,18 @@ func on_unequip(slot: BaseSlot, player: Player):
 	player_stats.get_property(InitPropProviders.PENETRATION).sub_penetration(BUFF_PENETRATION)
 
 # Hooks
-# TODO: Add passiva.
+func post_hurt(_hit: HitData, target: LivingEntity, _final_damage: float) -> void:
+	var entitis_around: Array = target.get_tree().root.get_node('World').get_living_entites_in(target.global_position, 30)
+	for entity in entitis_around:
+		if entity != target: entity.hurt(
+			BLADES_DAMAGE,
+			HitData.new(
+				target,
+				HitData.PRIMITIVE_TYPE.PHYSIC,
+				HitData.SPECIALIZED_TYPE.PIERCE,
+				HitData.SOURCE.SPELL,
+				null,
+				[ EffectInstance.new(InitEffects.BLEED) ]
+			),
+			null 
+		)
