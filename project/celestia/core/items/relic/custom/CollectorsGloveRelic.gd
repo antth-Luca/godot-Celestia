@@ -5,6 +5,11 @@ const BUFF_LUCK: int = 2
 const BUFF_ARMOR: float = 1
 
 # SUPER
+# Godot
+func _init() -> void:
+	super._init()
+	rarity = InitRarities.RARE.get_registered()
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

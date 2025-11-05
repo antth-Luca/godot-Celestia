@@ -5,6 +5,11 @@ const BUFF_CRIT_CHANCE: float = .25
 const BUFF_CRIT_DAMAGE: float = .4
 
 # SUPER
+# Godot
+func _init() -> void:
+	super._init()
+	rarity = InitRarities.UNCOMMON.get_registered()
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

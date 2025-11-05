@@ -17,6 +17,11 @@ var amount_distance: int
 var is_ready_to_effect: bool = false
 
 # SUPER
+# Godot
+func _init() -> void:
+	super._init()
+	rarity = InitRarities.UNCOMMON.get_registered()
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

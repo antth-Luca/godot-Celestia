@@ -5,6 +5,11 @@ const BUFF_HEALTH: float = 40
 const BUFF_REGENERATION: float = .3
 
 # SUPER
+# Godot
+func _init() -> void:
+	super._init()
+	rarity = InitRarities.RARE.get_registered()
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

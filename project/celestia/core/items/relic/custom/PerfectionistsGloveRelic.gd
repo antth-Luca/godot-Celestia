@@ -13,6 +13,11 @@ var owner_player: Player
 var amount_time: float
 
 # SUPER
+# Godot
+func _init() -> void:
+	super._init()
+	rarity = InitRarities.RARE.get_registered()
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

@@ -5,6 +5,11 @@ const BUFF_USE_SPEED: float = .15
 const BUFF_RANGE: float = .12
 
 # SUPER
+# Godot
+func _init() -> void:
+	super._init()
+	rarity = InitRarities.UNCOMMON.get_registered()
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

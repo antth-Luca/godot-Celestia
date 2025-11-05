@@ -6,6 +6,11 @@ const BUFF_LIFE_STEAL: float = .15
 const HP_CEIL_TO_KILL: float = .05
 
 # SUPER
+# Godot
+func _init() -> void:
+	super._init()
+	rarity = InitRarities.UNCOMMON.get_registered()
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

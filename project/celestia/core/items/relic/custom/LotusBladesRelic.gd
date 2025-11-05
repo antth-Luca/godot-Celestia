@@ -6,6 +6,11 @@ const BUFF_PENETRATION: float = 2
 const BLADES_DAMAGE: float = 10
 
 # SUPER
+# Godot
+func _init() -> void:
+	super._init()
+	rarity = InitRarities.RARE.get_registered()
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return
