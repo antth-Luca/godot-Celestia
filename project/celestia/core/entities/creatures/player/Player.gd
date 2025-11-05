@@ -128,13 +128,14 @@ func _physics_process(delta: float) -> void:
 
 # SUPER
 # Main
-func heal(heal_value: float) -> void:
+func heal(heal_value: float, call_post_heal: bool = true) -> void:
 	super.heal(heal_value)
-	var target_relic_slots: Array[BaseSlot] = inventory.get_relics()
-	for slot in target_relic_slots:
-		var relic_stack: ItemStack = slot.stack
-		if relic_stack.is_empty(): continue
-		relic_stack.item.post_heal(self, heal_value)
+	if call_post_heal:
+		var target_relic_slots: Array[BaseSlot] = inventory.get_relics()
+		for slot in target_relic_slots:
+			var relic_stack: ItemStack = slot.stack
+			if relic_stack.is_empty(): continue
+			relic_stack.item.post_heal(self, heal_value)
 	var remaining = heal_value
 	for c in 3:
 		if remaining <= 0: break

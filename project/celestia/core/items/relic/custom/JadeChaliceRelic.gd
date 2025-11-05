@@ -35,5 +35,6 @@ func post_heal(healed_entity: LivingEntity, _heal_value: float) -> void:
 	var healed_hp_prop: HealthProperty = healed_entity.entity_data.stats.get_property(InitPropProviders.HEALTH)
 	var damaged_life: float = healed_hp_prop.get_max_health() - healed_hp_prop.get_health()
 	if not damaged_life > 0: return
-	healed_entity.heal(damaged_life * soul_fragment)
+	var player := healed_entity as Player
+	player.heal(damaged_life * soul_fragment, false)
 	soul_fragment = 0
