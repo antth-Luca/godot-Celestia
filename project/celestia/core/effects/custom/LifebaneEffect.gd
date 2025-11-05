@@ -11,9 +11,9 @@ func _init() -> void:
 # Handlers
 func _on_effect_added(entity: LivingEntity) -> void:
 	var heal_mod_prop: HealModifierProperty = entity.entity_data.stats.get_property(InitPropProviders.HEAL_MODIFIER)
-	heal_mod_prop.sub_modifier(HEAL_DEBUFF_PERCENTAGE)
+	heal_mod_prop.sub_modifier(HEAL_DEBUFF_PERCENTAGE * amplifier)
 
 
 func _on_effect_removed(entity: LivingEntity) -> void:
 	var heal_mod_prop: HealModifierProperty = entity.entity_data.stats.get_property(InitPropProviders.HEAL_MODIFIER)
-	heal_mod_prop.add_modifier(HEAL_DEBUFF_PERCENTAGE)
+	heal_mod_prop.add_modifier(HEAL_DEBUFF_PERCENTAGE * amplifier)

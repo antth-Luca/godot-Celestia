@@ -11,4 +11,4 @@ func _init() -> void:
 # Handlers
 func _on_effect_tick(entity: LivingEntity) -> void:
 	var hp_prop: HealthProperty = entity.entity_data.stats.get_property(InitPropProviders.HEALTH)
-	entity.heal(hp_prop.get_max_health() * HEAL_PERCENTAGE_PER_TICK)
+	entity.heal(hp_prop.get_max_health() * HEAL_PERCENTAGE_PER_TICK * amplifier)
