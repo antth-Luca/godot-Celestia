@@ -31,7 +31,6 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 #### Alpha
 
-- [ ] Sistema de relíquias (atributos e passivas únicas);
 - [ ] Sistema de cultivo;
 - [ ] Adição de efeitos sonoros;
 - [ ] Primeiro chefe/boss;
@@ -44,7 +43,8 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 - [x] Item de combate à distância: Arco;
 - [x] Movimento de rolagem do Jogador/Player;
 - [x] Sistema de efeitos para entidades;
-- [x] Sistema de encantamentos para itens.
+- [x] Sistema de encantamentos para itens;
+- [x] Sistema de relíquias.
 
 #### Beta
 
