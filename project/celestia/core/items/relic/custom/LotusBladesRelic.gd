@@ -22,8 +22,8 @@ func on_unequip(slot: BaseSlot, player: Player):
 
 # Hooks
 func post_hurt(_hit: HitData, target: LivingEntity, _final_damage: float) -> void:
-	var entitis_around: Array = target.get_tree().root.get_node('World').get_living_entites_in(target.global_position, 30)
-	for entity in entitis_around:
+	var entities_around: Array = target.get_tree().root.get_node('World').get_living_entites_in(target.global_position, 30)
+	for entity in entities_around:
 		if entity != target: entity.hurt(
 			BLADES_DAMAGE,
 			HitData.new(
