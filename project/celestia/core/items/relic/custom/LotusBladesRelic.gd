@@ -2,7 +2,7 @@ extends BaseRelic
 class_name LotusBladesRelic
 
 const BUFF_ARMOR: float = 1
-const BUFF_PENETRATION: float = 2
+const BUFF_PENETRATION: float = 6
 const BLADES_DAMAGE: float = 10
 
 # SUPER

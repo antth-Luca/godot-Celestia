@@ -4,8 +4,8 @@ class_name HeartOfTheStormRelic
 const BUFF_MOVE_SPEED: float = 15
 const BUFF_CDR: float = .35
 const BUFF_USE_SPEED: float = .1
-const BUFF_MOVE_SPEED_PERCENTAGE: float = .15
-const BUFF_MOVE_SPEED_DURATION: float = 1.5
+const BUFF_MOVE_SPEED_PERCENTAGE: float = .2
+const BUFF_MOVE_SPEED_DURATION: float = 3
 const BUFF_MOVE_SPEED_COOLDOWN: float = 6
 const ADD_EFFECT_DISTANCE: int = 150
 
