@@ -92,11 +92,13 @@ func get_ammo_available() -> Array[BaseSlot]:
 	)
 
 # MAIN
-func has_relic(comp_relic: BaseRelic) -> bool:
+func has_relic(comparables_relics: Array[DeferredHolder]) -> bool:
 	var relic_slots: Array[BaseSlot] = get_relics()
-	for slot in relic_slots:
-		if not slot.stack.is_empty() and slot.stack.item.id.get_string() == comp_relic.id.get_string():
-			return true
+	for relic in comparables_relics:
+		for slot in relic_slots:
+			if slot.stack.is_empty(): continue
+			if slot.stack.item.id.get_string() == relic.location.get_string():
+				return true
 	return false
 
 

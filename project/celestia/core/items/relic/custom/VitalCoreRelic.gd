@@ -9,6 +9,7 @@ const BUFF_REGENERATION: float = .3
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.RARE.get_registered()
+	incompabilities = [ InitRelics.VITAL_CORE, InitRelics.ONE_SIDED_PALDRON ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

@@ -8,6 +8,7 @@ const BUFF_LUCK: int = 2
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.RARE.get_registered()
+	incompabilities = [ InitRelics.COIN_OF_BABYLON, InitRelics.COLLECTORS_GLOVE, InitRelics.PERFECTIONISTS_GLOVE, InitRelics.CYCLOPS_MASK ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

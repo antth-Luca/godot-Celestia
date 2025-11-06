@@ -2,6 +2,7 @@ extends BaseItem
 class_name BaseRelic
 
 var is_multiequip: bool = false
+var incompabilities: Array[DeferredHolder]
 
 # SUPER
 # Godot
@@ -30,6 +31,7 @@ func get_tooltip() -> Array[String]:
 func copy(copy_obj: Variant = BaseRelic.new()) -> Variant:
 	copy_obj = super.copy(copy_obj)
 	copy_obj.is_multiequip = is_multiequip
+	copy_obj.incompabilities = incompabilities
 	return copy_obj
 
 # Handlers
@@ -41,7 +43,7 @@ func can_equip(slot: BaseSlot) -> bool:
 		BaseSlot.Type.RELIC
 	]): return false
 	if is_multiequip: return true
-	return not slot.player.inventory.has_relic(self)
+	return not slot.player.inventory.has_relic(incompabilities)
 
 
 func use(player: Player) -> void:

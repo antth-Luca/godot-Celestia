@@ -12,6 +12,7 @@ var owner_player: Player
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.UNCOMMON.get_registered()
+	incompabilities = [ InitRelics.ARCANE_LINES, InitRelics.PERFECTIONISTS_GLOVE, InitRelics.CYCLOPS_MASK ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

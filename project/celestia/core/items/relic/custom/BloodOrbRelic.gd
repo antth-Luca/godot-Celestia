@@ -10,6 +10,7 @@ const HP_CEIL_TO_KILL: float = .05
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.UNCOMMON.get_registered()
+	incompabilities = [ InitRelics.BLOOD_ORB, InitRelics.CYCLOPS_MASK ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

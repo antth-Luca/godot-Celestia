@@ -21,6 +21,7 @@ var is_ready_to_effect: bool = false
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.UNCOMMON.get_registered()
+	incompabilities = [ InitRelics.HEART_OF_THE_STORM, InitRelics.MECHANICAL_HEART, InitRelics.CYCLOPS_MASK ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

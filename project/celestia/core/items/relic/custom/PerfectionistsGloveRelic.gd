@@ -17,6 +17,7 @@ var amount_time: float
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.RARE.get_registered()
+	incompabilities = [ InitRelics.PERFECTIONISTS_GLOVE, InitRelics.ARCANE_LINES, InitRelics.COIN_OF_BABYLON, InitRelics.COLLECTORS_GLOVE, InitRelics.CYCLOPS_MASK ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

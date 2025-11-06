@@ -10,6 +10,7 @@ const BLADES_DAMAGE: float = 10
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.RARE.get_registered()
+	incompabilities = [ InitRelics.LOTUS_BLADES, InitRelics.CYCLOPS_MASK ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

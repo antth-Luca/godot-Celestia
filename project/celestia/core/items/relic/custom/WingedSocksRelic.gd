@@ -16,6 +16,7 @@ var buff_move_speed: float
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.RARE.get_registered()
+	incompabilities = [ InitRelics.WINGED_SOCKS, InitRelics.ARSENAL_OF_AGES ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

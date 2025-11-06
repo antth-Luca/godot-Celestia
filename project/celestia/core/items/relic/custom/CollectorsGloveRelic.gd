@@ -9,6 +9,7 @@ const BUFF_ARMOR: float = 1
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.RARE.get_registered()
+	incompabilities = [ InitRelics.COLLECTORS_GLOVE, InitRelics.COIN_OF_BABYLON, InitRelics.PERFECTIONISTS_GLOVE, InitRelics.CYCLOPS_MASK ]
 
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:

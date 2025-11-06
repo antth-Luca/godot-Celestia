@@ -9,6 +9,7 @@ const BUFF_DEF_REDUCTION: float = .12
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.RARE.get_registered()
+	incompabilities = [ InitRelics.PALE_ROSE, InitRelics.ARSENAL_OF_AGES ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

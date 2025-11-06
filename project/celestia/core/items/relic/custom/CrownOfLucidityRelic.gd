@@ -9,6 +9,7 @@ const BUFF_MOBILIOTY_MOD: float = .2
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.UNCOMMON.get_registered()
+	incompabilities = [ InitRelics.CROWN_OF_LUCIDITY, InitRelics.ONE_SIDED_PALDRON ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

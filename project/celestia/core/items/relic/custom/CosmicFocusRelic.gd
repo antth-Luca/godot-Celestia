@@ -9,6 +9,7 @@ const BUFF_RANGE: float = .12
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.UNCOMMON.get_registered()
+	incompabilities = [ InitRelics.COSMIC_FOCUS, InitRelics.ARSENAL_OF_AGES ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

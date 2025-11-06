@@ -9,6 +9,7 @@ const BUFF_CRIT_DAMAGE: float = .4
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.UNCOMMON.get_registered()
+	incompabilities = [ InitRelics.CLAWED_GLOVE, InitRelics.ARSENAL_OF_AGES ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

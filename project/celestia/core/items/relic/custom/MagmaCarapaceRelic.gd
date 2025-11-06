@@ -14,6 +14,7 @@ var amount_tick: float
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.UNCOMMON.get_registered()
+	incompabilities = [ InitRelics.MAGMA_CARAPACE, InitRelics.ONE_SIDED_PALDRON ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:
