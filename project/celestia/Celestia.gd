@@ -9,6 +9,7 @@ const EFFECT_SPRITE_PATH: String = 'res://assets/%s/textures/effects/%s.png'
 const GAME_CONFIG_PATH: String = 'res://config/game_config.json'
 const TRANSLATION_KEY_BASES: Dictionary = {
 	ITEM = 'item.%s',
+	ITEM_DESC = 'item.%s.description',
 	RARITY = 'item.rarity.%s',
 	ENCHANTMENT = 'item.enchantment.%s',
 	SLOT = 'item.slot.%s',

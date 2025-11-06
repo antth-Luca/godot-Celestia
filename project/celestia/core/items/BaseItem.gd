@@ -62,21 +62,24 @@ func get_tooltip() -> Array[String]:
 		rarity.hex_color,
 		rarity.get_tr_name()
 	])
+	var enchant_line := ''
 	if not enchantments.is_empty():
-		var enchant_line = '[color=%s]%s:\n' % [
+		enchant_line = '[color=%s]%s:\n' % [
 			COMMON_TEXT_COLOR,
 			tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'enchantment')
 		]
 		for enchant in enchantments:
 			enchant_line += '  %s\n' % tr(Celestia.TRANSLATION_KEY_BASES.ENCHANTMENT % enchant.id.path)
 		enchant_line += '[/color]'
-		lines.append(enchant_line)
+	lines.append(enchant_line)
+	var durability_line := ''
 	if _durability != 0:
-		lines.append('[color=%s]%s: %s / %s[/color]\n' % [
+		durability_line = '[color=%s]%s: %s / %s[/color]\n' % [
 			COMMON_TEXT_COLOR,
 			tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'durability'),
 			_durability, _max_durability
-		])
+		]
+	lines.append(durability_line)
 	return lines
 
 # MAIN

@@ -16,6 +16,16 @@ static func get_static_comparable_name() -> String:
 func get_comparable_name() -> String:
 	return BaseRelic.get_static_comparable_name()
 
+
+func get_tooltip() -> Array[String]:
+	var lines: Array[String] = super.get_tooltip()
+	lines.insert(2, '[color=%s]%s %s:[/color]\n' % [
+		COMMON_TEXT_COLOR,
+		tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'when_slot'),
+		tr(Celestia.TRANSLATION_KEY_BASES.SLOT % BaseSlot.Type.RELIC)
+	])
+	return lines
+
 # Main
 func copy(copy_obj: Variant = BaseRelic.new()) -> Variant:
 	copy_obj = super.copy(copy_obj)
