@@ -27,6 +27,26 @@ func _init() -> void:
 	super._init()
 	rarity = InitRarities.EPIC.get_registered()
 
+# Getters and setters
+func get_tooltip() -> Array[String]:
+	var lines: Array[String] = super.get_tooltip()
+	lines.insert(3, '[color=%s]    +%s %s\n    +%s %s\n    +%s %s\n    +%s %s\n    +%s %s\n    +%s %s\n -> %s[/color]\n' % [
+		COMMON_TEXT_COLOR,
+		# ClawedGlove
+		str(BUFF_CRIT_CHANCE * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'Crit%'),
+		str(BUFF_CRIT_DAMAGE * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'Crit+'),
+		# PaleRose
+		str(BUFF_DEF_REDUCTION * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'DefR'),
+		# WingedSocks
+		BUFF_MOVE_SPEED, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'MS'),
+		# CosmicFocus
+		str(BUFF_USE_SPEED * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'US'),
+		str(BUFF_RANGE * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'RG'),
+		# WingedSocks
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.WINGED_SOCKS.location.path)
+	])
+	return lines
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

@@ -7,18 +7,22 @@ ui.config.language,Language,Linguagem
 
 ui.inventory.stats.title,Attributes,Atributos
 ui.inventory.stats.HP,Health,Vida
+ui.inventory.stats.Regen,Regen. Modifier,Modif. de Regen.
 ui.inventory.stats.MP,Mana,Mana
-ui.inventory.stats.AM,Armor,Armadura
+ui.inventory.stats.AM,Armor,Blindagem
 ui.inventory.stats.RS,Resistance,Resistência
 ui.inventory.stats.FR,Force,Força
-ui.inventory.stats.Crit,Crit. Strike,Acerto crit.
-ui.inventory.stats.LC,Luck,Sorte
+ui.inventory.stats.Crit,Crit. Strike,Acerto Crit.
+ui.inventory.stats.Crit%,Crit. Chance,Chance de Crit.
+ui.inventory.stats.Crit+,Crit. Damage,Dano Crit.
 ui.inventory.stats.LS,Life Steal,Roubo de Vida
 ui.inventory.stats.PN,Penetration,Penetração
+ui.inventory.stats.DefR,Defense Reduc.,Redução de Def.
 ui.inventory.stats.RG,Range,Alcance
 ui.inventory.stats.US,Use Speed,Vel. de Uso
 ui.inventory.stats.MS,Move Speed,Vel. de Movimento
 ui.inventory.stats.CdR,Cooldown Reduc.,Redução de Resfr.
+ui.inventory.stats.LC,Luck,Sorte
 
 item.rarity.common,Common,Comum
 item.rarity.uncommon,Uncommon,Incomum

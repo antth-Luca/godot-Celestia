@@ -25,6 +25,26 @@ func _init() -> void:
 	super._init()
 	rarity = InitRarities.EPIC.get_registered()
 
+# Getters and setters
+func get_tooltip() -> Array[String]:
+	var lines: Array[String] = super.get_tooltip()
+	lines.insert(3, '[color=%s]    +%s %s\n    +%s %s\n    +%s %s\n -> %s\n -> %s\n -> %s\n -> %s[/color]\n' % [
+		COMMON_TEXT_COLOR,
+		# VitalCore
+		BUFF_HEALTH, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'HP'),
+		str(BUFF_REGENERATION * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'Regen'),
+		# JadeChalice
+		BUFF_RESISTANCE, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'RS'),
+		# JadeChalice
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.JADE_CHALICE.location.path),
+		# MagmaCarapace
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.MAGMA_CARAPACE.location.path + '.heat'),
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.MAGMA_CARAPACE.location.path + '.burning'),
+		# CrownOfLucidity
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.CROWN_OF_LUCIDITY.location.path)
+	])
+	return lines
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

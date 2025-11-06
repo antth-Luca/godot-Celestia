@@ -10,6 +10,16 @@ func _init() -> void:
 	super._init()
 	rarity = InitRarities.UNCOMMON.get_registered()
 
+# Getters and setters
+func get_tooltip() -> Array[String]:
+	var lines: Array[String] = super.get_tooltip()
+	lines.insert(3, '[color=%s]    +%s %s\n    +%s %s[/color]\n' % [
+		COMMON_TEXT_COLOR,
+		str(BUFF_CRIT_CHANCE * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'Crit%'),
+		str(BUFF_CRIT_DAMAGE * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'Crit+')
+	])
+	return lines
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

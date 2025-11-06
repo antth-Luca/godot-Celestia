@@ -41,6 +41,36 @@ func _init() -> void:
 	super._init()
 	rarity = InitRarities.EPIC.get_registered()
 
+# Getters and setters
+func get_tooltip() -> Array[String]:
+	var lines: Array[String] = super.get_tooltip()
+	lines.insert(3, '[color=%s]    +%s %s\n    +%s %s\n    +%s %s\n    +%s %s\n    +%s %s\n    +%s %s\n    +%s %s\n    +%s %s\n -> %s\n -> %s\n -> %s\n -> %s\n -> %s\n -> %s[/color]\n' % [
+		COMMON_TEXT_COLOR,
+		# BloodOrb
+		str(BUFF_USE_SPEED * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'US'),
+		str(BUFF_LIFE_STEAL * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'LS'),
+		# PerfectionistsGlove
+		BUFF_MANA, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'MP'),
+		BUFF_LUCK, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'LC'),
+		BUFF_ARMOR, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'AM'),
+		# LotusBlades
+		BUFF_PENETRATION, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'PN'),
+		# HeartOfTheStorm
+		BUFF_MOVE_SPEED, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'MS'),
+		str(BUFF_CDR * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'CdR'),
+		# BloodOrb
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.BLOOD_ORB.location.path),
+		# PerfectionistsGlove
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.ARCANE_LINES.location.path),
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.PERFECTIONISTS_GLOVE.location.path),
+		# LotusBlades
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.LOTUS_BLADES.location.path),
+		# HeartOfTheStorm
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.MECHANICAL_HEART.location.path),
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.HEART_OF_THE_STORM.location.path)
+	])
+	return lines
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

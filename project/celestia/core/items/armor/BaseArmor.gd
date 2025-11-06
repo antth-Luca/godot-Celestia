@@ -21,7 +21,7 @@ func get_comparable_name() -> String:
 
 func get_tooltip() -> Array[String]:
 	var lines = super.get_tooltip()
-	lines.insert(2, '[color=%s]%s %s:\n  %s %s[/color]\n' % [
+	lines.insert(1, '[color=%s]%s %s:\n  %s %s[/color]\n' % [
 		COMMON_TEXT_COLOR,
 		tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'when_slot'),
 		tr(Celestia.TRANSLATION_KEY_BASES.SLOT % get_compatible_slot()),
