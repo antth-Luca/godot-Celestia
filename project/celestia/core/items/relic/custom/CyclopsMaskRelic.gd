@@ -40,6 +40,13 @@ var is_ready_to_effect: bool = false
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.EPIC.get_registered()
+	incompabilities = [
+		InitRelics.CYCLOPS_MASK,
+		InitRelics.BLOOD_ORB,
+		InitRelics.PERFECTIONISTS_GLOVE, InitRelics.ARCANE_LINES, InitRelics.COIN_OF_BABYLON, InitRelics.COLLECTORS_GLOVE,
+		InitRelics.LOTUS_BLADES,
+		InitRelics.HEART_OF_THE_STORM, InitRelics.MECHANICAL_HEART
+	]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

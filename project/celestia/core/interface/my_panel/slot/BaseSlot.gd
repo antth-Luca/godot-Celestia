@@ -123,7 +123,7 @@ func _handle_left_click_on_slot():
 
 	# Case 3: Cursor loaded and equal to slot
 	elif cursor_stack.is_equal_to(slot_stack):
-		if slot_can_unequip and cursor_can_equip:
+		if cursor_can_equip:
 			var extra: int = slot_stack.add_amount_safe(cursor_stack.amount)
 			if extra <= 0:
 				cursor.stack = ItemStack.EMPTY
@@ -162,7 +162,7 @@ func _handle_right_click_on_slot():
 	var cursor_can_equip: bool = true if cursor_stack.is_empty() else cursor_stack.item.can_equip(self)
 
 	# Case 1: Empty cursor
-	if cursor.stack.is_empty():
+	if cursor_stack.is_empty():
 		if slot_can_unequip:
 			var take_amount := int(slot_amount / 2.0)
 			cursor.stack = ItemStack.new(slot_item, take_amount)
@@ -178,7 +178,7 @@ func _handle_right_click_on_slot():
 
 	# Case 3: Cursor loaded and equal to slot
 	elif cursor_stack.is_equal_to(slot_stack):
-		if slot_can_unequip and cursor_can_equip:
+		if cursor_can_equip:
 			var extra = slot_stack.add_amount_safe(1)
 			if extra == 0:
 				cursor_stack.amount = cursor_amount - 1

@@ -24,6 +24,7 @@ var amount_tick: float
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.EPIC.get_registered()
+	incompabilities = [ InitRelics.ONE_SIDED_PALDRON, InitRelics.VITAL_CORE, InitRelics.JADE_CHALICE, InitRelics.MAGMA_CARAPACE, InitRelics.CROWN_OF_LUCIDITY ]
 
 # Getters and setters
 func get_tooltip() -> Array[String]:

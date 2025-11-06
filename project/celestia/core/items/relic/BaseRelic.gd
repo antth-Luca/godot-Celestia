@@ -42,6 +42,7 @@ func can_equip(slot: BaseSlot) -> bool:
 		BaseSlot.Type.INPUT,
 		BaseSlot.Type.RELIC
 	]): return false
+	if slot_type != BaseSlot.Type.RELIC: return true
 	if is_multiequip: return true
 	return not slot.player.inventory.has_relic(incompabilities)
 
