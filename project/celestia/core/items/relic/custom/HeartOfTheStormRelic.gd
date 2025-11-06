@@ -2,11 +2,11 @@ extends BaseRelic
 class_name HeartOfTheStormRelic
 
 const BUFF_MOVE_SPEED: float = 15
-const BUFF_CDR: float = .35
-const BUFF_USE_SPEED: float = .1
-const BUFF_MOVE_SPEED_PERCENTAGE: float = .2
-const BUFF_MOVE_SPEED_DURATION: float = 3
-const BUFF_MOVE_SPEED_COOLDOWN: float = 6
+const BUFF_CDR: float = MechanicHeartRelic.BUFF_CDR
+const BUFF_USE_SPEED: float = MechanicHeartRelic.BUFF_USE_SPEED
+const BUFF_MOVE_SPEED_PERCENTAGE: float = MechanicHeartRelic.BUFF_MOVE_SPEED_PERCENTAGE
+const BUFF_MOVE_SPEED_DURATION: float = MechanicHeartRelic.BUFF_MOVE_SPEED_DURATION
+const BUFF_MOVE_SPEED_COOLDOWN: float = MechanicHeartRelic.BUFF_MOVE_SPEED_COOLDOWN
 const ADD_EFFECT_DISTANCE: int = 150
 
 var amount_time: float
@@ -21,6 +21,19 @@ var is_ready_to_effect: bool = false
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.UNCOMMON.get_registered()
+
+# Getters and setters
+func get_tooltip() -> Array[String]:
+	var lines: Array[String] = super.get_tooltip()
+	lines.insert(3, '[color=%s]    +%s %s\n    +%s %s\n    +%s %s\n -> %s\n -> %s[/color]\n' % [
+		COMMON_TEXT_COLOR,
+		BUFF_MOVE_SPEED, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'MS'),
+		str(BUFF_CDR * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'CdR'),
+		str(BUFF_USE_SPEED * 100) + '%', tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'US'),
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.MECHANICAL_HEART.location.path),
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % id.path)
+	])
+	return lines
 
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:

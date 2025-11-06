@@ -2,18 +2,18 @@ extends BaseRelic
 class_name ArsenalOfAgesRelic
 
 # ClawedGlove
-const BUFF_CRIT_CHANCE: float = .5
-const BUFF_CRIT_DAMAGE: float = .4
+const BUFF_CRIT_CHANCE: float = ClawedGloveRelic.BUFF_CRIT_CHANCE + PaleRoseRelic.BUFF_CRIT_CHANCE
+const BUFF_CRIT_DAMAGE: float = ClawedGloveRelic.BUFF_CRIT_DAMAGE
 # PaleRose
-const BUFF_DEF_REDUCTION: float = .12
+const BUFF_DEF_REDUCTION: float = PaleRoseRelic.BUFF_DEF_REDUCTION
 # WingedSocks
-const BUFF_MOVE_SPEED: float = 15
-const BUFF_MOVE_SPEED_PERCENTAGE: float = .4
-const BUFF_MOVE_SPEED_DURATION: float = 1.5
-const BUFF_MOVE_SPEED_COOLDOWN: float = 10
+const BUFF_MOVE_SPEED: float = WingedSocksRelic.BUFF_MOVE_SPEED
+const BUFF_MOVE_SPEED_PERCENTAGE: float = WingedSocksRelic.BUFF_MOVE_SPEED_PERCENTAGE
+const BUFF_MOVE_SPEED_DURATION: float = WingedSocksRelic.BUFF_MOVE_SPEED_DURATION
+const BUFF_MOVE_SPEED_COOLDOWN: float = WingedSocksRelic.BUFF_MOVE_SPEED_COOLDOWN
 # CosmicFocus
-const BUFF_USE_SPEED: float = .15
-const BUFF_RANGE: float = .12
+const BUFF_USE_SPEED: float = CosmicFocusRelic.BUFF_USE_SPEED
+const BUFF_RANGE: float = CosmicFocusRelic.BUFF_RANGE
 
 # WingedSocks
 var amount_time: float

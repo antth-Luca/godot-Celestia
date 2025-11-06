@@ -1,7 +1,7 @@
 extends BaseRelic
 class_name CollectorsGloveRelic
 
-const BUFF_LUCK: int = 2
+const BUFF_LUCK: int = CoinOfBabylonRelic.BUFF_LUCK
 const BUFF_ARMOR: float = 1
 
 # SUPER

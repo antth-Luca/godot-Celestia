@@ -2,16 +2,16 @@ extends BaseRelic
 class_name OneSidedPaldronRelic
 
 # VitalCore
-const BUFF_HEALTH: float = 140
-const BUFF_REGENERATION: float = .3
+const BUFF_HEALTH: float = VitalCoreRelic.BUFF_HEALTH + JadeChaliceRelic.BUFF_HEALTH + MagmaCarapaceRelic.BUFF_HEALTH
+const BUFF_REGENERATION: float = VitalCoreRelic.BUFF_REGENERATION
 # JadeChalice
-const BUFF_RESISTANCE: float = 7
+const BUFF_RESISTANCE: float = JadeChaliceRelic.BUFF_RESISTANCE + CrownOfLucidityRelic.BUFF_RESISTANCE
 # MagmaCarapace
-const IMMUNITY_DURATION: float = 30
-const PULSE_DAMAGE_PERCENTAGE: float = .012
-const PULSE_TICK: float = 1
+const IMMUNITY_DURATION: float = MagmaCarapaceRelic.IMMUNITY_DURATION
+const PULSE_DAMAGE_PERCENTAGE: float = MagmaCarapaceRelic.PULSE_DAMAGE_PERCENTAGE
+const PULSE_TICK: float = MagmaCarapaceRelic.PULSE_TICK
 # CrownOfLucidity
-const BUFF_MOBILIOTY_MOD: float = .2
+const BUFF_MOBILIOTY_MOD: float = CrownOfLucidityRelic.BUFF_MOBILIOTY_MOD
 
 # JadeChalice
 var soul_fragment: float

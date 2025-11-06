@@ -12,6 +12,7 @@ ui.inventory.stats.AM,Armor,Armadura
 ui.inventory.stats.RS,Resistance,Resistência
 ui.inventory.stats.FR,Force,Força
 ui.inventory.stats.Crit,Crit. Strike,Acerto crit.
+ui.inventory.stats.LC,Luck,Sorte
 ui.inventory.stats.LS,Life Steal,Roubo de Vida
 ui.inventory.stats.PN,Penetration,Penetração
 ui.inventory.stats.RG,Range,Alcance

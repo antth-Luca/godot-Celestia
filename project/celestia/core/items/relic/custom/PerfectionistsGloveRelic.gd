@@ -1,10 +1,10 @@
 extends BaseRelic
 class_name PerfectionistsGloveRelic
 
-const BUFF_MANA: float = 15
-const BUFF_LUCK: int = 2
-const BUFF_ARMOR: float = 1
-const BUFF_DAMAGE_PERCENTAGE: float = .15
+const BUFF_MANA: float = ArcaneLinesRelic.BUFF_MANA
+const BUFF_LUCK: int = CollectorsGloveRelic.BUFF_LUCK
+const BUFF_ARMOR: float = CollectorsGloveRelic.BUFF_ARMOR
+const BUFF_DAMAGE_PERCENTAGE: float = ArcaneLinesRelic.BUFF_DAMAGE_PERCENTAGE
 const MANA_REGEN_PERCENTAGE: float = .18
 const MANA_REGEN_COOLDOWN: float = 12
 
@@ -17,6 +17,19 @@ var amount_time: float
 func _init() -> void:
 	super._init()
 	rarity = InitRarities.RARE.get_registered()
+
+# Getters and setters
+func get_tooltip() -> Array[String]:
+	var lines: Array[String] = super.get_tooltip()
+	lines.insert(3, '[color=%s]    +%s %s\n    +%s %s\n    +%s %s\n -> %s\n -> %s[/color]\n' % [
+		COMMON_TEXT_COLOR,
+		BUFF_MANA, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'MP'),
+		BUFF_LUCK, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'LC'),
+		BUFF_ARMOR, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'AM'),
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % InitRelics.ARCANE_LINES.location.path),
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % id.path)
+	])
+	return lines
 
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:

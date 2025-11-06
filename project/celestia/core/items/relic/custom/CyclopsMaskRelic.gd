@@ -2,26 +2,26 @@ extends BaseRelic
 class_name CyclopsMaskRelic
 
 # BloodOrb
-const BUFF_USE_SPEED: float = .2
-const BUFF_LIFE_STEAL: float = .15
-const HP_CEIL_TO_KILL: float = .05
+const BUFF_USE_SPEED: float = BloodOrbRelic.BUFF_USE_SPEED
+const BUFF_LIFE_STEAL: float = BloodOrbRelic.BUFF_LIFE_STEAL
+const HP_CEIL_TO_KILL: float = BloodOrbRelic.HP_CEIL_TO_KILL
 # PerfectionistsGlove
-const BUFF_MANA: float = 15
-const BUFF_LUCK: int = 2
-const BUFF_ARMOR: float = 2
-const BUFF_DAMAGE_PERCENTAGE: float = .15
-const MANA_REGEN_PERCENTAGE: float = .18
-const MANA_REGEN_COOLDOWN: float = 12
+const BUFF_MANA: float = PerfectionistsGloveRelic.BUFF_MANA
+const BUFF_LUCK: int = PerfectionistsGloveRelic.BUFF_LUCK
+const BUFF_ARMOR: float = PerfectionistsGloveRelic.BUFF_ARMOR + LotusBladesRelic.BUFF_ARMOR
+const BUFF_DAMAGE_PERCENTAGE: float = PerfectionistsGloveRelic.BUFF_DAMAGE_PERCENTAGE
+const MANA_REGEN_PERCENTAGE: float = PerfectionistsGloveRelic.MANA_REGEN_PERCENTAGE
+const MANA_REGEN_COOLDOWN: float = PerfectionistsGloveRelic.MANA_REGEN_COOLDOWN
 # LotusBlades
-const BUFF_PENETRATION: float = 2
-const BLADES_DAMAGE: float = 10
+const BUFF_PENETRATION: float = LotusBladesRelic.BUFF_PENETRATION
+const BLADES_DAMAGE: float = LotusBladesRelic.BLADES_DAMAGE
 # HeartOfTheStorm
-const BUFF_MOVE_SPEED: float = 15
-const BUFF_CDR: float = .35
-const BUFF_MOVE_SPEED_PERCENTAGE: float = .15
-const BUFF_MOVE_SPEED_DURATION: float = 1.5
-const BUFF_MOVE_SPEED_COOLDOWN: float = 6
-const ADD_EFFECT_DISTANCE: int = 150
+const BUFF_MOVE_SPEED: float = HeartOfTheStormRelic.BUFF_MOVE_SPEED
+const BUFF_CDR: float = HeartOfTheStormRelic.BUFF_CDR
+const BUFF_MOVE_SPEED_PERCENTAGE: float = HeartOfTheStormRelic.BUFF_MOVE_SPEED_PERCENTAGE
+const BUFF_MOVE_SPEED_DURATION: float = HeartOfTheStormRelic.BUFF_MOVE_SPEED_DURATION
+const BUFF_MOVE_SPEED_COOLDOWN: float = HeartOfTheStormRelic.BUFF_MOVE_SPEED_COOLDOWN
+const ADD_EFFECT_DISTANCE: int = HeartOfTheStormRelic.ADD_EFFECT_DISTANCE
 
 # PerfectionistsGlove
 var last_max_mana: float
