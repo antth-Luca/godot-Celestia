@@ -11,6 +11,16 @@ func _init() -> void:
 	rarity = InitRarities.RARE.get_registered()
 	incompabilities = [ InitRelics.COLLECTORS_GLOVE, InitRelics.COIN_OF_BABYLON, InitRelics.PERFECTIONISTS_GLOVE, InitRelics.CYCLOPS_MASK ]
 
+# Getters and setters
+func get_tooltip() -> Array[String]:
+	var lines: Array[String] = super.get_tooltip()
+	lines.insert(3, '[color=%s]    +%s %s\n    +%s %s[/color]\n' % [
+		COMMON_TEXT_COLOR,
+		BUFF_LUCK, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'LC'),
+		BUFF_ARMOR, tr(Celestia.TRANSLATION_KEY_BASES.STATS % 'AM')
+	])
+	return lines
+
 # Handlers
 func on_equip(slot: BaseSlot, player: Player) -> void:
 	if slot.slot_type != BaseSlot.Type.RELIC: return

@@ -18,14 +18,28 @@ static var ENCHANT_LETHAL_INITIATION: DeferredHolder
 static var ENCHANT_SAWED_OFF: DeferredHolder
 static var ENCHANT_UNBOUND: DeferredHolder
 # Normal
+static var ARCANE_LINES: DeferredHolder
+static var ARSENAL_OF_AGES: DeferredHolder
+static var BLOOD_ORB: DeferredHolder
 static var BOILED_EGG: DeferredHolder
 static var BOW: DeferredHolder
 static var CARNIGO_INGOT: DeferredHolder
+static var CLAWED_GLOVE: DeferredHolder
+static var COLLECTORS_GLOVE: DeferredHolder
 static var COMPASS: DeferredHolder
+static var COSMIC_FOCUS: DeferredHolder
+static var CROWN_OF_LUCIDITY: DeferredHolder
+static var CYCLOPS_MASK: DeferredHolder
 static var ERUPTITE_INGOT: DeferredHolder
+static var EXPLORERS_KIT: DeferredHolder
+static var HEART_OF_THE_STORM: DeferredHolder
 static var IRON_AXE: DeferredHolder
 static var IRON_PICKAXE: DeferredHolder
 static var IRON_SWORD: DeferredHolder
+static var MAGMA_CARAPACE: DeferredHolder
+static var MECHANICAL_HEART: DeferredHolder
+static var ONE_SIDED_PALDRON: DeferredHolder
+static var PERFECTIONISTS_GLOVE: DeferredHolder
 static var PAPYRUS: DeferredHolder
 #  Stardust
 static var STARDUST_ALTRUISM: DeferredHolder
@@ -212,6 +226,27 @@ static func setup() -> void:
 	)
 
 	# Normal
+	ARCANE_LINES = RECIPES.add_entry(
+		'arcane_lines',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.ARCANE_LINES, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitItems.IRON_INGOT, 1)
+			recipe.add_ingredient(InitItems.SCROLL_ASCENDANCE, 1)
+			return recipe
+	)
+
+	BLOOD_ORB = RECIPES.add_entry(
+		'blood_orb',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.BLOOD_ORB, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitItems.CARNIGO_INGOT, 3)
+			return recipe
+	)
+
 	BOILED_EGG = RECIPES.add_entry(
 		'boiled_egg',
 		func():
@@ -245,6 +280,17 @@ static func setup() -> void:
 			return recipe
 	)
 
+	COLLECTORS_GLOVE = RECIPES.add_entry(
+		'collectors_glove',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.COLLECTORS_GLOVE, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.BENCH)
+			recipe.add_ingredient(InitItems.FABRIC, 3)
+			recipe.add_ingredient(InitRelics.COIN_OF_BABYLON, 1)
+			return recipe
+	)
+
 	COMPASS = RECIPES.add_entry(
 		'compass',
 		func():
@@ -263,6 +309,18 @@ static func setup() -> void:
 			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
 			recipe.add_ingredient(InitItems.MAGMA_STONE, 1)
 			recipe.add_ingredient(InitItems.FULGURITE, 4)
+			return recipe
+	)
+
+	EXPLORERS_KIT = RECIPES.add_entry(
+		'explorers_kit',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.EXPLORERS_KIT, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.BENCH)
+			recipe.add_ingredient(InitItems.PAPYRUS, 1)
+			recipe.add_ingredient(InitItems.FEATHER, 1)
+			recipe.add_ingredient(InitItems.COMPASS, 1)
 			return recipe
 	)
 
