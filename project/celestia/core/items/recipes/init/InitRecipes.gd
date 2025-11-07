@@ -324,6 +324,18 @@ static func setup() -> void:
 			return recipe
 	)
 
+	HEART_OF_THE_STORM = RECIPES.add_entry(
+		'heart_of_the_storm',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.HEART_OF_THE_STORM, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitRelics.MECHANICAL_HEART, 1)
+			recipe.add_ingredient(InitItems.FULGURITE, 4)
+			recipe.add_ingredient(InitItems.OBSIDIAN, 4)
+			return recipe
+	)
+
 	IRON_AXE = RECIPES.add_entry(
 		'iron_axe',
 		func():
@@ -354,6 +366,27 @@ static func setup() -> void:
 			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
 			recipe.add_ingredient(InitFuels.STICK, 2)
 			recipe.add_ingredient(InitItems.IRON_INGOT, 2)
+			return recipe
+	)
+
+	MECHANICAL_HEART = RECIPES.add_entry(
+		'mechanical_heart',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.MECHANICAL_HEART, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitItems.GOLD_INGOT, 3)
+			return recipe
+	)
+
+	PERFECTIONISTS_GLOVE = RECIPES.add_entry(
+		'perfectionists_glove',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.PERFECTIONISTS_GLOVE, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitRelics.COLLECTORS_GLOVE, 1)
+			recipe.add_ingredient(InitRelics.ARCANE_LINES, 1)
 			return recipe
 	)
 

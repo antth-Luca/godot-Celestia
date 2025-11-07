@@ -56,18 +56,18 @@ func _ready() -> void:
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
 		#ItemStack.new(InitFuels.STICK.get_registered()),
-		ItemStack.new(InitItems.FABRIC.get_registered()),
+		ItemStack.new(InitRelics.MECHANICAL_HEART.get_registered()),
 		Vector2(169, 165)
 	)
 	# Spawn Iron
 	DroppedItemUtils.drop_item_in_position(
 		#ItemStack.new(InitItems.IRON_INGOT.get_registered()),
-		ItemStack.new(InitRelics.COIN_OF_BABYLON.get_registered()),
+		ItemStack.new(InitItems.FULGURITE.get_registered()),
 		Vector2(169, 180)
 	)
 	# Spawn Papyrus
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitItems.PAPYRUS.get_registered()),
+		ItemStack.new(InitItems.OBSIDIAN.get_registered()),
 		Vector2(169, 195)
 	)
 
