@@ -20,6 +20,30 @@ func _ready() -> void:
 	player.global_position = Vector2(169, 140)
 	player.ESSENCE_COUNTER = config.get('max_resilient_essence')
 	# TESTS CODE
+	var relics: Array = [
+		InitRelics.EXPLORERS_KIT,
+		InitRelics.BLOOD_ORB,
+		InitRelics.VITAL_CORE,
+		InitRelics.JADE_CHALICE,
+		InitRelics.ARCANE_LINES,
+		InitRelics.COIN_OF_BABYLON,
+		InitRelics.COLLECTORS_GLOVE,
+		InitRelics.PERFECTIONISTS_GLOVE,
+		InitRelics.LOTUS_BLADES,
+		InitRelics.MECHANICAL_HEART,
+		InitRelics.HEART_OF_THE_STORM,
+		InitRelics.CLAWED_GLOVE,
+		InitRelics.PALE_ROSE,
+		InitRelics.MAGMA_CARAPACE,
+		InitRelics.ROSE_OF_JERICHO,
+		InitRelics.CROWN_OF_LUCIDITY,
+		InitRelics.WINGED_SOCKS,
+		InitRelics.SHATTERED_AEGIS,
+		InitRelics.EYE_OF_THE_STORM,
+		InitRelics.COSMIC_FOCUS
+	]
+	for relic_holder in relics:
+		player.inventory.add_item_to_backpack(ItemStack.new(relic_holder.get_registered()))
 	# Spawn Bed
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.BED.get_registered(),
@@ -55,19 +79,17 @@ func _ready() -> void:
 	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
-		#ItemStack.new(InitFuels.STICK.get_registered()),
-		ItemStack.new(InitRelics.MECHANICAL_HEART.get_registered()),
+		ItemStack.new(InitFuels.STICK.get_registered()),
 		Vector2(169, 165)
 	)
 	# Spawn Iron
 	DroppedItemUtils.drop_item_in_position(
-		#ItemStack.new(InitItems.IRON_INGOT.get_registered()),
-		ItemStack.new(InitItems.FULGURITE.get_registered()),
+		ItemStack.new(InitItems.IRON_INGOT.get_registered()),
 		Vector2(169, 180)
 	)
 	# Spawn Papyrus
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitItems.OBSIDIAN.get_registered()),
+		ItemStack.new(InitItems.PAPYRUS.get_registered()),
 		Vector2(169, 195)
 	)
 

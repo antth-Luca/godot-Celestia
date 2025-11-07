@@ -39,8 +39,8 @@ static var IRON_SWORD: DeferredHolder
 static var MAGMA_CARAPACE: DeferredHolder
 static var MECHANICAL_HEART: DeferredHolder
 static var ONE_SIDED_PALDRON: DeferredHolder
-static var PERFECTIONISTS_GLOVE: DeferredHolder
 static var PAPYRUS: DeferredHolder
+static var PERFECTIONISTS_GLOVE: DeferredHolder
 #  Stardust
 static var STARDUST_ALTRUISM: DeferredHolder
 static var STARDUST_AMBITION: DeferredHolder
@@ -237,6 +237,19 @@ static func setup() -> void:
 			return recipe
 	)
 
+	ARSENAL_OF_AGES = RECIPES.add_entry(
+		'arsenal_of_ages',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.ARSENAL_OF_AGES, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitRelics.CLAWED_GLOVE, 1)
+			recipe.add_ingredient(InitRelics.PALE_ROSE, 1)
+			recipe.add_ingredient(InitRelics.WINGED_SOCKS, 1)
+			recipe.add_ingredient(InitRelics.COSMIC_FOCUS, 1)
+			return recipe
+	)
+
 	BLOOD_ORB = RECIPES.add_entry(
 		'blood_orb',
 		func():
@@ -280,6 +293,17 @@ static func setup() -> void:
 			return recipe
 	)
 
+	CLAWED_GLOVE = RECIPES.add_entry(
+		'clawed_glove',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.CLAWED_GLOVE, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
+			recipe.add_ingredient(InitItems.LEATHER, 1)
+			recipe.add_ingredient(InitItems.IRON_INGOT, 2)
+			return recipe
+	)
+
 	COLLECTORS_GLOVE = RECIPES.add_entry(
 		'collectors_glove',
 		func():
@@ -298,6 +322,41 @@ static func setup() -> void:
 			recipe.set_result(Ingredient.new(InitItems.COMPASS, 1))
 			recipe.set_workstation(CraftingRecipe.WorkstationType.BENCH)
 			recipe.add_ingredient(InitItems.IRON_INGOT, 3)
+			return recipe
+	)
+
+	COSMIC_FOCUS = RECIPES.add_entry(
+		'cosmic_focus',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.COSMIC_FOCUS, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitItems.IRON_INGOT, 1)
+			recipe.add_ingredient(InitItems.RUBY, 2)
+			return recipe
+	)
+
+	CROWN_OF_LUCIDITY = RECIPES.add_entry(
+		'crow_of_lucidity',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.CROWN_OF_LUCIDITY, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitItems.GOLD_INGOT, 3)
+			recipe.add_ingredient(InitItems.SCROLL_TRUTH, 1)
+			return recipe
+	)
+
+	CYCLOPS_MASK = RECIPES.add_entry(
+		'cyclops_mask',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.CYCLOPS_MASK, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitRelics.BLOOD_ORB, 1)
+			recipe.add_ingredient(InitRelics.PERFECTIONISTS_GLOVE, 1)
+			recipe.add_ingredient(InitRelics.LOTUS_BLADES, 1)
+			recipe.add_ingredient(InitRelics.HEART_OF_THE_STORM, 1)
 			return recipe
 	)
 
@@ -369,6 +428,17 @@ static func setup() -> void:
 			return recipe
 	)
 
+	MAGMA_CARAPACE = RECIPES.add_entry(
+		'magma_carapace',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.MAGMA_CARAPACE, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitItems.IRON_INGOT, 1)
+			recipe.add_ingredient(InitItems.ERUPTITE_INGOT, 2)
+			return recipe
+	)
+
 	MECHANICAL_HEART = RECIPES.add_entry(
 		'mechanical_heart',
 		func():
@@ -376,6 +446,29 @@ static func setup() -> void:
 			recipe.set_result(Ingredient.new(InitRelics.MECHANICAL_HEART, 1))
 			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
 			recipe.add_ingredient(InitItems.GOLD_INGOT, 3)
+			return recipe
+	)
+
+	ONE_SIDED_PALDRON = RECIPES.add_entry(
+		'arsenal_of_ages',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitRelics.ONE_SIDED_PALDRON, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitRelics.VITAL_CORE, 1)
+			recipe.add_ingredient(InitRelics.JADE_CHALICE, 1)
+			recipe.add_ingredient(InitRelics.MAGMA_CARAPACE, 1)
+			recipe.add_ingredient(InitRelics.CROWN_OF_LUCIDITY, 1)
+			return recipe
+	)
+
+	PAPYRUS = RECIPES.add_entry(
+		'papyrus',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.PAPYRUS, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
+			recipe.add_ingredient(InitItems.PLANT_FIBER, 2)
 			return recipe
 	)
 
@@ -387,16 +480,6 @@ static func setup() -> void:
 			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
 			recipe.add_ingredient(InitRelics.COLLECTORS_GLOVE, 1)
 			recipe.add_ingredient(InitRelics.ARCANE_LINES, 1)
-			return recipe
-	)
-
-	PAPYRUS = RECIPES.add_entry(
-		'papyrus',
-		func():
-			var recipe = CraftingRecipe.new()
-			recipe.set_result(Ingredient.new(InitItems.PAPYRUS, 1))
-			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
-			recipe.add_ingredient(InitItems.PLANT_FIBER, 2)
 			return recipe
 	)
 
