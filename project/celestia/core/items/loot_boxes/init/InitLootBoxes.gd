@@ -28,7 +28,12 @@ static func setup() -> void:
 			box.add_output(
 				InitFoods.MEAT,
 				1, 1,
-				1
+				.5
+			)
+			box.add_output(
+				InitItems.FEATHER,
+				2, 3,
+				.5
 			)
 			return box
 	)

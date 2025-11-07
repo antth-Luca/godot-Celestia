@@ -4,11 +4,22 @@ class_name InitItems
 static var ITEMS: DeferredRegister
 # Items
 static var BONE: DeferredHolder
+static var CARNIGO_INGOT: DeferredHolder
 static var COBBLESTONE: DeferredHolder
+static var COMPASS: DeferredHolder
+static var ERUPTITE_INGOT: DeferredHolder
+static var FABRIC: DeferredHolder
+static var FEATHER: DeferredHolder
+static var FULGURITE: DeferredHolder
 static var GOLD_INGOT: DeferredHolder
 static var IRON_INGOT: DeferredHolder
+static var LEATHER: DeferredHolder
+static var MAGMA_STONE: DeferredHolder
+static var OBSIDIAN: DeferredHolder
 static var PAPYRUS: DeferredHolder
 static var PLANT_FIBER: DeferredHolder
+static var ROSE: DeferredHolder
+static var RUBY: DeferredHolder
 static var STARDUST: DeferredHolder
 static var STONE: DeferredHolder
 # Constellation scrolls
@@ -40,8 +51,38 @@ static func setup() -> void:
 		func(): return BaseItem.new()
 	)
 
+	CARNIGO_INGOT = ITEMS.add_entry(
+		'carnigo_ingot',
+		func(): return BaseItem.new()
+	)
+
 	COBBLESTONE = ITEMS.add_entry(
 		'cobblestone',
+		func(): return BaseItem.new()
+	)
+
+	COMPASS = ITEMS.add_entry(
+		'compass',
+		func(): return BaseItem.new()
+	)
+
+	ERUPTITE_INGOT = ITEMS.add_entry(
+		'eruptite_ingot',
+		func(): return BaseItem.new()
+	)
+
+	FABRIC = ITEMS.add_entry(
+		'fabric',
+		func(): return BaseItem.new()
+	)
+
+	FEATHER = ITEMS.add_entry(
+		'feather',
+		func(): return BaseItem.new()
+	)
+
+	FULGURITE = ITEMS.add_entry(
+		'fulgurite',
 		func(): return BaseItem.new()
 	)
 
@@ -55,6 +96,21 @@ static func setup() -> void:
 		func(): return BaseItem.new()
 	)
 
+	LEATHER = ITEMS.add_entry(
+		'leather',
+		func(): return BaseItem.new()
+	)
+
+	MAGMA_STONE = ITEMS.add_entry(
+		'magma_stone',
+		func(): return BaseItem.new()
+	)
+
+	OBSIDIAN = ITEMS.add_entry(
+		'obsidian',
+		func(): return BaseItem.new()
+	)
+
 	PAPYRUS = ITEMS.add_entry(
 		'papyrus',
 		func(): return BaseItem.new()
@@ -62,6 +118,16 @@ static func setup() -> void:
 
 	PLANT_FIBER = ITEMS.add_entry(
 		'plant_fiber',
+		func(): return BaseItem.new()
+	)
+
+	ROSE = ITEMS.add_entry(
+		'rose',
+		func(): return BaseItem.new()
+	)
+
+	RUBY = ITEMS.add_entry(
+		'ruby',
 		func(): return BaseItem.new()
 	)
 

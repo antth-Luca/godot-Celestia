@@ -20,6 +20,9 @@ static var ENCHANT_UNBOUND: DeferredHolder
 # Normal
 static var BOILED_EGG: DeferredHolder
 static var BOW: DeferredHolder
+static var CARNIGO_INGOT: DeferredHolder
+static var COMPASS: DeferredHolder
+static var ERUPTITE_INGOT: DeferredHolder
 static var IRON_AXE: DeferredHolder
 static var IRON_PICKAXE: DeferredHolder
 static var IRON_SWORD: DeferredHolder
@@ -228,6 +231,38 @@ static func setup() -> void:
 			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
 			recipe.add_ingredient(InitFuels.STICK, 4)
 			recipe.add_ingredient(InitItems.PLANT_FIBER, 3)
+			return recipe
+	)
+
+	CARNIGO_INGOT = RECIPES.add_entry(
+		'carnigo_ingot',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.CARNIGO_INGOT, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitItems.IRON_INGOT, 1)
+			recipe.add_ingredient(InitFoods.UNCLEAN_MEAT, 1)
+			return recipe
+	)
+
+	COMPASS = RECIPES.add_entry(
+		'compass',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.COMPASS, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.BENCH)
+			recipe.add_ingredient(InitItems.IRON_INGOT, 3)
+			return recipe
+	)
+
+	ERUPTITE_INGOT = RECIPES.add_entry(
+		'eruptite_ingot',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.ERUPTITE_INGOT, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitItems.MAGMA_STONE, 1)
+			recipe.add_ingredient(InitItems.FULGURITE, 4)
 			return recipe
 	)
 
