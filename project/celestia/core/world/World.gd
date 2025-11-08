@@ -94,6 +94,19 @@ func _ready() -> void:
 	)
 
 # MAIN
+func get_water_in_3x3_tiles(global_pos: Vector2) -> bool:
+	var water_layer: TileMapLayer = get_node('Terrain/Water')
+	var water_tile_size := Vector2(water_layer.tile_set.tile_size)
+	for x in range(-1, 2):
+		for y in range(-1, 2):
+			var check_pos = global_pos + Vector2(x, y) * water_tile_size
+			var local_pos = water_layer.to_local(check_pos)
+			var coords = water_layer.local_to_map(local_pos)
+			var tile_id = water_layer.get_cell_source_id(coords)
+			if tile_id != -1: return true
+	return false
+
+
 func get_living_entites_in(global_pos: Vector2, range_search: float) -> Array:
 	var space_state = get_world_2d().direct_space_state
 	# Cria um shape circular para a detecção

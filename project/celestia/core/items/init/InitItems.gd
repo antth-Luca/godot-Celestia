@@ -100,7 +100,7 @@ static func setup() -> void:
 
 	HANDFUL_OF_DIRT = ITEMS.add_entry(
 		'handful_of_dirt',
-		func(): return BaseItem.new()
+		func(): return HandfulOfDirtItem.new()
 	)
 
 	IRON_INGOT = ITEMS.add_entry(
