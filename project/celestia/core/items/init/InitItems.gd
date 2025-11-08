@@ -12,6 +12,7 @@ static var FABRIC: DeferredHolder
 static var FEATHER: DeferredHolder
 static var FULGURITE: DeferredHolder
 static var GOLD_INGOT: DeferredHolder
+static var HANDFUL_OF_CLAY: DeferredHolder
 static var HANDFUL_OF_DIRT: DeferredHolder
 static var IRON_INGOT: DeferredHolder
 static var LEATHER: DeferredHolder
@@ -89,6 +90,11 @@ static func setup() -> void:
 
 	GOLD_INGOT = ITEMS.add_entry(
 		'gold_ingot',
+		func(): return BaseItem.new()
+	)
+
+	HANDFUL_OF_CLAY = ITEMS.add_entry(
+		'handful_of_clay',
 		func(): return BaseItem.new()
 	)
 

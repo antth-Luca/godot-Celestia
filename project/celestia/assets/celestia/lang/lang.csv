@@ -73,6 +73,7 @@ item.fabric,Fabric,Tecido
 item.feather,Feather,Pena
 item.fulgurite,Fulgurite,Fulgurito
 item.gold_ingot,Gold Ingot,Barra de Ouro
+item.handful_of_clay,Handful of Clay,Punhado de Argila
 item.handful_of_dirt,Handful of Dirt,Punhado de Terra
 item.heart_of_the_storm,Heart of the Storm,Coração da Tempestade
 item.heart_of_the_storm.description,"Every 150 units traveled, the next attack becomes charged, applying the Static effect.","A cada 150 unidades percorridas, o próximo ataque é energizado, aplicando o efeito Estático."
