@@ -1,8 +1,6 @@
 extends BaseStructure
 class_name CaveHole
 
-const MAX_DROP_STONE: int = 2
-
 # GODOT
 func _init() -> void:
 	structure_data = StructureData.new(
@@ -27,10 +25,11 @@ func on_interact(_entity: LivingEntity) -> void:
 func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 	var hp_prop: HealthProperty = structure_data.stats.get_property(InitPropProviders.HEALTH)
 	if hp_prop.get_health() <= 0: return
-	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitItems.STONE.get_registered(), randi_range(1, MAX_DROP_STONE)),
-		global_position
-	)
+	for output in InitLootBoxes.CAVE_HOLE_DIG.get_registered().get_sorted_output():
+		DroppedItemUtils.drop_item_in_position(
+			output,
+			global_position
+		)
 	super.damage(final_dam, hit, hitbox_parent)
 
 

@@ -11,6 +11,7 @@ static var ZOMBIE_DEATH: DeferredHolder
 static var CONSTELLATION_SCROLLS: DeferredHolder
 # Structures
 static var BUSH_DESTROY: DeferredHolder
+static var CAVE_HOLE_DIG: DeferredHolder
 static var ROSE_BUSH_DESTROY: DeferredHolder
 
 
@@ -165,6 +166,24 @@ static func setup() -> void:
 				InitItems.PLANT_FIBER,
 				2, 4,
 				.5
+			)
+			return box
+	)
+
+	CAVE_HOLE_DIG = LOOT_BOXES.add_entry(
+		'cave_hole_dig',
+		func():
+			var box = LootBox.new()
+			box.set_cycles(1, 1)
+			box.add_output(
+				InitItems.HANDFUL_OF_DIRT,
+				1, 2,
+				.6
+			)
+			box.add_output(
+				InitItems.STONE,
+				1, 2,
+				.4
 			)
 			return box
 	)
