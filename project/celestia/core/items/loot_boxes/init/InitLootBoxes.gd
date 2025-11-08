@@ -11,6 +11,7 @@ static var ZOMBIE_DEATH: DeferredHolder
 static var CONSTELLATION_SCROLLS: DeferredHolder
 # Structures
 static var BUSH_DESTROY: DeferredHolder
+static var ROSE_BUSH_DESTROY: DeferredHolder
 
 
 static func setup() -> void:
@@ -159,6 +160,29 @@ static func setup() -> void:
 				InitFuels.STICK,
 				1, 2,
 				.5
+			)
+			box.add_output(
+				InitItems.PLANT_FIBER,
+				2, 4,
+				.5
+			)
+			return box
+	)
+
+	ROSE_BUSH_DESTROY = LOOT_BOXES.add_entry(
+		'rose_bush_destroy',
+		func():
+			var box = LootBox.new()
+			box.set_cycles(1, 2)
+			box.add_output(
+				InitItems.ROSE,
+				1, 2,
+				.45
+			)
+			box.add_output(
+				InitRelics.PALE_ROSE,
+				1, 1,
+				.05
 			)
 			box.add_output(
 				InitItems.PLANT_FIBER,
