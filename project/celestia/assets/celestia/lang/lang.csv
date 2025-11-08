@@ -128,6 +128,7 @@ item.stick,Stick,Graveto
 item.stone,Stone,Pedra
 item.unclean_meat,Unclean Meat,Carne Impura
 item.vital_core,Vital Core,Núcleo Vital
+item.water_bowl,Water Bowl,Tigela de Água
 item.winged_socks,Winged Socks,Meias Aladas
 item.winged_socks.description,"When the bearer takes damage, their movement speed increases by 40% for 1.5s. Cooldown: 10s.","Quando o portador sofre dano, sua velocidade de movimento aumenta em 40% por 1.5s. Recarga: 10s."
 

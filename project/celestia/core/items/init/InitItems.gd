@@ -26,6 +26,7 @@ static var ROSE: DeferredHolder
 static var RUBY: DeferredHolder
 static var STARDUST: DeferredHolder
 static var STONE: DeferredHolder
+static var WATER_BOWL: DeferredHolder
 # Constellation scrolls
 static var SCROLL_ALTRUISM: DeferredHolder
 static var SCROLL_AMBITION: DeferredHolder
@@ -165,6 +166,11 @@ static func setup() -> void:
 
 	STONE = ITEMS.add_entry(
 		'stone',
+		func(): return BaseItem.new()
+	)
+
+	WATER_BOWL = ITEMS.add_entry(
+		'water_bowl',
 		func(): return BaseItem.new()
 	)
 	# Constellation scrolls

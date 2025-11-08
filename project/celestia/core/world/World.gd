@@ -85,7 +85,7 @@ func _ready() -> void:
 	# Spawn Iron
 	DroppedItemUtils.drop_item_in_position(
 		#ItemStack.new(InitItems.IRON_INGOT.get_registered()),
-		ItemStack.new(InitItems.HANDFUL_OF_CLAY.get_registered()),
+		ItemStack.new(InitItems.WATER_BOWL.get_registered()),
 		Vector2(169, 180)
 	)
 	# Spawn Papyrus
