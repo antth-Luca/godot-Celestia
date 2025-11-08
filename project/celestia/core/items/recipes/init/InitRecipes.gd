@@ -24,7 +24,9 @@ static var BLOOD_ORB: DeferredHolder
 static var BOILED_EGG: DeferredHolder
 static var BOW: DeferredHolder
 static var CARNIGO_INGOT: DeferredHolder
+static var CERAMIC_BOWL: DeferredHolder
 static var CLAWED_GLOVE: DeferredHolder
+static var CLAY_BOWL: DeferredHolder
 static var COLLECTORS_GLOVE: DeferredHolder
 static var COMPASS: DeferredHolder
 static var COSMIC_FOCUS: DeferredHolder
@@ -293,6 +295,17 @@ static func setup() -> void:
 			return recipe
 	)
 
+	CERAMIC_BOWL = RECIPES.add_entry(
+		'ceramic_bowl',
+		func():
+			var recipe = SmeltingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.CERAMIC_BOWL, 1))
+			recipe.set_workstation(SmeltingRecipe.WorkstationType.STONE_FURNACE)
+			recipe.melting_point = 3
+			recipe.add_ingredient(InitItems.CLAY_BOWL, 1)
+			return recipe
+	)
+
 	CLAWED_GLOVE = RECIPES.add_entry(
 		'clawed_glove',
 		func():
@@ -301,6 +314,16 @@ static func setup() -> void:
 			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
 			recipe.add_ingredient(InitItems.LEATHER, 1)
 			recipe.add_ingredient(InitItems.IRON_INGOT, 2)
+			return recipe
+	)
+
+	CLAY_BOWL = RECIPES.add_entry(
+		'clay_bowl',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.CLAY_BOWL, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
+			recipe.add_ingredient(InitItems.HANDFUL_OF_CLAY, 3)
 			return recipe
 	)
 

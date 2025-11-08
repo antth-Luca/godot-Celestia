@@ -5,6 +5,8 @@ static var ITEMS: DeferredRegister
 # Items
 static var BONE: DeferredHolder
 static var CARNIGO_INGOT: DeferredHolder
+static var CERAMIC_BOWL: DeferredHolder
+static var CLAY_BOWL: DeferredHolder
 static var COBBLESTONE: DeferredHolder
 static var COMPASS: DeferredHolder
 static var ERUPTITE_INGOT: DeferredHolder
@@ -55,6 +57,16 @@ static func setup() -> void:
 
 	CARNIGO_INGOT = ITEMS.add_entry(
 		'carnigo_ingot',
+		func(): return BaseItem.new()
+	)
+
+	CERAMIC_BOWL = ITEMS.add_entry(
+		'ceramic_bowl',
+		func(): return BaseItem.new()
+	)
+
+	CLAY_BOWL = ITEMS.add_entry(
+		'clay_bowl',
 		func(): return BaseItem.new()
 	)
 
