@@ -63,7 +63,7 @@ static func setup() -> void:
 
 	CERAMIC_BOWL = ITEMS.add_entry(
 		'ceramic_bowl',
-		func(): return BaseItem.new()
+		func(): return CeramicBowlItem.new()
 	)
 
 	CLAY_BOWL = ITEMS.add_entry(
