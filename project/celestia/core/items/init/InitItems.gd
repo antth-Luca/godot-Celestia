@@ -3,7 +3,6 @@ class_name InitItems
 
 static var ITEMS: DeferredRegister
 # Items
-static var BONE: DeferredHolder
 static var CARNIGO_INGOT: DeferredHolder
 static var CERAMIC_BOWL: DeferredHolder
 static var CLAY_BOWL: DeferredHolder
@@ -51,11 +50,6 @@ static func setup() -> void:
 	)
 
 	# Items
-	BONE = ITEMS.add_entry(
-		'bone',
-		func(): return BaseItem.new()
-	)
-
 	CARNIGO_INGOT = ITEMS.add_entry(
 		'carnigo_ingot',
 		func(): return BaseItem.new()

@@ -65,7 +65,7 @@ static func setup() -> void:
 				.8
 			)
 			box.add_output(
-				InitItems.BONE,
+				InitFertilizers.BONE,
 				1, 2,
 				.2
 			)
