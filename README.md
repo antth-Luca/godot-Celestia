@@ -32,7 +32,6 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 #### Alpha
 
 - [ ] Sistema de cultivo;
-- [ ] Adição de efeitos sonoros;
 - [ ] Primeiro chefe/boss;
 - [ ] Sistema de eventos históricos;
 - [ ] Sistema de dimensões: adição das Cavernas;
@@ -56,6 +55,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
   - [x] Bolso rotativo pula posições se girar antes de coletar algum item.
 - [ ] Melhorias:
   - [ ] Botões do menu de pause com TextureButton.
+- [ ] Adição de efeitos sonoros;
 - [ ] Sistema de nível de sobrevivente;
 - [ ] Sistema de coleção de itens;
 - [ ] Sistema de conquistas;
@@ -73,16 +73,16 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 - [ ] Melhorias:
   - [ ] Adição: Cliques duplos de 'left' e 'right' no inventário;
   - [ ] Adição: O ícone da aba de crafting muda de acordo com a estrutura usada para abrir;
-  - [ ] Adição: Tentar usar uma armadura ou relíquia fará a troca dela com a já equipada;
   - [ ] Adição: Sombras a todas as entidades (como component);
   - [ ] Adição: Animação de "pingar" nos itens dropados no chão;
   - [ ] Adição: Partículas de poeira as entidades ao andar;
-  - [ ] Adição: Representação do dano em números flutuantes;
   - [ ] Alteração: Sprite de terrenos mais orgânicos;
   - [ ] Adicionar sobreposição de sprites dinâmica, simulando profundidade;
   - [ ] Alteração: Animação pré-mundo (versão 2);
   - [x] Adição: Contorno branco aos itens dropados no chão;
-  - [x] Adição: Brilho branco aos itens dropados no chão.
+  - [x] Adição: Brilho branco aos itens dropados no chão;
+  - [x] Adição: Representação do dano em números flutuantes;
+  - [x] Adição: Tentar usar uma armadura ou relíquia fará a troca dela com a já equipada.
 - [ ] Adição de todo o conteúdo possível com os sistemas desenvolvidos até aqui;
 - [ ] Multiplayer em LAN.
 
@@ -90,7 +90,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 - [ ] Novos biomas;
 - [ ] Novos animais;
-- [ ] Novos itens: "Tijolo da Ruína", "Eruptite";
+- [ ] Novos itens: "Tijolo da Ruína";
 - [ ] Nova comida: "Mel Lilás";
 - [ ] Novas estruturas: "Colméia Lilás", "Ruína de Templo Celério";
 - [ ] Nascimento de estruturas (com baús considerando LootTables);
@@ -106,13 +106,13 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 #### MagEra
 
-- [ ] Sistema de mana;
 - [ ] Pedras preciosas nas cavernas;
 - [ ] Cajados mágicos para combate;
 - [ ] Novos inimigos mágicos;
 - [ ] Novas plantas;
 - [ ] Nova relíquia lendária;
-- [ ] Novas armas mágicas.
+- [ ] Novas armas mágicas;
+- [x] Sistema de mana.
 
 #### Cozinheiros a postos!
 
