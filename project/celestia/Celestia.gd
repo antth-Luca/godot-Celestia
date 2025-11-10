@@ -29,6 +29,7 @@ func _ready():
 	InitAmmos.setup()
 	InitFoods.setup()
 	InitFuels.setup()
+	InitSeeds.setup()
 	InitFertilizers.setup()
 	InitArmors.setup()
 	InitWeapons.setup()

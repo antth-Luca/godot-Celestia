@@ -194,7 +194,7 @@ static func setup() -> void:
 			var box = LootBox.new()
 			box.set_cycles(1, 2)
 			box.add_output(
-				InitItems.ROSE,
+				InitSeeds.ROSE,
 				1, 2,
 				.45
 			)

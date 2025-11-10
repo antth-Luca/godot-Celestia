@@ -21,7 +21,6 @@ static var MAGMA_STONE: DeferredHolder
 static var OBSIDIAN: DeferredHolder
 static var PAPYRUS: DeferredHolder
 static var PLANT_FIBER: DeferredHolder
-static var ROSE: DeferredHolder
 static var RUBY: DeferredHolder
 static var STARDUST: DeferredHolder
 static var STONE: DeferredHolder
@@ -137,11 +136,6 @@ static func setup() -> void:
 
 	PLANT_FIBER = ITEMS.add_entry(
 		'plant_fiber',
-		func(): return BaseItem.new()
-	)
-
-	ROSE = ITEMS.add_entry(
-		'rose',
 		func(): return BaseItem.new()
 	)
 
