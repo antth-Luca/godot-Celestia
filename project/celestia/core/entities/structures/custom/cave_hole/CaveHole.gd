@@ -18,7 +18,9 @@ func _init() -> void:
 # MAIN
 func on_interact(_entity: LivingEntity) -> void:
 	var hp_prop: HealthProperty = structure_data.stats.get_property(InitPropProviders.HEALTH)
-	if hp_prop.get_health() > 0: return
+	if hp_prop.get_health() > 0:
+		print_debug('Farmland spawn...')  # TODO: Implementar a transformação em Terra Arada.
+		return
 	print_debug('Teleporto para as cavernas...')  # TODO: Implementar o teleporte para as cavernas.
 
 

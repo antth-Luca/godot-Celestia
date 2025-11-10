@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djd21pgjveiyk"]
+
+[ext_resource type="Script" uid="uid://re68cldn0uuy" path="res://core/entities/structures/custom/farmland/Farmland.gd" id="1_fuk45"]
+
+[node name="Farmland" type="StaticBody2D"]
+script = ExtResource("1_fuk45")
