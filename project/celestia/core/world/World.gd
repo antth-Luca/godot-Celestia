@@ -89,7 +89,8 @@ func _ready() -> void:
 	)
 	# Spawn Papyrus
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitItems.PAPYRUS.get_registered()),
+		#ItemStack.new(InitItems.PAPYRUS.get_registered()),
+		ItemStack.new(InitFertilizers.BONE.get_registered()),
 		Vector2(169, 195)
 	)
 

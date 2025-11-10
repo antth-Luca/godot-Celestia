@@ -1,6 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://djd21pgjveiyk"]
+[gd_scene load_steps=7 format=3 uid="uid://djd21pgjveiyk"]
 
 [ext_resource type="Script" uid="uid://re68cldn0uuy" path="res://core/entities/structures/custom/farmland/Farmland.gd" id="1_fuk45"]
+[ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="2_eyhpx"]
+[ext_resource type="Texture2D" uid="uid://dlr5m3oix3s8v" path="res://assets/celestia/textures/structures/farmland.png" id="2_ud4cf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bc03"]
+size = Vector2(24, 2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nqaan"]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ud4cf"]
+size = Vector2(20, 2)
 
 [node name="Farmland" type="StaticBody2D"]
 script = ExtResource("1_fuk45")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8bc03")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_ud4cf")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nqaan")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_eyhpx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_ud4cf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_interaction_entity_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_interaction_entity_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

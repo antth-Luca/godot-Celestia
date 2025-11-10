@@ -16,10 +16,13 @@ func _init() -> void:
 	)
 
 # MAIN
-func on_interact(_entity: LivingEntity) -> void:
+func on_interact(entity: LivingEntity) -> void:
 	var hp_prop: HealthProperty = structure_data.stats.get_property(InitPropProviders.HEALTH)
 	if hp_prop.get_health() > 0:
-		print_debug('Farmland spawn...')  # TODO: Implementar a transformação em Terra Arada.
+		var hand_stack: ItemStack = entity.inventory.get_hand().stack
+		if not hand_stack.is_empty() and hand_stack.item is BaseFertilizer:
+			StructuresUtils.spawn_structure_in_position(InitStructures.FARMLAND.get_registered(), global_position)
+			destroy(entity)
 		return
 	print_debug('Teleporto para as cavernas...')  # TODO: Implementar o teleporte para as cavernas.
 
@@ -33,7 +36,3 @@ func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 			global_position
 		)
 	super.damage(final_dam, hit, hitbox_parent)
-
-
-func destroy(_attacker: LivingEntity) -> void:
-	pass
