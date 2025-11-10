@@ -2,17 +2,19 @@
 
 [ext_resource type="Script" uid="uid://dbgqru7uvdjil" path="res://core/entities/structures/custom/stone_furnace/StoneFurnace.gd" id="1_d77yq"]
 [ext_resource type="Texture2D" uid="uid://msn26sbtbpft" path="res://assets/celestia/textures/structures/stone_furnace.png" id="2_bxhh7"]
-[ext_resource type="Shader" uid="uid://capg2ulc8vrff" path="res://assets/celestia/shaders/2D_pixel_outline.gdshader" id="2_s522c"]
+[ext_resource type="Shader" uid="uid://dwp8o883dsfh4" path="res://assets/celestia/shaders/2D_outline_and_blink.gdshader" id="2_fd7t3"]
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="4_s522c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d77yq"]
 size = Vector2(16, 4)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ts3cw"]
-shader = ExtResource("2_s522c")
-shader_parameter/enabled = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8286y"]
+shader = ExtResource("2_fd7t3")
+shader_parameter/outline_enabled = false
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/corner_pixel = false
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_value = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s522c"]
 radius = 30.0
@@ -28,7 +30,7 @@ position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_d77yq")
 
 [node name="Texture" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_ts3cw")
+material = SubResource("ShaderMaterial_8286y")
 texture = ExtResource("2_bxhh7")
 
 [node name="Animation" type="AnimationPlayer" parent="."]

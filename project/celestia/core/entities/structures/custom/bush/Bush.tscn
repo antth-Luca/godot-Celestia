@@ -1,18 +1,20 @@
 [gd_scene load_steps=9 format=3 uid="uid://b038in3s52he"]
 
 [ext_resource type="Script" uid="uid://sl0icxtfp6dj" path="res://core/entities/structures/custom/bush/Bush.gd" id="1_a4epx"]
-[ext_resource type="Shader" uid="uid://capg2ulc8vrff" path="res://assets/celestia/shaders/2D_pixel_outline.gdshader" id="2_c1104"]
 [ext_resource type="Texture2D" uid="uid://c5jm05udenymw" path="res://assets/celestia/textures/structures/bush.png" id="2_hphd3"]
+[ext_resource type="Shader" uid="uid://dwp8o883dsfh4" path="res://assets/celestia/shaders/2D_outline_and_blink.gdshader" id="2_k5rbo"]
 [ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="4_4b5nf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1104"]
 size = Vector2(20, 4)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wayko"]
-shader = ExtResource("2_c1104")
-shader_parameter/enabled = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8qwcs"]
+shader = ExtResource("2_k5rbo")
+shader_parameter/outline_enabled = false
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/corner_pixel = false
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_value = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a4epx"]
 radius = 30.0
@@ -29,7 +31,7 @@ position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_c1104")
 
 [node name="Texture" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_wayko")
+material = SubResource("ShaderMaterial_8qwcs")
 texture = ExtResource("2_hphd3")
 
 [node name="Animation" type="AnimationPlayer" parent="."]

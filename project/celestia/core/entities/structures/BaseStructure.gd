@@ -1,7 +1,7 @@
 extends StaticBody2D
 class_name BaseStructure
 
-const hurt_color: Color = Color.DARK_SALMON
+const hurt_color: Color = Color.INDIAN_RED
 const indestructible_color: Color = Color.WHITE
 
 @onready var TEXTURE: Sprite2D = $Texture
@@ -15,17 +15,22 @@ var id: ResourceLocation = ResourceLocation.EMPTY:
 			push_warning('BaseItem: Item ID already set. It cannot be changed after initialization.')
 		id = new_id
 
+# GODOT
+func _ready() -> void:
+	# Shader
+		TEXTURE.material.set_shader_parameter('blink_color', hurt_color)
+
 # MAIN
 func on_interact(_entity: LivingEntity) -> void:
 	pass
 
 
 func add_highlight() -> void:
-	TEXTURE.material.set_shader_parameter('enabled', true)
+	TEXTURE.material.set_shader_parameter('outline_enabled', true)
 
 
 func remove_highlight() -> void:
-	TEXTURE.material.set_shader_parameter('enabled', false)
+	TEXTURE.material.set_shader_parameter('outline_enabled', false)
 
 
 func restore(restore_value: float) -> void:
@@ -36,7 +41,9 @@ func restore(restore_value: float) -> void:
 func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 	var hp_prop: HealthProperty = structure_data.stats.get_property(InitPropProviders.HEALTH)
 	hp_prop.sub_health(final_dam)
-	# TODO: Adicionar representação visual do dano.
+	var blink_tween: Tween = create_tween()
+	TEXTURE.material.set_shader_parameter('blink_value', 1.0)
+	blink_tween.tween_property(TEXTURE.material, 'shader_parameter/blink_value', 0, .3).from(1.0)
 	if hitbox_parent is BaseHit: hitbox_parent._on_hurt_entity()
 	if hp_prop.get_health() <= 0: destroy(hit.attacker)
 
