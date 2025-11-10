@@ -93,6 +93,7 @@ item.magma_carapace,Magma Carapace,Carapaça de Magma
 item.magma_carapace.description.heat,"Grants the Heat effect continuously for 30s.","Concede o efeito Quente continuamente por 30s."
 item.magma_carapace.description.burning,"Deals [1.2% of max health] as magic damage per second to all nearby enemies within 20 units.","Inflige [1.2% da vida máxima] como dano mágico por segundo a todos os inimigos num raio de 20 unidades."
 item.magma_stone,Magma Stone,Pedra de Magma
+item.manure,Manure,Esterco
 item.meat,Meat,Carne
 item.mechanical_heart,Mechanic Heart,Coração Mecânico
 item.mechanical_heart.description,"When the bearer deals damage, their move speed increases by 20% for 3s. Cooldown: 6s.","Quando o portador causa dano, sua velocidade de movimento aumenta em 20% por 3s. Recarga: 6s."
