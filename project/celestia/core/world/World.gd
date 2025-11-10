@@ -79,8 +79,7 @@ func _ready() -> void:
 	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
-		#ItemStack.new(InitFuels.STICK.get_registered()),
-		ItemStack.new(InitSeeds.ROSE.get_registered()),
+		ItemStack.new(InitFuels.STICK.get_registered()),
 		Vector2(169, 165)
 	)
 	# Spawn Iron
@@ -93,6 +92,11 @@ func _ready() -> void:
 		#ItemStack.new(InitItems.PAPYRUS.get_registered()),
 		ItemStack.new(InitFertilizers.BONE.get_registered()),
 		Vector2(169, 195)
+	)
+	# Spawn Rose
+	DroppedItemUtils.drop_item_in_position(
+		ItemStack.new(InitSeeds.ROSE.get_registered()),
+		Vector2(169, 210)
 	)
 
 # MAIN

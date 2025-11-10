@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://djd21pgjveiyk"]
+[gd_scene load_steps=10 format=3 uid="uid://djd21pgjveiyk"]
 
 [ext_resource type="Script" uid="uid://re68cldn0uuy" path="res://core/entities/structures/custom/farmland/Farmland.gd" id="1_fuk45"]
 [ext_resource type="Shader" uid="uid://dwp8o883dsfh4" path="res://assets/celestia/shaders/2D_outline_and_blink.gdshader" id="2_8bc03"]
@@ -9,6 +9,14 @@
 size = Vector2(24, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nqaan"]
+shader = ExtResource("2_8bc03")
+shader_parameter/outline_enabled = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/corner_pixel = false
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_value = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bc03"]
 shader = ExtResource("2_8bc03")
 shader_parameter/outline_enabled = false
 shader_parameter/outline_color = Color(1, 1, 1, 1)
@@ -32,6 +40,12 @@ shape = SubResource("RectangleShape2D_8bc03")
 [node name="Texture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_nqaan")
 texture = ExtResource("2_ud4cf")
+
+[node name="PlantTexture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8bc03")
+position = Vector2(0, -1)
+
+[node name="StageTimer" type="Timer" parent="."]
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 
