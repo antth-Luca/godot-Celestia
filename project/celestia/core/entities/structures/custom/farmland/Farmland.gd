@@ -73,9 +73,9 @@ func add_plant_texture(i_seed: BaseSeed) -> void:
 	PLANT_TEXTURE.texture = load(Celestia.PLANT_STRUCT_SPRITE_PATH % i_seed.plant_location.get_splited())
 	PLANT_TEXTURE.visible = true
 	PLANT_TEXTURE.hframes = i_seed.grow_stages
-	var y_pos: int = PLANT_TEXTURE.texture.get_height() * -1
-	PLANT_TEXTURE.position.y = int(y_pos / 2.0)
-	BALLON_TEXTURE.position.y = y_pos
+	var y_pos: int = (1 + PLANT_TEXTURE.texture.get_height()) * -1
+	PLANT_TEXTURE.position.y = y_pos / 2.0
+	BALLON_TEXTURE.position.y = y_pos - 8
 
 
 func try_seed(hand_slot: BaseSlot) -> bool:

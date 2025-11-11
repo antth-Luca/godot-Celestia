@@ -39,7 +39,6 @@ shape = SubResource("RectangleShape2D_8bc03")
 
 [node name="PlantTexture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_8bc03")
-position = Vector2(0, -1)
 
 [node name="Texture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_nqaan")
