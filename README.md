@@ -31,7 +31,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 #### Alpha
 
-- [ ] Sistema de cultivo;
+- [ ] Nova estrutura: Bancada de Fabricação;
 - [ ] Primeiro chefe/boss;
 - [ ] Sistema de eventos históricos;
 - [ ] Sistema de dimensões: adição das Cavernas;
@@ -43,7 +43,8 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 - [x] Movimento de rolagem do Jogador/Player;
 - [x] Sistema de efeitos para entidades;
 - [x] Sistema de encantamentos para itens;
-- [x] Sistema de relíquias.
+- [x] Sistema de relíquias;
+- [x] Sistema de cultivo.
 
 #### Beta
 
