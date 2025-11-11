@@ -48,8 +48,10 @@ func _set_outline(state: bool) -> void:
 
 func on_interact(entity: LivingEntity) -> void:
 	var hand_slot: BaseSlot = entity.inventory.get_hand()
+	# Fertilizing
+	if try_fertilize(hand_slot): return
 	# Watering
-	if try_water(hand_slot): return
+	elif try_water(hand_slot): return
 	# Seeding
 	elif try_seed(hand_slot): return
 	# Harvest
@@ -94,6 +96,15 @@ func try_water(hand_slot: BaseSlot) -> bool:
 	hand_slot.player.inventory.add_item_to_backpack(ItemStack.new(InitItems.CERAMIC_BOWL.get_registered(), 1))
 	needs_water = false
 	stage_timer.start(item_seed.time_per_stage)
+	return true
+
+
+func try_fertilize(hand_slot: BaseSlot) -> bool:
+	var hand_stack: ItemStack = hand_slot.stack
+	if not item_seed or is_ready_to_harvest() or needs_water or not hand_stack.item is BaseFertilizer: return false
+	hand_stack.sub_amount(1, hand_slot)
+	var reduce: float = item_seed.time_per_stage * hand_stack.item.power
+	stage_timer.start(max(stage_timer.time_left - reduce, .1))
 	return true
 
 

@@ -19,7 +19,7 @@ static func setup() -> void:
 			var item = BaseSeed.new()
 			item.plant_location = ResourceLocation.new(Celestia.GAME_ID, 'rose_bush')
 			item.grow_stages = 4
-			item.time_per_stage = 5
+			item.time_per_stage = 660
 			item.set_crop(InitLootBoxes.ROSE_BUSH_DESTROY)
 			return item
 	)
