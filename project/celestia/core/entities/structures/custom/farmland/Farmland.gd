@@ -12,8 +12,7 @@ var item_seed: BaseSeed
 var current_stage: int:
 	set(new_stage):
 		current_stage = new_stage
-		if not is_ready_to_harvest():
-			PLANT_TEXTURE.frame = current_stage
+		PLANT_TEXTURE.frame = current_stage
 var is_growing: bool = false
 var needs_water: bool = false:
 	set(new_needs):
@@ -58,13 +57,14 @@ func on_interact(entity: LivingEntity) -> void:
 
 
 func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
-	try_harvest(hit.attacker.inventory.get_hand())
+	try_harvest(hit.attacker)
 	if hit.tool.get_comparable_name() == structure_data.compatible_tools.front():
 		super.damage(final_dam, hit, hitbox_parent)
 
 # MAIN
 func is_ready_to_harvest() -> bool:
-	return not current_stage < item_seed.grow_stages
+	if not item_seed: return false
+	return not current_stage < item_seed.grow_stages - 1
 
 
 func add_plant_texture(i_seed: BaseSeed) -> void:
@@ -101,8 +101,10 @@ func try_harvest(entity: LivingEntity) -> void:
 	if is_ready_to_harvest():
 		for out in item_seed.get_crop(entity):
 			DroppedItemUtils.drop_item_in_position(out, global_position)
-	else:
+	elif item_seed:
 		DroppedItemUtils.drop_item_in_position(ItemStack.new(item_seed, 1), global_position)
+	else:
+		return
 	BALLON_TEXTURE.visible = false
 	PLANT_TEXTURE.visible = false
 	item_seed = null

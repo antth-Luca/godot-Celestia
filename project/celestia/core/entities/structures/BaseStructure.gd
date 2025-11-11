@@ -44,11 +44,13 @@ func restore(restore_value: float) -> void:
 func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 	var hp_prop: HealthProperty = structure_data.stats.get_property(InitPropProviders.HEALTH)
 	hp_prop.sub_health(final_dam)
+	if hitbox_parent is BaseHit: hitbox_parent._on_hurt_entity()
+	if hp_prop.get_health() <= 0:
+		destroy(hit.attacker)
+		return
 	var blink_tween: Tween = create_tween()
 	TEXTURE.material.set_shader_parameter('blink_value', 1.0)
 	blink_tween.tween_property(TEXTURE.material, 'shader_parameter/blink_value', 0, .3).from(1.0)
-	if hitbox_parent is BaseHit: hitbox_parent._on_hurt_entity()
-	if hp_prop.get_health() <= 0: destroy(hit.attacker)
 
 
 func destroy(_attacker: LivingEntity) -> void:
