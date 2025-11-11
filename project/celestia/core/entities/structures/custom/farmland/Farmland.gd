@@ -1,23 +1,35 @@
 extends BaseStructure
 class_name Farmland
 
+const READY_BALLON = preload('res://assets/celestia/interface/icons/ready_ballon.png')
+const WATER_BALLON = preload('res://assets/celestia/interface/icons/water_ballon.png')
+
 @onready var PLANT_TEXTURE: Sprite2D = $PlantTexture
+@onready var BALLON_TEXTURE: Sprite2D = $BallonTexture
 @onready var stage_timer: Timer = $StageTimer
 
 var item_seed: BaseSeed
 var current_stage: int:
 	set(new_stage):
 		current_stage = new_stage
-		PLANT_TEXTURE.frame = current_stage
+		if not is_ready_to_harvest():
+			PLANT_TEXTURE.frame = current_stage
 var is_growing: bool = false
-var needs_water: bool = false
+var needs_water: bool = false:
+	set(new_needs):
+		needs_water = new_needs
+		if needs_water:
+			BALLON_TEXTURE.texture = WATER_BALLON
+			BALLON_TEXTURE.visible = true
+		else:
+			BALLON_TEXTURE.visible = false
 
 # GODOT
 func _init() -> void:
 	structure_data = StructureData.new(
 		[
-			AxeTool.get_static_comparable_name(),
 			PickaxeTool.get_static_comparable_name(),
+			AxeTool.get_static_comparable_name(),
 			SwordTool.get_static_comparable_name()
 		],
 		[
@@ -42,29 +54,26 @@ func on_interact(entity: LivingEntity) -> void:
 	# Seeding
 	elif try_seed(hand_slot): return
 	# Harvest
-	try_harvest(hand_slot)
+	try_harvest(entity)
 
 
 func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
-	super.damage(final_dam, hit, hitbox_parent)
-
-
-func destroy(attacker: LivingEntity) -> void:
-	if item_seed:
-		PLANT_TEXTURE.visible = false
-		if current_stage < item_seed.grow_stages:
-			DroppedItemUtils.drop_item_in_position(ItemStack.new(item_seed, 1), global_position)
-		else:
-			for out in item_seed.get_crop(attacker):
-				DroppedItemUtils.drop_item_in_position(out, global_position)
-		item_seed = null
-	super.destroy(attacker)
+	try_harvest(hit.attacker.inventory.get_hand())
+	if hit.tool.get_comparable_name() == structure_data.compatible_tools.front():
+		super.damage(final_dam, hit, hitbox_parent)
 
 # MAIN
+func is_ready_to_harvest() -> bool:
+	return not current_stage < item_seed.grow_stages
+
+
 func add_plant_texture(i_seed: BaseSeed) -> void:
 	PLANT_TEXTURE.texture = load(Celestia.PLANT_STRUCT_SPRITE_PATH % i_seed.plant_location.get_splited())
-	PLANT_TEXTURE.hframes = i_seed.grow_stages
 	PLANT_TEXTURE.visible = true
+	PLANT_TEXTURE.hframes = i_seed.grow_stages
+	var y_pos: int = PLANT_TEXTURE.texture.get_height() * -1
+	PLANT_TEXTURE.position.y = int(y_pos / 2.0)
+	BALLON_TEXTURE.position.y = y_pos
 
 
 func try_seed(hand_slot: BaseSlot) -> bool:
@@ -88,9 +97,21 @@ func try_water(hand_slot: BaseSlot) -> bool:
 	return true
 
 
-func try_harvest(_hand_slot: BaseSlot) -> void: pass
+func try_harvest(entity: LivingEntity) -> void:
+	if is_ready_to_harvest():
+		for out in item_seed.get_crop(entity):
+			DroppedItemUtils.drop_item_in_position(out, global_position)
+	else:
+		DroppedItemUtils.drop_item_in_position(ItemStack.new(item_seed, 1), global_position)
+	BALLON_TEXTURE.visible = false
+	PLANT_TEXTURE.visible = false
+	item_seed = null
 
 # HANDLERS
 func _on_stage_timer_timeout() -> void:
 	current_stage += 1
+	if is_ready_to_harvest():
+		BALLON_TEXTURE.texture = READY_BALLON
+		BALLON_TEXTURE.visible = true
+		return
 	needs_water = true

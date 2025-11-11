@@ -48,6 +48,7 @@ texture = ExtResource("2_ud4cf")
 [node name="BallonTexture" type="Sprite2D" parent="."]
 
 [node name="StageTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 

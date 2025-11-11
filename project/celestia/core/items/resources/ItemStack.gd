@@ -29,7 +29,7 @@ func add_amount_safe(amount_safe: int) -> int:
 
 
 func sub_amount(sub: int, current_slot: BaseSlot) -> void:
-	amount -= 1
+	amount -= sub
 	if not amount > 0:
 		item.break_item(current_slot)
 	else:
