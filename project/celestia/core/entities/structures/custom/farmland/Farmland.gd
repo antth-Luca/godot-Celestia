@@ -57,7 +57,7 @@ func on_interact(entity: LivingEntity) -> void:
 
 
 func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
-	try_harvest(hit.attacker)
+	if try_harvest(hit.attacker): return
 	if hit.tool.get_comparable_name() == structure_data.compatible_tools.front():
 		super.damage(final_dam, hit, hitbox_parent)
 
@@ -97,17 +97,18 @@ func try_water(hand_slot: BaseSlot) -> bool:
 	return true
 
 
-func try_harvest(entity: LivingEntity) -> void:
+func try_harvest(entity: LivingEntity) -> bool:
 	if is_ready_to_harvest():
 		for out in item_seed.get_crop(entity):
 			DroppedItemUtils.drop_item_in_position(out, global_position)
 	elif item_seed:
 		DroppedItemUtils.drop_item_in_position(ItemStack.new(item_seed, 1), global_position)
 	else:
-		return
+		return false
 	BALLON_TEXTURE.visible = false
 	PLANT_TEXTURE.visible = false
 	item_seed = null
+	return true
 
 # HANDLERS
 func _on_stage_timer_timeout() -> void:

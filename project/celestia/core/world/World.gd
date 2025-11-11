@@ -42,8 +42,8 @@ func _ready() -> void:
 		InitRelics.EYE_OF_THE_STORM,
 		InitRelics.COSMIC_FOCUS
 	]
-	#for relic_holder in relics:
-		#player.inventory.add_item_to_backpack(ItemStack.new(relic_holder.get_registered()))
+	for relic_holder in relics:
+		player.inventory.add_item_to_backpack(ItemStack.new(relic_holder.get_registered()))
 	# Spawn Bed
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.BED.get_registered(),
