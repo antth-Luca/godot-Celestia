@@ -25,12 +25,7 @@ func use(player: Player) -> void:
 				HitUtils.spawn_hit(player, hit_type, self)
 				consume_durability(1, player.inventory.get_hand())
 				# Consume available AMMO
-				if can_consume:
-					slot_stack.amount -= min_ammo_to_fire
-					if slot_stack.amount <= 0:
-						break_item(slot)
-					else:
-						slot.render_slot()
+				if can_consume: slot_stack.sub_amount(min_ammo_to_fire, slot)
 				await HitUtils.get_tree().create_timer(.1).timeout
 			set_cooldown(player)
 			return

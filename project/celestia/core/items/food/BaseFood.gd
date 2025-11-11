@@ -61,11 +61,7 @@ func use(player: Player) -> void:
 		hungry_prop.add_hungry(satiation)
 		if regen_hp > 0: player.heal(regen_hp)
 		var hand_slot: BaseSlot = player.inventory.get_hand()
-		var stack: ItemStack = hand_slot.stack
-		stack.amount -= 1
-		if stack.amount <= 0:
-			break_item(hand_slot)
-		else:
-			hand_slot.render_slot()
+		var hand_stack: ItemStack = hand_slot.stack
+		hand_stack.sub_amount(1, hand_slot)
 		for effect_instance in effects_list:
 			player.effect_receiver.add_effect(effect_instance)

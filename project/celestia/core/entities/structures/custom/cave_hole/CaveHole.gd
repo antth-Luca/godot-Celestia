@@ -19,8 +19,10 @@ func _init() -> void:
 func on_interact(entity: LivingEntity) -> void:
 	var hp_prop: HealthProperty = structure_data.stats.get_property(InitPropProviders.HEALTH)
 	if hp_prop.get_health() > 0:
-		var hand_stack: ItemStack = entity.inventory.get_hand().stack
+		var hand_slot: BaseSlot = entity.inventory.get_hand()
+		var hand_stack: ItemStack = hand_slot.stack
 		if not hand_stack.is_empty() and hand_stack.item is BaseFertilizer:
+			hand_stack.sub_amount(1, hand_slot)
 			StructuresUtils.spawn_structure_in_position(InitStructures.FARMLAND.get_registered(), global_position)
 			destroy(entity)
 		return

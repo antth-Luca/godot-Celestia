@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bc03"]
 size = Vector2(24, 2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqaan"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bc03"]
 shader = ExtResource("2_8bc03")
 shader_parameter/outline_enabled = false
 shader_parameter/outline_color = Color(1, 1, 1, 1)
@@ -16,7 +16,7 @@ shader_parameter/corner_pixel = false
 shader_parameter/blink_color = Color(1, 1, 1, 1)
 shader_parameter/blink_value = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bc03"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqaan"]
 shader = ExtResource("2_8bc03")
 shader_parameter/outline_enabled = false
 shader_parameter/outline_color = Color(1, 1, 1, 1)
@@ -37,13 +37,13 @@ script = ExtResource("1_fuk45")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_8bc03")
 
-[node name="Texture" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_nqaan")
-texture = ExtResource("2_ud4cf")
-
 [node name="PlantTexture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_8bc03")
 position = Vector2(0, -1)
+
+[node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_nqaan")
+texture = ExtResource("2_ud4cf")
 
 [node name="StageTimer" type="Timer" parent="."]
 
@@ -61,6 +61,7 @@ shape = SubResource("CircleShape2D_nqaan")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_ud4cf")
 
+[connection signal="timeout" from="StageTimer" to="." method="_on_stage_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_interaction_entity_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_interaction_entity_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

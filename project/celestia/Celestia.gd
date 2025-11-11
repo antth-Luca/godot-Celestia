@@ -6,6 +6,7 @@ const DROPPED_ITEM_SCENE_PATH: String = 'res://core/world/dropped_items/DroppedI
 const ITEM_SPRITE_PATH: String = 'res://assets/%s/textures/items/%s.png'
 const SLOT_TYPE_SPRITE_PATH: String = 'res://assets/%s/interface/inventory/slots/types/%s.png'
 const EFFECT_SPRITE_PATH: String = 'res://assets/%s/textures/effects/%s.png'
+const PLANT_STRUCT_SPRITE_PATH: String = 'res://assets/%s/textures/structures/plants/%s.png'
 const GAME_CONFIG_PATH: String = 'res://config/game_config.json'
 const TRANSLATION_KEY_BASES: Dictionary = {
 	ITEM = 'item.%s',

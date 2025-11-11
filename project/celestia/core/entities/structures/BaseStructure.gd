@@ -21,16 +21,19 @@ func _ready() -> void:
 		TEXTURE.material.set_shader_parameter('blink_color', hurt_color)
 
 # MAIN
-func on_interact(_entity: LivingEntity) -> void:
-	pass
+func _set_outline(state: bool) -> void:
+	TEXTURE.material.set_shader_parameter('outline_enabled', state)
 
 
 func add_highlight() -> void:
-	TEXTURE.material.set_shader_parameter('outline_enabled', true)
+	_set_outline(true)
 
 
 func remove_highlight() -> void:
-	TEXTURE.material.set_shader_parameter('outline_enabled', false)
+	_set_outline(false)
+
+
+func on_interact(_entity: LivingEntity) -> void: pass
 
 
 func restore(restore_value: float) -> void:

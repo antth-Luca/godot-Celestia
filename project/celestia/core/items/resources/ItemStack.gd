@@ -28,6 +28,14 @@ func add_amount_safe(amount_safe: int) -> int:
 	return amount_safe - to_add
 
 
+func sub_amount(sub: int, current_slot: BaseSlot) -> void:
+	amount -= 1
+	if not amount > 0:
+		item.break_item(current_slot)
+	else:
+		current_slot.render_slot()
+
+
 func is_empty() -> bool:
 	return amount <= 0
 
