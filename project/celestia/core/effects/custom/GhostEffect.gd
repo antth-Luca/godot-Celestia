@@ -19,7 +19,7 @@ func _on_effect_added(entity: LivingEntity) -> void:
 	ms_prop.add_move_speed(move_speed_bonus)
 	# Collision
 	for mask in COLLISION_MASK_MODIFIER:
-		entity.collision_mask &= ~(1 << (mask - 1))
+		entity.set_collision_mask_value(mask, false)
 
 
 func _on_effect_removed(entity: LivingEntity) -> void:
@@ -28,4 +28,4 @@ func _on_effect_removed(entity: LivingEntity) -> void:
 	ms_prop.sub_move_speed(move_speed_bonus)
 	# Collision
 	for mask in COLLISION_MASK_MODIFIER:
-		entity.collision_mask |= (1 << (mask - 1))
+		entity.set_collision_mask_value(mask, true)
