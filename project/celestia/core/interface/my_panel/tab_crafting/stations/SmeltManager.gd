@@ -40,7 +40,9 @@ func try_find_recipe() -> void:
 		return
 	# ...Get the recipes allowed per workstation and per ingredient...
 	var registry: RecipeRegistry = RegistryManager.registries[RecipeRegistry.REGISTRY_TYPE]
-	var per_workstation: Array = registry._per_workstation.get(get_parent().selected).duplicate()
+	var per_workstation: Array
+	for workstation_type in get_parent().selected:
+		per_workstation.append_array(registry._per_workstation.get(workstation_type).duplicate())
 	var per_ingredient: Dictionary[ResourceLocation, Array] = registry._per_ingredient
 	# ...Filter recipes by input ingredients...
 	if not input_stacks.is_empty() and per_ingredient.has(input_stacks.front().item.id):
