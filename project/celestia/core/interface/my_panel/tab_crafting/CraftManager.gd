@@ -44,14 +44,9 @@ func show_workstation(workstation_type: int) -> void:
 	selected.clear()
 	for key in workstations.keys():
 		var supported_types: Array = workstations[key]
-		if workstation_type in supported_types:
-			key.visible = true
-			var idx = supported_types.find(workstation_type)
-			for i in range(0, idx + 1):
-				selected.append(supported_types[i])
-		else:
-			key.visible = false
-	print_debug(selected)
+		var idx: int = supported_types.find(workstation_type)
+		key.visible = idx != -1
+		if idx != -1: selected.append_array(supported_types.slice(0, idx + 1))
 
 
 func hide_all_workstations() -> void:
