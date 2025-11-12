@@ -31,7 +31,6 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 #### Alpha
 
-- [ ] Nova estrutura: Bancada de Fabricação;
 - [ ] Primeiro chefe/boss;
 - [ ] Sistema de eventos históricos;
 - [ ] Sistema de dimensões: adição das Cavernas;
@@ -44,16 +43,17 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 - [x] Sistema de efeitos para entidades;
 - [x] Sistema de encantamentos para itens;
 - [x] Sistema de relíquias;
-- [x] Sistema de cultivo.
+- [x] Sistema de cultivo;
+- [x] Nova estrutura: Bancada de Fabricação.
 
 #### Beta
 
 - [ ] Correções:
   - [ ] O resultado em preview do OutPut não é removido se os ingredientes são alterados e uma receita não é encontrada;
-  - [ ] Os managers de crafting buscam exatamente a receita pelo tipo de workstation e não consideram níveis, como CLAY_FURNACE e STONE_FURNACE;
   - [ ] Os cliques 'middle' e 'left' não funcionam no inventário, se o Tooltip estiver aberto;
   - [ ] Os botões de aba no MyPanel não funcionam após a primeira vez;
-  - [x] Bolso rotativo pula posições se girar antes de coletar algum item.
+  - [x] Bolso rotativo pula posições se girar antes de coletar algum item;
+  - [x] Os managers de crafting buscam exatamente a receita pelo tipo de workstation e não consideram níveis, como CLAY_FURNACE e STONE_FURNACE.
 - [ ] Melhorias:
   - [ ] Botões do menu de pause com TextureButton.
 - [ ] Adição de efeitos sonoros;
