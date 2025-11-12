@@ -41,6 +41,7 @@ func _input(event: InputEvent) -> void:
 	# Any case
 	if not pause_menu.visible and event.is_action_pressed('ui_inventory'):
 		my_panel._on_inventory_tab_button_pressed()
+		my_panel.selected_tab = 0
 		update_my_panel(my_panel.visible)
 
 # GETTERS AND SETTERS
