@@ -8,6 +8,7 @@ static var FARMLAND: DeferredHolder
 static var STAR_CHANNEL: DeferredHolder
 static var STAR_FORGE: DeferredHolder
 static var STONE_FURNACE: DeferredHolder
+static var WORKBENCH: DeferredHolder
 # Natural
 static var BUSH: DeferredHolder
 static var CAVE_HOLE: DeferredHolder
@@ -43,6 +44,11 @@ static func setup() -> void:
 	STONE_FURNACE = STRUCTURES.add_entry(
 		'stone_furnace',
 		func(): return preload('res://core/entities/structures/custom/stone_furnace/StoneFurnace.tscn').instantiate()
+	)
+
+	WORKBENCH = STRUCTURES.add_entry(
+		'workbench',
+		func(): return preload('res://core/entities/structures/custom/workbench/Workbench.tscn').instantiate()
 	)
 
 	# Natural

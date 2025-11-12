@@ -17,7 +17,7 @@ func _ready() -> void:
 	# Spawn Player
 	var player: Player = InitCreatures.PLAYER.get_registered()
 	get_tree().current_scene.add_child(player)
-	player.global_position = Vector2(169, 140)
+	player.global_position = Vector2(170, 140)
 	player.ESSENCE_COUNTER = config.get('max_resilient_essence')
 	# TESTS CODE
 	var relics: Array = [
@@ -47,55 +47,60 @@ func _ready() -> void:
 	# Spawn Bed
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.BED.get_registered(),
-		Vector2(179, 114)
+		Vector2(180, 115)
+	)
+	# Spawn Workbench
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.WORKBENCH.get_registered(),
+		Vector2(210, 115)
 	)
 	# Spawn Furnace
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.STONE_FURNACE.get_registered(),
-		Vector2(210, 114)
+		Vector2(240, 115)
 	)
 	# Spawn Star Channel
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.STAR_CHANNEL.get_registered(),
-		Vector2(241, 114)
+		Vector2(270, 115)
 	)
 	# Spawn Star Forge
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.STAR_FORGE.get_registered(),
-		Vector2(272, 114)
+		Vector2(300, 115)
 	)
 	# Spawn Zombie
 	var zombie: Zombie = InitCreatures.ZOMBIE.get_registered()
 	get_tree().current_scene.add_child(zombie)
-	zombie.global_position = Vector2(392, 269)
+	zombie.global_position = Vector2(390, 270)
 	# Spawn Chicken
 	var chicken: Chicken = InitCreatures.CHICKEN.get_registered()
 	get_tree().current_scene.add_child(chicken)
-	chicken.global_position = Vector2(392, 269)
+	chicken.global_position = Vector2(390, 270)
 	# Spawn Bush
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.BUSH.get_registered(),
-		Vector2(487, 117)
+		Vector2(490, 120)
 	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(InitFuels.STICK.get_registered()),
-		Vector2(169, 165)
+		Vector2(170, 165)
 	)
 	# Spawn Iron
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(InitItems.IRON_INGOT.get_registered()),
-		Vector2(169, 180)
+		Vector2(170, 180)
 	)
 	# Spawn Papyrus
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(InitItems.PAPYRUS.get_registered()),
-		Vector2(169, 195)
+		Vector2(170, 195)
 	)
 	# Spawn Rose
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(InitSeeds.ROSE.get_registered()),
-		Vector2(169, 210)
+		Vector2(170, 210)
 	)
 
 # MAIN
