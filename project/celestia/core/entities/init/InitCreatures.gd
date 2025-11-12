@@ -8,6 +8,8 @@ static var CHICKEN: DeferredHolder
 static var PLAYER: DeferredHolder
 # Monsters
 static var ZOMBIE: DeferredHolder
+# Bosses
+static var ULKEN_GOLEM: DeferredHolder
 
 
 
@@ -36,6 +38,13 @@ static func setup() -> void:
 		'zombie',
 		func():
 			return preload('res://core/entities/creatures/monsters/zombie/Zombie.tscn').instantiate()
+	)
+
+	# Bosses
+	ULKEN_GOLEM = CREATURES.add_entry(
+		'ulken_golem',
+		func():
+			return preload('res://core/entities/creatures/bosses/ulken_golem/UlkenGolem.tscn').instantiate()
 	)
 
 	CREATURES.register()

@@ -77,6 +77,10 @@ func _ready() -> void:
 	var chicken: Chicken = InitCreatures.CHICKEN.get_registered()
 	get_tree().current_scene.add_child(chicken)
 	chicken.global_position = Vector2(390, 270)
+	# Spawn boss Ulken Golem
+	var golem: UlkenGolem = InitCreatures.ULKEN_GOLEM.get_registered()
+	get_tree().current_scene.add_child(golem)
+	golem.global_position = Vector2(865, 294)
 	# Spawn Bush
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.BUSH.get_registered(),

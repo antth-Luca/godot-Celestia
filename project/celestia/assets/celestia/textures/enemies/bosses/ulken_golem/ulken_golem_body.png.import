@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bomxwrsydbw6f"
-path="res://.godot/imported/ulkens_golem_body.png-aa8309d5d19fcbaecd1777ea2f43d1cb.ctex"
+uid="uid://j3hmjn3bgm4v"
+path="res://.godot/imported/ulken_golem_body.png-2b697fba01cdd1f75e76831881c598a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/celestia/textures/enemies/bosses/ulkens_golem/ulkens_golem_body.png"
-dest_files=["res://.godot/imported/ulkens_golem_body.png-aa8309d5d19fcbaecd1777ea2f43d1cb.ctex"]
+source_file="res://assets/celestia/textures/enemies/bosses/ulken_golem/ulken_golem_body.png"
+dest_files=["res://.godot/imported/ulken_golem_body.png-2b697fba01cdd1f75e76831881c598a3.ctex"]
 
 [params]
 
