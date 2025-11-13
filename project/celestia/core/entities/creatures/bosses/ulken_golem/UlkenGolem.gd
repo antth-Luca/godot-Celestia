@@ -3,6 +3,7 @@ class_name UlkenGolem
 
 @onready var ARMS_ANIMATION: AnimationPlayer = $ArmsAnimation
 
+var is_dashing: bool = false
 var is_attacking: bool = false
 var can_switch_arms_animation: bool = true
 var targets: Array[Player]
@@ -33,6 +34,25 @@ func _ready() -> void:
 	ANIMATION.play_backwards('wake_up')
 	entity_data.is_dead = true
 
+# SUPER
+func _physics_process(_delta: float) -> void:
+	if entity_data.is_dead: return
+	# Knockback
+	if knockback_vector != Vector2.ZERO:
+		velocity = knockback_vector
+	else:
+		# Get the input direction and handle the movement/deceleration.
+		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
+		if is_dashing: stats_move_speed *= 3
+		if direction != Vector2.ZERO and not entity_data.is_stunned and not entity_data.is_rooted:
+			velocity = direction * stats_move_speed
+			flip_texture()
+		else:
+			velocity = velocity.move_toward(Vector2.ZERO, stats_move_speed)
+	# Setting state and animation and continuing movement
+	set_animation()
+	move_and_slide()
+
 # GETTERS AND SETTERS
 # Source Entity
 func get_source_entity() -> LivingEntity:
@@ -57,6 +77,11 @@ func set_animation() -> void:
 		ANIMATION.play(anim_body)
 	if can_switch_arms_animation and ARMS_ANIMATION.current_animation != anim_arms:
 		ARMS_ANIMATION.play(anim_arms)
+
+# 
+func get_dashes_number() -> int:
+	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
+	return 1 + int(((hp_prop.get_health() / hp_prop.get_max_health()) * 100.0) / 25.0)
 
 # HANDLERS
 func _on_activate_area_body_entered(body) -> void:
