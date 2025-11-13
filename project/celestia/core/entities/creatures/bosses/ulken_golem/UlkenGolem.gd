@@ -1,7 +1,6 @@
 extends LivingEntity
 class_name UlkenGolem
 
-var is_attacking: bool = false
 var targets: Array[Player]
 
 # GODOT
@@ -48,7 +47,6 @@ func get_hit_data() -> HitData:
 func set_animation() -> void:
 	if entity_data.is_dead: return
 	var anim = 'idle'
-	if is_attacking: anim = 'attack'
 	if ANIMATION.current_animation != anim:
 		ANIMATION.play(anim)
 

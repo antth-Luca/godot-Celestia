@@ -1,9 +1,10 @@
 extends BaseState
 class_name AttackState
 
-@export var attack_anim_name: String
+@export var attack_animation: AnimationPlayer
+@export var attack_anim_name: String = 'attack'
 @export var has_preparation: bool
-@export var attack_preparation_anim_name: String
+@export var attack_preparation_anim_name: String = 'attack_preparation'
 
 @onready var parent_entity: CharacterBody2D = get_parent().get_parent()  # StateMachine > Entity
 
@@ -14,10 +15,13 @@ var target: CharacterBody2D:
 # SUPER
 func enter() -> void:
 	if has_preparation:
-		parent_entity.ANIMATION.play(attack_preparation_anim_name)
-	parent_entity.is_attacking = true
+		attack_animation.play(attack_preparation_anim_name)
+		await attack_animation.animation_finished
+	attack_animation.play(attack_anim_name)
 
 
 func exit() -> void:
-	if has_preparation: parent_entity.ANIMATION.play_backwards(attack_preparation_anim_name)
-	parent_entity.is_attacking = false
+	attack_animation.stop()
+	if has_preparation:
+		attack_animation.play_backwards(attack_preparation_anim_name)
+		await attack_animation.animation_finished
