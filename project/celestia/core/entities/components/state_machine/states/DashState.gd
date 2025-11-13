@@ -13,14 +13,14 @@ var target: CharacterBody2D:
 
 # SUPER
 func enter() -> void:
-	if parent_entity and target:
+	if target:
 		parent_entity.is_dashing = true
 		for c in parent_entity.get_dashes_number():
 			parent_entity.direction = (target.global_position - parent_entity.global_position).normalized()
 			dash_timer.start()
 			await dash_timer.timeout
 		parent_entity.is_dashing = false
-		get_parent().change_state_to_node(next_state)
+	get_parent().change_state_to_node(next_state)
 
 # MAIN
 func _ready() -> void:

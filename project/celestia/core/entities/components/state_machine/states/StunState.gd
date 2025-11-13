@@ -11,6 +11,8 @@ func enter() -> void:
 	parent_entity.effect_receiver.add_effect(EffectInstance.new(InitEffects.STUN, time_stun))
 	var timer := Timer.new()
 	timer.one_shot = true
+	add_child(timer)
 	timer.start(time_stun)
 	await timer.timeout
+	timer.queue_free()
 	get_parent().change_state_to_node(next_state)

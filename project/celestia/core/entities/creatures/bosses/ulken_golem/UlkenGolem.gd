@@ -24,7 +24,7 @@ func _init() -> void:
 			InitPropProviders.PENETRATION: 0,
 			InitPropProviders.DEFENSE_REDUCTION: 0,
 			InitPropProviders.CRITICAL_STRIKE: 0,
-			InitPropProviders.LIFE_STEAL: 0.3,
+			InitPropProviders.LIFE_STEAL: 0,
 			InitPropProviders.MOVE_SPEED: 30
 		})
 	)
@@ -81,7 +81,7 @@ func set_animation() -> void:
 # 
 func get_dashes_number() -> int:
 	var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
-	return 1 + int(((hp_prop.get_health() / hp_prop.get_max_health()) * 100.0) / 25.0)
+	return 5 - int(((hp_prop.get_health() / hp_prop.get_max_health()) * 100.0) / 25.0)
 
 # HANDLERS
 func _on_activate_area_body_entered(body) -> void:

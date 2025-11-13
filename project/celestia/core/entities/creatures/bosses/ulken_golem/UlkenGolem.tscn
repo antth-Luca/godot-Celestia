@@ -610,8 +610,8 @@ shape = SubResource("RectangleShape2D_wnb75")
 
 [node name="FuryChase" type="Node" parent="MachineState" node_paths=PackedStringArray("state_when_fury")]
 script = ExtResource("7_dvayw")
-max_fury = 20.0
-fury_increment = 0.01
+max_fury = 15.0
+fury_increment = 0.1
 fury_decrement = 10.0
 state_when_fury = NodePath("../Dash")
 
@@ -621,13 +621,13 @@ has_preparation = true
 
 [node name="Dash" type="Node" parent="MachineState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("9_s4cqu")
-dash_range = 0.5
+dash_range = 1.0
 next_state = NodePath("../Stun")
 
 [node name="Stun" type="Node" parent="MachineState" node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_bx3sj")
 next_state = NodePath("../FuryChase")
-time_stun = 1.8
+time_stun = 0.8
 
 [node name="DetectionArea" parent="." node_paths=PackedStringArray("state_on_detect", "state_on_undetect", "state_machine") instance=ExtResource("5_mo3as")]
 collision_layer = 0
