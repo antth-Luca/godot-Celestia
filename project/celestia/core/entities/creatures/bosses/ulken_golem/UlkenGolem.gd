@@ -1,6 +1,10 @@
 extends LivingEntity
 class_name UlkenGolem
 
+@onready var ARMS_ANIMATION: AnimationPlayer = $ArmsAnimation
+
+var is_attacking: bool = false
+var can_switch_arms_animation: bool = true
 var targets: Array[Player]
 
 # GODOT
@@ -46,9 +50,13 @@ func get_hit_data() -> HitData:
 # Animation
 func set_animation() -> void:
 	if entity_data.is_dead: return
-	var anim = 'idle'
-	if ANIMATION.current_animation != anim:
-		ANIMATION.play(anim)
+	var anim_body = 'walk'
+	var anim_arms = 'walk'
+	if is_attacking: anim_arms = 'attack'
+	if ANIMATION.current_animation != anim_body:
+		ANIMATION.play(anim_body)
+	if can_switch_arms_animation and ARMS_ANIMATION.current_animation != anim_arms:
+		ARMS_ANIMATION.play(anim_arms)
 
 # HANDLERS
 func _on_activate_area_body_entered(body) -> void:

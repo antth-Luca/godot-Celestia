@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dlr7l33h5ejol"]
+[gd_scene load_steps=29 format=3 uid="uid://dlr7l33h5ejol"]
 
 [ext_resource type="Script" uid="uid://cx8r4ii7bp5jl" path="res://core/entities/creatures/bosses/ulken_golem/UlkenGolem.gd" id="1_pqcr1"]
 [ext_resource type="Texture2D" uid="uid://j3hmjn3bgm4v" path="res://assets/celestia/textures/enemies/bosses/ulken_golem/ulken_golem_body.png" id="2_qesqu"]
@@ -255,23 +255,6 @@ tracks/4/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_mo3as"]
-resource_name = "idle"
-length = 1.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.3, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 6, 7]
-}
-
 [sub_resource type="Animation" id="Animation_jlnii"]
 resource_name = "wake_up"
 length = 0.65
@@ -300,88 +283,29 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_mo3as"]
+resource_name = "walk"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dvayw"]
 _data = {
 &"RESET": SubResource("Animation_r67wv"),
 &"death": SubResource("Animation_dvayw"),
-&"idle": SubResource("Animation_mo3as"),
-&"wake_up": SubResource("Animation_jlnii")
-}
-
-[sub_resource type="Animation" id="Animation_j046f"]
-resource_name = "attack_preparation"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ArmsPivot/LeftHand:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.48353]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ArmsPivot/RightHand:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -1.48353]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox/LeftHandCollision:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-22, 13), Vector2(-32, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox/LeftHandCollision:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.48353]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Hitbox/RightHandCollision:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(22, 13), Vector2(32, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Hitbox/RightHandCollision:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -1.48353]
+&"wake_up": SubResource("Animation_jlnii"),
+&"walk": SubResource("Animation_mo3as")
 }
 
 [sub_resource type="Animation" id="Animation_s4cqu"]
@@ -512,11 +436,105 @@ tracks/1/keys = {
 "values": [0.0, 6.28319]
 }
 
+[sub_resource type="Animation" id="Animation_j046f"]
+resource_name = "attack_preparation"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArmsPivot/LeftHand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.48353]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArmsPivot/RightHand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.48353]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/LeftHandCollision:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-22, 13), Vector2(-32, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox/LeftHandCollision:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.48353]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox/RightHandCollision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(22, 13), Vector2(32, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hitbox/RightHandCollision:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.48353]
+}
+
+[sub_resource type="Animation" id="Animation_jl7kv"]
+resource_name = "walk"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArmsPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.349066, 0.0, -0.349066, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jl7kv"]
 _data = {
 &"RESET": SubResource("Animation_s4cqu"),
 &"attack": SubResource("Animation_bx3sj"),
-&"attack_preparation": SubResource("Animation_j046f")
+&"attack_preparation": SubResource("Animation_j046f"),
+&"walk": SubResource("Animation_jl7kv")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnb75"]
@@ -594,9 +612,8 @@ max_fury = 20.0
 fury_increment = 0.01
 fury_decrement = 10.0
 
-[node name="Attack" type="Node" parent="MachineState" node_paths=PackedStringArray("attack_animation")]
+[node name="Attack" type="Node" parent="MachineState"]
 script = ExtResource("8_j046f")
-attack_animation = NodePath("../../ArmsAnimation")
 has_preparation = true
 
 [node name="DetectionArea" parent="." node_paths=PackedStringArray("state_on_detect", "state_on_undetect", "state_machine") instance=ExtResource("5_mo3as")]
@@ -631,3 +648,4 @@ debug_color = Color(0.833045, 0.213192, 0.804802, 0.42)
 
 [connection signal="body_entered" from="ActivateArea" to="." method="_on_activate_area_body_entered"]
 [connection signal="body_exited" from="ActivateArea" to="." method="_on_activate_area_body_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

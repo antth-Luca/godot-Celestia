@@ -1,8 +1,6 @@
 extends BaseState
 class_name AttackState
 
-@export var attack_animation: AnimationPlayer
-@export var attack_anim_name: String = 'attack'
 @export var has_preparation: bool
 @export var attack_preparation_anim_name: String = 'attack_preparation'
 
@@ -15,13 +13,17 @@ var target: CharacterBody2D:
 # SUPER
 func enter() -> void:
 	if has_preparation:
-		attack_animation.play(attack_preparation_anim_name)
-		await attack_animation.animation_finished
-	attack_animation.play(attack_anim_name)
+		parent_entity.can_switch_arms_animation = false
+		parent_entity.ARMS_ANIMATION.play(attack_preparation_anim_name)
+		await parent_entity.ARMS_ANIMATION.animation_finished
+		parent_entity.can_switch_arms_animation = true
+	parent_entity.is_attacking = true
 
 
 func exit() -> void:
-	attack_animation.stop()
+	parent_entity.is_attacking = false
 	if has_preparation:
-		attack_animation.play_backwards(attack_preparation_anim_name)
-		await attack_animation.animation_finished
+		parent_entity.can_switch_arms_animation = false
+		parent_entity.ARMS_ANIMATION.play_backwards(attack_preparation_anim_name)
+		await parent_entity.ARMS_ANIMATION.animation_finished
+		parent_entity.can_switch_arms_animation = true
