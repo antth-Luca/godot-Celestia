@@ -26,6 +26,12 @@ func get_state(state_name: String):
 	return get_node(state_name.capitalize())
 
 # MAIN
+func clear_state() -> void:
+	if not current_state: return
+	current_state.exit()
+	current_state = null
+
+
 func change_state_to_node(new_state: BaseState) -> void:
 	if new_state != current_state:
 		if current_state: current_state.exit()

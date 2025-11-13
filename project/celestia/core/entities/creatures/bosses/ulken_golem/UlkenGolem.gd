@@ -1,6 +1,9 @@
 extends LivingEntity
 class_name UlkenGolem
 
+var is_attacking: bool = false
+var targets: Array[Player]
+
 # GODOT
 func _init() -> void:
 	entity_data = EntityData.new(
@@ -22,6 +25,11 @@ func _init() -> void:
 		})
 	)
 
+
+func _ready() -> void:
+	ANIMATION.play_backwards('wake_up')
+	entity_data.is_dead = true
+
 # GETTERS AND SETTERS
 # Source Entity
 func get_source_entity() -> LivingEntity:
@@ -35,3 +43,36 @@ func get_hit_data() -> HitData:
 		HitData.SPECIALIZED_TYPE.EXPLOSION,
 		HitData.SOURCE.HIT,
 	)
+
+# Animation
+func set_animation() -> void:
+	if entity_data.is_dead: return
+	var anim = 'idle'
+	if is_attacking: anim = 'attack'
+	if ANIMATION.current_animation != anim:
+		ANIMATION.play(anim)
+
+# HANDLERS
+func _on_activate_area_body_entered(body) -> void:
+	if body.is_in_group('player'):
+		# TODO: Aciona a barra de vida de chefe!
+		targets.append(body)
+		if targets.size() == 1:
+			ANIMATION.play('wake_up')
+			await ANIMATION.animation_finished
+			entity_data.is_dead = false
+			var machine_state: StateMachine = get_node('MachineState')
+			var fury_chase: FuryChaseState = machine_state.get_node('FuryChase')
+			fury_chase.target = targets.front()
+			machine_state.change_state_to_node(fury_chase)
+
+
+func _on_activate_area_body_exited(body) -> void:
+	if body.is_in_group('player'):
+		# TODO: Desaciona a barra de vida de chefe!
+		targets.remove_at(targets.find(body))
+		if targets.is_empty():
+			var machine_state: StateMachine = get_node('MachineState')
+			machine_state.clear_state()
+			entity_data.is_dead = true
+			ANIMATION.play_backwards('wake_up')
