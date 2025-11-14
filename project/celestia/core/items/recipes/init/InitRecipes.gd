@@ -20,6 +20,7 @@ static var ENCHANT_UNBOUND: DeferredHolder
 # Normal
 static var ARCANE_LINES: DeferredHolder
 static var ARSENAL_OF_AGES: DeferredHolder
+static var ASTRONITE_INGOT: DeferredHolder
 static var BLOOD_ORB: DeferredHolder
 static var BOILED_EGG: DeferredHolder
 static var BOW: DeferredHolder
@@ -249,6 +250,18 @@ static func setup() -> void:
 			recipe.add_ingredient(InitRelics.PALE_ROSE, 1)
 			recipe.add_ingredient(InitRelics.WINGED_SOCKS, 1)
 			recipe.add_ingredient(InitRelics.COSMIC_FOCUS, 1)
+			return recipe
+	)
+
+	ASTRONITE_INGOT = RECIPES.add_entry(
+		'astronite_ingot',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.ASTRONITE_INGOT, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.required_bosses = 1
+			recipe.add_ingredient(InitItems.IRON_INGOT, 1)
+			recipe.add_ingredient(InitItems.STARDUST, 3)
 			return recipe
 	)
 

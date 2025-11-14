@@ -2,6 +2,9 @@ extends Node2D
 class_name World
 
 var config := {}
+var world_state := {
+	'defeated_bosses': 0
+}
 
 # GODOT
 func _ready() -> void:
@@ -139,3 +142,11 @@ func get_living_entites_in(global_pos: Vector2, range_search: float) -> Array:
 		if collider is LivingEntity:
 			characters.append(collider)
 	return characters
+
+# GETTERS AND SETTERS
+func get_defeated_bosses() -> int:
+	return world_state['defeated_bosses']
+
+
+func set_defeated_bosses(new_number: int) -> void:
+	world_state['defeated_bosses'] = clamp(new_number, 0, 5)

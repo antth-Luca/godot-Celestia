@@ -16,8 +16,7 @@ func _init() -> void:
 			InitPropProviders.ELETRIC_DAMAGE_MODIFIER: 1,
 			InitPropProviders.MOBILITY_MODIFIER: 1,
 			InitPropProviders.HEAL_MODIFIER: 1,
-			#InitPropProviders.HEALTH: 300,
-			InitPropProviders.HEALTH: 50,
+			InitPropProviders.HEALTH: 300,
 			InitPropProviders.ARMOR: 5,
 			InitPropProviders.RESISTANCE: 5,
 			InitPropProviders.DAMAGE_REDUCTION: 0,
@@ -57,9 +56,16 @@ func _physics_process(_delta: float) -> void:
 
 # Main
 func die(_attacker: LivingEntity) -> void:
+	# Animation
 	entity_data.is_dead = true
 	ANIMATION.play('death')
 	await ANIMATION.animation_finished
+	# Drop
+	# TODO: Adicionar drop.
+	# World
+	var world: World = get_tree().root.get_node('World')
+	world.set_defeated_bosses(1)
+	# Clear
 	queue_free()
 
 # GETTERS AND SETTERS

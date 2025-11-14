@@ -9,6 +9,9 @@ var id: ResourceLocation = ResourceLocation.EMPTY:
 var _workstation
 var _ingredients: Array[Ingredient]
 var _result
+var required_bosses: int = -1:
+	set(new_required):
+		required_bosses = clamp(new_required, 0, 5)
 
 # GETTERS AND SETTERS
 func get_workstation() -> Variant:
@@ -39,6 +42,7 @@ func set_result(result) -> void:
 # MAIN
 func matches(input: Array[ItemStack]) -> bool:
 	if input.size() != _ingredients.size(): return false
+	if GameConfig.get_tree().root.get_node('World').get_defeated_bosses() < required_bosses: return false
 	var used: Array[bool] = []
 	used.resize(_ingredients.size())
 	used.fill(false)

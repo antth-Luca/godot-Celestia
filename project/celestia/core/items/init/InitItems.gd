@@ -3,6 +3,7 @@ class_name InitItems
 
 static var ITEMS: DeferredRegister
 # Items
+static var ASTRONITE_INGOT: DeferredHolder
 static var CARNIGO_INGOT: DeferredHolder
 static var CERAMIC_BOWL: DeferredHolder
 static var CLAY_BOWL: DeferredHolder
@@ -49,6 +50,14 @@ static func setup() -> void:
 	)
 
 	# Items
+	ASTRONITE_INGOT = ITEMS.add_entry(
+		'astronite_ingot',
+		func():
+			var item = BaseItem.new()
+			item.rarity = InitRarities.UNCOMMON.get_registered()
+			return item
+	)
+
 	CARNIGO_INGOT = ITEMS.add_entry(
 		'carnigo_ingot',
 		func(): return BaseItem.new()
