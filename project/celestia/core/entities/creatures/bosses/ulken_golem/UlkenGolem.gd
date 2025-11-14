@@ -43,7 +43,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		# Get the input direction and handle the movement/deceleration.
 		var stats_move_speed = entity_data.stats.get_property(InitPropProviders.MOVE_SPEED).get_move_speed()
-		if is_dashing: stats_move_speed *= 3
+		if is_dashing: stats_move_speed *= 2.5
 		if direction != Vector2.ZERO and not entity_data.is_stunned and not entity_data.is_rooted:
 			velocity = direction * stats_move_speed
 			flip_texture()
@@ -86,7 +86,16 @@ func get_dashes_number() -> int:
 # HANDLERS
 func _on_activate_area_body_entered(body) -> void:
 	if body.is_in_group('player'):
-		# TODO: Aciona a barra de vida de chefe!
+		# Boss HP bar
+		var boss_hp_bar: BossHealthBar = body.get_ui().get_hud().get_boss_health_bar()
+		var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
+		hp_prop.connect('max_health_changed', Callable(boss_hp_bar, '_on_max_health_changed'))
+		hp_prop.emit_signal('max_health_changed', hp_prop.get_max_health())
+		hp_prop.connect('health_changed', Callable(boss_hp_bar, '_on_health_changed'))
+		hp_prop.emit_signal('health_changed', hp_prop.get_health())
+		boss_hp_bar.boss_name_label.text = tr('mob.%s.name' % id.path)
+		boss_hp_bar.visible = true
+		# Targets
 		targets.append(body)
 		if targets.size() == 1:
 			ANIMATION.play('wake_up')
@@ -100,7 +109,13 @@ func _on_activate_area_body_entered(body) -> void:
 
 func _on_activate_area_body_exited(body) -> void:
 	if body.is_in_group('player'):
-		# TODO: Desaciona a barra de vida de chefe!
+		# Boss HP bar
+		var boss_hp_bar: BossHealthBar = body.get_ui().get_hud().get_boss_health_bar()
+		var hp_prop: HealthProperty = entity_data.stats.get_property(InitPropProviders.HEALTH)
+		boss_hp_bar.visible = false
+		hp_prop.disconnect('max_health_changed', Callable(boss_hp_bar, '_on_max_health_changed'))
+		hp_prop.disconnect('health_changed', Callable(boss_hp_bar, '_on_health_changed'))
+		# Targets
 		targets.remove_at(targets.find(body))
 		if targets.is_empty():
 			var machine_state: StateMachine = get_node('MachineState')

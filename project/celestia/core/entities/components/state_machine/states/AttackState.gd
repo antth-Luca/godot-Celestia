@@ -6,9 +6,7 @@ class_name AttackState
 
 @onready var parent_entity: CharacterBody2D = get_parent().get_parent()  # StateMachine > Entity
 
-var target: CharacterBody2D:
-	set(new_target):
-		target = new_target
+var target: CharacterBody2D
 
 # SUPER
 func enter() -> void:

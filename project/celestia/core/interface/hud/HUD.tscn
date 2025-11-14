@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://7hauijtfq470"]
+[gd_scene load_steps=6 format=3 uid="uid://7hauijtfq470"]
 
 [ext_resource type="Script" uid="uid://dekh1i2slf8dn" path="res://core/interface/hud/HUD.gd" id="1_abe2h"]
 [ext_resource type="PackedScene" uid="uid://bky1fxhtd5kg7" path="res://core/interface/hud/stats_bar/StatsBar.tscn" id="2_4n8cl"]
+[ext_resource type="PackedScene" uid="uid://di6t72scb7q61" path="res://core/interface/hud/boss_health_bar/BossHealthBar.tscn" id="3_abe2h"]
 [ext_resource type="PackedScene" uid="uid://cwvqqakjqaopv" path="res://core/interface/hud/effects_display/EffectsDisplay.tscn" id="3_wdvpt"]
 [ext_resource type="PackedScene" uid="uid://bwhj3oh0nw37o" path="res://core/interface/hud/rotative_pocket/RotativePocket.tscn" id="4_wdvpt"]
 
@@ -20,6 +21,12 @@ script = ExtResource("1_abe2h")
 [node name="EffectsDisplay" parent="." instance=ExtResource("3_wdvpt")]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="BossHealthBar" parent="." instance=ExtResource("3_abe2h")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="StatsBar" parent="." instance=ExtResource("2_4n8cl")]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://di6t72scb7q61"]
+
+[ext_resource type="Script" uid="uid://8dmdht56vk6f" path="res://core/interface/hud/boss_health_bar/BossHealthBar.gd" id="1_i5l62"]
+[ext_resource type="Texture2D" uid="uid://cirs1ac4autv2" path="res://assets/celestia/interface/hud/boss_health_bar.png" id="1_w18aq"]
+[ext_resource type="Theme" uid="uid://itbvstxdxmvc" path="res://assets/celestia/themes/tiny_mini_theme.tres" id="3_njsic"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w18aq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5l62"]
+bg_color = Color(0.905882, 0.156863, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njsic"]
+bg_color = Color(0.14902, 0.0156863, 0.0156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yj1rd"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="BossHealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_i5l62")
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(2.5, 2.5)
+
+[node name="HealthBar" type="ProgressBar" parent="Node2D"]
+offset_left = -70.0
+offset_top = 3.0
+offset_right = 70.0
+offset_bottom = 12.0
+theme_override_styles/background = SubResource("StyleBoxFlat_w18aq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i5l62")
+value = 50.0
+show_percentage = false
+
+[node name="PrevHealthBar" type="ProgressBar" parent="Node2D/HealthBar"]
+z_index = -1
+layout_mode = 0
+offset_right = 140.0
+offset_bottom = 8.0
+theme_override_styles/background = SubResource("StyleBoxFlat_njsic")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yj1rd")
+value = 51.0
+show_percentage = false
+
+[node name="HealthTimer" type="Timer" parent="Node2D/HealthBar"]
+wait_time = 0.4
+one_shot = true
+
+[node name="Vessel" type="Sprite2D" parent="Node2D"]
+position = Vector2(0, 11.5)
+texture = ExtResource("1_w18aq")
+
+[node name="BossNameLabel" type="Label" parent="Node2D"]
+offset_left = -28.0
+offset_top = 14.0
+offset_right = 29.0
+offset_bottom = 23.0
+theme = ExtResource("3_njsic")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Node2D/HealthBar/HealthTimer" to="." method="_on_health_timer_timeout"]

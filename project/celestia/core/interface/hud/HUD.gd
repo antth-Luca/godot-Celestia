@@ -11,6 +11,10 @@ func get_effects_display() -> EffectsDisplay:
 	return get_node('EffectsDisplay')
 
 
+func get_boss_health_bar() -> BossHealthBar:
+	return get_node('BossHealthBar')
+
+
 func get_stats_bar() -> StatsBar:
 	return get_node('StatsBar')
 

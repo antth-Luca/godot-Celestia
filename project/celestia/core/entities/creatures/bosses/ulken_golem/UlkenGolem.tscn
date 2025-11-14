@@ -610,8 +610,8 @@ shape = SubResource("RectangleShape2D_wnb75")
 
 [node name="FuryChase" type="Node" parent="MachineState" node_paths=PackedStringArray("state_when_fury")]
 script = ExtResource("7_dvayw")
-max_fury = 15.0
-fury_increment = 0.1
+max_fury = 20.0
+fury_increment = 0.05
 fury_decrement = 10.0
 state_when_fury = NodePath("../Dash")
 
