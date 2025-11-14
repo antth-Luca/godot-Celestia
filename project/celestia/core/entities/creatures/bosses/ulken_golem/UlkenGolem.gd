@@ -35,6 +35,7 @@ func _ready() -> void:
 	entity_data.is_dead = true
 
 # SUPER
+# Godot
 func _physics_process(_delta: float) -> void:
 	if entity_data.is_dead: return
 	# Knockback
@@ -52,6 +53,16 @@ func _physics_process(_delta: float) -> void:
 	# Setting state and animation and continuing movement
 	set_animation()
 	move_and_slide()
+
+# Main
+func die(_dattacker: LivingEntity) -> void:
+	entity_data.is_dead = true
+	ANIMATION.play('death')
+	await ANIMATION.animation_finished
+
+	# TODO: Drop e evento histórico.
+
+	queue_free()
 
 # GETTERS AND SETTERS
 # Source Entity
