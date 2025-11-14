@@ -39,19 +39,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath("Particles/ExplosionParticles2D:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Particles/ExplosionParticles2D:emitting")
+tracks/2/path = NodePath("Particles/EnergyParticles2D5:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -63,7 +63,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Particles/EnergyParticles2D5:emitting")
+tracks/3/path = NodePath("Particles/EnergyParticles2D4:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -75,7 +75,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Particles/EnergyParticles2D4:emitting")
+tracks/4/path = NodePath("Particles/EnergyParticles2D3:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -87,7 +87,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Particles/EnergyParticles2D3:emitting")
+tracks/5/path = NodePath("Particles/EnergyParticles2D2:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -99,7 +99,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Particles/EnergyParticles2D2:emitting")
+tracks/6/path = NodePath("Particles/EnergyParticles2D:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -111,7 +111,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Particles/EnergyParticles2D:emitting")
+tracks/7/path = NodePath("Particles:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -123,34 +123,22 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Particles:visible")
+tracks/8/path = NodePath("ActivateArea/CollisionShape2D:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [false]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("ActivateArea/CollisionShape2D:disabled")
+tracks/9/path = NodePath("DetectionArea/CollisionShape2D:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("DetectionArea/CollisionShape2D:disabled")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -163,103 +151,103 @@ length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Particles/ExplosionParticles2D:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20)]
+"times": PackedFloat32Array(2.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Particles/ExplosionParticles2D:emitting")
+tracks/1/path = NodePath("Particles/EnergyParticles2D5:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2.2),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
+"times": PackedFloat32Array(0.3, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Particles/EnergyParticles2D5:emitting")
+tracks/2/path = NodePath("Particles/EnergyParticles2D4:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 2),
+"times": PackedFloat32Array(0.9, 2),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Particles/EnergyParticles2D4:emitting")
+tracks/3/path = NodePath("Particles/EnergyParticles2D3:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.9, 2),
+"times": PackedFloat32Array(0.6, 2),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [true, false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Particles/EnergyParticles2D3:emitting")
+tracks/4/path = NodePath("Particles/EnergyParticles2D2:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.6, 2),
+"times": PackedFloat32Array(1.2, 2),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [true, false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Particles/EnergyParticles2D2:emitting")
+tracks/5/path = NodePath("Particles/EnergyParticles2D:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(1.2, 2),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [true, false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Particles/EnergyParticles2D:emitting")
+tracks/6/path = NodePath("Particles:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [true, false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Particles:visible")
+tracks/7/path = NodePath("ActivateArea/CollisionShape2D:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [true, false]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("ActivateArea/CollisionShape2D:disabled")
+tracks/8/path = NodePath("DetectionArea/CollisionShape2D:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -268,17 +256,15 @@ tracks/8/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/9/type = "value"
+tracks/9/type = "animation"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("DetectionArea/CollisionShape2D:disabled")
+tracks/9/path = NodePath("ArmsAnimation")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"clips": PackedStringArray("death"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_jlnii"]
@@ -459,26 +445,14 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("ArmsPivot/LeftHand:position")
+tracks/10/path = NodePath("ArmsPivot:visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-20, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("ArmsPivot/RightHand:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(20, 1)]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_bx3sj"]
@@ -615,50 +589,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ArmsPivot/LeftHand:position")
+tracks/2/path = NodePath("ArmsPivot:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-20, 1), Vector2(-30, -10)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ArmsPivot/LeftHand:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 2.61799]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ArmsPivot/RightHand:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(20, 1), Vector2(30, -10)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("ArmsPivot/RightHand:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -2.61799]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_jl7kv"]
@@ -748,7 +686,6 @@ libraries = {
 }
 
 [node name="ArmsPivot" type="Node2D" parent="."]
-visible = false
 
 [node name="LeftHand" type="Sprite2D" parent="ArmsPivot"]
 position = Vector2(-20, 1)

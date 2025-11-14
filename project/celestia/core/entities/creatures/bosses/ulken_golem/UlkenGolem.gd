@@ -32,17 +32,8 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	connect(
-		'child_exiting_tree',
-		func(_node: Node):
-			print('saiu da arvre')
-	)
 	ANIMATION.play_backwards('wake_up')
 	entity_data.is_dead = true
-
-
-func _process(_delta):
-	print(ANIMATION.current_animation + ARMS_ANIMATION.current_animation)
 
 # SUPER
 # Godot
@@ -68,7 +59,6 @@ func _physics_process(_delta: float) -> void:
 func die(_attacker: LivingEntity) -> void:
 	entity_data.is_dead = true
 	ANIMATION.play('death')
-	ARMS_ANIMATION.play('death')
 	await ANIMATION.animation_finished
 	queue_free()
 
