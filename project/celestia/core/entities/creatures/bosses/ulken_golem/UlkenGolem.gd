@@ -17,7 +17,7 @@ func _init() -> void:
 			InitPropProviders.MOBILITY_MODIFIER: 1,
 			InitPropProviders.HEAL_MODIFIER: 1,
 			#InitPropProviders.HEALTH: 300,
-			InitPropProviders.HEALTH: 150,
+			InitPropProviders.HEALTH: 50,
 			InitPropProviders.ARMOR: 5,
 			InitPropProviders.RESISTANCE: 5,
 			InitPropProviders.DAMAGE_REDUCTION: 0,
@@ -32,8 +32,17 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	connect(
+		'child_exiting_tree',
+		func(_node: Node):
+			print('saiu da arvre')
+	)
 	ANIMATION.play_backwards('wake_up')
 	entity_data.is_dead = true
+
+
+func _process(_delta):
+	print(ANIMATION.current_animation + ARMS_ANIMATION.current_animation)
 
 # SUPER
 # Godot
@@ -56,14 +65,11 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 # Main
-func die(_dattacker: LivingEntity) -> void:
-	print_debug('oi')
+func die(_attacker: LivingEntity) -> void:
 	entity_data.is_dead = true
 	ANIMATION.play('death')
+	ARMS_ANIMATION.play('death')
 	await ANIMATION.animation_finished
-
-	# TODO: Drop e evento histórico.
-
 	queue_free()
 
 # GETTERS AND SETTERS
@@ -129,9 +135,10 @@ func _on_activate_area_body_exited(body) -> void:
 		hp_prop.disconnect('max_health_changed', Callable(boss_hp_bar, '_on_max_health_changed'))
 		hp_prop.disconnect('health_changed', Callable(boss_hp_bar, '_on_health_changed'))
 		# Targets
-		targets.remove_at(targets.find(body))
-		if targets.is_empty():
-			var machine_state: StateMachine = get_node('MachineState')
-			machine_state.clear_state()
-			entity_data.is_dead = true
-			ANIMATION.play_backwards('wake_up')
+		if not entity_data.is_dead:
+			targets.remove_at(targets.find(body))
+			if targets.is_empty():
+				var machine_state: StateMachine = get_node('MachineState')
+				machine_state.clear_state()
+				entity_data.is_dead = true
+				ANIMATION.play_backwards('wake_up')
