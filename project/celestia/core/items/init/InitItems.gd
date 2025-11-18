@@ -5,21 +5,28 @@ static var ITEMS: DeferredRegister
 # Items
 static var ASTRONITE_INGOT: DeferredHolder
 static var CARNIGO_INGOT: DeferredHolder
+static var CELESTITE_INGOT: DeferredHolder
 static var CERAMIC_BOWL: DeferredHolder
 static var CLAY_BOWL: DeferredHolder
 static var COBBLESTONE: DeferredHolder
 static var COMPASS: DeferredHolder
+static var DARK_IRON_INGOT: DeferredHolder
+static var ECLIPTITE_INGOT: DeferredHolder
 static var ERUPTITE_INGOT: DeferredHolder
 static var FABRIC: DeferredHolder
 static var FEATHER: DeferredHolder
 static var FULGURITE: DeferredHolder
+static var GLASS: DeferredHolder
 static var GOLD_INGOT: DeferredHolder
 static var HANDFUL_OF_CLAY: DeferredHolder
 static var HANDFUL_OF_DIRT: DeferredHolder
 static var HANDFUL_OF_SAND: DeferredHolder
 static var IRON_INGOT: DeferredHolder
+static var IRON_PLATE: DeferredHolder
 static var LEATHER: DeferredHolder
 static var MAGMA_STONE: DeferredHolder
+static var MIRROR: DeferredHolder
+static var MOONSTONE: DeferredHolder
 static var OBSIDIAN: DeferredHolder
 static var PAPYRUS: DeferredHolder
 static var PLANT_FIBER: DeferredHolder
@@ -64,6 +71,11 @@ static func setup() -> void:
 		func(): return BaseItem.new()
 	)
 
+	CELESTITE_INGOT = ITEMS.add_entry(
+		'celestite_ingot',
+		func(): return BaseItem.new()
+	)
+
 	CERAMIC_BOWL = ITEMS.add_entry(
 		'ceramic_bowl',
 		func(): return CeramicBowlItem.new()
@@ -84,6 +96,16 @@ static func setup() -> void:
 		func(): return BaseItem.new()
 	)
 
+	DARK_IRON_INGOT = ITEMS.add_entry(
+		'dark_iron_ingot',
+		func(): return BaseItem.new()
+	)
+
+	ECLIPTITE_INGOT = ITEMS.add_entry(
+		'ecliptite_ingot',
+		func(): return BaseItem.new()
+	)
+
 	ERUPTITE_INGOT = ITEMS.add_entry(
 		'eruptite_ingot',
 		func(): return BaseItem.new()
@@ -101,6 +123,11 @@ static func setup() -> void:
 
 	FULGURITE = ITEMS.add_entry(
 		'fulgurite',
+		func(): return BaseItem.new()
+	)
+
+	GLASS = ITEMS.add_entry(
+		'glass',
 		func(): return BaseItem.new()
 	)
 
@@ -129,6 +156,11 @@ static func setup() -> void:
 		func(): return BaseItem.new()
 	)
 
+	IRON_PLATE = ITEMS.add_entry(
+		'iron_plate',
+		func(): return BaseItem.new()
+	)
+
 	LEATHER = ITEMS.add_entry(
 		'leather',
 		func(): return BaseItem.new()
@@ -136,6 +168,16 @@ static func setup() -> void:
 
 	MAGMA_STONE = ITEMS.add_entry(
 		'magma_stone',
+		func(): return BaseItem.new()
+	)
+
+	MIRROR = ITEMS.add_entry(
+		'mirror',
+		func(): return BaseItem.new()
+	)
+
+	MOONSTONE = ITEMS.add_entry(
+		'moonstone',
 		func(): return BaseItem.new()
 	)
 

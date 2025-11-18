@@ -3,6 +3,7 @@ class_name InitFuels
 
 static var FUELS: DeferredRegister
 # Fuels
+static var COAL: DeferredHolder
 static var STICK: DeferredHolder
 
 
@@ -13,6 +14,14 @@ static func setup() -> void:
 	)
 
 	# Fuels
+	COAL = FUELS.add_entry(
+		'coal',
+		func():
+			var fuel = BaseFuel.new()
+			fuel.energy = 5
+			return fuel
+	)
+
 	STICK = FUELS.add_entry(
 		'stick',
 		func():

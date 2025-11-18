@@ -52,9 +52,11 @@ item.bone,Bone,Osso
 item.bow,Bow,Arco
 item.carnigo_ingot,Carnigo Ingot,Barra de Carnigo
 item.astronite_ingot,Astronite Ingot,Barra de Astronita
+item.celestite_ingot,Celestite Ingot,Barra de Celestita
 item.ceramic_bowl,Ceramic Bowl,Tigela de Cerâmica
 item.clawed_glove,Clawed Glove,Luva com Garras
 item.clay_bowl,Clay Bowl,Tigela de Argila
+item.coal,Coal,Carvão
 item.cobblestone,Cobblestone,Pedregulho
 item.coin_of_babylon,Coin of Babylon,Moeda da Babilônia
 item.collectors_glove,Collector’s Glove,Luva do Colecionador
@@ -66,6 +68,8 @@ item.cosmic_focus,Cosmic Focus,Foco Cósmico
 item.crown_of_lucidity,Crown of Lucidity,Coroa da Lucidez
 item.crown_of_lucidity.description,"Reduces the duration of Stun, Root, and Freeze effects by 20%.","Reduz em 20% a duração dos efeitos de Atordoamento, Enraizamento e Congelamento."
 item.cyclops_mask,Cyclops Mask,Máscara Ciclope
+item.dark_iron_ingot,Dark Iron Ingot,Barra de Ferro Negro
+item.ecliptite_ingot,Ecliptite Ingot,Barra de Ecliptita
 item.egg,Chicken Egg,Ovo de Galinha
 item.eruptite_ingot,Eruptite Ingot,Barra de Eruptite
 item.eye_of_the_storm,Eye of the Storm,Olho da Tempestade
@@ -75,6 +79,7 @@ item.explorers_kit.description,"Grants access to a mini-map, gradually revealing
 item.fabric,Fabric,Tecido
 item.feather,Feather,Pena
 item.fulgurite,Fulgurite,Fulgurito
+item.glass,Glass,Vidro
 item.gold_ingot,Gold Ingot,Barra de Ouro
 item.handful_of_clay,Handful of Clay,Punhado de Argila
 item.handful_of_dirt,Handful of Dirt,Punhado de Terra
@@ -85,6 +90,7 @@ item.iron_axe,Iron Axe,Machado de Ferro
 item.iron_chestplate,Iron Chestplate,Couraça de Ferro
 item.iron_ingot,Iron Ingot,Barra de Ferro
 item.iron_pickaxe,Iron Pickaxe,Picareta de Ferro
+item.iron_plate,Iron Plate,Placa de Ferro
 item.iron_sword,Iron Sword,Espada de Ferro
 item.jade_chalice,Jade Chalice,Cálice de Jade
 item.jade_chalice.description,"Each time the bearer takes damage, a Soul Fragment is created (up to 15). Upon healing, all fragments are consumed to grant additional recovery equal to [[stack count]% of missing health].","Cada vez que o portador sofre dano, um fragmento de alma é gerado (até 15). Ao se curar, os fragmentos são consumidos para conceder cura adicional igual a [[número de acúmulos]% da vida perdida]."
@@ -99,6 +105,8 @@ item.manure,Manure,Esterco
 item.meat,Meat,Carne
 item.mechanical_heart,Mechanic Heart,Coração Mecânico
 item.mechanical_heart.description,"When the bearer deals damage, their move speed increases by 20% for 3s. Cooldown: 6s.","Quando o portador causa dano, sua velocidade de movimento aumenta em 20% por 3s. Recarga: 6s."
+item.mirror,Mirror,Espelho
+item.moonstone,Moonstone,Pedra da Lua
 item.obsidian,Obsidian,Obsidiana
 item.one_sided_paldron,One-Sided Paldron,Ombreira Unilateral
 item.pale_rose,Pale Rose,Rosa Pálida

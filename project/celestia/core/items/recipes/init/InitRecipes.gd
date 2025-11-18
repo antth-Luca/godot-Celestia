@@ -33,14 +33,18 @@ static var COMPASS: DeferredHolder
 static var COSMIC_FOCUS: DeferredHolder
 static var CROWN_OF_LUCIDITY: DeferredHolder
 static var CYCLOPS_MASK: DeferredHolder
+static var DARK_IRON_INGOT: DeferredHolder
 static var ERUPTITE_INGOT: DeferredHolder
 static var EXPLORERS_KIT: DeferredHolder
+static var GLASS: DeferredHolder
 static var HEART_OF_THE_STORM: DeferredHolder
 static var IRON_AXE: DeferredHolder
 static var IRON_PICKAXE: DeferredHolder
+static var IRON_PLATE: DeferredHolder
 static var IRON_SWORD: DeferredHolder
 static var MAGMA_CARAPACE: DeferredHolder
 static var MECHANICAL_HEART: DeferredHolder
+static var MIRROR: DeferredHolder
 static var ONE_SIDED_PALDRON: DeferredHolder
 static var PAPYRUS: DeferredHolder
 static var PERFECTIONISTS_GLOVE: DeferredHolder
@@ -396,6 +400,17 @@ static func setup() -> void:
 			return recipe
 	)
 
+	DARK_IRON_INGOT = RECIPES.add_entry(
+		'dark_iron_ingot',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.DARK_IRON_INGOT, 2))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.BENCH)
+			recipe.add_ingredient(InitItems.IRON_PLATE, 2)
+			recipe.add_ingredient(InitFuels.COAL, 2)
+			return recipe
+	)
+
 	ERUPTITE_INGOT = RECIPES.add_entry(
 		'eruptite_ingot',
 		func():
@@ -416,6 +431,17 @@ static func setup() -> void:
 			recipe.add_ingredient(InitItems.PAPYRUS, 1)
 			recipe.add_ingredient(InitItems.FEATHER, 1)
 			recipe.add_ingredient(InitItems.COMPASS, 1)
+			return recipe
+	)
+
+	GLASS = RECIPES.add_entry(
+		'glass',
+		func():
+			var recipe = SmeltingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.GLASS, 1))
+			recipe.set_workstation(SmeltingRecipe.WorkstationType.STONE_FURNACE)
+			recipe.melting_point = 3
+			recipe.add_ingredient(InitItems.HANDFUL_OF_SAND, 1)
 			return recipe
 	)
 
@@ -453,6 +479,16 @@ static func setup() -> void:
 			return recipe
 	)
 
+	IRON_PLATE = RECIPES.add_entry(
+		'iron_plate',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.IRON_PLATE, 2))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.BENCH)
+			recipe.add_ingredient(InitItems.IRON_INGOT, 2)
+			return recipe
+	)
+
 	IRON_SWORD = RECIPES.add_entry(
 		'iron_sword',
 		func():
@@ -482,6 +518,18 @@ static func setup() -> void:
 			recipe.set_result(Ingredient.new(InitRelics.MECHANICAL_HEART, 1))
 			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
 			recipe.add_ingredient(InitItems.GOLD_INGOT, 3)
+			return recipe
+	)
+
+	MIRROR = RECIPES.add_entry(
+		'mirror',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitItems.MIRROR, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.BENCH)
+			recipe.add_ingredient(InitItems.GLASS, 1)
+			recipe.add_ingredient(InitItems.OBSIDIAN, 1)
+			recipe.add_ingredient(InitItems.IRON_INGOT, 1)
 			return recipe
 	)
 
