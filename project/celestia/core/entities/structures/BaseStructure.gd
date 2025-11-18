@@ -5,7 +5,6 @@ const hurt_color: Color = Color.INDIAN_RED
 const indestructible_color: Color = Color.WHITE
 
 @onready var TEXTURE: Sprite2D = $Texture
-@onready var ANIMATION: AnimationPlayer = $Animation
 
 var structure_data: StructureData
 

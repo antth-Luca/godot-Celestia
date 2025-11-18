@@ -34,8 +34,6 @@ shape = SubResource("RectangleShape2D_c1104")
 material = SubResource("ShaderMaterial_8qwcs")
 texture = ExtResource("2_hphd3")
 
-[node name="Animation" type="AnimationPlayer" parent="."]
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 16

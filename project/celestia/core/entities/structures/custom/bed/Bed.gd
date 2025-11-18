@@ -1,6 +1,8 @@
 extends BaseStructure
 class_name Bed
 
+@onready var ANIMATION: AnimationPlayer = $Animation
+
 # GODOT
 func _init() -> void:
 	structure_data = StructureData.new(

@@ -49,8 +49,6 @@ texture = ExtResource("2_ud4cf")
 [node name="StageTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Animation" type="AnimationPlayer" parent="."]
-
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 16
