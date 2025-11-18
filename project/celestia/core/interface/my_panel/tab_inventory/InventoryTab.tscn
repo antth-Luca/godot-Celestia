@@ -24,7 +24,7 @@ script = ExtResource("1_iy2li")
 
 [node name="CircleSprite" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(6.40003, -29.2)
+position = Vector2(6.40003, -34.4)
 texture = ExtResource("2_irx63")
 
 [node name="SlotsGroup" type="Control" parent="."]
@@ -310,9 +310,9 @@ script = ExtResource("5_532dr")
 visible = false
 layout_mode = 0
 offset_left = 184.4
-offset_top = 56.0
+offset_top = 50.8
 offset_right = 200.4
-offset_bottom = 72.0
+offset_bottom = 66.8
 script = ExtResource("5_532dr")
 slot_type = "head"
 
@@ -320,9 +320,9 @@ slot_type = "head"
 visible = false
 layout_mode = 0
 offset_left = 184.4
-offset_top = 74.8
+offset_top = 69.6
 offset_right = 200.4
-offset_bottom = 90.8
+offset_bottom = 85.6
 script = ExtResource("5_532dr")
 slot_type = "chestplate"
 
@@ -330,9 +330,9 @@ slot_type = "chestplate"
 visible = false
 layout_mode = 0
 offset_left = 184.4
-offset_top = 93.6
+offset_top = 88.4
 offset_right = 200.4
-offset_bottom = 109.6
+offset_bottom = 104.4
 script = ExtResource("5_532dr")
 slot_type = "legs"
 
@@ -340,9 +340,9 @@ slot_type = "legs"
 visible = false
 layout_mode = 0
 offset_left = 184.4
-offset_top = 112.8
+offset_top = 107.6
 offset_right = 200.4
-offset_bottom = 128.8
+offset_bottom = 123.6
 script = ExtResource("5_532dr")
 slot_type = "feet"
 
@@ -350,9 +350,9 @@ slot_type = "feet"
 visible = false
 layout_mode = 0
 offset_left = 256.0
-offset_top = 56.0
+offset_top = 50.8
 offset_right = 272.0
-offset_bottom = 72.0
+offset_bottom = 66.8
 script = ExtResource("5_532dr")
 slot_type = "relic"
 
@@ -360,9 +360,9 @@ slot_type = "relic"
 visible = false
 layout_mode = 0
 offset_left = 274.0
-offset_top = 56.0
+offset_top = 50.8
 offset_right = 290.0
-offset_bottom = 72.0
+offset_bottom = 66.8
 script = ExtResource("5_532dr")
 slot_type = "relic"
 
@@ -370,9 +370,9 @@ slot_type = "relic"
 visible = false
 layout_mode = 0
 offset_left = 256.0
-offset_top = 74.8
+offset_top = 69.6
 offset_right = 272.0
-offset_bottom = 90.8
+offset_bottom = 85.6
 script = ExtResource("5_532dr")
 slot_type = "relic"
 
@@ -380,9 +380,9 @@ slot_type = "relic"
 visible = false
 layout_mode = 0
 offset_left = 274.0
-offset_top = 74.8
+offset_top = 69.6
 offset_right = 290.0
-offset_bottom = 90.8
+offset_bottom = 85.6
 script = ExtResource("5_532dr")
 slot_type = "relic"
 
@@ -390,9 +390,9 @@ slot_type = "relic"
 visible = false
 layout_mode = 0
 offset_left = 256.0
-offset_top = 93.6
+offset_top = 88.4
 offset_right = 272.0
-offset_bottom = 109.6
+offset_bottom = 104.4
 script = ExtResource("5_532dr")
 slot_type = "relic"
 
@@ -400,9 +400,9 @@ slot_type = "relic"
 visible = false
 layout_mode = 0
 offset_left = 274.0
-offset_top = 93.6
+offset_top = 88.4
 offset_right = 290.0
-offset_bottom = 109.6
+offset_bottom = 104.4
 script = ExtResource("5_532dr")
 slot_type = "relic"
 
@@ -410,9 +410,9 @@ slot_type = "relic"
 visible = false
 layout_mode = 0
 offset_left = 256.0
-offset_top = 112.8
+offset_top = 107.6
 offset_right = 272.0
-offset_bottom = 128.8
+offset_bottom = 123.6
 script = ExtResource("5_532dr")
 slot_type = "ammo"
 
@@ -420,8 +420,8 @@ slot_type = "ammo"
 visible = false
 layout_mode = 0
 offset_left = 274.0
-offset_top = 112.8
+offset_top = 107.6
 offset_right = 290.0
-offset_bottom = 128.8
+offset_bottom = 123.6
 script = ExtResource("5_532dr")
 slot_type = "ammo"

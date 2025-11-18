@@ -18,6 +18,7 @@ class_name CraftManager
 		BlessingRecipe.WorkstationType.STAR_CHANNEL
 	]
 }
+@onready var supplementary_label = $SupplementaryLabel
 
 var selected: Array[int]
 
@@ -39,14 +40,19 @@ func fill_children(player: Player) -> void:
 	bless.get_node('OutputSlot').player = player
 
 # Visibility
-func show_workstation(workstation_type: int) -> void:
+func show_workstation(workstation_type: int, supplement: String) -> void:
+	# General
 	self.visible = true
 	selected.clear()
+	# Workstation visibility
 	for key in workstations.keys():
 		var supported_types: Array = workstations[key]
 		var idx: int = supported_types.find(workstation_type)
 		key.visible = idx != -1
 		if idx != -1: selected.append_array(supported_types.slice(0, idx + 1))
+	# Supplementary label
+	if supplement.is_empty():
+		supplement = ''
 
 
 func hide_all_workstations() -> void:
