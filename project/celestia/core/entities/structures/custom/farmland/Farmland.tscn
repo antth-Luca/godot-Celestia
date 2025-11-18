@@ -34,22 +34,26 @@ size = Vector2(20, 2)
 script = ExtResource("1_fuk45")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_8bc03")
 
 [node name="PlantTexture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_8bc03")
+position = Vector2(0, -2)
 
 [node name="Texture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_nqaan")
+position = Vector2(0, -2)
 texture = ExtResource("2_ud4cf")
 
 [node name="BallonTexture" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
 
 [node name="StageTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -2)
 collision_layer = 64
 collision_mask = 16
 
@@ -57,6 +61,7 @@ collision_mask = 16
 shape = SubResource("CircleShape2D_nqaan")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_eyhpx")]
+position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_ud4cf")

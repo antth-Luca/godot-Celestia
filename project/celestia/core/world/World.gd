@@ -77,6 +77,16 @@ func _ready() -> void:
 		InitStructures.STAR_FORGE.get_registered(),
 		Vector2(300, 115)
 	)
+	# Spawn Star Pillar
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.STAR_PILLAR.get_registered(),
+		Vector2(330, 115)
+	)
+	# Spawn Bush
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.BUSH.get_registered(),
+		Vector2(490, 120)
+	)
 	# Spawn Zombie
 	var zombie: Zombie = InitCreatures.ZOMBIE.get_registered()
 	get_tree().current_scene.add_child(zombie)
@@ -89,11 +99,6 @@ func _ready() -> void:
 	var golem: UlkenGolem = InitCreatures.ULKEN_GOLEM.get_registered()
 	get_tree().current_scene.add_child(golem)
 	golem.global_position = Vector2(865, 294)
-	# Spawn Bush
-	StructuresUtils.spawn_structure_in_position(
-		InitStructures.BUSH.get_registered(),
-		Vector2(490, 120)
-	)
 	# Spawn Stick
 	DroppedItemUtils.drop_item_in_position(
 		ItemStack.new(InitFuels.STICK.get_registered()),

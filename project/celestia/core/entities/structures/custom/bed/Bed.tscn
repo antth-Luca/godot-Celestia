@@ -65,11 +65,12 @@ collision_mask = 0
 script = ExtResource("1_pvvu4")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.5)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_laoj0")
 
 [node name="Texture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_guwc6")
+position = Vector2(0, -8)
 texture = ExtResource("3_3otib")
 hframes = 3
 
@@ -79,6 +80,7 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -8)
 collision_layer = 64
 collision_mask = 16
 
@@ -86,6 +88,7 @@ collision_mask = 16
 shape = SubResource("CircleShape2D_303de")
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_4j1p6")]
+position = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 3)

@@ -26,14 +26,16 @@ size = Vector2(20, 8)
 script = ExtResource("1_h0q0t")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_wdoor")
 
 [node name="Texture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_wdoor")
+position = Vector2(0, -6)
 texture = ExtResource("2_nnguu")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -6)
 collision_layer = 64
 collision_mask = 16
 
@@ -41,6 +43,7 @@ collision_mask = 16
 shape = SubResource("CircleShape2D_07jke")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_020ve")]
+position = Vector2(0, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_0cxlf")
