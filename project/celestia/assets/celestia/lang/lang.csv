@@ -187,6 +187,7 @@ effect.stun,Stun,Atordoamento
 
 structure.section.current_generation,Current generation,Geração atual
 structure.section.storage,Stored,Armazenado
+structure.section.max_generation,Max. Generation,Geração máx.
 
 structure.clay_furnace,Clay Furnace,Forno de Barro
 structure.manual,Manual,Manual

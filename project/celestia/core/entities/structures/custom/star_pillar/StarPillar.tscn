@@ -16,6 +16,21 @@ shader_parameter/corner_pixel = false
 shader_parameter/blink_color = Color(1, 1, 1, 1)
 shader_parameter/blink_value = 0.0
 
+[sub_resource type="Animation" id="Animation_j84hc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_u50lx"]
 resource_name = "idle"
 length = 1.2
@@ -31,21 +46,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_j84hc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1t2ag"]
@@ -79,6 +79,9 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="GenerationTimer" type="Timer" parent="."]
+autostart = true
+
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -11)
 collision_layer = 64
@@ -93,6 +96,7 @@ position = Vector2(0, -11)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_rggy7")
 
+[connection signal="timeout" from="GenerationTimer" to="." method="_on_generation_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_interaction_entity_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_interaction_entity_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

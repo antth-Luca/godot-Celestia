@@ -1,7 +1,7 @@
 extends BaseStructure
 class_name StarPillar
 
-const MAX_ENERGY_GEN: float = 20
+const MAX_ENERGY_GEN: float = 5
 
 var stored_energy: float
 
@@ -22,11 +22,13 @@ func _init() -> void:
 # SUPER
 # Main
 func on_interact(entity: LivingEntity) -> void:
-	var text_of_pillar: String = '- %s -\n%s: %s\n%s: %s/%s' % [
+	var text_of_pillar: String = '- %s -\n%s: %s\n%s: %s/%s\n%s: %s/%s' % [
 		tr(Celestia.TRANSLATION_KEY_BASES.STRUCTURE % id.path),
 		tr(Celestia.TRANSLATION_KEY_BASES.STRUCTURE_SECTION % 'storage'), stored_energy,
-		tr(Celestia.TRANSLATION_KEY_BASES.STRUCTURE_SECTION % 'current_generation'),
-		get_generate_energy(), MAX_ENERGY_GEN
+		tr(Celestia.TRANSLATION_KEY_BASES.STRUCTURE_SECTION % 'current_generation'), get_generate_energy(),
+		tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'seconds'),
+		tr(Celestia.TRANSLATION_KEY_BASES.STRUCTURE_SECTION % 'max_generation'), MAX_ENERGY_GEN,
+		tr(Celestia.TRANSLATION_KEY_BASES.SECTION_TITLE % 'seconds'),
 	]
 	var ui: WorldUI = entity.get_ui()
 	ui.get_invent_panel()._on_craft_tab_button_pressed(-1, text_of_pillar)
@@ -39,4 +41,13 @@ func destroy(attacker: LivingEntity) -> void:
 
 # GETTERS AND SETTERS
 func get_generate_energy() -> float:
-	return 0
+	var time: float = TimeManager.time_counter
+	var start: int = TimeManager.TimeOfDay.MORNING.front()
+	var end: int = TimeManager.TimeOfDay.AFTERNOON.back()
+	if time < start or time > end: return 0
+	var t: float = (time - start) / (end - start)
+	return snappedf(remap(t, 0, 1, MAX_ENERGY_GEN, 1), 0.01)
+
+# HANDLERS
+func _on_generation_timer_timeout() -> void:
+	stored_energy += get_generate_energy()
