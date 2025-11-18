@@ -185,11 +185,15 @@ effect.roots,Roots,Enraizado
 effect.static,Static,Estático
 effect.stun,Stun,Atordoamento
 
-structure.manual,Manual,Manual
-structure.workbench,Workbench,Bancada de Trabalho
-structure.star_forge,Star Forge,Forja Estelar
+structure.section.current_generation,Current generation,Geração atual
+structure.section.storage,Stored,Armazenado
+
 structure.clay_furnace,Clay Furnace,Forno de Barro
-structure.stone_furnace,Stone Furnace,Fornalha de Pedras
+structure.manual,Manual,Manual
 structure.star_channel,Star Channel,Canalizador Estelar
+structure.star_forge,Star Forge,Forja Estelar
+structure.star_pillar,Star Pillar,Pilar Estelar
+structure.stone_furnace,Stone Furnace,Fornalha de Pedras
+structure.workbench,Workbench,Bancada de Trabalho
 
 mob.ulken_golem.name,Ulken Golem,Golem Ulken

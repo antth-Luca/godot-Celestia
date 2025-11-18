@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwclo3b3ckhu5"]
+[gd_scene load_steps=18 format=3 uid="uid://cwclo3b3ckhu5"]
 
 [ext_resource type="Script" uid="uid://dh4ynwqdmgs3r" path="res://core/interface/my_panel/tab_crafting/CraftManager.gd" id="1_msls8"]
 [ext_resource type="PackedScene" uid="uid://bb0wjffuwv6sv" path="res://core/interface/my_panel/slot/Slot.tscn" id="2_f0mr0"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://sork1333erf0" path="res://assets/celestia/interface/icons/shovel.png" id="12_kax5f"]
 [ext_resource type="Texture2D" uid="uid://wkvjaofrkiwn" path="res://assets/celestia/interface/icons/bless.png" id="14_1fsrn"]
 [ext_resource type="Script" uid="uid://gff8m8gs1qed" path="res://core/interface/my_panel/slot/custom/BlessOutputSlot.gd" id="14_shnxf"]
+[ext_resource type="Theme" uid="uid://itbvstxdxmvc" path="res://assets/celestia/themes/tiny_mini_theme.tres" id="16_7ortq"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_t334g"]
 color = Color(0.223529, 0.223529, 0.223529, 1)
@@ -260,6 +261,7 @@ offset_right = 203.0
 offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("16_7ortq")
 bbcode_enabled = true
 horizontal_alignment = 1
 

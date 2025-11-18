@@ -54,11 +54,15 @@ func show_workstation(workstation_type: int, supplement: String) -> void:
 	self.visible = true
 	selected.clear()
 	# Workstation visibility
-	for key in workstations.keys():
-		var supported_types: Array = workstations[key]
-		var idx: int = supported_types.find(workstation_type)
-		key.visible = idx != -1
-		if idx != -1: selected.append_array(supported_types.slice(0, idx + 1))
+	if workstation_type > -1:
+		for key in workstations.keys():
+			var supported_types: Array = workstations[key]
+			var idx: int = supported_types.find(workstation_type)
+			key.visible = idx != -1
+			if idx != -1: selected.append_array(supported_types.slice(0, idx + 1))
+	else:
+		for key in workstations.keys():
+			key.visible = false
 	# Supplementary label
 	if supplement.is_empty():
 		supplement = '- %s -' % tr(Celestia.TRANSLATION_KEY_BASES.STRUCTURE % title_tr_keys[workstation_type])
