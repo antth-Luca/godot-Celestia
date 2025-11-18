@@ -42,6 +42,7 @@ static var IRON_AXE: DeferredHolder
 static var IRON_PICKAXE: DeferredHolder
 static var IRON_PLATE: DeferredHolder
 static var IRON_SWORD: DeferredHolder
+static var LINKING_STAFF: DeferredHolder
 static var MAGMA_CARAPACE: DeferredHolder
 static var MECHANICAL_HEART: DeferredHolder
 static var MIRROR: DeferredHolder
@@ -497,6 +498,17 @@ static func setup() -> void:
 			recipe.set_workstation(CraftingRecipe.WorkstationType.MANUAL)
 			recipe.add_ingredient(InitFuels.STICK, 2)
 			recipe.add_ingredient(InitItems.IRON_INGOT, 2)
+			return recipe
+	)
+
+	LINKING_STAFF = RECIPES.add_entry(
+		'linking_staff',
+		func():
+			var recipe = CraftingRecipe.new()
+			recipe.set_result(Ingredient.new(InitTools.LINKING_STAFF, 1))
+			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
+			recipe.add_ingredient(InitFuels.STICK, 3)
+			recipe.add_ingredient(InitItems.SCROLL_ASCENDANCE, 1)
 			return recipe
 	)
 

@@ -95,6 +95,7 @@ item.iron_sword,Iron Sword,Espada de Ferro
 item.jade_chalice,Jade Chalice,Cálice de Jade
 item.jade_chalice.description,"Each time the bearer takes damage, a Soul Fragment is created (up to 15). Upon healing, all fragments are consumed to grant additional recovery equal to [[stack count]% of missing health].","Cada vez que o portador sofre dano, um fragmento de alma é gerado (até 15). Ao se curar, os fragmentos são consumidos para conceder cura adicional igual a [[número de acúmulos]% da vida perdida]."
 item.leather,Leather,Couro
+item.linking_staff,Linking Staff,Cajado de Vinculação
 item.lotus_blades,Lotus Blades,Lâminas de Lótus
 item.lotus_blades.description,"When taking damage, blades spin around the bearer, dealing 10 physical damage to all enemies within 30 units.","Ao sofrer dano, lâminas giram ao redor do portador, causando 10 de dano físico a todos os inimigos em um raio de 30 unidades."
 item.magma_carapace,Magma Carapace,Carapaça de Magma
