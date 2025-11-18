@@ -16,7 +16,8 @@ const TRANSLATION_KEY_BASES: Dictionary = {
 	SLOT = 'item.slot.%s',
 	SECTION_TITLE = 'item.section.%s',
 	STATS = 'ui.inventory.stats.%s',
-	EFFECT = 'effect.%s'
+	EFFECT = 'effect.%s',
+	STRUCTURE = 'structure.%s'
 }
 const FLOATING_INDICATOR: PackedScene = preload('res://core/entities/components/floating_indicator/FloatingIndicator.tscn')
 

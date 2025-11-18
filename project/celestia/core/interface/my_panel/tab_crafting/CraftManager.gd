@@ -1,6 +1,15 @@
 extends Control
 class_name CraftManager
 
+const title_tr_keys := {
+	CraftingRecipe.WorkstationType.MANUAL: 'manual',
+	CraftingRecipe.WorkstationType.BENCH: 'workbench',
+	CraftingRecipe.WorkstationType.STAR_FORGE: 'star_forge',
+	SmeltingRecipe.WorkstationType.CLAY_FURNACE: 'clay_furnace',
+	SmeltingRecipe.WorkstationType.STONE_FURNACE: 'stone_furnace',
+	BlessingRecipe.WorkstationType.STAR_CHANNEL: 'star_channel'
+}
+
 @onready var forge = $Forging
 @onready var smelt = $Smelting
 @onready var bless = $Blessing
@@ -52,7 +61,11 @@ func show_workstation(workstation_type: int, supplement: String) -> void:
 		if idx != -1: selected.append_array(supported_types.slice(0, idx + 1))
 	# Supplementary label
 	if supplement.is_empty():
-		supplement = ''
+		supplement = '- %s -' % tr(Celestia.TRANSLATION_KEY_BASES.STRUCTURE % title_tr_keys[workstation_type])
+		supplementary_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+	else:
+		supplementary_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	supplementary_label.text = supplement
 
 
 func hide_all_workstations() -> void:

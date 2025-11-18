@@ -185,6 +185,11 @@ effect.roots,Roots,Enraizado
 effect.static,Static,Estático
 effect.stun,Stun,Atordoamento
 
-build.placeholder.name,placeholder,placeholder
+structure.manual,Manual,Manual
+structure.workbench,Workbench,Bancada de Trabalho
+structure.star_forge,Star Forge,Forja Estelar
+structure.clay_furnace,Clay Furnace,Forno de Barro
+structure.stone_furnace,Stone Furnace,Fornalha de Pedras
+structure.star_channel,Star Channel,Canalizador Estelar
 
 mob.ulken_golem.name,Ulken Golem,Golem Ulken
