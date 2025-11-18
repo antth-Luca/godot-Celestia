@@ -24,9 +24,19 @@ func copy(copy_obj: Variant = PickaxeTool.new()) -> Variant:
 
 
 func interact(player: Player) -> void:
-	StructuresUtils.spawn_structure_entity_foot(
-		InitStructures.CAVE_HOLE.get_registered(),
-		player
-	)
+	var target_pos: Vector2 = StructuresUtils.get_corrected_entity_foot(player)
+	var world: World = player.get_tree().current_scene
+	if world.get_grass_in_tile(target_pos):
+		StructuresUtils.spawn_structure_in_position(
+			InitStructures.CAVE_HOLE.get_registered(),
+			target_pos
+		)
+	elif world.get_sand_in_tile(target_pos):
+		DroppedItemUtils.drop_item_in_position(
+			ItemStack.new(InitItems.HANDFUL_OF_SAND.get_registered(), 1),
+			target_pos
+		)
+	else:
+		return
 	consume_durability(1, player.inventory.get_hand())
 	set_cooldown(player)

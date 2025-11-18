@@ -1,6 +1,11 @@
 extends Node2D
 class_name World
 
+@onready var water_layer = $Terrain/Water
+@onready var sand_layer = $Terrain/Sand
+@onready var dirt_elevation_layer = $Terrain/DirtElevation
+@onready var grass_layer = $Terrain/Grass
+
 var config := {}
 var world_state := {
 	'defeated_bosses': 0
@@ -111,16 +116,51 @@ func _ready() -> void:
 	)
 
 # MAIN
+func get_water_in_tile(global_pos: Vector2) -> bool:
+	var local_pos = water_layer.to_local(global_pos)
+	var coords = water_layer.local_to_map(local_pos)
+	var tile_id = water_layer.get_cell_source_id(coords)
+	return tile_id != -1
+
+
 func get_water_in_3x3_tiles(global_pos: Vector2) -> bool:
-	var water_layer: TileMapLayer = get_node('Terrain/Water')
 	var water_tile_size := Vector2(water_layer.tile_set.tile_size)
 	for x in range(-1, 2):
 		for y in range(-1, 2):
 			var check_pos = global_pos + Vector2(x, y) * water_tile_size
-			var local_pos = water_layer.to_local(check_pos)
-			var coords = water_layer.local_to_map(local_pos)
-			var tile_id = water_layer.get_cell_source_id(coords)
-			if tile_id != -1: return true
+			if get_water_in_tile(check_pos): return true
+	return false
+
+
+func get_grass_in_tile(global_pos: Vector2) -> bool:
+	var local_pos = grass_layer.to_local(global_pos)
+	var coords = grass_layer.local_to_map(local_pos)
+	var tile_id = grass_layer.get_cell_source_id(coords)
+	return tile_id != -1
+
+
+func get_grass_in_3x3_tiles(global_pos: Vector2) -> bool:
+	var grass_tile_size := Vector2(grass_layer.tile_set.tile_size)
+	for x in range(-1, 2):
+		for y in range(-1, 2):
+			var check_pos = global_pos + Vector2(x, y) * grass_tile_size
+			if get_grass_in_tile(check_pos): return true
+	return false
+
+
+func get_sand_in_tile(global_pos: Vector2) -> bool:
+	var local_pos = sand_layer.to_local(global_pos)
+	var coords = sand_layer.local_to_map(local_pos)
+	var tile_id = sand_layer.get_cell_source_id(coords)
+	return tile_id != -1
+
+
+func get_sand_in_3x3_tiles(global_pos: Vector2) -> bool:
+	var sand_tile_size := Vector2(sand_layer.tile_set.tile_size)
+	for x in range(-1, 2):
+		for y in range(-1, 2):
+			var check_pos = global_pos + Vector2(x, y) * sand_tile_size
+			if get_sand_in_tile(check_pos): return true
 	return false
 
 
