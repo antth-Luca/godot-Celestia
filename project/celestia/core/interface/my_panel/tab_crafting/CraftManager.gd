@@ -59,7 +59,10 @@ func show_workstation(workstation_type: int, supplement: String) -> void:
 			var supported_types: Array = workstations[key]
 			var idx: int = supported_types.find(workstation_type)
 			key.visible = idx != -1
-			if idx != -1: selected.append_array(supported_types.slice(0, idx + 1))
+			if idx != -1:
+				var slice = supported_types.slice(0, idx + 1)
+				slice.reverse()
+				selected.append_array(slice)
 	else:
 		for key in workstations.keys():
 			key.visible = false

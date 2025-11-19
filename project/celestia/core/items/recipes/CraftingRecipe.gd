@@ -7,6 +7,13 @@ enum WorkstationType {
 	STAR_FORGE = 2
 }
 
+var required_star_energy: int = 0:
+	set(new_point):
+		required_star_energy = max(new_point, 0)
+var required_lunar_energy: int = 0:
+	set(new_lunar):
+		required_lunar_energy = max(new_lunar, 0)
+
 # SUPER
 func get_workstation() -> WorkstationType:
 	return super.get_workstation()

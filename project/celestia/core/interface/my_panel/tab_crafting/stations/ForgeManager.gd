@@ -12,6 +12,7 @@ extends Control
 
 var can_set_input := true
 var recipe_cache: BaseRecipe
+var stored_energies: Dictionary[StarForge.EnergyType, float]
 
 # GODOT
 func _ready() -> void:
@@ -34,14 +35,17 @@ func try_find_recipe() -> void:
 		var stack: ItemStack = slot.stack
 		if not stack.is_empty(): input_stacks.append(stack)
 	# ...If there is a revenue cache and it is valid, we use...
-	if recipe_cache and recipe_cache.matches(input_stacks):
-		if recipe_cache is EnchantRecipe:
-			output_slot.stack = recipe_cache.get_enchanted_result(input_stacks.front().item)
-		else:
-			output_slot.stack = recipe_cache.get_result()
-		output_slot.set_preview()
-		interact_hammer.enable_interaction()
-		return
+	if recipe_cache:
+		if recipe_cache is CraftingRecipe and get_parent().selected.front() == CraftingRecipe.WorkstationType.STAR_FORGE:
+			if not stored_energies[StarForge.EnergyType.STAR] < recipe_cache.required_star_energy or not stored_energies[StarForge.EnergyType.LUNAR] < recipe_cache.required_lunar_energy:
+				if recipe_cache.matches(input_stacks):
+					if recipe_cache is EnchantRecipe:
+						output_slot.stack = recipe_cache.get_enchanted_result(input_stacks.front().item)
+					else:
+						output_slot.stack = recipe_cache.get_result()
+					output_slot.set_preview()
+					interact_hammer.enable_interaction()
+					return
 	# ...Get the recipes allowed per workstation and per ingredient...
 	var registry: RecipeRegistry = RegistryManager.registries[RecipeRegistry.REGISTRY_TYPE]
 	var per_workstation: Array
@@ -56,15 +60,19 @@ func try_find_recipe() -> void:
 	# ...Tests each candidate recipe...
 	for possible in per_workstation:
 		var recipe: BaseRecipe = registry._registries[possible].call()
-		if recipe and recipe.matches(input_stacks):
-			recipe_cache = recipe
-			if recipe is EnchantRecipe:
-				output_slot.stack = recipe.get_enchanted_result(input_stacks.front().item)
-			else:
-				output_slot.stack = recipe.get_result()
-			output_slot.set_preview()
-			interact_hammer.enable_interaction()
-			return
+		if recipe:
+			if recipe is CraftingRecipe and get_parent().selected.front() == CraftingRecipe.WorkstationType.STAR_FORGE:
+				if stored_energies[StarForge.EnergyType.STAR] < recipe.required_star_energy or stored_energies[StarForge.EnergyType.LUNAR] < recipe.required_lunar_energy:
+					continue
+			if recipe.matches(input_stacks):
+				recipe_cache = recipe
+				if recipe is EnchantRecipe:
+					output_slot.stack = recipe.get_enchanted_result(input_stacks.front().item)
+				else:
+					output_slot.stack = recipe.get_result()
+				output_slot.set_preview()
+				interact_hammer.enable_interaction()
+				return
 
 
 func cleanup_craft() -> void:

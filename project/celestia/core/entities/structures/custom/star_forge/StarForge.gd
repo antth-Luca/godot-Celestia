@@ -43,6 +43,7 @@ func on_interact(entity: LivingEntity) -> void:
 	# Crafting
 	if not hand_item is LinkingStaffItem:
 		var ui: WorldUI = entity.get_ui()
+		ui.get_invent_panel().get_craft_tab().forge.stored_energies = calc_total_energies()
 		ui.get_invent_panel()._on_craft_tab_button_pressed(workstation_key)
 		ui.update_my_panel(false)
 		return
@@ -75,3 +76,13 @@ func unregister_pillar(dict_key: int, index: int) -> void:
 	pillar._set_outline(false)
 	pillar.forge_list.erase(self)
 	pillar_dict[dict_key].remove_at(index)
+
+
+func calc_total_energies() -> Dictionary[EnergyType, float]:
+	var total_energies: Dictionary[EnergyType, float] = { EnergyType.STAR: 0, EnergyType.LUNAR: 0 }
+	for key in pillar_dict.keys():
+		var calc: float = 0
+		for pillar in pillar_dict[key]:
+			calc += pillar.stored_energy
+		total_energies[key] = calc
+	return total_energies
