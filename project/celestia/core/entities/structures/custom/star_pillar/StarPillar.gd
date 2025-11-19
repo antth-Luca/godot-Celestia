@@ -2,6 +2,7 @@ extends BaseStructure
 class_name StarPillar
 
 const MAX_ENERGY_GEN: float = 5
+const energy_type: StarForge.EnergyType = StarForge.EnergyType.STAR
 
 var stored_energy: float
 var forge_list: Array[BaseStructure]
@@ -58,7 +59,7 @@ func destroy(attacker: LivingEntity) -> void:
 	# TODO: Adicionar drop de itens.
 	super.destroy(attacker)
 	for forge in forge_list:
-		forge.pillar_list.erase(self)
+		forge.pillar_dict[energy_type].erase(self)
 
 # GETTERS AND SETTERS
 func get_generate_energy() -> float:

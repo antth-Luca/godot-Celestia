@@ -19,6 +19,7 @@ static func get_static_comparable_name() -> String:
 func get_comparable_name() -> String:
 	return BaseArmor.get_static_comparable_name()
 
+
 func get_tooltip() -> Array[String]:
 	var lines = super.get_tooltip()
 	lines.insert(1, '[color=%s]%s %s:\n  %s %s[/color]\n' % [

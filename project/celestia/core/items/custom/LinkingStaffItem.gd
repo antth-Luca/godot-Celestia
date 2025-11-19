@@ -21,7 +21,16 @@ func get_comparable_name() -> String:
 
 func get_tooltip() -> Array[String]:
 	var lines = super.get_tooltip()
-	lines.insert(2, '[color=%s]%s[/color]\n' % [
-		COMMON_TEXT_COLOR, 'aoba',
-	])
+	var staff_line: String = '[color=%s]%s\n' % [
+		COMMON_TEXT_COLOR,
+		tr(Celestia.TRANSLATION_KEY_BASES.ITEM_DESC % id.path),
+	]
+	if link:
+		var coords: Vector2 = link.global_position
+		staff_line += '%s: %s [X: %s, Y: %s]' % [
+			tr('item.%s.stored_link' % id.path), tr(Celestia.TRANSLATION_KEY_BASES.STRUCTURE % link.id.path),
+			coords.x, coords.y
+		]
+	staff_line += '[/color]\n'
+	lines.insert(2, staff_line)
 	return lines
