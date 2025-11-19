@@ -31,9 +31,8 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 #### Alpha
 
-- [ ] Primeiro chefe/boss;
-- [ ] Sistema de eventos históricos;
-- [ ] Sistema de dimensões: adição das Cavernas;
+
+- [ ] Sistema de dimensões e adição das Cavernas;
 - [x] Mudanças no dano a estruturas:
   - [x] Dano por Hit comum;
   - [x] Verificação de tipo de ferramenta e nível de material.
@@ -44,7 +43,10 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 - [x] Sistema de encantamentos para itens;
 - [x] Sistema de relíquias;
 - [x] Sistema de cultivo;
-- [x] Nova estrutura: Bancada de Fabricação.
+- [x] Nova estrutura: Bancada de Fabricação;
+- [x] Primeiro chefe: Golem Ulken;
+- [x] Sistema de eventos históricos;
+- [x] Nova estrutura "Pilar Estelar" e novo tipo de fabricação com energias.
 
 #### Beta
 
@@ -73,7 +75,6 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 - [ ] Melhorias:
   - [ ] Adição: Cliques duplos de 'left' e 'right' no inventário;
-  - [ ] Adição: O ícone da aba de crafting muda de acordo com a estrutura usada para abrir;
   - [ ] Adição: Sombras a todas as entidades (como component);
   - [ ] Adição: Animação de "pingar" nos itens dropados no chão;
   - [ ] Adição: Partículas de poeira as entidades ao andar;
@@ -83,7 +84,8 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
   - [x] Adição: Contorno branco aos itens dropados no chão;
   - [x] Adição: Brilho branco aos itens dropados no chão;
   - [x] Adição: Representação do dano em números flutuantes;
-  - [x] Adição: Tentar usar uma armadura ou relíquia fará a troca dela com a já equipada.
+  - [x] Adição: Tentar usar uma armadura ou relíquia fará a troca dela com a já equipada;
+  - [x] Adição: Há título na aba de crafting indicando a estação de trabalho usada.
 - [ ] Adição de todo o conteúdo possível com os sistemas desenvolvidos até aqui;
 - [ ] Multiplayer em LAN.
 
