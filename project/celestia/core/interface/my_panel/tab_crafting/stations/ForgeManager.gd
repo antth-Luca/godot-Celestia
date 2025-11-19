@@ -12,7 +12,7 @@ extends Control
 
 var can_set_input := true
 var recipe_cache: BaseRecipe
-var pillar_dict: Dictionary[StarForge.EnergyType, BaseStructure]
+var pillar_dict: Dictionary[StarForge.EnergyType, Array]
 
 # GODOT
 func _ready() -> void:
@@ -48,7 +48,7 @@ func try_find_recipe() -> void:
 	# ...If there is a revenue cache and it is valid, we use...
 	if recipe_cache:
 		if recipe_cache is CraftingRecipe and get_parent().selected.front() == CraftingRecipe.WorkstationType.STAR_FORGE:
-			if not stored_energies[StarForge.EnergyType.STAR] < recipe_cache.required_star_energy or not stored_energies[StarForge.EnergyType.LUNAR] < recipe_cache.required_lunar_energy:
+			if not stored_energies[StarForge.EnergyType.STAR] < recipe_cache.required_star_energy and not stored_energies[StarForge.EnergyType.LUNAR] < recipe_cache.required_lunar_energy:
 				if recipe_cache.matches(input_stacks):
 					if recipe_cache is EnchantRecipe:
 						output_slot.stack = recipe_cache.get_enchanted_result(input_stacks.front().item)
