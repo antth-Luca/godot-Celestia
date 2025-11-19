@@ -106,7 +106,7 @@ func _ready() -> void:
 	)
 	# Spawn Iron
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitItems.IRON_INGOT.get_registered()),
+		ItemStack.new(InitItems.LINKING_STAFF.get_registered()),
 		Vector2(170, 180)
 	)
 	# Spawn Papyrus

@@ -24,6 +24,7 @@ static var HANDFUL_OF_SAND: DeferredHolder
 static var IRON_INGOT: DeferredHolder
 static var IRON_PLATE: DeferredHolder
 static var LEATHER: DeferredHolder
+static var LINKING_STAFF: DeferredHolder
 static var MAGMA_STONE: DeferredHolder
 static var MIRROR: DeferredHolder
 static var MOONSTONE: DeferredHolder
@@ -164,6 +165,11 @@ static func setup() -> void:
 	LEATHER = ITEMS.add_entry(
 		'leather',
 		func(): return BaseItem.new()
+	)
+
+	LINKING_STAFF = ITEMS.add_entry(
+		'linking_staff',
+		func(): return LinkingStaffItem.new()
 	)
 
 	MAGMA_STONE = ITEMS.add_entry(

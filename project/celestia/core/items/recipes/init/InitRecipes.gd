@@ -505,7 +505,7 @@ static func setup() -> void:
 		'linking_staff',
 		func():
 			var recipe = CraftingRecipe.new()
-			recipe.set_result(Ingredient.new(InitTools.LINKING_STAFF, 1))
+			recipe.set_result(Ingredient.new(InitItems.LINKING_STAFF, 1))
 			recipe.set_workstation(CraftingRecipe.WorkstationType.STAR_FORGE)
 			recipe.add_ingredient(InitFuels.STICK, 3)
 			recipe.add_ingredient(InitItems.SCROLL_ASCENDANCE, 1)
