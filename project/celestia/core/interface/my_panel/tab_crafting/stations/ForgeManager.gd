@@ -12,7 +12,7 @@ extends Control
 
 var can_set_input := true
 var recipe_cache: BaseRecipe
-var stored_energies: Dictionary[StarForge.EnergyType, float]
+var pillar_dict: Dictionary[StarForge.EnergyType, BaseStructure]
 
 # GODOT
 func _ready() -> void:
@@ -27,10 +27,21 @@ func fill_children(player: Player) -> void:
 		slot.player = player
 
 
+func calc_total_energies() -> Dictionary[StarForge.EnergyType, float]:
+	var total_energies: Dictionary[StarForge.EnergyType, float] = { StarForge.EnergyType.STAR: 0, StarForge.EnergyType.LUNAR: 0 }
+	for key in pillar_dict.keys():
+		var calc: float = 0
+		for pillar in pillar_dict[key]:
+			calc += pillar.stored_energy
+		total_energies[key] = calc
+	return total_energies
+
+
 func try_find_recipe() -> void:
 	# Try to find a valid and compatible recipe. If find one, set the preview and enable the interaction hammer.
 	# BEGIN: Extract the stacks from the input slots...
 	var input_stacks: Array[ItemStack]
+	var stored_energies: Dictionary[StarForge.EnergyType, float] = calc_total_energies()
 	for slot in inputs:
 		var stack: ItemStack = slot.stack
 		if not stack.is_empty(): input_stacks.append(stack)
@@ -80,3 +91,27 @@ func cleanup_craft() -> void:
 	for slot in inputs:
 		slot.stack = ItemStack.EMPTY
 		can_set_input = true
+	# Sub energies
+	if recipe_cache is CraftingRecipe and get_parent().selected.front() == CraftingRecipe.WorkstationType.STAR_FORGE:
+		# Star
+		var remaining_star: float = recipe_cache.required_star_energy
+		for pillar in pillar_dict[StarForge.EnergyType.STAR]:
+			if not remaining_star > 0: break
+			var available: float = pillar.stored_energy
+			if not available < remaining_star:
+				pillar.stored_energy -= remaining_star
+				remaining_star = 0
+			else:
+				pillar.stored_energy = 0
+				remaining_star -= available
+		# Lunar
+		var remaining_lunar: float = recipe_cache.required_lunar_energy
+		for pillar in pillar_dict[StarForge.EnergyType.LUNAR]:
+			if not remaining_lunar > 0: break
+			var available: float = pillar.stored_energy
+			if not available < remaining_lunar:
+				pillar.stored_energy -= remaining_lunar
+				remaining_lunar = 0
+			else:
+				pillar.stored_energy = 0
+				remaining_lunar -= available
