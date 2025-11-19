@@ -57,6 +57,8 @@ func on_interact(entity: LivingEntity) -> void:
 func destroy(attacker: LivingEntity) -> void:
 	# TODO: Adicionar drop de itens.
 	super.destroy(attacker)
+	for forge in forge_list:
+		forge.pillar_list.erase(self)
 
 # GETTERS AND SETTERS
 func get_generate_energy() -> float:

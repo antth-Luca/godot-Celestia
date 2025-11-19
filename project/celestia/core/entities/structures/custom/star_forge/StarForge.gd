@@ -19,7 +19,8 @@ func _init() -> void:
 		})
 	)
 
-# MAIN
+# SUPER
+# Main
 func add_highlight() -> void:
 	super.add_highlight()
 	for pillar in pillar_list:
@@ -57,7 +58,7 @@ func destroy(attacker: LivingEntity) -> void:
 	# TODO: Adicionar drop de itens.
 	super.destroy(attacker)
 
-
+# MAIN
 func register_pillar(pillar: BaseStructure) -> void:
 	pillar._set_outline(true)
 	pillar_list.append(pillar)
