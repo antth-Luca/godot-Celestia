@@ -16,7 +16,7 @@ static func setup() -> void:
 	SURFACE = DIMENSIONS.add_entry(
 		'surface',
 		func():
-			return preload('res://core/world/dimensions/surface/Surface.tscn').instantiate()
+			return preload('res://core/world/dimensions/custom/surface/Surface.tscn').instantiate()
 	)
 
 	DIMENSIONS.register()

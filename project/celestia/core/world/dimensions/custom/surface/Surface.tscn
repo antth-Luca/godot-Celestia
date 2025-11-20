@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://b54q8xt8drqu4"]
 
 [ext_resource type="PackedScene" uid="uid://c2fpypla1svk" path="res://core/world/terrain/Water.tscn" id="1_bji55"]
-[ext_resource type="Script" uid="uid://by2e7xng00nmp" path="res://core/world/dimensions/surface/Surface.gd" id="1_udqhm"]
+[ext_resource type="Script" uid="uid://by2e7xng00nmp" path="res://core/world/dimensions/custom/surface/Surface.gd" id="1_udqhm"]
 [ext_resource type="PackedScene" uid="uid://dhngptmcjn3yv" path="res://core/world/terrain/Sand.tscn" id="2_udqhm"]
 [ext_resource type="PackedScene" uid="uid://c7vjjneyr5tvv" path="res://core/world/terrain/DirtElevation.tscn" id="3_iac6f"]
 [ext_resource type="PackedScene" uid="uid://chrpnw6us04l7" path="res://core/world/terrain/PlainGrass.tscn" id="4_d3bmr"]

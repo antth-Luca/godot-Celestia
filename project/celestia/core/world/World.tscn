@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://dt4qxa8ig7grl" path="res://core/world/World.gd" id="1_js7pq"]
 
 [sub_resource type="Environment" id="Environment_0qxeh"]
+background_mode = 3
+glow_enabled = true
+glow_hdr_threshold = 0.3
+adjustment_enabled = true
+adjustment_saturation = 1.25
 
 [node name="World" type="WorldEnvironment"]
 environment = SubResource("Environment_0qxeh")
