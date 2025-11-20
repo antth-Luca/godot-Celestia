@@ -19,6 +19,10 @@ func _ready() -> void:
 	# Shader
 		TEXTURE.material.set_shader_parameter('blink_color', hurt_color)
 
+# GETTERS AND SETTERS
+func get_dimension() -> Node2D:
+	return get_parent()
+
 # MAIN
 func _set_outline(state: bool) -> void:
 	TEXTURE.material.set_shader_parameter('outline_enabled', state)

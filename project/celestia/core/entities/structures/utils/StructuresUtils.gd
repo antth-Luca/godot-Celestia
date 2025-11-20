@@ -10,10 +10,10 @@ func get_corrected_entity_foot(entity: LivingEntity) -> Vector2:
 	return entity.global_position + dir * 20
 
 
-func spawn_structure_in_position(structure: BaseStructure, pos: Vector2) -> void:
-	get_tree().current_scene.add_child(structure)
+func spawn_structure_in_position(structure: BaseStructure, pos: Vector2, dimension: Node2D) -> void:
+	dimension.add_child(structure)
 	structure.global_position = pos
 
 
 func spawn_structure_entity_foot(structure: BaseStructure, entity: LivingEntity) -> void:
-	spawn_structure_in_position(structure, get_corrected_entity_foot(entity))
+	spawn_structure_in_position(structure, get_corrected_entity_foot(entity), entity.get_dimension())

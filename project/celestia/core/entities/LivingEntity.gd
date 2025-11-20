@@ -72,6 +72,9 @@ func die(_attacker: LivingEntity) -> void:
 	queue_free()
 
 # GETTERS AND SETTERS
+func get_dimension() -> Node2D:
+	return get_parent()
+
 # Entity data
 func set_invencibility(invenc_time: float) -> void:
 	entity_data.is_invincible = true

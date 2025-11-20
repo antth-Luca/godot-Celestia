@@ -44,6 +44,7 @@ func _ready():
 	InitHits.setup()
 	InitCreatures.setup()
 	InitStructures.setup()
+	InitDimensions.setup()
 	call_deferred('_go_to_next_scene')
 
 

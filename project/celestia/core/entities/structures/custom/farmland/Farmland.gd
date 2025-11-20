@@ -111,9 +111,9 @@ func try_fertilize(hand_slot: BaseSlot) -> bool:
 func try_harvest(entity: LivingEntity) -> bool:
 	if is_ready_to_harvest():
 		for out in item_seed.get_crop(entity):
-			DroppedItemUtils.drop_item_in_position(out, global_position)
+			DroppedItemUtils.drop_item_in_position(out, global_position, get_dimension())
 	elif item_seed:
-		DroppedItemUtils.drop_item_in_position(ItemStack.new(item_seed, 1), global_position)
+		DroppedItemUtils.drop_item_in_position(ItemStack.new(item_seed, 1), global_position, get_dimension())
 	else:
 		return false
 	BALLON_TEXTURE.visible = false

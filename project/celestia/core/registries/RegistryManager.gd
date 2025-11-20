@@ -11,5 +11,6 @@ static var registries: Dictionary = {
 	StructureRegistry.REGISTRY_TYPE: StructureRegistry.new(),
 	PropProviderRegistry.REGISTRY_TYPE: PropProviderRegistry.new(),
 	HitRegistry.REGISTRY_TYPE: HitRegistry.new(),
-	EntityRegistry.REGISTRY_TYPE: EntityRegistry.new()
+	EntityRegistry.REGISTRY_TYPE: EntityRegistry.new(),
+	DimensionRegistry.REGISTRY_TYPE: DimensionRegistry.new()
 }

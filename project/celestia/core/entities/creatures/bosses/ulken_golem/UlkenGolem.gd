@@ -63,7 +63,7 @@ func die(_attacker: LivingEntity) -> void:
 	# Drop
 	# TODO: Adicionar drop.
 	# World
-	var world: World = get_parent()
+	var world: World = get_parent().get_parent()
 	world.set_defeated_bosses(1)
 	# Clear
 	queue_free()
