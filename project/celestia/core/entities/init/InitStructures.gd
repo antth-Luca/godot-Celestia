@@ -13,6 +13,7 @@ static var WORKBENCH: DeferredHolder
 # Natural
 static var BUSH: DeferredHolder
 static var CAVE_HOLE: DeferredHolder
+static var RUBY_PILLAR: DeferredHolder
 
 
 static func setup() -> void:
@@ -66,6 +67,11 @@ static func setup() -> void:
 	CAVE_HOLE = STRUCTURES.add_entry(
 		'cave_hole',
 		func(): return preload('res://core/entities/structures/custom/cave_hole/CaveHole.tscn').instantiate()
+	)
+
+	RUBY_PILLAR = STRUCTURES.add_entry(
+		'ruby_pillar',
+		func(): return preload('res://core/entities/structures/custom/ruby_pillar/RubyPillar.tscn').instantiate()
 	)
 
 	STRUCTURES.register()

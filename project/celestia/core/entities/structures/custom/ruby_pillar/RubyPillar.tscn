@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6i2h6djnlkx4"]
+
+[ext_resource type="Shader" uid="uid://dwp8o883dsfh4" path="res://assets/celestia/shaders/2D_outline_and_blink.gdshader" id="1_epqx4"]
+[ext_resource type="Script" uid="uid://bdbhgtd4g1ouw" path="res://core/entities/structures/custom/ruby_pillar/RubyPillar.gd" id="1_g8ln3"]
+[ext_resource type="Texture2D" uid="uid://cd4flup4vkl2l" path="res://assets/celestia/textures/structures/ores/ruby_pillar.png" id="2_g8ln3"]
+[ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="3_uew8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epqx4"]
+size = Vector2(9, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqaj1"]
+shader = ExtResource("1_epqx4")
+shader_parameter/outline_enabled = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/corner_pixel = false
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8ln3"]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uew8s"]
+size = Vector2(7, 11)
+
+[node name="RubyPillar" type="StaticBody2D"]
+script = ExtResource("1_g8ln3")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_epqx4")
+
+[node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pqaj1")
+position = Vector2(0, -7)
+texture = ExtResource("2_g8ln3")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_g8ln3")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_uew8s")]
+position = Vector2(0, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_uew8s")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_interaction_entity_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_interaction_entity_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

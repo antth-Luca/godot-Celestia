@@ -10,9 +10,13 @@ static var ZOMBIE_DEATH: DeferredHolder
 # Recipes
 static var CONSTELLATION_SCROLLS: DeferredHolder
 # Structures
+	# Plants
 static var BUSH_DESTROY: DeferredHolder
-static var CAVE_HOLE_DIG: DeferredHolder
 static var ROSE_BUSH_DESTROY: DeferredHolder
+	# Ores
+static var RUBY_PILLAR_DESTROY: DeferredHolder
+	# Buidables
+static var CAVE_HOLE_DIG: DeferredHolder
 
 
 static func setup() -> void:
@@ -152,6 +156,7 @@ static func setup() -> void:
 	)
 
 	# Structures
+		# Plants
 	BUSH_DESTROY = LOOT_BOXES.add_entry(
 		'bush_destroy',
 		func():
@@ -166,24 +171,6 @@ static func setup() -> void:
 				InitItems.PLANT_FIBER,
 				2, 4,
 				.5
-			)
-			return box
-	)
-
-	CAVE_HOLE_DIG = LOOT_BOXES.add_entry(
-		'cave_hole_dig',
-		func():
-			var box = LootBox.new()
-			box.set_cycles(1, 1)
-			box.add_output(
-				InitItems.HANDFUL_OF_DIRT,
-				1, 2,
-				.6
-			)
-			box.add_output(
-				InitItems.STONE,
-				1, 2,
-				.4
 			)
 			return box
 	)
@@ -207,6 +194,37 @@ static func setup() -> void:
 				InitItems.PLANT_FIBER,
 				2, 4,
 				.5
+			)
+			return box
+	)
+		# Ores
+	RUBY_PILLAR_DESTROY = LOOT_BOXES.add_entry(
+		'ruby_pillar_destroy',
+		func():
+			var box = LootBox.new()
+			box.set_cycles(1, 1)
+			box.add_output(
+				InitItems.RUBY,
+				1, 2,
+				1
+			)
+			return box
+	)
+		# Buidables
+	CAVE_HOLE_DIG = LOOT_BOXES.add_entry(
+		'cave_hole_dig',
+		func():
+			var box = LootBox.new()
+			box.set_cycles(1, 1)
+			box.add_output(
+				InitItems.HANDFUL_OF_DIRT,
+				1, 2,
+				.6
+			)
+			box.add_output(
+				InitItems.STONE,
+				1, 2,
+				.4
 			)
 			return box
 	)
