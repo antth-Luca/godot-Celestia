@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://be8s7thvpbsau"]
+
+[ext_resource type="Texture2D" uid="uid://80iiref648ls" path="res://assets/celestia/textures/terrain/elevation_stone.png" id="1_mid4l"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21dgl"]
+texture = ExtResource("1_mid4l")
+separation = Vector2i(4, 4)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, -12, 16, -12, -16)
+1:1/0/physics_layer_0/polygon_1/points = PackedVector2Array(16, -16, 12, -16, 12, 16, 16, 16)
+2:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -16, -16, -16, -16, 16, 16, 16, 16, 12, -12, 12)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, -16, 16, -16, 12, 16, 12)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 12, -16, 12, 12, -16, 12, -16, 16, 16, 16)
+
+[sub_resource type="TileSet" id="TileSet_t8ymr"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_21dgl")
+
+[node name="StoneElevation" type="TileMapLayer"]
+tile_set = SubResource("TileSet_t8ymr")

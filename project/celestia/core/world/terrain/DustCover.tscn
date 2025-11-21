@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bri6hy1ctes0h"]
+
+[ext_resource type="Texture2D" uid="uid://sv3dppgmrals" path="res://assets/celestia/textures/terrain/dust_cover.png" id="1_x0dgu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ejasg"]
+texture = ExtResource("1_x0dgu")
+separation = Vector2i(4, 4)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, -16, -16, -16, 16, -12, 16, -12, -12, 16, -12)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -12, 16, -12, 16, -16, -16, -16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, 12, 16, 12, -12, -16, -12)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -16, -16, -16, -16, 16, -12, 16)
+1:1/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 12, -16, 12, 16, 16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, 12, -12, 12, -12, -16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, -16, 16, -16, 12, 16, 12)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -16, 12, -16, 12, 12, -16, 12)
+
+[sub_resource type="TileSet" id="TileSet_w0ru4"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ejasg")
+
+[node name="DustCover" type="TileMapLayer"]
+tile_set = SubResource("TileSet_w0ru4")

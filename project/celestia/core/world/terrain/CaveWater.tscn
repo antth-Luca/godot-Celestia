@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmsx8tleh1j6l"]
+
+[ext_resource type="Texture2D" uid="uid://dcebvmqftu02m" path="res://assets/celestia/textures/terrain/cave_water.png" id="1_6irri"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uqe5v"]
+texture = ExtResource("1_6irri")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lb4bo"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_uqe5v")
+
+[node name="CaveWater" type="TileMapLayer"]
+tile_set = SubResource("TileSet_lb4bo")
