@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbl4a783ewc1s"]
+
+[ext_resource type="Script" uid="uid://1ysn5klbvhr2" path="res://core/entities/structures/custom/moonstone_pillar/MoonstonePillar.gd" id="1_pp2m3"]
+[ext_resource type="Shader" uid="uid://dwp8o883dsfh4" path="res://assets/celestia/shaders/2D_outline_and_blink.gdshader" id="2_r10pi"]
+[ext_resource type="Texture2D" uid="uid://cj2ihgvtg0r47" path="res://assets/celestia/textures/structures/ores/moonstone_pillar.png" id="3_xa1qq"]
+[ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="4_pwhoi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7op0"]
+size = Vector2(8, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_85n61"]
+shader = ExtResource("2_r10pi")
+shader_parameter/outline_enabled = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/corner_pixel = false
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_urh5f"]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba71x"]
+size = Vector2(8, 12)
+
+[node name="MoonstonePillar" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_pp2m3")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_i7op0")
+
+[node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_85n61")
+position = Vector2(0, -7)
+texture = ExtResource("3_xa1qq")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -7)
+collision_layer = 64
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_urh5f")
+
+[node name="Hurtbox" parent="." instance=ExtResource("4_pwhoi")]
+position = Vector2(0, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_ba71x")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_interaction_entity_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_interaction_entity_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

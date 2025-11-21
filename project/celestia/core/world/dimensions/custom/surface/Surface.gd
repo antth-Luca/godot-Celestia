@@ -80,6 +80,16 @@ func _ready() -> void:
 		InitStructures.RUBY_PILLAR.get_registered(),
 		Vector2(460, 120), self
 	)
+	# Spawn Obsidian Pillar
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.OBSIDIAN_PILLAR.get_registered(),
+		Vector2(430, 120), self
+	)
+	# Spawn Moonstone Pillar
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.MOONSTONE_PILLAR.get_registered(),
+		Vector2(400, 120), self
+	)
 	# Spawn Zombie
 	var zombie: Zombie = InitCreatures.ZOMBIE.get_registered()
 	self.add_child(zombie)

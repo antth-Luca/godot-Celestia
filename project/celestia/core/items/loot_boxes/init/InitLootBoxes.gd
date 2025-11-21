@@ -14,6 +14,8 @@ static var CONSTELLATION_SCROLLS: DeferredHolder
 static var BUSH_DESTROY: DeferredHolder
 static var ROSE_BUSH_DESTROY: DeferredHolder
 	# Ores
+static var MOONSTONE_PILLAR_DESTROY: DeferredHolder
+static var OBSIDIAN_PILLAR_DESTROY: DeferredHolder
 static var RUBY_PILLAR_DESTROY: DeferredHolder
 	# Buidables
 static var CAVE_HOLE_DIG: DeferredHolder
@@ -198,6 +200,32 @@ static func setup() -> void:
 			return box
 	)
 		# Ores
+	MOONSTONE_PILLAR_DESTROY = LOOT_BOXES.add_entry(
+		'moonstone_pillar_destroy',
+		func():
+			var box = LootBox.new()
+			box.set_cycles(1, 1)
+			box.add_output(
+				InitItems.MOONSTONE,
+				1, 2,
+				1
+			)
+			return box
+	)
+
+	OBSIDIAN_PILLAR_DESTROY = LOOT_BOXES.add_entry(
+		'obsidian_pillar',
+		func():
+			var box = LootBox.new()
+			box.set_cycles(1, 1)
+			box.add_output(
+				InitItems.OBSIDIAN,
+				1, 2,
+				1
+			)
+			return box
+	)
+
 	RUBY_PILLAR_DESTROY = LOOT_BOXES.add_entry(
 		'ruby_pillar_destroy',
 		func():

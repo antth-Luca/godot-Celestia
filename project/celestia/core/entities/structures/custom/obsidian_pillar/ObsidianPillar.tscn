@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsyrcgy2oe5nd"]
+
+[ext_resource type="Texture2D" uid="uid://xgjvff6ahjru" path="res://assets/celestia/textures/structures/ores/obsidian_pillar.png" id="1_26sri"]
+[ext_resource type="Script" uid="uid://cbahocylukt6e" path="res://core/entities/structures/custom/obsidian_pillar/ObsidianPillar.gd" id="1_edtlr"]
+[ext_resource type="PackedScene" uid="uid://b2rw1rfk3yr8v" path="res://core/entities/components/hurtbox/Hurtbox.tscn" id="2_edtlr"]
+[ext_resource type="Shader" uid="uid://dwp8o883dsfh4" path="res://assets/celestia/shaders/2D_outline_and_blink.gdshader" id="2_xxx4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xxx4y"]
+size = Vector2(10, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_11m81"]
+shader = ExtResource("2_xxx4y")
+shader_parameter/outline_enabled = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/corner_pixel = false
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_11m81"]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjms1"]
+size = Vector2(8, 8)
+
+[node name="ObsidianPillar" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_edtlr")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_xxx4y")
+
+[node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_11m81")
+position = Vector2(0, -5)
+texture = ExtResource("1_26sri")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -5)
+collision_layer = 64
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_11m81")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_edtlr")]
+position = Vector2(0, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_gjms1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_interaction_entity_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_interaction_entity_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

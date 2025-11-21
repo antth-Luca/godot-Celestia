@@ -13,6 +13,8 @@ static var WORKBENCH: DeferredHolder
 # Natural
 static var BUSH: DeferredHolder
 static var CAVE_HOLE: DeferredHolder
+static var MOONSTONE_PILLAR: DeferredHolder
+static var OBSIDIAN_PILLAR: DeferredHolder
 static var RUBY_PILLAR: DeferredHolder
 
 
@@ -67,6 +69,16 @@ static func setup() -> void:
 	CAVE_HOLE = STRUCTURES.add_entry(
 		'cave_hole',
 		func(): return preload('res://core/entities/structures/custom/cave_hole/CaveHole.tscn').instantiate()
+	)
+
+	MOONSTONE_PILLAR = STRUCTURES.add_entry(
+		'moonstone_pillar',
+		func(): return preload('res://core/entities/structures/custom/moonstone_pillar/MoonstonePillar.tscn').instantiate()
+	)
+
+	OBSIDIAN_PILLAR = STRUCTURES.add_entry(
+		'obsidian_pillar',
+		func(): return preload('res://core/entities/structures/custom/obsidian_pillar/ObsidianPillar.tscn').instantiate()
 	)
 
 	RUBY_PILLAR = STRUCTURES.add_entry(
