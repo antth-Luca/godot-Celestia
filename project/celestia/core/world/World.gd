@@ -22,7 +22,7 @@ func _ready() -> void:
 	add_child(InitDimensions.SURFACE.get_registered())
 
 # GETTERS AND SETTERS
-#
+# World state
 func get_defeated_bosses() -> int:
 	return world_state['defeated_bosses']
 
@@ -39,3 +39,12 @@ func get_dimension(dim_name: String) -> Node2D:
 	var dimension = get_node(dim_name)
 	if dimension: return dimension
 	return get_current_dimension()
+
+
+func get_or_create_dimension(holder_dimension: DeferredHolder) -> BaseDimension:
+	for dimension in get_children():
+		if dimension.id.get_string() == holder_dimension.location.get_string():
+			return dimension
+	var create = holder_dimension.get_registered()
+	add_child(create)
+	return create

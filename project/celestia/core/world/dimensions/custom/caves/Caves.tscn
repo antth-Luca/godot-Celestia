@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=4 uid="uid://chbes2017hq8x"]
+[gd_scene load_steps=5 format=4 uid="uid://chbes2017hq8x"]
 
+[ext_resource type="Script" uid="uid://bg618iraajntr" path="res://core/world/dimensions/custom/caves/Caves.gd" id="1_51qyt"]
 [ext_resource type="PackedScene" uid="uid://dmsx8tleh1j6l" path="res://core/world/terrain/CaveWater.tscn" id="1_o7p4o"]
 [ext_resource type="PackedScene" uid="uid://be8s7thvpbsau" path="res://core/world/terrain/StoneElevation.tscn" id="2_51qyt"]
 [ext_resource type="PackedScene" uid="uid://bri6hy1ctes0h" path="res://core/world/terrain/DustCover.tscn" id="3_stog7"]
 
 [node name="Caves" type="Node2D"]
+script = ExtResource("1_51qyt")
 
 [node name="Terrain" type="Node2D" parent="."]
 

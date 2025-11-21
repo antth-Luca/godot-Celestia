@@ -15,7 +15,7 @@ func _init() -> void:
 		})
 	)
 
-# MAIN
+# SUPER
 func on_interact(entity: LivingEntity) -> void:
 	var hp_prop: HealthProperty = structure_data.stats.get_property(InitPropProviders.HEALTH)
 	if hp_prop.get_health() > 0:
@@ -26,7 +26,7 @@ func on_interact(entity: LivingEntity) -> void:
 			StructuresUtils.spawn_structure_in_position(InitStructures.FARMLAND.get_registered(), global_position, get_dimension())
 			destroy(entity)
 		return
-	print_debug('Teleporto para as cavernas...')  # TODO: Implementar o teleporte para as cavernas.
+	teleport_to_cave(entity)
 
 
 func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
@@ -38,3 +38,11 @@ func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 			global_position, get_dimension()
 		)
 	super.damage(final_dam, hit, hitbox_parent)
+
+# MAIN
+func teleport_to_cave(entity: LivingEntity) -> void:
+	var world: World = entity.get_tree().current_scene
+	var target_dimension: CaveDimension = world.get_or_create_dimension(InitDimensions.CAVES)
+	var source_dimension: SurfaceDimension = world.get_current_dimension()
+	target_dimension.spawn_player(entity)
+	# TODO: Remover player de source_dimension
