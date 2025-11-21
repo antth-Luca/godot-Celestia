@@ -12,34 +12,7 @@ class_name SurfaceDimension
 func _ready() -> void:
 	# TESTS CODE
 	# Spawn Player
-	var player: Player = InitCreatures.PLAYER.get_registered()
-	self.add_child(player)
-	player.global_position = Vector2(170, 140)
-	player.ESSENCE_COUNTER = get_world().config.get('max_resilient_essence')
-	var relics: Array = [
-		InitRelics.EXPLORERS_KIT,
-		InitRelics.BLOOD_ORB,
-		InitRelics.VITAL_CORE,
-		InitRelics.JADE_CHALICE,
-		InitRelics.ARCANE_LINES,
-		InitRelics.COIN_OF_BABYLON,
-		InitRelics.COLLECTORS_GLOVE,
-		InitRelics.PERFECTIONISTS_GLOVE,
-		InitRelics.LOTUS_BLADES,
-		InitRelics.MECHANICAL_HEART,
-		InitRelics.HEART_OF_THE_STORM,
-		InitRelics.CLAWED_GLOVE,
-		InitRelics.PALE_ROSE,
-		InitRelics.MAGMA_CARAPACE,
-		InitRelics.ROSE_OF_JERICHO,
-		InitRelics.CROWN_OF_LUCIDITY,
-		InitRelics.WINGED_SOCKS,
-		InitRelics.SHATTERED_AEGIS,
-		InitRelics.EYE_OF_THE_STORM,
-		InitRelics.COSMIC_FOCUS
-	]
-	for relic_holder in relics:
-		player.inventory.add_item_to_backpack(ItemStack.new(relic_holder.get_registered()))
+	spawn_player(null, Vector2(170, 140))
 	# Spawn Bed
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.BED.get_registered(),
@@ -114,7 +87,7 @@ func _ready() -> void:
 	)
 	# Spawn Papyrus
 	DroppedItemUtils.drop_item_in_position(
-		ItemStack.new(InitItems.LINKING_STAFF.get_registered()),
+		ItemStack.new(InitItems.PAPYRUS.get_registered()),
 		Vector2(170, 195), self
 	)
 	# Spawn Rose
@@ -128,10 +101,6 @@ func _process(_delta) -> void:
 	natural_light.color = day_night_cycle_gradient.gradient.sample(TimeManager.time_curve_value)
 
 # GETTERS AND SETTERS
-# Nodes
-func get_world() -> World:
-	return get_parent()
-
 # Water tile
 func get_water_in_tile(global_pos: Vector2) -> bool:
 	var local_pos = water_layer.to_local(global_pos)

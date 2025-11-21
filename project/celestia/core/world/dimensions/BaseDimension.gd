@@ -7,7 +7,13 @@ var id: ResourceLocation = ResourceLocation.EMPTY:
 			push_warning('BaseItem: Item ID already set. It cannot be changed after initialization.')
 		id = new_id
 
-# MAIN
+# GETTERS AND SETTERS
+# Nodes
+# Nodes
+func get_world() -> World:
+	return get_parent()
+
+# Others
 func get_living_entites_in(global_pos: Vector2, range_search: float) -> Array:
 	var space_state = get_world_2d().direct_space_state
 	# Cria um shape circular para a detecção
@@ -26,3 +32,40 @@ func get_living_entites_in(global_pos: Vector2, range_search: float) -> Array:
 		if collider is LivingEntity:
 			characters.append(collider)
 	return characters
+
+# MAIN
+func spawn_player(player: Player = null, at_pos: Vector2 = Vector2.ZERO) -> void:
+	# Definitive code
+	var has_player: bool = true
+	if not player:
+		has_player = false
+		player = InitCreatures.PLAYER.get_registered()
+	self.add_child(player)
+	if not has_player: player.global_position = at_pos
+	player.ESSENCE_COUNTER = get_world().config.get('max_resilient_essence')
+	# Test
+	if not has_player:
+		var relics: Array = [
+			InitRelics.EXPLORERS_KIT,
+			InitRelics.BLOOD_ORB,
+			InitRelics.VITAL_CORE,
+			InitRelics.JADE_CHALICE,
+			InitRelics.ARCANE_LINES,
+			InitRelics.COIN_OF_BABYLON,
+			InitRelics.COLLECTORS_GLOVE,
+			InitRelics.PERFECTIONISTS_GLOVE,
+			InitRelics.LOTUS_BLADES,
+			InitRelics.MECHANICAL_HEART,
+			InitRelics.HEART_OF_THE_STORM,
+			InitRelics.CLAWED_GLOVE,
+			InitRelics.PALE_ROSE,
+			InitRelics.MAGMA_CARAPACE,
+			InitRelics.ROSE_OF_JERICHO,
+			InitRelics.CROWN_OF_LUCIDITY,
+			InitRelics.WINGED_SOCKS,
+			InitRelics.SHATTERED_AEGIS,
+			InitRelics.EYE_OF_THE_STORM,
+			InitRelics.COSMIC_FOCUS
+		]
+		for relic_holder in relics:
+			player.inventory.add_item_to_backpack(ItemStack.new(relic_holder.get_registered()))
