@@ -16,7 +16,7 @@ func get_comparable_name() -> String:
 	return BaseSeed.get_static_comparable_name()
 
 # Main
-func copy(copy_obj: Variant = BaseSeed.new) -> Variant:
+func copy(copy_obj: Variant = BaseSeed.new()) -> Variant:
 	copy_obj = super.copy(copy_obj)
 	copy_obj.plant_location = plant_location
 	copy_obj.grow_stages = grow_stages
