@@ -1,13 +1,16 @@
-![Celestia Logo](https://github.com/antth-Luca/godot-Celestia/blob/alpha/logo.png)
+![Celestia Logo](https://github.com/antth-Luca/godot-Celestia/blob/no-longer-public-beta-phase/logo.png)
 
 # Repositório: godot-Celestia
 
-Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em história e mecânicas. Desenvolvido por [@antthLuca](https://github.com/antth-Luca) na engine [Godot](https://github.com/godotengine/godot) desde 25 de julho de 2025.
+Este repositório abriga as versões pre-alpha e alpha do jogo Celestia, um top-down de sobrevivênca, rico em história e mecânicas. Desenvolvido por [@antthLuca](https://github.com/antth-Luca) na engine [Godot](https://github.com/godotengine/godot) desde 25 de julho de 2025.
+
+> [!IMPORTANT]
+> As versões [Pre-alpha](https://github.com/antth-Luca/godot-Celestia/releases/tag/Pre-alpha) e [Alpha](https://github.com/antth-Luca/godot-Celestia/releases/tag/Alpha) estão disponíveis para explorar e testar, de acordo com a [licença](https://github.com/antth-Luca/godot-Celestia/#Licença), mas a partir da Beta não é mais público. Sinta-se à vontade para acompanhar as informações abaixo que seguirão sendo atualizadas!
 
 ## Licença
 
-- [Licença personalizada - PT-BR](https://github.com/antth-Luca/godot-Celestia/blob/alpha/LICENSE-pt-br)
-- [Custom license - EN-US](https://github.com/antth-Luca/godot-Celestia/blob/alpha/LICENSE)
+- [Licença personalizada - PT-BR](https://github.com/antth-Luca/godot-Celestia/blob/no-longer-public-beta-phase/LICENSE-pt-br)
+- [Custom license - EN-US](https://github.com/antth-Luca/godot-Celestia/blob/no-longer-public-beta-phase/LICENSE)
 
 ## Versões:
 
