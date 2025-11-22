@@ -5,6 +5,25 @@ class_name CaveDimension
 @onready var stone_elevation_layer = $Terrain/StoneElevation
 @onready var dust_layer = $Terrain/DustCover
 
+# GODOT
+func _ready() -> void:
+	# TESTS CODE
+	# Spawn Ruby pillar
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.RUBY_PILLAR.get_registered(),
+		Vector2(180, 115), self
+	)
+	# Spawn Obsidian pillar
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.OBSIDIAN_PILLAR.get_registered(),
+		Vector2(210, 115), self
+	)
+	# Spawn Moonstone pillar
+	StructuresUtils.spawn_structure_in_position(
+		InitStructures.MOONSTONE_PILLAR.get_registered(),
+		Vector2(240, 115), self
+	)
+
 # GETTERS AND SETTERS
 # Water tile
 func get_water_in_tile(global_pos: Vector2) -> bool:

@@ -11,8 +11,6 @@ class_name SurfaceDimension
 # GODOT
 func _ready() -> void:
 	# TESTS CODE
-	# Spawn Player
-	spawn_player(null, Vector2(170, 140))
 	# Spawn Bed
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.BED.get_registered(),
@@ -47,21 +45,6 @@ func _ready() -> void:
 	StructuresUtils.spawn_structure_in_position(
 		InitStructures.BUSH.get_registered(),
 		Vector2(490, 120), self
-	)
-	# Spawn Ruby Pillar
-	StructuresUtils.spawn_structure_in_position(
-		InitStructures.RUBY_PILLAR.get_registered(),
-		Vector2(460, 120), self
-	)
-	# Spawn Obsidian Pillar
-	StructuresUtils.spawn_structure_in_position(
-		InitStructures.OBSIDIAN_PILLAR.get_registered(),
-		Vector2(430, 120), self
-	)
-	# Spawn Moonstone Pillar
-	StructuresUtils.spawn_structure_in_position(
-		InitStructures.MOONSTONE_PILLAR.get_registered(),
-		Vector2(400, 120), self
 	)
 	# Spawn Zombie
 	var zombie: Zombie = InitCreatures.ZOMBIE.get_registered()

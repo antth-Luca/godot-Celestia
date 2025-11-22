@@ -69,3 +69,14 @@ func spawn_player(player: Player = null, at_pos: Vector2 = Vector2.ZERO) -> void
 		]
 		for relic_holder in relics:
 			player.inventory.add_item_to_backpack(ItemStack.new(relic_holder.get_registered()))
+
+
+func remove_player(player: Player) -> void:
+	var has_someone: bool = false
+	for node in get_children():
+		if node == player:
+			remove_child(node)
+			continue
+		if node.is_in_group('Player'):
+			has_someone = true
+	if not has_someone: queue_free()

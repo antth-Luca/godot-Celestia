@@ -25,8 +25,11 @@ func on_interact(entity: LivingEntity) -> void:
 			hand_stack.sub_amount(1, hand_slot)
 			StructuresUtils.spawn_structure_in_position(InitStructures.FARMLAND.get_registered(), global_position, get_dimension())
 			destroy(entity)
-		return
-	teleport_to_cave(entity)
+		var current_dimension: BaseDimension = entity.get_dimension()
+		if current_dimension is SurfaceDimension:
+			teleport_to_cave(entity)
+		elif current_dimension is CaveDimension:
+			teleport_to_surface(entity)
 
 
 func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
@@ -43,6 +46,14 @@ func damage(final_dam: float, hit: HitData, hitbox_parent: Variant) -> void:
 func teleport_to_cave(entity: LivingEntity) -> void:
 	var world: World = entity.get_tree().current_scene
 	var target_dimension: CaveDimension = world.get_or_create_dimension(InitDimensions.CAVES)
-	var source_dimension: SurfaceDimension = world.get_current_dimension()
-	target_dimension.spawn_player(entity)
-	# TODO: Remover player de source_dimension
+	var source_dimension: SurfaceDimension = world.get_dimension('Surface')
+	target_dimension.call_deferred('spawn_player', entity)
+	source_dimension.remove_player(entity)
+
+
+func teleport_to_surface(entity: LivingEntity) -> void:
+	var world: World = entity.get_tree().current_scene
+	var target_dimension: SurfaceDimension = world.get_or_create_dimension(InitDimensions.SURFACE)
+	var source_dimension: CaveDimension = world.get_dimension('Caves')
+	target_dimension.call_deferred('spawn_player', entity)
+	source_dimension.remove_player(entity)
