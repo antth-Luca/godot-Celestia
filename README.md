@@ -13,8 +13,7 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 
 | Versão         | Título                 | Situação         | Início desenv. | Fim desenv. |
 | -------------- | ---------------------- | ---------------- | -------------- | ----------- |
-| v1.25-alpha    | Alpha                  | Desenvolvendo ⏳ | 04/10/25       | -           |
-| v1.25-beta     | Beta                   | Planejada 📅     | -              | -           |
+| v1.25-beta     | Beta                   | Desenvolvendo ⏳ | -              | -           |
 | v1.25.1.1      | Ato 1 (este é **MVP**) | Planejada 📅     | -              | -           |
 | v1.25.1.2      | Novos horizontes       | Planejada 📅     | -              | -           |
 | v1.25.1.3      | Vamos ao combate!      | Planejada 📅     | -              | -           |
@@ -23,30 +22,12 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 | v1.25.1.6      | Festeiro               | Planejada 📅     | -              | -           |
 | v1.25.2.1      | Ato 2                  | Planejando... 📅 | -              | -           |
 | v1.25-prealpha | Pré-alpha              | Concluída ✅     | 25/07/25       | 04/10/25    |
+| v1.25-alpha    | Alpha                  | Concluída ✅     | 04/10/25       | 22/11/25    |
 
 > [!NOTE]
 > Estou muito entusiasmado em desenvolver Celestia, mas jogos não são o meu trabalho! Novas features virão conforme meu tempo disponível permitir o desenvolvimento.
 
 ### Recursos:
-
-#### Alpha
-
-
-- [ ] Sistema de dimensões e adição das Cavernas;
-- [x] Mudanças no dano a estruturas:
-  - [x] Dano por Hit comum;
-  - [x] Verificação de tipo de ferramenta e nível de material.
-- [x] Mudança no uso e interação de itens e estruturas;
-- [x] Item de combate à distância: Arco;
-- [x] Movimento de rolagem do Jogador/Player;
-- [x] Sistema de efeitos para entidades;
-- [x] Sistema de encantamentos para itens;
-- [x] Sistema de relíquias;
-- [x] Sistema de cultivo;
-- [x] Nova estrutura: Bancada de Fabricação;
-- [x] Primeiro chefe: Golem Ulken;
-- [x] Sistema de eventos históricos;
-- [x] Nova estrutura "Pilar Estelar" e novo tipo de fabricação com energias.
 
 #### Beta
 
@@ -158,3 +139,21 @@ Este repositório abriga o jogo Celestia, um top-down de sobrevivênca, rico em 
 - [x] Sistema de LootTables (drop de entidades);
 - [x] Sistema de fabricação;
 - [x] Sistema de receitas.
+
+#### Alpha
+
+- [x] Mudanças no dano a estruturas:
+  - [x] Dano por Hit comum;
+  - [x] Verificação de tipo de ferramenta e nível de material.
+- [x] Mudança no uso e interação de itens e estruturas;
+- [x] Item de combate à distância: Arco;
+- [x] Movimento de rolagem do Jogador/Player;
+- [x] Sistema de efeitos para entidades;
+- [x] Sistema de encantamentos para itens;
+- [x] Sistema de relíquias;
+- [x] Sistema de cultivo;
+- [x] Nova estrutura: Bancada de Fabricação;
+- [x] Primeiro chefe: Golem Ulken;
+- [x] Sistema de eventos históricos;
+- [x] Nova estrutura "Pilar Estelar" e novo tipo de fabricação com energias;
+- [x] Sistema de dimensões e adição das Cavernas.
