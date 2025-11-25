@@ -16,7 +16,7 @@ Este repositório abriga as versões pre-alpha e alpha do jogo Celestia, um top-
 
 | Versão         | Título                 | Situação         | Início desenv. | Fim desenv. |
 | -------------- | ---------------------- | ---------------- | -------------- | ----------- |
-| v1.25-beta     | Beta                   | Desenvolvendo ⏳ | -              | -           |
+| v1.25-beta     | Beta                   | Desenvolvendo ⏳ | 25/11/25       | -           |
 | v1.25.1.1      | Ato 1 (este é **MVP**) | Planejada 📅     | -              | -           |
 | v1.25.1.2      | Novos horizontes       | Planejada 📅     | -              | -           |
 | v1.25.1.3      | Vamos ao combate!      | Planejada 📅     | -              | -           |
