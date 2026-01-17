@@ -47,13 +47,12 @@ Este repositório abriga as versões pre-alpha e alpha do jogo Celestia, um top-
 - [ ] Sistema de coleção de itens;
 - [ ] Sistema de conquistas;
 - [ ] Configurações de mundo;
-- [ ] Sistema de biomas;
-- [ ] Geração procedural de mundo;
-- [ ] Nascimento natural de entidades (levando o bioma em consideração);
 - [ ] Cliente/menu do jogo;
 - [ ] Configurações do jogo;
 - [ ] Salvar mundo e retormar;
-- [ ] Carregamento de addons/mods (a se decidir o nível de modificação).
+- [ ] Carregamento de addons/mods (a se decidir o nível de modificação);
+- [x] Geração procedural de mundo;
+- [x] Nascimento natural de entidades (levando o bioma em consideração).
 
 #### Ato 1
 
